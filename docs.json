@@ -1,0 +1,69 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "SocQ",
+  "colors": {
+    "primary": "#2563EB",
+    "light": "#60A5FA",
+    "dark": "#1D4ED8"
+  },
+  "favicon": "/favicon.ico",
+  "api": {
+    "baseUrl": "https://api.socq.ai",
+    "auth": {
+      "method": "bearer",
+      "name": "Authorization",
+      "inputPlaceholder": "YOUR_API_KEY"
+    },
+    "playground": {
+      "mode": "simple"
+    },
+    "openapi": [
+      "/api-manual/agent-api/agent-api.json"
+    ]
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Agent API",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "index",
+              "api-manual/agent-api/overview"
+            ]
+          },
+          {
+            "group": "Instagram",
+            "pages": [
+              "api-manual/instagram/overview",
+              "api-manual/instagram/posts",
+              "api-manual/instagram/reels",
+              "api-manual/instagram/search",
+              "api-manual/instagram/followers-count"
+            ]
+          },
+          {
+            "group": "Facebook",
+            "pages": [
+              "api-manual/facebook/overview",
+              "api-manual/facebook/pages",
+              "api-manual/facebook/posts"
+            ]
+          },
+          {
+            "group": "Common",
+            "pages": [
+              "api-manual/agent-api/authentication",
+              "api-manual/agent-api/status",
+              "api-manual/agent-api/results",
+              "api-manual/agent-api/files",
+              "api-manual/agent-api/errors"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

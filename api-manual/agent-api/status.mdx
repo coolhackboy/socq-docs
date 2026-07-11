@@ -1,0 +1,44 @@
+---
+title: "Get Task Status"
+description: "Check task status."
+openapi: "/api-manual/agent-api/agent-api.json GET /v1/tasks/{task_id}"
+---
+
+# Get Task Status
+
+Query a task by `task_id`.
+
+## Endpoint
+
+```http
+GET https://api.socq.ai/v1/tasks/{task_id}
+```
+
+## Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "result_count": 1,
+    "error_message": null,
+    "credits_amount": 0,
+    "created_time": "2026-07-07T18:30:32",
+    "finished_time": "2026-07-07T18:30:48"
+  }
+}
+```
+
+## Response Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `task_id` | string | Task identifier |
+| `status` | string | `queued`, `running`, `succeeded`, or `failed` |
+| `result_count` | integer | Number of collected records |
+| `error_message` | string | Failure reason when status is `failed` |
+| `credits_amount` | number | Credits charged for the task |
+| `created_time` | string | Task creation time |
+| `finished_time` | string | Task completion time |

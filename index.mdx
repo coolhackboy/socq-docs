@@ -1,0 +1,65 @@
+---
+title: "Getting Started"
+description: "Start integrating SocQ social data APIs."
+icon: "rocket"
+---
+
+# SocQ Documentation
+
+SocQ provides asynchronous social data APIs for public Instagram and Facebook data.
+
+## Base URL
+
+```text
+https://api.socq.ai
+```
+
+## Authentication
+
+All requests require an API key:
+
+```http
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+```
+
+## Request Flow
+
+<Steps>
+  <Step title="Submit a data task">
+    Call one of the product endpoints, such as `POST /v1/instagram/posts`.
+  </Step>
+  <Step title="Receive a task ID">
+    The submit endpoint returns immediately with a `task_id`.
+  </Step>
+  <Step title="Query task status">
+    Poll `GET /v1/tasks/{task_id}` until the status becomes `succeeded` or `failed`.
+  </Step>
+  <Step title="Read results">
+    Use `GET /v1/tasks/{task_id}/results` for normalized records, or download raw JSONL files from `GET /v1/tasks/{task_id}/files`.
+  </Step>
+</Steps>
+
+## Supported P0 Endpoints
+
+| Product | Endpoint |
+| --- | --- |
+| Instagram Posts | `POST /v1/instagram/posts` |
+| Instagram Reels | `POST /v1/instagram/reels` |
+| Instagram Search | `POST /v1/instagram/search` |
+| Instagram Followers Count | `POST /v1/instagram/followers-count` |
+| Facebook Pages | `POST /v1/facebook/pages` |
+| Facebook Posts | `POST /v1/facebook/posts` |
+
+## Status Values
+
+| Status | Description |
+| --- | --- |
+| `queued` | Task has been accepted and is waiting to run |
+| `running` | Task is processing |
+| `succeeded` | Task completed successfully |
+| `failed` | Task failed; see `error_message` |
+
+<Info>
+  Data collection tasks are asynchronous. A successful submit response means the task was created, not that the final data is ready.
+</Info>

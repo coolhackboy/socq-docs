@@ -1,0 +1,40 @@
+---
+title: "Errors"
+description: "Common Agent API error responses."
+---
+
+# Errors
+
+Agent API errors use a consistent response envelope.
+
+```json
+{
+  "code": 400,
+  "error": {
+    "message": "invalid_field_type:urls, expected array",
+    "type": "bad_request"
+  }
+}
+```
+
+## Common Codes
+
+| HTTP code | Meaning |
+| --- | --- |
+| `400` | Invalid request body or unsupported field |
+| `401` | Missing or invalid API key |
+| `402` | Insufficient credits |
+| `403` | Task does not belong to the authenticated account |
+| `404` | Endpoint feature or task not found |
+| `429` | Rate limit or credit limit exceeded |
+| `500` | Task submission failed |
+
+## Deprecated Fields
+
+Use array inputs for public identifiers.
+
+| Deprecated | Use instead |
+| --- | --- |
+| `url` | `urls` |
+| `username` | `usernames` |
+

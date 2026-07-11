@@ -1,0 +1,35 @@
+---
+title: "Instagram"
+description: "Collect public Instagram posts, reels, search results, and profile statistics."
+icon: "instagram"
+---
+
+# Instagram
+
+Use the Instagram endpoints to collect public data for posts, reels, search discovery, and follower statistics.
+
+## Available Endpoints
+
+| API | Method | Endpoint |
+| --- | --- | --- |
+| Instagram Posts | `POST` | `/v1/instagram/posts` |
+| Instagram Reels | `POST` | `/v1/instagram/reels` |
+| Instagram Search | `POST` | `/v1/instagram/search` |
+| Instagram Followers Count | `POST` | `/v1/instagram/followers-count` |
+
+## Workflow
+
+<Steps>
+  <Step title="Submit">
+    Send a request to an Instagram endpoint.
+  </Step>
+  <Step title="Receive task ID">
+    The API returns a `task_id` immediately.
+  </Step>
+  <Step title="Check status">
+    Poll `GET /v1/tasks/{task_id}` until the task reaches `succeeded` or `failed`.
+  </Step>
+  <Step title="Read data">
+    Use `/v1/tasks/{task_id}/results` for normalized rows or download raw JSONL from `files`.
+  </Step>
+</Steps>

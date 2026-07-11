@@ -1,0 +1,900 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Agent API",
+    "description": "Asynchronous social data collection API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.socq.ai",
+      "description": "Production server"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/v1/instagram/posts": {
+      "post": {
+        "summary": "Submit Instagram Posts task",
+        "description": "Collect public Instagram post data.",
+        "operationId": "submitInstagramPostsTask",
+        "tags": [
+          "Agent API"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Submit Instagram Posts task",
+                  "value": {
+                    "results_limit": 10,
+                    "usernames": [
+                      "instagram"
+                    ]
+                  }
+                },
+                "with_callback": {
+                  "summary": "With callback URL",
+                  "value": {
+                    "results_limit": 10,
+                    "callback_url": "https://your-domain.com/webhook",
+                    "usernames": [
+                      "instagram"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task submitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequired"
+          }
+        }
+      }
+    },
+    "/v1/instagram/reels": {
+      "post": {
+        "summary": "Submit Instagram Reels task",
+        "description": "Collect public Instagram reel data.",
+        "operationId": "submitInstagramReelsTask",
+        "tags": [
+          "Agent API"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Submit Instagram Reels task",
+                  "value": {
+                    "results_limit": 10,
+                    "usernames": [
+                      "instagram"
+                    ]
+                  }
+                },
+                "with_callback": {
+                  "summary": "With callback URL",
+                  "value": {
+                    "results_limit": 10,
+                    "callback_url": "https://your-domain.com/webhook",
+                    "usernames": [
+                      "instagram"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task submitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequired"
+          }
+        }
+      }
+    },
+    "/v1/instagram/search": {
+      "post": {
+        "summary": "Submit Instagram Search task",
+        "description": "Search public Instagram profiles for username and creator discovery workflows.",
+        "operationId": "submitInstagramSearchTask",
+        "tags": [
+          "Agent API"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Submit Instagram Search task",
+                  "value": {
+                    "query": "instagram",
+                    "results_limit": 20
+                  }
+                },
+                "with_callback": {
+                  "summary": "With callback URL",
+                  "value": {
+                    "query": "instagram",
+                    "results_limit": 20,
+                    "callback_url": "https://your-domain.com/webhook"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task submitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequired"
+          }
+        }
+      }
+    },
+    "/v1/instagram/followers-count": {
+      "post": {
+        "summary": "Submit Instagram Followers Count task",
+        "description": "Collect public follower and following counts for Instagram profiles.",
+        "operationId": "submitInstagramFollowersCountTask",
+        "tags": [
+          "Agent API"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Submit Instagram Followers Count task",
+                  "value": {
+                    "usernames": [
+                      "instagram"
+                    ]
+                  }
+                },
+                "with_callback": {
+                  "summary": "With callback URL",
+                  "value": {
+                    "callback_url": "https://your-domain.com/webhook",
+                    "usernames": [
+                      "instagram"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task submitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequired"
+          }
+        }
+      }
+    },
+    "/v1/facebook/pages": {
+      "post": {
+        "summary": "Submit Facebook Pages task",
+        "description": "Collect public Facebook page data.",
+        "operationId": "submitFacebookPagesTask",
+        "tags": [
+          "Agent API"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Submit Facebook Pages task",
+                  "value": {
+                    "urls": [
+                      "https://www.facebook.com/facebook"
+                    ]
+                  }
+                },
+                "with_callback": {
+                  "summary": "With callback URL",
+                  "value": {
+                    "callback_url": "https://your-domain.com/webhook",
+                    "urls": [
+                      "https://www.facebook.com/facebook"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task submitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequired"
+          }
+        }
+      }
+    },
+    "/v1/facebook/posts": {
+      "post": {
+        "summary": "Submit Facebook Posts task",
+        "description": "Collect public Facebook post data.",
+        "operationId": "submitFacebookPostsTask",
+        "tags": [
+          "Agent API"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Submit Facebook Posts task",
+                  "value": {
+                    "results_limit": 10,
+                    "urls": [
+                      "https://www.facebook.com/facebook/posts/POST_ID"
+                    ]
+                  }
+                },
+                "with_callback": {
+                  "summary": "With callback URL",
+                  "value": {
+                    "results_limit": 10,
+                    "callback_url": "https://your-domain.com/webhook",
+                    "urls": [
+                      "https://www.facebook.com/facebook/posts/POST_ID"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task submitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequired"
+          }
+        }
+      }
+    },
+    "/v1/tasks/{task_id}": {
+      "get": {
+        "summary": "Get task status",
+        "description": "Check task status and raw file links.",
+        "operationId": "getAgentTask",
+        "tags": [
+          "Agent API"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/TaskId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/v1/tasks/{task_id}/results": {
+      "get": {
+        "summary": "List task results",
+        "description": "List normalized records for a task.",
+        "operationId": "listAgentTaskResults",
+        "tags": [
+          "Agent API"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/TaskId"
+          },
+          {
+            "$ref": "#/components/parameters/Cursor"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultListResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/v1/tasks/{task_id}/files": {
+      "get": {
+        "summary": "List task files",
+        "description": "List raw result files for a task.",
+        "operationId": "listAgentTaskFiles",
+        "tags": [
+          "Agent API"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/TaskId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task files",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileListResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "API Key"
+      }
+    },
+    "parameters": {
+      "TaskId": {
+        "name": "task_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "A1B2C3D4E5F6G7H8"
+        },
+        "description": "Task ID returned by the submit endpoint"
+      },
+      "Page": {
+        "name": "page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        },
+        "description": "Page number"
+      },
+      "PageSize": {
+        "name": "page_size",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 500,
+          "default": 50
+        },
+        "description": "Items per page"
+      },
+      "Cursor": {
+        "name": "cursor",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "nullable": true
+        },
+        "description": "Cursor returned by the previous results response. Omit for the first page."
+      },
+      "Limit": {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 500,
+          "default": 50
+        },
+        "description": "Maximum number of result records to return."
+      }
+    },
+    "schemas": {
+      "SubmitRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of public URLs to collect."
+          },
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of public usernames to collect."
+          },
+          "query": {
+            "type": "string",
+            "description": "Search query"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Maximum number of results to collect"
+          },
+          "callback_url": {
+            "type": "string",
+            "description": "Optional callback URL"
+          }
+        }
+      },
+      "SubmitResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 200
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "task_id": {
+                "type": "string",
+                "example": "A1B2C3D4E5F6G7H8"
+              },
+              "status": {
+                "type": "string",
+                "example": "queued"
+              },
+              "created_time": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      },
+      "TaskResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 200
+          },
+          "data": {
+            "$ref": "#/components/schemas/Task"
+          }
+        }
+      },
+      "TaskListResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 200
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              },
+              "page": {
+                "type": "integer"
+              },
+              "page_size": {
+                "type": "integer"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Task": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "running",
+              "succeeded",
+              "failed"
+            ]
+          },
+          "result_count": {
+            "type": "integer"
+          },
+          "error_message": {
+            "type": "string",
+            "nullable": true
+          },
+          "credits_amount": {
+            "type": "number"
+          },
+          "created_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "finished_time": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        }
+      },
+      "ResultFile": {
+        "type": "object",
+        "properties": {
+          "file_type": {
+            "type": "string",
+            "example": "raw_jsonl"
+          },
+          "public_url": {
+            "type": "string"
+          },
+          "file_size": {
+            "type": "integer",
+            "nullable": true
+          },
+          "item_count": {
+            "type": "integer"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        }
+      },
+      "ResultListResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 200
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "limit": {
+                "type": "integer",
+                "example": 50
+              },
+              "next_cursor": {
+                "type": "string",
+                "nullable": true,
+                "example": "NTY3ODkw"
+              },
+              "has_more": {
+                "type": "boolean",
+                "example": true
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResultItem"
+                }
+              }
+            },
+            "required": [
+              "limit",
+              "has_more",
+              "items"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "data"
+        ]
+      },
+      "ResultItem": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "platform": {
+            "type": "string"
+          },
+          "resource": {
+            "type": "string",
+            "description": "Product resource, such as posts, reels, search, followers-count, or pages."
+          },
+          "type": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "metrics": {
+            "type": "object",
+            "description": "Normalized metric names, such as likes_count, comments_count, followers_count, or views_count.",
+            "additionalProperties": true
+          },
+          "media": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "collected_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "extra": {
+            "type": "object",
+            "description": "Low-frequency or source-specific values that are not part of the stable core fields.",
+            "additionalProperties": true
+          }
+        }
+      },
+      "FileListResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 200
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "task_id": {
+                "type": "string"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ResultFile"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Invalid request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Invalid or missing API key",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "PaymentRequired": {
+        "description": "Insufficient credits",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Resource not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+---
+title: "Instagram Reels"
+description: "Collect public Instagram reel data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/reels"
+---
+
+# Instagram Reels
+
+Collect public Instagram reel data, including caption text, view counts, engagement metrics, media fields, and raw JSONL output.
+
+## Endpoint
+
+```http
+POST https://api.socq.ai/v1/instagram/reels
+```
+
+## Request Body
+
+```json
+{
+  "usernames": ["instagram"],
+  "results_limit": 10
+}
+```
+
+## Result Item
+
+After the task succeeds, call `GET /v1/tasks/{task_id}/results` to read paginated standard records.
+
+```json
+{
+  "id": "3936101605334124689",
+  "platform": "instagram",
+  "resource": "reels",
+  "type": "reel",
+  "shortcode": "Daf145ByQiR",
+  "url": "https://www.instagram.com/p/Daf145ByQiR/",
+  "caption": "Reel caption text",
+  "author": {
+    "id": "25025320",
+    "username": "instagram",
+    "name": "Instagram",
+    "url": "https://www.instagram.com/instagram",
+    "avatar_url": null,
+    "is_verified": null,
+    "is_private": null
+  },
+  "metrics": {
+    "likes_count": 109829,
+    "comments_count": 4734,
+    "views_count": 5781967,
+    "plays_count": 40319904
+  },
+  "media": [
+    {
+      "type": "video",
+      "url": "https://example.com/reel.mp4",
+      "thumbnail_url": "https://example.com/thumbnail.jpg",
+      "width": 1080,
+      "height": 1920,
+      "duration_seconds": 29.9
+    }
+  ],
+  "duration_seconds": 29.9,
+  "audio": {
+    "id": null,
+    "title": null,
+    "artist": null,
+    "url": "https://example.com/audio.mp4"
+  },
+  "hashtags": [],
+  "mentions": ["creator"],
+  "created_at": "2026-07-07T16:00:36",
+  "collected_at": "2026-07-08T08:59:45",
+  "extra": {}
+}
+```
+
+## Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "queued",
+    "created_time": "2026-07-08T10:30:00"
+  }
+}
+```

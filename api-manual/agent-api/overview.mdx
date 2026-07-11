@@ -1,0 +1,62 @@
+---
+title: "Agent API Overview"
+description: "Unified asynchronous social data collection API."
+icon: "database"
+---
+
+# Agent API Overview
+
+The Agent API provides a consistent request flow for social data collection:
+
+```text
+submit -> task_id -> status/results/files
+```
+
+## Authentication
+
+```http
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+```
+
+## Submit Endpoints
+
+Each product API has its own resource path:
+
+| Platform | API | Endpoint |
+| --- | --- | --- |
+| Instagram | Posts | `POST /v1/instagram/posts` |
+| Instagram | Reels | `POST /v1/instagram/reels` |
+| Instagram | Search | `POST /v1/instagram/search` |
+| Instagram | Followers Count | `POST /v1/instagram/followers-count` |
+| Facebook | Pages | `POST /v1/facebook/pages` |
+| Facebook | Posts | `POST /v1/facebook/posts` |
+
+## Common Submit Body
+
+Input fields are sent directly in the JSON body.
+
+```json
+{
+  "urls": ["https://www.instagram.com/p/POST_CODE/"],
+  "results_limit": 10,
+  "callback_url": "https://your-domain.com/webhook"
+}
+```
+
+`callback_url` is optional. If provided, SocQ sends a POST request after the task reaches a terminal state.
+
+## Result Storage
+
+SocQ stores two forms of results:
+
+| Storage | Purpose |
+| --- | --- |
+| Normalized records | Query with `/v1/tasks/{task_id}/results` |
+| Raw JSONL file | Download from `/v1/tasks/{task_id}/files` |
+
+Raw files use this path format:
+
+```text
+agent-results/{task_id}/raw_jsonl.jsonl.gz
+```

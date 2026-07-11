@@ -1,0 +1,80 @@
+---
+title: "Facebook Posts"
+description: "Collect public Facebook post data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook/posts"
+---
+
+# Facebook Posts
+
+Collect public Facebook post data, including post text, source URLs, media fields, and engagement metrics.
+
+## Endpoint
+
+```http
+POST https://api.socq.ai/v1/facebook/posts
+```
+
+## Request Body
+
+```json
+{
+  "urls": ["https://www.facebook.com/facebook/posts/POST_ID"],
+  "results_limit": 10
+}
+```
+
+## Result Item
+
+After the task succeeds, call `GET /v1/tasks/{task_id}/results` to read paginated standard records.
+
+```json
+{
+  "id": "1569965031842178",
+  "platform": "facebook",
+  "resource": "posts",
+  "type": "post",
+  "url": "https://www.facebook.com/facebook/posts/1569965031842178",
+  "message": "Post message text",
+  "author": {
+    "id": "100064860875397",
+    "username": "facebook",
+    "name": "facebook",
+    "url": "https://www.facebook.com/facebook/",
+    "avatar_url": null,
+    "is_verified": null,
+    "is_private": null
+  },
+  "metrics": {
+    "likes_count": 11033,
+    "comments_count": 2070,
+    "shares_count": 541,
+    "reactions_count": 11033
+  },
+  "reactions": {
+    "like": 8340,
+    "love": 1555,
+    "care": 245,
+    "haha": 821,
+    "wow": 40,
+    "sad": 12,
+    "angry": 20
+  },
+  "media": [],
+  "created_at": "2026-07-07T19:17:33",
+  "collected_at": "2026-07-08T08:59:45",
+  "extra": {}
+}
+```
+
+## Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "queued",
+    "created_time": "2026-07-08T10:30:00"
+  }
+}
+```

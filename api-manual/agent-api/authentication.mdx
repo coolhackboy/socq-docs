@@ -1,0 +1,28 @@
+---
+title: "Authentication"
+description: "Authenticate Agent API requests with an API key."
+---
+
+# Authentication
+
+All Agent API requests require an API key.
+
+```http
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+```
+
+Use the same header for submit, task status, result, and file endpoints.
+
+## Unauthorized Response
+
+```json
+{
+  "code": 401,
+  "error": {
+    "message": "Invalid or missing API key",
+    "type": "unauthorized"
+  }
+}
+```
+
