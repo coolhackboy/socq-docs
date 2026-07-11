@@ -3,11 +3,66 @@
   "theme": "mint",
   "name": "SocQ",
   "colors": {
-    "primary": "#2563EB",
-    "light": "#60A5FA",
-    "dark": "#1D4ED8"
+    "primary": "#F64C31",
+    "light": "#FF806B",
+    "dark": "#C63A28"
   },
-  "favicon": "/favicon.ico",
+  "logo": {
+    "light": "/assets/socq-logo-light.png",
+    "dark": "/assets/socq-logo-dark.png",
+    "href": "https://socqapi.ai"
+  },
+  "favicon": {
+    "light": "/assets/socq-logo-light.png",
+    "dark": "/assets/socq-logo-dark.png"
+  },
+  "appearance": {
+    "default": "system"
+  },
+  "fonts": {
+    "family": "Geist",
+    "source": "/fonts/GeistVF.woff",
+    "format": "woff",
+    "weight": 400,
+    "heading": {
+      "family": "Geist",
+      "source": "/fonts/GeistVF.woff",
+      "format": "woff",
+      "weight": 650
+    },
+    "body": {
+      "family": "Geist",
+      "source": "/fonts/GeistVF.woff",
+      "format": "woff",
+      "weight": 400
+    }
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "background": {
+    "color": {
+      "light": "#FCFAF8",
+      "dark": "#090909"
+    }
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs",
+    "codeblocks": "system"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Website",
+        "href": "https://socqapi.ai"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Get API key",
+      "href": "https://socqapi.ai/dashboard/api-key"
+    }
+  },
   "api": {
     "baseUrl": "https://api.socq.ai",
     "auth": {
@@ -19,7 +74,7 @@
       "mode": "simple"
     },
     "openapi": [
-      "/api-manual/agent-api/agent-api.json"
+      "api-manual/agent-api/agent-api.json"
     ]
   },
   "navigation": {

@@ -1,0 +1,123 @@
+:root {
+  --socq-accent: #f64c31;
+  --socq-accent-dark: #c63a28;
+  --socq-accent-hover: #ad3021;
+  --socq-accent-soft: rgba(246, 76, 49, 0.12);
+  --socq-accent-text: #b53625;
+  --socq-border: rgba(35, 27, 24, 0.12);
+  --socq-code-bg: #f7f3f0;
+  --socq-code-fg: #342e2c;
+  --socq-control-fg: #fcfaf8;
+  --socq-focus: rgba(246, 76, 49, 0.72);
+  --socq-method-muted-bg: rgba(35, 27, 24, 0.07);
+  --socq-method-muted-fg: #6f6865;
+}
+
+.dark {
+  --socq-accent-soft: rgba(246, 76, 49, 0.15);
+  --socq-accent-text: #ff806b;
+  --socq-border: rgba(255, 248, 244, 0.12);
+  --socq-code-bg: #0b0a0a;
+  --socq-code-fg: #ded8d6;
+  --socq-focus: rgba(255, 128, 107, 0.78);
+  --socq-method-muted-bg: rgba(255, 248, 244, 0.08);
+  --socq-method-muted-fg: #b8b1af;
+}
+
+#navbar {
+  border-bottom: 1px solid var(--socq-border);
+  box-shadow: none;
+}
+
+#navbar a[href="https://socqapi.ai/dashboard/api-key"] {
+  border-radius: 4px;
+}
+
+.tryit-button {
+  border-radius: 4px;
+  background-color: var(--socq-accent-dark) !important;
+  color: var(--socq-control-fg) !important;
+  opacity: 1 !important;
+}
+
+.tryit-button:hover {
+  background-color: var(--socq-accent-hover) !important;
+  opacity: 1 !important;
+}
+
+.tryit-button svg {
+  background-color: var(--socq-control-fg) !important;
+}
+
+.method-pill {
+  border-radius: 4px !important;
+  background-color: var(--socq-accent-soft) !important;
+  color: var(--socq-accent-text) !important;
+}
+
+.method-nav-pill > span {
+  border-radius: 4px !important;
+  background-color: var(--socq-method-muted-bg) !important;
+  color: var(--socq-method-muted-fg) !important;
+}
+
+html:not(.dark) main .code-block-background {
+  background-color: var(--socq-code-bg) !important;
+}
+
+html.dark main .code-block-background {
+  background-color: var(--socq-code-bg) !important;
+}
+
+main pre.shiki {
+  --shiki-light: var(--socq-code-fg) !important;
+  --shiki-light-bg: var(--socq-code-bg) !important;
+  background-color: var(--socq-code-bg) !important;
+  color: var(--socq-code-fg) !important;
+}
+
+.dark main pre.shiki {
+  --shiki-dark: var(--socq-code-fg) !important;
+  --shiki-dark-bg: var(--socq-code-bg) !important;
+  background-color: var(--socq-code-bg) !important;
+  color: var(--socq-code-fg) !important;
+}
+
+main pre.shiki span {
+  --shiki-dark: var(--socq-code-fg) !important;
+  color: inherit !important;
+}
+
+footer {
+  border-top: 1px solid var(--socq-border);
+  box-shadow: none;
+}
+
+pre,
+input,
+select,
+textarea,
+button:not([role="switch"]),
+[role="button"]:not([role="switch"]) {
+  border-radius: 4px;
+}
+
+:where(a, button, input, select, textarea, [role="button"]):focus-visible {
+  outline: 2px solid var(--socq-focus);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(246, 76, 49, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
