@@ -17,4 +17,4 @@ Use the Facebook endpoints to collect public page and post data.
 
 ## Workflow
 
-Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}` or read normalized results from `/v1/tasks/{task_id}/results`.
+Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}`. When the task succeeds, the same response includes normalized results under `results`.

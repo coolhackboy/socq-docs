@@ -389,42 +389,9 @@
     },
     "/v1/tasks/{task_id}": {
       "get": {
-        "summary": "Get task status",
-        "description": "Check task status and raw file links.",
+        "summary": "Get task status and results",
+        "description": "Check task status. When the task has succeeded, the response includes cursor-paginated normalized records under data.results.",
         "operationId": "getAgentTask",
-        "tags": [
-          "Agent API"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/TaskId"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Task status",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TaskResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          }
-        }
-      }
-    },
-    "/v1/tasks/{task_id}/results": {
-      "get": {
-        "summary": "List task results",
-        "description": "List normalized records for a task.",
-        "operationId": "listAgentTaskResults",
         "tags": [
           "Agent API"
         ],
@@ -441,11 +408,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Task results",
+            "description": "Task status and optional results",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResultListResponse"
+                  "$ref": "#/components/schemas/TaskResponse"
                 }
               }
             }
@@ -543,7 +510,7 @@
           "type": "string",
           "nullable": true
         },
-        "description": "Cursor returned by the previous results response. Omit for the first page."
+        "description": "Cursor returned by the previous data.results.next_cursor. Omit for the first page."
       },
       "Limit": {
         "name": "limit",
@@ -692,6 +659,10 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
+          },
+          "results": {
+            "$ref": "#/components/schemas/ResultList",
+            "description": "Cursor-paginated normalized records. Present only when status is succeeded."
           }
         }
       },
@@ -719,46 +690,33 @@
           }
         }
       },
-      "ResultListResponse": {
+      "ResultList": {
         "type": "object",
         "properties": {
-          "code": {
+          "limit": {
             "type": "integer",
-            "example": 200
+            "example": 50
           },
-          "data": {
-            "type": "object",
-            "properties": {
-              "limit": {
-                "type": "integer",
-                "example": 50
-              },
-              "next_cursor": {
-                "type": "string",
-                "nullable": true,
-                "example": "NTY3ODkw"
-              },
-              "has_more": {
-                "type": "boolean",
-                "example": true
-              },
-              "items": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ResultItem"
-                }
-              }
-            },
-            "required": [
-              "limit",
-              "has_more",
-              "items"
-            ]
+          "next_cursor": {
+            "type": "string",
+            "nullable": true,
+            "example": "NTY3ODkw"
+          },
+          "has_more": {
+            "type": "boolean",
+            "example": true
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResultItem"
+            }
           }
         },
         "required": [
-          "code",
-          "data"
+          "limit",
+          "has_more",
+          "items"
         ]
       },
       "ResultItem": {

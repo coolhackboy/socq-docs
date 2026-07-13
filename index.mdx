@@ -36,7 +36,7 @@ Content-Type: application/json
     Poll `GET /v1/tasks/{task_id}` until the status becomes `succeeded` or `failed`.
   </Step>
   <Step title="Read results">
-    Use `GET /v1/tasks/{task_id}/results` for normalized records, or download raw JSONL files from `GET /v1/tasks/{task_id}/files`.
+    When the task succeeds, `GET /v1/tasks/{task_id}` automatically returns normalized records under `results`. Download raw JSONL files from `GET /v1/tasks/{task_id}/files`.
   </Step>
 </Steps>
 

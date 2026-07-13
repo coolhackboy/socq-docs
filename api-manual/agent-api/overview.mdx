@@ -9,7 +9,7 @@ icon: "database"
 The API provides a consistent request flow for social data collection:
 
 ```text
-submit -> task_id -> status/results/files
+submit -> task_id -> task status/results/files
 ```
 
 ## Authentication
@@ -52,7 +52,7 @@ SocQ stores two forms of results:
 
 | Storage | Purpose |
 | --- | --- |
-| Normalized records | Query with `/v1/tasks/{task_id}/results` |
+| Normalized records | Returned by `/v1/tasks/{task_id}` after the task succeeds |
 | Raw JSONL file | Download from `/v1/tasks/{task_id}/files` |
 
 Raw files use this path format:
@@ -60,3 +60,7 @@ Raw files use this path format:
 ```text
 agent-results/{task_id}/raw_jsonl.jsonl.gz
 ```
+
+## Billing
+
+Agent APIs are billed by returned result record. The submit request may reserve credits from `results_limit` or the number of submitted URLs/usernames; after the task finishes, SocQ settles the final charge from the actual `result_count` and returns any unused reserved credits.

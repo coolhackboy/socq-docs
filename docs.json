@@ -112,7 +112,6 @@
             "pages": [
               "api-manual/agent-api/authentication",
               "api-manual/agent-api/status",
-              "api-manual/agent-api/results",
               "api-manual/agent-api/files",
               "api-manual/agent-api/errors"
             ]

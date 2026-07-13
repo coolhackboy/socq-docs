@@ -1,17 +1,23 @@
 ---
-title: "Get Task Status"
-description: "Check task status."
+title: "Get Task Status and Results"
+description: "Check task status and read results after completion."
 openapi: "/api-manual/agent-api/agent-api.json GET /v1/tasks/{task_id}"
 ---
 
-# Get Task Status
+# Get Task Status and Results
 
-Query a task by `task_id`.
+Query a task by `task_id`. When the task status is `succeeded`, the response automatically includes the first page of normalized results. Use `cursor` and `limit` on the same endpoint to read additional result pages.
 
 ## Endpoint
 
 ```http
 GET https://api.socq.ai/v1/tasks/{task_id}
+```
+
+Use the `next_cursor` returned under `results` to read the next page:
+
+```http
+GET https://api.socq.ai/v1/tasks/{task_id}?limit=50&cursor=NTY3ODkw
 ```
 
 ## Response
@@ -26,7 +32,30 @@ GET https://api.socq.ai/v1/tasks/{task_id}
     "error_message": null,
     "credits_amount": 0,
     "created_time": "2026-07-07T18:30:32",
-    "finished_time": "2026-07-07T18:30:48"
+    "finished_time": "2026-07-07T18:30:48",
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "25025320",
+          "platform": "instagram",
+          "resource": "followers-count",
+          "type": "profile_metrics",
+          "username": "instagram",
+          "name": "Instagram",
+          "url": "https://www.instagram.com/instagram",
+          "metrics": {
+            "followers_count": 685829413,
+            "following_count": 251,
+            "posts_count": 8000
+          },
+          "collected_at": "2026-07-07T18:30:48",
+          "extra": {}
+        }
+      ]
+    }
   }
 }
 ```
@@ -42,3 +71,15 @@ GET https://api.socq.ai/v1/tasks/{task_id}
 | `credits_amount` | number | Credits charged for the task |
 | `created_time` | string | Task creation time |
 | `finished_time` | string | Task completion time |
+| `results` | object | Present only when `status` is `succeeded`; contains paginated normalized records |
+
+## Pagination
+
+| Query | Type | Default | Description |
+| --- | --- | --- | --- |
+| `limit` | integer | `50` | Number of records to return, max `500` |
+| `cursor` | string | `null` | Cursor from the previous `results.next_cursor`. Omit it for the first page. |
+
+<Tip>
+  While a task is `queued`, `running`, or `failed`, this endpoint returns task metadata without `results`.
+</Tip>

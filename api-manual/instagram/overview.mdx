@@ -30,6 +30,6 @@ Use the Instagram endpoints to collect public data for posts, reels, search disc
     Poll `GET /v1/tasks/{task_id}` until the task reaches `succeeded` or `failed`.
   </Step>
   <Step title="Read data">
-    Use `/v1/tasks/{task_id}/results` for normalized rows or download raw JSONL from `files`.
+    When the task succeeds, `/v1/tasks/{task_id}` returns normalized rows under `results`. Download raw JSONL from `files` when needed.
   </Step>
 </Steps>
