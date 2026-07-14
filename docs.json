@@ -111,6 +111,7 @@
             "group": "Common",
             "pages": [
               "api-manual/agent-api/authentication",
+              "api-manual/agent-api/callbacks",
               "api-manual/agent-api/status",
               "api-manual/agent-api/files",
               "api-manual/agent-api/errors"

@@ -1,0 +1,78 @@
+---
+title: "Callbacks"
+description: "Receive terminal task notifications."
+---
+
+# Callbacks
+
+Add `callback_url` to a submit request to receive one POST request after the task reaches a terminal state.
+
+```json
+{
+  "urls": ["https://www.facebook.com/Meta"],
+  "results_limit": 10,
+  "callback_url": "https://your-domain.com/webhook"
+}
+```
+
+## Payload
+
+SocQ sends a task summary. The callback does not include normalized result records; use `GET /v1/tasks/{task_id}` to read paginated records after `status` is `succeeded`.
+
+```json
+{
+  "task_id": "XQJ4TLW1MBMDY3JD",
+  "feature_code": "15000001",
+  "public_id": "instagram-posts",
+  "agent": "13000001",
+  "supplier": "14000001",
+  "status": "succeeded",
+  "result_count": 1,
+  "output_summary": {
+    "files": [
+      {
+        "file_type": "raw_jsonl",
+        "public_url": "https://storage.socq.ai/agent-results/XQJ4TLW1MBMDY3JD/raw_jsonl.jsonl.gz"
+      }
+    ],
+    "result_count": 1
+  },
+  "error_message": null,
+  "created_time": "2026-07-13T17:05:04",
+  "finished_time": "2026-07-13T09:05:56"
+}
+```
+
+## Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `task_id` | string | Task identifier from the submit response |
+| `feature_code` | string | Internal product feature code |
+| `public_id` | string | Public API identifier, such as `instagram-posts` |
+| `agent` | string | Internal agent code |
+| `supplier` | string | Internal supplier code |
+| `status` | string | `succeeded` or `failed` |
+| `result_count` | integer | Number of returned result records |
+| `output_summary` | object | Summary data such as raw JSONL file links |
+| `error_message` | string | Failure reason when `status` is `failed` |
+| `created_time` | string | Task creation time |
+| `finished_time` | string | Task completion time |
+
+## Read Results
+
+After receiving a successful callback, fetch normalized records from the task endpoint:
+
+```http
+GET https://api.socq.ai/v1/tasks/{task_id}
+```
+
+Use `results.next_cursor` on the same endpoint for additional pages:
+
+```http
+GET https://api.socq.ai/v1/tasks/{task_id}?limit=50&cursor=NTY3ODkw
+```
+
+<Note>
+  Callback delivery is best-effort. Keep polling `GET /v1/tasks/{task_id}` as a fallback if your endpoint is temporarily unavailable.
+</Note>
