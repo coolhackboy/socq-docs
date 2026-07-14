@@ -10,7 +10,7 @@
   "logo": {
     "light": "/assets/socq-logo-light.png",
     "dark": "/assets/socq-logo-dark.png",
-    "href": "https://socqapi.ai"
+    "href": "https://socq.ai"
   },
   "favicon": {
     "light": "/assets/socq-logo-light.png",
@@ -54,13 +54,13 @@
     "links": [
       {
         "label": "Website",
-        "href": "https://socqapi.ai"
+        "href": "https://socq.ai"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Get API key",
-      "href": "https://socqapi.ai/dashboard/api-key"
+      "href": "https://socq.ai/dashboard/api-key"
     }
   },
   "api": {
