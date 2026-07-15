@@ -1,0 +1,47 @@
+---
+title: "YouTube Comments"
+description: "Collect public comments from YouTube videos."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/youtube/comments"
+---
+
+# YouTube Comments
+
+Collect comments from one or more public video URLs.
+
+```json
+{
+  "urls": ["https://www.youtube.com/watch?v=VIDEO_ID"],
+  "results_limit": 100,
+  "sort_by": "newest"
+}
+```
+
+`results_limit` defaults to 100 per video. `sort_by` accepts `newest` or `relevance`.
+
+## Result Item
+
+```json
+{
+  "id": "COMMENT_ID",
+  "platform": "youtube",
+  "resource": "comments",
+  "type": "comment",
+  "url": "https://www.youtube.com/watch?v=VIDEO_ID",
+  "text": "Comment text",
+  "author": {
+    "id": "UC_VIEWER",
+    "username": "viewer",
+    "name": "Viewer"
+  },
+  "metrics": {
+    "likes_count": 15,
+    "replies_count": 2
+  },
+  "created_at": "2026-07-14T08:00:00",
+  "collected_at": "2026-07-15T10:30:00",
+  "extra": {
+    "video_id": "VIDEO_ID",
+    "parent_comment_id": null
+  }
+}
+```

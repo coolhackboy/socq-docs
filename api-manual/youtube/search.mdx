@@ -1,0 +1,30 @@
+---
+title: "YouTube Search"
+description: "Search public YouTube videos with portable filters."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/youtube/search"
+---
+
+# YouTube Search
+
+Search public videos using stable, provider-independent filters.
+
+```json
+{
+  "query": "web scraping tutorials",
+  "results_limit": 50,
+  "sort_by": "relevance",
+  "published_within": "month",
+  "duration": "medium",
+  "has_captions": true
+}
+```
+
+| Field | Accepted values |
+| --- | --- |
+| `sort_by` | `relevance`, `date`, `rating`, `view_count` |
+| `published_within` | `hour`, `day`, `week`, `month`, `year` |
+| `duration` | `short`, `medium`, `long` |
+
+`results_limit` defaults to 100.
+
+Results use the normalized video structure documented in [YouTube Videos](/api-manual/youtube/videos), with `resource` set to `search`.

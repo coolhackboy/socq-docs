@@ -509,6 +509,69 @@
         }
       }
     },
+    "/v1/youtube/channels": {
+      "post": {
+        "summary": "Submit YouTube Channels task",
+        "operationId": "submitYouTubeChannelsTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/YouTubeUrlsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/youtube/videos": {
+      "post": {
+        "summary": "Submit YouTube Videos task",
+        "operationId": "submitYouTubeVideosTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/YouTubeUrlsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/youtube/channel-videos": {
+      "post": {
+        "summary": "Submit YouTube Channel Videos task",
+        "operationId": "submitYouTubeChannelVideosTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/YouTubeUrlsLimitRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/youtube/comments": {
+      "post": {
+        "summary": "Submit YouTube Comments task",
+        "operationId": "submitYouTubeCommentsTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/YouTubeCommentsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/youtube/shorts": {
+      "post": {
+        "summary": "Submit YouTube Shorts task",
+        "operationId": "submitYouTubeShortsTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/YouTubeUrlsLimitRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/youtube/search": {
+      "post": {
+        "summary": "Submit YouTube Search task",
+        "operationId": "submitYouTubeSearchTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/YouTubeSearchRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/youtube/transcripts": {
+      "post": {
+        "summary": "Submit YouTube Transcripts task",
+        "operationId": "submitYouTubeTranscriptsTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/YouTubeTranscriptsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
     "/v1/tasks/{task_id}": {
       "get": {
         "summary": "Get task status and results",
@@ -727,6 +790,60 @@
         "required": [
           "urls"
         ]
+      },
+      "YouTubeUrlsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public YouTube URLs."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "YouTubeUrlsLimitRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public YouTube channel URLs."},
+          "results_limit": {"type": "integer", "minimum": 1, "default": 100, "description": "Maximum results to collect per URL."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "YouTubeCommentsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public YouTube video URLs."},
+          "results_limit": {"type": "integer", "minimum": 1, "default": 100, "description": "Maximum comments to collect per video URL."},
+          "sort_by": {"type": "string", "enum": ["relevance", "newest"], "default": "newest"},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "YouTubeSearchRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["query"],
+        "properties": {
+          "query": {"type": "string", "minLength": 1, "description": "YouTube search query."},
+          "results_limit": {"type": "integer", "minimum": 1, "default": 100},
+          "sort_by": {"type": "string", "enum": ["relevance", "date", "rating", "view_count"], "default": "relevance"},
+          "published_within": {"type": "string", "enum": ["hour", "day", "week", "month", "year"]},
+          "duration": {"type": "string", "enum": ["short", "medium", "long"]},
+          "has_captions": {"type": "boolean"},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "YouTubeTranscriptsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public YouTube video URLs."},
+          "language": {"type": "string", "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$", "description": "Optional preferred BCP-47 transcript language."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
       },
       "TaskResponse": {
         "type": "object",
@@ -956,6 +1073,14 @@
       }
     },
     "responses": {
+      "TaskSubmitted": {
+        "description": "Task submitted",
+        "content": {
+          "application/json": {
+            "schema": {"$ref": "#/components/schemas/SubmitResponse"}
+          }
+        }
+      },
       "BadRequest": {
         "description": "Invalid request",
         "content": {

@@ -1,0 +1,20 @@
+---
+title: "YouTube Shorts"
+description: "Collect public Shorts from YouTube channels."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/youtube/shorts"
+---
+
+# YouTube Shorts
+
+Collect Shorts from one or more public channels.
+
+```json
+{
+  "urls": ["https://www.youtube.com/@example"],
+  "results_limit": 100
+}
+```
+
+`results_limit` defaults to 100 and applies to each channel URL.
+
+Results use the normalized video structure documented in [YouTube Videos](/api-manual/youtube/videos), with `resource` set to `shorts` and `type` set to `short`.

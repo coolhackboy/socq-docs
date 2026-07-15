@@ -110,6 +110,19 @@
             ]
           },
           {
+            "group": "YouTube",
+            "pages": [
+              "api-manual/youtube/overview",
+              "api-manual/youtube/channels",
+              "api-manual/youtube/videos",
+              "api-manual/youtube/channel-videos",
+              "api-manual/youtube/comments",
+              "api-manual/youtube/shorts",
+              "api-manual/youtube/search",
+              "api-manual/youtube/transcripts"
+            ]
+          },
+          {
             "group": "Common",
             "pages": [
               "api-manual/agent-api/authentication",

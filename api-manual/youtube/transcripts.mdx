@@ -1,0 +1,40 @@
+---
+title: "YouTube Transcripts"
+description: "Collect plain-text transcripts from public YouTube videos."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/youtube/transcripts"
+---
+
+# YouTube Transcripts
+
+Collect one plain-text transcript for each public video URL.
+
+```json
+{
+  "urls": ["https://www.youtube.com/watch?v=VIDEO_ID"],
+  "language": "en"
+}
+```
+
+`language` is an optional BCP-47 preferred language. If it is unavailable, another available language may be returned. Always use the result's `language` field as the actual transcript language.
+
+Videos without an available transcript do not produce a result.
+
+## Result Item
+
+```json
+{
+  "id": "VIDEO_ID",
+  "platform": "youtube",
+  "resource": "transcripts",
+  "type": "transcript",
+  "url": "https://www.youtube.com/watch?v=VIDEO_ID",
+  "title": "Example video",
+  "text": "Plain-text transcript content...",
+  "language": "en",
+  "available_languages": ["en", "es"],
+  "format": "plaintext",
+  "transcript_source": "user_generated",
+  "collected_at": "2026-07-15T10:30:00",
+  "extra": {}
+}
+```

@@ -1,0 +1,44 @@
+---
+title: "YouTube Videos"
+description: "Collect public YouTube video metadata."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/youtube/videos"
+---
+
+# YouTube Videos
+
+Collect metadata for one or more public video URLs.
+
+```json
+{
+  "urls": ["https://www.youtube.com/watch?v=VIDEO_ID"]
+}
+```
+
+## Result Item
+
+```json
+{
+  "id": "VIDEO_ID",
+  "platform": "youtube",
+  "resource": "videos",
+  "type": "video",
+  "title": "Example video",
+  "url": "https://www.youtube.com/watch?v=VIDEO_ID",
+  "description": "Video description",
+  "author": {
+    "id": "UC123456789",
+    "username": "example",
+    "name": "Example Channel",
+    "url": "https://www.youtube.com/@example"
+  },
+  "metrics": {
+    "views_count": 100000,
+    "likes_count": 5000,
+    "comments_count": 320
+  },
+  "duration_seconds": 327,
+  "created_at": "2026-07-01T08:00:00",
+  "collected_at": "2026-07-15T10:30:00",
+  "extra": {}
+}
+```

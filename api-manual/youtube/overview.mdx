@@ -1,0 +1,23 @@
+---
+title: "YouTube"
+description: "Collect public YouTube channel, video, comment, Shorts, search, and transcript data."
+icon: "youtube"
+---
+
+# YouTube API
+
+YouTube endpoints use the same asynchronous task flow as the other Agent APIs.
+
+| API | Method | Endpoint |
+| --- | --- | --- |
+| Channels | `POST` | `/v1/youtube/channels` |
+| Videos | `POST` | `/v1/youtube/videos` |
+| Channel Videos | `POST` | `/v1/youtube/channel-videos` |
+| Comments | `POST` | `/v1/youtube/comments` |
+| Shorts | `POST` | `/v1/youtube/shorts` |
+| Search | `POST` | `/v1/youtube/search` |
+| Transcripts | `POST` | `/v1/youtube/transcripts` |
+
+Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}`. Successful task responses include normalized records under `results`.
+
+For endpoints that accept multiple URLs, `results_limit` applies to each URL.
