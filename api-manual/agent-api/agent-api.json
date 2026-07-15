@@ -263,6 +263,69 @@
         }
       }
     },
+    "/v1/instagram/comments": {
+      "post": {
+        "summary": "Submit Instagram Comments task",
+        "description": "Collect public Instagram comment data.",
+        "operationId": "submitInstagramCommentsTask",
+        "tags": [
+          "Agent API"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentsSubmitRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Submit Instagram Comments task",
+                  "value": {
+                    "results_limit": 10,
+                    "urls": [
+                      "https://www.instagram.com/p/POST_CODE/"
+                    ]
+                  }
+                },
+                "with_callback": {
+                  "summary": "With callback URL",
+                  "value": {
+                    "results_limit": 10,
+                    "callback_url": "https://your-domain.com/webhook",
+                    "urls": [
+                      "https://www.instagram.com/p/POST_CODE/"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task submitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequired"
+          }
+        }
+      }
+    },
     "/v1/facebook/pages": {
       "post": {
         "summary": "Submit Facebook Pages task",
@@ -343,6 +406,69 @@
               "examples": {
                 "default": {
                   "summary": "Submit Facebook Posts task",
+                  "value": {
+                    "results_limit": 10,
+                    "urls": [
+                      "https://www.facebook.com/facebook/posts/POST_ID"
+                    ]
+                  }
+                },
+                "with_callback": {
+                  "summary": "With callback URL",
+                  "value": {
+                    "results_limit": 10,
+                    "callback_url": "https://your-domain.com/webhook",
+                    "urls": [
+                      "https://www.facebook.com/facebook/posts/POST_ID"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task submitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequired"
+          }
+        }
+      }
+    },
+    "/v1/facebook/comments": {
+      "post": {
+        "summary": "Submit Facebook Comments task",
+        "description": "Collect public Facebook comment data.",
+        "operationId": "submitFacebookCommentsTask",
+        "tags": [
+          "Agent API"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentsSubmitRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Submit Facebook Comments task",
                   "value": {
                     "results_limit": 10,
                     "urls": [
@@ -585,6 +711,32 @@
           }
         }
       },
+      "CommentsSubmitRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "description": "Array of public post URLs to collect comments from."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Maximum number of results to collect"
+          },
+          "callback_url": {
+            "type": "string",
+            "description": "Optional callback URL"
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
       "TaskResponse": {
         "type": "object",
         "properties": {
@@ -732,7 +884,7 @@
           },
           "resource": {
             "type": "string",
-            "description": "Product resource, such as posts, reels, search, followers-count, or pages."
+            "description": "Product resource, such as posts, comments, reels, search, followers-count, or pages."
           },
           "type": {
             "type": "string"

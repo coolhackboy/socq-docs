@@ -94,6 +94,7 @@
             "pages": [
               "api-manual/instagram/overview",
               "api-manual/instagram/posts",
+              "api-manual/instagram/comments",
               "api-manual/instagram/reels",
               "api-manual/instagram/search",
               "api-manual/instagram/followers-count"
@@ -104,7 +105,8 @@
             "pages": [
               "api-manual/facebook/overview",
               "api-manual/facebook/pages",
-              "api-manual/facebook/posts"
+              "api-manual/facebook/posts",
+              "api-manual/facebook/comments"
             ]
           },
           {
