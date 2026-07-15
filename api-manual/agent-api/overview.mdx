@@ -65,4 +65,4 @@ agent-results/{task_id}/raw_jsonl.jsonl.gz
 
 ## Billing
 
-Agent APIs are billed by returned result record. The submit request may reserve credits from `results_limit` or the number of submitted URLs/usernames; after the task finishes, SocQ settles the final charge from the actual `result_count` and returns any unused reserved credits.
+Agent APIs are billed by returned result record. The submit request may reserve credits from `results_limit` or the number of submitted URLs/usernames; after the task finishes, SocQ settles the final charge from the actual `result_count` and returns any unused reserved credits. Comments endpoints do not accept `results_limit` and are billed from the actual number of comments returned.

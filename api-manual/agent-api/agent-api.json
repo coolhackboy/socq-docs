@@ -283,7 +283,6 @@
                 "default": {
                   "summary": "Submit Instagram Comments task",
                   "value": {
-                    "results_limit": 10,
                     "urls": [
                       "https://www.instagram.com/p/POST_CODE/"
                     ]
@@ -292,7 +291,6 @@
                 "with_callback": {
                   "summary": "With callback URL",
                   "value": {
-                    "results_limit": 10,
                     "callback_url": "https://your-domain.com/webhook",
                     "urls": [
                       "https://www.instagram.com/p/POST_CODE/"
@@ -470,7 +468,6 @@
                 "default": {
                   "summary": "Submit Facebook Comments task",
                   "value": {
-                    "results_limit": 10,
                     "urls": [
                       "https://www.facebook.com/facebook/posts/POST_ID"
                     ]
@@ -479,7 +476,6 @@
                 "with_callback": {
                   "summary": "With callback URL",
                   "value": {
-                    "results_limit": 10,
                     "callback_url": "https://your-domain.com/webhook",
                     "urls": [
                       "https://www.facebook.com/facebook/posts/POST_ID"
@@ -722,11 +718,6 @@
             },
             "minItems": 1,
             "description": "Array of public post URLs to collect comments from."
-          },
-          "results_limit": {
-            "type": "integer",
-            "minimum": 1,
-            "description": "Maximum number of results to collect"
           },
           "callback_url": {
             "type": "string",

@@ -18,10 +18,11 @@ POST https://api.socq.ai/v1/facebook/comments
 
 ```json
 {
-  "urls": ["https://www.facebook.com/facebook/posts/POST_ID"],
-  "results_limit": 10
+  "urls": ["https://www.facebook.com/facebook/posts/POST_ID"]
 }
 ```
+
+All returned comments are billed by the actual result count. This endpoint does not accept a result-count limit.
 
 ## Result Item
 
