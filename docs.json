@@ -123,6 +123,17 @@
             ]
           },
           {
+            "group": "TikTok",
+            "pages": [
+              "api-manual/tiktok/overview",
+              "api-manual/tiktok/profiles",
+              "api-manual/tiktok/videos",
+              "api-manual/tiktok/comments",
+              "api-manual/tiktok/search",
+              "api-manual/tiktok/hashtags"
+            ]
+          },
+          {
             "group": "Common",
             "pages": [
               "api-manual/agent-api/authentication",

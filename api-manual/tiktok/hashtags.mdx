@@ -1,0 +1,20 @@
+---
+title: "TikTok Hashtags"
+description: "Collect public TikTok videos matching one or more hashtags."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/hashtags"
+---
+
+# TikTok Hashtags
+
+Collect public videos for one or more hashtags. A leading `#` is optional.
+
+```json
+{
+  "hashtags": ["tutorial", "#python"],
+  "results_limit": 50
+}
+```
+
+`results_limit` defaults to 100 and applies to each hashtag.
+
+Results use the normalized structure documented in [TikTok Videos](/api-manual/tiktok/videos), with `resource` set to `hashtags`. The matched hashtag and its available metrics are returned under `extra`.

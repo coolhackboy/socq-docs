@@ -572,6 +572,51 @@
         "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
       }
     },
+    "/v1/tiktok/profiles": {
+      "post": {
+        "summary": "Submit TikTok Profiles task",
+        "operationId": "submitTikTokProfilesTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/TikTokProfilesRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/tiktok/videos": {
+      "post": {
+        "summary": "Submit TikTok Videos task",
+        "operationId": "submitTikTokVideosTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/TikTokUrlsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/tiktok/comments": {
+      "post": {
+        "summary": "Submit TikTok Comments task",
+        "operationId": "submitTikTokCommentsTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/TikTokCommentsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/tiktok/search": {
+      "post": {
+        "summary": "Submit TikTok Search task",
+        "operationId": "submitTikTokSearchTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/TikTokSearchRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/tiktok/hashtags": {
+      "post": {
+        "summary": "Submit TikTok Hashtags task",
+        "operationId": "submitTikTokHashtagsTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/TikTokHashtagsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
     "/v1/tasks/{task_id}": {
       "get": {
         "summary": "Get task status and results",
@@ -842,6 +887,56 @@
         "properties": {
           "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public YouTube video URLs."},
           "language": {"type": "string", "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$", "description": "Optional preferred BCP-47 transcript language."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "TikTokProfilesRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["usernames"],
+        "properties": {
+          "usernames": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "description": "Public TikTok usernames. A leading @ is optional."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "TikTokUrlsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public TikTok video URLs."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "TikTokCommentsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public TikTok video URLs."},
+          "results_limit": {"type": "integer", "minimum": 1, "default": 100, "description": "Maximum top-level comments to collect per video URL."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "TikTokSearchRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["query"],
+        "properties": {
+          "query": {"type": "string", "minLength": 1, "description": "TikTok video search query."},
+          "results_limit": {"type": "integer", "minimum": 1, "default": 100},
+          "sort_by": {"type": "string", "enum": ["relevance", "date", "likes"], "default": "relevance"},
+          "published_within": {"type": "string", "enum": ["day", "week", "month", "three_months", "six_months"]},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "TikTokHashtagsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["hashtags"],
+        "properties": {
+          "hashtags": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "description": "Hashtags to collect videos for. A leading # is optional."},
+          "results_limit": {"type": "integer", "minimum": 1, "default": 100, "description": "Maximum videos to collect per hashtag."},
           "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
         }
       },

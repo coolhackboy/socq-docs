@@ -1,0 +1,53 @@
+---
+title: "TikTok Comments"
+description: "Collect top-level comments from public TikTok videos."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/comments"
+---
+
+# TikTok Comments
+
+Collect top-level comments from one or more public video URLs.
+
+```json
+{
+  "urls": ["https://www.tiktok.com/@example/video/7234567890123456789"],
+  "results_limit": 100
+}
+```
+
+`results_limit` defaults to 100 and applies to each video URL.
+
+## Result Item
+
+```json
+{
+  "id": "7234567890123456790",
+  "platform": "tiktok",
+  "resource": "comments",
+  "type": "comment",
+  "url": "https://www.tiktok.com/@example/video/7234567890123456789",
+  "text": "Great video!",
+  "author": {
+    "id": "6784642169778881543",
+    "username": "viewer",
+    "name": "Viewer",
+    "url": "https://www.tiktok.com/@viewer",
+    "avatar_url": "https://example.com/avatar.jpg",
+    "is_verified": false,
+    "is_private": null
+  },
+  "metrics": {
+    "likes_count": 42,
+    "replies_count": 5
+  },
+  "mentions": [],
+  "media": [],
+  "created_at": "2023-01-01T00:00:00",
+  "collected_at": "2026-07-15T10:30:00",
+  "extra": {
+    "parent_comment_id": null,
+    "liked_by_author": false,
+    "pinned_by_author": false
+  }
+}
+```

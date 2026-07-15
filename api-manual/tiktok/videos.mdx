@@ -1,0 +1,61 @@
+---
+title: "TikTok Videos"
+description: "Collect public TikTok video metadata by URL."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/videos"
+---
+
+# TikTok Videos
+
+Collect one normalized video record for each public video URL.
+
+```json
+{
+  "urls": ["https://www.tiktok.com/@example/video/7234567890123456789"]
+}
+```
+
+## Result Item
+
+```json
+{
+  "id": "7234567890123456789",
+  "platform": "tiktok",
+  "resource": "videos",
+  "type": "video",
+  "url": "https://www.tiktok.com/@example/video/7234567890123456789",
+  "caption": "Example video #tutorial",
+  "language": "en",
+  "author": {
+    "id": "6784642169778881542",
+    "username": "example",
+    "name": "Example Creator",
+    "url": "https://www.tiktok.com/@example",
+    "avatar_url": "https://example.com/avatar.jpg",
+    "is_verified": false,
+    "is_private": false
+  },
+  "metrics": {
+    "likes_count": 12500,
+    "comments_count": 340,
+    "views_count": 125000,
+    "shares_count": 850,
+    "saves_count": 1200,
+    "reposts_count": 75
+  },
+  "media": [],
+  "duration_seconds": 15,
+  "hashtags": ["tutorial"],
+  "mentions": [],
+  "music": {
+    "id": "7234567890123456789",
+    "name": "Original Sound",
+    "author": "example",
+    "url": null,
+    "cover_url": null,
+    "is_original": true
+  },
+  "created_at": "2023-01-01T00:00:00",
+  "collected_at": "2026-07-15T10:30:00",
+  "extra": {}
+}
+```

@@ -1,0 +1,21 @@
+---
+title: "TikTok"
+description: "Collect public TikTok profile, video, comment, search, and hashtag data."
+icon: "tiktok"
+---
+
+# TikTok API
+
+TikTok endpoints use the same asynchronous task flow as the other Agent APIs.
+
+| API | Method | Endpoint |
+| --- | --- | --- |
+| Profiles | `POST` | `/v1/tiktok/profiles` |
+| Videos | `POST` | `/v1/tiktok/videos` |
+| Comments | `POST` | `/v1/tiktok/comments` |
+| Search | `POST` | `/v1/tiktok/search` |
+| Hashtags | `POST` | `/v1/tiktok/hashtags` |
+
+Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}`. Successful task responses include normalized records under `results`.
+
+For endpoints that accept multiple video URLs or hashtags, `results_limit` applies to each input item.

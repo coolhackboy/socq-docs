@@ -1,0 +1,27 @@
+---
+title: "TikTok Search"
+description: "Search public TikTok videos with portable filters."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/search"
+---
+
+# TikTok Search
+
+Search public videos using stable filters.
+
+```json
+{
+  "query": "python tutorial",
+  "results_limit": 50,
+  "sort_by": "relevance",
+  "published_within": "month"
+}
+```
+
+| Field | Accepted values |
+| --- | --- |
+| `sort_by` | `relevance`, `date`, `likes` |
+| `published_within` | `day`, `week`, `month`, `three_months`, `six_months` |
+
+`results_limit` defaults to 100.
+
+Results use the normalized structure documented in [TikTok Videos](/api-manual/tiktok/videos), with `resource` set to `search`. The submitted query is returned under `extra.search_query` when available.

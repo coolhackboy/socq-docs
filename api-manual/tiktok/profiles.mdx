@@ -1,0 +1,44 @@
+---
+title: "TikTok Profiles"
+description: "Collect public TikTok profile metadata and statistics."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/profiles"
+---
+
+# TikTok Profiles
+
+Collect one normalized profile record for each public username. A leading `@` is optional.
+
+```json
+{
+  "usernames": ["example", "@creator"]
+}
+```
+
+## Result Item
+
+```json
+{
+  "id": "6784642169778881542",
+  "platform": "tiktok",
+  "resource": "profiles",
+  "type": "profile",
+  "username": "example",
+  "name": "Example Creator",
+  "url": "https://www.tiktok.com/@example",
+  "description": "Public profile description",
+  "avatar_url": "https://example.com/avatar.jpg",
+  "is_verified": false,
+  "is_private": false,
+  "metrics": {
+    "followers_count": 12500,
+    "following_count": 120,
+    "videos_count": 48,
+    "likes_count": 98000
+  },
+  "created_at": null,
+  "collected_at": "2026-07-15T10:30:00",
+  "extra": {}
+}
+```
+
+Private, unavailable, or empty profiles may produce no result record.
