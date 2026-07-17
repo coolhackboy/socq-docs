@@ -617,6 +617,42 @@
         "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
       }
     },
+    "/v1/x/profiles": {
+      "post": {
+        "summary": "Submit X Profiles task",
+        "operationId": "submitXProfilesTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/XProfilesRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/x/posts": {
+      "post": {
+        "summary": "Submit X Posts task",
+        "operationId": "submitXPostsTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/XPostsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/x/user-posts": {
+      "post": {
+        "summary": "Submit X User Posts task",
+        "operationId": "submitXUserPostsTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/XUserPostsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/x/search": {
+      "post": {
+        "summary": "Submit X Search task",
+        "operationId": "submitXSearchTask",
+        "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/XSearchRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
     "/v1/tasks/{task_id}": {
       "get": {
         "summary": "Get task status and results",
@@ -937,6 +973,45 @@
         "properties": {
           "hashtags": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "description": "Hashtags to collect videos for. A leading # is optional."},
           "results_limit": {"type": "integer", "minimum": 1, "default": 100, "description": "Maximum videos to collect per hashtag."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "XProfilesRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["usernames"],
+        "properties": {
+          "usernames": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "description": "Public X usernames. A leading @ is optional."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "XPostsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public X post URLs."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "XUserPostsRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["usernames"],
+        "properties": {
+          "usernames": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "description": "Public X usernames. A leading @ is optional."},
+          "results_limit": {"type": "integer", "minimum": 20, "maximum": 2000, "multipleOf": 20, "default": 20, "description": "Maximum posts to collect per username."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "XSearchRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["query"],
+        "properties": {
+          "query": {"type": "string", "minLength": 1, "description": "X post search expression."},
+          "results_limit": {"type": "integer", "minimum": 20, "maximum": 2000, "multipleOf": 20, "default": 20},
+          "sort_by": {"type": "string", "enum": ["latest", "top"], "default": "latest"},
           "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
         }
       },

@@ -1,0 +1,20 @@
+---
+title: "X"
+description: "Collect public X profile and post data."
+icon: "at-sign"
+---
+
+# X API
+
+X endpoints use the same asynchronous task flow as the other Agent APIs.
+
+| API | Method | Endpoint |
+| --- | --- | --- |
+| Profiles | `POST` | `/v1/x/profiles` |
+| Posts | `POST` | `/v1/x/posts` |
+| User Posts | `POST` | `/v1/x/user-posts` |
+| Search | `POST` | `/v1/x/search` |
+
+Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}`. Successful tasks include normalized records under `results`.
+
+For User Posts and Search, `results_limit` defaults to 20 and must be a multiple of 20 between 20 and 2,000. Each group of 20 allows one additional result page. The actual result count can be lower when fewer records are available.

@@ -134,6 +134,16 @@
             ]
           },
           {
+            "group": "X",
+            "pages": [
+              "api-manual/x/overview",
+              "api-manual/x/profiles",
+              "api-manual/x/posts",
+              "api-manual/x/user-posts",
+              "api-manual/x/search"
+            ]
+          },
+          {
             "group": "Common",
             "pages": [
               "api-manual/agent-api/authentication",
