@@ -20,6 +20,4 @@ Search public posts using a keyword or search expression.
 | --- | --- |
 | `sort_by` | `latest`, `top` |
 
-`results_limit` defaults to 20 and must be a multiple of 20 between 20 and 2,000. Each group of 20 requests at most one result page. The actual result count can be lower than the requested limit.
-
 Results use the normalized structure documented in [X Posts](/api-manual/x/posts), with `resource` set to `search`. The submitted expression is returned under `extra.search_query`.

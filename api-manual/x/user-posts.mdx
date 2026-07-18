@@ -15,6 +15,6 @@ Collect recent public posts for one or more usernames. Replies are excluded.
 }
 ```
 
-`results_limit` applies separately to each username. It defaults to 20 and must be a multiple of 20 between 20 and 2,000. A value of 40 requests at most two result pages per username. If a page contains fewer than 20 records, the API does not request additional pages to fill the difference.
+`results_limit` specifies the maximum number of posts returned for each username. The total number of results can be up to the number of usernames multiplied by `results_limit`. Billing is based on the total number of results returned.
 
 Results use the normalized structure documented in [X Posts](/api-manual/x/posts), with `resource` set to `user-posts`. The submitted username is returned under `extra.input_username`.
