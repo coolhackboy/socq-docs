@@ -1,0 +1,50 @@
+---
+title: "Reddit Posts"
+description: "Collect public Reddit post data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/reddit/posts"
+---
+
+# Reddit Posts
+
+```json
+{
+  "urls": ["https://www.reddit.com/r/example/comments/post_id/example_post/"]
+}
+```
+
+Results use `resource="posts"` and `type="post"`. The post body is returned in `text`, while the title and community details are available under `name` and `extra`.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "reddit/posts",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "post_id",
+        "platform": "reddit",
+        "resource": "posts",
+        "type": "post",
+        "url": "https://www.reddit.com/r/example/comments/post_id/example_post/",
+        "name": "Example post title",
+        "text": "Example post body",
+        "author": {"id": null, "username": "example_user", "name": "example_user", "url": null},
+        "metrics": {"upvotes_count": 842, "comments_count": 54, "upvote_ratio": 0.96},
+        "media": [],
+        "created_at": "2026-07-16T08:00:00",
+        "collected_at": "2026-07-17T10:30:00",
+        "extra": {"community_name": "example", "community_url": "https://www.reddit.com/r/example"}
+      }]
+    }
+  }
+}
+```

@@ -1,0 +1,49 @@
+---
+title: "Threads Posts"
+description: "Collect public Threads post data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/threads/posts"
+---
+
+# Threads Posts
+
+```json
+{
+  "urls": ["https://www.threads.com/@example/post/POST_ID"]
+}
+```
+
+Results use `resource="posts"` and `type="post"`. Post content is returned in `text` with author, engagement metrics, media, and publication time.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "threads/posts",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "POST_ID",
+        "platform": "threads",
+        "resource": "posts",
+        "type": "post",
+        "url": "https://www.threads.com/@example/post/POST_ID",
+        "text": "Example public Threads post.",
+        "author": {"id": "63319240287", "username": "example", "name": "Example Creator", "url": "https://www.threads.com/@example"},
+        "metrics": {"likes_count": 1200, "comments_count": 48, "reposts_count": 32, "shares_count": 15},
+        "media": [],
+        "created_at": "2026-07-16T08:00:00",
+        "collected_at": "2026-07-17T10:30:00",
+        "extra": {"discovery_input": null, "input_url": null}
+      }]
+    }
+  }
+}
+```

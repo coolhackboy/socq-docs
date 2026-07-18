@@ -1,0 +1,49 @@
+---
+title: "LinkedIn Companies"
+description: "Collect public LinkedIn company data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/companies"
+---
+
+# LinkedIn Companies
+
+```json
+{
+  "urls": ["https://www.linkedin.com/company/example"]
+}
+```
+
+Results use `platform="linkedin"`, `resource="companies"`, and `type="company"`. Industry, company size, headquarters, locations, and specialties are returned under `extra`.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "linkedin/companies",
+    "result_count": 1,
+    "credits_amount": 2,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "example",
+        "platform": "linkedin",
+        "resource": "companies",
+        "type": "company",
+        "url": "https://www.linkedin.com/company/example",
+        "name": "Example Company",
+        "description": "Software company",
+        "website": "https://example.com",
+        "metrics": {"followers_count": 250000, "employees_count": 1200},
+        "created_at": null,
+        "collected_at": "2026-07-17T10:30:00",
+        "extra": {"industries": ["Software Development"], "company_size": "1,001-5,000 employees", "headquarters": "San Francisco"}
+      }]
+    }
+  }
+}
+```

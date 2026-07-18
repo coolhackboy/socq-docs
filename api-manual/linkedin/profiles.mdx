@@ -1,0 +1,49 @@
+---
+title: "LinkedIn Profiles"
+description: "Collect public LinkedIn profile data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/profiles"
+---
+
+# LinkedIn Profiles
+
+```json
+{
+  "urls": ["https://www.linkedin.com/in/example"]
+}
+```
+
+Results use `platform="linkedin"`, `resource="profiles"`, and `type="profile"`. Profile experience, education, location, and company details are returned under `extra`.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "linkedin/profiles",
+    "result_count": 1,
+    "credits_amount": 2.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "example-profile",
+        "platform": "linkedin",
+        "resource": "profiles",
+        "type": "profile",
+        "url": "https://www.linkedin.com/in/example",
+        "name": "Example Person",
+        "description": "Product and technology leader",
+        "avatar_url": "https://example.com/profile.jpg",
+        "metrics": {"followers_count": 12500, "connections_count": 500},
+        "created_at": null,
+        "collected_at": "2026-07-17T10:30:00",
+        "extra": {"city": "San Francisco", "country_code": "US", "position": "Founder"}
+      }]
+    }
+  }
+}
+```

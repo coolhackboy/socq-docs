@@ -144,6 +144,45 @@
             ]
           },
           {
+            "group": "LinkedIn",
+            "pages": [
+              "api-manual/linkedin/overview",
+              "api-manual/linkedin/profiles",
+              "api-manual/linkedin/companies",
+              "api-manual/linkedin/posts",
+              "api-manual/linkedin/jobs"
+            ]
+          },
+          {
+            "group": "Reddit",
+            "pages": [
+              "api-manual/reddit/overview",
+              "api-manual/reddit/posts",
+              "api-manual/reddit/comments",
+              "api-manual/reddit/subreddit-posts",
+              "api-manual/reddit/search"
+            ]
+          },
+          {
+            "group": "Pinterest",
+            "pages": [
+              "api-manual/pinterest/overview",
+              "api-manual/pinterest/profiles",
+              "api-manual/pinterest/pins",
+              "api-manual/pinterest/user-pins",
+              "api-manual/pinterest/search"
+            ]
+          },
+          {
+            "group": "Threads",
+            "pages": [
+              "api-manual/threads/overview",
+              "api-manual/threads/profiles",
+              "api-manual/threads/posts",
+              "api-manual/threads/user-posts"
+            ]
+          },
+          {
             "group": "Common",
             "pages": [
               "api-manual/agent-api/authentication",

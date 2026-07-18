@@ -1,0 +1,51 @@
+---
+title: "Pinterest Profiles"
+description: "Collect public Pinterest profile data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/pinterest/profiles"
+---
+
+# Pinterest Profiles
+
+```json
+{
+  "urls": ["https://www.pinterest.com/example/"]
+}
+```
+
+Results use `resource="profiles"` and `type="profile"`, with profile name, username, image, biography, website, and account metrics.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "pinterest/profiles",
+    "result_count": 1,
+    "credits_amount": 0.6,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "profile_id",
+        "platform": "pinterest",
+        "resource": "profiles",
+        "type": "profile",
+        "url": "https://www.pinterest.com/example/",
+        "username": "example",
+        "name": "Example Creator",
+        "description": "Design and home inspiration",
+        "avatar_url": "https://example.com/avatar.jpg",
+        "website": "https://example.com",
+        "metrics": {"followers_count": 12500, "following_count": 320, "boards_count": 24, "saved_count": 8500},
+        "created_at": null,
+        "collected_at": "2026-07-17T10:30:00",
+        "extra": {"country_code": "US", "posts_page_url": "https://www.pinterest.com/example/_created/"}
+      }]
+    }
+  }
+}
+```

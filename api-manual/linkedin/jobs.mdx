@@ -1,0 +1,50 @@
+---
+title: "LinkedIn Jobs"
+description: "Collect public LinkedIn job details."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/jobs"
+---
+
+# LinkedIn Jobs
+
+```json
+{
+  "urls": ["https://www.linkedin.com/jobs/view/3986111804"]
+}
+```
+
+Each URL must identify a job details page. Results use `resource="jobs"` and `type="job"`; title, description, company, location, employment type, and application details are normalized.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "linkedin/jobs",
+    "result_count": 1,
+    "credits_amount": 0.8,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "3986111804",
+        "platform": "linkedin",
+        "resource": "jobs",
+        "type": "job",
+        "url": "https://www.linkedin.com/jobs/view/3986111804",
+        "name": "Software Engineer",
+        "text": "Build and maintain customer-facing software.",
+        "author": {"id": "example-company", "username": "Example Company", "name": "Example Company", "url": "https://www.linkedin.com/company/example"},
+        "metrics": {},
+        "media": [],
+        "created_at": "2026-07-15T08:00:00",
+        "collected_at": "2026-07-17T10:30:00",
+        "extra": {"location": "Remote", "seniority_level": "Mid-Senior level", "employment_type": "Full-time", "is_easy_apply": true}
+      }]
+    }
+  }
+}
+```

@@ -1,0 +1,50 @@
+---
+title: "Threads User Posts"
+description: "Collect public posts from Threads profiles."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/threads/user-posts"
+---
+
+# Threads User Posts
+
+```json
+{
+  "urls": ["https://www.threads.com/@example"],
+  "results_limit": 100
+}
+```
+
+`results_limit` defaults to 100, accepts values from 1 through 2,000, and applies to each profile URL. Results use `resource="user-posts"` and `type="post"`.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "threads/user-posts",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "POST_ID",
+        "platform": "threads",
+        "resource": "user-posts",
+        "type": "post",
+        "url": "https://www.threads.com/@example/post/POST_ID",
+        "text": "Example public Threads post.",
+        "author": {"id": "63319240287", "username": "example", "name": "Example Creator", "url": "https://www.threads.com/@example"},
+        "metrics": {"likes_count": 1200, "comments_count": 48, "reposts_count": 32, "shares_count": 15},
+        "media": [],
+        "created_at": "2026-07-16T08:00:00",
+        "collected_at": "2026-07-17T10:30:00",
+        "extra": {"discovery_input": {"url": "https://www.threads.com/@example"}}
+      }]
+    }
+  }
+}
+```

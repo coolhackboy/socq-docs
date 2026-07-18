@@ -1,0 +1,51 @@
+---
+title: "Threads Profiles"
+description: "Collect public Threads profile data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/threads/profiles"
+---
+
+# Threads Profiles
+
+```json
+{
+  "urls": ["https://www.threads.com/@example"]
+}
+```
+
+Results use `resource="profiles"` and `type="profile"`, with profile name, username, biography, website, and follower metrics.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "threads/profiles",
+    "result_count": 1,
+    "credits_amount": 0.6,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "63319240287",
+        "platform": "threads",
+        "resource": "profiles",
+        "type": "profile",
+        "url": "https://www.threads.com/@example",
+        "username": "example",
+        "name": "Example Creator",
+        "description": "Public profile biography",
+        "avatar_url": "https://example.com/avatar.jpg",
+        "website": "https://example.com",
+        "metrics": {"followers_count": 41973, "following_count": 320, "posts_count": 480},
+        "created_at": null,
+        "collected_at": "2026-07-17T10:30:00",
+        "extra": {"instagram_profile_url": "https://www.instagram.com/example"}
+      }]
+    }
+  }
+}
+```

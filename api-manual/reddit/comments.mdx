@@ -1,0 +1,49 @@
+---
+title: "Reddit Comments"
+description: "Collect public comments from Reddit posts."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/reddit/comments"
+---
+
+# Reddit Comments
+
+```json
+{
+  "urls": ["https://www.reddit.com/r/example/comments/post_id/example_post/"]
+}
+```
+
+This endpoint does not accept `results_limit`. All returned comments are saved and billing is based on the actual result count. Comment text is returned in `text`.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "reddit/comments",
+    "result_count": 1,
+    "credits_amount": 0.3,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "comment_id",
+        "platform": "reddit",
+        "resource": "comments",
+        "type": "comment",
+        "url": "https://www.reddit.com/r/example/comments/post_id/example_post/comment_id/",
+        "text": "Example public comment",
+        "author": {"id": null, "username": "example_user", "name": "example_user", "url": null},
+        "metrics": {"upvotes_count": 24, "replies_count": 3},
+        "media": [],
+        "created_at": "2026-07-16T09:00:00",
+        "collected_at": "2026-07-17T10:30:00",
+        "extra": {"post_id": "post_id", "parent_comment_id": null, "community_name": "example"}
+      }]
+    }
+  }
+}
+```

@@ -653,6 +653,111 @@
         "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
       }
     },
+    "/v1/linkedin/profiles": {
+      "post": {
+        "summary": "Submit LinkedIn Profiles task", "operationId": "submitLinkedInProfilesTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/LinkedInUrlsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/linkedin/companies": {
+      "post": {
+        "summary": "Submit LinkedIn Companies task", "operationId": "submitLinkedInCompaniesTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/LinkedInUrlsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/linkedin/posts": {
+      "post": {
+        "summary": "Submit LinkedIn Posts task", "operationId": "submitLinkedInPostsTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/LinkedInUrlsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/linkedin/jobs": {
+      "post": {
+        "summary": "Submit LinkedIn Jobs task", "operationId": "submitLinkedInJobsTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/LinkedInUrlsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/reddit/posts": {
+      "post": {
+        "summary": "Submit Reddit Posts task", "operationId": "submitRedditPostsTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/RedditUrlsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/reddit/comments": {
+      "post": {
+        "summary": "Submit Reddit Comments task", "operationId": "submitRedditCommentsTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/RedditUrlsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/reddit/subreddit-posts": {
+      "post": {
+        "summary": "Submit Reddit Subreddit Posts task", "operationId": "submitRedditSubredditPostsTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/RedditSubredditPostsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/reddit/search": {
+      "post": {
+        "summary": "Submit Reddit Search task", "operationId": "submitRedditSearchTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/RedditSearchRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/pinterest/profiles": {
+      "post": {
+        "summary": "Submit Pinterest Profiles task", "operationId": "submitPinterestProfilesTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/PinterestProfilesRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/pinterest/pins": {
+      "post": {
+        "summary": "Submit Pinterest Pins task", "operationId": "submitPinterestPinsTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/PinterestPinsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/pinterest/user-pins": {
+      "post": {
+        "summary": "Submit Pinterest User Pins task", "operationId": "submitPinterestUserPinsTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/PinterestUserPinsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/pinterest/search": {
+      "post": {
+        "summary": "Submit Pinterest Search task", "operationId": "submitPinterestSearchTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/PinterestSearchRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/threads/profiles": {
+      "post": {
+        "summary": "Submit Threads Profiles task", "operationId": "submitThreadsProfilesTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThreadsProfilesRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/threads/posts": {
+      "post": {
+        "summary": "Submit Threads Posts task", "operationId": "submitThreadsPostsTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThreadsPostsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/threads/user-posts": {
+      "post": {
+        "summary": "Submit Threads User Posts task", "operationId": "submitThreadsUserPostsTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThreadsUserPostsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
     "/v1/tasks/{task_id}": {
       "get": {
         "summary": "Get task status and results",
@@ -679,6 +784,37 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TaskResponse"
+                },
+                "example": {
+                  "code": 200,
+                  "data": {
+                    "task_id": "A1B2C3D4E5F6G7H8",
+                    "status": "succeeded",
+                    "public_id": "linkedin/profiles",
+                    "input": {"urls": ["https://www.linkedin.com/in/example"]},
+                    "output": {"result_count": 1},
+                    "result_count": 1,
+                    "error_message": null,
+                    "credits_amount": 2.5,
+                    "created_time": "2026-07-17T10:29:30",
+                    "finished_time": "2026-07-17T10:30:00",
+                    "results": {
+                      "limit": 50,
+                      "next_cursor": null,
+                      "has_more": false,
+                      "items": [{
+                        "id": "example-profile",
+                        "platform": "linkedin",
+                        "resource": "profiles",
+                        "type": "profile",
+                        "url": "https://www.linkedin.com/in/example",
+                        "name": "Example Person",
+                        "metrics": {"followers_count": 12500},
+                        "collected_at": "2026-07-17T10:30:00",
+                        "extra": {}
+                      }]
+                    }
+                  }
                 }
               }
             }
@@ -1015,6 +1151,90 @@
           "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
         }
       },
+      "LinkedInUrlsRequest": {
+        "type": "object", "additionalProperties": false, "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public LinkedIn URLs matching the selected resource."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "RedditUrlsRequest": {
+        "type": "object", "additionalProperties": false, "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public Reddit post URLs."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "RedditSubredditPostsRequest": {
+        "type": "object", "additionalProperties": false, "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public subreddit URLs."},
+          "results_limit": {"type": "integer", "minimum": 1, "maximum": 2000, "default": 100, "description": "Maximum posts to collect per subreddit URL."},
+          "sort_by": {"type": "string", "enum": ["new", "top", "hot"], "default": "new"},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "RedditSearchRequest": {
+        "type": "object", "additionalProperties": false, "required": ["query"],
+        "properties": {
+          "query": {"type": "string", "minLength": 1, "description": "Reddit post search query."},
+          "results_limit": {"type": "integer", "minimum": 1, "maximum": 2000, "default": 100},
+          "published_within": {"type": "string", "enum": ["hour", "day", "week", "month", "year", "all"], "default": "all"},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "PinterestProfilesRequest": {
+        "type": "object", "additionalProperties": false, "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public Pinterest profile URLs."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "PinterestPinsRequest": {
+        "type": "object", "additionalProperties": false, "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public Pinterest Pin URLs."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "PinterestUserPinsRequest": {
+        "type": "object", "additionalProperties": false, "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public Pinterest profile URLs."},
+          "results_limit": {"type": "integer", "minimum": 1, "maximum": 2000, "default": 100, "description": "Maximum Pins to collect per profile URL."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "PinterestSearchRequest": {
+        "type": "object", "additionalProperties": false, "required": ["query"],
+        "properties": {
+          "query": {"type": "string", "minLength": 1, "description": "Pinterest Pin search query."},
+          "results_limit": {"type": "integer", "minimum": 1, "maximum": 2000, "default": 100},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "ThreadsProfilesRequest": {
+        "type": "object", "additionalProperties": false, "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public Threads profile URLs."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "ThreadsPostsRequest": {
+        "type": "object", "additionalProperties": false, "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public Threads post URLs."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
+      "ThreadsUserPostsRequest": {
+        "type": "object", "additionalProperties": false, "required": ["urls"],
+        "properties": {
+          "urls": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}, "description": "Public Threads profile URLs."},
+          "results_limit": {"type": "integer", "minimum": 1, "maximum": 2000, "default": 100, "description": "Maximum posts to collect per profile URL."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional callback URL."}
+        }
+      },
       "TaskResponse": {
         "type": "object",
         "properties": {
@@ -1247,7 +1467,15 @@
         "description": "Task submitted",
         "content": {
           "application/json": {
-            "schema": {"$ref": "#/components/schemas/SubmitResponse"}
+            "schema": {"$ref": "#/components/schemas/SubmitResponse"},
+            "example": {
+              "code": 200,
+              "data": {
+                "task_id": "A1B2C3D4E5F6G7H8",
+                "status": "queued",
+                "created_time": "2026-07-17T10:29:30"
+              }
+            }
           }
         }
       },

@@ -1,0 +1,52 @@
+---
+title: "Reddit Search"
+description: "Search public Reddit posts."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/reddit/search"
+---
+
+# Reddit Search
+
+```json
+{
+  "query": "machine learning",
+  "results_limit": 100,
+  "published_within": "month"
+}
+```
+
+`results_limit` defaults to 100 and accepts values from 1 through 2,000. `published_within` supports `hour`, `day`, `week`, `month`, `year`, and `all`.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "reddit/search",
+    "result_count": 1,
+    "credits_amount": 0.6,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "post_id",
+        "platform": "reddit",
+        "resource": "search",
+        "type": "post",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/post_id/example_post/",
+        "name": "New paper on model efficiency",
+        "text": "Sharing a recent research paper.",
+        "author": {"id": null, "username": "ml_researcher", "name": "ml_researcher", "url": null},
+        "metrics": {"upvotes_count": 842, "comments_count": 54, "upvote_ratio": null},
+        "media": [],
+        "created_at": "2026-07-16T08:00:00",
+        "collected_at": "2026-07-17T10:30:00",
+        "extra": {"community_name": "MachineLearning", "discovery_input": {"keyword": "machine learning"}}
+      }]
+    }
+  }
+}
+```
