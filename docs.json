@@ -110,6 +110,15 @@
             ]
           },
           {
+            "group": "Facebook Marketplace",
+            "pages": [
+              "api-manual/facebook-marketplace/overview",
+              "api-manual/facebook-marketplace/location-search",
+              "api-manual/facebook-marketplace/search",
+              "api-manual/facebook-marketplace/item"
+            ]
+          },
+          {
             "group": "YouTube",
             "pages": [
               "api-manual/youtube/overview",

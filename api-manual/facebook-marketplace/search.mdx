@@ -1,0 +1,72 @@
+---
+title: "Marketplace Search"
+description: "Search public Facebook Marketplace listings."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook-marketplace/search"
+---
+
+# Marketplace Search
+
+Search public listings around a geographic coordinate. Use [Marketplace Location Search](/api-manual/facebook-marketplace/location-search) to find coordinates when needed.
+
+## Request Example
+
+```json
+{
+  "query": "bike",
+  "latitude": 30.2677,
+  "longitude": -97.7475,
+  "results_limit": 100,
+  "radius_km": 65,
+  "min_price": 100,
+  "max_price": 500,
+  "sort_by": "creation_time_descend",
+  "delivery_method": "local_pickup",
+  "condition": "used_good",
+  "date_listed": "last_7_days",
+  "availability": "available"
+}
+```
+
+SocQ follows result pagination until `results_limit` is reached or no additional page is available. Duplicate listing IDs are saved once, so the final `result_count` can be lower than the requested limit.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "facebook-marketplace/search",
+    "result_count": 1,
+    "credits_amount": 0.7,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "1880804689276480",
+        "platform": "facebook-marketplace",
+        "resource": "search",
+        "type": "listing",
+        "url": "https://www.facebook.com/marketplace/item/1880804689276480/",
+        "name": "Electric bike",
+        "text": null,
+        "author": {"id": null, "username": null, "name": null, "url": null},
+        "metrics": {},
+        "media": [{"type": "image", "url": "https://example.com/bike.jpg", "width": 960, "height": 720}],
+        "created_at": null,
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {
+          "search_query": "bike",
+          "price": {"amount": 300, "currency": "USD", "formatted": "$300"},
+          "location": {"text": "Austin, Texas", "city": "Austin", "state": "TX"},
+          "category_id": "1658310421102081",
+          "is_live": true,
+          "is_sold": false
+        }
+      }]
+    }
+  }
+}
+```

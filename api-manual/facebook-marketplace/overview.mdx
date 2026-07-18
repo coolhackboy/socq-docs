@@ -1,0 +1,18 @@
+---
+title: "Facebook Marketplace"
+description: "Find locations, search listings, and collect public Facebook Marketplace item details."
+icon: "facebook"
+iconType: "brands"
+---
+
+# Facebook Marketplace
+
+Facebook Marketplace is documented separately from the Facebook social data APIs.
+
+| API | Method | Endpoint |
+| --- | --- | --- |
+| Location Search | `POST` | `/v1/facebook-marketplace/location-search` |
+| Search | `POST` | `/v1/facebook-marketplace/search` |
+| Item | `POST` | `/v1/facebook-marketplace/item` |
+
+All endpoints use the standard asynchronous task flow. Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}` for status and normalized results.

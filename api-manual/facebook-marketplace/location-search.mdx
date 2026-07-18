@@ -1,0 +1,60 @@
+---
+title: "Marketplace Location Search"
+description: "Find Facebook Marketplace locations and coordinates."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook-marketplace/location-search"
+---
+
+# Marketplace Location Search
+
+Use a city, region, or place name to find location coordinates for Marketplace Search.
+
+This endpoint does not accept `results_limit`. A task saves every location candidate returned for the query.
+
+## Request Example
+
+```json
+{
+  "query": "Austin"
+}
+```
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "facebook-marketplace/location-search",
+    "result_count": 1,
+    "credits_amount": 0.3,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "106224666074625",
+        "platform": "facebook-marketplace",
+        "resource": "location-search",
+        "type": "location",
+        "url": null,
+        "name": "Austin, Texas",
+        "text": "City",
+        "metrics": {},
+        "media": [],
+        "created_at": null,
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {
+          "search_query": "Austin",
+          "address": [],
+          "city": "Austin",
+          "postal_code": "78701",
+          "latitude": 30.2677,
+          "longitude": -97.7475
+        }
+      }]
+    }
+  }
+}
+```

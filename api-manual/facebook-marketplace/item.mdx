@@ -1,0 +1,65 @@
+---
+title: "Marketplace Item"
+description: "Collect public Facebook Marketplace item details by URL."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook-marketplace/item"
+---
+
+# Marketplace Item
+
+Collect detailed listing information from one or more public Marketplace item URLs.
+
+Each URL is processed independently and can produce at most one listing. If an item is unavailable or not found, the remaining URLs continue processing.
+
+## Request Example
+
+```json
+{
+  "urls": [
+    "https://www.facebook.com/marketplace/item/1656586118821988/"
+  ]
+}
+```
+
+Billing is based on the number of item records successfully returned. URLs that do not produce a record are not included in the final charge.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "facebook-marketplace/item",
+    "result_count": 1,
+    "credits_amount": 0.6,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "1656586118821988",
+        "platform": "facebook-marketplace",
+        "resource": "item",
+        "type": "listing",
+        "url": "https://www.facebook.com/marketplace/item/1656586118821988/",
+        "name": "Mountain bike",
+        "text": "Used bike in good condition.",
+        "author": {"id": null, "username": null, "name": null, "url": null},
+        "metrics": {},
+        "media": [{"type": "image", "url": "https://example.com/item.jpg", "width": 960, "height": 720}],
+        "created_at": "2026-05-15T16:57:39",
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {
+          "input_url": "https://www.facebook.com/marketplace/item/1656586118821988/",
+          "price": {"amount": 380, "currency": "USD", "formatted": "$380"},
+          "location": {"text": "Austin, TX", "latitude": 30.4019, "longitude": -97.7618},
+          "attributes": [{"attribute_name": "Condition", "value": "used_good", "label": "Used - Good"}],
+          "is_live": true,
+          "is_sold": false
+        }
+      }]
+    }
+  }
+}
+```
