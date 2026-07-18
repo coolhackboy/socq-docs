@@ -38,7 +38,7 @@
     }
   },
   "icons": {
-    "library": "lucide"
+    "library": "fontawesome"
   },
   "background": {
     "color": {
