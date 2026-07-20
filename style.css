@@ -11,6 +11,8 @@
   --socq-focus: rgba(246, 76, 49, 0.72);
   --socq-method-muted-bg: rgba(35, 27, 24, 0.07);
   --socq-method-muted-fg: #6f6865;
+  --socq-scrollbar-thumb: rgba(111, 104, 101, 0.3);
+  --socq-scrollbar-thumb-hover: rgba(111, 104, 101, 0.5);
 }
 
 .dark {
@@ -22,6 +24,40 @@
   --socq-focus: rgba(255, 128, 107, 0.78);
   --socq-method-muted-bg: rgba(255, 248, 244, 0.08);
   --socq-method-muted-fg: #b8b1af;
+  --socq-scrollbar-thumb: rgba(184, 177, 175, 0.3);
+  --socq-scrollbar-thumb-hover: rgba(184, 177, 175, 0.5);
+}
+
+/* Match the SOCQ app scrollbar while keeping the document surface transparent. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--socq-scrollbar-thumb) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: var(--socq-scrollbar-thumb);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--socq-scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 #navbar {
