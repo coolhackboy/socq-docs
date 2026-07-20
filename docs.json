@@ -119,6 +119,16 @@
             ]
           },
           {
+            "group": "Facebook Ad Library",
+            "pages": [
+              "api-manual/facebook-ad-library/overview",
+              "api-manual/facebook-ad-library/search",
+              "api-manual/facebook-ad-library/company-search",
+              "api-manual/facebook-ad-library/company-ads",
+              "api-manual/facebook-ad-library/ad"
+            ]
+          },
+          {
             "group": "YouTube",
             "pages": [
               "api-manual/youtube/overview",
@@ -140,6 +150,17 @@
               "api-manual/tiktok/comments",
               "api-manual/tiktok/search",
               "api-manual/tiktok/hashtags"
+            ]
+          },
+          {
+            "group": "TikTok Shop",
+            "pages": [
+              "api-manual/tiktok-shop/overview",
+              "api-manual/tiktok-shop/search",
+              "api-manual/tiktok-shop/products",
+              "api-manual/tiktok-shop/product",
+              "api-manual/tiktok-shop/product-reviews",
+              "api-manual/tiktok-shop/user-showcase"
             ]
           },
           {

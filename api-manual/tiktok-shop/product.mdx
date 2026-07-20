@@ -1,0 +1,55 @@
+---
+title: "TikTok Shop Product"
+description: "Collect details for one public TikTok Shop product."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok-shop/product"
+---
+
+# TikTok Shop Product
+
+Collect product details, seller data, pricing, categories, media, and SKU information.
+
+## Request Example
+
+```json
+{
+  "url": "https://www.tiktok.com/shop/pdp/example-product/1729587769570529799",
+  "region": "US"
+}
+```
+
+One task accepts one product URL and produces at most one normalized product record.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "tiktok-shop/product",
+    "result_count": 1,
+    "credits_amount": 0.7,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "1729587769570529799",
+        "platform": "tiktok-shop",
+        "resource": "product",
+        "type": "product",
+        "url": "https://www.tiktok.com/shop/pdp/example-product/1729587769570529799",
+        "name": "Example Product",
+        "text": "Example Product",
+        "author": {"id": "7496021452055022168", "username": "7098283607022158891", "name": "Example Store", "url": "https://www.tiktok.com/@7098283607022158891"},
+        "metrics": {"rating": 4.7, "reviews_count": 1200, "sold_count": 8500},
+        "media": [{"type": "image", "url": "https://example.com/product.jpg"}],
+        "created_at": null,
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {"input_url": "https://www.tiktok.com/shop/pdp/example-product/1729587769570529799", "region": "US", "price": {"amount": 29.99, "currency": "USD"}}
+      }]
+    }
+  }
+}
+```

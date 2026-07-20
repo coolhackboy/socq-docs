@@ -785,6 +785,69 @@
         "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
       }
     },
+    "/v1/facebook-ad-library/search": {
+      "post": {
+        "summary": "Submit Facebook Ad Library Search task", "operationId": "submitFacebookAdLibrarySearchTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/FacebookAdLibrarySearchRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/facebook-ad-library/company-search": {
+      "post": {
+        "summary": "Submit Facebook Ad Library Company Search task", "operationId": "submitFacebookAdLibraryCompanySearchTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/FacebookAdLibraryCompanySearchRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/facebook-ad-library/company-ads": {
+      "post": {
+        "summary": "Submit Facebook Ad Library Company Ads task", "operationId": "submitFacebookAdLibraryCompanyAdsTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/FacebookAdLibraryCompanyAdsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/facebook-ad-library/ad": {
+      "post": {
+        "summary": "Submit Facebook Ad Library Ad task", "operationId": "submitFacebookAdLibraryAdTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/FacebookAdLibraryAdRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/tiktok-shop/search": {
+      "post": {
+        "summary": "Submit TikTok Shop Search task", "operationId": "submitTikTokShopSearchTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/TikTokShopSearchRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/tiktok-shop/products": {
+      "post": {
+        "summary": "Submit TikTok Shop Products task", "operationId": "submitTikTokShopProductsTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/TikTokShopProductsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/tiktok-shop/product": {
+      "post": {
+        "summary": "Submit TikTok Shop Product task", "operationId": "submitTikTokShopProductTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/TikTokShopProductRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/tiktok-shop/product-reviews": {
+      "post": {
+        "summary": "Submit TikTok Shop Product Reviews task", "operationId": "submitTikTokShopProductReviewsTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/TikTokShopProductReviewsRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
+    "/v1/tiktok-shop/user-showcase": {
+      "post": {
+        "summary": "Submit TikTok Shop User Showcase task", "operationId": "submitTikTokShopUserShowcaseTask", "tags": ["Agent API"],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/TikTokShopUserShowcaseRequest"}}}},
+        "responses": {"200": {"$ref": "#/components/responses/TaskSubmitted"}, "400": {"$ref": "#/components/responses/BadRequest"}, "401": {"$ref": "#/components/responses/Unauthorized"}, "402": {"$ref": "#/components/responses/PaymentRequired"}}
+      }
+    },
     "/v1/tasks/{task_id}": {
       "get": {
         "summary": "Get task status and results",
@@ -1307,6 +1370,111 @@
           "callback_url": {"type": "string", "format": "uri", "description": "Optional URL that receives the task completion callback."}
         },
         "example": {"urls": ["https://www.facebook.com/marketplace/item/1656586118821988/"]}
+      },
+      "FacebookAdLibrarySearchRequest": {
+        "type": "object", "additionalProperties": false, "required": ["query"],
+        "properties": {
+          "query": {"type": "string", "minLength": 1, "description": "Keyword or phrase used to search public ads."},
+          "results_limit": {"type": "integer", "minimum": 20, "maximum": 2000, "default": 100, "description": "Maximum unique ads to save across result pages."},
+          "sort_by": {"type": "string", "enum": ["total_impressions", "relevancy_monthly_grouped"], "default": "total_impressions", "description": "Sort by estimated impressions or recent relevance."},
+          "search_type": {"type": "string", "enum": ["keyword_unordered", "keyword_exact_phrase"], "default": "keyword_unordered", "description": "Match query words in any order or as an exact phrase."},
+          "ad_type": {"type": "string", "enum": ["all", "political_and_issue_ads"], "default": "all", "description": "Include all ads or only political and issue ads."},
+          "country": {"type": "string", "default": "ALL", "pattern": "^(ALL|[A-Za-z]{2})$", "description": "ALL or one two-letter country code."},
+          "status": {"type": "string", "enum": ["ALL", "ACTIVE", "INACTIVE"], "default": "ACTIVE", "description": "Ad delivery status."},
+          "media_type": {"type": "string", "enum": ["ALL", "IMAGE", "VIDEO", "MEME", "IMAGE_AND_MEME", "NONE"], "default": "ALL", "description": "Creative media filter."},
+          "start_date": {"type": "string", "format": "date", "description": "Impression period start date in YYYY-MM-DD format."},
+          "end_date": {"type": "string", "format": "date", "description": "Impression period end date in YYYY-MM-DD format. It cannot precede start_date."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional URL that receives the task completion callback."}
+        },
+        "example": {"query": "running shoes", "results_limit": 100, "country": "US", "status": "ACTIVE", "media_type": "VIDEO"}
+      },
+      "FacebookAdLibraryCompanySearchRequest": {
+        "type": "object", "additionalProperties": false, "required": ["query"],
+        "properties": {
+          "query": {"type": "string", "minLength": 1, "description": "Company or page name to search."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional URL that receives the task completion callback."}
+        },
+        "example": {"query": "Nike"}
+      },
+      "FacebookAdLibraryCompanyAdsRequest": {
+        "type": "object", "additionalProperties": false, "required": ["page_id"],
+        "properties": {
+          "page_id": {"type": "string", "pattern": "^[0-9]+$", "description": "Facebook Ad Library page ID returned by Company Search."},
+          "results_limit": {"type": "integer", "minimum": 20, "maximum": 2000, "default": 100, "description": "Maximum unique ads to save across result pages."},
+          "country": {"type": "string", "default": "ALL", "pattern": "^(ALL|[A-Za-z]{2})$", "description": "ALL or one two-letter country code."},
+          "status": {"type": "string", "enum": ["ALL", "ACTIVE", "INACTIVE"], "default": "ACTIVE", "description": "Ad delivery status."},
+          "media_type": {"type": "string", "enum": ["ALL", "IMAGE", "VIDEO", "MEME", "IMAGE_AND_MEME", "NONE"], "default": "ALL", "description": "Creative media filter."},
+          "language": {"type": "string", "pattern": "^[A-Za-z]{2}$", "description": "Optional two-letter ad language code."},
+          "sort_by": {"type": "string", "enum": ["total_impressions", "relevancy_monthly_grouped"], "default": "total_impressions", "description": "Sort by estimated impressions or recent relevance."},
+          "start_date": {"type": "string", "format": "date", "description": "Start date in YYYY-MM-DD format."},
+          "end_date": {"type": "string", "format": "date", "description": "End date in YYYY-MM-DD format. It cannot precede start_date."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional URL that receives the task completion callback."}
+        },
+        "example": {"page_id": "51212153078", "results_limit": 100, "country": "US", "status": "ACTIVE"}
+      },
+      "FacebookAdLibraryAdRequest": {
+        "type": "object", "additionalProperties": false, "required": ["url"],
+        "properties": {
+          "url": {"type": "string", "format": "uri", "pattern": "^https?://(?:(?:www|m|web)\\.)?facebook\\.com/ads/library/?\\?.*id=[0-9]+", "description": "Public Facebook Ad Library ad URL. One task accepts one URL."},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional URL that receives the task completion callback."}
+        },
+        "example": {"url": "https://www.facebook.com/ads/library/?id=702369045530963"}
+      },
+      "TikTokShopSearchRequest": {
+        "type": "object", "additionalProperties": false, "required": ["query"],
+        "properties": {
+          "query": {"type": "string", "minLength": 1, "description": "Product search query."},
+          "results_limit": {"type": "integer", "minimum": 20, "maximum": 2000, "default": 100, "description": "Maximum unique products to save across result pages."},
+          "region": {"$ref": "#/components/schemas/TikTokShopRegion"},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional URL that receives the task completion callback."}
+        },
+        "example": {"query": "running shoes", "results_limit": 100, "region": "US"}
+      },
+      "TikTokShopProductsRequest": {
+        "type": "object", "additionalProperties": false, "required": ["url"],
+        "properties": {
+          "url": {"type": "string", "format": "uri", "pattern": "^https?://(?:[^/]+\\.)?tiktok\\.com/shop/store/[^/]+/[0-9]+", "description": "Public TikTok Shop store URL. One task accepts one store."},
+          "results_limit": {"type": "integer", "minimum": 20, "maximum": 2000, "default": 100, "description": "Maximum unique shop products to save across result pages."},
+          "sort_by": {"type": "string", "enum": ["top", "new_releases"], "default": "top", "description": "Sort products by best sellers or newest releases."},
+          "region": {"$ref": "#/components/schemas/TikTokShopRegion"},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional URL that receives the task completion callback."}
+        },
+        "example": {"url": "https://www.tiktok.com/shop/store/goli-nutrition/7495794203056835079", "results_limit": 100, "sort_by": "top", "region": "US"}
+      },
+      "TikTokShopProductRequest": {
+        "type": "object", "additionalProperties": false, "required": ["url"],
+        "properties": {
+          "url": {"type": "string", "format": "uri", "pattern": "^https?://(?:[^/]+\\.)?tiktok\\.com/shop/pdp/(?:[^/]+/)?[0-9]+", "description": "Public TikTok Shop product URL. One task accepts one product."},
+          "region": {"$ref": "#/components/schemas/TikTokShopRegion"},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional URL that receives the task completion callback."}
+        },
+        "example": {"url": "https://www.tiktok.com/shop/pdp/example-product/1729587769570529799", "region": "US"}
+      },
+      "TikTokShopProductReviewsRequest": {
+        "type": "object", "additionalProperties": false, "required": ["url"],
+        "properties": {
+          "url": {"type": "string", "format": "uri", "pattern": "^https?://(?:[^/]+\\.)?tiktok\\.com/shop/pdp/(?:[^/]+/)?[0-9]+", "description": "Public TikTok Shop product URL. One task accepts one product."},
+          "results_limit": {"type": "integer", "minimum": 20, "maximum": 2000, "default": 100, "description": "Maximum unique reviews to save across result pages."},
+          "region": {"$ref": "#/components/schemas/TikTokShopRegion"},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional URL that receives the task completion callback."}
+        },
+        "example": {"url": "https://www.tiktok.com/shop/pdp/example-product/1729587769570529799", "results_limit": 100, "region": "US"}
+      },
+      "TikTokShopUserShowcaseRequest": {
+        "type": "object", "additionalProperties": false, "required": ["username"],
+        "properties": {
+          "username": {"type": "string", "minLength": 1, "description": "Public TikTok username, with or without the @ prefix. One task accepts one username."},
+          "results_limit": {"type": "integer", "minimum": 20, "maximum": 2000, "default": 100, "description": "Maximum unique showcase products to save across result pages."},
+          "region": {"$ref": "#/components/schemas/TikTokShopRegion"},
+          "callback_url": {"type": "string", "format": "uri", "description": "Optional URL that receives the task completion callback."}
+        },
+        "example": {"username": "mrtiktokreviews", "results_limit": 100, "region": "US"}
+      },
+      "TikTokShopRegion": {
+        "type": "string",
+        "enum": ["US", "GB", "DE", "FR", "IT", "ID", "MY", "MX", "PH", "SG", "ES", "TH", "VN", "BR", "JP", "IE"],
+        "default": "US",
+        "description": "TikTok Shop market region. Non-US catalog availability can vary."
       },
       "TaskResponse": {
         "type": "object",

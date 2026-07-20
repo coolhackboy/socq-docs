@@ -1,0 +1,56 @@
+---
+title: "TikTok Shop Search"
+description: "Search public TikTok Shop products."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok-shop/search"
+---
+
+# TikTok Shop Search
+
+Search public products by keyword and market region.
+
+## Request Example
+
+```json
+{
+  "query": "running shoes",
+  "results_limit": 100,
+  "region": "US"
+}
+```
+
+SocQ requests result pages until `results_limit` is reached or no additional products are available. Duplicate product IDs are saved once.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "tiktok-shop/search",
+    "result_count": 1,
+    "credits_amount": 0.7,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "1730213444857467838",
+        "platform": "tiktok-shop",
+        "resource": "search",
+        "type": "product",
+        "url": "https://www.tiktok.com/shop/pdp/example/1730213444857467838",
+        "name": "Running Shoes",
+        "text": "Running Shoes",
+        "author": {"id": "7495832567110863806", "username": null, "name": "Example Shop", "url": null},
+        "metrics": {"rating": 4.8, "reviews_count": 2493, "sold_count": 24737},
+        "media": [{"type": "image", "url": "https://example.com/product.jpg"}],
+        "created_at": null,
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {"search_query": "running shoes", "price": {"amount": 49.99, "currency": "USD", "formatted": "49.99"}}
+      }]
+    }
+  }
+}
+```

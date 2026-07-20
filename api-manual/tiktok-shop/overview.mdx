@@ -1,0 +1,22 @@
+---
+title: "TikTok Shop"
+description: "Search products, collect shop catalogs, product details, reviews, and user showcases."
+icon: "tiktok"
+iconType: "brands"
+---
+
+# TikTok Shop
+
+TikTok Shop APIs are documented separately from TikTok social data APIs.
+
+| API | Method | Endpoint |
+| --- | --- | --- |
+| Search | `POST` | `/v1/tiktok-shop/search` |
+| Products | `POST` | `/v1/tiktok-shop/products` |
+| Product | `POST` | `/v1/tiktok-shop/product` |
+| Product Reviews | `POST` | `/v1/tiktok-shop/product-reviews` |
+| User Showcase | `POST` | `/v1/tiktok-shop/user-showcase` |
+
+All endpoints use the standard asynchronous task flow. Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}` for status and normalized results.
+
+The `region` field defaults to `US`. Product availability in other supported regions can vary.

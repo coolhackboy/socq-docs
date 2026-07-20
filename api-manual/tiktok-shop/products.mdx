@@ -1,0 +1,57 @@
+---
+title: "TikTok Shop Products"
+description: "Collect products from one public TikTok Shop."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok-shop/products"
+---
+
+# TikTok Shop Products
+
+Collect products from one store URL, sorted by best sellers or newest releases.
+
+## Request Example
+
+```json
+{
+  "url": "https://www.tiktok.com/shop/store/goli-nutrition/7495794203056835079",
+  "results_limit": 100,
+  "sort_by": "top",
+  "region": "US"
+}
+```
+
+One task accepts one store URL. The final result can contain fewer records than `results_limit` when no additional page is available.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "tiktok-shop/products",
+    "result_count": 1,
+    "credits_amount": 0.7,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "1729527313880355335",
+        "platform": "tiktok-shop",
+        "resource": "products",
+        "type": "product",
+        "url": "https://www.tiktok.com/shop/pdp/example/1729527313880355335",
+        "name": "Wellness Gummies",
+        "text": "Wellness Gummies",
+        "author": {"id": "7495794203056835079", "username": null, "name": "Example Nutrition", "url": null},
+        "metrics": {"rating": 4.6, "reviews_count": 5400, "sold_count": 32000},
+        "media": [{"type": "image", "url": "https://example.com/gummies.jpg"}],
+        "created_at": null,
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {"input_url": "https://www.tiktok.com/shop/store/goli-nutrition/7495794203056835079", "price": {"amount": 31.99, "currency": "USD"}}
+      }]
+    }
+  }
+}
+```

@@ -1,0 +1,58 @@
+---
+title: "Company Ads"
+description: "Collect public ads for a Facebook Ad Library page ID."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook-ad-library/company-ads"
+---
+
+# Company Ads
+
+Collect public ads associated with one page ID returned by Company Search.
+
+## Request Example
+
+```json
+{
+  "page_id": "51212153078",
+  "results_limit": 100,
+  "country": "US",
+  "status": "ACTIVE",
+  "media_type": "ALL"
+}
+```
+
+The final result can contain fewer records than `results_limit` when no additional page is available or duplicate ad IDs are removed.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "facebook-ad-library/company-ads",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "1162496978867592",
+        "platform": "facebook-ad-library",
+        "resource": "company-ads",
+        "type": "ad",
+        "url": "https://www.facebook.com/ads/library/?id=1162496978867592",
+        "name": "New collection",
+        "text": "Explore the latest collection.",
+        "author": {"id": "51212153078", "username": null, "name": "Example Sports", "url": null},
+        "metrics": {"page_likes_count": 1200000, "reach": null},
+        "media": [{"type": "image", "url": "https://example.com/ad.jpg"}],
+        "created_at": "2026-07-10T00:00:00",
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {"input_page_id": "51212153078", "is_active": true, "cta_text": "Shop now"}
+      }]
+    }
+  }
+}
+```

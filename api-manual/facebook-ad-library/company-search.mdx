@@ -1,0 +1,53 @@
+---
+title: "Company Search"
+description: "Find Facebook Ad Library companies and page IDs."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook-ad-library/company-search"
+---
+
+# Company Search
+
+Search for public companies and retrieve the page ID required by Company Ads.
+
+## Request Example
+
+```json
+{
+  "query": "Nike"
+}
+```
+
+This endpoint saves every company candidate returned by the search request.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "facebook-ad-library/company-search",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "51212153078",
+        "platform": "facebook-ad-library",
+        "resource": "company-search",
+        "type": "company",
+        "url": "https://www.facebook.com/example",
+        "name": "Example Sports",
+        "text": "Sportswear Store",
+        "metrics": {"likes_count": 1200000, "instagram_followers_count": 900000},
+        "media": [{"type": "image", "url": "https://example.com/company.jpg"}],
+        "created_at": null,
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {"search_query": "Nike", "verification": "BLUE_VERIFIED", "country": "US"}
+      }]
+    }
+  }
+}
+```

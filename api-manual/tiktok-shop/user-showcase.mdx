@@ -1,0 +1,56 @@
+---
+title: "TikTok User Showcase"
+description: "Collect public TikTok Shop showcase products for one user."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok-shop/user-showcase"
+---
+
+# TikTok User Showcase
+
+Collect products displayed in one public TikTok user's Shop showcase.
+
+## Request Example
+
+```json
+{
+  "username": "mrtiktokreviews",
+  "results_limit": 100,
+  "region": "US"
+}
+```
+
+One task accepts one username. The `@` prefix is optional.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "tiktok-shop/user-showcase",
+    "result_count": 1,
+    "credits_amount": 0.7,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "1732210666230419545",
+        "platform": "tiktok-shop",
+        "resource": "user-showcase",
+        "type": "product",
+        "url": "https://www.tiktok.com/shop/pdp/1732210666230419545",
+        "name": "Featured Product",
+        "text": "Featured Product",
+        "author": {"id": "7495572938346760281", "username": null, "name": null, "url": null},
+        "metrics": {"rating": 4.5, "reviews_count": 326, "sold_count": 5457},
+        "media": [{"type": "image", "url": "https://example.com/featured.jpg"}],
+        "created_at": null,
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {"input_username": "mrtiktokreviews", "price": {"amount": 46.58, "currency": "USD"}}
+      }]
+    }
+  }
+}
+```

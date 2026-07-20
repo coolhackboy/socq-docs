@@ -1,0 +1,19 @@
+---
+title: "Facebook Ad Library"
+description: "Search public ads, find companies, and collect ad details."
+icon: "facebook"
+iconType: "brands"
+---
+
+# Facebook Ad Library
+
+Facebook Ad Library APIs are documented separately from Facebook social data and Facebook Marketplace APIs.
+
+| API | Method | Endpoint |
+| --- | --- | --- |
+| Search | `POST` | `/v1/facebook-ad-library/search` |
+| Company Search | `POST` | `/v1/facebook-ad-library/company-search` |
+| Company Ads | `POST` | `/v1/facebook-ad-library/company-ads` |
+| Ad | `POST` | `/v1/facebook-ad-library/ad` |
+
+All endpoints use the standard asynchronous task flow. Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}` for status and normalized results.
