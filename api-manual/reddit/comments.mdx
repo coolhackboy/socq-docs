@@ -12,6 +12,26 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/reddit/comments"
 }
 ```
 
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/reddit/comments` |
+| Compact MCP | `socq_execute` with `endpoint: "reddit/comments"` |
+| Typed MCP | `socq_reddit_comments` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=reddit_comments` |
+| CLI | `socq reddit comments` |
+
+Use the JSON request body above as the nested `input` object for `socq_execute`, or pass the same fields directly to the typed tool. Typed tools also accept `_wait_seconds`, `_result_limit`, and `_idempotency_key`.
+
+<Info>
+  A successful collection returns a `task_id`. Continue with `socq_get_task` until the task succeeds, then read normalized records from `results.items`.
+</Info>
+
+See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
+{/* mcp-usage:end */}
+
 This endpoint does not accept `results_limit`. All returned comments are saved and billing is based on the actual result count. Comment text is returned in `text`.
 
 ## Completed Task Response

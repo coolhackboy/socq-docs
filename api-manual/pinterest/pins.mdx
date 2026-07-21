@@ -12,6 +12,26 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/pinterest/pins"
 }
 ```
 
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/pinterest/pins` |
+| Compact MCP | `socq_execute` with `endpoint: "pinterest/pins"` |
+| Typed MCP | `socq_pinterest_pins` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=pinterest_pins` |
+| CLI | `socq pinterest pins` |
+
+Use the JSON request body above as the nested `input` object for `socq_execute`, or pass the same fields directly to the typed tool. Typed tools also accept `_wait_seconds`, `_result_limit`, and `_idempotency_key`.
+
+<Info>
+  A successful collection returns a `task_id`. Continue with `socq_get_task` until the task succeeds, then read normalized records from `results.items`.
+</Info>
+
+See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
+{/* mcp-usage:end */}
+
 Results use `resource="pins"` and `type="pin"`. Pin content is returned in `text`, with author, metrics, media, categories, and hashtags in the standard result structure.
 
 ## Completed Task Response

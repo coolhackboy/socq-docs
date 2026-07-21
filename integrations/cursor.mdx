@@ -1,23 +1,64 @@
 ---
 title: "Cursor"
-description: "Connect Cursor to the hosted or stdio SocQ MCP server."
+description: "Connect Cursor through the SocQ stdio bridge and verify a collection."
 icon: "arrow-pointer"
 ---
 
 # Cursor
 
-Use the stdio bridge in Cursor's MCP configuration:
+The stdio bridge is the most portable Cursor configuration and works without a separate OAuth flow.
+
+## Prerequisites
+
+- Node.js 20 or later;
+- a SocQ API key.
+
+## Configure
+
+Open Cursor's MCP settings, add a local server, and use:
 
 ```json
 {
   "mcpServers": {
     "socq": {
       "command": "npx",
-      "args": ["-y", "@socq/mcp", "--platforms", "youtube,tiktok"],
-      "env": {"SOCQ_API_KEY": "YOUR_API_KEY"}
+      "args": ["-y", "@socq/mcp"],
+      "env": {
+        "SOCQ_API_KEY": "YOUR_API_KEY"
+      }
     }
   }
 }
 ```
 
-If the installed Cursor version supports authenticated Streamable HTTP servers, use `https://api.socq.ai/mcp` directly and map `SOCQ_API_KEY` to the bearer token. The stdio bridge remains the most portable configuration.
+For a smaller typed toolset:
+
+```json
+{
+  "mcpServers": {
+    "socq-youtube": {
+      "command": "npx",
+      "args": ["-y", "@socq/mcp", "--platforms", "youtube"],
+      "env": {
+        "SOCQ_API_KEY": "YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+Do not commit a configuration containing a real API key.
+
+## Verify
+
+Restart the SocQ MCP server in Cursor, then ask:
+
+```text
+Use SocQ to check my account, list the available YouTube tools, and collect
+the latest 20 comments from this video:
+https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+The server is connected when Cursor discovers the tools and `socq_account` succeeds. A collection returning `task_id` is expected; Cursor should continue with `socq_get_task`.
+
+If your Cursor version supports authenticated Streamable HTTP with environment-backed bearer tokens, it can connect to `https://api.socq.ai/mcp` directly. Keep the stdio configuration when remote authentication is unavailable.

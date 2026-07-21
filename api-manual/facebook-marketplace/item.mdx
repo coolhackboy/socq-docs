@@ -20,6 +20,26 @@ Each URL is processed independently and can produce at most one listing. If an i
 }
 ```
 
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/facebook-marketplace/item` |
+| Compact MCP | `socq_execute` with `endpoint: "facebook-marketplace/item"` |
+| Typed MCP | `socq_facebook_marketplace_item` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=facebook_marketplace_item` |
+| CLI | `socq facebook-marketplace item` |
+
+Use the JSON request body above as the nested `input` object for `socq_execute`, or pass the same fields directly to the typed tool. Typed tools also accept `_wait_seconds`, `_result_limit`, and `_idempotency_key`.
+
+<Info>
+  A successful collection returns a `task_id`. Continue with `socq_get_task` until the task succeeds, then read normalized records from `results.items`.
+</Info>
+
+See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
+{/* mcp-usage:end */}
+
 Billing is based on the number of item records successfully returned. URLs that do not produce a record are not included in the final charge.
 
 ## Completed Task Response

@@ -91,6 +91,26 @@ Input fields are sent directly in the JSON body.
 
 `callback_url` is optional. If provided, SocQ sends a POST request after the task reaches a terminal state. See [Callbacks](/api-manual/agent-api/callbacks) for the payload shape.
 
+## Use the same endpoint through MCP or CLI
+
+Every REST collection endpoint has a stable endpoint ID, typed MCP tool, and CLI command. The JSON request fields remain the same:
+
+| Interface | YouTube comments example | Where the JSON body goes |
+| --- | --- | --- |
+| REST | `POST /v1/youtube/comments` | HTTP request body |
+| Compact MCP | `socq_execute`, endpoint `youtube/comments` | Nested `input` object |
+| Typed MCP | `socq_youtube_comments` | Top-level tool arguments |
+| CLI | `socq youtube comments` | Command flags or `--input-file` |
+
+```text
+POST /v1/youtube/comments
+          -> endpoint: youtube/comments
+          -> tool: socq_youtube_comments
+          -> CLI: socq youtube comments
+```
+
+Each endpoint page shows its exact mapping. See [MCP quickstart](/integrations/mcp) for a complete submit, poll, paginate, and result example.
+
 ## Result Storage
 
 SocQ stores two forms of results:

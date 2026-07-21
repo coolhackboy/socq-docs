@@ -1,25 +1,58 @@
 ---
 title: "VS Code"
-description: "Use the SocQ MCP bridge with MCP-capable VS Code agents."
+description: "Connect VS Code through the SocQ stdio bridge and store the API key as an input."
 icon: "window-maximize"
 ---
 
 # VS Code
 
-Configure the MCP-capable extension or agent to start:
+VS Code stores MCP server definitions in `mcp.json`. Use a user-level configuration for all workspaces, or `.vscode/mcp.json` for one trusted workspace.
 
-```text
-npx -y @socq/mcp
-```
+## Prerequisites
 
-Supply `SOCQ_API_KEY` through the process environment. If the client accepts a JSON stdio definition, use:
+- Node.js 20 or later;
+- a SocQ API key;
+- a VS Code chat setup with MCP support.
+
+## Configure
+
+Run **MCP: Open User Configuration** from the Command Palette and add:
 
 ```json
 {
-  "command": "npx",
-  "args": ["-y", "@socq/mcp"],
-  "env": {"SOCQ_API_KEY": "YOUR_API_KEY"}
+  "servers": {
+    "socq": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@socq/mcp"],
+      "env": {
+        "SOCQ_API_KEY": "${input:socq-api-key}"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "socq-api-key",
+      "description": "SocQ API key",
+      "password": true
+    }
+  ]
 }
 ```
 
-Client configuration locations vary by extension. The bridge itself remains unchanged and forwards discovery and calls to the hosted MCP server.
+VS Code prompts for the key when the server starts and stores the input for later use. Avoid hardcoding the key in a workspace file.
+
+## Start and verify
+
+Start or restart `socq` from **MCP: List Servers**, approve the server trust prompt, then ask:
+
+```text
+Use SocQ to check my account and collect the latest 20 comments from this
+YouTube video. Wait for the task and show the results:
+https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+Use **MCP: List Servers → Show Output** when the process does not start or tools are missing.
+
+See the official VS Code guides for [adding MCP servers](https://code.visualstudio.com/docs/agent-customization/mcp-servers) and the [`mcp.json` configuration reference](https://code.visualstudio.com/docs/agents/reference/mcp-configuration).

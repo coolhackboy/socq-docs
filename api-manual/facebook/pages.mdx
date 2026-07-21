@@ -22,6 +22,26 @@ POST https://api.socq.ai/v1/facebook/pages
 }
 ```
 
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/facebook/pages` |
+| Compact MCP | `socq_execute` with `endpoint: "facebook/pages"` |
+| Typed MCP | `socq_facebook_pages` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=facebook_pages` |
+| CLI | `socq facebook pages` |
+
+Use the JSON request body above as the nested `input` object for `socq_execute`, or pass the same fields directly to the typed tool. Typed tools also accept `_wait_seconds`, `_result_limit`, and `_idempotency_key`.
+
+<Info>
+  A successful collection returns a `task_id`. Continue with `socq_get_task` until the task succeeds, then read normalized records from `results.items`.
+</Info>
+
+See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
+{/* mcp-usage:end */}
+
 ## Result Item
 
 After the task succeeds, call `GET /v1/tasks/{task_id}` to read paginated standard records under `results`.

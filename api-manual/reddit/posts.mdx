@@ -12,6 +12,26 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/reddit/posts"
 }
 ```
 
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/reddit/posts` |
+| Compact MCP | `socq_execute` with `endpoint: "reddit/posts"` |
+| Typed MCP | `socq_reddit_posts` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=reddit_posts` |
+| CLI | `socq reddit posts` |
+
+Use the JSON request body above as the nested `input` object for `socq_execute`, or pass the same fields directly to the typed tool. Typed tools also accept `_wait_seconds`, `_result_limit`, and `_idempotency_key`.
+
+<Info>
+  A successful collection returns a `task_id`. Continue with `socq_get_task` until the task succeeds, then read normalized records from `results.items`.
+</Info>
+
+See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
+{/* mcp-usage:end */}
+
 Results use `resource="posts"` and `type="post"`. The post body is returned in `text`, while the title and community details are available under `name` and `extra`.
 
 ## Completed Task Response

@@ -1,25 +1,124 @@
 ---
-title: "MCP tool filtering"
-description: "Load typed platform tools without filling the model context."
+title: "Choose MCP tools"
+description: "Choose compact discovery tools or typed collection tools for your workflow."
 icon: "filter"
 ---
 
-# MCP tool filtering
+# Choose MCP tools
 
-The default MCP URL exposes seven compact tools. Add a filter when the required platforms or endpoints are known.
+SocQ supports a compact toolset for open-ended research and typed tools for known platforms or endpoints. Filtering controls which tool schemas your client loads, reducing context usage and making tool selection more predictable.
 
-## Platform tools
+## Choose a mode
+
+| Mode | Tools loaded | Best for | Invocation shape |
+| --- | --- | --- | --- |
+| Compact | Seven discovery, execution, task, file, and account tools | Exploration and cross-platform requests | `socq_execute` with nested `input` |
+| Platform | Typed collection tools for up to five platforms, plus task, file, and account tools | Work limited to known platforms | Direct typed tool with flat arguments |
+| Exact tools | Up to thirty selected collection tools, plus task, file, and account tools | Stable production workflows | Direct typed tool with flat arguments |
+
+If you are unsure which endpoint to use, start with compact mode. If your application always collects the same resource, use an exact-tool connection.
+
+## Compact mode
+
+Connect to:
+
+```text
+https://api.socq.ai/mcp
+```
+
+The client discovers an endpoint and submits it through `socq_execute`:
+
+```json
+{
+  "endpoint": "youtube/comments",
+  "input": {
+    "urls": ["https://www.youtube.com/watch?v=VIDEO_ID"],
+    "results_limit": 100,
+    "sort_by": "newest"
+  },
+  "wait_seconds": 30,
+  "result_limit": 25
+}
+```
+
+Use this mode when the client needs `socq_search_endpoints` and `socq_describe_endpoint` to choose among many capabilities.
+
+## Platform mode
+
+Select one to five comma-separated platform slugs:
 
 ```text
 https://api.socq.ai/mcp?platforms=youtube,tiktok
 ```
 
-This generates typed tools such as `socq_youtube_comments` from the live Capability Registry. Select at most five platforms.
+This exposes typed tools such as:
 
-## Exact tools
+```text
+socq_youtube_comments
+socq_youtube_search
+socq_tiktok_profiles
+socq_tiktok_videos
+```
+
+Platform slugs match the first segment of the API path, for example `youtube`, `tiktok`, and `facebook-ad-library`.
+
+## Exact-tool mode
+
+Select one to thirty comma-separated tool identifiers without the `socq_` prefix:
 
 ```text
 https://api.socq.ai/mcp?tools=youtube_comments,x_search
 ```
 
-Select at most thirty tools. `platforms` and `tools` cannot be combined. Filters only change tool visibility; they do not bypass authentication, product availability, limits, or billing.
+For `tools=youtube_comments`, the connection exposes:
+
+```text
+socq_youtube_comments
+socq_get_task
+socq_get_files
+socq_account
+```
+
+Call the typed tool with API input fields directly:
+
+```json
+{
+  "urls": ["https://www.youtube.com/watch?v=VIDEO_ID"],
+  "results_limit": 100,
+  "sort_by": "newest",
+  "_wait_seconds": 30,
+  "_result_limit": 25
+}
+```
+
+Typed tools add three optional control fields:
+
+| Field | Purpose |
+| --- | --- |
+| `_wait_seconds` | Wait up to 30 seconds before returning the task |
+| `_result_limit` | Limit normalized records returned with this response, from 1 to 100 |
+| `_idempotency_key` | Make a retry return the original task instead of creating another one |
+
+These are separate from business inputs such as `results_limit`. For example, `results_limit: 100` requests up to 100 collected comments, while `_result_limit: 25` limits the current response page to 25 records.
+
+## Naming rules
+
+The mapping is deterministic:
+
+| REST path | Endpoint ID | Typed tool | Filter identifier |
+| --- | --- | --- | --- |
+| `/v1/youtube/comments` | `youtube/comments` | `socq_youtube_comments` | `youtube_comments` |
+| `/v1/x/search` | `x/search` | `socq_x_search` | `x_search` |
+| `/v1/facebook-ad-library/ad` | `facebook-ad-library/ad` | `socq_facebook_ad_library_ad` | `facebook_ad_library_ad` |
+
+## Restrictions
+
+- `platforms` and `tools` cannot be combined in the same URL.
+- Platform mode accepts at most five platforms.
+- Exact-tool mode accepts at most thirty tools.
+- Filtering changes tool visibility only. Authentication, product availability, billing, API-key limits, and asynchronous task behavior remain unchanged.
+- Reconnect or restart the client after changing a filter so it refreshes `tools/list`.
+
+<Tip>
+  To verify a filtered connection, ask the client to list its SocQ tools, then run one small collection and confirm that `socq_get_task` can read the returned task ID.
+</Tip>

@@ -233,7 +233,6 @@
               "integrations/overview",
               "integrations/authentication",
               "integrations/mcp",
-              "integrations/mcp-filtering",
               "integrations/cli",
               "integrations/skill"
             ]
@@ -250,6 +249,7 @@
           {
             "group": "Workflows",
             "pages": [
+              "integrations/mcp-filtering",
               "integrations/async-tasks",
               "integrations/pagination-files",
               "integrations/billing-limits",

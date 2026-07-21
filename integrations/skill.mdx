@@ -1,25 +1,60 @@
 ---
 title: "Agent Skill"
-description: "Teach an agent to choose endpoints, control cost, and finish asynchronous jobs."
+description: "Teach an agent to choose endpoints, control cost, and complete SocQ research workflows."
 icon: "wand-magic-sparkles"
 ---
 
 # Agent Skill
 
-Install the `socq-social-research` Skill from the `socq-devtools` repository:
+Install the `socq-social-research` Skill to teach a coding agent how to choose SocQ endpoints, shape inputs, control cost, and complete asynchronous collections.
 
 ```bash
 npx skills add socq-ai/socq-devtools
 ```
 
-The Skill teaches an agent to:
+## Skill versus MCP
 
-- map user intent to a Capability Registry endpoint;
-- choose URL, username, or query inputs;
-- estimate credits before large jobs;
-- submit idempotently and poll asynchronous tasks;
-- follow cursor pagination and retrieve raw files;
-- recover from authentication, validation, rate, credit, and provider errors;
-- coordinate comparable cross-platform research.
+| Component | Role |
+| --- | --- |
+| MCP | Gives the agent live SocQ tools that can submit and read data tasks |
+| Agent Skill | Teaches the agent which tool to choose and how to run a reliable research workflow |
 
-The Skill prefers remote MCP, then stdio MCP, then CLI or REST. Endpoint references are generated from the same Registry as MCP and OpenAPI.
+Use them together when possible. MCP provides execution; the Skill provides endpoint selection, billing awareness, polling, pagination, and cross-platform workflow guidance.
+
+## What you can ask
+
+```text
+Collect the latest comments from this Instagram Reel, wait for the task,
+then summarize recurring positive and negative themes.
+```
+
+```text
+Compare the latest posts from these three X profiles. Use the same result
+limit for each profile and return a normalized engagement table.
+```
+
+```text
+Find recent YouTube videos about AI coding agents, collect their comments,
+and explain which topics produce the strongest audience response.
+```
+
+The Skill guides the agent through:
+
+- mapping user intent to a Capability Registry endpoint;
+- choosing URL, username, hashtag, or query inputs;
+- checking schemas and estimating credits before large jobs;
+- submitting with an idempotency key when retries are possible;
+- polling asynchronous tasks instead of resubmitting;
+- following cursor pagination and retrieving raw files;
+- recovering from authentication, validation, rate, credit, and provider errors;
+- coordinating comparable cross-platform research.
+
+## Execution preference
+
+The Skill prefers:
+
+1. remote MCP;
+2. the SocQ stdio MCP bridge;
+3. CLI or REST when MCP is unavailable.
+
+Endpoint references are generated from the same Capability Registry as MCP and OpenAPI, so endpoint IDs and input fields remain consistent across integrations.

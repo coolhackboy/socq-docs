@@ -1,12 +1,22 @@
 ---
 title: "Claude Desktop"
-description: "Connect Claude Desktop through the SocQ stdio bridge."
+description: "Connect Claude Desktop through the SocQ stdio bridge and verify a collection."
 icon: "robot"
 ---
 
 # Claude Desktop
 
-Add SocQ to the Claude Desktop MCP configuration:
+Claude Desktop can run the published `@socq/mcp` bridge as a local stdio server. The bridge forwards tool discovery and calls to the hosted SocQ MCP endpoint.
+
+## Prerequisites
+
+- Node.js 20 or later;
+- a SocQ API key;
+- a current Claude Desktop release with local MCP enabled.
+
+## Configure
+
+Open the Claude Desktop developer configuration and add:
 
 ```json
 {
@@ -14,12 +24,40 @@ Add SocQ to the Claude Desktop MCP configuration:
     "socq": {
       "command": "npx",
       "args": ["-y", "@socq/mcp"],
-      "env": {"SOCQ_API_KEY": "YOUR_API_KEY"}
+      "env": {
+        "SOCQ_API_KEY": "YOUR_API_KEY"
+      }
     }
   }
 }
 ```
 
-Restart Claude Desktop after saving. To limit context, add `"--platforms", "youtube,tiktok"` to `args`.
+Restart Claude Desktop after saving.
 
-For shared or committed configurations, remove the literal key and arrange for `SOCQ_API_KEY` to be supplied by the local environment instead.
+<Warning>
+  This local configuration contains a credential. Do not commit or share it. For a distributed integration, package the bridge as a desktop extension and mark the API-key field as sensitive so Claude can use operating-system secure storage.
+</Warning>
+
+## Verify
+
+Ask Claude:
+
+```text
+List the SocQ tools you can use, check my SocQ account, then collect the
+latest 20 comments from this YouTube video and wait for the task:
+https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+A successful setup should discover SocQ tools, complete `socq_account`, submit a task, and read it with `socq_get_task`.
+
+## Limit the tool list
+
+To expose YouTube and TikTok typed tools, change the arguments to:
+
+```json
+"args": ["-y", "@socq/mcp", "--platforms", "youtube,tiktok"]
+```
+
+See [Choose MCP tools](/integrations/mcp-filtering) before selecting a production filter.
+
+See Anthropic's [local MCP server guide](https://support.claude.com/en/articles/10949351-getting-started-with-local-mcp-servers-on-claude-desktop) for current Claude Desktop administration options.

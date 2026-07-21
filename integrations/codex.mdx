@@ -1,12 +1,16 @@
 ---
 title: "Codex"
-description: "Configure the SocQ MCP server and Skill in Codex."
+description: "Connect Codex to SocQ MCP, verify a collection, and optionally add the Agent Skill."
 icon: "code"
 ---
 
 # Codex
 
-Codex CLI and the IDE extension share MCP configuration from `~/.codex/config.toml`. Add:
+Codex CLI and the IDE extension read MCP configuration from `~/.codex/config.toml`. A trusted project can also provide `.codex/config.toml`.
+
+## Configure remote MCP
+
+Set `SOCQ_API_KEY` in the environment before starting Codex, then add:
 
 ```toml
 [mcp_servers.socq]
@@ -15,9 +19,7 @@ bearer_token_env_var = "SOCQ_API_KEY"
 tool_timeout_sec = 45
 ```
 
-Set `SOCQ_API_KEY` in the environment before starting Codex. A project can instead use `.codex/config.toml` when the project is trusted.
-
-For a platform-specific toolset:
+For typed YouTube tools:
 
 ```toml
 [mcp_servers.socq_youtube]
@@ -26,6 +28,28 @@ bearer_token_env_var = "SOCQ_API_KEY"
 tool_timeout_sec = 45
 ```
 
-Install the `socq-social-research` Skill to add endpoint-selection, billing, polling, pagination, and cross-platform workflow guidance. The Skill complements MCP; it does not replace the server.
+Codex supports `url` for Streamable HTTP MCP servers and `bearer_token_env_var` for environment-backed bearer authentication. Restart or begin a new Codex session after changing the configuration.
 
-See the [official Codex MCP configuration reference](https://learn.chatgpt.com/docs/extend/mcp#connect-codex-to-an-mcp-server).
+## Verify
+
+Ask Codex:
+
+```text
+Use SocQ to check my account, then collect the latest 20 comments from this
+YouTube video. Wait for the task and return the results as a table:
+https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+The connection is working when Codex can call `socq_account`, submit the collection, and read the returned task with `socq_get_task`.
+
+## Add workflow guidance
+
+Install the `socq-social-research` Skill to add endpoint selection, billing, polling, pagination, and cross-platform research guidance:
+
+```bash
+npx skills add socq-ai/socq-devtools
+```
+
+The Skill complements MCP; it does not replace the server. See [Agent Skill](/integrations/skill).
+
+See the official Codex [`config.toml` reference](https://learn.chatgpt.com/docs/config-file/config-reference#configtoml) for current MCP configuration fields.

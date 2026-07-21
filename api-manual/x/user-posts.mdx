@@ -15,6 +15,26 @@ Collect recent public posts for one or more usernames. Replies are excluded.
 }
 ```
 
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/x/user-posts` |
+| Compact MCP | `socq_execute` with `endpoint: "x/user-posts"` |
+| Typed MCP | `socq_x_user_posts` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=x_user_posts` |
+| CLI | `socq x user-posts` |
+
+Use the JSON request body above as the nested `input` object for `socq_execute`, or pass the same fields directly to the typed tool. Typed tools also accept `_wait_seconds`, `_result_limit`, and `_idempotency_key`.
+
+<Info>
+  A successful collection returns a `task_id`. Continue with `socq_get_task` until the task succeeds, then read normalized records from `results.items`.
+</Info>
+
+See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
+{/* mcp-usage:end */}
+
 `results_limit` specifies the maximum number of posts returned for each username. The total number of results can be up to the number of usernames multiplied by `results_limit`. Billing is based on the total number of results returned.
 
 Results use the normalized structure documented in [X Posts](/api-manual/x/posts), with `resource` set to `user-posts`. The submitted username is returned under `extra.input_username`.

@@ -1,33 +1,84 @@
 ---
 title: "CLI"
-description: "Discover, run, and export SocQ tasks from a terminal."
+description: "Discover, run, wait for, and export SocQ tasks from a terminal."
 icon: "terminal"
 ---
 
 # CLI
 
+Use the SocQ CLI for terminal workflows, automation, and exporting normalized task results as JSON, JSONL, CSV, or tables.
+
+<Warning>
+  The `@socq/cli` package is not yet available on the public npm registry. The commands below document the upcoming package and can be used from the SocQ devtools repository during development.
+</Warning>
+
+## Install and authenticate
+
+After the package is published:
+
 ```bash
 npm install -g @socq/cli
 socq auth login
+```
+
+For CI, set `SOCQ_API_KEY` instead of using interactive login. Avoid `--api-key` in normal terminal use because command arguments may remain in shell history or process listings.
+
+## Discover endpoints
+
+```bash
 socq platforms
 socq tools youtube
 socq describe youtube/comments
 ```
 
-Run an endpoint with a friendly dynamic command or the stable generic form:
+Use `describe` before building automation so the command uses the current input schema and billing information from the Capability Registry.
+
+## Complete your first collection
 
 ```bash
-socq youtube comments --urls "https://youtube.com/watch?v=VIDEO" --wait
-socq run youtube comments --input-file request.json --format jsonl --output results.jsonl --wait
+socq youtube comments \
+  --urls "https://www.youtube.com/watch?v=VIDEO_ID" \
+  --sort-by newest \
+  --wait
 ```
 
-Resume an existing task without resubmitting:
+The dynamic command maps directly to:
+
+```text
+REST:      POST /v1/youtube/comments
+Endpoint:  youtube/comments
+MCP tool:  socq_youtube_comments
+CLI:       socq youtube comments
+```
+
+Use the stable generic form when inputs come from a file:
+
+```bash
+socq run youtube comments \
+  --input-file request.json \
+  --format jsonl \
+  --output results.jsonl \
+  --wait
+```
+
+## Resume without resubmitting
+
+If a command returns before the collection finishes, keep the task ID:
 
 ```bash
 socq task get TASK_ID
-socq task wait TASK_ID
+socq task wait TASK_ID --timeout 180
 socq task results TASK_ID --format csv --output results.csv
 socq task files TASK_ID
 ```
 
-Supported output formats are `table`, `json`, `jsonl`, and `csv`.
+Do not submit the original collection again just because a local wait timed out. Resume the existing task.
+
+## Output formats
+
+| Format | Best for |
+| --- | --- |
+| `table` | Reading a small result in a terminal |
+| `json` | Structured output and scripts |
+| `jsonl` | Streaming or large exports |
+| `csv` | Spreadsheets and data analysis |

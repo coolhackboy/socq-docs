@@ -20,6 +20,26 @@ Collect public ads associated with one page ID returned by Company Search.
 }
 ```
 
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/facebook-ad-library/company-ads` |
+| Compact MCP | `socq_execute` with `endpoint: "facebook-ad-library/company-ads"` |
+| Typed MCP | `socq_facebook_ad_library_company_ads` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=facebook_ad_library_company_ads` |
+| CLI | `socq facebook-ad-library company-ads` |
+
+Use the JSON request body above as the nested `input` object for `socq_execute`, or pass the same fields directly to the typed tool. Typed tools also accept `_wait_seconds`, `_result_limit`, and `_idempotency_key`.
+
+<Info>
+  A successful collection returns a `task_id`. Continue with `socq_get_task` until the task succeeds, then read normalized records from `results.items`.
+</Info>
+
+See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
+{/* mcp-usage:end */}
+
 The final result can contain fewer records than `results_limit` when no additional page is available or duplicate ad IDs are removed.
 
 ## Completed Task Response

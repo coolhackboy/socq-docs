@@ -1,19 +1,44 @@
 ---
 title: "AI and developer integrations"
-description: "Connect SocQ to agents, terminals, and MCP clients."
+description: "Choose MCP, CLI, Agent Skill, or REST for your SocQ workflow."
 icon: "plug"
 ---
 
 # AI and developer integrations
 
-All integrations use the same Capability Registry, authentication, billing, tasks, normalized results, and provider failover as the Agent REST API.
+Choose an integration based on how you want to work. All options use the same Capability Registry, authentication, billing, asynchronous tasks, normalized results, and provider failover as the Agent REST API.
 
-| Integration | Best for | Install or URL |
+| I want to... | Recommended integration | Start here |
 | --- | --- | --- |
-| Remote MCP | Hosted AI clients | `https://api.socq.ai/mcp` |
-| stdio MCP | Local-only MCP clients | `npx -y @socq/mcp` |
-| CLI | Shell scripts and data export | `npm install -g @socq/cli` |
-| Agent Skill | Reusable research workflow | `npx skills add socq-ai/socq-devtools` |
+| Ask an AI client to collect and analyze data | MCP | [MCP quickstart](/integrations/mcp) |
+| Teach an agent endpoint selection, cost control, and research workflows | MCP + Agent Skill | [Agent Skill](/integrations/skill) |
+| Run collections and export data from a terminal | CLI | [CLI](/integrations/cli) |
+| Build an application with HTTP requests | REST API | [API overview](/api-manual/agent-api/overview) |
+
+## Fastest path
+
+For most AI-client users:
+
+1. Set `SOCQ_API_KEY`.
+2. Connect to `https://api.socq.ai/mcp`, or run `npx -y @socq/mcp` for a stdio-only client.
+3. Ask the client to collect a small dataset and wait for the returned task.
+
+```text
+Collect the latest 20 comments from this YouTube video.
+Wait for the task to finish, then return the comments as a table:
+https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+See [MCP quickstart](/integrations/mcp) for the tool call, task polling, and result shape behind this prompt.
+
+## Integration summary
+
+| Integration | Best for | Install or URL | Availability |
+| --- | --- | --- | --- |
+| Remote MCP | Hosted AI clients | `https://api.socq.ai/mcp` | Available |
+| stdio MCP | Local-only MCP clients | `npx -y @socq/mcp` | Available |
+| CLI | Shell scripts and data export | `npm install -g @socq/cli` | Package publication pending |
+| Agent Skill | Reusable research workflow | `npx skills add socq-ai/socq-devtools` | Repository install |
 
 <Info>
   CLI and stdio MCP are local clients, not separately deployed services. The hosted MCP endpoint runs alongside the SocQ Agent API.
