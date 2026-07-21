@@ -1,0 +1,21 @@
+# SocQ
+
+SocQ provides asynchronous public social-data APIs and AI-agent integrations.
+
+## Primary documentation
+
+- https://docs.socq.ai/
+- https://docs.socq.ai/api-manual/agent-api/overview
+- https://docs.socq.ai/integrations/overview
+- https://docs.socq.ai/integrations/mcp
+- https://docs.socq.ai/integrations/cli
+- https://docs.socq.ai/integrations/skill
+
+## Machine-readable interfaces
+
+- Capability Registry: https://docs.socq.ai/capability-catalog.json
+- OpenAPI: https://docs.socq.ai/api-manual/agent-api/agent-api.json
+- JSON index: https://docs.socq.ai/llms.json
+- Hosted MCP: https://api.socq.ai/mcp
+
+Authentication uses `Authorization: Bearer SOCQ_API_KEY`. Collection endpoints return a task ID; poll the task endpoint until it succeeds or fails, then follow cursor pagination.

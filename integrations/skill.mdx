@@ -1,0 +1,25 @@
+---
+title: "Agent Skill"
+description: "Teach an agent to choose endpoints, control cost, and finish asynchronous jobs."
+icon: "wand-magic-sparkles"
+---
+
+# Agent Skill
+
+Install the `socq-social-research` Skill from the `socq-devtools` repository:
+
+```bash
+npx skills add socq-ai/socq-devtools
+```
+
+The Skill teaches an agent to:
+
+- map user intent to a Capability Registry endpoint;
+- choose URL, username, or query inputs;
+- estimate credits before large jobs;
+- submit idempotently and poll asynchronous tasks;
+- follow cursor pagination and retrieve raw files;
+- recover from authentication, validation, rate, credit, and provider errors;
+- coordinate comparable cross-platform research.
+
+The Skill prefers remote MCP, then stdio MCP, then CLI or REST. Endpoint references are generated from the same Registry as MCP and OpenAPI.

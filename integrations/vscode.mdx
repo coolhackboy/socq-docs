@@ -1,0 +1,25 @@
+---
+title: "VS Code"
+description: "Use the SocQ MCP bridge with MCP-capable VS Code agents."
+icon: "window-maximize"
+---
+
+# VS Code
+
+Configure the MCP-capable extension or agent to start:
+
+```text
+npx -y @socq/mcp
+```
+
+Supply `SOCQ_API_KEY` through the process environment. If the client accepts a JSON stdio definition, use:
+
+```json
+{
+  "command": "npx",
+  "args": ["-y", "@socq/mcp"],
+  "env": {"SOCQ_API_KEY": "YOUR_API_KEY"}
+}
+```
+
+Client configuration locations vary by extension. The bridge itself remains unchanged and forwards discovery and calls to the hosted MCP server.

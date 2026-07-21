@@ -1,0 +1,21 @@
+---
+title: "Troubleshooting integrations"
+description: "Resolve MCP, CLI, authentication, task, and schema failures."
+icon: "screwdriver-wrench"
+---
+
+# Troubleshooting integrations
+
+| Problem | Resolution |
+| --- | --- |
+| MCP initializes but execution returns 401 | Set `SOCQ_API_KEY` or configure a bearer token. Discovery is public; execution is authenticated. |
+| Typed tool is missing | Check the `platforms` or `tools` query filter, or reconnect to the compact URL. |
+| 400 validation error | Run `socq describe PLATFORM/RESOURCE` and remove unsupported fields. |
+| 403 | Check API-key status and IP allowlist. |
+| 409 | The idempotency key was previously used with different input. |
+| 429 | Respect `Retry-After` and inspect request-rate versus credit-window limits. |
+| MCP call returns a task ID | This is expected; poll with `socq_get_task`. |
+| Polling timed out | Resume with the same task ID; do not resubmit. |
+| CLI dynamic flag is rejected | Refresh the live Catalog and use the field spelling from its JSON Schema. |
+
+For protocol debugging, verify that the proxy preserves `Authorization`, `Accept`, `Content-Type`, and `MCP-Protocol-Version` headers and routes the exact `/mcp` path without adding a second `/mcp` segment.

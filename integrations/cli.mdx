@@ -1,0 +1,33 @@
+---
+title: "CLI"
+description: "Discover, run, and export SocQ tasks from a terminal."
+icon: "terminal"
+---
+
+# CLI
+
+```bash
+npm install -g @socq/cli
+socq auth login
+socq platforms
+socq tools youtube
+socq describe youtube/comments
+```
+
+Run an endpoint with a friendly dynamic command or the stable generic form:
+
+```bash
+socq youtube comments --urls "https://youtube.com/watch?v=VIDEO" --wait
+socq run youtube comments --input-file request.json --format jsonl --output results.jsonl --wait
+```
+
+Resume an existing task without resubmitting:
+
+```bash
+socq task get TASK_ID
+socq task wait TASK_ID
+socq task results TASK_ID --format csv --output results.csv
+socq task files TASK_ID
+```
+
+Supported output formats are `table`, `json`, `jsonl`, and `csv`.

@@ -1,0 +1,25 @@
+---
+title: "Integration authentication"
+description: "Configure an API key for MCP, CLI, and Skills."
+icon: "key"
+---
+
+# Integration authentication
+
+Set your API key in the environment:
+
+```bash
+export SOCQ_API_KEY="YOUR_API_KEY"
+```
+
+```powershell
+$env:SOCQ_API_KEY="YOUR_API_KEY"
+```
+
+The hosted MCP server also accepts `Authorization: Bearer YOUR_API_KEY` and `x-api-key: YOUR_API_KEY`.
+
+<Warning>
+  Do not put the key in an MCP URL or commit it to a client configuration. Avoid `--api-key` during interactive CLI use because it may remain in shell history.
+</Warning>
+
+API-key IP allowlists, request-rate limits, and hourly/daily credit limits apply identically to REST, MCP, and CLI requests.

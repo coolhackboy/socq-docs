@@ -1,0 +1,23 @@
+---
+title: "Cursor"
+description: "Connect Cursor to the hosted or stdio SocQ MCP server."
+icon: "arrow-pointer"
+---
+
+# Cursor
+
+Use the stdio bridge in Cursor's MCP configuration:
+
+```json
+{
+  "mcpServers": {
+    "socq": {
+      "command": "npx",
+      "args": ["-y", "@socq/mcp", "--platforms", "youtube,tiktok"],
+      "env": {"SOCQ_API_KEY": "YOUR_API_KEY"}
+    }
+  }
+}
+```
+
+If the installed Cursor version supports authenticated Streamable HTTP servers, use `https://api.socq.ai/mcp` directly and map `SOCQ_API_KEY` to the bearer token. The stdio bridge remains the most portable configuration.

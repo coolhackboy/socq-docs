@@ -223,6 +223,40 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Integrations",
+        "groups": [
+          {
+            "group": "Get started",
+            "pages": [
+              "integrations/overview",
+              "integrations/authentication",
+              "integrations/mcp",
+              "integrations/mcp-filtering",
+              "integrations/cli",
+              "integrations/skill"
+            ]
+          },
+          {
+            "group": "Clients",
+            "pages": [
+              "integrations/claude-desktop",
+              "integrations/cursor",
+              "integrations/codex",
+              "integrations/vscode"
+            ]
+          },
+          {
+            "group": "Workflows",
+            "pages": [
+              "integrations/async-tasks",
+              "integrations/pagination-files",
+              "integrations/billing-limits",
+              "integrations/troubleshooting"
+            ]
+          }
+        ]
       }
     ]
   }

@@ -1,0 +1,28 @@
+---
+title: "AI and developer integrations"
+description: "Connect SocQ to agents, terminals, and MCP clients."
+icon: "plug"
+---
+
+# AI and developer integrations
+
+All integrations use the same Capability Registry, authentication, billing, tasks, normalized results, and provider failover as the Agent REST API.
+
+| Integration | Best for | Install or URL |
+| --- | --- | --- |
+| Remote MCP | Hosted AI clients | `https://api.socq.ai/mcp` |
+| stdio MCP | Local-only MCP clients | `npx -y @socq/mcp` |
+| CLI | Shell scripts and data export | `npm install -g @socq/cli` |
+| Agent Skill | Reusable research workflow | `npx skills add socq-ai/socq-devtools` |
+
+<Info>
+  CLI and stdio MCP are local clients, not separately deployed services. The hosted MCP endpoint runs alongside the SocQ Agent API.
+</Info>
+
+## Machine-readable sources
+
+- [Capability Catalog](/capability-catalog.json)
+- [Agent OpenAPI](/api-manual/agent-api/agent-api.json)
+- [llms.txt](/llms.txt)
+- [llms-full.txt](/llms-full.txt)
+- [llms.json](/llms.json)

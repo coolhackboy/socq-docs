@@ -1,0 +1,31 @@
+---
+title: "Codex"
+description: "Configure the SocQ MCP server and Skill in Codex."
+icon: "code"
+---
+
+# Codex
+
+Codex CLI and the IDE extension share MCP configuration from `~/.codex/config.toml`. Add:
+
+```toml
+[mcp_servers.socq]
+url = "https://api.socq.ai/mcp"
+bearer_token_env_var = "SOCQ_API_KEY"
+tool_timeout_sec = 45
+```
+
+Set `SOCQ_API_KEY` in the environment before starting Codex. A project can instead use `.codex/config.toml` when the project is trusted.
+
+For a platform-specific toolset:
+
+```toml
+[mcp_servers.socq_youtube]
+url = "https://api.socq.ai/mcp?platforms=youtube"
+bearer_token_env_var = "SOCQ_API_KEY"
+tool_timeout_sec = 45
+```
+
+Install the `socq-social-research` Skill to add endpoint-selection, billing, polling, pagination, and cross-platform workflow guidance. The Skill complements MCP; it does not replace the server.
+
+See the [official Codex MCP configuration reference](https://learn.chatgpt.com/docs/extend/mcp#connect-codex-to-an-mcp-server).

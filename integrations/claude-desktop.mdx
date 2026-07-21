@@ -1,0 +1,25 @@
+---
+title: "Claude Desktop"
+description: "Connect Claude Desktop through the SocQ stdio bridge."
+icon: "robot"
+---
+
+# Claude Desktop
+
+Add SocQ to the Claude Desktop MCP configuration:
+
+```json
+{
+  "mcpServers": {
+    "socq": {
+      "command": "npx",
+      "args": ["-y", "@socq/mcp"],
+      "env": {"SOCQ_API_KEY": "YOUR_API_KEY"}
+    }
+  }
+}
+```
+
+Restart Claude Desktop after saving. To limit context, add `"--platforms", "youtube,tiktok"` to `args`.
+
+For shared or committed configurations, remove the literal key and arrange for `SOCQ_API_KEY` to be supplied by the local environment instead.

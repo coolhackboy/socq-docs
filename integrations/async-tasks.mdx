@@ -1,0 +1,24 @@
+---
+title: "Asynchronous tasks"
+description: "Submit, wait briefly, and resume SocQ collections safely."
+icon: "clock"
+---
+
+# Asynchronous tasks
+
+All collection endpoints create background tasks:
+
+```text
+queued -> running -> succeeded
+                  -> failed
+```
+
+MCP and REST submit calls return a `task_id`. MCP waits zero seconds by default and supports an optional wait of at most 30 seconds. If the task is still running, keep the task ID and call `socq_get_task` rather than submitting again.
+
+Use an idempotency key for retryable submissions. The same user, key, and input return the original task. Reusing a key with different input returns a conflict.
+
+The CLI can perform client-side polling without holding an API request open:
+
+```bash
+socq task wait TASK_ID --timeout 180
+```

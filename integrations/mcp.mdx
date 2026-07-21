@@ -1,0 +1,33 @@
+---
+title: "Remote MCP"
+description: "Use SocQ through hosted Streamable HTTP MCP."
+icon: "server"
+---
+
+# Remote MCP
+
+Connect an MCP client to:
+
+```text
+https://api.socq.ai/mcp
+```
+
+SocQ uses stateless Streamable HTTP with JSON responses. The default compact toolset contains discovery, execution, task, file, and account tools:
+
+- `socq_list_platforms`
+- `socq_search_endpoints`
+- `socq_describe_endpoint`
+- `socq_execute`
+- `socq_get_task`
+- `socq_get_files`
+- `socq_account`
+
+Use `socq_execute` to submit. It returns a `task_id` immediately unless `wait_seconds` requests a bounded wait of at most 30 seconds. Continue with `socq_get_task` until the task succeeds or fails.
+
+Clients that only support stdio can run:
+
+```bash
+npx -y @socq/mcp
+```
+
+The bridge forwards the MCP protocol to the hosted server and does not contain a second copy of SocQ tool schemas.

@@ -1,0 +1,23 @@
+# SocQ Agent Integration Guide
+
+Base REST URL: https://api.socq.ai
+Hosted MCP URL: https://api.socq.ai/mcp
+Authentication: Authorization: Bearer SOCQ_API_KEY
+
+SocQ exposes a machine-readable Capability Registry at `/v1/catalog`. It contains endpoint IDs, JSON Schema input definitions, normalized output schemas, current billing, availability, documentation links, and generated MCP tool names.
+
+The default MCP connection exposes compact discovery and execution tools. Add `?platforms=youtube,tiktok` to load typed tools for at most five platforms, or `?tools=youtube_comments,x_search` for at most thirty exact tools. Do not combine both filters.
+
+Collection is asynchronous. Submit a request, retain its task ID, and poll until `succeeded` or `failed`. MCP can wait at most 30 seconds per submit call. Follow `next_cursor` for additional normalized result pages and use the task files endpoint for raw JSONL exports.
+
+CLI examples:
+
+  socq platforms
+  socq tools youtube
+  socq describe youtube/comments
+  socq youtube comments --urls URL --wait
+  socq task results TASK_ID --format jsonl --output result.jsonl
+
+Use an idempotency key when retrying a submission after a transport failure. Reusing the key with identical input returns the original task; changing input produces a conflict.
+
+See https://docs.socq.ai/llms.json for the complete generated endpoint catalog.

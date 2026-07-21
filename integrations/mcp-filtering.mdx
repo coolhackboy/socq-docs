@@ -1,0 +1,25 @@
+---
+title: "MCP tool filtering"
+description: "Load typed platform tools without filling the model context."
+icon: "filter"
+---
+
+# MCP tool filtering
+
+The default MCP URL exposes seven compact tools. Add a filter when the required platforms or endpoints are known.
+
+## Platform tools
+
+```text
+https://api.socq.ai/mcp?platforms=youtube,tiktok
+```
+
+This generates typed tools such as `socq_youtube_comments` from the live Capability Registry. Select at most five platforms.
+
+## Exact tools
+
+```text
+https://api.socq.ai/mcp?tools=youtube_comments,x_search
+```
+
+Select at most thirty tools. `platforms` and `tools` cannot be combined. Filters only change tool visibility; they do not bypass authentication, product availability, limits, or billing.

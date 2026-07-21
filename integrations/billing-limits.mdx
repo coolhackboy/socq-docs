@@ -1,0 +1,17 @@
+---
+title: "Billing and limits"
+description: "Estimate credits and understand API-key limits."
+icon: "coins"
+---
+
+# Billing and limits
+
+Capability entries expose current credits and billing units. Check `socq_account` or `socq account` before a large job.
+
+Three independent controls can reject a request:
+
+- available account credits;
+- API-key hourly or daily credit limits;
+- API-key requests per minute.
+
+A 402 response indicates insufficient balance. A 429 response includes rate or credit-window information and may include `Retry-After`. Reducing `results_limit`, using fewer platforms, or waiting for the limit window are safer than blind retries.
