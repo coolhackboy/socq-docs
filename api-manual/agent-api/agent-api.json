@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-d18678b71b32",
+    "version": "v1-063d1c96173a",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -14,8 +14,8 @@
     "/v1/facebook-ad-library/ad": {
       "post": {
         "operationId": "socq_facebook_ad_library_ad",
-        "summary": "Get Facebook Ad Library Ad",
-        "description": "Fetch normalized ad data from Facebook Ad Library.",
+        "summary": "Facebook Ad Library Ad API",
+        "description": "Facebook Ad Library Ad API",
         "tags": [
           "facebook-ad-library"
         ],
@@ -66,8 +66,8 @@
     "/v1/facebook-ad-library/company-ads": {
       "post": {
         "operationId": "socq_facebook_ad_library_company_ads",
-        "summary": "Get Facebook Ad Library Company Ads",
-        "description": "Fetch normalized company ads data from Facebook Ad Library.",
+        "summary": "Facebook Ad Library Company Ads API",
+        "description": "Facebook Ad Library Company Ads API",
         "tags": [
           "facebook-ad-library"
         ],
@@ -151,8 +151,8 @@
     "/v1/facebook-ad-library/company-search": {
       "post": {
         "operationId": "socq_facebook_ad_library_company_search",
-        "summary": "Get Facebook Ad Library Company Search",
-        "description": "Fetch normalized company search data from Facebook Ad Library.",
+        "summary": "Facebook Ad Library Company Search API",
+        "description": "Facebook Ad Library Company Search API",
         "tags": [
           "facebook-ad-library"
         ],
@@ -203,8 +203,8 @@
     "/v1/facebook-ad-library/search": {
       "post": {
         "operationId": "socq_facebook_ad_library_search",
-        "summary": "Get Facebook Ad Library Search",
-        "description": "Fetch normalized search data from Facebook Ad Library.",
+        "summary": "Facebook Ad Library Search API",
+        "description": "Facebook Ad Library Search API",
         "tags": [
           "facebook-ad-library"
         ],
@@ -292,8 +292,8 @@
     "/v1/facebook-marketplace/item": {
       "post": {
         "operationId": "socq_facebook_marketplace_item",
-        "summary": "Get Facebook Marketplace Item",
-        "description": "Fetch normalized item data from Facebook Marketplace.",
+        "summary": "Facebook Marketplace Item API",
+        "description": "Facebook Marketplace Item API",
         "tags": [
           "facebook-marketplace"
         ],
@@ -348,8 +348,8 @@
     "/v1/facebook-marketplace/location-search": {
       "post": {
         "operationId": "socq_facebook_marketplace_location_search",
-        "summary": "Get Facebook Marketplace Location Search",
-        "description": "Fetch normalized location search data from Facebook Marketplace.",
+        "summary": "Facebook Marketplace Location Search API",
+        "description": "Facebook Marketplace Location Search API",
         "tags": [
           "facebook-marketplace"
         ],
@@ -400,8 +400,8 @@
     "/v1/facebook-marketplace/search": {
       "post": {
         "operationId": "socq_facebook_marketplace_search",
-        "summary": "Get Facebook Marketplace Search",
-        "description": "Fetch normalized search data from Facebook Marketplace.",
+        "summary": "Facebook Marketplace Search API",
+        "description": "Facebook Marketplace Search API",
         "tags": [
           "facebook-marketplace"
         ],
@@ -501,8 +501,8 @@
     "/v1/facebook/comments": {
       "post": {
         "operationId": "socq_facebook_comments",
-        "summary": "Get Facebook Comments",
-        "description": "Fetch normalized comments data from Facebook.",
+        "summary": "Facebook Comments API",
+        "description": "Facebook Comments API",
         "tags": [
           "facebook"
         ],
@@ -537,7 +537,9 @@
                     "description": "Public profile or content URLs."
                   }
                 },
-                "required": []
+                "required": [
+                  "urls"
+                ]
               }
             }
           }
@@ -559,8 +561,8 @@
     "/v1/facebook/pages": {
       "post": {
         "operationId": "socq_facebook_pages",
-        "summary": "Get Facebook Pages",
-        "description": "Fetch normalized pages data from Facebook.",
+        "summary": "Facebook Page API",
+        "description": "Facebook Page API",
         "tags": [
           "facebook"
         ],
@@ -614,7 +616,24 @@
                     "description": "Public account usernames."
                   }
                 },
-                "required": []
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
               }
             }
           }
@@ -636,8 +655,8 @@
     "/v1/facebook/posts": {
       "post": {
         "operationId": "socq_facebook_posts",
-        "summary": "Get Facebook Posts",
-        "description": "Fetch normalized posts data from Facebook.",
+        "summary": "Facebook Posts API",
+        "description": "Facebook Posts API",
         "tags": [
           "facebook"
         ],
@@ -691,7 +710,24 @@
                     "description": "Public account usernames."
                   }
                 },
-                "required": []
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
               }
             }
           }
@@ -713,8 +749,8 @@
     "/v1/instagram/comments": {
       "post": {
         "operationId": "socq_instagram_comments",
-        "summary": "Get Instagram Comments",
-        "description": "Fetch normalized comments data from Instagram.",
+        "summary": "Instagram Comments API",
+        "description": "Instagram Comments API",
         "tags": [
           "instagram"
         ],
@@ -749,7 +785,9 @@
                     "description": "Public profile or content URLs."
                   }
                 },
-                "required": []
+                "required": [
+                  "urls"
+                ]
               }
             }
           }
@@ -771,8 +809,8 @@
     "/v1/instagram/followers-count": {
       "post": {
         "operationId": "socq_instagram_followers_count",
-        "summary": "Get Instagram Followers Count",
-        "description": "Fetch normalized followers count data from Instagram.",
+        "summary": "Instagram Followers Count API",
+        "description": "Instagram Followers Count API",
         "tags": [
           "instagram"
         ],
@@ -826,7 +864,24 @@
                     "description": "Public account usernames."
                   }
                 },
-                "required": []
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
               }
             }
           }
@@ -848,8 +903,8 @@
     "/v1/instagram/posts": {
       "post": {
         "operationId": "socq_instagram_posts",
-        "summary": "Get Instagram Posts",
-        "description": "Fetch normalized posts data from Instagram.",
+        "summary": "Instagram Posts API",
+        "description": "Instagram Post API",
         "tags": [
           "instagram"
         ],
@@ -903,7 +958,24 @@
                     "description": "Public account usernames."
                   }
                 },
-                "required": []
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
               }
             }
           }
@@ -925,8 +997,8 @@
     "/v1/instagram/reels": {
       "post": {
         "operationId": "socq_instagram_reels",
-        "summary": "Get Instagram Reels",
-        "description": "Fetch normalized reels data from Instagram.",
+        "summary": "Instagram Reels API",
+        "description": "Instagram Reel API",
         "tags": [
           "instagram"
         ],
@@ -980,7 +1052,24 @@
                     "description": "Public account usernames."
                   }
                 },
-                "required": []
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
               }
             }
           }
@@ -1002,8 +1091,8 @@
     "/v1/instagram/search": {
       "post": {
         "operationId": "socq_instagram_search",
-        "summary": "Get Instagram Search",
-        "description": "Fetch normalized search data from Instagram.",
+        "summary": "Instagram Search API",
+        "description": "Instagram Search API",
         "tags": [
           "instagram"
         ],
@@ -1057,7 +1146,24 @@
                     "description": "Public account usernames."
                   }
                 },
-                "required": []
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
               }
             }
           }
@@ -1079,8 +1185,8 @@
     "/v1/linkedin/companies": {
       "post": {
         "operationId": "socq_linkedin_companies",
-        "summary": "Get Linkedin Companies",
-        "description": "Fetch normalized companies data from Linkedin.",
+        "summary": "LinkedIn Companies API",
+        "description": "LinkedIn Companies API",
         "tags": [
           "linkedin"
         ],
@@ -1135,8 +1241,8 @@
     "/v1/linkedin/jobs": {
       "post": {
         "operationId": "socq_linkedin_jobs",
-        "summary": "Get Linkedin Jobs",
-        "description": "Fetch normalized jobs data from Linkedin.",
+        "summary": "LinkedIn Jobs API",
+        "description": "LinkedIn Jobs API",
         "tags": [
           "linkedin"
         ],
@@ -1191,8 +1297,8 @@
     "/v1/linkedin/posts": {
       "post": {
         "operationId": "socq_linkedin_posts",
-        "summary": "Get Linkedin Posts",
-        "description": "Fetch normalized posts data from Linkedin.",
+        "summary": "LinkedIn Posts API",
+        "description": "LinkedIn Posts API",
         "tags": [
           "linkedin"
         ],
@@ -1247,8 +1353,8 @@
     "/v1/linkedin/profiles": {
       "post": {
         "operationId": "socq_linkedin_profiles",
-        "summary": "Get Linkedin Profiles",
-        "description": "Fetch normalized profiles data from Linkedin.",
+        "summary": "LinkedIn Profiles API",
+        "description": "LinkedIn Profiles API",
         "tags": [
           "linkedin"
         ],
@@ -1303,8 +1409,8 @@
     "/v1/pinterest/pins": {
       "post": {
         "operationId": "socq_pinterest_pins",
-        "summary": "Get Pinterest Pins",
-        "description": "Fetch normalized pins data from Pinterest.",
+        "summary": "Pinterest Pins API",
+        "description": "Pinterest Pins API",
         "tags": [
           "pinterest"
         ],
@@ -1359,8 +1465,8 @@
     "/v1/pinterest/profiles": {
       "post": {
         "operationId": "socq_pinterest_profiles",
-        "summary": "Get Pinterest Profiles",
-        "description": "Fetch normalized profiles data from Pinterest.",
+        "summary": "Pinterest Profiles API",
+        "description": "Pinterest Profiles API",
         "tags": [
           "pinterest"
         ],
@@ -1415,8 +1521,8 @@
     "/v1/pinterest/search": {
       "post": {
         "operationId": "socq_pinterest_search",
-        "summary": "Get Pinterest Search",
-        "description": "Fetch normalized search data from Pinterest.",
+        "summary": "Pinterest Search API",
+        "description": "Pinterest Search API",
         "tags": [
           "pinterest"
         ],
@@ -1472,8 +1578,8 @@
     "/v1/pinterest/user-pins": {
       "post": {
         "operationId": "socq_pinterest_user_pins",
-        "summary": "Get Pinterest User Pins",
-        "description": "Fetch normalized user pins data from Pinterest.",
+        "summary": "Pinterest User Pins API",
+        "description": "Pinterest User Pins API",
         "tags": [
           "pinterest"
         ],
@@ -1533,8 +1639,8 @@
     "/v1/reddit/comments": {
       "post": {
         "operationId": "socq_reddit_comments",
-        "summary": "Get Reddit Comments",
-        "description": "Fetch normalized comments data from Reddit.",
+        "summary": "Reddit Comments API",
+        "description": "Reddit Comments API",
         "tags": [
           "reddit"
         ],
@@ -1589,8 +1695,8 @@
     "/v1/reddit/posts": {
       "post": {
         "operationId": "socq_reddit_posts",
-        "summary": "Get Reddit Posts",
-        "description": "Fetch normalized posts data from Reddit.",
+        "summary": "Reddit Posts API",
+        "description": "Reddit Posts API",
         "tags": [
           "reddit"
         ],
@@ -1645,8 +1751,8 @@
     "/v1/reddit/search": {
       "post": {
         "operationId": "socq_reddit_search",
-        "summary": "Get Reddit Search",
-        "description": "Fetch normalized search data from Reddit.",
+        "summary": "Reddit Search API",
+        "description": "Reddit Search API",
         "tags": [
           "reddit"
         ],
@@ -1706,8 +1812,8 @@
     "/v1/reddit/subreddit-posts": {
       "post": {
         "operationId": "socq_reddit_subreddit_posts",
-        "summary": "Get Reddit Subreddit Posts",
-        "description": "Fetch normalized subreddit posts data from Reddit.",
+        "summary": "Reddit Subreddit Posts API",
+        "description": "Reddit Subreddit Posts API",
         "tags": [
           "reddit"
         ],
@@ -1771,8 +1877,8 @@
     "/v1/threads/posts": {
       "post": {
         "operationId": "socq_threads_posts",
-        "summary": "Get Threads Posts",
-        "description": "Fetch normalized posts data from Threads.",
+        "summary": "Threads Posts API",
+        "description": "Threads Posts API",
         "tags": [
           "threads"
         ],
@@ -1827,8 +1933,8 @@
     "/v1/threads/profiles": {
       "post": {
         "operationId": "socq_threads_profiles",
-        "summary": "Get Threads Profiles",
-        "description": "Fetch normalized profiles data from Threads.",
+        "summary": "Threads Profiles API",
+        "description": "Threads Profiles API",
         "tags": [
           "threads"
         ],
@@ -1883,8 +1989,8 @@
     "/v1/threads/user-posts": {
       "post": {
         "operationId": "socq_threads_user_posts",
-        "summary": "Get Threads User Posts",
-        "description": "Fetch normalized user posts data from Threads.",
+        "summary": "Threads User Posts API",
+        "description": "Threads User Posts API",
         "tags": [
           "threads"
         ],
@@ -1944,8 +2050,8 @@
     "/v1/tiktok-shop/product": {
       "post": {
         "operationId": "socq_tiktok_shop_product",
-        "summary": "Get TikTok Shop Product",
-        "description": "Fetch normalized product data from TikTok Shop.",
+        "summary": "TikTok Shop Product API",
+        "description": "TikTok Shop Product API",
         "tags": [
           "tiktok-shop"
         ],
@@ -2000,8 +2106,8 @@
     "/v1/tiktok-shop/product-reviews": {
       "post": {
         "operationId": "socq_tiktok_shop_product_reviews",
-        "summary": "Get TikTok Shop Product Reviews",
-        "description": "Fetch normalized product reviews data from TikTok Shop.",
+        "summary": "TikTok Shop Product Reviews API",
+        "description": "TikTok Shop Product Reviews API",
         "tags": [
           "tiktok-shop"
         ],
@@ -2061,8 +2167,8 @@
     "/v1/tiktok-shop/products": {
       "post": {
         "operationId": "socq_tiktok_shop_products",
-        "summary": "Get TikTok Shop Products",
-        "description": "Fetch normalized products data from TikTok Shop.",
+        "summary": "TikTok Shop Products API",
+        "description": "TikTok Shop Products API",
         "tags": [
           "tiktok-shop"
         ],
@@ -2126,8 +2232,8 @@
     "/v1/tiktok-shop/search": {
       "post": {
         "operationId": "socq_tiktok_shop_search",
-        "summary": "Get TikTok Shop Search",
-        "description": "Fetch normalized search data from TikTok Shop.",
+        "summary": "TikTok Shop Search API",
+        "description": "TikTok Shop Search API",
         "tags": [
           "tiktok-shop"
         ],
@@ -2187,8 +2293,8 @@
     "/v1/tiktok-shop/user-showcase": {
       "post": {
         "operationId": "socq_tiktok_shop_user_showcase",
-        "summary": "Get TikTok Shop User Showcase",
-        "description": "Fetch normalized user showcase data from TikTok Shop.",
+        "summary": "TikTok Shop User Showcase API",
+        "description": "TikTok Shop User Showcase API",
         "tags": [
           "tiktok-shop"
         ],
@@ -2248,8 +2354,8 @@
     "/v1/tiktok/comments": {
       "post": {
         "operationId": "socq_tiktok_comments",
-        "summary": "Get Tiktok Comments",
-        "description": "Fetch normalized comments data from Tiktok.",
+        "summary": "TikTok Comments API",
+        "description": "TikTok Comments API",
         "tags": [
           "tiktok"
         ],
@@ -2309,8 +2415,8 @@
     "/v1/tiktok/hashtags": {
       "post": {
         "operationId": "socq_tiktok_hashtags",
-        "summary": "Get Tiktok Hashtags",
-        "description": "Fetch normalized hashtags data from Tiktok.",
+        "summary": "TikTok Hashtags API",
+        "description": "TikTok Hashtags API",
         "tags": [
           "tiktok"
         ],
@@ -2370,8 +2476,8 @@
     "/v1/tiktok/profiles": {
       "post": {
         "operationId": "socq_tiktok_profiles",
-        "summary": "Get Tiktok Profiles",
-        "description": "Fetch normalized profiles data from Tiktok.",
+        "summary": "TikTok Profiles API",
+        "description": "TikTok Profiles API",
         "tags": [
           "tiktok"
         ],
@@ -2426,8 +2532,8 @@
     "/v1/tiktok/search": {
       "post": {
         "operationId": "socq_tiktok_search",
-        "summary": "Get Tiktok Search",
-        "description": "Fetch normalized search data from Tiktok.",
+        "summary": "TikTok Search API",
+        "description": "TikTok Search API",
         "tags": [
           "tiktok"
         ],
@@ -2491,8 +2597,8 @@
     "/v1/tiktok/videos": {
       "post": {
         "operationId": "socq_tiktok_videos",
-        "summary": "Get Tiktok Videos",
-        "description": "Fetch normalized videos data from Tiktok.",
+        "summary": "TikTok Videos API",
+        "description": "TikTok Videos API",
         "tags": [
           "tiktok"
         ],
@@ -2547,8 +2653,8 @@
     "/v1/x/posts": {
       "post": {
         "operationId": "socq_x_posts",
-        "summary": "Get X Posts",
-        "description": "Fetch normalized posts data from X.",
+        "summary": "X Posts API",
+        "description": "X Posts API",
         "tags": [
           "x"
         ],
@@ -2603,8 +2709,8 @@
     "/v1/x/profiles": {
       "post": {
         "operationId": "socq_x_profiles",
-        "summary": "Get X Profiles",
-        "description": "Fetch normalized profiles data from X.",
+        "summary": "X Profiles API",
+        "description": "X Profiles API",
         "tags": [
           "x"
         ],
@@ -2659,8 +2765,8 @@
     "/v1/x/search": {
       "post": {
         "operationId": "socq_x_search",
-        "summary": "Get X Search",
-        "description": "Fetch normalized search data from X.",
+        "summary": "X Search API",
+        "description": "X Search API",
         "tags": [
           "x"
         ],
@@ -2720,8 +2826,8 @@
     "/v1/x/user-posts": {
       "post": {
         "operationId": "socq_x_user_posts",
-        "summary": "Get X User Posts",
-        "description": "Fetch normalized user posts data from X.",
+        "summary": "X User Posts API",
+        "description": "X User Posts API",
         "tags": [
           "x"
         ],
@@ -2781,8 +2887,8 @@
     "/v1/youtube/channel-videos": {
       "post": {
         "operationId": "socq_youtube_channel_videos",
-        "summary": "Get Youtube Channel Videos",
-        "description": "Fetch normalized channel videos data from Youtube.",
+        "summary": "YouTube Channel Videos API",
+        "description": "YouTube Channel Videos API",
         "tags": [
           "youtube"
         ],
@@ -2842,8 +2948,8 @@
     "/v1/youtube/channels": {
       "post": {
         "operationId": "socq_youtube_channels",
-        "summary": "Get Youtube Channels",
-        "description": "Fetch normalized channels data from Youtube.",
+        "summary": "YouTube Channels API",
+        "description": "YouTube Channels API",
         "tags": [
           "youtube"
         ],
@@ -2898,8 +3004,8 @@
     "/v1/youtube/comments": {
       "post": {
         "operationId": "socq_youtube_comments",
-        "summary": "Get Youtube Comments",
-        "description": "Fetch normalized comments data from Youtube.",
+        "summary": "YouTube Comments API",
+        "description": "YouTube Comments API",
         "tags": [
           "youtube"
         ],
@@ -2963,8 +3069,8 @@
     "/v1/youtube/search": {
       "post": {
         "operationId": "socq_youtube_search",
-        "summary": "Get Youtube Search",
-        "description": "Fetch normalized search data from Youtube.",
+        "summary": "YouTube Search API",
+        "description": "YouTube Search API",
         "tags": [
           "youtube"
         ],
@@ -3035,8 +3141,8 @@
     "/v1/youtube/shorts": {
       "post": {
         "operationId": "socq_youtube_shorts",
-        "summary": "Get Youtube Shorts",
-        "description": "Fetch normalized shorts data from Youtube.",
+        "summary": "YouTube Shorts API",
+        "description": "YouTube Shorts API",
         "tags": [
           "youtube"
         ],
@@ -3096,8 +3202,8 @@
     "/v1/youtube/transcripts": {
       "post": {
         "operationId": "socq_youtube_transcripts",
-        "summary": "Get Youtube Transcripts",
-        "description": "Fetch normalized transcripts data from Youtube.",
+        "summary": "YouTube Transcripts API",
+        "description": "YouTube Transcripts API",
         "tags": [
           "youtube"
         ],
@@ -3156,8 +3262,8 @@
     "/v1/youtube/videos": {
       "post": {
         "operationId": "socq_youtube_videos",
-        "summary": "Get Youtube Videos",
-        "description": "Fetch normalized videos data from Youtube.",
+        "summary": "YouTube Videos API",
+        "description": "YouTube Videos API",
         "tags": [
           "youtube"
         ],

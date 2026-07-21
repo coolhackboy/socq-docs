@@ -1,5 +1,5 @@
 {
-  "schema_version": "v1-d18678b71b32",
+  "schema_version": "v1-063d1c96173a",
   "platforms": [
     {
       "platform": "facebook",
@@ -143,8 +143,8 @@
       "platform": "facebook-ad-library",
       "resource": "ad",
       "tool_name": "socq_facebook_ad_library_ad",
-      "title": "Get Facebook Ad Library Ad",
-      "description": "Fetch normalized ad data from Facebook Ad Library.",
+      "title": "Facebook Ad Library Ad API",
+      "description": "Facebook Ad Library Ad API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -244,12 +244,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.6,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.6,
+          "estimate_input_field": "url"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "url": "https://www.facebook.com/ads/library/?id=123456789012345"
+        }
+      ],
       "tags": [
         "facebook-ad-library",
         "ad"
@@ -266,8 +281,8 @@
       "platform": "facebook-ad-library",
       "resource": "company-ads",
       "tool_name": "socq_facebook_ad_library_company_ads",
-      "title": "Get Facebook Ad Library Company Ads",
-      "description": "Fetch normalized company ads data from Facebook Ad Library.",
+      "title": "Facebook Ad Library Company Ads API",
+      "description": "Facebook Ad Library Company Ads API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -400,12 +415,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "page_id": "20531316728"
+        }
+      ],
       "tags": [
         "facebook-ad-library",
         "company-ads"
@@ -422,8 +452,8 @@
       "platform": "facebook-ad-library",
       "resource": "company-search",
       "tool_name": "socq_facebook_ad_library_company_search",
-      "title": "Get Facebook Ad Library Company Search",
-      "description": "Fetch normalized company search data from Facebook Ad Library.",
+      "title": "Facebook Ad Library Company Search API",
+      "description": "Facebook Ad Library Company Search API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -523,12 +553,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 10
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "Nike"
+        }
+      ],
       "tags": [
         "facebook-ad-library",
         "company-search"
@@ -545,8 +590,8 @@
       "platform": "facebook-ad-library",
       "resource": "search",
       "tool_name": "socq_facebook_ad_library_search",
-      "title": "Get Facebook Ad Library Search",
-      "description": "Fetch normalized search data from Facebook Ad Library.",
+      "title": "Facebook Ad Library Search API",
+      "description": "Facebook Ad Library Search API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -683,12 +728,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "running shoes"
+        }
+      ],
       "tags": [
         "facebook-ad-library",
         "search"
@@ -705,8 +765,8 @@
       "platform": "facebook-marketplace",
       "resource": "item",
       "tool_name": "socq_facebook_marketplace_item",
-      "title": "Get Facebook Marketplace Item",
-      "description": "Fetch normalized item data from Facebook Marketplace.",
+      "title": "Facebook Marketplace Item API",
+      "description": "Facebook Marketplace Item API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -810,12 +870,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.6,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.6,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.facebook.com/marketplace/item/123456789012345/"
+          ]
+        }
+      ],
       "tags": [
         "facebook-marketplace",
         "item"
@@ -832,8 +909,8 @@
       "platform": "facebook-marketplace",
       "resource": "location-search",
       "tool_name": "socq_facebook_marketplace_location_search",
-      "title": "Get Facebook Marketplace Location Search",
-      "description": "Fetch normalized location search data from Facebook Marketplace.",
+      "title": "Facebook Marketplace Location Search API",
+      "description": "Facebook Marketplace Location Search API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -933,12 +1010,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.3,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.3,
+          "estimate_result_count": 10
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "San Francisco"
+        }
+      ],
       "tags": [
         "facebook-marketplace",
         "location-search"
@@ -955,8 +1047,8 @@
       "platform": "facebook-marketplace",
       "resource": "search",
       "tool_name": "socq_facebook_marketplace_search",
-      "title": "Get Facebook Marketplace Search",
-      "description": "Fetch normalized search data from Facebook Marketplace.",
+      "title": "Facebook Marketplace Search API",
+      "description": "Facebook Marketplace Search API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -1105,12 +1197,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.7,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.7,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "standing desk",
+          "latitude": 37.7749,
+          "longitude": -122.4194
+        }
+      ],
       "tags": [
         "facebook-marketplace",
         "search"
@@ -1127,8 +1236,8 @@
       "platform": "facebook",
       "resource": "comments",
       "tool_name": "socq_facebook_comments",
-      "title": "Get Facebook Comments",
-      "description": "Fetch normalized comments data from Facebook.",
+      "title": "Facebook Comments API",
+      "description": "Facebook Comments API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -1148,7 +1257,9 @@
             "description": "Public profile or content URLs."
           }
         },
-        "required": []
+        "required": [
+          "urls"
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -1234,12 +1345,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.3,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.3,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.facebook.com/nasa/posts/1234567890"
+          ]
+        }
+      ],
       "tags": [
         "facebook",
         "comments"
@@ -1256,8 +1384,8 @@
       "platform": "facebook",
       "resource": "pages",
       "tool_name": "socq_facebook_pages",
-      "title": "Get Facebook Pages",
-      "description": "Fetch normalized pages data from Facebook.",
+      "title": "Facebook Page API",
+      "description": "Facebook Page API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -1296,7 +1424,24 @@
             "description": "Public account usernames."
           }
         },
-        "required": []
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "query"
+            ]
+          },
+          {
+            "required": [
+              "urls"
+            ]
+          },
+          {
+            "required": [
+              "usernames"
+            ]
+          }
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -1382,12 +1527,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 2.4,
+        "config": {
+          "mode": "base_plus_result",
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 2.4,
+          "estimate_input_field": "urls",
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "usernames": [
+            "nasa"
+          ]
+        }
+      ],
       "tags": [
         "facebook",
         "pages"
@@ -1404,8 +1566,8 @@
       "platform": "facebook",
       "resource": "posts",
       "tool_name": "socq_facebook_posts",
-      "title": "Get Facebook Posts",
-      "description": "Fetch normalized posts data from Facebook.",
+      "title": "Facebook Posts API",
+      "description": "Facebook Posts API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -1444,7 +1606,24 @@
             "description": "Public account usernames."
           }
         },
-        "required": []
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "query"
+            ]
+          },
+          {
+            "required": [
+              "urls"
+            ]
+          },
+          {
+            "required": [
+              "usernames"
+            ]
+          }
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -1530,12 +1709,28 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 1,
+        "config": {
+          "mode": "base_plus_result",
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 1,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.facebook.com/nasa"
+          ]
+        }
+      ],
       "tags": [
         "facebook",
         "posts"
@@ -1552,8 +1747,8 @@
       "platform": "instagram",
       "resource": "comments",
       "tool_name": "socq_instagram_comments",
-      "title": "Get Instagram Comments",
-      "description": "Fetch normalized comments data from Instagram.",
+      "title": "Instagram Comments API",
+      "description": "Instagram Comments API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -1573,7 +1768,9 @@
             "description": "Public profile or content URLs."
           }
         },
-        "required": []
+        "required": [
+          "urls"
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -1659,12 +1856,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.3,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.3,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.instagram.com/p/ABC123xyz/"
+          ]
+        }
+      ],
       "tags": [
         "instagram",
         "comments"
@@ -1681,8 +1895,8 @@
       "platform": "instagram",
       "resource": "followers-count",
       "tool_name": "socq_instagram_followers_count",
-      "title": "Get Instagram Followers Count",
-      "description": "Fetch normalized followers count data from Instagram.",
+      "title": "Instagram Followers Count API",
+      "description": "Instagram Followers Count API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -1721,7 +1935,24 @@
             "description": "Public account usernames."
           }
         },
-        "required": []
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "query"
+            ]
+          },
+          {
+            "required": [
+              "urls"
+            ]
+          },
+          {
+            "required": [
+              "usernames"
+            ]
+          }
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -1807,12 +2038,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.52,
+        "config": {
+          "mode": "base_plus_result",
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.52,
+          "estimate_input_field": "usernames",
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "usernames": [
+            "instagram"
+          ]
+        }
+      ],
       "tags": [
         "instagram",
         "followers-count"
@@ -1829,8 +2077,8 @@
       "platform": "instagram",
       "resource": "posts",
       "tool_name": "socq_instagram_posts",
-      "title": "Get Instagram Posts",
-      "description": "Fetch normalized posts data from Instagram.",
+      "title": "Instagram Posts API",
+      "description": "Instagram Post API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -1869,7 +2117,24 @@
             "description": "Public account usernames."
           }
         },
-        "required": []
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "query"
+            ]
+          },
+          {
+            "required": [
+              "urls"
+            ]
+          },
+          {
+            "required": [
+              "usernames"
+            ]
+          }
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -1955,12 +2220,28 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.34,
+        "config": {
+          "mode": "base_plus_result",
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.34,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "usernames": [
+            "instagram"
+          ]
+        }
+      ],
       "tags": [
         "instagram",
         "posts"
@@ -1977,8 +2258,8 @@
       "platform": "instagram",
       "resource": "reels",
       "tool_name": "socq_instagram_reels",
-      "title": "Get Instagram Reels",
-      "description": "Fetch normalized reels data from Instagram.",
+      "title": "Instagram Reels API",
+      "description": "Instagram Reel API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -2017,7 +2298,24 @@
             "description": "Public account usernames."
           }
         },
-        "required": []
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "query"
+            ]
+          },
+          {
+            "required": [
+              "urls"
+            ]
+          },
+          {
+            "required": [
+              "usernames"
+            ]
+          }
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -2103,12 +2401,28 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.52,
+        "config": {
+          "mode": "base_plus_result",
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.52,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "usernames": [
+            "instagram"
+          ]
+        }
+      ],
       "tags": [
         "instagram",
         "reels"
@@ -2125,8 +2439,8 @@
       "platform": "instagram",
       "resource": "search",
       "tool_name": "socq_instagram_search",
-      "title": "Get Instagram Search",
-      "description": "Fetch normalized search data from Instagram.",
+      "title": "Instagram Search API",
+      "description": "Instagram Search API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -2165,7 +2479,24 @@
             "description": "Public account usernames."
           }
         },
-        "required": []
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "query"
+            ]
+          },
+          {
+            "required": [
+              "urls"
+            ]
+          },
+          {
+            "required": [
+              "usernames"
+            ]
+          }
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -2251,12 +2582,26 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.54,
+        "config": {
+          "mode": "base_plus_result",
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.54,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "travel photography"
+        }
+      ],
       "tags": [
         "instagram",
         "search"
@@ -2273,8 +2618,8 @@
       "platform": "linkedin",
       "resource": "companies",
       "tool_name": "socq_linkedin_companies",
-      "title": "Get Linkedin Companies",
-      "description": "Fetch normalized companies data from Linkedin.",
+      "title": "LinkedIn Companies API",
+      "description": "LinkedIn Companies API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -2378,12 +2723,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 2,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 2,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.linkedin.com/company/microsoft/"
+          ]
+        }
+      ],
       "tags": [
         "linkedin",
         "companies"
@@ -2400,8 +2762,8 @@
       "platform": "linkedin",
       "resource": "jobs",
       "tool_name": "socq_linkedin_jobs",
-      "title": "Get Linkedin Jobs",
-      "description": "Fetch normalized jobs data from Linkedin.",
+      "title": "LinkedIn Jobs API",
+      "description": "LinkedIn Jobs API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -2505,12 +2867,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.8,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.8,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.linkedin.com/jobs/view/1234567890/"
+          ]
+        }
+      ],
       "tags": [
         "linkedin",
         "jobs"
@@ -2527,8 +2906,8 @@
       "platform": "linkedin",
       "resource": "posts",
       "tool_name": "socq_linkedin_posts",
-      "title": "Get Linkedin Posts",
-      "description": "Fetch normalized posts data from Linkedin.",
+      "title": "LinkedIn Posts API",
+      "description": "LinkedIn Posts API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -2632,12 +3011,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 1,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 1,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.linkedin.com/posts/microsoft_ai-activity-1234567890"
+          ]
+        }
+      ],
       "tags": [
         "linkedin",
         "posts"
@@ -2654,8 +3050,8 @@
       "platform": "linkedin",
       "resource": "profiles",
       "tool_name": "socq_linkedin_profiles",
-      "title": "Get Linkedin Profiles",
-      "description": "Fetch normalized profiles data from Linkedin.",
+      "title": "LinkedIn Profiles API",
+      "description": "LinkedIn Profiles API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -2759,12 +3155,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 2.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 2.5,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.linkedin.com/in/satyanadella/"
+          ]
+        }
+      ],
       "tags": [
         "linkedin",
         "profiles"
@@ -2781,8 +3194,8 @@
       "platform": "pinterest",
       "resource": "pins",
       "tool_name": "socq_pinterest_pins",
-      "title": "Get Pinterest Pins",
-      "description": "Fetch normalized pins data from Pinterest.",
+      "title": "Pinterest Pins API",
+      "description": "Pinterest Pins API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -2886,12 +3299,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.pinterest.com/pin/123456789012345678/"
+          ]
+        }
+      ],
       "tags": [
         "pinterest",
         "pins"
@@ -2908,8 +3338,8 @@
       "platform": "pinterest",
       "resource": "profiles",
       "tool_name": "socq_pinterest_profiles",
-      "title": "Get Pinterest Profiles",
-      "description": "Fetch normalized profiles data from Pinterest.",
+      "title": "Pinterest Profiles API",
+      "description": "Pinterest Profiles API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -3013,12 +3443,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.6,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.6,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.pinterest.com/pinterest/"
+          ]
+        }
+      ],
       "tags": [
         "pinterest",
         "profiles"
@@ -3035,8 +3482,8 @@
       "platform": "pinterest",
       "resource": "search",
       "tool_name": "socq_pinterest_search",
-      "title": "Get Pinterest Search",
-      "description": "Fetch normalized search data from Pinterest.",
+      "title": "Pinterest Search API",
+      "description": "Pinterest Search API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -3141,12 +3588,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.6,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.6,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "home office ideas"
+        }
+      ],
       "tags": [
         "pinterest",
         "search"
@@ -3163,8 +3625,8 @@
       "platform": "pinterest",
       "resource": "user-pins",
       "tool_name": "socq_pinterest_user_pins",
-      "title": "Get Pinterest User Pins",
-      "description": "Fetch normalized user pins data from Pinterest.",
+      "title": "Pinterest User Pins API",
+      "description": "Pinterest User Pins API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -3273,12 +3735,30 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 100,
+          "estimate_result_count_per_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.pinterest.com/pinterest/"
+          ]
+        }
+      ],
       "tags": [
         "pinterest",
         "user-pins"
@@ -3295,8 +3775,8 @@
       "platform": "reddit",
       "resource": "comments",
       "tool_name": "socq_reddit_comments",
-      "title": "Get Reddit Comments",
-      "description": "Fetch normalized comments data from Reddit.",
+      "title": "Reddit Comments API",
+      "description": "Reddit Comments API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -3400,12 +3880,30 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.3,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.3,
+          "estimate_result_count": 100,
+          "estimate_result_count_per_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.reddit.com/r/technology/comments/abc123/example_post/"
+          ]
+        }
+      ],
       "tags": [
         "reddit",
         "comments"
@@ -3422,8 +3920,8 @@
       "platform": "reddit",
       "resource": "posts",
       "tool_name": "socq_reddit_posts",
-      "title": "Get Reddit Posts",
-      "description": "Fetch normalized posts data from Reddit.",
+      "title": "Reddit Posts API",
+      "description": "Reddit Posts API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -3527,12 +4025,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.reddit.com/r/technology/comments/abc123/example_post/"
+          ]
+        }
+      ],
       "tags": [
         "reddit",
         "posts"
@@ -3549,8 +4064,8 @@
       "platform": "reddit",
       "resource": "search",
       "tool_name": "socq_reddit_search",
-      "title": "Get Reddit Search",
-      "description": "Fetch normalized search data from Reddit.",
+      "title": "Reddit Search API",
+      "description": "Reddit Search API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -3659,12 +4174,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.6,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.6,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "AI agents"
+        }
+      ],
       "tags": [
         "reddit",
         "search"
@@ -3681,8 +4211,8 @@
       "platform": "reddit",
       "resource": "subreddit-posts",
       "tool_name": "socq_reddit_subreddit_posts",
-      "title": "Get Reddit Subreddit Posts",
-      "description": "Fetch normalized subreddit posts data from Reddit.",
+      "title": "Reddit Subreddit Posts API",
+      "description": "Reddit Subreddit Posts API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -3795,12 +4325,30 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 100,
+          "estimate_result_count_per_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.reddit.com/r/technology/"
+          ]
+        }
+      ],
       "tags": [
         "reddit",
         "subreddit-posts"
@@ -3817,8 +4365,8 @@
       "platform": "threads",
       "resource": "posts",
       "tool_name": "socq_threads_posts",
-      "title": "Get Threads Posts",
-      "description": "Fetch normalized posts data from Threads.",
+      "title": "Threads Posts API",
+      "description": "Threads Posts API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -3922,12 +4470,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.threads.net/@instagram/post/ABC123/"
+          ]
+        }
+      ],
       "tags": [
         "threads",
         "posts"
@@ -3944,8 +4509,8 @@
       "platform": "threads",
       "resource": "profiles",
       "tool_name": "socq_threads_profiles",
-      "title": "Get Threads Profiles",
-      "description": "Fetch normalized profiles data from Threads.",
+      "title": "Threads Profiles API",
+      "description": "Threads Profiles API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4049,12 +4614,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.6,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.6,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.threads.net/@instagram/"
+          ]
+        }
+      ],
       "tags": [
         "threads",
         "profiles"
@@ -4071,8 +4653,8 @@
       "platform": "threads",
       "resource": "user-posts",
       "tool_name": "socq_threads_user_posts",
-      "title": "Get Threads User Posts",
-      "description": "Fetch normalized user posts data from Threads.",
+      "title": "Threads User Posts API",
+      "description": "Threads User Posts API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4181,12 +4763,30 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 100,
+          "estimate_result_count_per_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.threads.net/@instagram/"
+          ]
+        }
+      ],
       "tags": [
         "threads",
         "user-posts"
@@ -4203,8 +4803,8 @@
       "platform": "tiktok-shop",
       "resource": "product",
       "tool_name": "socq_tiktok_shop_product",
-      "title": "Get TikTok Shop Product",
-      "description": "Fetch normalized product data from TikTok Shop.",
+      "title": "TikTok Shop Product API",
+      "description": "TikTok Shop Product API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4308,12 +4908,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.7,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.7,
+          "estimate_input_field": "url"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "url": "https://www.tiktok.com/shop/pdp/example-product/1234567890123456789"
+        }
+      ],
       "tags": [
         "tiktok-shop",
         "product"
@@ -4330,8 +4945,8 @@
       "platform": "tiktok-shop",
       "resource": "product-reviews",
       "tool_name": "socq_tiktok_shop_product_reviews",
-      "title": "Get TikTok Shop Product Reviews",
-      "description": "Fetch normalized product reviews data from TikTok Shop.",
+      "title": "TikTok Shop Product Reviews API",
+      "description": "TikTok Shop Product Reviews API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4440,12 +5055,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.3,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.3,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "url": "https://www.tiktok.com/shop/pdp/example-product/1234567890123456789"
+        }
+      ],
       "tags": [
         "tiktok-shop",
         "product-reviews"
@@ -4462,8 +5092,8 @@
       "platform": "tiktok-shop",
       "resource": "products",
       "tool_name": "socq_tiktok_shop_products",
-      "title": "Get TikTok Shop Products",
-      "description": "Fetch normalized products data from TikTok Shop.",
+      "title": "TikTok Shop Products API",
+      "description": "TikTok Shop Products API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4576,12 +5206,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.7,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.7,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "url": "https://www.tiktok.com/shop/store/example-store/1234567890123456789"
+        }
+      ],
       "tags": [
         "tiktok-shop",
         "products"
@@ -4598,8 +5243,8 @@
       "platform": "tiktok-shop",
       "resource": "search",
       "tool_name": "socq_tiktok_shop_search",
-      "title": "Get TikTok Shop Search",
-      "description": "Fetch normalized search data from TikTok Shop.",
+      "title": "TikTok Shop Search API",
+      "description": "TikTok Shop Search API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4708,12 +5353,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.7,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.7,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "wireless earbuds"
+        }
+      ],
       "tags": [
         "tiktok-shop",
         "search"
@@ -4730,8 +5390,8 @@
       "platform": "tiktok-shop",
       "resource": "user-showcase",
       "tool_name": "socq_tiktok_shop_user_showcase",
-      "title": "Get TikTok Shop User Showcase",
-      "description": "Fetch normalized user showcase data from TikTok Shop.",
+      "title": "TikTok Shop User Showcase API",
+      "description": "TikTok Shop User Showcase API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4840,12 +5500,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.7,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.7,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "username": "example_creator"
+        }
+      ],
       "tags": [
         "tiktok-shop",
         "user-showcase"
@@ -4862,8 +5537,8 @@
       "platform": "tiktok",
       "resource": "comments",
       "tool_name": "socq_tiktok_comments",
-      "title": "Get Tiktok Comments",
-      "description": "Fetch normalized comments data from Tiktok.",
+      "title": "TikTok Comments API",
+      "description": "TikTok Comments API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4972,12 +5647,30 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.25,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.25,
+          "estimate_result_count": 100,
+          "estimate_result_count_per_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.tiktok.com/@scout2015/video/6718335390845095173"
+          ]
+        }
+      ],
       "tags": [
         "tiktok",
         "comments"
@@ -4994,8 +5687,8 @@
       "platform": "tiktok",
       "resource": "hashtags",
       "tool_name": "socq_tiktok_hashtags",
-      "title": "Get Tiktok Hashtags",
-      "description": "Fetch normalized hashtags data from Tiktok.",
+      "title": "TikTok Hashtags API",
+      "description": "TikTok Hashtags API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -5104,12 +5797,30 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.7,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.7,
+          "estimate_result_count": 100,
+          "estimate_result_count_per_input_field": "hashtags"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "hashtags": [
+            "#travel"
+          ]
+        }
+      ],
       "tags": [
         "tiktok",
         "hashtags"
@@ -5126,8 +5837,8 @@
       "platform": "tiktok",
       "resource": "profiles",
       "tool_name": "socq_tiktok_profiles",
-      "title": "Get Tiktok Profiles",
-      "description": "Fetch normalized profiles data from Tiktok.",
+      "title": "TikTok Profiles API",
+      "description": "TikTok Profiles API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -5231,12 +5942,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.6,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.6,
+          "estimate_input_field": "usernames"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "usernames": [
+            "@tiktok"
+          ]
+        }
+      ],
       "tags": [
         "tiktok",
         "profiles"
@@ -5253,8 +5981,8 @@
       "platform": "tiktok",
       "resource": "search",
       "tool_name": "socq_tiktok_search",
-      "title": "Get Tiktok Search",
-      "description": "Fetch normalized search data from Tiktok.",
+      "title": "TikTok Search API",
+      "description": "TikTok Search API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -5367,12 +6095,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.7,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.7,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "AI tools"
+        }
+      ],
       "tags": [
         "tiktok",
         "search"
@@ -5389,8 +6132,8 @@
       "platform": "tiktok",
       "resource": "videos",
       "tool_name": "socq_tiktok_videos",
-      "title": "Get Tiktok Videos",
-      "description": "Fetch normalized videos data from Tiktok.",
+      "title": "TikTok Videos API",
+      "description": "TikTok Videos API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -5494,12 +6237,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.7,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.7,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.tiktok.com/@scout2015/video/6718335390845095173"
+          ]
+        }
+      ],
       "tags": [
         "tiktok",
         "videos"
@@ -5516,8 +6276,8 @@
       "platform": "x",
       "resource": "posts",
       "tool_name": "socq_x_posts",
-      "title": "Get X Posts",
-      "description": "Fetch normalized posts data from X.",
+      "title": "X Posts API",
+      "description": "X Posts API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -5621,12 +6381,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://x.com/X/status/1234567890123456789"
+          ]
+        }
+      ],
       "tags": [
         "x",
         "posts"
@@ -5643,8 +6420,8 @@
       "platform": "x",
       "resource": "profiles",
       "tool_name": "socq_x_profiles",
-      "title": "Get X Profiles",
-      "description": "Fetch normalized profiles data from X.",
+      "title": "X Profiles API",
+      "description": "X Profiles API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -5748,12 +6525,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.6,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.6,
+          "estimate_input_field": "usernames"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "usernames": [
+            "@X"
+          ]
+        }
+      ],
       "tags": [
         "x",
         "profiles"
@@ -5770,8 +6564,8 @@
       "platform": "x",
       "resource": "search",
       "tool_name": "socq_x_search",
-      "title": "Get X Search",
-      "description": "Fetch normalized search data from X.",
+      "title": "X Search API",
+      "description": "X Search API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -5880,12 +6674,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.7,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.7,
+          "estimate_result_count": 20
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "AI agents"
+        }
+      ],
       "tags": [
         "x",
         "search"
@@ -5902,8 +6711,8 @@
       "platform": "x",
       "resource": "user-posts",
       "tool_name": "socq_x_user_posts",
-      "title": "Get X User Posts",
-      "description": "Fetch normalized user posts data from X.",
+      "title": "X User Posts API",
+      "description": "X User Posts API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6012,12 +6821,30 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 20,
+          "estimate_result_count_per_input_field": "usernames"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "usernames": [
+            "@X"
+          ]
+        }
+      ],
       "tags": [
         "x",
         "user-posts"
@@ -6034,8 +6861,8 @@
       "platform": "youtube",
       "resource": "channel-videos",
       "tool_name": "socq_youtube_channel_videos",
-      "title": "Get Youtube Channel Videos",
-      "description": "Fetch normalized channel videos data from Youtube.",
+      "title": "YouTube Channel Videos API",
+      "description": "YouTube Channel Videos API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6144,12 +6971,30 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 100,
+          "estimate_result_count_per_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.youtube.com/@YouTube"
+          ]
+        }
+      ],
       "tags": [
         "youtube",
         "channel-videos"
@@ -6166,8 +7011,8 @@
       "platform": "youtube",
       "resource": "channels",
       "tool_name": "socq_youtube_channels",
-      "title": "Get Youtube Channels",
-      "description": "Fetch normalized channels data from Youtube.",
+      "title": "YouTube Channels API",
+      "description": "YouTube Channels API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6271,12 +7116,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.26,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.26,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.youtube.com/@YouTube"
+          ]
+        }
+      ],
       "tags": [
         "youtube",
         "channels"
@@ -6293,8 +7155,8 @@
       "platform": "youtube",
       "resource": "comments",
       "tool_name": "socq_youtube_comments",
-      "title": "Get Youtube Comments",
-      "description": "Fetch normalized comments data from Youtube.",
+      "title": "YouTube Comments API",
+      "description": "YouTube Comments API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6407,12 +7269,30 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.3,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.3,
+          "estimate_result_count": 100,
+          "estimate_result_count_per_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          ]
+        }
+      ],
       "tags": [
         "youtube",
         "comments"
@@ -6429,8 +7309,8 @@
       "platform": "youtube",
       "resource": "search",
       "tool_name": "socq_youtube_search",
-      "title": "Get Youtube Search",
-      "description": "Fetch normalized search data from Youtube.",
+      "title": "YouTube Search API",
+      "description": "YouTube Search API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6550,12 +7430,27 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 100
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "AI agents tutorial"
+        }
+      ],
       "tags": [
         "youtube",
         "search"
@@ -6572,8 +7467,8 @@
       "platform": "youtube",
       "resource": "shorts",
       "tool_name": "socq_youtube_shorts",
-      "title": "Get Youtube Shorts",
-      "description": "Fetch normalized shorts data from Youtube.",
+      "title": "YouTube Shorts API",
+      "description": "YouTube Shorts API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6682,12 +7577,30 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 100,
+          "estimate_result_count_per_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.youtube.com/@YouTube"
+          ]
+        }
+      ],
       "tags": [
         "youtube",
         "shorts"
@@ -6704,8 +7617,8 @@
       "platform": "youtube",
       "resource": "transcripts",
       "tool_name": "socq_youtube_transcripts",
-      "title": "Get Youtube Transcripts",
-      "description": "Fetch normalized transcripts data from Youtube.",
+      "title": "YouTube Transcripts API",
+      "description": "YouTube Transcripts API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6813,12 +7726,30 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          ],
+          "language": "en"
+        }
+      ],
       "tags": [
         "youtube",
         "transcripts"
@@ -6835,8 +7766,8 @@
       "platform": "youtube",
       "resource": "videos",
       "tool_name": "socq_youtube_videos",
-      "title": "Get Youtube Videos",
-      "description": "Fetch normalized videos data from Youtube.",
+      "title": "YouTube Videos API",
+      "description": "YouTube Videos API",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6940,12 +7871,29 @@
         }
       },
       "billing": {
+        "mode": "base_plus_result",
         "credits": null,
-        "unit": "request",
-        "config": {},
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {
+          "mode": "base_plus_result",
+          "allow_overage": 1,
+          "result_unit_size": 1,
+          "empty_result_policy": "base_only",
+          "result_unit_credits": 0.5,
+          "estimate_input_field": "urls"
+        },
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          ]
+        }
+      ],
       "tags": [
         "youtube",
         "videos"
