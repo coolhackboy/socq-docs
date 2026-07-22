@@ -1,5 +1,5 @@
 {
-  "schema_version": "v1-f704ad7a3630",
+  "schema_version": "v1-57489840196e",
   "platforms": [
     {
       "platform": "facebook",
@@ -1411,7 +1411,7 @@
           },
           "results_limit": {
             "type": "integer",
-            "minimum": 1,
+            "minimum": 7,
             "maximum": 2000
           }
         },
@@ -1549,7 +1549,7 @@
         "properties": {
           "results_limit": {
             "type": "integer",
-            "minimum": 1,
+            "minimum": 3,
             "maximum": 2000
           },
           "sort_by": {
@@ -2858,7 +2858,7 @@
           },
           "results_limit": {
             "type": "integer",
-            "minimum": 1,
+            "minimum": 10,
             "maximum": 2000
           }
         },
@@ -7788,7 +7788,7 @@
           },
           "results_limit": {
             "type": "integer",
-            "minimum": 1,
+            "minimum": 4,
             "maximum": 2000
           }
         },
@@ -9103,7 +9103,7 @@
         "properties": {
           "results_limit": {
             "type": "integer",
-            "minimum": 1,
+            "minimum": 10,
             "maximum": 2000
           },
           "urls": {
