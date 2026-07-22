@@ -1,0 +1,22 @@
+---
+title: "Instagram Following"
+description: "Collect public profiles followed by Instagram accounts."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/following"
+---
+
+# Instagram Following
+
+```json
+{"usernames": ["instagram"], "results_limit": 100}
+```
+
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/instagram/following` |
+| Compact MCP | `socq_execute` with `endpoint: "instagram/following"` |
+| Typed MCP | `socq_instagram_following` |
+| CLI | `socq instagram following` |
+
+Only relationships visible for public profiles can be returned.

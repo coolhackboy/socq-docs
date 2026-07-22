@@ -97,7 +97,13 @@
               "api-manual/instagram/comments",
               "api-manual/instagram/reels",
               "api-manual/instagram/search",
-              "api-manual/instagram/followers-count"
+              "api-manual/instagram/followers-count",
+              "api-manual/instagram/profiles",
+              "api-manual/instagram/transcripts",
+              "api-manual/instagram/hashtag-posts",
+              "api-manual/instagram/followers",
+              "api-manual/instagram/following",
+              "api-manual/instagram/tagged-posts"
             ]
           },
           {
@@ -106,7 +112,10 @@
               "api-manual/facebook/overview",
               "api-manual/facebook/pages",
               "api-manual/facebook/posts",
-              "api-manual/facebook/comments"
+              "api-manual/facebook/comments",
+              "api-manual/facebook/transcripts",
+              "api-manual/facebook/group-posts",
+              "api-manual/facebook/events-search"
             ]
           },
           {
@@ -138,7 +147,8 @@
               "api-manual/youtube/comments",
               "api-manual/youtube/shorts",
               "api-manual/youtube/search",
-              "api-manual/youtube/transcripts"
+              "api-manual/youtube/transcripts",
+              "api-manual/youtube/playlist-videos"
             ]
           },
           {
@@ -149,7 +159,10 @@
               "api-manual/tiktok/videos",
               "api-manual/tiktok/comments",
               "api-manual/tiktok/search",
-              "api-manual/tiktok/hashtags"
+              "api-manual/tiktok/hashtags",
+              "api-manual/tiktok/transcripts",
+              "api-manual/tiktok/live-room-info",
+              "api-manual/tiktok/trending-feed"
             ]
           },
           {

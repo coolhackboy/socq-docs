@@ -1,0 +1,24 @@
+---
+title: "YouTube Playlist Videos"
+description: "Collect videos from public YouTube playlists."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/youtube/playlist-videos"
+---
+
+# YouTube Playlist Videos
+
+Collect normalized video records from one or more public playlists.
+
+```json
+{"urls": ["https://www.youtube.com/playlist?list=PLAYLIST_ID"], "results_limit": 100}
+```
+
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/youtube/playlist-videos` |
+| Compact MCP | `socq_execute` with `endpoint: "youtube/playlist-videos"` |
+| Typed MCP | `socq_youtube_playlist_videos` |
+| CLI | `socq youtube playlist-videos` |
+
+Playlist IDs may be passed directly in `urls`. Results include playlist context under `extra`.

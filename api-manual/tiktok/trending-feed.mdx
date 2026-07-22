@@ -1,0 +1,22 @@
+---
+title: "TikTok Trending Feed"
+description: "Collect trending public videos for a region."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/trending-feed"
+---
+
+# TikTok Trending Feed
+
+```json
+{"region": "US", "results_limit": 20}
+```
+
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/tiktok/trending-feed` |
+| Compact MCP | `socq_execute` with `endpoint: "tiktok/trending-feed"` |
+| Typed MCP | `socq_tiktok_trending_feed` |
+| CLI | `socq tiktok trending-feed` |
+
+`region` is a two-letter region code used to localize feed availability.

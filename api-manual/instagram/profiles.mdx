@@ -1,0 +1,22 @@
+---
+title: "Instagram Profiles"
+description: "Collect public Instagram profile metadata and statistics."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/profiles"
+---
+
+# Instagram Profiles
+
+```json
+{"usernames": ["instagram", "natgeo"]}
+```
+
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/instagram/profiles` |
+| Compact MCP | `socq_execute` with `endpoint: "instagram/profiles"` |
+| Typed MCP | `socq_instagram_profiles` |
+| CLI | `socq instagram profiles` |
+
+Results include biography, profile links, verification status, and follower, following, and post counts.

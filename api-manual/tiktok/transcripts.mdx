@@ -1,0 +1,22 @@
+---
+title: "TikTok Video Transcripts"
+description: "Extract transcripts from public TikTok videos."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/transcripts"
+---
+
+# TikTok Video Transcripts
+
+```json
+{"urls": ["https://www.tiktok.com/@creator/video/VIDEO_ID"], "language": "en"}
+```
+
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/tiktok/transcripts` |
+| Compact MCP | `socq_execute` with `endpoint: "tiktok/transcripts"` |
+| Typed MCP | `socq_tiktok_transcripts` |
+| CLI | `socq tiktok transcripts` |
+
+`language` is optional. Videos without available speech or captions may return no result.

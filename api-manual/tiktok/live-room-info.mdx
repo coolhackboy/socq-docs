@@ -1,0 +1,22 @@
+---
+title: "TikTok Live Room Info"
+description: "Collect public live room status and audience metrics."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/live-room-info"
+---
+
+# TikTok Live Room Info
+
+```json
+{"room_id": "7523685855395842871", "user_id": "6742945285876515845"}
+```
+
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/tiktok/live-room-info` |
+| Compact MCP | `socq_execute` with `endpoint: "tiktok/live-room-info"` |
+| Typed MCP | `socq_tiktok_live_room_info` |
+| CLI | `socq tiktok live-room-info` |
+
+The result includes live status, title, cover image, owner, viewer count, and like count.

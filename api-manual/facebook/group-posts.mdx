@@ -1,0 +1,22 @@
+---
+title: "Facebook Group Posts"
+description: "Collect posts from public Facebook groups."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook/group-posts"
+---
+
+# Facebook Group Posts
+
+```json
+{"urls": ["https://www.facebook.com/groups/GROUP_ID/"], "results_limit": 30, "sort_by": "recent_activity"}
+```
+
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/facebook/group-posts` |
+| Compact MCP | `socq_execute` with `endpoint: "facebook/group-posts"` |
+| Typed MCP | `socq_facebook_group_posts` |
+| CLI | `socq facebook group-posts` |
+
+`sort_by` accepts `top_posts`, `recent_activity`, `chronological`, or `chronological_listings`.

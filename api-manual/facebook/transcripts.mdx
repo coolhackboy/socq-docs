@@ -1,0 +1,22 @@
+---
+title: "Facebook Video Transcripts"
+description: "Extract transcripts from public Facebook videos and reels."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook/transcripts"
+---
+
+# Facebook Video Transcripts
+
+```json
+{"urls": ["https://www.facebook.com/reel/VIDEO_ID"]}
+```
+
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/facebook/transcripts` |
+| Compact MCP | `socq_execute` with `endpoint: "facebook/transcripts"` |
+| Typed MCP | `socq_facebook_transcripts` |
+| CLI | `socq facebook transcripts` |
+
+Each available transcript is returned as normalized plain text.

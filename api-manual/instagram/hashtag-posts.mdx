@@ -1,0 +1,22 @@
+---
+title: "Instagram Hashtag Posts"
+description: "Collect public Instagram posts matching hashtags."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/hashtag-posts"
+---
+
+# Instagram Hashtag Posts
+
+```json
+{"hashtags": ["#travel"], "results_limit": 20, "published_within": "week", "media_type": "all"}
+```
+
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/instagram/hashtag-posts` |
+| Compact MCP | `socq_execute` with `endpoint: "instagram/hashtag-posts"` |
+| Typed MCP | `socq_instagram_hashtag_posts` |
+| CLI | `socq instagram hashtag-posts` |
+
+`published_within` accepts `hour`, `day`, `week`, `month`, or `year`; `media_type` accepts `all` or `reels`.

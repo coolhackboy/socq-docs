@@ -1,6 +1,6 @@
 ---
 title: "TikTok"
-description: "Collect public TikTok profile, video, comment, search, and hashtag data."
+description: "Collect public TikTok profiles, videos, transcripts, live rooms, trending feeds, comments, search, and hashtags."
 icon: "tiktok"
 iconType: "brands"
 ---
@@ -16,6 +16,9 @@ TikTok endpoints use the same asynchronous task flow as the other Agent APIs.
 | Comments | `POST` | `/v1/tiktok/comments` |
 | Search | `POST` | `/v1/tiktok/search` |
 | Hashtags | `POST` | `/v1/tiktok/hashtags` |
+| Video Transcripts | `POST` | `/v1/tiktok/transcripts` |
+| Live Room Info | `POST` | `/v1/tiktok/live-room-info` |
+| Trending Feed | `POST` | `/v1/tiktok/trending-feed` |
 
 Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}`. Successful task responses include normalized records under `results`.
 

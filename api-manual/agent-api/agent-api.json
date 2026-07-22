@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-063d1c96173a",
+    "version": "v1-f704ad7a3630",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -558,6 +558,128 @@
         }
       }
     },
+    "/v1/facebook/events-search": {
+      "post": {
+        "operationId": "socq_facebook_events_search",
+        "summary": "Facebook Events Search API",
+        "description": "Search public Facebook events by keyword.",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/group-posts": {
+      "post": {
+        "operationId": "socq_facebook_group_posts",
+        "summary": "Facebook Group Posts API",
+        "description": "Collect posts from public Facebook groups.",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/facebook/pages": {
       "post": {
         "operationId": "socq_facebook_pages",
@@ -746,6 +868,62 @@
         }
       }
     },
+    "/v1/facebook/transcripts": {
+      "post": {
+        "operationId": "socq_facebook_transcripts",
+        "summary": "Facebook Video Transcripts API",
+        "description": "Extract transcripts from public Facebook videos and reels.",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/instagram/comments": {
       "post": {
         "operationId": "socq_instagram_comments",
@@ -787,6 +965,67 @@
                 },
                 "required": [
                   "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/followers": {
+      "post": {
+        "operationId": "socq_instagram_followers",
+        "summary": "Instagram Followers API",
+        "description": "Collect public profiles from an Instagram account follower list.",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public account usernames."
+                  }
+                },
+                "required": [
+                  "usernames"
                 ]
               }
             }
@@ -900,6 +1139,136 @@
         }
       }
     },
+    "/v1/instagram/following": {
+      "post": {
+        "operationId": "socq_instagram_following",
+        "summary": "Instagram Following API",
+        "description": "Collect public profiles followed by an Instagram account.",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public account usernames."
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/hashtag-posts": {
+      "post": {
+        "operationId": "socq_instagram_hashtag_posts",
+        "summary": "Instagram Hashtag Posts API",
+        "description": "Collect public Instagram posts matching a hashtag.",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "hashtags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Hashtags with or without the # prefix."
+                  },
+                  "media_type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "published_within": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000
+                  }
+                },
+                "required": [
+                  "hashtags"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/instagram/posts": {
       "post": {
         "operationId": "socq_instagram_posts",
@@ -975,6 +1344,62 @@
                       "usernames"
                     ]
                   }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/profiles": {
+      "post": {
+        "operationId": "socq_instagram_profiles",
+        "summary": "Instagram Profiles API",
+        "description": "Collect public Instagram profile metadata and statistics.",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public account usernames."
+                  }
+                },
+                "required": [
+                  "usernames"
                 ]
               }
             }
@@ -1163,6 +1588,123 @@
                       "usernames"
                     ]
                   }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/tagged-posts": {
+      "post": {
+        "operationId": "socq_instagram_tagged_posts",
+        "summary": "Instagram Tagged Posts API",
+        "description": "Collect public posts that tag an Instagram profile.",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public account usernames."
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/transcripts": {
+      "post": {
+        "operationId": "socq_instagram_transcripts",
+        "summary": "Instagram Transcripts API",
+        "description": "Extract transcripts from public Instagram posts and reels.",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
                 ]
               }
             }
@@ -2473,6 +3015,64 @@
         }
       }
     },
+    "/v1/tiktok/live-room-info": {
+      "post": {
+        "operationId": "socq_tiktok_live_room_info",
+        "summary": "TikTok Live Room Info API",
+        "description": "Collect public TikTok live room metadata and audience metrics.",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "room_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public live room identifier."
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account identifier."
+                  }
+                },
+                "required": [
+                  "room_id",
+                  "user_id"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tiktok/profiles": {
       "post": {
         "operationId": "socq_tiktok_profiles",
@@ -2575,6 +3175,122 @@
                 },
                 "required": [
                   "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/transcripts": {
+      "post": {
+        "operationId": "socq_tiktok_transcripts",
+        "summary": "TikTok Video Transcripts API",
+        "description": "Extract transcripts from public TikTok videos.",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "language": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/trending-feed": {
+      "post": {
+        "operationId": "socq_tiktok_trending_feed",
+        "summary": "TikTok Trending Feed API",
+        "description": "Collect trending TikTok videos for a region.",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "region": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000
+                  }
+                },
+                "required": [
+                  "region"
                 ]
               }
             }
@@ -3034,6 +3750,67 @@
                   "sort_by": {
                     "type": "string",
                     "minLength": 1
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/playlist-videos": {
+      "post": {
+        "operationId": "socq_youtube_playlist_videos",
+        "summary": "YouTube Playlist Videos API",
+        "description": "Collect videos from a public YouTube playlist.",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000
                   },
                   "urls": {
                     "type": "array",

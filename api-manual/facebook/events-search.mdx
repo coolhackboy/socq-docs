@@ -1,0 +1,22 @@
+---
+title: "Facebook Events Search"
+description: "Search public Facebook events by keyword."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook/events-search"
+---
+
+# Facebook Events Search
+
+```json
+{"query": "technology conference", "results_limit": 20}
+```
+
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/facebook/events-search` |
+| Compact MCP | `socq_execute` with `endpoint: "facebook/events-search"` |
+| Typed MCP | `socq_facebook_events_search` |
+| CLI | `socq facebook events-search` |
+
+Results include event identity, schedule text, place, attendance metrics, and cover media when available.
