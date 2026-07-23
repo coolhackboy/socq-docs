@@ -74,6 +74,16 @@
       zh: "获取 API Key",
     },
   ];
+  const navbarLogos = [
+    {
+      alt: "light logo",
+      src: "/assets/socq-logo-light.png",
+    },
+    {
+      alt: "dark logo",
+      src: "/assets/socq-logo-dark.png",
+    },
+  ];
   let navbarSyncQueued = false;
   const getLocale = () =>
     window.location.pathname === "/zh" ||
@@ -84,6 +94,15 @@
   const syncNavbarLocale = () => {
     navbarSyncQueued = false;
     const locale = getLocale();
+
+    navbarLogos.forEach(({ alt, src }) => {
+      document.querySelectorAll(`#navbar img[alt="${alt}"]`).forEach((logo) => {
+        if (logo.getAttribute("src") !== src) {
+          logo.removeAttribute("srcset");
+          logo.src = src;
+        }
+      });
+    });
 
     navbarLabels.forEach((labels) => {
       document
