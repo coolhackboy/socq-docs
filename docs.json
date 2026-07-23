@@ -77,6 +77,24 @@
       "api-manual/agent-api/agent-api.json"
     ]
   },
+  "redirects": [
+    {
+      "source": "/integrations/async-tasks",
+      "destination": "/integrations/tasks-results"
+    },
+    {
+      "source": "/integrations/pagination-files",
+      "destination": "/integrations/tasks-results"
+    },
+    {
+      "source": "/integrations/billing-limits",
+      "destination": "/api-manual/agent-api/overview"
+    },
+    {
+      "source": "/integrations/claude-code",
+      "destination": "/integrations/claude-desktop"
+    }
+  ],
   "navigation": {
     "tabs": [
       {
@@ -260,12 +278,10 @@
             ]
           },
           {
-            "group": "Workflows",
+            "group": "Guides",
             "pages": [
               "integrations/mcp-filtering",
-              "integrations/async-tasks",
-              "integrations/pagination-files",
-              "integrations/billing-limits",
+              "integrations/tasks-results",
               "integrations/troubleshooting"
             ]
           }

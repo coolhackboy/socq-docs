@@ -1,0 +1,71 @@
+---
+title: "Tasks and results"
+description: "Wait for SocQ tasks, retry safely, and read normalized or raw results."
+icon: "clock"
+---
+
+# Tasks and results
+
+Every SocQ collection runs as a background task:
+
+```text
+submit -> task_id -> queued -> running -> succeeded
+                                   \-> failed
+```
+
+Compact MCP submits through `socq_execute`; typed MCP submits through a tool such as `socq_youtube_comments`. Both return the same task model.
+
+## Wait for a task
+
+MCP waits zero seconds by default. Set `wait_seconds` on `socq_execute`, or `_wait_seconds` on a typed tool, to wait for up to 30 seconds.
+
+If the task remains `queued` or `running`, keep its ID and call `socq_get_task`:
+
+```json
+{
+  "task_id": "TASK_ID",
+  "limit": 100
+}
+```
+
+The CLI can poll the same task without holding an API request open:
+
+```bash
+socq task wait TASK_ID --timeout 180
+```
+
+<Warning>
+  A client-side timeout does not cancel the SocQ task. Resume with the same task ID instead of submitting and paying for a duplicate collection.
+</Warning>
+
+## Retry a submission safely
+
+Use an idempotency key when a network or client failure might trigger a submission retry. The same user, key, endpoint, and input return the original task; reusing the key with different input returns a conflict.
+
+```json
+{
+  "endpoint": "youtube/comments",
+  "input": {
+    "urls": ["https://www.youtube.com/watch?v=VIDEO_ID"]
+  },
+  "idempotency_key": "youtube-comments-research-20260721"
+}
+```
+
+## Read normalized results
+
+Successful tasks return normalized records in `results.items`. MCP pages default to 25 items and accept at most 100.
+
+When `has_more` is true, pass `next_cursor` unchanged to the next `socq_get_task` call. Stop when the cursor is null or your requested research limit has been reached.
+
+## Download raw files
+
+Use `socq_get_files` or the CLI to retrieve raw JSONL exports:
+
+```bash
+socq task files TASK_ID
+```
+
+File URLs may expire. Raw files preserve provider detail, while paginated task results use SocQ's normalized schema.
+
+For task status and response fields, see [Task status and results](/api-manual/agent-api/status) and [Result files](/api-manual/agent-api/files).

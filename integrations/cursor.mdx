@@ -11,7 +11,8 @@ The stdio bridge is the most portable Cursor configuration and works without a s
 ## Prerequisites
 
 - Node.js 20 or later;
-- a SocQ API key.
+- a SocQ API key;
+- a current Cursor release with MCP support.
 
 ## Configure
 
@@ -31,7 +32,15 @@ Open Cursor's MCP settings, add a local server, and use:
 }
 ```
 
-For a smaller typed toolset:
+<Warning>
+  This local configuration contains a credential. Do not commit or share it.
+</Warning>
+
+If your Cursor version supports authenticated Streamable HTTP with environment-backed bearer tokens, it can connect to `https://api.socq.ai/mcp` directly. Keep the stdio configuration when remote authentication is unavailable.
+
+## Limit the tool list
+
+To expose typed YouTube tools, change the server name and arguments:
 
 ```json
 {
@@ -47,18 +56,20 @@ For a smaller typed toolset:
 }
 ```
 
-Do not commit a configuration containing a real API key.
+See [Choose MCP tools](/integrations/mcp-filtering) for mode selection and filtering limits.
 
 ## Verify
 
 Restart the SocQ MCP server in Cursor, then ask:
 
 ```text
-Use SocQ to check my account, list the available YouTube tools, and collect
-the latest 20 comments from this video:
+Use SocQ to check my account, then collect the latest 20 comments from this
+YouTube video. Wait for the task to finish and return the results as a table:
 https://www.youtube.com/watch?v=VIDEO_ID
 ```
 
-The server is connected when Cursor discovers the tools and `socq_account` succeeds. A collection returning `task_id` is expected; Cursor should continue with `socq_get_task`.
+The connection is working when Cursor discovers the SocQ tools, calls `socq_account`, submits the collection, and reads the returned task with `socq_get_task`.
 
-If your Cursor version supports authenticated Streamable HTTP with environment-backed bearer tokens, it can connect to `https://api.socq.ai/mcp` directly. Keep the stdio configuration when remote authentication is unavailable.
+## Troubleshoot
+
+Restart the server after configuration changes so Cursor refreshes the tool list. See [Troubleshooting integrations](/integrations/troubleshooting) for authentication, missing-tool, and task errors.

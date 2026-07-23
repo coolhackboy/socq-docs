@@ -28,3 +28,11 @@ Agent API errors use a consistent response envelope.
 | `404` | Endpoint feature or task not found |
 | `429` | Rate limit or credit limit exceeded |
 | `500` | Task submission failed |
+
+## Handle limit errors
+
+A `402` response means the account does not have enough credits for the request.
+
+A `429` response may indicate either a requests-per-minute limit or an hourly or daily credit limit on the API key. Respect `Retry-After` when it is present and wait for the applicable window before retrying. Reducing `results_limit` can lower the required credits, but does not bypass request-rate limits.
+
+Do not retry blindly. If submission may have succeeded before a client or network timeout, query the existing task ID or retry with an idempotency key to avoid duplicate charges.

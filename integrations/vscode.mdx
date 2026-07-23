@@ -12,7 +12,7 @@ VS Code stores MCP server definitions in `mcp.json`. Use a user-level configurat
 
 - Node.js 20 or later;
 - a SocQ API key;
-- a VS Code chat setup with MCP support.
+- a current VS Code chat setup with MCP support.
 
 ## Configure
 
@@ -41,18 +41,36 @@ Run **MCP: Open User Configuration** from the Command Palette and add:
 }
 ```
 
-VS Code prompts for the key when the server starts and stores the input for later use. Avoid hardcoding the key in a workspace file.
+VS Code prompts for the key when the server starts and securely stores the input for later use.
 
-## Start and verify
+<Warning>
+  Avoid hardcoding the API key in a workspace file or committing it to source control.
+</Warning>
+
+## Limit the tool list
+
+To expose typed YouTube tools, change the bridge arguments to:
+
+```json
+"args": ["-y", "@socq/mcp", "--platforms", "youtube"]
+```
+
+See [Choose MCP tools](/integrations/mcp-filtering) for mode selection and filtering limits.
+
+## Verify
 
 Start or restart `socq` from **MCP: List Servers**, approve the server trust prompt, then ask:
 
 ```text
-Use SocQ to check my account and collect the latest 20 comments from this
-YouTube video. Wait for the task and show the results:
+Use SocQ to check my account, then collect the latest 20 comments from this
+YouTube video. Wait for the task to finish and return the results as a table:
 https://www.youtube.com/watch?v=VIDEO_ID
 ```
 
-Use **MCP: List Servers → Show Output** when the process does not start or tools are missing.
+The connection is working when VS Code discovers the SocQ tools, calls `socq_account`, submits the collection, and reads the returned task with `socq_get_task`.
+
+## Troubleshoot
+
+Use **MCP: List Servers → Show Output** when the process does not start or tools are missing. See [Troubleshooting integrations](/integrations/troubleshooting) for authentication, missing-tool, and task errors.
 
 See the official VS Code guides for [adding MCP servers](https://code.visualstudio.com/docs/agent-customization/mcp-servers) and the [`mcp.json` configuration reference](https://code.visualstudio.com/docs/agents/reference/mcp-configuration).

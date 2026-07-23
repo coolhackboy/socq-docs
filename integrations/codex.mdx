@@ -8,7 +8,12 @@ icon: "code"
 
 Codex CLI and the IDE extension read MCP configuration from `~/.codex/config.toml`. A trusted project can also provide `.codex/config.toml`.
 
-## Configure remote MCP
+## Prerequisites
+
+- a SocQ API key;
+- Codex CLI or the Codex IDE extension.
+
+## Configure
 
 Set `SOCQ_API_KEY` in the environment before starting Codex, then add:
 
@@ -19,7 +24,15 @@ bearer_token_env_var = "SOCQ_API_KEY"
 tool_timeout_sec = 45
 ```
 
-For typed YouTube tools:
+Restart or begin a new Codex session after changing the configuration.
+
+<Warning>
+  Keep the API key in the environment. Do not put it in the MCP URL or commit it to a project configuration.
+</Warning>
+
+## Limit the tool list
+
+To expose typed YouTube tools, use a filtered MCP URL:
 
 ```toml
 [mcp_servers.socq_youtube]
@@ -28,7 +41,7 @@ bearer_token_env_var = "SOCQ_API_KEY"
 tool_timeout_sec = 45
 ```
 
-Codex supports `url` for Streamable HTTP MCP servers and `bearer_token_env_var` for environment-backed bearer authentication. Restart or begin a new Codex session after changing the configuration.
+See [Choose MCP tools](/integrations/mcp-filtering) for mode selection and filtering limits.
 
 ## Verify
 
@@ -36,20 +49,24 @@ Ask Codex:
 
 ```text
 Use SocQ to check my account, then collect the latest 20 comments from this
-YouTube video. Wait for the task and return the results as a table:
+YouTube video. Wait for the task to finish and return the results as a table:
 https://www.youtube.com/watch?v=VIDEO_ID
 ```
 
-The connection is working when Codex can call `socq_account`, submit the collection, and read the returned task with `socq_get_task`.
+The connection is working when Codex discovers the SocQ tools, calls `socq_account`, submits the collection, and reads the returned task with `socq_get_task`.
 
 ## Add workflow guidance
 
-Install the `socq-social-research` Skill to add endpoint selection, billing, polling, pagination, and cross-platform research guidance:
+Install the `socq-social-research` Skill for endpoint selection, cost awareness, polling, pagination, and cross-platform research guidance:
 
 ```bash
 npx skills add socq-ai/socq-devtools
 ```
 
 The Skill complements MCP; it does not replace the server. See [Agent Skill](/integrations/skill).
+
+## Troubleshoot
+
+Begin a new session after configuration changes so Codex refreshes the tool list. See [Troubleshooting integrations](/integrations/troubleshooting) for authentication, missing-tool, and task errors.
 
 See the official Codex [`config.toml` reference](https://learn.chatgpt.com/docs/config-file/config-reference#configtoml) for current MCP configuration fields.

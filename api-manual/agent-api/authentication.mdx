@@ -14,6 +14,16 @@ Content-Type: application/json
 
 Use the same header for submit, task status, result, and file endpoints.
 
+## API-key limits
+
+API-key controls apply identically to REST, MCP, and CLI requests. A key may have:
+
+- an IP allowlist;
+- requests-per-minute limits;
+- hourly or daily credit limits.
+
+These controls are independent of the account's available credits. A request can therefore be rejected even when the account has sufficient balance.
+
 ## Unauthorized Response
 
 ```json
@@ -26,3 +36,4 @@ Use the same header for submit, task status, result, and file endpoints.
 }
 ```
 
+An IP allowlist rejection returns `403`. Rate or credit-window limits return `429`; see [Errors](/api-manual/agent-api/errors) for retry guidance.

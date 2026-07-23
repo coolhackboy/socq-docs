@@ -91,6 +91,8 @@ Input fields are sent directly in the JSON body.
 
 `callback_url` is optional. If provided, SocQ sends a POST request after the task reaches a terminal state. See [Callbacks](/api-manual/agent-api/callbacks) for the payload shape.
 
+Direct REST submissions default to `request_source="rest"`. Agent Skills using REST as a fallback send `X-Socq-Source: skill-rest`; the value is returned by the task detail endpoint for attribution.
+
 ## Use the same endpoint through MCP or CLI
 
 Every REST collection endpoint has a stable endpoint ID, typed MCP tool, and CLI command. The JSON request fields remain the same:
@@ -129,3 +131,10 @@ agent-results/{task_id}/raw_jsonl.jsonl.gz
 ## Billing
 
 Agent APIs are billed by returned result record. The submit request may reserve credits from `results_limit` or the number of submitted URLs/usernames; after the task finishes, SocQ settles the final charge from the actual `result_count` and returns any unused reserved credits. Comments endpoints do not accept `results_limit` and are billed from the actual number of comments returned.
+
+Each capability entry exposes its current billing unit and credit price. Before a large collection, check the capability entry and use the account tool for your interface:
+
+- MCP: `socq_account`
+- CLI: `socq account`
+
+A `402` response means the account has insufficient credits. API-key credit and request limits are independent of the account balance; see [Authentication](/api-manual/agent-api/authentication) and [Errors](/api-manual/agent-api/errors).

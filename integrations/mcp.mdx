@@ -6,11 +6,7 @@ icon: "server"
 
 # MCP quickstart
 
-Use SocQ MCP to call social-data collection APIs from Claude, Cursor, Codex, VS Code, or another MCP-compatible client. You describe the data you need; the client selects a SocQ tool, submits the collection, and reads the result.
-
-<Info>
-  You normally do not send MCP JSON-RPC requests yourself. Configure the server once, then ask your AI client in natural language.
-</Info>
+Use SocQ MCP to collect social data from Claude, Cursor, Codex, VS Code, or another MCP-compatible client. Configure the server once, then describe the data you need in natural language.
 
 ## Before you start
 
@@ -20,7 +16,7 @@ You need:
 - an MCP-compatible client;
 - Node.js 20 or later only when using the stdio bridge.
 
-Store the key in `SOCQ_API_KEY` rather than putting it in a URL or committed configuration. See [Integration authentication](/integrations/authentication).
+Keep the key out of URLs and committed configuration. See [Integration authentication](/integrations/authentication).
 
 ## Connect SocQ
 
@@ -29,138 +25,28 @@ Choose the transport supported by your client:
 | Transport | Configuration | Best for |
 | --- | --- | --- |
 | Remote MCP | `https://api.socq.ai/mcp` | Clients that support authenticated Streamable HTTP |
-| stdio bridge | `npx -y @socq/mcp` | Claude Desktop and other local stdio-only clients |
+| stdio bridge | `npx -y @socq/mcp` | Clients that run local stdio servers |
 
-Use the client-specific setup guide:
-
-- [Claude Desktop](/integrations/claude-desktop)
-- [Cursor](/integrations/cursor)
-- [Codex](/integrations/codex)
-- [VS Code](/integrations/vscode)
+For the exact configuration, use the guide for [Claude](/integrations/claude-desktop), [Cursor](/integrations/cursor), [Codex](/integrations/codex), or [VS Code](/integrations/vscode).
 
 ## Complete your first collection
 
-The following example collects YouTube comments and shows the complete asynchronous flow.
-
-<Steps>
-  <Step title="Ask for the data">
-    Send this prompt after SocQ is connected:
-
-    ```text
-    Collect the latest 100 comments from this YouTube video.
-    Wait for the task to finish, then return the comment text, author,
-    published time, and like count:
-    https://www.youtube.com/watch?v=VIDEO_ID
-    ```
-  </Step>
-
-  <Step title="The client submits the collection">
-    On the default MCP URL, the client calls `socq_execute`:
-
-    ```json
-    {
-      "endpoint": "youtube/comments",
-      "input": {
-        "urls": ["https://www.youtube.com/watch?v=VIDEO_ID"],
-        "results_limit": 100,
-        "sort_by": "newest"
-      },
-      "wait_seconds": 30,
-      "result_limit": 25
-    }
-    ```
-
-    `endpoint` is the REST resource path without `/v1/`. The REST JSON request body goes inside `input`.
-  </Step>
-
-  <Step title="SocQ returns a task ID">
-    Every collection is asynchronous. A successful submission returns a task such as:
-
-    ```json
-    {
-      "task_id": "TASK_ID",
-      "status": "running"
-    }
-    ```
-
-    A `task_id` means the collection was accepted; it does not mean the final records are ready.
-  </Step>
-
-  <Step title="The client checks the task">
-    If the task is still queued or running, the client calls `socq_get_task` with the same ID:
-
-    ```json
-    {
-      "task_id": "TASK_ID",
-      "limit": 100
-    }
-    ```
-
-    Keep checking the existing task instead of submitting the collection again.
-  </Step>
-
-  <Step title="Read the collected records">
-    When `status` is `succeeded`, normalized records are available in `results.items`:
-
-    ```json
-    {
-      "status": "succeeded",
-      "results": {
-        "items": [],
-        "next_cursor": null,
-        "has_more": false
-      }
-    }
-    ```
-
-    When `has_more` is true, pass `next_cursor` unchanged to the next `socq_get_task` call.
-  </Step>
-</Steps>
-
-## How REST APIs map to MCP
-
-Every collection capability has one stable endpoint ID and one typed MCP tool name:
-
-| Interface | YouTube comments example |
-| --- | --- |
-| REST API | `POST /v1/youtube/comments` |
-| Endpoint ID | `youtube/comments` |
-| Compact MCP | `socq_execute` with `endpoint: "youtube/comments"` |
-| Typed MCP | `socq_youtube_comments` |
-| CLI | `socq youtube comments` |
-
-The input fields stay the same across REST, typed MCP, and CLI. Compact MCP wraps those fields inside `input`.
+After connecting, ask your client:
 
 ```text
-POST /v1/youtube/comments
-          -> endpoint: youtube/comments
-          -> tool: socq_youtube_comments
+Use SocQ to check my account, then collect the latest 20 comments from this
+YouTube video. Wait for the task to finish and return the results as a table:
+https://www.youtube.com/watch?v=VIDEO_ID
 ```
 
-Each API reference page includes its endpoint ID, typed tool name, and a ready-to-use MCP example.
+The connection is working when the client discovers the SocQ tools, calls `socq_account`, submits the collection, and reads the returned task with `socq_get_task`.
 
-## Choose a tool mode
+## Next steps
 
-The default URL exposes seven compact discovery and execution tools. If you already know the platform or exact endpoints, use a filtered URL to expose typed tools with their full input schemas.
+- [Choose MCP tools](/integrations/mcp-filtering) to select compact, platform, or exact-tool mode.
+- [Tasks and results](/integrations/tasks-results) for waiting, safe retries, pagination, and raw files.
+- [Troubleshooting integrations](/integrations/troubleshooting) for connection and execution errors.
 
-| Mode | Example | Call style |
-| --- | --- | --- |
-| Compact | `/mcp` | `socq_execute({ endpoint, input })` |
-| Platform | `/mcp?platforms=youtube` | `socq_youtube_comments({ ... })` |
-| Exact tools | `/mcp?tools=youtube_comments` | `socq_youtube_comments({ ... })` |
+## Attribute Agent Skill executions
 
-See [Choose MCP tools](/integrations/mcp-filtering) for the complete comparison and filtering limits.
-
-## Compact tool reference
-
-The default MCP URL exposes:
-
-- `socq_list_platforms` — list available platforms;
-- `socq_search_endpoints` — find capabilities by platform, query, or tag;
-- `socq_describe_endpoint` — read an endpoint's input schema, price, and docs;
-- `socq_execute` — submit a collection using its endpoint ID;
-- `socq_get_task` — read status and normalized result pages;
-- `socq_get_files` — retrieve raw result files;
-- `socq_account` — inspect authentication, credits, and limits.
-
-For longer jobs, files, and pagination, continue with [Asynchronous tasks](/integrations/async-tasks) and [Pagination and files](/integrations/pagination-files).
+When an Agent Skill submits through compact or typed MCP, include `_request_source: "skill"` in the execution arguments. SocQ records the task with `request_source="skill-mcp"`. Normal remote and stdio MCP calls remain `mcp-remote` and `mcp-stdio`.

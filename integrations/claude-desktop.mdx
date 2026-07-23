@@ -1,20 +1,20 @@
 ---
-title: "Claude Desktop"
-description: "Connect Claude Desktop through the SocQ stdio bridge and verify a collection."
+title: "Claude"
+description: "Connect Claude Desktop or Claude Code to SocQ MCP and verify a collection."
 icon: "robot"
 ---
 
-# Claude Desktop
+# Claude
 
-Claude Desktop can run the published `@socq/mcp` bridge as a local stdio server. The bridge forwards tool discovery and calls to the hosted SocQ MCP endpoint.
+Claude Desktop and Claude Code can run the published `@socq/mcp` bridge as a local stdio server. The bridge forwards tool discovery and calls to the hosted SocQ MCP endpoint.
 
 ## Prerequisites
 
-- Node.js 20 or later;
 - a SocQ API key;
-- a current Claude Desktop release with local MCP enabled.
+- Node.js 20 or later;
+- a current Claude Desktop or Claude Code installation.
 
-## Configure
+## Configure Claude Desktop
 
 Open the Claude Desktop developer configuration and add:
 
@@ -38,26 +38,73 @@ Restart Claude Desktop after saving.
   This local configuration contains a credential. Do not commit or share it. For a distributed integration, package the bridge as a desktop extension and mark the API-key field as sensitive so Claude can use operating-system secure storage.
 </Warning>
 
-## Verify
+## Configure Claude Code
 
-Ask Claude:
+Set `SOCQ_API_KEY` in the shell that starts Claude Code:
 
-```text
-List the SocQ tools you can use, check my SocQ account, then collect the
-latest 20 comments from this YouTube video and wait for the task:
-https://www.youtube.com/watch?v=VIDEO_ID
+```bash
+export SOCQ_API_KEY="YOUR_API_KEY"
 ```
 
-A successful setup should discover SocQ tools, complete `socq_account`, submit a task, and read it with `socq_get_task`.
+```powershell
+$env:SOCQ_API_KEY="YOUR_API_KEY"
+```
+
+Add SocQ for your user account on macOS, Linux, or WSL:
+
+```bash
+claude mcp add socq --scope user -- npx -y @socq/mcp
+```
+
+On native Windows, wrap `npx` with `cmd /c`:
+
+```powershell
+claude mcp add socq --scope user -- cmd /c npx -y @socq/mcp
+```
+
+Start Claude Code from the same environment so the bridge inherits `SOCQ_API_KEY`.
+
+<Warning>
+  Keep the API key in your environment. Do not pass it through `--env`, because that stores the literal value in Claude Code's MCP configuration.
+</Warning>
 
 ## Limit the tool list
 
-To expose YouTube and TikTok typed tools, change the arguments to:
+For Claude Desktop, add a platform filter to the bridge arguments:
 
 ```json
-"args": ["-y", "@socq/mcp", "--platforms", "youtube,tiktok"]
+"args": ["-y", "@socq/mcp", "--platforms", "youtube"]
 ```
 
-See [Choose MCP tools](/integrations/mcp-filtering) before selecting a production filter.
+For Claude Code on macOS, Linux, or WSL, include the same filter when adding the server:
 
-See Anthropic's [local MCP server guide](https://support.claude.com/en/articles/10949351-getting-started-with-local-mcp-servers-on-claude-desktop) for current Claude Desktop administration options.
+```bash
+claude mcp add socq-youtube --scope user -- npx -y @socq/mcp --platforms youtube
+```
+
+On native Windows, insert `cmd /c` before `npx`. See [Choose MCP tools](/integrations/mcp-filtering) for mode selection and filtering limits.
+
+## Verify
+
+For Claude Code, first confirm that the server is registered:
+
+```bash
+claude mcp get socq
+```
+
+Then ask Claude Desktop or Claude Code:
+
+```text
+Use SocQ to check my account, then collect the latest 20 comments from this
+YouTube video. Wait for the task to finish and return the results as a table:
+https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+The connection is working when Claude discovers the SocQ tools, calls `socq_account`, submits the collection, and reads the returned task with `socq_get_task`.
+
+## Troubleshoot
+
+- Claude Desktop: restart the app after configuration changes so it refreshes the tool list.
+- Claude Code: use `claude mcp list` to inspect configured servers and `/mcp` to view connection status. Restart it if `SOCQ_API_KEY` was set after launch.
+
+See [Troubleshooting integrations](/integrations/troubleshooting), Anthropic's [Claude Desktop local MCP guide](https://support.claude.com/en/articles/10949351-getting-started-with-local-mcp-servers-on-claude-desktop), and the [Claude Code MCP guide](https://docs.anthropic.com/en/docs/claude-code/mcp).

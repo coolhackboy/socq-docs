@@ -8,14 +8,14 @@ icon: "screwdriver-wrench"
 
 | Problem | Resolution |
 | --- | --- |
-| MCP initializes but execution returns 401 | Set `SOCQ_API_KEY` or configure a bearer token. Discovery is public; execution is authenticated. |
-| Typed tool is missing | Check the `platforms` or `tools` query filter, or reconnect to the compact URL. |
-| 400 validation error | Run `socq describe PLATFORM/RESOURCE` and remove unsupported fields. |
-| 403 | Check API-key status and IP allowlist. |
-| 409 | The idempotency key was previously used with different input. |
-| 429 | Respect `Retry-After` and inspect request-rate versus credit-window limits. |
-| MCP call returns a task ID | This is expected; poll with `socq_get_task`. |
-| Polling timed out | Resume with the same task ID; do not resubmit. |
-| CLI dynamic flag is rejected | Refresh the live Catalog and use the field spelling from its JSON Schema. |
+| MCP initializes but execution returns 401 | Set `SOCQ_API_KEY` or configure a bearer token. See [Integration authentication](/integrations/authentication). |
+| Typed tool is missing | Check the `platforms` or `tools` filter, then restart the client. See [Choose MCP tools](/integrations/mcp-filtering). |
+| MCP call returns a task ID | This is expected. Continue with `socq_get_task`; see [Tasks and results](/integrations/tasks-results). |
+| Polling timed out | Resume with the same task ID instead of resubmitting. |
+| 400 validation error | Run `socq describe PLATFORM/RESOURCE` or inspect the endpoint schema and remove unsupported fields. |
+| 403 | Check API-key status and its IP allowlist. |
+| 409 | Use a new idempotency key, or retry the original request with unchanged input. |
+| 402 or 429 | Check account credits and API-key limits. Follow the retry guidance in [API errors](/api-manual/agent-api/errors). |
+| CLI dynamic flag is rejected | Refresh the live Capability Catalog and use the field spelling from its JSON Schema. |
 
-For protocol debugging, verify that the proxy preserves `Authorization`, `Accept`, `Content-Type`, and `MCP-Protocol-Version` headers and routes the exact `/mcp` path without adding a second `/mcp` segment.
+For protocol-level failures, verify that the proxy preserves `Authorization`, `Accept`, `Content-Type`, and `MCP-Protocol-Version`, and that it routes the exact `/mcp` path without appending a second `/mcp` segment.

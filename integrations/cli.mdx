@@ -74,6 +74,16 @@ socq task files TASK_ID
 
 Do not submit the original collection again just because a local wait timed out. Resume the existing task.
 
+## Attribute Agent Skill executions
+
+Normal CLI submissions are recorded with `request_source="cli"`. When an Agent Skill falls back to the CLI, pass the source marker on the submission command:
+
+```bash
+socq youtube comments --urls "https://www.youtube.com/watch?v=VIDEO_ID" --request-source skill
+```
+
+`SOCQ_REQUEST_SOURCE=skill` provides the same behavior. New tasks are then recorded as `skill-cli`; task polling commands do not need the marker.
+
 ## Output formats
 
 | Format | Best for |

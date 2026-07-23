@@ -21,6 +21,8 @@ npx skills add socq-ai/socq-devtools
 
 Use them together when possible. MCP provides execution; the Skill provides endpoint selection, billing awareness, polling, pagination, and cross-platform workflow guidance.
 
+Billing behavior and API-key limits are documented in the [API overview](/api-manual/agent-api/overview) and [Authentication](/api-manual/agent-api/authentication).
+
 ## What you can ask
 
 ```text
@@ -58,3 +60,15 @@ The Skill prefers:
 3. CLI or REST when MCP is unavailable.
 
 Endpoint references are generated from the same Capability Registry as MCP and OpenAPI, so endpoint IDs and input fields remain consistent across integrations.
+
+## Request attribution
+
+Tasks submitted under the Skill retain both the Skill origin and its execution path in `request_source`:
+
+| Skill execution path | Recorded value |
+| --- | --- |
+| Remote or stdio MCP | `skill-mcp` |
+| CLI fallback | `skill-cli` |
+| Direct REST fallback | `skill-rest` |
+
+The Skill passes `_request_source: "skill"` to MCP execution tools, `--request-source skill` to CLI commands, or `X-Socq-Source: skill-rest` to direct REST requests. Polling an existing task does not require an attribution marker.
