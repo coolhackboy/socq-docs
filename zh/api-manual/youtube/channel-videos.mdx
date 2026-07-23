@@ -1,0 +1,40 @@
+---
+title: "YouTube 频道视频"
+description: "从YouTube频道采集公开视频。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/youtube/channel-videos"
+---
+
+# YouTube 频道视频
+
+从一个或多个公共渠道采集常规视频。
+
+```json
+{
+  "urls": ["https://www.youtube.com/@example"],
+  "results_limit": 100
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/youtube/channel-videos` |
+| Compact MCP | `socq_execute` 与 `endpoint: "youtube/channel-videos"` |
+| Typed MCP | `socq_youtube_channel_videos` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=youtube_channel_videos` |
+| CLI | `socq youtube channel-videos` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+`results_limit` 默认为 100 并适用于每个通道 URL。
+
+结果使用 [YouTube 视频](/zh/api-manual/youtube/videos) 中记录的标准化视频结构，其中 `resource` 设置为 `channel-videos`。

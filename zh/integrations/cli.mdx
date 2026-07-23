@@ -1,0 +1,94 @@
+---
+title: "CLI"
+description: "从终端发现、运行、等待和导出 SocQ 任务。"
+icon: "terminal"
+---
+
+# CLI
+
+使用 SocQ CLI 实现终端工作流程、自动化，并将标准化任务结果导出为 JSON、JSONL、CSV 或表格。
+
+<Warning>
+  `@socq/cli` 软件包尚未在公共 npm 注册表中提供。以下命令记录了即将推出的软件包，并且可以在开发过程中从 SocQ devtools 存储库中使用。
+</Warning>
+
+## 安装并验证
+
+包发布后：
+
+```bash
+npm install -g @socq/cli
+socq auth login
+```
+
+对于 CI，设置 `SOCQ_API_KEY` 而不是使用交互式登录。在正常终端使用中避免使用 `--api-key`，因为命令参数可能保留在 shell 历史记录或进程列表中。
+
+## 发现端点
+
+```bash
+socq platforms
+socq tools youtube
+socq describe youtube/comments
+```
+
+在构建自动化之前使用 `describe`，以便该命令使用 Capability Registry 中的当前输入架构和计费信息。
+
+## 完成首次采集
+
+```bash
+socq youtube comments \
+  --urls "https://www.youtube.com/watch?v=VIDEO_ID" \
+  --sort-by newest \
+  --wait
+```
+
+动态命令直接映射到：
+
+```text
+REST:      POST /v1/youtube/comments
+Endpoint:  youtube/comments
+MCP tool:  socq_youtube_comments
+CLI:       socq youtube comments
+```
+
+当输入来自文件时，使用稳定的通用形式：
+
+```bash
+socq run youtube comments \
+  --input-file request.json \
+  --format jsonl \
+  --output results.jsonl \
+  --wait
+```
+
+## 恢复而不重新提交
+
+如果命令在采集完成之前返回，请保留任务 ID：
+
+```bash
+socq task get TASK_ID
+socq task wait TASK_ID --timeout 180
+socq task results TASK_ID --format csv --output results.csv
+socq task files TASK_ID
+```
+
+不要因为本地等待超时而再次提交原始采集。恢复现有任务。
+
+## 标记 Agent Skill 执行来源
+
+正常的 CLI 提交记录为 `request_source="cli"`。当 Agent Skill 回退到 CLI 时，在提交命令上传递源标记：
+
+```bash
+socq youtube comments --urls "https://www.youtube.com/watch?v=VIDEO_ID" --request-source skill
+```
+
+`SOCQ_REQUEST_SOURCE=skill` 提供相同的行为。新任务则记录为`skill-cli`；任务轮询命令不需要标记。
+
+## 输出格式
+
+| 格式 | 适用场景 |
+| --- | --- |
+| `table` | 在终端中查看少量结果 |
+| `json` | 结构化输出和脚本 |
+| `jsonl` | 流式处理或大量导出 |
+| `csv` | 电子表格和数据分析 |

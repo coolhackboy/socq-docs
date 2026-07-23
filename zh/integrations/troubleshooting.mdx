@@ -1,0 +1,21 @@
+---
+title: "集成故障排除"
+description: "解决 MCP、CLI、身份验证、任务和 schema 错误。"
+icon: "screwdriver-wrench"
+---
+
+# 集成故障排除
+
+| 问题 | 解决方法 |
+| --- | --- |
+| MCP 初始化成功，但执行返回 401 | 设置 `SOCQ_API_KEY` 或配置 Bearer Token。参见[集成身份验证](/zh/integrations/authentication)。 |
+| 找不到 Typed 工具 | 检查 `platforms` 或 `tools` 过滤器，然后重新启动客户端。参见[选择 MCP 工具](/zh/integrations/mcp-filtering)。 |
+| MCP 调用返回任务 ID | 这是正常行为。继续调用 `socq_get_task`；参见[任务和结果](/zh/integrations/tasks-results)。 |
+| 轮询超时 | 使用同一个任务 ID 继续查询，不要重新提交。 |
+| 400 参数校验错误 | 运行 `socq describe PLATFORM/RESOURCE` 或检查端点 schema，并删除不支持的字段。 |
+| 403 | 检查 API 密钥状态和 IP 白名单。 |
+| 409 | 使用新的幂等密钥，或使用完全相同的输入重试原请求。 |
+| 402 或 429 | 检查账户积分和 API 密钥限制，并遵循 [API 错误](/zh/api-manual/agent-api/errors)中的重试建议。 |
+| CLI 动态参数被拒绝 | 刷新 Capability Catalog，并使用其 JSON Schema 中的字段拼写。 |
+
+对于协议层问题，请确认代理保留 `Authorization`、`Accept`、`Content-Type` 和 `MCP-Protocol-Version` 请求头，并将请求路由到准确的 `/mcp` 路径，避免重复添加 `/mcp`。

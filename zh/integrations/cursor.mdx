@@ -1,0 +1,75 @@
+---
+title: "Cursor"
+description: "通过 SocQ stdio 桥连接 Cursor 并验证采集。"
+icon: "arrow-pointer"
+---
+
+# Cursor
+
+stdio 桥是最便携的 Cursor 配置，无需单独的 OAuth 流程即可工作。
+
+## 前置条件
+
+- Node.js 20 或更高版本；
+- SocQ API 密钥；
+- 当前的 Cursor 版本支持 MCP。
+
+## 配置
+
+打开 Cursor 的 MCP 设置，添加本地服务器并使用：
+
+```json
+{
+  "mcpServers": {
+    "socq": {
+      "command": "npx",
+      "args": ["-y", "@socq/mcp"],
+      "env": {
+        "SOCQ_API_KEY": "YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+<Warning>
+  此本地配置包含凭据。不要提交或分享它。
+</Warning>
+
+如果 Cursor 支持使用环境变量提供 Bearer Token 的 Streamable HTTP，可以直接连接 `https://api.socq.ai/mcp`。远程身份验证不可用时，请保留 stdio 配置。
+
+## 限制工具列表
+
+要公开 Typed YouTube 工具，请更改服务器名称和参数：
+
+```json
+{
+  "mcpServers": {
+    "socq-youtube": {
+      "command": "npx",
+      "args": ["-y", "@socq/mcp", "--platforms", "youtube"],
+      "env": {
+        "SOCQ_API_KEY": "YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+有关模式选择和过滤限制，请参阅[选择 MCP 工具](/zh/integrations/mcp-filtering)。
+
+## 验证
+
+重新启动 Cursor 中的 SocQ MCP 服务器，然后提问：
+
+```text
+Use SocQ to check my account, then collect the latest 20 comments from this
+YouTube video. Wait for the task to finish and return the results as a table:
+https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+当 Cursor 发现 SocQ 工具、调用 `socq_account`、提交采集并使用 `socq_get_task` 读取返回的任务时，连接正在工作。
+
+## 故障排除
+
+配置更改后重新启动服务器，以便 Cursor 刷新工具列表。有关身份验证、缺少工具和任务错误，请参阅[集成故障排除](/zh/integrations/troubleshooting)。

@@ -1,0 +1,66 @@
+---
+title: "X 个人资料"
+description: "采集公共 X 个人资料元数据和统计数据。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/x/profiles"
+---
+
+# X 个人资料
+
+为每个公共用户名采集一个规范化的个人资料记录。领先的 `@` 是可选的。
+
+```json
+{
+  "usernames": ["openai", "@github"]
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/x/profiles` |
+| Compact MCP | `socq_execute` 与 `endpoint: "x/profiles"` |
+| Typed MCP | `socq_x_profiles` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=x_profiles` |
+| CLI | `socq x profiles` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+## 结果项
+
+```json
+{
+  "id": "123456789",
+  "platform": "x",
+  "resource": "profiles",
+  "type": "profile",
+  "username": "openai",
+  "name": "OpenAI",
+  "url": "https://x.com/openai",
+  "description": "Public profile description",
+  "avatar_url": "https://example.com/avatar.jpg",
+  "cover_url": "https://example.com/cover.jpg",
+  "is_verified": true,
+  "is_private": false,
+  "metrics": {
+    "followers_count": 1000000,
+    "following_count": 20,
+    "posts_count": 5000,
+    "media_count": 800,
+    "likes_count": 1200
+  },
+  "created_at": "2015-12-11T00:00:00",
+  "collected_at": "2026-07-17T10:30:00",
+  "extra": {}
+}
+```
+
+不可用或私人个人资料可能不会产生结果记录。

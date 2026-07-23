@@ -1,0 +1,18 @@
+---
+title: "Facebook Marketplace"
+description: "查找位置、搜索商品并采集公共 Facebook Marketplace 商品详情。"
+icon: "facebook"
+iconType: "brands"
+---
+
+# Facebook Marketplace
+
+Facebook Marketplace 与 Facebook 社交数据 API 分开记录。
+
+|API | 方法 | 端点 |
+| --- | --- | --- |
+|位置搜索 | `POST` | `/v1/facebook-marketplace/location-search` |
+|搜索 | `POST` | `/v1/facebook-marketplace/search` |
+| 商品详情 | `POST` | `/v1/facebook-marketplace/item` |
+
+所有端点都使用标准异步任务流。提交请求，接收 `task_id`，然后轮询 `GET /v1/tasks/{task_id}` 的状态和标准化结果。

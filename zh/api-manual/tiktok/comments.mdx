@@ -1,0 +1,73 @@
+---
+title: "TikTok 评论"
+description: "从公开的 TikTok 视频中采集顶级评论。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/comments"
+---
+
+# TikTok 评论
+
+从一个或多个公共视频 URL 采集顶级评论。
+
+```json
+{
+  "urls": ["https://www.tiktok.com/@example/video/7234567890123456789"],
+  "results_limit": 100
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/tiktok/comments` |
+| Compact MCP | `socq_execute` 与 `endpoint: "tiktok/comments"` |
+| Typed MCP | `socq_tiktok_comments` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=tiktok_comments` |
+| CLI | `socq tiktok comments` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+`results_limit` 默认为 100，适用于每个视频 URL。
+
+## 结果项
+
+```json
+{
+  "id": "7234567890123456790",
+  "platform": "tiktok",
+  "resource": "comments",
+  "type": "comment",
+  "url": "https://www.tiktok.com/@example/video/7234567890123456789",
+  "text": "Great video!",
+  "author": {
+    "id": "6784642169778881543",
+    "username": "viewer",
+    "name": "Viewer",
+    "url": "https://www.tiktok.com/@viewer",
+    "avatar_url": "https://example.com/avatar.jpg",
+    "is_verified": false,
+    "is_private": null
+  },
+  "metrics": {
+    "likes_count": 42,
+    "replies_count": 5
+  },
+  "mentions": [],
+  "media": [],
+  "created_at": "2023-01-01T00:00:00",
+  "collected_at": "2026-07-15T10:30:00",
+  "extra": {
+    "parent_comment_id": null,
+    "liked_by_author": false,
+    "pinned_by_author": false
+  }
+}
+```

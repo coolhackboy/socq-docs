@@ -1,0 +1,76 @@
+---
+title: "VS Code"
+description: "通过 SocQ stdio 桥连接 VS Code 并将 API 密钥存储为输入。"
+icon: "window-maximize"
+---
+
+# VS Code
+
+VS Code 将 MCP 服务器定义存储在 `mcp.json` 中。对所有工作区使用用户级配置，或对一个可信工作区使用 `.vscode/mcp.json`。
+
+## 前置条件
+
+- Node.js 20 或更高版本；
+- SocQ API 密钥；
+- 当前的 VS Code 聊天设置，支持 MCP。
+
+## 配置
+
+从命令面板运行 **MCP：打开用户配置** 并添加：
+
+```json
+{
+  "servers": {
+    "socq": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@socq/mcp"],
+      "env": {
+        "SOCQ_API_KEY": "${input:socq-api-key}"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "socq-api-key",
+      "description": "SocQ API key",
+      "password": true
+    }
+  ]
+}
+```
+
+VS Code 在服务器启动时提示输入密钥并安全存储输入以供以后使用。
+
+<Warning>
+  避免将 API 密钥硬编码到工作区文件中或将其提交给源代码管理。
+</Warning>
+
+## 限制工具列表
+
+要公开 Typed YouTube 工具，请将桥参数更改为：
+
+```json
+"args": ["-y", "@socq/mcp", "--platforms", "youtube"]
+```
+
+有关模式选择和过滤限制，请参阅[选择 MCP 工具](/zh/integrations/mcp-filtering)。
+
+## 验证
+
+从 **MCP：列出服务器** 启动或重新启动 `socq`，批准服务器信任提示，然后询问：
+
+```text
+Use SocQ to check my account, then collect the latest 20 comments from this
+YouTube video. Wait for the task to finish and return the results as a table:
+https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+当 VS Code 发现 SocQ 工具、调用 `socq_account`、提交采集并使用 `socq_get_task` 读取返回的任务时，连接正在工作。
+
+## 故障排除
+
+当进程未启动或工具丢失时，使用 **MCP：列出服务器 → 显示输出**。有关身份验证、缺少工具和任务错误，请参阅[集成故障排除](/zh/integrations/troubleshooting)。
+
+请参阅官方 VS Code 指南，了解[添加 MCP 服务器](https://code.visualstudio.com/docs/agent-customization/mcp-servers) 和 [`mcp.json` 配置参考](https://code.visualstudio.com/docs/agents/reference/mcp-configuration)。

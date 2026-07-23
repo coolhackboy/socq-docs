@@ -1,0 +1,85 @@
+---
+title: "Marketplace 商品详情"
+description: "通过 URL 采集公共 Facebook Marketplace 商品详情。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook-marketplace/item"
+---
+
+# Marketplace 商品详情
+
+从一个或多个公共Marketplace 商品详情 URL 采集详细的列表信息。
+
+每个 URL 都是独立处理的，最多可以生成一条商品信息。如果某个商品不可用或未找到，则剩余的 URL 将继续处理。
+
+## 请求示例
+
+```json
+{
+  "urls": [
+    "https://www.facebook.com/marketplace/item/1656586118821988/"
+  ]
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/facebook-marketplace/item` |
+| Compact MCP | `socq_execute` 与 `endpoint: "facebook-marketplace/item"` |
+| Typed MCP | `socq_facebook_marketplace_item` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=facebook_marketplace_item` |
+| CLI | `socq facebook-marketplace item` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+根据成功返回的商品记录数进行计费。不产生记录的 URL 不包含在最终费用中。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "facebook-marketplace/item",
+    "result_count": 1,
+    "credits_amount": 0.6,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "1656586118821988",
+        "platform": "facebook-marketplace",
+        "resource": "item",
+        "type": "listing",
+        "url": "https://www.facebook.com/marketplace/item/1656586118821988/",
+        "name": "Mountain bike",
+        "text": "Used bike in good condition.",
+        "author": {"id": null, "username": null, "name": null, "url": null},
+        "metrics": {},
+        "media": [{"type": "image", "url": "https://example.com/item.jpg", "width": 960, "height": 720}],
+        "created_at": "2026-05-15T16:57:39",
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {
+          "input_url": "https://www.facebook.com/marketplace/item/1656586118821988/",
+          "price": {"amount": 380, "currency": "USD", "formatted": "$380"},
+          "location": {"text": "Austin, TX", "latitude": 30.4019, "longitude": -97.7618},
+          "attributes": [{"attribute_name": "Condition", "value": "used_good", "label": "Used - Good"}],
+          "is_live": true,
+          "is_sold": false
+        }
+      }]
+    }
+  }
+}
+```

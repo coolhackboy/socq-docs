@@ -1,0 +1,79 @@
+---
+title: "广告搜索"
+description: "按关键字搜索公开的 Facebook Ad Library 广告。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook-ad-library/search"
+---
+
+# 广告搜索
+
+按关键字、状态、国家/地区、媒体类型和日期范围搜索公共广告。
+
+## 请求示例
+
+```json
+{
+  "query": "running shoes",
+  "results_limit": 100,
+  "country": "US",
+  "status": "ACTIVE",
+  "media_type": "VIDEO",
+  "sort_by": "total_impressions"
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/facebook-ad-library/search` |
+| Compact MCP | `socq_execute` 与 `endpoint: "facebook-ad-library/search"` |
+| Typed MCP | `socq_facebook_ad_library_search` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=facebook_ad_library_search` |
+| CLI | `socq facebook-ad-library search` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+SocQ 遵循可用结果页面，直到到达 `results_limit`、没有下一页可用或任务到达其分页安全边界。重复的广告 ID 会保存一次。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "facebook-ad-library/search",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "615470338018648",
+        "platform": "facebook-ad-library",
+        "resource": "search",
+        "type": "ad",
+        "url": "https://www.facebook.com/ads/library/?id=615470338018648",
+        "name": "Run farther",
+        "text": "Lightweight running shoes for everyday training.",
+        "author": {"id": "115531458627129", "username": null, "name": "Example Sports", "url": null},
+        "metrics": {"page_likes_count": 3823, "reach": null},
+        "media": [{"type": "video", "url": "https://example.com/ad.mp4"}],
+        "created_at": "2026-07-01T00:00:00",
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {"search_query": "running shoes", "is_active": true, "publisher_platforms": ["FACEBOOK", "INSTAGRAM"]}
+      }]
+    }
+  }
+}
+```

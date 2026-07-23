@@ -1,0 +1,25 @@
+---
+title: "集成身份验证"
+description: "为 MCP、CLI 和 Agent Skill 配置 API 密钥。"
+icon: "key"
+---
+
+# 集成身份验证
+
+在环境中设置您的 API 密钥：
+
+```bash
+export SOCQ_API_KEY="YOUR_API_KEY"
+```
+
+```powershell
+$env:SOCQ_API_KEY="YOUR_API_KEY"
+```
+
+托管的 MCP 服务器还接受 `Authorization: Bearer YOUR_API_KEY` 和 `x-api-key: YOUR_API_KEY`。
+
+<Warning>
+  请勿将密钥放入 MCP URL 中或将其提交到客户端配置。在交互式使用 CLI 期间避免使用 `--api-key`，因为它可能保留在 shell 历史记录中。
+</Warning>
+
+REST、MCP 和 CLI 使用相同的 API 密钥控制规则。详情参见 [API 身份验证和密钥限制](/zh/api-manual/agent-api/authentication)。

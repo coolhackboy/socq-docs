@@ -1,0 +1,92 @@
+---
+title: "Marketplace 搜索"
+description: "搜索公开的 Facebook Marketplace 列表。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook-marketplace/search"
+---
+
+# Marketplace 搜索
+
+搜索地理坐标周围的公开列表。需要时使用[Marketplace 位置搜索](/zh/api-manual/facebook-marketplace/location-search)查找坐标。
+
+## 请求示例
+
+```json
+{
+  "query": "bike",
+  "latitude": 30.2677,
+  "longitude": -97.7475,
+  "results_limit": 100,
+  "radius_km": 65,
+  "min_price": 100,
+  "max_price": 500,
+  "sort_by": "creation_time_descend",
+  "delivery_method": "local_pickup",
+  "condition": "used_good",
+  "date_listed": "last_7_days",
+  "availability": "available"
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/facebook-marketplace/search` |
+| Compact MCP | `socq_execute` 与 `endpoint: "facebook-marketplace/search"` |
+| Typed MCP | `socq_facebook_marketplace_search` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=facebook_marketplace_search` |
+| CLI | `socq facebook-marketplace search` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+SocQ 遵循结果分页，直到到达 `results_limit` 或没有其他页面可用。重复的列表 ID 会保存一次，因此最终的 `result_count` 可能会低于请求的限制。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "facebook-marketplace/search",
+    "result_count": 1,
+    "credits_amount": 0.7,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "1880804689276480",
+        "platform": "facebook-marketplace",
+        "resource": "search",
+        "type": "listing",
+        "url": "https://www.facebook.com/marketplace/item/1880804689276480/",
+        "name": "Electric bike",
+        "text": null,
+        "author": {"id": null, "username": null, "name": null, "url": null},
+        "metrics": {},
+        "media": [{"type": "image", "url": "https://example.com/bike.jpg", "width": 960, "height": 720}],
+        "created_at": null,
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {
+          "search_query": "bike",
+          "price": {"amount": 300, "currency": "USD", "formatted": "$300"},
+          "location": {"text": "Austin, Texas", "city": "Austin", "state": "TX"},
+          "category_id": "1658310421102081",
+          "is_live": true,
+          "is_sold": false
+        }
+      }]
+    }
+  }
+}
+```

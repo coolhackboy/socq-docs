@@ -1,0 +1,25 @@
+---
+title: "Facebook"
+description: "采集公共 Facebook 页面、帖子、视频字幕、群组、评论和事件。"
+icon: "facebook"
+iconType: "brands"
+---
+
+# Facebook
+
+使用 Facebook 端点采集公共页面、帖子、视频字幕、群组帖子、评论和事件。
+
+## 可用端点
+
+|API | 方法 | 端点 |
+| --- | --- | --- |
+| Facebook 公共主页 | `POST` | `/v1/facebook/pages` |
+| Facebook 帖子 | `POST` | `/v1/facebook/posts` |
+| Facebook 评论 | `POST` | `/v1/facebook/comments` |
+| Facebook 视频脚本 | `POST` | `/v1/facebook/transcripts` |
+| Facebook 群组帖子 | `POST` | `/v1/facebook/group-posts` |
+| Facebook 活动搜索 | `POST` | `/v1/facebook/events-search` |
+
+## 工作流程
+
+提交请求，收到 `task_id`，然后轮询 `GET /v1/tasks/{task_id}`。当任务成功时，相同的响应包括 `results` 下的标准化结果。

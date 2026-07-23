@@ -1,0 +1,17 @@
+---
+title: "LinkedIn"
+description: "采集公开的 LinkedIn 个人资料、公司、职位和职位。"
+icon: "linkedin"
+iconType: "brands"
+---
+
+# LinkedIn
+
+|API | 方法 | 端点 |
+| --- | --- | --- |
+|个人资料 | `POST` | `/v1/linkedin/profiles` |
+|公司 | `POST` | `/v1/linkedin/companies` |
+|帖子 | `POST` | `/v1/linkedin/posts` |
+|职位 | `POST` | `/v1/linkedin/jobs` |
+
+每个端点接受公共 LinkedIn URL 并使用标准异步任务流。

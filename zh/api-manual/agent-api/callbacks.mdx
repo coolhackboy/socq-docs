@@ -1,0 +1,76 @@
+---
+title: "回调"
+description: "接收终端任务通知。"
+---
+
+# 回调
+
+将 `callback_url` 添加到提交请求，以便在任务达到最终状态后接收一个 POST 请求。
+
+```json
+{
+  "urls": ["https://www.facebook.com/Meta"],
+  "results_limit": 10,
+  "callback_url": "https://your-domain.com/webhook"
+}
+```
+
+## 有效负载
+
+SocQ 发送任务摘要。回调不包含标准化结果记录；使用 `GET /v1/tasks/{task_id}` 读取 `status` 为 `succeeded` 后的分页记录。
+
+```json
+{
+  "task_id": "XQJ4TLW1MBMDY3JD",
+  "feature_code": "15000001",
+  "public_id": "instagram-posts",
+  "agent": "13000001",
+  "status": "succeeded",
+  "result_count": 1,
+  "output_summary": {
+    "files": [
+      {
+        "file_type": "raw_jsonl",
+        "public_url": "https://storage.socq.ai/agent-results/XQJ4TLW1MBMDY3JD/raw_jsonl.jsonl.gz"
+      }
+    ],
+    "result_count": 1
+  },
+  "error_message": null,
+  "created_time": "2026-07-13T17:05:04",
+  "finished_time": "2026-07-13T09:05:56"
+}
+```
+
+## 字段
+
+|领域|类型 |描述 |
+| --- | --- | --- |
+| `task_id` |字符串|提交响应中的任务标识符 |
+| `feature_code` |字符串|内部产品功能代码 |
+| `public_id` |字符串|公共API标识符，例如`instagram-posts` |
+| `agent` |字符串|内部代理代码|
+| `status` |字符串| `succeeded` 或 `failed` |
+| `result_count` |整数 |返回结果记录条数 |
+| `output_summary` |对象|摘要数据，例如原始 JSONL 文件链接 |
+| `error_message` |字符串| `status`为`failed`时失败原因 |
+| `created_time` |字符串|任务创建时间 |
+| `finished_time` |字符串|任务完成时间|
+
+## 读取结果
+
+收到成功的回调后，从任务端点获取标准化记录：
+
+```http
+GET https://api.socq.ai/v1/tasks/{task_id}
+```
+
+在同一端点上使用 `results.next_cursor` 来获取其他页面：
+
+```http
+GET https://api.socq.ai/v1/tasks/{task_id}?limit=50&cursor=NTY3ODkw
+```
+
+<Note>
+  回调传递将尽最大努力。如果您的端点暂时不可用，请继续轮询 `GET /v1/tasks/{task_id}` 作为回退措施。
+</Note>

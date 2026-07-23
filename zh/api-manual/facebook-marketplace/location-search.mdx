@@ -1,0 +1,80 @@
+---
+title: "Marketplace 位置搜索"
+description: "查找 Facebook Marketplace 位置和坐标。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook-marketplace/location-search"
+---
+
+# Marketplace 位置搜索
+
+使用城市、地区或地名来查找Marketplace 搜索的位置坐标。
+
+该端点不接受`results_limit`。任务保存为查询返回的每个候选位置。
+
+## 请求示例
+
+```json
+{
+  "query": "Austin"
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/facebook-marketplace/location-search` |
+| Compact MCP | `socq_execute` 与 `endpoint: "facebook-marketplace/location-search"` |
+| Typed MCP | `socq_facebook_marketplace_location_search` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=facebook_marketplace_location_search` |
+| CLI | `socq facebook-marketplace location-search` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "facebook-marketplace/location-search",
+    "result_count": 1,
+    "credits_amount": 0.3,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "106224666074625",
+        "platform": "facebook-marketplace",
+        "resource": "location-search",
+        "type": "location",
+        "url": null,
+        "name": "Austin, Texas",
+        "text": "City",
+        "metrics": {},
+        "media": [],
+        "created_at": null,
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {
+          "search_query": "Austin",
+          "address": [],
+          "city": "Austin",
+          "postal_code": "78701",
+          "latitude": 30.2677,
+          "longitude": -97.7475
+        }
+      }]
+    }
+  }
+}
+```

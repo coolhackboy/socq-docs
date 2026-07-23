@@ -1,0 +1,22 @@
+---
+title: "Instagram 个人资料"
+description: "采集公共 Instagram 个人资料元数据和统计数据。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/profiles"
+---
+
+# Instagram 简介
+
+```json
+{"usernames": ["instagram", "natgeo"]}
+```
+
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/instagram/profiles` |
+| Compact MCP | `socq_execute` 与 `endpoint: "instagram/profiles"` |
+| Typed MCP | `socq_instagram_profiles` |
+| CLI | `socq instagram profiles` |
+
+结果包括个人简介、个人资料链接、验证状态以及关注者、关注者和帖子计数。

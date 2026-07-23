@@ -1,0 +1,53 @@
+---
+title: "AI 与开发者集成"
+description: "为 SocQ 工作流选择 MCP、CLI、Agent Skill 或 REST。"
+icon: "plug"
+---
+
+# AI 与开发者集成
+
+根据工作方式选择合适的集成。所有选项都与 Agent REST API 共用 Capability Registry、身份验证、计费、异步任务、规范化结果和数据提供方故障转移机制。
+
+| 目标 | 推荐集成 | 从这里开始 |
+| --- | --- | --- |
+| 让 AI 客户端采集和分析数据 | MCP | [MCP 快速入门](/zh/integrations/mcp) |
+| 指导 Agent 选择端点、控制成本并执行研究工作流 | MCP + Agent Skill | [Agent Skill](/zh/integrations/skill) |
+| 从终端运行采集并导出数据 | CLI | [CLI](/zh/integrations/cli) |
+| 使用 HTTP 请求构建应用 | REST API | [API 概览](/zh/api-manual/agent-api/overview) |
+
+## 最快路径
+
+对于大多数 AI 客户端用户：
+
+1. 设置 `SOCQ_API_KEY`。
+2. 连接到 `https://api.socq.ai/mcp`，或为仅 stdio 客户端运行 `npx -y @socq/mcp`。
+3. 要求客户端采集一个小数据集并等待返回的任务。
+
+```text
+Collect the latest 20 comments from this YouTube video.
+Wait for the task to finish, then return the comments as a table:
+https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+有关此提示后面的工具调用、任务轮询和结果形状，请参阅 [MCP 快速入门](/zh/integrations/mcp)。
+
+## 集成概览
+
+| 集成 | 适用场景 | 安装方式或 URL | 可用性 |
+| --- | --- | --- | --- |
+| 远程 MCP | 托管 AI 客户端 | `https://api.socq.ai/mcp` | 可用 |
+| stdio MCP | 仅支持本地 MCP 的客户端 | `npx -y @socq/mcp` | 可用 |
+| CLI | Shell 脚本和数据导出 | `npm install -g @socq/cli` | 软件包待发布 |
+| Agent Skill | 可复用的研究工作流 | `npx skills add socq-ai/socq-devtools` | 从仓库安装 |
+
+<Info>
+  CLI 和 stdio MCP 是本地客户端，不是单独部署的服务。托管的 MCP 端点与 SocQ 代理 API 一起运行。
+</Info>
+
+## 机器可读源
+
+- [能力目录](/capability-catalog.json)
+- [Agent OpenAPI](/api-manual/agent-api/agent-api.json)
+- [llms.txt](/llms.txt)
+- [llms-full.txt](/llms-full.txt)
+- [llms.json](/llms.json)

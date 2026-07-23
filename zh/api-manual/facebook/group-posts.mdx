@@ -1,0 +1,23 @@
+---
+title: "Facebook 群组帖子"
+description: "从公共 Facebook 群组采集帖子。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook/group-posts"
+---
+
+# Facebook 群组帖子
+
+```json
+{"urls": ["https://www.facebook.com/groups/GROUP_ID/"], "results_limit": 30, "sort_by": "recent_activity"}
+```
+
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/facebook/group-posts` |
+| Compact MCP | `socq_execute` 与 `endpoint: "facebook/group-posts"` |
+| Typed MCP | `socq_facebook_group_posts` |
+| CLI | `socq facebook group-posts` |
+
+`sort_by` 接受 `top_posts`、`recent_activity`、`chronological` 或 `chronological_listings`。
+`results_limit` 默认为 100，接受 3 到 2,000 之间的值，并应用于每个组 URL。

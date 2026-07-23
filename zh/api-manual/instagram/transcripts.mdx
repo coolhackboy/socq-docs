@@ -1,0 +1,22 @@
+---
+title: "Instagram 视频字幕"
+description: "从公开 Instagram 帖子和Reels中提取视频字幕。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/transcripts"
+---
+
+# Instagram 视频字幕
+
+```json
+{"urls": ["https://www.instagram.com/reel/SHORTCODE/"]}
+```
+
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/instagram/transcripts` |
+| Compact MCP | `socq_execute` 与 `endpoint: "instagram/transcripts"` |
+| Typed MCP | `socq_instagram_transcripts` |
+| CLI | `socq instagram transcripts` |
+
+轮播帖子可能会产生多个视频字幕记录。没有言论的媒体可能不会返回任何结果。

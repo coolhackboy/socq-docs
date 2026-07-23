@@ -1,0 +1,58 @@
+---
+title: "入门"
+description: "开始集成 SocQ 社交数据 API。"
+icon: "rocket"
+---
+
+# SocQ 文档
+
+SocQ 提供跨 Instagram、Facebook、YouTube、TikTok、X、LinkedIn、Reddit、Pinterest、 Threads，以及商业或广告研究产品。
+
+## 基础 URL
+
+```text
+https://api.socq.ai
+```
+
+## 验证
+
+所有请求都需要 API 密钥：
+
+```http
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+```
+
+## 请求流程
+
+<Steps>
+  <Step title="提交数据任务">
+    调用产品端点之一，例如 `POST /v1/instagram/posts`。
+  </Step>
+  <Step title="接收任务 ID">
+    提交端点立即返回 `task_id`。
+  </Step>
+  <Step title="查询任务状态">
+    轮询 `GET /v1/tasks/{task_id}`，直到状态变为 `succeeded` 或 `failed`。
+  </Step>
+  <Step title="读取结果">
+    当任务成功时，`GET /v1/tasks/{task_id}` 会自动返回 `results` 下的规范化记录。从 `GET /v1/tasks/{task_id}/files` 下载原始 JSONL 文件。
+  </Step>
+</Steps>
+
+## 状态值
+
+|状态 |描述 |
+| --- | --- |
+| `queued` |任务已被接受并正在等待运行 |
+| `running` |任务正在处理 |
+| `succeeded` |任务顺利完成 |
+| `failed` |任务失败；参见 `error_message` |
+
+<Info>
+  数据采集任务是异步的。成功提交响应意味着任务已创建，而不是最终数据已准备好。
+</Info>
+
+## Agent 集成
+
+当 AI 工作流需要发现和调用 SocQ API 时，请使用托管 MCP 服务器、npm CLI 或 Agent Skill。从[集成概述](/zh/integrations/overview) 开始。

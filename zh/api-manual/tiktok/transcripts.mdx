@@ -1,0 +1,22 @@
+---
+title: "TikTok 视频字幕"
+description: "从公开 TikTok 视频中提取视频字幕。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/transcripts"
+---
+
+# TikTok 视频字幕
+
+```json
+{"urls": ["https://www.tiktok.com/@creator/video/VIDEO_ID"], "language": "en"}
+```
+
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/tiktok/transcripts` |
+| Compact MCP | `socq_execute` 与 `endpoint: "tiktok/transcripts"` |
+| Typed MCP | `socq_tiktok_transcripts` |
+| CLI | `socq tiktok transcripts` |
+
+`language` 是可选的。没有可用语音或字幕的视频可能不会返回任何结果。

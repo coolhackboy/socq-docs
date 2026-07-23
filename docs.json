@@ -96,193 +96,420 @@
     }
   ],
   "navigation": {
-    "tabs": [
+    "languages": [
       {
-        "tab": "API",
-        "groups": [
+        "language": "en",
+        "default": true,
+        "navbar": {
+          "links": [
+            {
+              "label": "Website",
+              "href": "https://socq.ai"
+            }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "Get API key",
+            "href": "https://socq.ai/dashboard/api-key"
+          }
+        },
+        "tabs": [
           {
-            "group": "Overview",
-            "pages": [
-              "index",
-              "api-manual/agent-api/overview"
+            "tab": "API",
+            "groups": [
+              {
+                "group": "Overview",
+                "pages": [
+                  "index",
+                  "api-manual/agent-api/overview"
+                ]
+              },
+              {
+                "group": "Instagram",
+                "pages": [
+                  "api-manual/instagram/overview",
+                  "api-manual/instagram/posts",
+                  "api-manual/instagram/comments",
+                  "api-manual/instagram/reels",
+                  "api-manual/instagram/search",
+                  "api-manual/instagram/followers-count",
+                  "api-manual/instagram/profiles",
+                  "api-manual/instagram/transcripts",
+                  "api-manual/instagram/hashtag-posts",
+                  "api-manual/instagram/followers",
+                  "api-manual/instagram/following",
+                  "api-manual/instagram/tagged-posts"
+                ]
+              },
+              {
+                "group": "Facebook",
+                "pages": [
+                  "api-manual/facebook/overview",
+                  "api-manual/facebook/pages",
+                  "api-manual/facebook/posts",
+                  "api-manual/facebook/comments",
+                  "api-manual/facebook/transcripts",
+                  "api-manual/facebook/group-posts",
+                  "api-manual/facebook/events-search"
+                ]
+              },
+              {
+                "group": "Facebook Marketplace",
+                "pages": [
+                  "api-manual/facebook-marketplace/overview",
+                  "api-manual/facebook-marketplace/location-search",
+                  "api-manual/facebook-marketplace/search",
+                  "api-manual/facebook-marketplace/item"
+                ]
+              },
+              {
+                "group": "Facebook Ad Library",
+                "pages": [
+                  "api-manual/facebook-ad-library/overview",
+                  "api-manual/facebook-ad-library/search",
+                  "api-manual/facebook-ad-library/company-search",
+                  "api-manual/facebook-ad-library/company-ads",
+                  "api-manual/facebook-ad-library/ad"
+                ]
+              },
+              {
+                "group": "YouTube",
+                "pages": [
+                  "api-manual/youtube/overview",
+                  "api-manual/youtube/channels",
+                  "api-manual/youtube/videos",
+                  "api-manual/youtube/channel-videos",
+                  "api-manual/youtube/comments",
+                  "api-manual/youtube/shorts",
+                  "api-manual/youtube/search",
+                  "api-manual/youtube/transcripts",
+                  "api-manual/youtube/playlist-videos"
+                ]
+              },
+              {
+                "group": "TikTok",
+                "pages": [
+                  "api-manual/tiktok/overview",
+                  "api-manual/tiktok/profiles",
+                  "api-manual/tiktok/videos",
+                  "api-manual/tiktok/comments",
+                  "api-manual/tiktok/search",
+                  "api-manual/tiktok/hashtags",
+                  "api-manual/tiktok/transcripts",
+                  "api-manual/tiktok/live-room-info",
+                  "api-manual/tiktok/trending-feed"
+                ]
+              },
+              {
+                "group": "TikTok Shop",
+                "pages": [
+                  "api-manual/tiktok-shop/overview",
+                  "api-manual/tiktok-shop/search",
+                  "api-manual/tiktok-shop/products",
+                  "api-manual/tiktok-shop/product",
+                  "api-manual/tiktok-shop/product-reviews",
+                  "api-manual/tiktok-shop/user-showcase"
+                ]
+              },
+              {
+                "group": "X",
+                "pages": [
+                  "api-manual/x/overview",
+                  "api-manual/x/profiles",
+                  "api-manual/x/posts",
+                  "api-manual/x/user-posts",
+                  "api-manual/x/search"
+                ]
+              },
+              {
+                "group": "LinkedIn",
+                "pages": [
+                  "api-manual/linkedin/overview",
+                  "api-manual/linkedin/profiles",
+                  "api-manual/linkedin/companies",
+                  "api-manual/linkedin/posts",
+                  "api-manual/linkedin/jobs"
+                ]
+              },
+              {
+                "group": "Reddit",
+                "pages": [
+                  "api-manual/reddit/overview",
+                  "api-manual/reddit/posts",
+                  "api-manual/reddit/comments",
+                  "api-manual/reddit/subreddit-posts",
+                  "api-manual/reddit/search"
+                ]
+              },
+              {
+                "group": "Pinterest",
+                "pages": [
+                  "api-manual/pinterest/overview",
+                  "api-manual/pinterest/profiles",
+                  "api-manual/pinterest/pins",
+                  "api-manual/pinterest/user-pins",
+                  "api-manual/pinterest/search"
+                ]
+              },
+              {
+                "group": "Threads",
+                "pages": [
+                  "api-manual/threads/overview",
+                  "api-manual/threads/profiles",
+                  "api-manual/threads/posts",
+                  "api-manual/threads/user-posts"
+                ]
+              },
+              {
+                "group": "Common",
+                "pages": [
+                  "api-manual/agent-api/authentication",
+                  "api-manual/agent-api/callbacks",
+                  "api-manual/agent-api/status",
+                  "api-manual/agent-api/files",
+                  "api-manual/agent-api/errors"
+                ]
+              }
             ]
           },
           {
-            "group": "Instagram",
-            "pages": [
-              "api-manual/instagram/overview",
-              "api-manual/instagram/posts",
-              "api-manual/instagram/comments",
-              "api-manual/instagram/reels",
-              "api-manual/instagram/search",
-              "api-manual/instagram/followers-count",
-              "api-manual/instagram/profiles",
-              "api-manual/instagram/transcripts",
-              "api-manual/instagram/hashtag-posts",
-              "api-manual/instagram/followers",
-              "api-manual/instagram/following",
-              "api-manual/instagram/tagged-posts"
-            ]
-          },
-          {
-            "group": "Facebook",
-            "pages": [
-              "api-manual/facebook/overview",
-              "api-manual/facebook/pages",
-              "api-manual/facebook/posts",
-              "api-manual/facebook/comments",
-              "api-manual/facebook/transcripts",
-              "api-manual/facebook/group-posts",
-              "api-manual/facebook/events-search"
-            ]
-          },
-          {
-            "group": "Facebook Marketplace",
-            "pages": [
-              "api-manual/facebook-marketplace/overview",
-              "api-manual/facebook-marketplace/location-search",
-              "api-manual/facebook-marketplace/search",
-              "api-manual/facebook-marketplace/item"
-            ]
-          },
-          {
-            "group": "Facebook Ad Library",
-            "pages": [
-              "api-manual/facebook-ad-library/overview",
-              "api-manual/facebook-ad-library/search",
-              "api-manual/facebook-ad-library/company-search",
-              "api-manual/facebook-ad-library/company-ads",
-              "api-manual/facebook-ad-library/ad"
-            ]
-          },
-          {
-            "group": "YouTube",
-            "pages": [
-              "api-manual/youtube/overview",
-              "api-manual/youtube/channels",
-              "api-manual/youtube/videos",
-              "api-manual/youtube/channel-videos",
-              "api-manual/youtube/comments",
-              "api-manual/youtube/shorts",
-              "api-manual/youtube/search",
-              "api-manual/youtube/transcripts",
-              "api-manual/youtube/playlist-videos"
-            ]
-          },
-          {
-            "group": "TikTok",
-            "pages": [
-              "api-manual/tiktok/overview",
-              "api-manual/tiktok/profiles",
-              "api-manual/tiktok/videos",
-              "api-manual/tiktok/comments",
-              "api-manual/tiktok/search",
-              "api-manual/tiktok/hashtags",
-              "api-manual/tiktok/transcripts",
-              "api-manual/tiktok/live-room-info",
-              "api-manual/tiktok/trending-feed"
-            ]
-          },
-          {
-            "group": "TikTok Shop",
-            "pages": [
-              "api-manual/tiktok-shop/overview",
-              "api-manual/tiktok-shop/search",
-              "api-manual/tiktok-shop/products",
-              "api-manual/tiktok-shop/product",
-              "api-manual/tiktok-shop/product-reviews",
-              "api-manual/tiktok-shop/user-showcase"
-            ]
-          },
-          {
-            "group": "X",
-            "pages": [
-              "api-manual/x/overview",
-              "api-manual/x/profiles",
-              "api-manual/x/posts",
-              "api-manual/x/user-posts",
-              "api-manual/x/search"
-            ]
-          },
-          {
-            "group": "LinkedIn",
-            "pages": [
-              "api-manual/linkedin/overview",
-              "api-manual/linkedin/profiles",
-              "api-manual/linkedin/companies",
-              "api-manual/linkedin/posts",
-              "api-manual/linkedin/jobs"
-            ]
-          },
-          {
-            "group": "Reddit",
-            "pages": [
-              "api-manual/reddit/overview",
-              "api-manual/reddit/posts",
-              "api-manual/reddit/comments",
-              "api-manual/reddit/subreddit-posts",
-              "api-manual/reddit/search"
-            ]
-          },
-          {
-            "group": "Pinterest",
-            "pages": [
-              "api-manual/pinterest/overview",
-              "api-manual/pinterest/profiles",
-              "api-manual/pinterest/pins",
-              "api-manual/pinterest/user-pins",
-              "api-manual/pinterest/search"
-            ]
-          },
-          {
-            "group": "Threads",
-            "pages": [
-              "api-manual/threads/overview",
-              "api-manual/threads/profiles",
-              "api-manual/threads/posts",
-              "api-manual/threads/user-posts"
-            ]
-          },
-          {
-            "group": "Common",
-            "pages": [
-              "api-manual/agent-api/authentication",
-              "api-manual/agent-api/callbacks",
-              "api-manual/agent-api/status",
-              "api-manual/agent-api/files",
-              "api-manual/agent-api/errors"
+            "tab": "Integrations",
+            "groups": [
+              {
+                "group": "Get started",
+                "pages": [
+                  "integrations/overview",
+                  "integrations/authentication",
+                  "integrations/mcp",
+                  "integrations/cli",
+                  "integrations/skill"
+                ]
+              },
+              {
+                "group": "Clients",
+                "pages": [
+                  "integrations/claude-desktop",
+                  "integrations/cursor",
+                  "integrations/codex",
+                  "integrations/vscode"
+                ]
+              },
+              {
+                "group": "Guides",
+                "pages": [
+                  "integrations/mcp-filtering",
+                  "integrations/tasks-results",
+                  "integrations/troubleshooting"
+                ]
+              }
             ]
           }
         ]
       },
       {
-        "tab": "Integrations",
-        "groups": [
+        "language": "zh",
+        "navbar": {
+          "links": [
+            {
+              "label": "官网",
+              "href": "https://socq.ai"
+            }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "获取 API Key",
+            "href": "https://socq.ai/dashboard/api-key"
+          }
+        },
+        "tabs": [
           {
-            "group": "Get started",
-            "pages": [
-              "integrations/overview",
-              "integrations/authentication",
-              "integrations/mcp",
-              "integrations/cli",
-              "integrations/skill"
+            "tab": "API",
+            "groups": [
+              {
+                "group": "概览",
+                "pages": [
+                  "zh/index",
+                  "zh/api-manual/agent-api/overview"
+                ]
+              },
+              {
+                "group": "Instagram",
+                "pages": [
+                  "zh/api-manual/instagram/overview",
+                  "zh/api-manual/instagram/posts",
+                  "zh/api-manual/instagram/comments",
+                  "zh/api-manual/instagram/reels",
+                  "zh/api-manual/instagram/search",
+                  "zh/api-manual/instagram/followers-count",
+                  "zh/api-manual/instagram/profiles",
+                  "zh/api-manual/instagram/transcripts",
+                  "zh/api-manual/instagram/hashtag-posts",
+                  "zh/api-manual/instagram/followers",
+                  "zh/api-manual/instagram/following",
+                  "zh/api-manual/instagram/tagged-posts"
+                ]
+              },
+              {
+                "group": "Facebook",
+                "pages": [
+                  "zh/api-manual/facebook/overview",
+                  "zh/api-manual/facebook/pages",
+                  "zh/api-manual/facebook/posts",
+                  "zh/api-manual/facebook/comments",
+                  "zh/api-manual/facebook/transcripts",
+                  "zh/api-manual/facebook/group-posts",
+                  "zh/api-manual/facebook/events-search"
+                ]
+              },
+              {
+                "group": "Facebook Marketplace",
+                "pages": [
+                  "zh/api-manual/facebook-marketplace/overview",
+                  "zh/api-manual/facebook-marketplace/location-search",
+                  "zh/api-manual/facebook-marketplace/search",
+                  "zh/api-manual/facebook-marketplace/item"
+                ]
+              },
+              {
+                "group": "Facebook Ad Library",
+                "pages": [
+                  "zh/api-manual/facebook-ad-library/overview",
+                  "zh/api-manual/facebook-ad-library/search",
+                  "zh/api-manual/facebook-ad-library/company-search",
+                  "zh/api-manual/facebook-ad-library/company-ads",
+                  "zh/api-manual/facebook-ad-library/ad"
+                ]
+              },
+              {
+                "group": "YouTube",
+                "pages": [
+                  "zh/api-manual/youtube/overview",
+                  "zh/api-manual/youtube/channels",
+                  "zh/api-manual/youtube/videos",
+                  "zh/api-manual/youtube/channel-videos",
+                  "zh/api-manual/youtube/comments",
+                  "zh/api-manual/youtube/shorts",
+                  "zh/api-manual/youtube/search",
+                  "zh/api-manual/youtube/transcripts",
+                  "zh/api-manual/youtube/playlist-videos"
+                ]
+              },
+              {
+                "group": "TikTok",
+                "pages": [
+                  "zh/api-manual/tiktok/overview",
+                  "zh/api-manual/tiktok/profiles",
+                  "zh/api-manual/tiktok/videos",
+                  "zh/api-manual/tiktok/comments",
+                  "zh/api-manual/tiktok/search",
+                  "zh/api-manual/tiktok/hashtags",
+                  "zh/api-manual/tiktok/transcripts",
+                  "zh/api-manual/tiktok/live-room-info",
+                  "zh/api-manual/tiktok/trending-feed"
+                ]
+              },
+              {
+                "group": "TikTok Shop",
+                "pages": [
+                  "zh/api-manual/tiktok-shop/overview",
+                  "zh/api-manual/tiktok-shop/search",
+                  "zh/api-manual/tiktok-shop/products",
+                  "zh/api-manual/tiktok-shop/product",
+                  "zh/api-manual/tiktok-shop/product-reviews",
+                  "zh/api-manual/tiktok-shop/user-showcase"
+                ]
+              },
+              {
+                "group": "X",
+                "pages": [
+                  "zh/api-manual/x/overview",
+                  "zh/api-manual/x/profiles",
+                  "zh/api-manual/x/posts",
+                  "zh/api-manual/x/user-posts",
+                  "zh/api-manual/x/search"
+                ]
+              },
+              {
+                "group": "LinkedIn",
+                "pages": [
+                  "zh/api-manual/linkedin/overview",
+                  "zh/api-manual/linkedin/profiles",
+                  "zh/api-manual/linkedin/companies",
+                  "zh/api-manual/linkedin/posts",
+                  "zh/api-manual/linkedin/jobs"
+                ]
+              },
+              {
+                "group": "Reddit",
+                "pages": [
+                  "zh/api-manual/reddit/overview",
+                  "zh/api-manual/reddit/posts",
+                  "zh/api-manual/reddit/comments",
+                  "zh/api-manual/reddit/subreddit-posts",
+                  "zh/api-manual/reddit/search"
+                ]
+              },
+              {
+                "group": "Pinterest",
+                "pages": [
+                  "zh/api-manual/pinterest/overview",
+                  "zh/api-manual/pinterest/profiles",
+                  "zh/api-manual/pinterest/pins",
+                  "zh/api-manual/pinterest/user-pins",
+                  "zh/api-manual/pinterest/search"
+                ]
+              },
+              {
+                "group": "Threads",
+                "pages": [
+                  "zh/api-manual/threads/overview",
+                  "zh/api-manual/threads/profiles",
+                  "zh/api-manual/threads/posts",
+                  "zh/api-manual/threads/user-posts"
+                ]
+              },
+              {
+                "group": "通用",
+                "pages": [
+                  "zh/api-manual/agent-api/authentication",
+                  "zh/api-manual/agent-api/callbacks",
+                  "zh/api-manual/agent-api/status",
+                  "zh/api-manual/agent-api/files",
+                  "zh/api-manual/agent-api/errors"
+                ]
+              }
             ]
           },
           {
-            "group": "Clients",
-            "pages": [
-              "integrations/claude-desktop",
-              "integrations/cursor",
-              "integrations/codex",
-              "integrations/vscode"
-            ]
-          },
-          {
-            "group": "Guides",
-            "pages": [
-              "integrations/mcp-filtering",
-              "integrations/tasks-results",
-              "integrations/troubleshooting"
+            "tab": "集成",
+            "groups": [
+              {
+                "group": "快速开始",
+                "pages": [
+                  "zh/integrations/overview",
+                  "zh/integrations/authentication",
+                  "zh/integrations/mcp",
+                  "zh/integrations/cli",
+                  "zh/integrations/skill"
+                ]
+              },
+              {
+                "group": "客户端",
+                "pages": [
+                  "zh/integrations/claude-desktop",
+                  "zh/integrations/cursor",
+                  "zh/integrations/codex",
+                  "zh/integrations/vscode"
+                ]
+              },
+              {
+                "group": "指南",
+                "pages": [
+                  "zh/integrations/mcp-filtering",
+                  "zh/integrations/tasks-results",
+                  "zh/integrations/troubleshooting"
+                ]
+              }
             ]
           }
         ]

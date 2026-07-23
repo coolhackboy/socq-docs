@@ -1,0 +1,43 @@
+---
+title: "Instagram"
+description: "采集公开的 Instagram 个人资料、关系、帖子、视频字幕和发现结果。"
+icon: "instagram"
+iconType: "brands"
+---
+
+# Instagram
+
+使用 Instagram 端点采集公开个人资料、关系列表、帖子、视频字幕和发现数据。
+
+## 可用端点
+
+|API | 方法 | 端点 |
+| --- | --- | --- |
+| Instagram 帖子 | `POST` | `/v1/instagram/posts` |
+| Instagram 评论 | `POST` | `/v1/instagram/comments` |
+| Instagram Reels | `POST` | `/v1/instagram/reels` |
+| Instagram 搜索 | `POST` | `/v1/instagram/search` |
+| Instagram 关注者数量 | `POST` | `/v1/instagram/followers-count` |
+| Instagram 简介 | `POST` | `/v1/instagram/profiles` |
+| Instagram 视频字幕 | `POST` | `/v1/instagram/transcripts` |
+| Instagram 标签帖子 | `POST` | `/v1/instagram/hashtag-posts` |
+| Instagram 关注者 | `POST` | `/v1/instagram/followers` |
+| Instagram 关注 | `POST` | `/v1/instagram/following` |
+| Instagram 已标记帖子 | `POST` | `/v1/instagram/tagged-posts` |
+
+## 工作流程
+
+<Steps>
+  <Step title="提交">
+    向 Instagram 端点发送请求。
+  </Step>
+  <Step title="接收任务 ID">
+    API 立即返回 `task_id`。
+  </Step>
+  <Step title="检查状态">
+    轮询 `GET /v1/tasks/{task_id}`，直到任务达到 `succeeded` 或 `failed`。
+  </Step>
+  <Step title="读取数据">
+    当任务成功时，`/v1/tasks/{task_id}` 返回 `results` 下的规范化行。需要时从 `files` 下载原始 JSONL。
+  </Step>
+</Steps>

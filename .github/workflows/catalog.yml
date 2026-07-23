@@ -15,5 +15,6 @@ jobs:
           node-version: 20
       - run: node scripts/sync-catalog.mjs
       - run: node scripts/check-generated.mjs
+      - run: node scripts/check-i18n.mjs
       - name: Verify committed machine files match production
         run: git diff --exit-code -- capability-catalog.json llms.json api-manual/agent-api/agent-api.json

@@ -1,0 +1,69 @@
+---
+title: "LinkedIn 公司"
+description: "采集公开的 LinkedIn 公司数据。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/companies"
+---
+
+# LinkedIn 公司
+
+```json
+{
+  "urls": ["https://www.linkedin.com/company/example"]
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/linkedin/companies` |
+| Compact MCP | `socq_execute` 与 `endpoint: "linkedin/companies"` |
+| Typed MCP | `socq_linkedin_companies` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=linkedin_companies` |
+| CLI | `socq linkedin companies` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+结果使用 `platform="linkedin"`、`resource="companies"` 和 `type="company"`。行业、公司规模、总部、地点和专业在 `extra` 下返回。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "linkedin/companies",
+    "result_count": 1,
+    "credits_amount": 2,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "example",
+        "platform": "linkedin",
+        "resource": "companies",
+        "type": "company",
+        "url": "https://www.linkedin.com/company/example",
+        "name": "Example Company",
+        "description": "Software company",
+        "website": "https://example.com",
+        "metrics": {"followers_count": 250000, "employees_count": 1200},
+        "created_at": null,
+        "collected_at": "2026-07-17T10:30:00",
+        "extra": {"industries": ["Software Development"], "company_size": "1,001-5,000 employees", "headquarters": "San Francisco"}
+      }]
+    }
+  }
+}
+```

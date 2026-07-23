@@ -1,0 +1,77 @@
+---
+title: "TikTok Shop 产品"
+description: "从一众TikTok Shop采集产品。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok-shop/products"
+---
+
+# TikTok Shop 产品
+
+从一个商店 URL 采集产品，按畅销产品或最新版本排序。
+
+## 请求示例
+
+```json
+{
+  "url": "https://www.tiktok.com/shop/store/goli-nutrition/7495794203056835079",
+  "results_limit": 100,
+  "sort_by": "top",
+  "region": "US"
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/tiktok-shop/products` |
+| Compact MCP | `socq_execute` 与 `endpoint: "tiktok-shop/products"` |
+| Typed MCP | `socq_tiktok_shop_products` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=tiktok_shop_products` |
+| CLI | `socq tiktok-shop products` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+一项任务接受一个商店 URL。当没有其他页面可用时，最终结果可以包含比 `results_limit` 更少的记录。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "tiktok-shop/products",
+    "result_count": 1,
+    "credits_amount": 0.7,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "1729527313880355335",
+        "platform": "tiktok-shop",
+        "resource": "products",
+        "type": "product",
+        "url": "https://www.tiktok.com/shop/pdp/example/1729527313880355335",
+        "name": "Wellness Gummies",
+        "text": "Wellness Gummies",
+        "author": {"id": "7495794203056835079", "username": null, "name": "Example Nutrition", "url": null},
+        "metrics": {"rating": 4.6, "reviews_count": 5400, "sold_count": 32000},
+        "media": [{"type": "image", "url": "https://example.com/gummies.jpg"}],
+        "created_at": null,
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {"input_url": "https://www.tiktok.com/shop/store/goli-nutrition/7495794203056835079", "price": {"amount": 31.99, "currency": "USD"}}
+      }]
+    }
+  }
+}
+```

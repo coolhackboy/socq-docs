@@ -1,0 +1,72 @@
+---
+title: "Codex"
+description: "将 Codex 连接到 SocQ MCP，验证采集，并可选择添加 Agent Skill。"
+icon: "code"
+---
+
+# Codex
+
+Codex CLI 和 IDE 扩展从 `~/.codex/config.toml` 读取 MCP 配置。可信项目也可以提供 `.codex/config.toml`。
+
+## 前置条件
+
+- SocQ API 密钥；
+- Codex CLI 或 Codex IDE 扩展。
+
+## 配置
+
+启动 Codex 前，在环境中设置 `SOCQ_API_KEY`，然后添加：
+
+```toml
+[mcp_servers.socq]
+url = "https://api.socq.ai/mcp"
+bearer_token_env_var = "SOCQ_API_KEY"
+tool_timeout_sec = 45
+```
+
+更改配置后重新启动或开始新的 Codex 会话。
+
+<Warning>
+  将 API 密钥保留在环境中。不要将其放在 MCP URL 中或将其提交到项目配置中。
+</Warning>
+
+## 限制工具列表
+
+要公开 Typed YouTube 工具，请使用过滤后的 MCP URL：
+
+```toml
+[mcp_servers.socq_youtube]
+url = "https://api.socq.ai/mcp?platforms=youtube"
+bearer_token_env_var = "SOCQ_API_KEY"
+tool_timeout_sec = 45
+```
+
+有关模式选择和过滤限制，请参阅[选择 MCP 工具](/zh/integrations/mcp-filtering)。
+
+## 验证
+
+向 Codex 提问：
+
+```text
+Use SocQ to check my account, then collect the latest 20 comments from this
+YouTube video. Wait for the task to finish and return the results as a table:
+https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+当 Codex 发现 SocQ 工具、调用 `socq_account`、提交采集并使用 `socq_get_task` 读取返回的任务时，连接正在工作。
+
+## 添加工作流程指导
+
+安装 `socq-social-research` 技能以进行端点选择、成本意识、轮询、分页和跨平台研究指导：
+
+```bash
+npx skills add socq-ai/socq-devtools
+```
+
+该技能与 MCP 相辅相成；它不会取代服务器。参见[Agent Skill](/zh/integrations/skill)。
+
+## 故障排除
+
+配置更改后开始新会话，以便 Codex 刷新工具列表。有关身份验证、缺少工具和任务错误，请参阅[集成故障排除](/zh/integrations/troubleshooting)。
+
+有关当前 MCP 配置字段，请参阅官方 Codex [`config.toml` 参考](https://learn.chatgpt.com/docs/config-file/config-reference#configtoml)。

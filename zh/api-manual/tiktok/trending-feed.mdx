@@ -1,0 +1,23 @@
+---
+title: "TikTok 趋势动态"
+description: "采集某个地区的热门公共视频。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/trending-feed"
+---
+
+# TikTok 趋势动态
+
+```json
+{"region": "US", "results_limit": 20}
+```
+
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/tiktok/trending-feed` |
+| Compact MCP | `socq_execute` 与 `endpoint: "tiktok/trending-feed"` |
+| Typed MCP | `socq_tiktok_trending_feed` |
+| CLI | `socq tiktok trending-feed` |
+
+`region` 是两个字母的区域代码，用于本地化 Feed 可用性。
+`results_limit` 默认为 100，接受 4 到 2,000 之间的值。

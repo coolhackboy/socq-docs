@@ -1,0 +1,25 @@
+---
+title: "YouTube"
+description: "采集公共 YouTube 频道、视频、播放列表、评论、Shorts、搜索和视频字幕数据。"
+icon: "youtube"
+iconType: "brands"
+---
+
+# YouTube API
+
+YouTube 端点使用与其他代理 API 相同的异步任务流。
+
+|API | 方法 | 端点 |
+| --- | --- | --- |
+|频道 | `POST` | `/v1/youtube/channels` |
+|视频 | `POST` | `/v1/youtube/videos` |
+|频道视频 | `POST` | `/v1/youtube/channel-videos` |
+|评论 | `POST` | `/v1/youtube/comments` |
+|Shorts | `POST` | `/v1/youtube/shorts` |
+|搜索 | `POST` | `/v1/youtube/search` |
+|视频字幕| `POST` | `/v1/youtube/transcripts` |
+|播放列表视频 | `POST` | `/v1/youtube/playlist-videos` |
+
+提交请求，收到 `task_id`，然后轮询 `GET /v1/tasks/{task_id}`。成功的任务响应包括 `results` 下的规范化记录。
+
+对于接受多个 URL 的端点，`results_limit` 适用于每个 URL。

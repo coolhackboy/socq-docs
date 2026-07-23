@@ -1,0 +1,71 @@
+---
+title: "Pinterest 个人资料"
+description: "采集公共 Pinterest 个人资料数据。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/pinterest/profiles"
+---
+
+# Pinterest 简介
+
+```json
+{
+  "urls": ["https://www.pinterest.com/example/"]
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/pinterest/profiles` |
+| Compact MCP | `socq_execute` 与 `endpoint: "pinterest/profiles"` |
+| Typed MCP | `socq_pinterest_profiles` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=pinterest_profiles` |
+| CLI | `socq pinterest profiles` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+结果使用 `resource="profiles"` 和 `type="profile"`，包含个人资料名称、用户名、图像、简介、网站和账户指标。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "pinterest/profiles",
+    "result_count": 1,
+    "credits_amount": 0.6,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "profile_id",
+        "platform": "pinterest",
+        "resource": "profiles",
+        "type": "profile",
+        "url": "https://www.pinterest.com/example/",
+        "username": "example",
+        "name": "Example Creator",
+        "description": "Design and home inspiration",
+        "avatar_url": "https://example.com/avatar.jpg",
+        "website": "https://example.com",
+        "metrics": {"followers_count": 12500, "following_count": 320, "boards_count": 24, "saved_count": 8500},
+        "created_at": null,
+        "collected_at": "2026-07-17T10:30:00",
+        "extra": {"country_code": "US", "posts_page_url": "https://www.pinterest.com/example/_created/"}
+      }]
+    }
+  }
+}
+```

@@ -1,0 +1,78 @@
+---
+title: "公司广告"
+description: "采集 Facebook Ad Library 页面 ID 的公共广告。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook-ad-library/company-ads"
+---
+
+# 公司广告
+
+采集与公司搜索返回的一页 ID 关联的公共广告。
+
+## 请求示例
+
+```json
+{
+  "page_id": "51212153078",
+  "results_limit": 100,
+  "country": "US",
+  "status": "ACTIVE",
+  "media_type": "ALL"
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/facebook-ad-library/company-ads` |
+| Compact MCP | `socq_execute` 与 `endpoint: "facebook-ad-library/company-ads"` |
+| Typed MCP | `socq_facebook_ad_library_company_ads` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=facebook_ad_library_company_ads` |
+| CLI | `socq facebook-ad-library company-ads` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+当没有其他页面可用或重复的广告 ID 被删除时，最终结果包含的记录数可能少于 `results_limit`。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "facebook-ad-library/company-ads",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "1162496978867592",
+        "platform": "facebook-ad-library",
+        "resource": "company-ads",
+        "type": "ad",
+        "url": "https://www.facebook.com/ads/library/?id=1162496978867592",
+        "name": "New collection",
+        "text": "Explore the latest collection.",
+        "author": {"id": "51212153078", "username": null, "name": "Example Sports", "url": null},
+        "metrics": {"page_likes_count": 1200000, "reach": null},
+        "media": [{"type": "image", "url": "https://example.com/ad.jpg"}],
+        "created_at": "2026-07-10T00:00:00",
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {"input_page_id": "51212153078", "is_active": true, "cta_text": "Shop now"}
+      }]
+    }
+  }
+}
+```

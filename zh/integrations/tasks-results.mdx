@@ -1,0 +1,71 @@
+---
+title: "任务和结果"
+description: "等待 SocQ 任务，安全重试，并读取标准化或原始结果。"
+icon: "clock"
+---
+
+# 任务和结果
+
+每个 SocQ 采集都作为后台任务运行：
+
+```text
+submit -> task_id -> queued -> running -> succeeded
+                                   \-> failed
+```
+
+Compact MCP 通过 `socq_execute` 提交；Typed MCP 通过 `socq_youtube_comments` 等工具提交。两者返回相同的任务模型。
+
+## 等待任务
+
+MCP 默认不等待。在 `socq_execute` 上设置 `wait_seconds`，或在 Typed 工具上设置 `_wait_seconds`，最多等待 30 秒。
+
+如果任务状态仍为 `queued` 或 `running`，请保留任务 ID 并调用 `socq_get_task`：
+
+```json
+{
+  "task_id": "TASK_ID",
+  "limit": 100
+}
+```
+
+CLI 可以轮询同一任务，而无需保持 API 请求打开：
+
+```bash
+socq task wait TASK_ID --timeout 180
+```
+
+<Warning>
+  客户端超时不会取消 SocQ 任务。使用相同的任务 ID 继续，而不是提交重复的采集并为其付费。
+</Warning>
+
+## 安全地重试提交
+
+当网络或客户端故障可能触发提交重试时，请使用幂等性密钥。相同的用户、密钥、端点和输入返回原始任务；在不同的输入中重复使用该密钥会导致冲突。
+
+```json
+{
+  "endpoint": "youtube/comments",
+  "input": {
+    "urls": ["https://www.youtube.com/watch?v=VIDEO_ID"]
+  },
+  "idempotency_key": "youtube-comments-research-20260721"
+}
+```
+
+## 读取标准化结果
+
+成功任务会在 `results.items` 中返回规范化记录。MCP 每页默认返回 25 条，最多返回 100 条。
+
+当 `has_more` 为 true 时，将 `next_cursor` 不变地传递给下一个 `socq_get_task` 调用。当光标为空或已达到您请求的研究限制时停止。
+
+## 下载原始文件
+
+使用 `socq_get_files` 或 CLI 检索原始 JSONL 导出：
+
+```bash
+socq task files TASK_ID
+```
+
+文件 URL 可能过期。原始文件保留数据提供方的详细字段，而分页任务结果使用 SocQ 的规范化 schema。
+
+有关任务状态和响应字段，请参阅[任务状态和结果](/zh/api-manual/agent-api/status) 和[结果文件](/zh/api-manual/agent-api/files)。

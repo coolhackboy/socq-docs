@@ -1,0 +1,39 @@
+---
+title: "身份验证"
+description: "使用 API 密钥对代理 API 请求进行身份验证。"
+---
+
+# 身份验证
+
+所有代理 API 请求都需要 API 密钥。
+
+```http
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+```
+
+对提交、任务状态、结果和文件端点使用相同的标头。
+
+## API 密钥限制
+
+API 密钥控制同样适用于 REST、MCP 和 CLI 请求。一把钥匙可能有：
+
+- IP 许可名单；
+- 每分钟请求限制；
+- 每小时或每日积分限额。
+
+这些控制独立于账户的可用积分。因此，即使账户有足够的余额，请求也可能被拒绝。
+
+## 未授权响应
+
+```json
+{
+  "code": 401,
+  "error": {
+    "message": "Invalid or missing API key",
+    "type": "unauthorized"
+  }
+}
+```
+
+IP 白名单拒绝返回 `403`。利率或积分窗口限制返回`429`；请参阅[错误](/zh/api-manual/agent-api/errors) 以获取重试指导。

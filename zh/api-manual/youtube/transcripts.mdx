@@ -1,0 +1,60 @@
+---
+title: "YouTube 视频字幕"
+description: "从公开 YouTube 视频中采集纯文本视频字幕。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/youtube/transcripts"
+---
+
+# YouTube 视频字幕
+
+为每个公共视频 URL 采集一份纯文本视频字幕。
+
+```json
+{
+  "urls": ["https://www.youtube.com/watch?v=VIDEO_ID"],
+  "language": "en"
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/youtube/transcripts` |
+| Compact MCP | `socq_execute` 与 `endpoint: "youtube/transcripts"` |
+| Typed MCP | `socq_youtube_transcripts` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=youtube_transcripts` |
+| CLI | `socq youtube transcripts` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+`language` 是可选的 BCP-47 首选语言。如果不可用，则可能会返回另一种可用语言。始终使用结果的 `language` 字段作为实际的转录语言。
+
+没有可用视频字幕的视频不会产生结果。
+
+## 结果项
+
+```json
+{
+  "id": "VIDEO_ID",
+  "platform": "youtube",
+  "resource": "transcripts",
+  "type": "transcript",
+  "url": "https://www.youtube.com/watch?v=VIDEO_ID",
+  "title": "Example video",
+  "text": "Plain-text transcript content...",
+  "language": "en",
+  "available_languages": ["en", "es"],
+  "format": "plaintext",
+  "transcript_source": "user_generated",
+  "collected_at": "2026-07-15T10:30:00",
+  "extra": {}
+}
+```

@@ -1,0 +1,72 @@
+---
+title: "X 帖子"
+description: "通过 URL 采集公共 X 帖子。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/x/posts"
+---
+
+# X 帖子
+
+为每个公共帖子 URL 采集一条标准化帖子记录。 `x.com` 和 `twitter.com` 帖子 URL 均被接受。
+
+```json
+{
+  "urls": ["https://x.com/openai/status/1234567890123456789"]
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/x/posts` |
+| Compact MCP | `socq_execute` 与 `endpoint: "x/posts"` |
+| Typed MCP | `socq_x_posts` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=x_posts` |
+| CLI | `socq x posts` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+## 结果项
+
+```json
+{
+  "id": "1234567890123456789",
+  "platform": "x",
+  "resource": "posts",
+  "type": "post",
+  "url": "https://x.com/openai/status/1234567890123456789",
+  "text": "Example public post",
+  "language": "en",
+  "author": {
+    "id": "123456789",
+    "username": "openai",
+    "name": "OpenAI",
+    "url": "https://x.com/openai",
+    "avatar_url": "https://example.com/avatar.jpg",
+    "is_verified": true,
+    "is_private": false
+  },
+  "metrics": {
+    "likes_count": 1200,
+    "comments_count": 80,
+    "reposts_count": 150,
+    "quotes_count": 20,
+    "views_count": 100000,
+    "bookmarks_count": 40
+  },
+  "media": [],
+  "hashtags": [],
+  "mentions": [],
+  "created_at": "2026-07-17T08:00:00",
+  "collected_at": "2026-07-17T10:30:00",
+  "extra": {}
+}
+```

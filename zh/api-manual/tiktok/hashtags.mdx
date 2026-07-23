@@ -1,0 +1,40 @@
+---
+title: "TikTok 标签"
+description: "采集与一个或多个主题标签匹配的公开 TikTok 视频。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/hashtags"
+---
+
+# TikTok 标签
+
+采集一个或多个主题标签的公共视频。领先的 `#` 是可选的。
+
+```json
+{
+  "hashtags": ["tutorial", "#python"],
+  "results_limit": 50
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/tiktok/hashtags` |
+| Compact MCP | `socq_execute` 与 `endpoint: "tiktok/hashtags"` |
+| Typed MCP | `socq_tiktok_hashtags` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=tiktok_hashtags` |
+| CLI | `socq tiktok hashtags` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+`results_limit` 默认为 100 并适用于每个主题标签。
+
+结果使用[TikTok 视频](/zh/api-manual/tiktok/videos) 中记录的归一化结构，其中 `resource` 设置为 `hashtags`。匹配的主题标签及其可用指标将在 `extra` 下返回。

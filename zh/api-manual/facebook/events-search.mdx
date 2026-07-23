@@ -1,0 +1,23 @@
+---
+title: "Facebook 活动搜索"
+description: "按关键字搜索公共 Facebook 事件。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook/events-search"
+---
+
+# Facebook 活动搜索
+
+```json
+{"query": "technology conference", "results_limit": 20}
+```
+
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/facebook/events-search` |
+| Compact MCP | `socq_execute` 与 `endpoint: "facebook/events-search"` |
+| Typed MCP | `socq_facebook_events_search` |
+| CLI | `socq facebook events-search` |
+
+结果包括活动标识、日程安排文本、地点、出席率指标以及可用的封面媒体。
+`results_limit` 默认为 100，接受 7 到 2,000 之间的值。

@@ -1,0 +1,76 @@
+---
+title: "TikTok Shop 搜索"
+description: "搜索公共 TikTok Shop 产品。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok-shop/search"
+---
+
+# TikTok Shop 搜索
+
+按关键字和市场区域搜索公共产品。
+
+## 请求示例
+
+```json
+{
+  "query": "running shoes",
+  "results_limit": 100,
+  "region": "US"
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/tiktok-shop/search` |
+| Compact MCP | `socq_execute` 与 `endpoint: "tiktok-shop/search"` |
+| Typed MCP | `socq_tiktok_shop_search` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=tiktok_shop_search` |
+| CLI | `socq tiktok-shop search` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+SocQ 请求结果页面，直到到达 `results_limit` 或没有其他产品可用。重复的产品 ID 会保存一次。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "tiktok-shop/search",
+    "result_count": 1,
+    "credits_amount": 0.7,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "1730213444857467838",
+        "platform": "tiktok-shop",
+        "resource": "search",
+        "type": "product",
+        "url": "https://www.tiktok.com/shop/pdp/example/1730213444857467838",
+        "name": "Running Shoes",
+        "text": "Running Shoes",
+        "author": {"id": "7495832567110863806", "username": null, "name": "Example Shop", "url": null},
+        "metrics": {"rating": 4.8, "reviews_count": 2493, "sold_count": 24737},
+        "media": [{"type": "image", "url": "https://example.com/product.jpg"}],
+        "created_at": null,
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {"search_query": "running shoes", "price": {"amount": 49.99, "currency": "USD", "formatted": "49.99"}}
+      }]
+    }
+  }
+}
+```

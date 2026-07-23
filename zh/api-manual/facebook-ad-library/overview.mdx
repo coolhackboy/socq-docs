@@ -1,0 +1,19 @@
+---
+title: "Facebook Ad Library"
+description: "搜索公共广告、查找公司并采集广告详细信息。"
+icon: "facebook"
+iconType: "brands"
+---
+
+# Facebook Ad Library
+
+Facebook Ad Library API 与 Facebook 社交数据和 Facebook Marketplace API 分开记录。
+
+|API | 方法 | 端点 |
+| --- | --- | --- |
+|搜索 | `POST` | `/v1/facebook-ad-library/search` |
+|公司搜索 | `POST` | `/v1/facebook-ad-library/company-search` |
+|公司广告 | `POST` | `/v1/facebook-ad-library/company-ads` |
+|广告 | `POST` | `/v1/facebook-ad-library/ad` |
+
+所有端点都使用标准异步任务流。提交请求，接收 `task_id`，然后轮询 `GET /v1/tasks/{task_id}` 的状态和标准化结果。

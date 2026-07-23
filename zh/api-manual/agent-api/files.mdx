@@ -1,0 +1,35 @@
+---
+title: "列出任务文件"
+description: "列出任务生成的原始结果文件。"
+openapi: "/api-manual/agent-api/agent-api.json GET /v1/tasks/{task_id}/files"
+---
+
+# 列出任务文件
+
+返回任务的原始结果文件。
+
+## 端点
+
+```http
+GET https://api.socq.ai/v1/tasks/{task_id}/files
+```
+
+## 响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "items": [
+      {
+        "file_type": "raw_jsonl",
+        "public_url": "https://storage.socq.ai/agent-results/A1B2C3D4E5F6G7H8/raw_jsonl.jsonl.gz",
+        "file_size": 552,
+        "item_count": 1,
+        "expires_at": null
+      }
+    ]
+  }
+}
+```

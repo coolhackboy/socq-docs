@@ -1,0 +1,75 @@
+---
+title: "TikTok Shop 产品"
+description: "采集一种公开 TikTok Shop 产品的详细信息。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok-shop/product"
+---
+
+# TikTok Shop 产品
+
+采集产品详细信息、卖家数据、定价、类别、媒体和 SKU 信息。
+
+## 请求示例
+
+```json
+{
+  "url": "https://www.tiktok.com/shop/pdp/example-product/1729587769570529799",
+  "region": "US"
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/tiktok-shop/product` |
+| Compact MCP | `socq_execute` 与 `endpoint: "tiktok-shop/product"` |
+| Typed MCP | `socq_tiktok_shop_product` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=tiktok_shop_product` |
+| CLI | `socq tiktok-shop product` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+一项任务接受一个产品 URL 并最多生成一条标准化产品记录。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "tiktok-shop/product",
+    "result_count": 1,
+    "credits_amount": 0.7,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "1729587769570529799",
+        "platform": "tiktok-shop",
+        "resource": "product",
+        "type": "product",
+        "url": "https://www.tiktok.com/shop/pdp/example-product/1729587769570529799",
+        "name": "Example Product",
+        "text": "Example Product",
+        "author": {"id": "7496021452055022168", "username": "7098283607022158891", "name": "Example Store", "url": "https://www.tiktok.com/@7098283607022158891"},
+        "metrics": {"rating": 4.7, "reviews_count": 1200, "sold_count": 8500},
+        "media": [{"type": "image", "url": "https://example.com/product.jpg"}],
+        "created_at": null,
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {"input_url": "https://www.tiktok.com/shop/pdp/example-product/1729587769570529799", "region": "US", "price": {"amount": 29.99, "currency": "USD"}}
+      }]
+    }
+  }
+}
+```

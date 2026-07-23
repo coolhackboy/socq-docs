@@ -1,0 +1,40 @@
+---
+title: "X 用户帖子"
+description: "从 X 个人资料中采集最近的公开帖子。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/x/user-posts"
+---
+
+# X 用户帖子
+
+采集一个或多个用户名的最近公开帖子。回复被排除在外。
+
+```json
+{
+  "usernames": ["openai", "github"],
+  "results_limit": 40
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/x/user-posts` |
+| Compact MCP | `socq_execute` 与 `endpoint: "x/user-posts"` |
+| Typed MCP | `socq_x_user_posts` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=x_user_posts` |
+| CLI | `socq x user-posts` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+`results_limit` 指定每个用户名返回的最大帖子数。结果总数最多可达用户名数量乘以 `results_limit`。根据返回结果的总数计费。
+
+结果使用 [X 帖子](/zh/api-manual/x/posts) 中记录的归一化结构，其中 `resource` 设置为 `user-posts`。提交的用户名返回到 `extra.input_username` 下。

@@ -1,0 +1,74 @@
+---
+title: "广告详情"
+description: "采集一则公开 Facebook Ad Library 广告的详细信息。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook-ad-library/ad"
+---
+
+# 广告详情
+
+采集一个公共广告网址的广告素材、页面、媒体、投放状态和时间数据。
+
+## 请求示例
+
+```json
+{
+  "url": "https://www.facebook.com/ads/library/?id=702369045530963"
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/facebook-ad-library/ad` |
+| Compact MCP | `socq_execute` 与 `endpoint: "facebook-ad-library/ad"` |
+| Typed MCP | `socq_facebook_ad_library_ad` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=facebook_ad_library_ad` |
+| CLI | `socq facebook-ad-library ad` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+一项任务接受一个广告 URL，并最多生成一条标准化广告记录。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "facebook-ad-library/ad",
+    "result_count": 1,
+    "credits_amount": 0.6,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "702369045530963",
+        "platform": "facebook-ad-library",
+        "resource": "ad",
+        "type": "ad",
+        "url": "https://www.facebook.com/ads/library/?id=702369045530963",
+        "name": "Summer offer",
+        "text": "Discover the summer offer.",
+        "author": {"id": "166258896830103", "username": null, "name": "Example Brand", "url": null},
+        "metrics": {"page_likes_count": null, "reach": null},
+        "media": [{"type": "video", "url": "https://example.com/creative.mp4"}],
+        "created_at": "2026-07-01T00:00:00",
+        "collected_at": "2026-07-18T10:30:00",
+        "extra": {"input_url": "https://www.facebook.com/ads/library/?id=702369045530963", "is_active": true, "cta_text": "Learn more"}
+      }]
+    }
+  }
+}
+```

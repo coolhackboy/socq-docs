@@ -1,0 +1,124 @@
+---
+title: "选择 MCP 工具"
+description: "为工作流选择 Compact 发现工具或 Typed 采集工具。"
+icon: "filter"
+---
+
+# 选择 MCP 工具
+
+SocQ 为开放式研究提供 Compact 工具集，也为已知平台或端点提供 Typed 工具。过滤功能控制客户端加载哪些工具 schema，从而减少上下文占用并提高工具选择的可预测性。
+
+## 选择一种模式
+
+| 模式 | 加载的工具 | 适用场景 | 调用方式 |
+| --- | --- | --- | --- |
+| Compact | 七种发现、执行、任务、文件和账户工具 | 探索和跨平台请求 | 使用 `socq_execute` 和嵌套的 `input` |
+| 平台 | 最多五个平台的 Typed 采集工具，以及任务、文件和账户工具 | 仅处理已知平台 | 使用扁平参数直接调用 Typed 工具 |
+| 精确工具 | 最多三十个指定的采集工具，以及任务、文件和账户工具 | 稳定的生产工作流 | 使用扁平参数直接调用 Typed 工具 |
+
+如果不确定该使用哪个端点，请从 Compact 模式开始。如果应用始终采集相同资源，请使用精确工具连接。
+
+## Compact 模式
+
+连接到：
+
+```text
+https://api.socq.ai/mcp
+```
+
+客户端发现端点并通过 `socq_execute` 提交：
+
+```json
+{
+  "endpoint": "youtube/comments",
+  "input": {
+    "urls": ["https://www.youtube.com/watch?v=VIDEO_ID"],
+    "results_limit": 100,
+    "sort_by": "newest"
+  },
+  "wait_seconds": 30,
+  "result_limit": 25
+}
+```
+
+当客户端需要使用 `socq_search_endpoints` 和 `socq_describe_endpoint` 从多种能力中进行选择时，请使用此模式。
+
+## 平台模式
+
+选择一到五个以逗号分隔的平台段：
+
+```text
+https://api.socq.ai/mcp?platforms=youtube,tiktok
+```
+
+这会公开 Typed 工具，例如：
+
+```text
+socq_youtube_comments
+socq_youtube_search
+socq_tiktok_profiles
+socq_tiktok_videos
+```
+
+平台段与 API 路径的第一段匹配，例如 `youtube`、`tiktok` 和 `facebook-ad-library`。
+
+## 精确工具模式
+
+选择一到三十个以逗号分隔的工具标识符，不带 `socq_` 前缀：
+
+```text
+https://api.socq.ai/mcp?tools=youtube_comments,x_search
+```
+
+对于 `tools=youtube_comments`，连接公开：
+
+```text
+socq_youtube_comments
+socq_get_task
+socq_get_files
+socq_account
+```
+
+直接使用 API 输入字段调用 Typed 工具：
+
+```json
+{
+  "urls": ["https://www.youtube.com/watch?v=VIDEO_ID"],
+  "results_limit": 100,
+  "sort_by": "newest",
+  "_wait_seconds": 30,
+  "_result_limit": 25
+}
+```
+
+Typed 工具添加了三个可选控制字段：
+
+| 字段 | 用途 |
+| --- | --- |
+| `_wait_seconds` | 返回任务前最多等待 30 秒 |
+| `_result_limit` | 将本次响应返回的规范化记录限制在 1 到 100 条 |
+| `_idempotency_key` | 重试时返回原任务，而不是创建新任务 |
+
+这些与 `results_limit` 等业务输入是分开的。例如，`results_limit: 100` 请求最多采集 100 条评论，而 `_result_limit: 25` 将当前响应页面限制为 25 条记录。
+
+## 命名规则
+
+映射是确定性的：
+
+| REST 路径 | 端点 ID | Typed 工具 | 过滤器标识符 |
+| --- | --- | --- | --- |
+| `/v1/youtube/comments` | `youtube/comments` | `socq_youtube_comments` | `youtube_comments` |
+| `/v1/x/search` | `x/search` | `socq_x_search` | `x_search` |
+| `/v1/facebook-ad-library/ad` | `facebook-ad-library/ad` | `socq_facebook_ad_library_ad` | `facebook_ad_library_ad` |
+
+## 限制
+
+- `platforms` 和 `tools` 不能组合在同一 URL 中。
+- 平台模式最多接受五个平台。
+- 精确工具模式最多接受三十个工具。
+- 过滤仅更改工具可见性。身份验证、产品可用性、计费、API 密钥限制和异步任务行为保持不变。
+- 更改过滤器后重新连接或重新启动客户端，以便刷新 `tools/list`。
+
+<Tip>
+  要验证已过滤的连接，请要求客户端列出其 SocQ 工具，然后运行一个小型采集并确认 `socq_get_task` 可以读取返回的任务 ID。
+</Tip>

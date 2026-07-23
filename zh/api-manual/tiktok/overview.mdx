@@ -1,0 +1,25 @@
+---
+title: "TikTok"
+description: "采集公共 TikTok 个人资料、视频、视频字幕、直播室、趋势提要、评论、搜索和主题标签。"
+icon: "tiktok"
+iconType: "brands"
+---
+
+# TikTok API
+
+TikTok 端点使用与其他代理 API 相同的异步任务流。
+
+|API | 方法 | 端点 |
+| --- | --- | --- |
+|个人资料 | `POST` | `/v1/tiktok/profiles` |
+|视频 | `POST` | `/v1/tiktok/videos` |
+|评论 | `POST` | `/v1/tiktok/comments` |
+|搜索 | `POST` | `/v1/tiktok/search` |
+|标签 | `POST` | `/v1/tiktok/hashtags` |
+|视频视频字幕| `POST` | `/v1/tiktok/transcripts` |
+|直播室信息 | `POST` | `/v1/tiktok/live-room-info` |
+|热门动态 | `POST` | `/v1/tiktok/trending-feed` |
+
+提交请求，收到 `task_id`，然后轮询 `GET /v1/tasks/{task_id}`。成功的任务响应包括 `results` 下的规范化记录。
+
+对于接受多个视频 URL 或主题标签的端点，`results_limit` 适用于每个输入项。

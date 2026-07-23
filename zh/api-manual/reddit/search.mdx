@@ -1,0 +1,72 @@
+---
+title: "Reddit 搜索"
+description: "搜索公开 Reddit 帖子。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/reddit/search"
+---
+
+# Reddit 搜索
+
+```json
+{
+  "query": "machine learning",
+  "results_limit": 100,
+  "published_within": "month"
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/reddit/search` |
+| Compact MCP | `socq_execute` 与 `endpoint: "reddit/search"` |
+| Typed MCP | `socq_reddit_search` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=reddit_search` |
+| CLI | `socq reddit search` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+`results_limit` 默认为 100，接受 1 到 2,000 之间的值。 `published_within` 支持 `hour`、`day`、`week`、`month`、`year` 和 `all`。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "reddit/search",
+    "result_count": 1,
+    "credits_amount": 0.6,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "post_id",
+        "platform": "reddit",
+        "resource": "search",
+        "type": "post",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/post_id/example_post/",
+        "name": "New paper on model efficiency",
+        "text": "Sharing a recent research paper.",
+        "author": {"id": null, "username": "ml_researcher", "name": "ml_researcher", "url": null},
+        "metrics": {"upvotes_count": 842, "comments_count": 54, "upvote_ratio": null},
+        "media": [],
+        "created_at": "2026-07-16T08:00:00",
+        "collected_at": "2026-07-17T10:30:00",
+        "extra": {"community_name": "MachineLearning", "discovery_input": {"keyword": "machine learning"}}
+      }]
+    }
+  }
+}
+```

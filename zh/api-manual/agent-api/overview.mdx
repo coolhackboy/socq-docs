@@ -1,0 +1,140 @@
+---
+title: "API"
+description: "统一的异步社交数据采集API。"
+icon: "database"
+---
+
+# API
+
+该 API 为社交数据采集提供一致的请求流程：
+
+```text
+submit -> task_id -> task status/results/files
+```
+
+## 验证
+
+```http
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+```
+
+## 提交端点
+
+每个产品API都有自己的资源路径：
+
+| 平台 |API | 端点 |
+| --- | --- | --- |
+| Instagram |帖子 | `POST /v1/instagram/posts` |
+| Instagram |评论 | `POST /v1/instagram/comments` |
+| Instagram |Reels | `POST /v1/instagram/reels` |
+| Instagram |搜索 | `POST /v1/instagram/search` |
+| Instagram |关注者数量 | `POST /v1/instagram/followers-count` |
+| Facebook |页数 | `POST /v1/facebook/pages` |
+| Facebook |帖子 | `POST /v1/facebook/posts` |
+| Facebook |评论 | `POST /v1/facebook/comments` |
+| Facebook Marketplace |位置搜索 | `POST /v1/facebook-marketplace/location-search` |
+| Facebook Marketplace |搜索 | `POST /v1/facebook-marketplace/search` |
+| Facebook Marketplace | 商品详情 | `POST /v1/facebook-marketplace/item` |
+| Facebook Ad Library |搜索 | `POST /v1/facebook-ad-library/search` |
+| Facebook Ad Library |公司搜索 | `POST /v1/facebook-ad-library/company-search` |
+| Facebook Ad Library |公司广告 | `POST /v1/facebook-ad-library/company-ads` |
+| Facebook Ad Library |广告 | `POST /v1/facebook-ad-library/ad` |
+| YouTube |频道 | `POST /v1/youtube/channels` |
+| YouTube |视频 | `POST /v1/youtube/videos` |
+| YouTube |频道视频 | `POST /v1/youtube/channel-videos` |
+| YouTube |评论 | `POST /v1/youtube/comments` |
+| YouTube |Shorts | `POST /v1/youtube/shorts` |
+| YouTube |搜索 | `POST /v1/youtube/search` |
+| YouTube |视频字幕| `POST /v1/youtube/transcripts` |
+| TikTok |个人资料 | `POST /v1/tiktok/profiles` |
+| TikTok |视频 | `POST /v1/tiktok/videos` |
+| TikTok |评论 | `POST /v1/tiktok/comments` |
+| TikTok |搜索 | `POST /v1/tiktok/search` |
+| TikTok |标签 | `POST /v1/tiktok/hashtags` |
+| TikTok Shop |搜索 | `POST /v1/tiktok-shop/search` |
+| TikTok Shop |产品 | `POST /v1/tiktok-shop/products` |
+| TikTok Shop |产品 | `POST /v1/tiktok-shop/product` |
+| TikTok Shop |产品评论 | `POST /v1/tiktok-shop/product-reviews` |
+| TikTok Shop |用户展示 | `POST /v1/tiktok-shop/user-showcase` |
+| X |个人资料 | `POST /v1/x/profiles` |
+| X |帖子 | `POST /v1/x/posts` |
+| X |用户帖子 | `POST /v1/x/user-posts` |
+| X |搜索 | `POST /v1/x/search` |
+| LinkedIn |个人资料 | `POST /v1/linkedin/profiles` |
+| LinkedIn |公司 | `POST /v1/linkedin/companies` |
+| LinkedIn |帖子 | `POST /v1/linkedin/posts` |
+| LinkedIn |职位 | `POST /v1/linkedin/jobs` |
+| Reddit |帖子 | `POST /v1/reddit/posts` |
+| Reddit |评论 | `POST /v1/reddit/comments` |
+| Reddit | Reddit 子版块帖子 | `POST /v1/reddit/subreddit-posts` |
+| Reddit |搜索 | `POST /v1/reddit/search` |
+| Pinterest |个人资料 | `POST /v1/pinterest/profiles` |
+| Pinterest |Pin | `POST /v1/pinterest/pins` |
+| Pinterest |用户 Pin 图 | `POST /v1/pinterest/user-pins` |
+| Pinterest |搜索 | `POST /v1/pinterest/search` |
+| Threads |个人资料 | `POST /v1/threads/profiles` |
+| Threads |帖子 | `POST /v1/threads/posts` |
+| Threads |用户帖子 | `POST /v1/threads/user-posts` |
+
+## 通用提交正文
+
+输入字段直接在 JSON 正文中发送。
+
+```json
+{
+  "urls": ["https://www.instagram.com/p/POST_CODE/"],
+  "results_limit": 10,
+  "callback_url": "https://your-domain.com/webhook"
+}
+```
+
+`callback_url` 是可选的。如果提供，SocQ 在任务达到最终状态后发送 POST 请求。有关有效负载形状，请参阅[回调](/zh/api-manual/agent-api/callbacks)。
+
+直接 REST 提交默认为 `request_source="rest"`。 Agent Skill 使用 REST 作为回退发送 `X-Socq-Source: skill-rest`；该值由任务详细信息端点返回以进行归因。
+
+## 通过 MCP 或 CLI 使用相同的端点
+
+每个 REST 采集端点都有一个稳定的端点 ID、键入的 MCP 工具和 CLI 命令。 JSON 请求字段保持不变：
+
+|接口 | YouTube 评论示例 | JSON 正文去哪里 |
+| --- | --- | --- |
+| REST | `POST /v1/youtube/comments` | HTTP 请求正文 |
+| Compact MCP | `socq_execute`，端点 `youtube/comments` |嵌套 `input` 对象 |
+| Typed MCP | `socq_youtube_comments` |顶级工具参数 |
+| CLI | `socq youtube comments` |命令标志或 `--input-file` |
+
+```text
+POST /v1/youtube/comments
+          -> endpoint: youtube/comments
+          -> tool: socq_youtube_comments
+          -> CLI: socq youtube comments
+```
+
+每个端点页面都会显示其精确的映射。有关完整的提交、投票、分页和结果示例，请参阅 [MCP 快速入门](/zh/integrations/mcp)。
+
+## 结果存储
+
+SocQ 存储两种形式的结果：
+
+|存储|目的|
+| --- | --- |
+|规范化记录 |任务成功后由`/v1/tasks/{task_id}`返回|
+|原始 JSONL 文件 |从`/v1/tasks/{task_id}/files`下载 |
+
+原始文件使用以下路径格式：
+
+```text
+agent-results/{task_id}/raw_jsonl.jsonl.gz
+```
+
+## 计费
+
+代理API按照返回结果记录计费。提交请求可能会从 `results_limit` 或提交的 URL/用户名数量中保留积分；任务完成后，SocQ 从实际的 `result_count` 中结算最终费用，并返回任何未使用的预留积分。评论端点不接受`results_limit`，并根据实际返回的评论数进行计费。
+
+每个功能条目都会公开其当前的计费单位和积分价格。大采集之前，先检查一下能力条目，并使用适合您界面的账户工具：
+
+- MCP：`socq_account`
+- CLI：`socq account`
+
+`402` 响应表示账户积分不足。 API 密钥积分和请求限额与账户余额无关；请参阅[身份验证](/zh/api-manual/agent-api/authentication) 和[错误](/zh/api-manual/agent-api/errors)。

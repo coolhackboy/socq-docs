@@ -1,0 +1,23 @@
+---
+title: "Instagram 标签帖子"
+description: "采集与主题标签匹配的公开 Instagram 帖子。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/hashtag-posts"
+---
+
+# Instagram 标签帖子
+
+```json
+{"hashtags": ["#travel"], "results_limit": 20, "published_within": "week", "media_type": "all"}
+```
+
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/instagram/hashtag-posts` |
+| Compact MCP | `socq_execute` 与 `endpoint: "instagram/hashtag-posts"` |
+| Typed MCP | `socq_instagram_hashtag_posts` |
+| CLI | `socq instagram hashtag-posts` |
+
+`published_within` 接受 `hour`、`day`、`week`、`month` 或 `year`； `media_type` 接受 `all` 或 `reels`。
+`results_limit` 默认为 100，接受 10 到 2,000 之间的值，并适用于每个主题标签。

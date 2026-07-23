@@ -1,0 +1,22 @@
+---
+title: "TikTok Shop"
+description: "搜索产品、采集商店目录、产品详细信息、评论和用户展示。"
+icon: "tiktok"
+iconType: "brands"
+---
+
+# TikTok Shop
+
+TikTok Shop API 与 TikTok 社交数据 API 分开记录。
+
+|API | 方法 | 端点 |
+| --- | --- | --- |
+|搜索 | `POST` | `/v1/tiktok-shop/search` |
+|产品 | `POST` | `/v1/tiktok-shop/products` |
+|产品 | `POST` | `/v1/tiktok-shop/product` |
+|产品评论 | `POST` | `/v1/tiktok-shop/product-reviews` |
+|用户展示 | `POST` | `/v1/tiktok-shop/user-showcase` |
+
+所有端点都使用标准异步任务流。提交请求，接收 `task_id`，然后轮询 `GET /v1/tasks/{task_id}` 的状态和标准化结果。
+
+`region` 字段默认为 `US`。其他受支持区域的产品可用性可能有所不同。

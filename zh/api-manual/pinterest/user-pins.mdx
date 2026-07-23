@@ -1,0 +1,71 @@
+---
+title: "Pinterest 用户 Pin"
+description: "从 Pinterest 个人资料中采集公共 Pin 图。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/pinterest/user-pins"
+---
+
+# Pinterest 用户 Pin
+
+```json
+{
+  "urls": ["https://www.pinterest.com/example/"],
+  "results_limit": 100
+}
+```
+
+{/* mcp-usage:start */}
+## 与 MCP 一起使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/pinterest/user-pins` |
+| Compact MCP | `socq_execute` 与 `endpoint: "pinterest/user-pins"` |
+| Typed MCP | `socq_pinterest_user_pins` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=pinterest_user_pins` |
+| CLI | `socq pinterest user-pins` |
+
+使用上面的 JSON 请求正文作为 `socq_execute` 的嵌套 `input` 对象，或将相同的字段直接传递给Typed 工具。Typed 工具还接受 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  成功的采集将返回 `task_id`。继续 `socq_get_task` 直到任务成功，然后从 `results.items` 读取规范化记录。
+</Info>
+
+有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+`results_limit` 默认为 100，接受 1 到 2,000 之间的值，并应用于每个个人资料 URL。结果是 Pin 图，而不是个人资料记录。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "pinterest/user-pins",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [{
+        "id": "123456789",
+        "platform": "pinterest",
+        "resource": "user-pins",
+        "type": "pin",
+        "url": "https://www.pinterest.com/pin/123456789/",
+        "name": "Modern home office",
+        "text": "A bright and practical workspace.",
+        "author": {"id": "user_id", "username": "example", "name": "example", "url": "https://www.pinterest.com/example/"},
+        "metrics": {"likes_count": 240, "comments_count": 12, "followers_count": 12500},
+        "media": [{"type": "image", "url": "https://example.com/pin.jpg"}],
+        "created_at": "2026-07-15T08:00:00",
+        "collected_at": "2026-07-17T10:30:00",
+        "extra": {"discovery_input": {"url": "https://www.pinterest.com/example/"}}
+      }]
+    }
+  }
+}
+```

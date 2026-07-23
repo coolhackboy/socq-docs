@@ -1,0 +1,52 @@
+---
+title: "MCP 快速入门"
+description: "连接 AI 客户端并完成您的第一个 SocQ 数据采集。"
+icon: "server"
+---
+
+# MCP 快速入门
+
+使用 SocQ MCP 从 Claude、Cursor、Codex、VS Code 或其他 MCP 兼容客户端采集社交数据。配置服务器一次，然后用自然语言描述您需要的数据。
+
+## 开始之前
+
+您需要：
+
+- SocQ API 密钥；
+- MCP 兼容客户端；
+- 仅当使用 stdio 桥时，Node.js 20 或更高版本。
+
+将密钥保留在 URL 和提交的配置之外。请参阅[集成身份验证](/zh/integrations/authentication)。
+
+## 连接 SocQ
+
+选择客户端支持的传输方式：
+
+| 传输方式 | 配置 | 适用场景 |
+| --- | --- | --- |
+| 远程 MCP | `https://api.socq.ai/mcp` | 支持身份验证的 Streamable HTTP 客户端 |
+| stdio 桥 | `npx -y @socq/mcp` | 可运行本地 stdio 服务器的客户端 |
+
+有关具体配置，请参阅 [Claude](/zh/integrations/claude-desktop)、[Cursor](/zh/integrations/cursor)、[Codex](/zh/integrations/codex) 或 [VS Code](/zh/integrations/vscode) 指南。
+
+## 完成首次采集
+
+连接后，向客户端提问：
+
+```text
+Use SocQ to check my account, then collect the latest 20 comments from this
+YouTube video. Wait for the task to finish and return the results as a table:
+https://www.youtube.com/watch?v=VIDEO_ID
+```
+
+当客户端发现 SocQ 工具、调用 `socq_account`、提交采集并使用 `socq_get_task` 读取返回的任务时，连接正在工作。
+
+## 后续步骤
+
+- [选择 MCP 工具](/zh/integrations/mcp-filtering)：选择 Compact、平台或精确工具模式。
+- [任务和结果](/zh/integrations/tasks-results) 用于等待、安全重试、分页和原始文件。
+- [集成故障排除](/zh/integrations/troubleshooting) 连接和执行错误。
+
+## 标记 Agent Skill 执行来源
+
+当 Agent Skill 通过 Compact 或 Typed MCP 提交时，请在执行参数中包含 `_request_source: "skill"`。SocQ 使用 `request_source="skill-mcp"` 记录任务。普通远程和 stdio MCP 调用仍分别记录为 `mcp-remote` 和 `mcp-stdio`。
