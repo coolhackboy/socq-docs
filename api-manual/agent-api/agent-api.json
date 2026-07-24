@@ -868,7 +868,7 @@
         }
       }
     },
-    "/v1/facebook/transcripts": {
+    "/v1/facebook/video-transcript": {
       "post": {
         "operationId": "socq_facebook_transcripts",
         "summary": "Facebook Video Transcripts API",
@@ -984,7 +984,7 @@
         }
       }
     },
-    "/v1/instagram/followers": {
+    "/v1/instagram/followers-list": {
       "post": {
         "operationId": "socq_instagram_followers",
         "summary": "Instagram Followers API",
@@ -1139,7 +1139,7 @@
         }
       }
     },
-    "/v1/instagram/following": {
+    "/v1/instagram/following-list": {
       "post": {
         "operationId": "socq_instagram_following",
         "summary": "Instagram Following API",
@@ -1668,7 +1668,7 @@
         }
       }
     },
-    "/v1/instagram/transcripts": {
+    "/v1/instagram/transcript": {
       "post": {
         "operationId": "socq_instagram_transcripts",
         "summary": "Instagram Transcripts API",

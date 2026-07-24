@@ -134,10 +134,10 @@
                   "api-manual/instagram/search",
                   "api-manual/instagram/followers-count",
                   "api-manual/instagram/profiles",
-                  "api-manual/instagram/transcripts",
+                  "api-manual/instagram/transcript",
                   "api-manual/instagram/hashtag-posts",
-                  "api-manual/instagram/followers",
-                  "api-manual/instagram/following",
+                  "api-manual/instagram/followers-list",
+                  "api-manual/instagram/following-list",
                   "api-manual/instagram/tagged-posts"
                 ]
               },
@@ -148,7 +148,7 @@
                   "api-manual/facebook/pages",
                   "api-manual/facebook/posts",
                   "api-manual/facebook/comments",
-                  "api-manual/facebook/transcripts",
+                  "api-manual/facebook/video-transcript",
                   "api-manual/facebook/group-posts",
                   "api-manual/facebook/events-search"
                 ]
@@ -342,10 +342,10 @@
                   "zh/api-manual/instagram/search",
                   "zh/api-manual/instagram/followers-count",
                   "zh/api-manual/instagram/profiles",
-                  "zh/api-manual/instagram/transcripts",
+                  "zh/api-manual/instagram/transcript",
                   "zh/api-manual/instagram/hashtag-posts",
-                  "zh/api-manual/instagram/followers",
-                  "zh/api-manual/instagram/following",
+                  "zh/api-manual/instagram/followers-list",
+                  "zh/api-manual/instagram/following-list",
                   "zh/api-manual/instagram/tagged-posts"
                 ]
               },
@@ -356,7 +356,7 @@
                   "zh/api-manual/facebook/pages",
                   "zh/api-manual/facebook/posts",
                   "zh/api-manual/facebook/comments",
-                  "zh/api-manual/facebook/transcripts",
+                  "zh/api-manual/facebook/video-transcript",
                   "zh/api-manual/facebook/group-posts",
                   "zh/api-manual/facebook/events-search"
                 ]
