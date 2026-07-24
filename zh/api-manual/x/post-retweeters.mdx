@@ -1,0 +1,74 @@
+---
+title: "X Post Retweeters"
+description: "采集转发公开 X 帖子的用户资料。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/x/post-retweeters"
+---
+
+# X Post Retweeters
+
+采集转发公开 X 帖子的用户资料。结果会转换为统一结构，并按实际保存的记录数计费。
+
+```json
+{
+  "urls": [
+    "https://x.com/X/status/1234567890123456789"
+  ],
+  "results_limit": 100
+}
+```
+
+{/* mcp-usage:start */}
+## 通过 MCP 使用
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/x/post-retweeters` |
+| Compact MCP | `socq_execute` with `endpoint: "x/post-retweeters"` |
+| Typed MCP | `socq_x_post_retweeters` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=x_post_retweeters` |
+| CLI | `socq x post-retweeters` |
+
+使用 `socq_execute` 时，将上面的 JSON 请求体作为 `input` 对象传入；也可以将相同字段直接传给 Typed MCP 工具。Typed MCP 工具还支持 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  提交成功后会返回 `task_id`。继续调用 `socq_get_task` 直到任务成功，然后从 `results.items` 读取标准化记录。
+</Info>
+
+完整的提交和轮询流程请参阅 [MCP 快速开始](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "x/post-retweeters",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "example-id",
+          "platform": "x",
+          "resource": "post-retweeters",
+          "type": "profile",
+          "url": "https://www.x.com/example",
+          "text": null,
+          "author": null,
+          "metrics": {},
+          "media": [],
+          "created_at": "2026-07-24T08:00:00",
+          "collected_at": "2026-07-24T10:30:00",
+          "extra": {}
+        }
+      ]
+    }
+  }
+}
+```

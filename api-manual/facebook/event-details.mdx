@@ -1,0 +1,78 @@
+---
+title: "Facebook Event Details"
+description: "Collect detailed public Facebook event data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook/event-details"
+---
+
+# Facebook Event Details
+
+Collect detailed public Facebook event data. Results are normalized and billed by the actual saved record count.
+
+```json
+{
+  "urls": [
+    "https://www.facebook.com/events/2255360061870188/"
+  ]
+}
+```
+
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/facebook/event-details` |
+| Compact MCP | `socq_execute` with `endpoint: "facebook/event-details"` |
+| Typed MCP | `socq_facebook_event_details` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=facebook_event_details` |
+| CLI | `socq facebook event-details` |
+
+Use the JSON request body above as the nested `input` object for `socq_execute`, or pass the same fields directly to the typed tool. Typed tools also accept `_wait_seconds`, `_result_limit`, and `_idempotency_key`.
+
+<Info>
+  A successful submission returns a `task_id`. Continue with `socq_get_task` until the task succeeds, then read normalized records from `results.items`.
+</Info>
+
+See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
+{/* mcp-usage:end */}
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "facebook/event-details",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "example-id",
+          "platform": "facebook",
+          "resource": "event-details",
+          "type": "event",
+          "url": "https://www.facebook.com/example/item",
+          "text": "Example public event content.",
+          "author": {
+            "id": "author-id",
+            "username": "example",
+            "name": "Example",
+            "url": "https://www.facebook.com/example"
+          },
+          "metrics": {},
+          "media": [],
+          "created_at": "2026-07-24T08:00:00",
+          "collected_at": "2026-07-24T10:30:00",
+          "extra": {}
+        }
+      ]
+    }
+  }
+}
+```

@@ -1,0 +1,79 @@
+---
+title: "Facebook Reels"
+description: "Collect Reels from public Facebook profiles."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook/reels"
+---
+
+# Facebook Reels
+
+Collect Reels from public Facebook profiles. Results are normalized and billed by the actual saved record count.
+
+```json
+{
+  "urls": [
+    "https://www.facebook.com/NASA"
+  ],
+  "results_limit": 20
+}
+```
+
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/facebook/reels` |
+| Compact MCP | `socq_execute` with `endpoint: "facebook/reels"` |
+| Typed MCP | `socq_facebook_reels` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=facebook_reels` |
+| CLI | `socq facebook reels` |
+
+Use the JSON request body above as the nested `input` object for `socq_execute`, or pass the same fields directly to the typed tool. Typed tools also accept `_wait_seconds`, `_result_limit`, and `_idempotency_key`.
+
+<Info>
+  A successful submission returns a `task_id`. Continue with `socq_get_task` until the task succeeds, then read normalized records from `results.items`.
+</Info>
+
+See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
+{/* mcp-usage:end */}
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "facebook/reels",
+    "result_count": 1,
+    "credits_amount": 0.7,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "example-id",
+          "platform": "facebook",
+          "resource": "reels",
+          "type": "reel",
+          "url": "https://www.facebook.com/example/item",
+          "text": "Example public reel content.",
+          "author": {
+            "id": "author-id",
+            "username": "example",
+            "name": "Example",
+            "url": "https://www.facebook.com/example"
+          },
+          "metrics": {},
+          "media": [],
+          "created_at": "2026-07-24T08:00:00",
+          "collected_at": "2026-07-24T10:30:00",
+          "extra": {}
+        }
+      ]
+    }
+  }
+}
+```

@@ -15,5 +15,11 @@ X endpoints use the same asynchronous task flow as the other Agent APIs.
 | Posts | `POST` | `/v1/x/posts` |
 | User Posts | `POST` | `/v1/x/user-posts` |
 | Search | `POST` | `/v1/x/search` |
+| Followers List | `POST` | `/v1/x/followers-list` |
+| Following List | `POST` | `/v1/x/following-list` |
+| Post Replies | `POST` | `/v1/x/post-replies` |
+| Post Quotes | `POST` | `/v1/x/post-quotes` |
+| Post Retweeters | `POST` | `/v1/x/post-retweeters` |
+| Trends | `POST` | `/v1/x/trends` |
 
 Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}`. Successful tasks include normalized records under `results`.

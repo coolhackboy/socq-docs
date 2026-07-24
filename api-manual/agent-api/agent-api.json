@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-57489840196e",
+    "version": "v1-9e02c88be86a",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -4191,6 +4191,1822 @@
         "responses": {
           "200": {
             "description": "Account summary"
+          }
+        }
+      }
+    },
+    "/v1/facebook/ad-transcript": {
+      "post": {
+        "operationId": "socq_facebook_ad_transcript",
+        "summary": "Get Facebook Ad Transcript",
+        "description": "Fetch normalized ad transcript data from Facebook.",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/comment-replies": {
+      "post": {
+        "operationId": "socq_facebook_comment_replies",
+        "summary": "Get Facebook Comment Replies",
+        "description": "Fetch normalized comment replies data from Facebook.",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "expansion_token": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The token used to read replies for a Facebook comment."
+                  },
+                  "feedback_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The parent Facebook comment feedback identifier."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  }
+                },
+                "required": [
+                  "expansion_token",
+                  "feedback_id"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/company-reviews": {
+      "post": {
+        "operationId": "socq_facebook_company_reviews",
+        "summary": "Get Facebook Company Reviews",
+        "description": "Fetch normalized company reviews data from Facebook.",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/event-details": {
+      "post": {
+        "operationId": "socq_facebook_event_details",
+        "summary": "Get Facebook Event Details",
+        "description": "Fetch normalized event details data from Facebook.",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/profile-events": {
+      "post": {
+        "operationId": "socq_facebook_profile_events",
+        "summary": "Get Facebook Profile Events",
+        "description": "Fetch normalized profile events data from Facebook.",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/profile-photos": {
+      "post": {
+        "operationId": "socq_facebook_profile_photos",
+        "summary": "Get Facebook Profile Photos",
+        "description": "Fetch normalized profile photos data from Facebook.",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/profiles": {
+      "post": {
+        "operationId": "socq_facebook_profiles",
+        "summary": "Get Facebook Profiles",
+        "description": "Fetch normalized profiles data from Facebook.",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/reels": {
+      "post": {
+        "operationId": "socq_facebook_reels",
+        "summary": "Get Facebook Reels",
+        "description": "Fetch normalized reels data from Facebook.",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/audio-reels": {
+      "post": {
+        "operationId": "socq_instagram_audio_reels",
+        "summary": "Get Instagram Audio Reels",
+        "description": "Fetch normalized audio reels data from Instagram.",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "audio_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public Instagram audio identifiers."
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  }
+                },
+                "required": [
+                  "audio_ids"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/highlight-items": {
+      "post": {
+        "operationId": "socq_instagram_highlight_items",
+        "summary": "Get Instagram Highlight Items",
+        "description": "Fetch normalized highlight items data from Instagram.",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "highlight_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public Instagram highlight identifiers."
+                  }
+                },
+                "required": [
+                  "highlight_ids"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/post-info": {
+      "post": {
+        "operationId": "socq_instagram_post_info",
+        "summary": "Get Instagram Post Info",
+        "description": "Fetch normalized post info data from Instagram.",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/reels-search": {
+      "post": {
+        "operationId": "socq_instagram_reels_search",
+        "summary": "Get Instagram Reels Search",
+        "description": "Fetch normalized reels search data from Instagram.",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "published_within": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/story-highlights": {
+      "post": {
+        "operationId": "socq_instagram_story_highlights",
+        "summary": "Get Instagram Story Highlights",
+        "description": "Fetch normalized story highlights data from Instagram.",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public account usernames."
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/trending-reels": {
+      "post": {
+        "operationId": "socq_instagram_trending_reels",
+        "summary": "Get Instagram Trending Reels",
+        "description": "Fetch normalized trending reels data from Instagram.",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "required": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/comment-replies": {
+      "post": {
+        "operationId": "socq_tiktok_comment_replies",
+        "summary": "Get TikTok Comment Replies",
+        "description": "Fetch normalized comment replies data from TikTok.",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "comment_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public comment identifier."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [
+                  "comment_id",
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/followers-list": {
+      "post": {
+        "operationId": "socq_tiktok_followers_list",
+        "summary": "Get TikTok Followers List",
+        "description": "Fetch normalized followers list data from TikTok.",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public account usernames."
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/following-list": {
+      "post": {
+        "operationId": "socq_tiktok_following_list",
+        "summary": "Get TikTok Following List",
+        "description": "Fetch normalized following list data from TikTok.",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public account usernames."
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/user-videos": {
+      "post": {
+        "operationId": "socq_tiktok_user_videos",
+        "summary": "Get TikTok User Videos",
+        "description": "Fetch normalized user videos data from TikTok.",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "region": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public account usernames."
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/followers-list": {
+      "post": {
+        "operationId": "socq_x_followers_list",
+        "summary": "Get X Followers List",
+        "description": "Fetch normalized followers list data from X.",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 200,
+                    "maximum": 2000,
+                    "default": 200,
+                    "multipleOf": 200
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public account usernames."
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/following-list": {
+      "post": {
+        "operationId": "socq_x_following_list",
+        "summary": "Get X Following List",
+        "description": "Fetch normalized following list data from X.",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 200,
+                    "maximum": 2000,
+                    "default": 200,
+                    "multipleOf": 200
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public account usernames."
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/post-quotes": {
+      "post": {
+        "operationId": "socq_x_post_quotes",
+        "summary": "Get X Post Quotes",
+        "description": "Fetch normalized post quotes data from X.",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "multipleOf": 20
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/post-replies": {
+      "post": {
+        "operationId": "socq_x_post_replies",
+        "summary": "Get X Post Replies",
+        "description": "Fetch normalized post replies data from X.",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "multipleOf": 20
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/post-retweeters": {
+      "post": {
+        "operationId": "socq_x_post_retweeters",
+        "summary": "Get X Post Retweeters",
+        "description": "Fetch normalized post retweeters data from X.",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 100,
+                    "maximum": 2000,
+                    "default": 100,
+                    "multipleOf": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/trends": {
+      "post": {
+        "operationId": "socq_x_trends",
+        "summary": "Get X Trends",
+        "description": "Fetch normalized trends data from X.",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "woeids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[0-9]+$"
+                    },
+                    "minItems": 1,
+                    "description": "Numeric X location identifiers represented as strings."
+                  }
+                },
+                "required": [
+                  "woeids"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/channel-live-videos": {
+      "post": {
+        "operationId": "socq_youtube_channel_live_videos",
+        "summary": "Get YouTube Channel Live Videos",
+        "description": "Fetch normalized channel live videos data from YouTube.",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/comment-replies": {
+      "post": {
+        "operationId": "socq_youtube_comment_replies",
+        "summary": "Get YouTube Comment Replies",
+        "description": "Fetch normalized comment replies data from YouTube.",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "continuation_token": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The token used to continue a YouTube reply collection."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  }
+                },
+                "required": [
+                  "continuation_token"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/community-posts": {
+      "post": {
+        "operationId": "socq_youtube_community_posts",
+        "summary": "Get YouTube Community Posts",
+        "description": "Fetch normalized community posts data from YouTube.",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/hashtag-search": {
+      "post": {
+        "operationId": "socq_youtube_hashtag_search",
+        "summary": "Get YouTube Hashtag Search",
+        "description": "Fetch normalized hashtag search data from YouTube.",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "content_type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "hashtags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Hashtags with or without the # prefix."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100
+                  }
+                },
+                "required": [
+                  "hashtags"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
           }
         }
       }

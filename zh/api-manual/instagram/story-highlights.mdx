@@ -1,0 +1,78 @@
+---
+title: "Instagram Story Highlights"
+description: "采集公开的 Instagram 精选动态。"
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/story-highlights"
+---
+
+# Instagram Story Highlights
+
+采集公开的 Instagram 精选动态。结果会转换为统一结构，并按实际保存的记录数计费。
+
+```json
+{
+  "usernames": [
+    "instagram"
+  ]
+}
+```
+
+{/* mcp-usage:start */}
+## 通过 MCP 使用
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/instagram/story-highlights` |
+| Compact MCP | `socq_execute` with `endpoint: "instagram/story-highlights"` |
+| Typed MCP | `socq_instagram_story_highlights` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=instagram_story_highlights` |
+| CLI | `socq instagram story-highlights` |
+
+使用 `socq_execute` 时，将上面的 JSON 请求体作为 `input` 对象传入；也可以将相同字段直接传给 Typed MCP 工具。Typed MCP 工具还支持 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  提交成功后会返回 `task_id`。继续调用 `socq_get_task` 直到任务成功，然后从 `results.items` 读取标准化记录。
+</Info>
+
+完整的提交和轮询流程请参阅 [MCP 快速开始](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "instagram/story-highlights",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "example-id",
+          "platform": "instagram",
+          "resource": "story-highlights",
+          "type": "story",
+          "url": "https://www.instagram.com/example/item",
+          "text": "Example public story content.",
+          "author": {
+            "id": "author-id",
+            "username": "example",
+            "name": "Example",
+            "url": "https://www.instagram.com/example"
+          },
+          "metrics": {},
+          "media": [],
+          "created_at": "2026-07-24T08:00:00",
+          "collected_at": "2026-07-24T10:30:00",
+          "extra": {}
+        }
+      ]
+    }
+  }
+}
+```
