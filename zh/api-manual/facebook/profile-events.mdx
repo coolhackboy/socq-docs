@@ -1,10 +1,10 @@
 ---
-title: "Facebook Profile Events"
+title: "Facebook 个人资料活动"
 description: "采集与公开 Facebook 个人资料关联的活动。"
 openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook/profile-events"
 ---
 
-# Facebook Profile Events
+# Facebook 个人资料活动
 
 采集与公开 Facebook 个人资料关联的活动。结果会转换为统一结构，并按实际保存的记录数计费。
 
@@ -20,15 +20,15 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook/profile-events"
 {/* mcp-usage:start */}
 ## 通过 MCP 使用
 
-| Interface | Value |
+| 接口 | 值 |
 | --- | --- |
 | REST | `POST /v1/facebook/profile-events` |
-| Compact MCP | `socq_execute` with `endpoint: "facebook/profile-events"` |
-| Typed MCP | `socq_facebook_profile_events` |
-| Exact-tool URL | `https://api.socq.ai/mcp?tools=facebook_profile_events` |
+| Compact MCP | `socq_execute`，并设置 `endpoint: "facebook/profile-events"` |
+| 类型化 MCP | `socq_facebook_profile_events` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=facebook_profile_events` |
 | CLI | `socq facebook profile-events` |
 
-使用 `socq_execute` 时，将上面的 JSON 请求体作为 `input` 对象传入；也可以将相同字段直接传给 Typed MCP 工具。Typed MCP 工具还支持 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+使用 `socq_execute` 时，将上面的 JSON 请求体作为 `input` 对象传入；也可以将相同字段直接传给类型化 MCP 工具。类型化 MCP 工具还支持 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
 
 <Info>
   提交成功后会返回 `task_id`。继续调用 `socq_get_task` 直到任务成功，然后从 `results.items` 读取标准化记录。
