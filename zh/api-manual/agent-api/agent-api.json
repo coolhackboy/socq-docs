@@ -1,0 +1,6144 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SocQ Agent API 中文版",
+    "version": "v1-9e02c88be86a",
+    "description": "根据 SocQ 能力目录生成的异步社交数据 API。"
+  },
+  "servers": [
+    {
+      "url": "https://api.socq.ai"
+    }
+  ],
+  "paths": {
+    "/v1/facebook-ad-library/ad": {
+      "post": {
+        "operationId": "socq_facebook_ad_library_ad",
+        "summary": "广告详情",
+        "description": "采集一则公开 Facebook Ad Library 广告的详细信息。",
+        "tags": [
+          "facebook-ad-library"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开内容、主页或商品 URL。"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook-ad-library/company-ads": {
+      "post": {
+        "operationId": "socq_facebook_ad_library_company_ads",
+        "summary": "公司广告",
+        "description": "采集 Facebook Ad Library 页面 ID 的公共广告。",
+        "tags": [
+          "facebook-ad-library"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "country": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "国家或地区筛选条件。"
+                  },
+                  "end_date": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "筛选结束日期，格式为 YYYY-MM-DD。"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "语言代码或语言筛选条件。"
+                  },
+                  "media_type": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "媒体类型筛选条件。"
+                  },
+                  "page_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开主页的 ID。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "结果排序方式。"
+                  },
+                  "start_date": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "筛选开始日期，格式为 YYYY-MM-DD。"
+                  },
+                  "status": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "状态筛选条件。"
+                  }
+                },
+                "required": [
+                  "page_id"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook-ad-library/company-search": {
+      "post": {
+        "operationId": "socq_facebook_ad_library_company_search",
+        "summary": "公司搜索",
+        "description": "查找 Facebook Ad Library 公司和页面 ID。",
+        "tags": [
+          "facebook-ad-library"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook-ad-library/search": {
+      "post": {
+        "operationId": "socq_facebook_ad_library_search",
+        "summary": "广告搜索",
+        "description": "按关键字搜索公开的 Facebook Ad Library 广告。",
+        "tags": [
+          "facebook-ad-library"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "ad_type": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "广告类型筛选条件。"
+                  },
+                  "country": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "国家或地区筛选条件。"
+                  },
+                  "end_date": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "筛选结束日期，格式为 YYYY-MM-DD。"
+                  },
+                  "media_type": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "媒体类型筛选条件。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "search_type": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索类型。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "结果排序方式。"
+                  },
+                  "start_date": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "筛选开始日期，格式为 YYYY-MM-DD。"
+                  },
+                  "status": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "状态筛选条件。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook-marketplace/item": {
+      "post": {
+        "operationId": "socq_facebook_marketplace_item",
+        "summary": "Marketplace 商品详情",
+        "description": "通过 URL 采集公共 Facebook Marketplace 商品详情。",
+        "tags": [
+          "facebook-marketplace"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook-marketplace/location-search": {
+      "post": {
+        "operationId": "socq_facebook_marketplace_location_search",
+        "summary": "Marketplace 位置搜索",
+        "description": "查找 Facebook Marketplace 位置和坐标。",
+        "tags": [
+          "facebook-marketplace"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook-marketplace/search": {
+      "post": {
+        "operationId": "socq_facebook_marketplace_search",
+        "summary": "Marketplace 搜索",
+        "description": "搜索公开的 Facebook Marketplace 列表。",
+        "tags": [
+          "facebook-marketplace"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "availability": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "商品可用状态筛选条件。"
+                  },
+                  "condition": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "商品成色筛选条件。"
+                  },
+                  "date_listed": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "发布时间筛选条件。"
+                  },
+                  "delivery_method": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "配送方式筛选条件。"
+                  },
+                  "latitude": {
+                    "type": "number",
+                    "minimum": -90,
+                    "maximum": 90,
+                    "description": "搜索中心点纬度，范围为 -90 到 90。"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "minimum": -180,
+                    "maximum": 180,
+                    "description": "搜索中心点经度，范围为 -180 到 180。"
+                  },
+                  "max_price": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "最高价格筛选条件。"
+                  },
+                  "min_price": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "最低价格筛选条件。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "radius_km": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "description": "以公里为单位的搜索半径。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "结果排序方式。"
+                  }
+                },
+                "required": [
+                  "latitude",
+                  "longitude",
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/comments": {
+      "post": {
+        "operationId": "socq_facebook_comments",
+        "summary": "Facebook 评论",
+        "description": "采集公众Facebook评论数据。",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/events-search": {
+      "post": {
+        "operationId": "socq_facebook_events_search",
+        "summary": "Facebook 活动搜索",
+        "description": "按关键字搜索公共 Facebook 事件。",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 7,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/group-posts": {
+      "post": {
+        "operationId": "socq_facebook_group_posts",
+        "summary": "Facebook 群组帖子",
+        "description": "从公共 Facebook 群组采集帖子。",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 3,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "结果排序方式。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/pages": {
+      "post": {
+        "operationId": "socq_facebook_pages",
+        "summary": "Facebook 公共主页",
+        "description": "采集公共Facebook页面数据。",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/posts": {
+      "post": {
+        "operationId": "socq_facebook_posts",
+        "summary": "Facebook 帖子",
+        "description": "采集公开Facebook发布数据。",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/video-transcript": {
+      "post": {
+        "operationId": "socq_facebook_transcripts",
+        "summary": "Facebook 视频字幕",
+        "description": "从公开 Facebook 视频和Reels中提取视频字幕。",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/comments": {
+      "post": {
+        "operationId": "socq_instagram_comments",
+        "summary": "Instagram 评论",
+        "description": "采集公众Instagram评论数据。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/followers-list": {
+      "post": {
+        "operationId": "socq_instagram_followers",
+        "summary": "Instagram 关注者",
+        "description": "从 Instagram 关注者列表中采集公共资料。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/followers-count": {
+      "post": {
+        "operationId": "socq_instagram_followers_count",
+        "summary": "Instagram 关注者数量",
+        "description": "采集公共 Instagram 关注者和关注计数。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/following-list": {
+      "post": {
+        "operationId": "socq_instagram_following",
+        "summary": "Instagram 关注列表",
+        "description": "采集 Instagram 账户后面的公共个人资料。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/hashtag-posts": {
+      "post": {
+        "operationId": "socq_instagram_hashtag_posts",
+        "summary": "Instagram 标签帖子",
+        "description": "采集与主题标签匹配的公开 Instagram 帖子。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "hashtags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "话题标签，可带或不带 # 前缀，至少提供 1 项。"
+                  },
+                  "media_type": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "媒体类型筛选条件。"
+                  },
+                  "published_within": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "内容发布时间范围。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 10,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "hashtags"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/posts": {
+      "post": {
+        "operationId": "socq_instagram_posts",
+        "summary": "Instagram 帖子",
+        "description": "采集公开 Instagram 发布数据。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/profiles": {
+      "post": {
+        "operationId": "socq_instagram_profiles",
+        "summary": "Instagram 个人资料",
+        "description": "采集公共 Instagram 个人资料元数据和统计数据。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/reels": {
+      "post": {
+        "operationId": "socq_instagram_reels",
+        "summary": "Instagram Reels",
+        "description": "采集公共 Instagram Reels数据。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/search": {
+      "post": {
+        "operationId": "socq_instagram_search",
+        "summary": "Instagram 搜索",
+        "description": "搜索公开的 Instagram 个人资料。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/tagged-posts": {
+      "post": {
+        "operationId": "socq_instagram_tagged_posts",
+        "summary": "Instagram 标记的帖子",
+        "description": "采集标记 Instagram 个人资料的公共帖子。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/transcript": {
+      "post": {
+        "operationId": "socq_instagram_transcripts",
+        "summary": "Instagram 视频字幕",
+        "description": "从公开 Instagram 帖子和Reels中提取视频字幕。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/linkedin/companies": {
+      "post": {
+        "operationId": "socq_linkedin_companies",
+        "summary": "LinkedIn 公司",
+        "description": "采集公开的 LinkedIn 公司数据。",
+        "tags": [
+          "linkedin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/linkedin/jobs": {
+      "post": {
+        "operationId": "socq_linkedin_jobs",
+        "summary": "LinkedIn 职位",
+        "description": "采集公开 LinkedIn 职位详细信息。",
+        "tags": [
+          "linkedin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/linkedin/posts": {
+      "post": {
+        "operationId": "socq_linkedin_posts",
+        "summary": "LinkedIn 帖子",
+        "description": "采集公开LinkedIn发布数据。",
+        "tags": [
+          "linkedin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/linkedin/profiles": {
+      "post": {
+        "operationId": "socq_linkedin_profiles",
+        "summary": "LinkedIn 个人资料",
+        "description": "采集公共 LinkedIn 个人资料数据。",
+        "tags": [
+          "linkedin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/pinterest/pins": {
+      "post": {
+        "operationId": "socq_pinterest_pins",
+        "summary": "Pinterest Pin",
+        "description": "采集公开的 Pinterest Pin 数据。",
+        "tags": [
+          "pinterest"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/pinterest/profiles": {
+      "post": {
+        "operationId": "socq_pinterest_profiles",
+        "summary": "Pinterest 个人资料",
+        "description": "采集公共 Pinterest 个人资料数据。",
+        "tags": [
+          "pinterest"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/pinterest/search": {
+      "post": {
+        "operationId": "socq_pinterest_search",
+        "summary": "Pinterest 搜索",
+        "description": "搜索公共 Pinterest Pin。",
+        "tags": [
+          "pinterest"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/pinterest/user-pins": {
+      "post": {
+        "operationId": "socq_pinterest_user_pins",
+        "summary": "Pinterest 用户 Pin",
+        "description": "从 Pinterest 个人资料中采集公共 Pin 图。",
+        "tags": [
+          "pinterest"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/reddit/comments": {
+      "post": {
+        "operationId": "socq_reddit_comments",
+        "summary": "Reddit 评论",
+        "description": "从 Reddit 帖子中采集公众评论。",
+        "tags": [
+          "reddit"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/reddit/posts": {
+      "post": {
+        "operationId": "socq_reddit_posts",
+        "summary": "Reddit 帖子",
+        "description": "采集公开Reddit发布数据。",
+        "tags": [
+          "reddit"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/reddit/search": {
+      "post": {
+        "operationId": "socq_reddit_search",
+        "summary": "Reddit 搜索",
+        "description": "搜索公开 Reddit 帖子。",
+        "tags": [
+          "reddit"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "published_within": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "内容发布时间范围。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/reddit/subreddit-posts": {
+      "post": {
+        "operationId": "socq_reddit_subreddit_posts",
+        "summary": "Reddit 子版块帖子",
+        "description": "从 Reddit 子版块采集公共帖子。",
+        "tags": [
+          "reddit"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "结果排序方式。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/threads/posts": {
+      "post": {
+        "operationId": "socq_threads_posts",
+        "summary": "Threads 帖子",
+        "description": "采集公开Threads发布数据。",
+        "tags": [
+          "threads"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/threads/profiles": {
+      "post": {
+        "operationId": "socq_threads_profiles",
+        "summary": "Threads 个人资料",
+        "description": "采集公共 Threads 个人资料数据。",
+        "tags": [
+          "threads"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/threads/user-posts": {
+      "post": {
+        "operationId": "socq_threads_user_posts",
+        "summary": "Threads 用户帖子",
+        "description": "从 Threads 个人资料中采集公共帖子。",
+        "tags": [
+          "threads"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok-shop/product": {
+      "post": {
+        "operationId": "socq_tiktok_shop_product",
+        "summary": "TikTok Shop 产品",
+        "description": "采集一种公开 TikTok Shop 产品的详细信息。",
+        "tags": [
+          "tiktok-shop"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "region": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "地区代码。"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开内容、主页或商品 URL。"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok-shop/product-reviews": {
+      "post": {
+        "operationId": "socq_tiktok_shop_product_reviews",
+        "summary": "TikTok Shop 产品评论",
+        "description": "采集一款 TikTok Shop 产品的公众评论。",
+        "tags": [
+          "tiktok-shop"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "region": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "地区代码。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开内容、主页或商品 URL。"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok-shop/products": {
+      "post": {
+        "operationId": "socq_tiktok_shop_products",
+        "summary": "TikTok Shop 产品",
+        "description": "从一众TikTok Shop采集产品。",
+        "tags": [
+          "tiktok-shop"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "region": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "地区代码。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "结果排序方式。"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开内容、主页或商品 URL。"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok-shop/search": {
+      "post": {
+        "operationId": "socq_tiktok_shop_search",
+        "summary": "TikTok Shop 搜索",
+        "description": "搜索公共 TikTok Shop 产品。",
+        "tags": [
+          "tiktok-shop"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "region": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "地区代码。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok-shop/user-showcase": {
+      "post": {
+        "operationId": "socq_tiktok_shop_user_showcase",
+        "summary": "TikTok Shop 用户橱窗",
+        "description": "采集一位用户的公共 TikTok Shop 展示产品。",
+        "tags": [
+          "tiktok-shop"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "region": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "地区代码。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开账号用户名。"
+                  }
+                },
+                "required": [
+                  "username"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/comments": {
+      "post": {
+        "operationId": "socq_tiktok_comments",
+        "summary": "TikTok 评论",
+        "description": "从公开的 TikTok 视频中采集顶级评论。",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/hashtags": {
+      "post": {
+        "operationId": "socq_tiktok_hashtags",
+        "summary": "TikTok 标签",
+        "description": "采集与一个或多个主题标签匹配的公开 TikTok 视频。",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "hashtags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "话题标签，可带或不带 # 前缀，至少提供 1 项。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "hashtags"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/live-room-info": {
+      "post": {
+        "operationId": "socq_tiktok_live_room_info",
+        "summary": "TikTok 直播间信息",
+        "description": "采集公共直播室状态和观众指标。",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "room_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开直播间的 ID。"
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开账号的 ID。"
+                  }
+                },
+                "required": [
+                  "room_id",
+                  "user_id"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/profiles": {
+      "post": {
+        "operationId": "socq_tiktok_profiles",
+        "summary": "TikTok 个人资料",
+        "description": "采集公共 TikTok 个人资料元数据和统计数据。",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/search": {
+      "post": {
+        "operationId": "socq_tiktok_search",
+        "summary": "TikTok 搜索",
+        "description": "使用便携式过滤器搜索公共 TikTok 视频。",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "published_within": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "内容发布时间范围。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "结果排序方式。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/transcripts": {
+      "post": {
+        "operationId": "socq_tiktok_transcripts",
+        "summary": "TikTok 视频字幕",
+        "description": "从公开 TikTok 视频中提取视频字幕。",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "语言代码或语言筛选条件。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/trending-feed": {
+      "post": {
+        "operationId": "socq_tiktok_trending_feed",
+        "summary": "TikTok 趋势动态",
+        "description": "采集某个地区的热门公共视频。",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "region": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "地区代码。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 4,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "region"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/videos": {
+      "post": {
+        "operationId": "socq_tiktok_videos",
+        "summary": "TikTok 视频",
+        "description": "通过 URL 采集公共 TikTok 视频元数据。",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/posts": {
+      "post": {
+        "operationId": "socq_x_posts",
+        "summary": "X 帖子",
+        "description": "通过 URL 采集公共 X 帖子。",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/profiles": {
+      "post": {
+        "operationId": "socq_x_profiles",
+        "summary": "X 个人资料",
+        "description": "采集公共 X 个人资料元数据和统计数据。",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/search": {
+      "post": {
+        "operationId": "socq_x_search",
+        "summary": "X 搜索",
+        "description": "搜索公共 X 帖子。",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "结果排序方式。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/user-posts": {
+      "post": {
+        "operationId": "socq_x_user_posts",
+        "summary": "X 用户帖子",
+        "description": "从 X 个人资料中采集最近的公开帖子。",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/channel-videos": {
+      "post": {
+        "operationId": "socq_youtube_channel_videos",
+        "summary": "YouTube 频道视频",
+        "description": "从YouTube频道采集公开视频。",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/channels": {
+      "post": {
+        "operationId": "socq_youtube_channels",
+        "summary": "YouTube 频道",
+        "description": "采集公共 YouTube 频道概况和统计数据。",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/comments": {
+      "post": {
+        "operationId": "socq_youtube_comments",
+        "summary": "YouTube 评论",
+        "description": "采集 YouTube 视频的公众评论。",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "结果排序方式。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/playlist-videos": {
+      "post": {
+        "operationId": "socq_youtube_playlist_videos",
+        "summary": "YouTube 播放列表视频",
+        "description": "从公共 YouTube 播放列表采集视频。",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 10,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/search": {
+      "post": {
+        "operationId": "socq_youtube_search",
+        "summary": "YouTube 搜索",
+        "description": "使用便携式过滤器搜索公共 YouTube 视频。",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "duration": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "内容时长筛选条件。"
+                  },
+                  "has_captions": {
+                    "type": "boolean",
+                    "description": "是否仅返回带字幕的内容。"
+                  },
+                  "published_within": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "内容发布时间范围。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "结果排序方式。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/shorts": {
+      "post": {
+        "operationId": "socq_youtube_shorts",
+        "summary": "YouTube Shorts",
+        "description": "从 YouTube 频道采集公开 Shorts。",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/transcripts": {
+      "post": {
+        "operationId": "socq_youtube_transcripts",
+        "summary": "YouTube 视频字幕",
+        "description": "从公开 YouTube 视频中采集纯文本视频字幕。",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "语言代码或语言筛选条件。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/videos": {
+      "post": {
+        "operationId": "socq_youtube_videos",
+        "summary": "YouTube 视频",
+        "description": "采集公共 YouTube 视频元数据。",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tasks/{task_id}": {
+      "get": {
+        "operationId": "getAgentTask",
+        "summary": "获取任务状态和分页结果",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "任务 ID。"
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "分页游标。"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 50
+            },
+            "description": "本次返回的最大记录数。"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "任务详情"
+          }
+        }
+      }
+    },
+    "/v1/tasks/{task_id}/files": {
+      "get": {
+        "operationId": "getAgentTaskFiles",
+        "summary": "获取任务结果文件列表",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "任务 ID。"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "任务文件列表"
+          }
+        }
+      }
+    },
+    "/v1/catalog": {
+      "get": {
+        "operationId": "getCapabilityCatalog",
+        "summary": "获取机器可读的能力目录",
+        "responses": {
+          "200": {
+            "description": "能力目录"
+          }
+        }
+      }
+    },
+    "/v1/account": {
+      "get": {
+        "operationId": "getAgentAccount",
+        "summary": "获取当前账号和积分余额",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "账号摘要"
+          }
+        }
+      }
+    },
+    "/v1/facebook/ad-transcript": {
+      "post": {
+        "operationId": "socq_facebook_ad_transcript",
+        "summary": "Facebook 广告转录",
+        "description": "采集公开 Facebook 广告的转录文本。",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/comment-replies": {
+      "post": {
+        "operationId": "socq_facebook_comment_replies",
+        "summary": "Facebook 评论回复",
+        "description": "采集公开 Facebook 评论的回复。",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "expansion_token": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "用于读取 Facebook 评论回复的扩展令牌。"
+                  },
+                  "feedback_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Facebook 父评论的反馈 ID。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "expansion_token",
+                  "feedback_id"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/company-reviews": {
+      "post": {
+        "operationId": "socq_facebook_company_reviews",
+        "summary": "Facebook 公司评价",
+        "description": "采集公开的 Facebook 公司评论。",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/event-details": {
+      "post": {
+        "operationId": "socq_facebook_event_details",
+        "summary": "Facebook 活动详情",
+        "description": "采集公开 Facebook 活动的详细数据。",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/profile-events": {
+      "post": {
+        "operationId": "socq_facebook_profile_events",
+        "summary": "Facebook 个人资料活动",
+        "description": "采集与公开 Facebook 个人资料关联的活动。",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/profile-photos": {
+      "post": {
+        "operationId": "socq_facebook_profile_photos",
+        "summary": "Facebook 个人资料照片",
+        "description": "采集公开 Facebook 个人资料中的照片。",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/profiles": {
+      "post": {
+        "operationId": "socq_facebook_profiles",
+        "summary": "Facebook 个人资料",
+        "description": "采集公开的 Facebook 个人资料。",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/facebook/reels": {
+      "post": {
+        "operationId": "socq_facebook_reels",
+        "summary": "Facebook Reels",
+        "description": "采集公开 Facebook 个人资料中的 Reels。",
+        "tags": [
+          "facebook"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/audio-reels": {
+      "post": {
+        "operationId": "socq_instagram_audio_reels",
+        "summary": "Instagram 音频 Reels",
+        "description": "按音频 ID 采集公开的 Instagram Reels。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "audio_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开的 Instagram 音频 ID。每个 ID 分别应用结果数量上限，至少提供 1 项。"
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "audio_ids"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/highlight-items": {
+      "post": {
+        "operationId": "socq_instagram_highlight_items",
+        "summary": "Instagram 精选内容",
+        "description": "采集公开 Instagram 精选动态中的内容。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "highlight_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开的 Instagram 精选内容 ID，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "highlight_ids"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/post-info": {
+      "post": {
+        "operationId": "socq_instagram_post_info",
+        "summary": "Instagram 帖子详情",
+        "description": "采集公开 Instagram 帖子的详细数据。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/reels-search": {
+      "post": {
+        "operationId": "socq_instagram_reels_search",
+        "summary": "Instagram Reels 搜索",
+        "description": "搜索公开的 Instagram Reels。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "published_within": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "内容发布时间范围。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/story-highlights": {
+      "post": {
+        "operationId": "socq_instagram_story_highlights",
+        "summary": "Instagram 快拍精选",
+        "description": "采集公开的 Instagram 精选动态。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/trending-reels": {
+      "post": {
+        "operationId": "socq_instagram_trending_reels",
+        "summary": "Instagram 热门 Reels",
+        "description": "采集当前热门的公开 Instagram Reels。",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  }
+                },
+                "required": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/comment-replies": {
+      "post": {
+        "operationId": "socq_tiktok_comment_replies",
+        "summary": "TikTok 评论回复",
+        "description": "采集公开 TikTok 评论的回复。",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "comment_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开评论的 ID。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开内容、主页或商品 URL。"
+                  }
+                },
+                "required": [
+                  "comment_id",
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/followers-list": {
+      "post": {
+        "operationId": "socq_tiktok_followers_list",
+        "summary": "TikTok 粉丝列表",
+        "description": "采集公开的 TikTok 粉丝资料。",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/following-list": {
+      "post": {
+        "operationId": "socq_tiktok_following_list",
+        "summary": "TikTok 关注列表",
+        "description": "采集公开的 TikTok 关注资料。",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/user-videos": {
+      "post": {
+        "operationId": "socq_tiktok_user_videos",
+        "summary": "TikTok 用户视频",
+        "description": "采集 TikTok 用户发布的公开视频。",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "region": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "地区代码。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "结果排序方式。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/followers-list": {
+      "post": {
+        "operationId": "socq_x_followers_list",
+        "summary": "X 粉丝列表",
+        "description": "采集公开的 X 粉丝资料。",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 200,
+                    "maximum": 2000,
+                    "default": 200,
+                    "multipleOf": 200,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/following-list": {
+      "post": {
+        "operationId": "socq_x_following_list",
+        "summary": "X 关注列表",
+        "description": "采集公开的 X 关注资料。",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 200,
+                    "maximum": 2000,
+                    "default": 200,
+                    "multipleOf": 200,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/post-quotes": {
+      "post": {
+        "operationId": "socq_x_post_quotes",
+        "summary": "X 引用帖子",
+        "description": "采集公开 X 帖子的引用帖子。",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "multipleOf": 20,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/post-replies": {
+      "post": {
+        "operationId": "socq_x_post_replies",
+        "summary": "X 帖子回复",
+        "description": "采集公开 X 帖子的回复。",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "multipleOf": 20,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "结果排序方式。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/post-retweeters": {
+      "post": {
+        "operationId": "socq_x_post_retweeters",
+        "summary": "X 帖子转发用户",
+        "description": "采集转发公开 X 帖子的用户资料。",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 100,
+                    "maximum": 2000,
+                    "default": 100,
+                    "multipleOf": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/trends": {
+      "post": {
+        "operationId": "socq_x_trends",
+        "summary": "X 趋势",
+        "description": "按 WOEID 采集公开的 X 趋势。",
+        "tags": [
+          "x"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "woeids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[0-9]+$"
+                    },
+                    "description": "X 地区数字标识符，使用字符串数组传入，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "woeids"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/channel-live-videos": {
+      "post": {
+        "operationId": "socq_youtube_channel_live_videos",
+        "summary": "YouTube 频道直播视频",
+        "description": "采集公开 YouTube 频道中的直播视频。",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/comment-replies": {
+      "post": {
+        "operationId": "socq_youtube_comment_replies",
+        "summary": "YouTube 评论回复",
+        "description": "采集公开 YouTube 评论的回复。",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "continuation_token": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "用于继续采集评论回复的令牌。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "continuation_token"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/community-posts": {
+      "post": {
+        "operationId": "socq_youtube_community_posts",
+        "summary": "YouTube 社区帖子",
+        "description": "采集公开的 YouTube 社区帖子。",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/hashtag-search": {
+      "post": {
+        "operationId": "socq_youtube_hashtag_search",
+        "summary": "YouTube 话题标签搜索",
+        "description": "按话题标签搜索公开的 YouTube 视频。",
+        "tags": [
+          "youtube"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "content_type": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "内容类型筛选条件。"
+                  },
+                  "hashtags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "话题标签，可带或不带 # 前缀，至少提供 1 项。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "hashtags"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "使用 `Authorization: Bearer <token>` 请求头进行身份验证。"
+      },
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "description": "也可以通过 `x-api-key` 请求头提供 API Key。"
+      }
+    },
+    "schemas": {
+      "AgentSubmitResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "const": 200,
+            "description": "HTTP 业务状态码。"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "task_id": {
+                "type": "string",
+                "description": "任务 ID，用于查询任务状态和结果。"
+              },
+              "status": {
+                "type": "string",
+                "description": "任务当前状态。"
+              },
+              "created_time": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "任务创建时间。"
+              },
+              "idempotent_replay": {
+                "type": "boolean",
+                "description": "是否复用了由相同 Idempotency-Key 创建的已有任务。false 表示新任务，true 表示重复提交返回原任务。"
+              }
+            },
+            "required": [
+              "task_id",
+              "status"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

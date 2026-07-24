@@ -1,6 +1,7 @@
 import {writeFile} from "node:fs/promises";
 import {dirname, join} from "node:path";
 import {fileURLToPath} from "node:url";
+import {buildZhOpenApi} from "./localize-openapi-zh.mjs";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const baseUrl = (process.env.SOCQ_BASE_URL ?? "https://api.socq.ai").replace(/\/$/, "");
@@ -26,11 +27,13 @@ const catalog = {
   endpoints,
 };
 const openapi = await fetchJson("/v1/catalog/openapi.json");
+const zhOpenapi = await buildZhOpenApi(openapi, root);
 
 await Promise.all([
   writeJson(join(root, "capability-catalog.json"), catalog),
   writeJson(join(root, "llms.json"), catalog),
   writeJson(join(root, "api-manual", "agent-api", "agent-api.json"), openapi),
+  writeJson(join(root, "zh", "api-manual", "agent-api", "agent-api.json"), zhOpenapi),
 ]);
 process.stdout.write(`Synchronized ${endpoints.length} endpoints from ${baseUrl} (${catalog.schema_version}).\n`);
 
