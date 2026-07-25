@@ -19,6 +19,10 @@ YouTube 端点使用与其他代理 API 相同的异步任务流。
 |搜索 | `POST` | `/v1/youtube/search` |
 |视频字幕| `POST` | `/v1/youtube/transcripts` |
 |播放列表视频 | `POST` | `/v1/youtube/playlist-videos` |
+|评论回复 | `POST` | `/v1/youtube/comment-replies` |
+|社区帖子 | `POST` | `/v1/youtube/community-posts` |
+|话题标签搜索 | `POST` | `/v1/youtube/hashtag-search` |
+|频道直播视频 | `POST` | `/v1/youtube/channel-live-videos` |
 
 提交请求，收到 `task_id`，然后轮询 `GET /v1/tasks/{task_id}`。成功的任务响应包括 `results` 下的规范化记录。
 

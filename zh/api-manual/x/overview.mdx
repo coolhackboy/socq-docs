@@ -15,5 +15,11 @@ X 端点使用与其他代理 API 相同的异步任务流。
 |帖子 | `POST` | `/v1/x/posts` |
 |用户帖子 | `POST` | `/v1/x/user-posts` |
 |搜索 | `POST` | `/v1/x/search` |
+|粉丝列表 | `POST` | `/v1/x/followers-list` |
+|关注列表 | `POST` | `/v1/x/following-list` |
+|帖子回复 | `POST` | `/v1/x/post-replies` |
+|引用帖子 | `POST` | `/v1/x/post-quotes` |
+|转发用户 | `POST` | `/v1/x/post-retweeters` |
+|趋势 | `POST` | `/v1/x/trends` |
 
 提交请求，收到 `task_id`，然后轮询 `GET /v1/tasks/{task_id}`。成功的任务包括 `results` 下的规范化记录。

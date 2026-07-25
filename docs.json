@@ -138,7 +138,13 @@
                   "api-manual/instagram/hashtag-posts",
                   "api-manual/instagram/followers-list",
                   "api-manual/instagram/following-list",
-                  "api-manual/instagram/tagged-posts"
+                  "api-manual/instagram/tagged-posts",
+                  "api-manual/instagram/reels-search",
+                  "api-manual/instagram/audio-reels",
+                  "api-manual/instagram/post-info",
+                  "api-manual/instagram/trending-reels",
+                  "api-manual/instagram/story-highlights",
+                  "api-manual/instagram/highlight-items"
                 ]
               },
               {
@@ -150,7 +156,15 @@
                   "api-manual/facebook/comments",
                   "api-manual/facebook/video-transcript",
                   "api-manual/facebook/group-posts",
-                  "api-manual/facebook/events-search"
+                  "api-manual/facebook/events-search",
+                  "api-manual/facebook/profiles",
+                  "api-manual/facebook/profile-photos",
+                  "api-manual/facebook/reels",
+                  "api-manual/facebook/comment-replies",
+                  "api-manual/facebook/profile-events",
+                  "api-manual/facebook/event-details",
+                  "api-manual/facebook/ad-transcript",
+                  "api-manual/facebook/company-reviews"
                 ]
               },
               {
@@ -183,7 +197,11 @@
                   "api-manual/youtube/shorts",
                   "api-manual/youtube/search",
                   "api-manual/youtube/transcripts",
-                  "api-manual/youtube/playlist-videos"
+                  "api-manual/youtube/playlist-videos",
+                  "api-manual/youtube/comment-replies",
+                  "api-manual/youtube/community-posts",
+                  "api-manual/youtube/hashtag-search",
+                  "api-manual/youtube/channel-live-videos"
                 ]
               },
               {
@@ -197,7 +215,11 @@
                   "api-manual/tiktok/hashtags",
                   "api-manual/tiktok/transcripts",
                   "api-manual/tiktok/live-room-info",
-                  "api-manual/tiktok/trending-feed"
+                  "api-manual/tiktok/trending-feed",
+                  "api-manual/tiktok/followers-list",
+                  "api-manual/tiktok/following-list",
+                  "api-manual/tiktok/comment-replies",
+                  "api-manual/tiktok/user-videos"
                 ]
               },
               {
@@ -218,7 +240,13 @@
                   "api-manual/x/profiles",
                   "api-manual/x/posts",
                   "api-manual/x/user-posts",
-                  "api-manual/x/search"
+                  "api-manual/x/search",
+                  "api-manual/x/followers-list",
+                  "api-manual/x/following-list",
+                  "api-manual/x/post-replies",
+                  "api-manual/x/post-quotes",
+                  "api-manual/x/post-retweeters",
+                  "api-manual/x/trends"
                 ]
               },
               {
@@ -346,7 +374,13 @@
                   "zh/api-manual/instagram/hashtag-posts",
                   "zh/api-manual/instagram/followers-list",
                   "zh/api-manual/instagram/following-list",
-                  "zh/api-manual/instagram/tagged-posts"
+                  "zh/api-manual/instagram/tagged-posts",
+                  "zh/api-manual/instagram/reels-search",
+                  "zh/api-manual/instagram/audio-reels",
+                  "zh/api-manual/instagram/post-info",
+                  "zh/api-manual/instagram/trending-reels",
+                  "zh/api-manual/instagram/story-highlights",
+                  "zh/api-manual/instagram/highlight-items"
                 ]
               },
               {
@@ -358,7 +392,15 @@
                   "zh/api-manual/facebook/comments",
                   "zh/api-manual/facebook/video-transcript",
                   "zh/api-manual/facebook/group-posts",
-                  "zh/api-manual/facebook/events-search"
+                  "zh/api-manual/facebook/events-search",
+                  "zh/api-manual/facebook/profiles",
+                  "zh/api-manual/facebook/profile-photos",
+                  "zh/api-manual/facebook/reels",
+                  "zh/api-manual/facebook/comment-replies",
+                  "zh/api-manual/facebook/profile-events",
+                  "zh/api-manual/facebook/event-details",
+                  "zh/api-manual/facebook/ad-transcript",
+                  "zh/api-manual/facebook/company-reviews"
                 ]
               },
               {
@@ -391,7 +433,11 @@
                   "zh/api-manual/youtube/shorts",
                   "zh/api-manual/youtube/search",
                   "zh/api-manual/youtube/transcripts",
-                  "zh/api-manual/youtube/playlist-videos"
+                  "zh/api-manual/youtube/playlist-videos",
+                  "zh/api-manual/youtube/comment-replies",
+                  "zh/api-manual/youtube/community-posts",
+                  "zh/api-manual/youtube/hashtag-search",
+                  "zh/api-manual/youtube/channel-live-videos"
                 ]
               },
               {
@@ -405,7 +451,11 @@
                   "zh/api-manual/tiktok/hashtags",
                   "zh/api-manual/tiktok/transcripts",
                   "zh/api-manual/tiktok/live-room-info",
-                  "zh/api-manual/tiktok/trending-feed"
+                  "zh/api-manual/tiktok/trending-feed",
+                  "zh/api-manual/tiktok/followers-list",
+                  "zh/api-manual/tiktok/following-list",
+                  "zh/api-manual/tiktok/comment-replies",
+                  "zh/api-manual/tiktok/user-videos"
                 ]
               },
               {
@@ -426,7 +476,13 @@
                   "zh/api-manual/x/profiles",
                   "zh/api-manual/x/posts",
                   "zh/api-manual/x/user-posts",
-                  "zh/api-manual/x/search"
+                  "zh/api-manual/x/search",
+                  "zh/api-manual/x/followers-list",
+                  "zh/api-manual/x/following-list",
+                  "zh/api-manual/x/post-replies",
+                  "zh/api-manual/x/post-quotes",
+                  "zh/api-manual/x/post-retweeters",
+                  "zh/api-manual/x/trends"
                 ]
               },
               {

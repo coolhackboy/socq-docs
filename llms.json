@@ -1,17 +1,25 @@
 {
-  "schema_version": "v1-57489840196e",
+  "schema_version": "v1-9e02c88be86a",
   "platforms": [
     {
       "platform": "facebook",
       "title": "Facebook",
-      "endpoint_count": 6,
+      "endpoint_count": 14,
       "tools": [
+        "socq_facebook_ad_transcript",
+        "socq_facebook_comment_replies",
         "socq_facebook_comments",
+        "socq_facebook_company_reviews",
+        "socq_facebook_event_details",
         "socq_facebook_events_search",
         "socq_facebook_group_posts",
         "socq_facebook_pages",
         "socq_facebook_posts",
-        "socq_facebook_transcripts"
+        "socq_facebook_profile_events",
+        "socq_facebook_profile_photos",
+        "socq_facebook_profiles",
+        "socq_facebook_reels",
+        "socq_facebook_video_transcript"
       ]
     },
     {
@@ -38,24 +46,30 @@
     {
       "platform": "instagram",
       "title": "Instagram",
-      "endpoint_count": 11,
+      "endpoint_count": 17,
       "tools": [
+        "socq_instagram_audio_reels",
         "socq_instagram_comments",
-        "socq_instagram_followers",
         "socq_instagram_followers_count",
-        "socq_instagram_following",
+        "socq_instagram_followers_list",
+        "socq_instagram_following_list",
         "socq_instagram_hashtag_posts",
+        "socq_instagram_highlight_items",
+        "socq_instagram_post_info",
         "socq_instagram_posts",
         "socq_instagram_profiles",
         "socq_instagram_reels",
+        "socq_instagram_reels_search",
         "socq_instagram_search",
+        "socq_instagram_story_highlights",
         "socq_instagram_tagged_posts",
-        "socq_instagram_transcripts"
+        "socq_instagram_transcript",
+        "socq_instagram_trending_reels"
       ]
     },
     {
       "platform": "linkedin",
-      "title": "Linkedin",
+      "title": "LinkedIn",
       "endpoint_count": 4,
       "tools": [
         "socq_linkedin_companies",
@@ -98,16 +112,20 @@
     },
     {
       "platform": "tiktok",
-      "title": "Tiktok",
-      "endpoint_count": 8,
+      "title": "TikTok",
+      "endpoint_count": 12,
       "tools": [
+        "socq_tiktok_comment_replies",
         "socq_tiktok_comments",
+        "socq_tiktok_followers_list",
+        "socq_tiktok_following_list",
         "socq_tiktok_hashtags",
         "socq_tiktok_live_room_info",
         "socq_tiktok_profiles",
         "socq_tiktok_search",
         "socq_tiktok_transcripts",
         "socq_tiktok_trending_feed",
+        "socq_tiktok_user_videos",
         "socq_tiktok_videos"
       ]
     },
@@ -126,22 +144,32 @@
     {
       "platform": "x",
       "title": "X",
-      "endpoint_count": 4,
+      "endpoint_count": 10,
       "tools": [
+        "socq_x_followers_list",
+        "socq_x_following_list",
+        "socq_x_post_quotes",
+        "socq_x_post_replies",
+        "socq_x_post_retweeters",
         "socq_x_posts",
         "socq_x_profiles",
         "socq_x_search",
+        "socq_x_trends",
         "socq_x_user_posts"
       ]
     },
     {
       "platform": "youtube",
-      "title": "Youtube",
-      "endpoint_count": 8,
+      "title": "YouTube",
+      "endpoint_count": 12,
       "tools": [
+        "socq_youtube_channel_live_videos",
         "socq_youtube_channel_videos",
         "socq_youtube_channels",
+        "socq_youtube_comment_replies",
         "socq_youtube_comments",
+        "socq_youtube_community_posts",
+        "socq_youtube_hashtag_search",
         "socq_youtube_playlist_videos",
         "socq_youtube_search",
         "socq_youtube_shorts",
@@ -1245,6 +1273,296 @@
       "docs_url": "https://docs.socq.ai/api-manual/facebook-marketplace/search"
     },
     {
+      "public_id": "facebook/ad-transcript",
+      "platform": "facebook",
+      "resource": "ad-transcript",
+      "tool_name": "socq_facebook_ad_transcript",
+      "title": "Get Facebook Ad Transcript",
+      "description": "Fetch normalized ad transcript data from Facebook.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "urls": [
+            "https://www.facebook.com/ads/library/?id=123456789012345"
+          ]
+        }
+      ],
+      "tags": [
+        "facebook",
+        "ad-transcript"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/facebook/ad-transcript"
+    },
+    {
+      "public_id": "facebook/comment-replies",
+      "platform": "facebook",
+      "resource": "comment-replies",
+      "tool_name": "socq_facebook_comment_replies",
+      "title": "Get Facebook Comment Replies",
+      "description": "Fetch normalized comment replies data from Facebook.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "expansion_token": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The token used to read replies for a Facebook comment."
+          },
+          "feedback_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The parent Facebook comment feedback identifier."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          }
+        },
+        "required": [
+          "expansion_token",
+          "feedback_id"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.3,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "feedback_id": "feedback_123",
+          "expansion_token": "reply_token",
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "facebook",
+        "comment-replies"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/facebook/comment-replies"
+    },
+    {
       "public_id": "facebook/comments",
       "platform": "facebook",
       "resource": "comments",
@@ -1391,6 +1709,295 @@
       "supports_callback": true,
       "status": "stable",
       "docs_url": "https://docs.socq.ai/api-manual/facebook/comments"
+    },
+    {
+      "public_id": "facebook/company-reviews",
+      "platform": "facebook",
+      "resource": "company-reviews",
+      "tool_name": "socq_facebook_company_reviews",
+      "title": "Get Facebook Company Reviews",
+      "description": "Fetch normalized company reviews data from Facebook.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "urls": [
+            "https://www.facebook.com/PepsiCo/reviews/"
+          ],
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "facebook",
+        "company-reviews"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/facebook/company-reviews"
+    },
+    {
+      "public_id": "facebook/event-details",
+      "platform": "facebook",
+      "resource": "event-details",
+      "tool_name": "socq_facebook_event_details",
+      "title": "Get Facebook Event Details",
+      "description": "Fetch normalized event details data from Facebook.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "urls": [
+            "https://www.facebook.com/events/2255360061870188/"
+          ]
+        }
+      ],
+      "tags": [
+        "facebook",
+        "event-details"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/facebook/event-details"
     },
     {
       "public_id": "facebook/events-search",
@@ -2053,6 +2660,591 @@
       "docs_url": "https://docs.socq.ai/api-manual/facebook/posts"
     },
     {
+      "public_id": "facebook/profile-events",
+      "platform": "facebook",
+      "resource": "profile-events",
+      "tool_name": "socq_facebook_profile_events",
+      "title": "Get Facebook Profile Events",
+      "description": "Fetch normalized profile events data from Facebook.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.6,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "urls": [
+            "https://www.facebook.com/NASA"
+          ],
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "facebook",
+        "profile-events"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/facebook/profile-events"
+    },
+    {
+      "public_id": "facebook/profile-photos",
+      "platform": "facebook",
+      "resource": "profile-photos",
+      "tool_name": "socq_facebook_profile_photos",
+      "title": "Get Facebook Profile Photos",
+      "description": "Fetch normalized profile photos data from Facebook.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "urls": [
+            "https://www.facebook.com/NASA"
+          ],
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "facebook",
+        "profile-photos"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/facebook/profile-photos"
+    },
+    {
+      "public_id": "facebook/profiles",
+      "platform": "facebook",
+      "resource": "profiles",
+      "tool_name": "socq_facebook_profiles",
+      "title": "Get Facebook Profiles",
+      "description": "Fetch normalized profiles data from Facebook.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 1.2,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "urls": [
+            "https://www.facebook.com/NASA"
+          ]
+        }
+      ],
+      "tags": [
+        "facebook",
+        "profiles"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/facebook/profiles"
+    },
+    {
+      "public_id": "facebook/reels",
+      "platform": "facebook",
+      "resource": "reels",
+      "tool_name": "socq_facebook_reels",
+      "title": "Get Facebook Reels",
+      "description": "Fetch normalized reels data from Facebook.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.7,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "urls": [
+            "https://www.facebook.com/NASA"
+          ],
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "facebook",
+        "reels"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/facebook/reels"
+    },
+    {
       "public_id": "facebook/video-transcript",
       "platform": "facebook",
       "resource": "transcripts",
@@ -2194,6 +3386,154 @@
       "supports_callback": false,
       "status": "stable",
       "docs_url": "https://docs.socq.ai/api-manual/facebook/video-transcript"
+    },
+    {
+      "public_id": "instagram/audio-reels",
+      "platform": "instagram",
+      "resource": "audio-reels",
+      "tool_name": "socq_instagram_audio_reels",
+      "title": "Get Instagram Audio Reels",
+      "description": "Fetch normalized audio reels data from Instagram.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "audio_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public Instagram audio identifiers."
+          },
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          }
+        },
+        "required": [
+          "audio_ids"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "audio_ids": [
+            "123456789012345"
+          ],
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "instagram",
+        "audio-reels"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/instagram/audio-reels"
     },
     {
       "public_id": "instagram/comments",
@@ -2342,157 +3682,6 @@
       "supports_callback": true,
       "status": "stable",
       "docs_url": "https://docs.socq.ai/api-manual/instagram/comments"
-    },
-    {
-      "public_id": "instagram/followers-list",
-      "platform": "instagram",
-      "resource": "followers",
-      "tool_name": "socq_instagram_followers",
-      "title": "Instagram Followers API",
-      "description": "Collect public profiles from an Instagram account follower list.",
-      "input_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "results_limit": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 2000
-          },
-          "usernames": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "minLength": 1
-            },
-            "minItems": 1,
-            "description": "Public account usernames."
-          }
-        },
-        "required": [
-          "usernames"
-        ]
-      },
-      "output_schema": {
-        "type": "object",
-        "properties": {
-          "task_id": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "results": {
-            "type": "object",
-            "properties": {
-              "items": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "additionalProperties": true,
-                  "properties": {
-                    "platform": {
-                      "type": "string"
-                    },
-                    "resource": {
-                      "type": "string"
-                    },
-                    "type": {
-                      "type": "string"
-                    },
-                    "id": {
-                      "type": [
-                        "string",
-                        "number",
-                        "null"
-                      ]
-                    },
-                    "url": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    },
-                    "author": {
-                      "type": "object",
-                      "additionalProperties": true
-                    },
-                    "text": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    },
-                    "metrics": {
-                      "type": "object",
-                      "additionalProperties": true
-                    },
-                    "media": {
-                      "type": [
-                        "object",
-                        "array"
-                      ],
-                      "additionalProperties": true
-                    },
-                    "published_at": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    }
-                  }
-                }
-              },
-              "next_cursor": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "has_more": {
-                "type": "boolean"
-              }
-            }
-          }
-        }
-      },
-      "billing": {
-        "mode": "base_plus_result",
-        "credits": null,
-        "base_credits": 0,
-        "unit": "result",
-        "unit_size": 1,
-        "unit_credits": 0.3,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "result_unit_credits": 0.3,
-          "empty_result_policy": "base_only",
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "usernames",
-          "allow_overage": 1
-        },
-        "dynamic": true
-      },
-      "examples": [
-        {
-          "usernames": [
-            "instagram"
-          ],
-          "results_limit": 100
-        }
-      ],
-      "tags": [
-        "instagram",
-        "followers"
-      ],
-      "execution_mode": "async",
-      "supports_pagination": true,
-      "supports_files": true,
-      "supports_callback": false,
-      "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/instagram/followers-list"
     },
     {
       "public_id": "instagram/followers-count",
@@ -2675,6 +3864,157 @@
       "supports_callback": true,
       "status": "stable",
       "docs_url": "https://docs.socq.ai/api-manual/instagram/followers-count"
+    },
+    {
+      "public_id": "instagram/followers-list",
+      "platform": "instagram",
+      "resource": "followers",
+      "tool_name": "socq_instagram_followers",
+      "title": "Instagram Followers API",
+      "description": "Collect public profiles from an Instagram account follower list.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000
+          },
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public account usernames."
+          }
+        },
+        "required": [
+          "usernames"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.3,
+        "config": {
+          "mode": "base_plus_result",
+          "result_unit_size": 1,
+          "result_unit_credits": 0.3,
+          "empty_result_policy": "base_only",
+          "estimate_result_count": 100,
+          "estimate_result_count_per_input_field": "usernames",
+          "allow_overage": 1
+        },
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "usernames": [
+            "instagram"
+          ],
+          "results_limit": 100
+        }
+      ],
+      "tags": [
+        "instagram",
+        "followers"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": false,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/instagram/followers-list"
     },
     {
       "public_id": "instagram/following-list",
@@ -2985,6 +4325,288 @@
       "supports_callback": false,
       "status": "stable",
       "docs_url": "https://docs.socq.ai/api-manual/instagram/hashtag-posts"
+    },
+    {
+      "public_id": "instagram/highlight-items",
+      "platform": "instagram",
+      "resource": "highlight-items",
+      "tool_name": "socq_instagram_highlight_items",
+      "title": "Get Instagram Highlight Items",
+      "description": "Fetch normalized highlight items data from Instagram.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "highlight_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public Instagram highlight identifiers."
+          }
+        },
+        "required": [
+          "highlight_ids"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "highlight_ids": [
+            "18067016518767507"
+          ]
+        }
+      ],
+      "tags": [
+        "instagram",
+        "highlight-items"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/instagram/highlight-items"
+    },
+    {
+      "public_id": "instagram/post-info",
+      "platform": "instagram",
+      "resource": "post-info",
+      "tool_name": "socq_instagram_post_info",
+      "title": "Get Instagram Post Info",
+      "description": "Fetch normalized post info data from Instagram.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "urls": [
+            "https://www.instagram.com/p/ABC123xyz/"
+          ]
+        }
+      ],
+      "tags": [
+        "instagram",
+        "post-info"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/instagram/post-info"
     },
     {
       "public_id": "instagram/posts",
@@ -3492,6 +5114,152 @@
       "docs_url": "https://docs.socq.ai/api-manual/instagram/reels"
     },
     {
+      "public_id": "instagram/reels-search",
+      "platform": "instagram",
+      "resource": "reels-search",
+      "tool_name": "socq_instagram_reels_search",
+      "title": "Get Instagram Reels Search",
+      "description": "Fetch normalized reels search data from Instagram.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "published_within": {
+            "type": "string",
+            "minLength": 1
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search query."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "query": "street photography",
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "instagram",
+        "reels-search"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/instagram/reels-search"
+    },
+    {
       "public_id": "instagram/search",
       "platform": "instagram",
       "resource": "search",
@@ -3669,6 +5437,147 @@
       "supports_callback": true,
       "status": "stable",
       "docs_url": "https://docs.socq.ai/api-manual/instagram/search"
+    },
+    {
+      "public_id": "instagram/story-highlights",
+      "platform": "instagram",
+      "resource": "story-highlights",
+      "tool_name": "socq_instagram_story_highlights",
+      "title": "Get Instagram Story Highlights",
+      "description": "Fetch normalized story highlights data from Instagram.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public account usernames."
+          }
+        },
+        "required": [
+          "usernames"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "usernames": [
+            "instagram"
+          ]
+        }
+      ],
+      "tags": [
+        "instagram",
+        "story-highlights"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/instagram/story-highlights"
     },
     {
       "public_id": "instagram/tagged-posts",
@@ -3963,6 +5872,132 @@
       "supports_callback": false,
       "status": "stable",
       "docs_url": "https://docs.socq.ai/api-manual/instagram/transcript"
+    },
+    {
+      "public_id": "instagram/trending-reels",
+      "platform": "instagram",
+      "resource": "trending-reels",
+      "tool_name": "socq_instagram_trending_reels",
+      "title": "Get Instagram Trending Reels",
+      "description": "Fetch normalized trending reels data from Instagram.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "required": []
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {}
+      ],
+      "tags": [
+        "instagram",
+        "trending-reels"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/instagram/trending-reels"
     },
     {
       "public_id": "linkedin/companies",
@@ -6884,6 +8919,155 @@
       "docs_url": "https://docs.socq.ai/api-manual/tiktok-shop/user-showcase"
     },
     {
+      "public_id": "tiktok/comment-replies",
+      "platform": "tiktok",
+      "resource": "comment-replies",
+      "tool_name": "socq_tiktok_comment_replies",
+      "title": "Get TikTok Comment Replies",
+      "description": "Fetch normalized comment replies data from TikTok.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "comment_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public comment identifier."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public content or product URL."
+          }
+        },
+        "required": [
+          "comment_id",
+          "url"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "url": "https://www.tiktok.com/@scout2015/video/6718335390845095173",
+          "comment_id": "1234567890",
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "tiktok",
+        "comment-replies"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/tiktok/comment-replies"
+    },
+    {
       "public_id": "tiktok/comments",
       "platform": "tiktok",
       "resource": "comments",
@@ -7032,6 +9216,302 @@
       "supports_callback": false,
       "status": "stable",
       "docs_url": "https://docs.socq.ai/api-manual/tiktok/comments"
+    },
+    {
+      "public_id": "tiktok/followers-list",
+      "platform": "tiktok",
+      "resource": "followers-list",
+      "tool_name": "socq_tiktok_followers_list",
+      "title": "Get TikTok Followers List",
+      "description": "Fetch normalized followers list data from TikTok.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public account usernames."
+          }
+        },
+        "required": [
+          "usernames"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "usernames": [
+            "@tiktok"
+          ],
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "tiktok",
+        "followers-list"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/tiktok/followers-list"
+    },
+    {
+      "public_id": "tiktok/following-list",
+      "platform": "tiktok",
+      "resource": "following-list",
+      "tool_name": "socq_tiktok_following_list",
+      "title": "Get TikTok Following List",
+      "description": "Fetch normalized following list data from TikTok.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public account usernames."
+          }
+        },
+        "required": [
+          "usernames"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "usernames": [
+            "@tiktok"
+          ],
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "tiktok",
+        "following-list"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/tiktok/following-list"
     },
     {
       "public_id": "tiktok/hashtags",
@@ -7913,6 +10393,162 @@
       "docs_url": "https://docs.socq.ai/api-manual/tiktok/trending-feed"
     },
     {
+      "public_id": "tiktok/user-videos",
+      "platform": "tiktok",
+      "resource": "user-videos",
+      "tool_name": "socq_tiktok_user_videos",
+      "title": "Get TikTok User Videos",
+      "description": "Fetch normalized user videos data from TikTok.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "region": {
+            "type": "string",
+            "minLength": 1
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "sort_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public account usernames."
+          }
+        },
+        "required": [
+          "usernames"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "usernames": [
+            "@tiktok"
+          ],
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "tiktok",
+        "user-videos"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/tiktok/user-videos"
+    },
+    {
       "public_id": "tiktok/videos",
       "platform": "tiktok",
       "resource": "videos",
@@ -8055,6 +10691,755 @@
       "supports_callback": false,
       "status": "stable",
       "docs_url": "https://docs.socq.ai/api-manual/tiktok/videos"
+    },
+    {
+      "public_id": "x/followers-list",
+      "platform": "x",
+      "resource": "followers-list",
+      "tool_name": "socq_x_followers_list",
+      "title": "Get X Followers List",
+      "description": "Fetch normalized followers list data from X.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 200,
+            "maximum": 2000,
+            "default": 200,
+            "multipleOf": 200
+          },
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public account usernames."
+          }
+        },
+        "required": [
+          "usernames"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "usernames": [
+            "@X"
+          ],
+          "results_limit": 200
+        }
+      ],
+      "tags": [
+        "x",
+        "followers-list"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/x/followers-list"
+    },
+    {
+      "public_id": "x/following-list",
+      "platform": "x",
+      "resource": "following-list",
+      "tool_name": "socq_x_following_list",
+      "title": "Get X Following List",
+      "description": "Fetch normalized following list data from X.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 200,
+            "maximum": 2000,
+            "default": 200,
+            "multipleOf": 200
+          },
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public account usernames."
+          }
+        },
+        "required": [
+          "usernames"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "usernames": [
+            "@X"
+          ],
+          "results_limit": 200
+        }
+      ],
+      "tags": [
+        "x",
+        "following-list"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/x/following-list"
+    },
+    {
+      "public_id": "x/post-quotes",
+      "platform": "x",
+      "resource": "post-quotes",
+      "tool_name": "socq_x_post_quotes",
+      "title": "Get X Post Quotes",
+      "description": "Fetch normalized post quotes data from X.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100,
+            "multipleOf": 20
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "urls": [
+            "https://x.com/X/status/1234567890123456789"
+          ],
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "x",
+        "post-quotes"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/x/post-quotes"
+    },
+    {
+      "public_id": "x/post-replies",
+      "platform": "x",
+      "resource": "post-replies",
+      "tool_name": "socq_x_post_replies",
+      "title": "Get X Post Replies",
+      "description": "Fetch normalized post replies data from X.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100,
+            "multipleOf": 20
+          },
+          "sort_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "urls": [
+            "https://x.com/X/status/1234567890123456789"
+          ],
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "x",
+        "post-replies"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/x/post-replies"
+    },
+    {
+      "public_id": "x/post-retweeters",
+      "platform": "x",
+      "resource": "post-retweeters",
+      "tool_name": "socq_x_post_retweeters",
+      "title": "Get X Post Retweeters",
+      "description": "Fetch normalized post retweeters data from X.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 2000,
+            "default": 100,
+            "multipleOf": 100
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "urls": [
+            "https://x.com/X/status/1234567890123456789"
+          ],
+          "results_limit": 100
+        }
+      ],
+      "tags": [
+        "x",
+        "post-retweeters"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/x/post-retweeters"
     },
     {
       "public_id": "x/posts",
@@ -8492,6 +11877,154 @@
       "docs_url": "https://docs.socq.ai/api-manual/x/search"
     },
     {
+      "public_id": "x/trends",
+      "platform": "x",
+      "resource": "trends",
+      "tool_name": "socq_x_trends",
+      "title": "Get X Trends",
+      "description": "Fetch normalized trends data from X.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "woeids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9]+$"
+            },
+            "minItems": 1,
+            "description": "Numeric X location identifiers represented as strings."
+          }
+        },
+        "required": [
+          "woeids"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "woeids": [
+            "1"
+          ],
+          "results_limit": 100
+        }
+      ],
+      "tags": [
+        "x",
+        "trends"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/x/trends"
+    },
+    {
       "public_id": "x/user-posts",
       "platform": "x",
       "resource": "user-posts",
@@ -8640,6 +12173,154 @@
       "supports_callback": false,
       "status": "stable",
       "docs_url": "https://docs.socq.ai/api-manual/x/user-posts"
+    },
+    {
+      "public_id": "youtube/channel-live-videos",
+      "platform": "youtube",
+      "resource": "channel-live-videos",
+      "tool_name": "socq_youtube_channel_live_videos",
+      "title": "Get YouTube Channel Live Videos",
+      "description": "Fetch normalized channel live videos data from YouTube.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "urls": [
+            "https://www.youtube.com/@YouTube"
+          ],
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "youtube",
+        "channel-live-videos"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/youtube/channel-live-videos"
     },
     {
       "public_id": "youtube/channel-videos",
@@ -8936,6 +12617,148 @@
       "docs_url": "https://docs.socq.ai/api-manual/youtube/channels"
     },
     {
+      "public_id": "youtube/comment-replies",
+      "platform": "youtube",
+      "resource": "comment-replies",
+      "tool_name": "socq_youtube_comment_replies",
+      "title": "Get YouTube Comment Replies",
+      "description": "Fetch normalized comment replies data from YouTube.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "continuation_token": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The token used to continue a YouTube reply collection."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          }
+        },
+        "required": [
+          "continuation_token"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "continuation_token": "reply_continuation_token",
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "youtube",
+        "comment-replies"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/youtube/comment-replies"
+    },
+    {
       "public_id": "youtube/comments",
       "platform": "youtube",
       "resource": "comments",
@@ -9088,6 +12911,306 @@
       "supports_callback": false,
       "status": "stable",
       "docs_url": "https://docs.socq.ai/api-manual/youtube/comments"
+    },
+    {
+      "public_id": "youtube/community-posts",
+      "platform": "youtube",
+      "resource": "community-posts",
+      "tool_name": "socq_youtube_community_posts",
+      "title": "Get YouTube Community Posts",
+      "description": "Fetch normalized community posts data from YouTube.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "urls": [
+            "https://www.youtube.com/@YouTube"
+          ],
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "youtube",
+        "community-posts"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/youtube/community-posts"
+    },
+    {
+      "public_id": "youtube/hashtag-search",
+      "platform": "youtube",
+      "resource": "hashtag-search",
+      "tool_name": "socq_youtube_hashtag_search",
+      "title": "Get YouTube Hashtag Search",
+      "description": "Fetch normalized hashtag search data from YouTube.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "content_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "hashtags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Hashtags with or without the # prefix."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          }
+        },
+        "required": [
+          "hashtags"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "base_plus_result",
+        "credits": null,
+        "base_credits": 0,
+        "unit": "result",
+        "unit_size": 1,
+        "unit_credits": 0.5,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "hashtags": [
+            "#technology"
+          ],
+          "results_limit": 20
+        }
+      ],
+      "tags": [
+        "youtube",
+        "hashtag-search"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/youtube/hashtag-search"
     },
     {
       "public_id": "youtube/playlist-videos",
