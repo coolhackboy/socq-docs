@@ -19,8 +19,10 @@ async function listMdx(directory) {
 }
 
 const normalize = (path) => relative(root, path).split(sep).join("/");
-const sha256 = (content) => createHash("sha256").update(content).digest("hex");
-const codeBlocks = (content) => [...content.matchAll(/```[\s\S]*?```/g)].map((match) => match[0]);
+const normalizeNewlines = (content) => content.replace(/\r\n/g, "\n");
+const sha256 = (content) => createHash("sha256").update(normalizeNewlines(content)).digest("hex");
+const codeBlocks = (content) => [...normalizeNewlines(content).matchAll(/```[\s\S]*?```/g)]
+  .map((match) => match[0]);
 const componentTags = (content) => [...content.matchAll(/<\/?[A-Z][^>]*>/g)].map((match) =>
   match[0].replace(/title="[^"]*"/g, 'title=""')
 );
