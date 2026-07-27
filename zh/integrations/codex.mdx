@@ -32,7 +32,7 @@ tool_timeout_sec = 45
 
 ## 限制工具列表
 
-要公开 Typed YouTube 工具，请使用过滤后的 MCP URL：
+要只加载 YouTube 的类型化工具（Typed tools），请使用带过滤条件的 MCP URL：
 
 ```toml
 [mcp_servers.socq_youtube]
@@ -48,8 +48,8 @@ tool_timeout_sec = 45
 向 Codex 提问：
 
 ```text
-Use SocQ to check my account, then collect the latest 20 comments from this
-YouTube video. Wait for the task to finish and return the results as a table:
+请使用 SocQ 检查我的账户，然后采集这个 YouTube 视频最新的 20 条评论。
+等待任务完成后，以表格形式返回结果：
 https://www.youtube.com/watch?v=VIDEO_ID
 ```
 
@@ -57,7 +57,7 @@ https://www.youtube.com/watch?v=VIDEO_ID
 
 ## 添加工作流程指导
 
-安装 `socq-social-research` 技能以进行端点选择、成本意识、轮询、分页和跨平台研究指导：
+安装 `socq-social-research` Skill，让 Codex 学会选择 API、理解计费规则、轮询任务、翻页读取结果并开展跨平台调研：
 
 ```bash
 npx skills add SocQAPI/socq-devtools

@@ -1,6 +1,6 @@
 ---
 title: "VS Code"
-description: "通过 SocQ stdio 桥连接 VS Code 并将 API 密钥存储为输入。"
+description: "通过 SocQ stdio 转接程序连接 VS Code，并安全保存 API 密钥。"
 icon: "window-maximize"
 ---
 
@@ -12,7 +12,7 @@ VS Code 将 MCP 服务器定义存储在 `mcp.json` 中。对所有工作区使�
 
 - Node.js 20 或更高版本；
 - SocQ API 密钥；
-- 当前的 VS Code 聊天设置，支持 MCP。
+- 支持 MCP 的新版 VS Code。
 
 ## 配置
 
@@ -49,7 +49,7 @@ VS Code 在服务器启动时提示输入密钥并安全存储输入以供以后
 
 ## 限制工具列表
 
-要公开 Typed YouTube 工具，请将桥参数更改为：
+要只加载 YouTube 的类型化工具（Typed tools），请将转接程序参数更改为：
 
 ```json
 "args": ["-y", "@socq/mcp", "--platforms", "youtube"]
@@ -62,8 +62,8 @@ VS Code 在服务器启动时提示输入密钥并安全存储输入以供以后
 从 **MCP：列出服务器** 启动或重新启动 `socq`，批准服务器信任提示，然后询问：
 
 ```text
-Use SocQ to check my account, then collect the latest 20 comments from this
-YouTube video. Wait for the task to finish and return the results as a table:
+请使用 SocQ 检查我的账户，然后采集这个 YouTube 视频最新的 20 条评论。
+等待任务完成后，以表格形式返回结果：
 https://www.youtube.com/watch?v=VIDEO_ID
 ```
 

@@ -13,11 +13,11 @@ submit -> task_id -> queued -> running -> succeeded
                                    \-> failed
 ```
 
-Compact MCP 通过 `socq_execute` 提交；Typed MCP 通过 `socq_youtube_comments` 等工具提交。两者返回相同的任务模型。
+精简模式（Compact）通过 `socq_execute` 提交任务；类型化工具（Typed tools）通过 `socq_youtube_comments` 等工具提交任务。两者返回相同的任务数据结构。
 
 ## 等待任务
 
-MCP 默认不等待。在 `socq_execute` 上设置 `wait_seconds`，或在 Typed 工具上设置 `_wait_seconds`，最多等待 30 秒。
+MCP 默认不会等待任务完成。可以为 `socq_execute` 设置 `wait_seconds`，或为类型化工具设置 `_wait_seconds`，让单次调用最多等待 30 秒。
 
 如果任务状态仍为 `queued` 或 `running`，请保留任务 ID 并调用 `socq_get_task`：
 
@@ -35,12 +35,12 @@ socq task wait TASK_ID --timeout 180
 ```
 
 <Warning>
-  客户端超时不会取消 SocQ 任务。使用相同的任务 ID 继续，而不是提交重复的采集并为其付费。
+  客户端超时不会取消 SocQ 任务。请使用同一个任务 ID 继续查询，不要重复提交采集任务并产生额外费用。
 </Warning>
 
 ## 安全地重试提交
 
-当网络或客户端故障可能触发提交重试时，请使用幂等性密钥。相同的用户、密钥、端点和输入返回原始任务；在不同的输入中重复使用该密钥会导致冲突。
+如果网络或客户端故障可能导致重复提交，请使用幂等密钥。用户、密钥、API 端点和输入参数完全相同时，服务器会返回原任务；如果输入参数不同却重复使用同一密钥，则会返回冲突错误。
 
 ```json
 {
@@ -54,9 +54,9 @@ socq task wait TASK_ID --timeout 180
 
 ## 读取标准化结果
 
-成功任务会在 `results.items` 中返回规范化记录。MCP 每页默认返回 25 条，最多返回 100 条。
+成功任务会在 `results.items` 中返回标准化记录。MCP 每页默认返回 25 条，最多返回 100 条。
 
-当 `has_more` 为 true 时，将 `next_cursor` 不变地传递给下一个 `socq_get_task` 调用。当光标为空或已达到您请求的研究限制时停止。
+当 `has_more` 为 `true` 时，把 `next_cursor` 原样传给下一次 `socq_get_task` 调用。当游标为空或已经取得所需数量的结果时停止。
 
 ## 下载原始文件
 
@@ -66,6 +66,6 @@ socq task wait TASK_ID --timeout 180
 socq task files TASK_ID
 ```
 
-文件 URL 可能过期。原始文件保留数据提供方的详细字段，而分页任务结果使用 SocQ 的规范化 schema。
+文件 URL 可能过期。原始文件会保留数据提供方返回的详细字段；分页任务结果则使用 SocQ 的标准化数据结构。
 
 有关任务状态和响应字段，请参阅[任务状态和结果](/zh/api-manual/agent-api/status) 和[结果文件](/zh/api-manual/agent-api/files)。

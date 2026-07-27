@@ -321,14 +321,6 @@
                   "integrations/codex",
                   "integrations/vscode"
                 ]
-              },
-              {
-                "group": "Guides",
-                "pages": [
-                  "integrations/mcp-filtering",
-                  "integrations/tasks-results",
-                  "integrations/troubleshooting"
-                ]
               }
             ]
           }
@@ -556,14 +548,6 @@
                   "zh/integrations/cursor",
                   "zh/integrations/codex",
                   "zh/integrations/vscode"
-                ]
-              },
-              {
-                "group": "指南",
-                "pages": [
-                  "zh/integrations/mcp-filtering",
-                  "zh/integrations/tasks-results",
-                  "zh/integrations/troubleshooting"
                 ]
               }
             ]

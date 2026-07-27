@@ -6,15 +6,9 @@ icon: "terminal"
 
 # CLI
 
-使用 SocQ CLI 实现终端工作流程、自动化，并将标准化任务结果导出为 JSON、JSONL、CSV 或表格。
-
-<Warning>
-  `@socq/cli` 软件包尚未在公共 npm 注册表中提供。以下命令记录了即将推出的软件包，并且可以在开发过程中从 SocQ devtools 存储库中使用。
-</Warning>
+使用 SocQ CLI 在终端中运行或自动执行数据采集任务，并将标准化结果导出为 JSON、JSONL、CSV 或表格。
 
 ## 安装并验证
-
-包发布后：
 
 ```bash
 npm install -g @socq/cli
@@ -23,7 +17,7 @@ socq auth login
 
 对于 CI，设置 `SOCQ_API_KEY` 而不是使用交互式登录。在正常终端使用中避免使用 `--api-key`，因为命令参数可能保留在 shell 历史记录或进程列表中。
 
-## 发现端点
+## 查找 API
 
 ```bash
 socq platforms
@@ -31,7 +25,7 @@ socq tools youtube
 socq describe youtube/comments
 ```
 
-在构建自动化之前使用 `describe`，以便该命令使用 Capability Registry 中的当前输入架构和计费信息。
+编写自动化脚本前，请先运行 `describe`，查看能力目录中最新的输入参数和计费信息。
 
 ## 完成首次采集
 
@@ -72,17 +66,17 @@ socq task results TASK_ID --format csv --output results.csv
 socq task files TASK_ID
 ```
 
-不要因为本地等待超时而再次提交原始采集。恢复现有任务。
+不要因为本地等待超时就重新提交采集请求，请继续查询现有任务。
 
 ## 标记 Agent Skill 执行来源
 
-正常的 CLI 提交记录为 `request_source="cli"`。当 Agent Skill 回退到 CLI 时，在提交命令上传递源标记：
+普通 CLI 提交会记录为 `request_source="cli"`。当 Agent Skill 改用 CLI 执行时，请在提交命令中加入来源标记：
 
 ```bash
 socq youtube comments --urls "https://www.youtube.com/watch?v=VIDEO_ID" --request-source skill
 ```
 
-`SOCQ_REQUEST_SOURCE=skill` 提供相同的行为。新任务则记录为`skill-cli`；任务轮询命令不需要标记。
+设置 `SOCQ_REQUEST_SOURCE=skill` 也有相同效果。新任务会记录为 `skill-cli`；轮询任务时不需要添加此标记。
 
 ## 输出格式
 

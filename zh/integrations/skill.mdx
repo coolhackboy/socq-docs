@@ -1,12 +1,12 @@
 ---
 title: "Agent Skill"
-description: "教代理选择端点、控制成本并完成 SocQ 研究工作流程。"
+description: "指导 AI Agent 选择 API、控制成本并完成 SocQ 调研流程。"
 icon: "wand-magic-sparkles"
 ---
 
 # Agent Skill
 
-安装 `socq-social-research` 技能，教编码代理如何选择 SocQ 端点、调整输入、控制成本和完成异步采集。
+安装 `socq-social-research` Skill，让编码 Agent 学会选择 SocQ API、填写输入参数、控制成本并完成异步数据采集。
 
 ```bash
 npx skills add SocQAPI/socq-devtools
@@ -16,14 +16,14 @@ npx skills add SocQAPI/socq-devtools
 
 | 组件 | 作用 |
 | --- | --- |
-| MCP | 为 Agent 提供可提交和读取数据任务的实时 SocQ 工具 |
-| Agent Skill | 指导 Agent 选择工具并运行可靠的研究工作流 |
+| MCP | 为 Agent 提供 SocQ 工具，用于提交数据采集任务和读取结果 |
+| Agent Skill | 指导 Agent 选择合适的工具，并可靠地完成调研流程 |
 
-建议同时使用两者。MCP 提供执行能力；Agent Skill 提供端点选择、计费意识、轮询、分页和跨平台工作流指导。
+建议同时使用两者。MCP 负责执行；Agent Skill 负责选择 API、理解计费规则、轮询任务、翻页读取结果，以及协调跨平台调研流程。
 
 计费行为和 API 密钥限制记录在 [API 概述](/zh/api-manual/agent-api/overview) 和 [身份验证](/zh/api-manual/agent-api/authentication) 中。
 
-## 你可以问什么
+## 使用示例
 
 ```text
 Collect the latest comments from this Instagram Reel, wait for the task,
@@ -40,30 +40,30 @@ Find recent YouTube videos about AI coding agents, collect their comments,
 and explain which topics produce the strongest audience response.
 ```
 
-该技能指导代理执行以下操作：
+该 Skill 会指导 Agent：
 
-- 将用户意图映射到 Capability Registry 端点；
+- 根据用户需求从能力目录中选择合适的 API；
 - 选择 URL、用户名、主题标签或查询输入；
-- 在大型任务前检查 schema 并估算积分；
-- 当可以重试时使用幂等密钥提交；
+- 在运行大型任务前检查参数结构并估算所需积分；
+- 提交可能需要重试的任务时使用幂等密钥；
 - 轮询异步任务而不是重新提交；
-- 按游标分页并检索原始文件；
-- 处理身份验证、参数校验、速率、积分和数据提供方错误；
-- 协调可比较的跨平台研究。
+- 使用游标翻页并获取原始文件；
+- 处理身份验证、参数校验、请求频率限制、积分不足和数据提供方错误；
+- 组织口径一致、结果可比较的跨平台调研。
 
 ## 执行偏好
 
-技能偏好：
+该 Skill 按以下顺序选择执行方式：
 
 1. 远程 MCP；
-2. SocQ stdio MCP 桥；
+2. SocQ stdio MCP 转接程序；
 3. MCP 不可用时使用 CLI 或 REST。
 
-端点引用是从与 MCP 和 OpenAPI 相同的 Capability Registry 生成的，因此端点 ID 和输入字段在集成中保持一致。
+Skill、MCP 和 OpenAPI 都使用同一份能力目录，因此不同集成方式中的 API 端点 ID 和输入字段保持一致。
 
 ## 请求归属
 
-由 Agent Skill 提交的任务会在 `request_source` 中保留 Skill 来源及其执行路径：
+Agent Skill 提交任务时，会在 `request_source` 中记录 Skill 及其执行方式：
 
 | Skill 执行路径 | 记录值 |
 | --- | --- |

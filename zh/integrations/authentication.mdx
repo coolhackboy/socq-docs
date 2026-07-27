@@ -6,7 +6,7 @@ icon: "key"
 
 # 集成身份验证
 
-在环境中设置您的 API 密钥：
+在环境变量中设置 API 密钥：
 
 ```bash
 export SOCQ_API_KEY="YOUR_API_KEY"
@@ -16,10 +16,10 @@ export SOCQ_API_KEY="YOUR_API_KEY"
 $env:SOCQ_API_KEY="YOUR_API_KEY"
 ```
 
-托管的 MCP 服务器还接受 `Authorization: Bearer YOUR_API_KEY` 和 `x-api-key: YOUR_API_KEY`。
+远程 MCP 服务还接受 `Authorization: Bearer YOUR_API_KEY` 和 `x-api-key: YOUR_API_KEY`。
 
 <Warning>
-  请勿将密钥放入 MCP URL 中或将其提交到客户端配置。在交互式使用 CLI 期间避免使用 `--api-key`，因为它可能保留在 shell 历史记录中。
+  请勿将密钥放入 MCP URL，也不要将包含密钥的客户端配置提交到版本库。手动使用 CLI 时应避免传入 `--api-key`，因为密钥可能留在命令历史记录中。
 </Warning>
 
 REST、MCP 和 CLI 使用相同的 API 密钥控制规则。详情参见 [API 身份验证和密钥限制](/zh/api-manual/agent-api/authentication)。
