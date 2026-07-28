@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-9e02c88be86a",
+    "version": "v1-43287c478aea",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -4267,9 +4267,9 @@
         }
       }
     },
-    "/v1/tiktok/transcripts": {
+    "/v1/tiktok/video-transcripts": {
       "post": {
-        "operationId": "socq_tiktok_transcripts",
+        "operationId": "socq_tiktok_video_transcripts",
         "summary": "TikTok Video Transcripts API",
         "description": "Extract transcripts from public TikTok videos.",
         "tags": [

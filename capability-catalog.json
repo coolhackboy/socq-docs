@@ -1,5 +1,5 @@
 {
-  "schema_version": "v1-9e02c88be86a",
+  "schema_version": "v1-43287c478aea",
   "platforms": [
     {
       "platform": "facebook",
@@ -123,7 +123,7 @@
         "socq_tiktok_live_room_info",
         "socq_tiktok_profiles",
         "socq_tiktok_search",
-        "socq_tiktok_transcripts",
+        "socq_tiktok_video_transcripts",
         "socq_tiktok_trending_feed",
         "socq_tiktok_user_videos",
         "socq_tiktok_videos"
@@ -10227,10 +10227,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/tiktok/search"
     },
     {
-      "public_id": "tiktok/transcripts",
+      "public_id": "tiktok/video-transcripts",
       "platform": "tiktok",
-      "resource": "transcripts",
-      "tool_name": "socq_tiktok_transcripts",
+      "resource": "video-transcripts",
+      "tool_name": "socq_tiktok_video_transcripts",
       "title": "TikTok Video Transcripts API",
       "description": "Extract transcripts from public TikTok videos.",
       "input_schema": {
@@ -10365,14 +10365,14 @@
       ],
       "tags": [
         "tiktok",
-        "transcripts"
+        "video-transcripts"
       ],
       "execution_mode": "async",
       "supports_pagination": true,
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/tiktok/transcripts"
+      "docs_url": "https://docs.socq.ai/api-manual/tiktok/video-transcripts"
     },
     {
       "public_id": "tiktok/trending-feed",

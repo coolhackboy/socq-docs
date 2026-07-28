@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API 中文版",
-    "version": "v1-9e02c88be86a",
+    "version": "v1-43287c478aea",
     "description": "根据 SocQ 能力目录生成的异步社交数据 API。"
   },
   "servers": [
@@ -4316,9 +4316,9 @@
         }
       }
     },
-    "/v1/tiktok/transcripts": {
+    "/v1/tiktok/video-transcripts": {
       "post": {
-        "operationId": "socq_tiktok_transcripts",
+        "operationId": "socq_tiktok_video_transcripts",
         "summary": "TikTok 视频字幕",
         "description": "从公开 TikTok 视频中提取视频字幕。",
         "tags": [
