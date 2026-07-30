@@ -1,0 +1,13 @@
+---
+title: "Keyword Suggestions"
+description: "Find long-tail keywords containing a seed phrase."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/seo/keyword-suggestions"
+---
+
+# Keyword Suggestions
+
+```json
+{"query":"keyword research","location_code":2840,"language_code":"en","results_limit":100}
+```
+
+Each item in `results.items` is one returned keyword record. `results_limit` can be 1–1,000.

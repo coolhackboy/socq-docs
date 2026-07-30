@@ -1,0 +1,24 @@
+﻿---
+title: "SEO APIs"
+description: "Keyword research, search intent, rankings, and organic search results."
+---
+
+# SEO APIs
+
+Use a stable, provider-independent interface for keyword and search analytics. Every operation is asynchronous: submit a task, poll its status, and read normalized records from `results.items`.
+
+| Capability | Endpoint | Billing |
+| --- | --- | --- |
+| Keyword search volume | `seo/keyword-search-volume` | 24 credits per request |
+| Keyword suggestions | `seo/keyword-suggestions` | 0.1 credit per returned keyword |
+| Related keywords | `seo/related-keywords` | 0.1 credit per returned keyword |
+| Keyword overview | `seo/keyword-overview` | 0.15 credit per input keyword |
+| Keyword difficulty | `seo/keyword-difficulty` | 0.1 credit per input keyword |
+| Search intent | `seo/search-intent` | 0.1 credit per input keyword |
+| Google organic SERP | `seo/google-organic-serp` | 0.1 credit per returned result |
+| Ranked keywords | `seo/ranked-keywords` | 0.1 credit per returned keyword |
+| Keywords for site | `seo/keywords-for-site` | 0.1 credit per returned keyword |
+| Relevant pages | `seo/relevant-pages` | 0.15 credit per returned page |
+
+For market-specific results, pass `location_code` or `location_name` plus `language_code`. Database-backed endpoints default to United States and English when these fields are omitted.
+

@@ -1,0 +1,14 @@
+﻿---
+title: "Related Keywords"
+description: "Find semantically and lexically related search terms."
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/seo/related-keywords"
+---
+
+# Related Keywords
+
+```json
+{"query":"keyword research","depth":1,"results_limit":100}
+```
+
+Each item is one related keyword record. `depth` accepts 0鈥?; larger depth expands the relationship graph and may return substantially more candidates.
+

@@ -289,6 +289,22 @@
                 ]
               },
               {
+                "group": "SEO",
+                "pages": [
+                  "api-manual/seo/overview",
+                  "api-manual/seo/keyword-search-volume",
+                  "api-manual/seo/keyword-suggestions",
+                  "api-manual/seo/related-keywords",
+                  "api-manual/seo/keyword-overview",
+                  "api-manual/seo/keyword-difficulty",
+                  "api-manual/seo/search-intent",
+                  "api-manual/seo/google-organic-serp",
+                  "api-manual/seo/ranked-keywords",
+                  "api-manual/seo/keywords-for-site",
+                  "api-manual/seo/relevant-pages"
+                ]
+              },
+              {
                 "group": "Common",
                 "pages": [
                   "api-manual/agent-api/authentication",
@@ -514,6 +530,22 @@
                   "zh/api-manual/threads/profiles",
                   "zh/api-manual/threads/posts",
                   "zh/api-manual/threads/user-posts"
+                ]
+              },
+              {
+                "group": "SEO",
+                "pages": [
+                  "zh/api-manual/seo/overview",
+                  "zh/api-manual/seo/keyword-search-volume",
+                  "zh/api-manual/seo/keyword-suggestions",
+                  "zh/api-manual/seo/related-keywords",
+                  "zh/api-manual/seo/keyword-overview",
+                  "zh/api-manual/seo/keyword-difficulty",
+                  "zh/api-manual/seo/search-intent",
+                  "zh/api-manual/seo/google-organic-serp",
+                  "zh/api-manual/seo/ranked-keywords",
+                  "zh/api-manual/seo/keywords-for-site",
+                  "zh/api-manual/seo/relevant-pages"
                 ]
               },
               {

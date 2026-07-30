@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-82a413bb5c3c",
+    "version": "v1-c8347f9103e7",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -14,8 +14,8 @@
     "/v1/facebook-ad-library/ad": {
       "post": {
         "operationId": "socq_facebook_ad_library_ad",
-        "summary": "Facebook Ad Library Ad API",
-        "description": "Facebook Ad Library Ad API",
+        "summary": "Get Facebook Ad Library Ad",
+        "description": "Fetch normalized ad data from Facebook Ad Library.",
         "tags": [
           "facebook-ad-library"
         ],
@@ -66,8 +66,8 @@
     "/v1/facebook-ad-library/company-ads": {
       "post": {
         "operationId": "socq_facebook_ad_library_company_ads",
-        "summary": "Facebook Ad Library Company Ads API",
-        "description": "Facebook Ad Library Company Ads API",
+        "summary": "Get Facebook Ad Library Company Ads",
+        "description": "Fetch normalized company ads data from Facebook Ad Library.",
         "tags": [
           "facebook-ad-library"
         ],
@@ -151,8 +151,8 @@
     "/v1/facebook-ad-library/company-search": {
       "post": {
         "operationId": "socq_facebook_ad_library_company_search",
-        "summary": "Facebook Ad Library Company Search API",
-        "description": "Facebook Ad Library Company Search API",
+        "summary": "Get Facebook Ad Library Company Search",
+        "description": "Fetch normalized company search data from Facebook Ad Library.",
         "tags": [
           "facebook-ad-library"
         ],
@@ -203,8 +203,8 @@
     "/v1/facebook-ad-library/search": {
       "post": {
         "operationId": "socq_facebook_ad_library_search",
-        "summary": "Facebook Ad Library Search API",
-        "description": "Facebook Ad Library Search API",
+        "summary": "Get Facebook Ad Library Search",
+        "description": "Fetch normalized search data from Facebook Ad Library.",
         "tags": [
           "facebook-ad-library"
         ],
@@ -292,8 +292,8 @@
     "/v1/facebook-marketplace/item": {
       "post": {
         "operationId": "socq_facebook_marketplace_item",
-        "summary": "Facebook Marketplace Item API",
-        "description": "Facebook Marketplace Item API",
+        "summary": "Get Facebook Marketplace Item",
+        "description": "Fetch normalized item data from Facebook Marketplace.",
         "tags": [
           "facebook-marketplace"
         ],
@@ -348,8 +348,8 @@
     "/v1/facebook-marketplace/location-search": {
       "post": {
         "operationId": "socq_facebook_marketplace_location_search",
-        "summary": "Facebook Marketplace Location Search API",
-        "description": "Facebook Marketplace Location Search API",
+        "summary": "Get Facebook Marketplace Location Search",
+        "description": "Fetch normalized location search data from Facebook Marketplace.",
         "tags": [
           "facebook-marketplace"
         ],
@@ -400,8 +400,8 @@
     "/v1/facebook-marketplace/search": {
       "post": {
         "operationId": "socq_facebook_marketplace_search",
-        "summary": "Facebook Marketplace Search API",
-        "description": "Facebook Marketplace Search API",
+        "summary": "Get Facebook Marketplace Search",
+        "description": "Fetch normalized search data from Facebook Marketplace.",
         "tags": [
           "facebook-marketplace"
         ],
@@ -501,8 +501,8 @@
     "/v1/facebook/ad-transcript": {
       "post": {
         "operationId": "socq_facebook_ad_transcript",
-        "summary": "Facebook Ad Transcript API",
-        "description": "Extract transcripts from public Facebook ads.",
+        "summary": "Get Facebook Ad Transcript",
+        "description": "Fetch normalized ad transcript data from Facebook.",
         "tags": [
           "facebook"
         ],
@@ -561,8 +561,8 @@
     "/v1/facebook/comment-replies": {
       "post": {
         "operationId": "socq_facebook_comment_replies",
-        "summary": "Facebook Comment Replies API",
-        "description": "Collect public Facebook comment replies.",
+        "summary": "Get Facebook Comment Replies",
+        "description": "Fetch normalized comment replies data from Facebook.",
         "tags": [
           "facebook"
         ],
@@ -629,8 +629,8 @@
     "/v1/facebook/comments": {
       "post": {
         "operationId": "socq_facebook_comments",
-        "summary": "Facebook Comments API",
-        "description": "Facebook Comments API",
+        "summary": "Get Facebook Comments",
+        "description": "Fetch normalized comments data from Facebook.",
         "tags": [
           "facebook"
         ],
@@ -689,8 +689,8 @@
     "/v1/facebook/company-reviews": {
       "post": {
         "operationId": "socq_facebook_company_reviews",
-        "summary": "Facebook Company Reviews API",
-        "description": "Collect public Facebook company reviews.",
+        "summary": "Get Facebook Company Reviews",
+        "description": "Fetch normalized company reviews data from Facebook.",
         "tags": [
           "facebook"
         ],
@@ -755,8 +755,8 @@
     "/v1/facebook/event-details": {
       "post": {
         "operationId": "socq_facebook_event_details",
-        "summary": "Facebook Event Details API",
-        "description": "Collect public Facebook event details.",
+        "summary": "Get Facebook Event Details",
+        "description": "Fetch normalized event details data from Facebook.",
         "tags": [
           "facebook"
         ],
@@ -815,8 +815,8 @@
     "/v1/facebook/events-search": {
       "post": {
         "operationId": "socq_facebook_events_search",
-        "summary": "Facebook Events Search API",
-        "description": "Search public Facebook events by keyword.",
+        "summary": "Get Facebook Events Search",
+        "description": "Fetch normalized events search data from Facebook.",
         "tags": [
           "facebook"
         ],
@@ -872,8 +872,8 @@
     "/v1/facebook/group-posts": {
       "post": {
         "operationId": "socq_facebook_group_posts",
-        "summary": "Facebook Group Posts API",
-        "description": "Collect posts from public Facebook groups.",
+        "summary": "Get Facebook Group Posts",
+        "description": "Fetch normalized group posts data from Facebook.",
         "tags": [
           "facebook"
         ],
@@ -937,8 +937,8 @@
     "/v1/facebook/pages": {
       "post": {
         "operationId": "socq_facebook_pages",
-        "summary": "Facebook Page API",
-        "description": "Facebook Page API",
+        "summary": "Get Facebook Pages",
+        "description": "Fetch normalized pages data from Facebook.",
         "tags": [
           "facebook"
         ],
@@ -1031,8 +1031,8 @@
     "/v1/facebook/posts": {
       "post": {
         "operationId": "socq_facebook_posts",
-        "summary": "Facebook Posts API",
-        "description": "Facebook Posts API",
+        "summary": "Get Facebook Posts",
+        "description": "Fetch normalized posts data from Facebook.",
         "tags": [
           "facebook"
         ],
@@ -1125,8 +1125,8 @@
     "/v1/facebook/profile-events": {
       "post": {
         "operationId": "socq_facebook_profile_events",
-        "summary": "Facebook Profile Events API",
-        "description": "Collect public Facebook profile events.",
+        "summary": "Get Facebook Profile Events",
+        "description": "Fetch normalized profile events data from Facebook.",
         "tags": [
           "facebook"
         ],
@@ -1191,8 +1191,8 @@
     "/v1/facebook/profile-photos": {
       "post": {
         "operationId": "socq_facebook_profile_photos",
-        "summary": "Facebook Profile Photos API",
-        "description": "Collect public Facebook profile photos.",
+        "summary": "Get Facebook Profile Photos",
+        "description": "Fetch normalized profile photos data from Facebook.",
         "tags": [
           "facebook"
         ],
@@ -1257,8 +1257,8 @@
     "/v1/facebook/profiles": {
       "post": {
         "operationId": "socq_facebook_profiles",
-        "summary": "Facebook Profiles API",
-        "description": "Collect public Facebook profile details.",
+        "summary": "Get Facebook Profiles",
+        "description": "Fetch normalized profiles data from Facebook.",
         "tags": [
           "facebook"
         ],
@@ -1317,8 +1317,8 @@
     "/v1/facebook/reels": {
       "post": {
         "operationId": "socq_facebook_reels",
-        "summary": "Facebook Reels API",
-        "description": "Collect public Facebook profile reels.",
+        "summary": "Get Facebook Reels",
+        "description": "Fetch normalized reels data from Facebook.",
         "tags": [
           "facebook"
         ],
@@ -1383,8 +1383,8 @@
     "/v1/facebook/video-transcript": {
       "post": {
         "operationId": "socq_facebook_video_transcript",
-        "summary": "Facebook Video Transcripts API",
-        "description": "Extract transcripts from public Facebook videos and reels.",
+        "summary": "Get Facebook Video Transcript",
+        "description": "Fetch normalized video transcript data from Facebook.",
         "tags": [
           "facebook"
         ],
@@ -1439,8 +1439,8 @@
     "/v1/instagram/audio-reels": {
       "post": {
         "operationId": "socq_instagram_audio_reels",
-        "summary": "Instagram Audio Reels API",
-        "description": "Collect public Instagram reels by audio identifier.",
+        "summary": "Get Instagram Audio Reels",
+        "description": "Fetch normalized audio reels data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -1505,8 +1505,8 @@
     "/v1/instagram/comments": {
       "post": {
         "operationId": "socq_instagram_comments",
-        "summary": "Instagram Comments API",
-        "description": "Instagram Comments API",
+        "summary": "Get Instagram Comments",
+        "description": "Fetch normalized comments data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -1565,8 +1565,8 @@
     "/v1/instagram/followers-count": {
       "post": {
         "operationId": "socq_instagram_followers_count",
-        "summary": "Instagram Followers Count API",
-        "description": "Instagram Followers Count API",
+        "summary": "Get Instagram Followers Count",
+        "description": "Fetch normalized followers count data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -1659,8 +1659,8 @@
     "/v1/instagram/followers-list": {
       "post": {
         "operationId": "socq_instagram_followers_list",
-        "summary": "Instagram Followers API",
-        "description": "Collect public profiles from an Instagram account follower list.",
+        "summary": "Get Instagram Followers List",
+        "description": "Fetch normalized followers list data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -1720,8 +1720,8 @@
     "/v1/instagram/following-list": {
       "post": {
         "operationId": "socq_instagram_following_list",
-        "summary": "Instagram Following API",
-        "description": "Collect public profiles followed by an Instagram account.",
+        "summary": "Get Instagram Following List",
+        "description": "Fetch normalized following list data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -1781,8 +1781,8 @@
     "/v1/instagram/hashtag-posts": {
       "post": {
         "operationId": "socq_instagram_hashtag_posts",
-        "summary": "Instagram Hashtag Posts API",
-        "description": "Collect public Instagram posts matching a hashtag.",
+        "summary": "Get Instagram Hashtag Posts",
+        "description": "Fetch normalized hashtag posts data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -1850,8 +1850,8 @@
     "/v1/instagram/highlight-items": {
       "post": {
         "operationId": "socq_instagram_highlight_items",
-        "summary": "Instagram Highlight Items API",
-        "description": "Collect public Instagram highlight items.",
+        "summary": "Get Instagram Highlight Items",
+        "description": "Fetch normalized highlight items data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -1910,8 +1910,8 @@
     "/v1/instagram/post-info": {
       "post": {
         "operationId": "socq_instagram_post_info",
-        "summary": "Instagram Post Info API",
-        "description": "Collect public Instagram post details.",
+        "summary": "Get Instagram Post Info",
+        "description": "Fetch normalized post info data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -1970,8 +1970,8 @@
     "/v1/instagram/posts": {
       "post": {
         "operationId": "socq_instagram_posts",
-        "summary": "Instagram Posts API",
-        "description": "Instagram Post API",
+        "summary": "Get Instagram Posts",
+        "description": "Fetch normalized posts data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -2064,8 +2064,8 @@
     "/v1/instagram/profiles": {
       "post": {
         "operationId": "socq_instagram_profiles",
-        "summary": "Instagram Profiles API",
-        "description": "Collect public Instagram profile metadata and statistics.",
+        "summary": "Get Instagram Profiles",
+        "description": "Fetch normalized profiles data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -2120,8 +2120,8 @@
     "/v1/instagram/reels": {
       "post": {
         "operationId": "socq_instagram_reels",
-        "summary": "Instagram Reels API",
-        "description": "Instagram Reel API",
+        "summary": "Get Instagram Reels",
+        "description": "Fetch normalized reels data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -2214,8 +2214,8 @@
     "/v1/instagram/reels-search": {
       "post": {
         "operationId": "socq_instagram_reels_search",
-        "summary": "Instagram Reels Search API",
-        "description": "Search public Instagram reels.",
+        "summary": "Get Instagram Reels Search",
+        "description": "Fetch normalized reels search data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -2280,8 +2280,8 @@
     "/v1/instagram/search": {
       "post": {
         "operationId": "socq_instagram_search",
-        "summary": "Instagram Search API",
-        "description": "Instagram Search API",
+        "summary": "Get Instagram Search",
+        "description": "Fetch normalized search data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -2374,8 +2374,8 @@
     "/v1/instagram/story-highlights": {
       "post": {
         "operationId": "socq_instagram_story_highlights",
-        "summary": "Instagram Story Highlights API",
-        "description": "Collect public Instagram story highlights.",
+        "summary": "Get Instagram Story Highlights",
+        "description": "Fetch normalized story highlights data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -2434,8 +2434,8 @@
     "/v1/instagram/tagged-posts": {
       "post": {
         "operationId": "socq_instagram_tagged_posts",
-        "summary": "Instagram Tagged Posts API",
-        "description": "Collect public posts that tag an Instagram profile.",
+        "summary": "Get Instagram Tagged Posts",
+        "description": "Fetch normalized tagged posts data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -2495,8 +2495,8 @@
     "/v1/instagram/transcript": {
       "post": {
         "operationId": "socq_instagram_transcript",
-        "summary": "Instagram Transcripts API",
-        "description": "Extract transcripts from public Instagram posts and reels.",
+        "summary": "Get Instagram Transcript",
+        "description": "Fetch normalized transcript data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -2551,8 +2551,8 @@
     "/v1/instagram/trending-reels": {
       "post": {
         "operationId": "socq_instagram_trending_reels",
-        "summary": "Instagram Trending Reels API",
-        "description": "Collect public trending Instagram reels.",
+        "summary": "Get Instagram Trending Reels",
+        "description": "Fetch normalized trending reels data from Instagram.",
         "tags": [
           "instagram"
         ],
@@ -2600,8 +2600,8 @@
     "/v1/linkedin/companies": {
       "post": {
         "operationId": "socq_linkedin_companies",
-        "summary": "LinkedIn Companies API",
-        "description": "LinkedIn Companies API",
+        "summary": "Get LinkedIn Companies",
+        "description": "Fetch normalized companies data from LinkedIn.",
         "tags": [
           "linkedin"
         ],
@@ -2656,8 +2656,8 @@
     "/v1/linkedin/jobs": {
       "post": {
         "operationId": "socq_linkedin_jobs",
-        "summary": "LinkedIn Jobs API",
-        "description": "LinkedIn Jobs API",
+        "summary": "Get LinkedIn Jobs",
+        "description": "Fetch normalized jobs data from LinkedIn.",
         "tags": [
           "linkedin"
         ],
@@ -2712,8 +2712,8 @@
     "/v1/linkedin/posts": {
       "post": {
         "operationId": "socq_linkedin_posts",
-        "summary": "LinkedIn Posts API",
-        "description": "LinkedIn Posts API",
+        "summary": "Get LinkedIn Posts",
+        "description": "Fetch normalized posts data from LinkedIn.",
         "tags": [
           "linkedin"
         ],
@@ -2768,8 +2768,8 @@
     "/v1/linkedin/profiles": {
       "post": {
         "operationId": "socq_linkedin_profiles",
-        "summary": "LinkedIn Profiles API",
-        "description": "LinkedIn Profiles API",
+        "summary": "Get LinkedIn Profiles",
+        "description": "Fetch normalized profiles data from LinkedIn.",
         "tags": [
           "linkedin"
         ],
@@ -2824,8 +2824,8 @@
     "/v1/pinterest/pins": {
       "post": {
         "operationId": "socq_pinterest_pins",
-        "summary": "Pinterest Pins API",
-        "description": "Pinterest Pins API",
+        "summary": "Get Pinterest Pins",
+        "description": "Fetch normalized pins data from Pinterest.",
         "tags": [
           "pinterest"
         ],
@@ -2880,8 +2880,8 @@
     "/v1/pinterest/profiles": {
       "post": {
         "operationId": "socq_pinterest_profiles",
-        "summary": "Pinterest Profiles API",
-        "description": "Pinterest Profiles API",
+        "summary": "Get Pinterest Profiles",
+        "description": "Fetch normalized profiles data from Pinterest.",
         "tags": [
           "pinterest"
         ],
@@ -2936,8 +2936,8 @@
     "/v1/pinterest/search": {
       "post": {
         "operationId": "socq_pinterest_search",
-        "summary": "Pinterest Search API",
-        "description": "Pinterest Search API",
+        "summary": "Get Pinterest Search",
+        "description": "Fetch normalized search data from Pinterest.",
         "tags": [
           "pinterest"
         ],
@@ -2993,8 +2993,8 @@
     "/v1/pinterest/user-pins": {
       "post": {
         "operationId": "socq_pinterest_user_pins",
-        "summary": "Pinterest User Pins API",
-        "description": "Pinterest User Pins API",
+        "summary": "Get Pinterest User Pins",
+        "description": "Fetch normalized user pins data from Pinterest.",
         "tags": [
           "pinterest"
         ],
@@ -3054,8 +3054,8 @@
     "/v1/reddit/comments": {
       "post": {
         "operationId": "socq_reddit_comments",
-        "summary": "Reddit Comments API",
-        "description": "Reddit Comments API",
+        "summary": "Get Reddit Comments",
+        "description": "Fetch normalized comments data from Reddit.",
         "tags": [
           "reddit"
         ],
@@ -3110,8 +3110,8 @@
     "/v1/reddit/posts": {
       "post": {
         "operationId": "socq_reddit_posts",
-        "summary": "Reddit Posts API",
-        "description": "Reddit Posts API",
+        "summary": "Get Reddit Posts",
+        "description": "Fetch normalized posts data from Reddit.",
         "tags": [
           "reddit"
         ],
@@ -3166,8 +3166,8 @@
     "/v1/reddit/search": {
       "post": {
         "operationId": "socq_reddit_search",
-        "summary": "Reddit Search API",
-        "description": "Reddit Search API",
+        "summary": "Get Reddit Search",
+        "description": "Fetch normalized search data from Reddit.",
         "tags": [
           "reddit"
         ],
@@ -3227,8 +3227,8 @@
     "/v1/reddit/subreddit-posts": {
       "post": {
         "operationId": "socq_reddit_subreddit_posts",
-        "summary": "Reddit Subreddit Posts API",
-        "description": "Reddit Subreddit Posts API",
+        "summary": "Get Reddit Subreddit Posts",
+        "description": "Fetch normalized subreddit posts data from Reddit.",
         "tags": [
           "reddit"
         ],
@@ -3289,11 +3289,869 @@
         }
       }
     },
+    "/v1/seo/google-organic-serp": {
+      "post": {
+        "operationId": "socq_seo_google_organic_serp",
+        "summary": "Get SEO Google Organic Serp",
+        "description": "Fetch normalized google organic serp data from SEO.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "device": {
+                    "type": "string",
+                    "enum": [
+                      "desktop",
+                      "mobile"
+                    ]
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 700,
+                    "default": 10
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/keyword-difficulty": {
+      "post": {
+        "operationId": "socq_seo_keyword_difficulty",
+        "summary": "Get SEO Keyword Difficulty",
+        "description": "Fetch normalized keyword difficulty data from SEO.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "keywords": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80
+                    },
+                    "minItems": 1,
+                    "maxItems": 1000,
+                    "description": "Keywords to analyze in one batch."
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000
+                  }
+                },
+                "required": [
+                  "keywords"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/keyword-overview": {
+      "post": {
+        "operationId": "socq_seo_keyword_overview",
+        "summary": "Get SEO Keyword Overview",
+        "description": "Fetch normalized keyword overview data from SEO.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "keywords": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80
+                    },
+                    "minItems": 1,
+                    "maxItems": 1000,
+                    "description": "Keywords to analyze in one batch."
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000
+                  }
+                },
+                "required": [
+                  "keywords"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/keyword-search-volume": {
+      "post": {
+        "operationId": "socq_seo_keyword_search_volume",
+        "summary": "Get SEO Keyword Search Volume",
+        "description": "Fetch normalized keyword search volume data from SEO.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "keywords": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80
+                    },
+                    "minItems": 1,
+                    "maxItems": 1000,
+                    "description": "Keywords to analyze in one batch."
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000
+                  }
+                },
+                "required": [
+                  "keywords"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/keyword-suggestions": {
+      "post": {
+        "operationId": "socq_seo_keyword_suggestions",
+        "summary": "Get SEO Keyword Suggestions",
+        "description": "Fetch normalized keyword suggestions data from SEO.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 100
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/keywords-for-site": {
+      "post": {
+        "operationId": "socq_seo_keywords_for_site",
+        "summary": "Get SEO Keywords For Site",
+        "description": "Fetch normalized keywords for site data from SEO.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 100
+                  },
+                  "target": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Domain, subdomain, or page URL."
+                  }
+                },
+                "required": [
+                  "target"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/ranked-keywords": {
+      "post": {
+        "operationId": "socq_seo_ranked_keywords",
+        "summary": "Get SEO Ranked Keywords",
+        "description": "Fetch normalized ranked keywords data from SEO.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 100
+                  },
+                  "target": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Domain, subdomain, or page URL."
+                  }
+                },
+                "required": [
+                  "target"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/related-keywords": {
+      "post": {
+        "operationId": "socq_seo_related_keywords",
+        "summary": "Get SEO Related Keywords",
+        "description": "Fetch normalized related keywords data from SEO.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "depth": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 100
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/relevant-pages": {
+      "post": {
+        "operationId": "socq_seo_relevant_pages",
+        "summary": "Get SEO Relevant Pages",
+        "description": "Fetch normalized relevant pages data from SEO.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 100
+                  },
+                  "target": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Domain, subdomain, or page URL."
+                  }
+                },
+                "required": [
+                  "target"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/search-intent": {
+      "post": {
+        "operationId": "socq_seo_search_intent",
+        "summary": "Get SEO Search Intent",
+        "description": "Fetch normalized search intent data from SEO.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "keywords": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80
+                    },
+                    "minItems": 1,
+                    "maxItems": 1000,
+                    "description": "Keywords to analyze in one batch."
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000
+                  }
+                },
+                "required": [
+                  "keywords"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/threads/posts": {
       "post": {
         "operationId": "socq_threads_posts",
-        "summary": "Threads Posts API",
-        "description": "Threads Posts API",
+        "summary": "Get Threads Posts",
+        "description": "Fetch normalized posts data from Threads.",
         "tags": [
           "threads"
         ],
@@ -3348,8 +4206,8 @@
     "/v1/threads/profiles": {
       "post": {
         "operationId": "socq_threads_profiles",
-        "summary": "Threads Profiles API",
-        "description": "Threads Profiles API",
+        "summary": "Get Threads Profiles",
+        "description": "Fetch normalized profiles data from Threads.",
         "tags": [
           "threads"
         ],
@@ -3404,8 +4262,8 @@
     "/v1/threads/user-posts": {
       "post": {
         "operationId": "socq_threads_user_posts",
-        "summary": "Threads User Posts API",
-        "description": "Threads User Posts API",
+        "summary": "Get Threads User Posts",
+        "description": "Fetch normalized user posts data from Threads.",
         "tags": [
           "threads"
         ],
@@ -3465,8 +4323,8 @@
     "/v1/tiktok-shop/product": {
       "post": {
         "operationId": "socq_tiktok_shop_product",
-        "summary": "TikTok Shop Product API",
-        "description": "TikTok Shop Product API",
+        "summary": "Get TikTok Shop Product",
+        "description": "Fetch normalized product data from TikTok Shop.",
         "tags": [
           "tiktok-shop"
         ],
@@ -3521,8 +4379,8 @@
     "/v1/tiktok-shop/product-reviews": {
       "post": {
         "operationId": "socq_tiktok_shop_product_reviews",
-        "summary": "TikTok Shop Product Reviews API",
-        "description": "TikTok Shop Product Reviews API",
+        "summary": "Get TikTok Shop Product Reviews",
+        "description": "Fetch normalized product reviews data from TikTok Shop.",
         "tags": [
           "tiktok-shop"
         ],
@@ -3582,8 +4440,8 @@
     "/v1/tiktok-shop/products": {
       "post": {
         "operationId": "socq_tiktok_shop_products",
-        "summary": "TikTok Shop Products API",
-        "description": "TikTok Shop Products API",
+        "summary": "Get TikTok Shop Products",
+        "description": "Fetch normalized products data from TikTok Shop.",
         "tags": [
           "tiktok-shop"
         ],
@@ -3647,8 +4505,8 @@
     "/v1/tiktok-shop/search": {
       "post": {
         "operationId": "socq_tiktok_shop_search",
-        "summary": "TikTok Shop Search API",
-        "description": "TikTok Shop Search API",
+        "summary": "Get TikTok Shop Search",
+        "description": "Fetch normalized search data from TikTok Shop.",
         "tags": [
           "tiktok-shop"
         ],
@@ -3708,8 +4566,8 @@
     "/v1/tiktok-shop/user-showcase": {
       "post": {
         "operationId": "socq_tiktok_shop_user_showcase",
-        "summary": "TikTok Shop User Showcase API",
-        "description": "TikTok Shop User Showcase API",
+        "summary": "Get TikTok Shop User Showcase",
+        "description": "Fetch normalized user showcase data from TikTok Shop.",
         "tags": [
           "tiktok-shop"
         ],
@@ -3769,8 +4627,8 @@
     "/v1/tiktok/comment-replies": {
       "post": {
         "operationId": "socq_tiktok_comment_replies",
-        "summary": "TikTok Comment Replies API",
-        "description": "Collect public TikTok comment replies.",
+        "summary": "Get TikTok Comment Replies",
+        "description": "Fetch normalized comment replies data from TikTok.",
         "tags": [
           "tiktok"
         ],
@@ -3837,8 +4695,8 @@
     "/v1/tiktok/comments": {
       "post": {
         "operationId": "socq_tiktok_comments",
-        "summary": "TikTok Comments API",
-        "description": "TikTok Comments API",
+        "summary": "Get TikTok Comments",
+        "description": "Fetch normalized comments data from TikTok.",
         "tags": [
           "tiktok"
         ],
@@ -3898,8 +4756,8 @@
     "/v1/tiktok/followers-list": {
       "post": {
         "operationId": "socq_tiktok_followers_list",
-        "summary": "TikTok Followers List API",
-        "description": "Collect public TikTok follower profiles.",
+        "summary": "Get TikTok Followers List",
+        "description": "Fetch normalized followers list data from TikTok.",
         "tags": [
           "tiktok"
         ],
@@ -3964,8 +4822,8 @@
     "/v1/tiktok/following-list": {
       "post": {
         "operationId": "socq_tiktok_following_list",
-        "summary": "TikTok Following List API",
-        "description": "Collect public TikTok followed profiles.",
+        "summary": "Get TikTok Following List",
+        "description": "Fetch normalized following list data from TikTok.",
         "tags": [
           "tiktok"
         ],
@@ -4030,8 +4888,8 @@
     "/v1/tiktok/hashtags": {
       "post": {
         "operationId": "socq_tiktok_hashtags",
-        "summary": "TikTok Hashtags API",
-        "description": "TikTok Hashtags API",
+        "summary": "Get TikTok Hashtags",
+        "description": "Fetch normalized hashtags data from TikTok.",
         "tags": [
           "tiktok"
         ],
@@ -4091,8 +4949,8 @@
     "/v1/tiktok/live-room-info": {
       "post": {
         "operationId": "socq_tiktok_live_room_info",
-        "summary": "TikTok Live Room Info API",
-        "description": "Collect public TikTok live room metadata and audience metrics.",
+        "summary": "Get TikTok Live Room Info",
+        "description": "Fetch normalized live room info data from TikTok.",
         "tags": [
           "tiktok"
         ],
@@ -4149,8 +5007,8 @@
     "/v1/tiktok/profiles": {
       "post": {
         "operationId": "socq_tiktok_profiles",
-        "summary": "TikTok Profiles API",
-        "description": "TikTok Profiles API",
+        "summary": "Get TikTok Profiles",
+        "description": "Fetch normalized profiles data from TikTok.",
         "tags": [
           "tiktok"
         ],
@@ -4205,8 +5063,8 @@
     "/v1/tiktok/search": {
       "post": {
         "operationId": "socq_tiktok_search",
-        "summary": "TikTok Search API",
-        "description": "TikTok Search API",
+        "summary": "Get TikTok Search",
+        "description": "Fetch normalized search data from TikTok.",
         "tags": [
           "tiktok"
         ],
@@ -4267,71 +5125,11 @@
         }
       }
     },
-    "/v1/tiktok/video-transcript": {
-      "post": {
-        "operationId": "socq_tiktok_video_transcript",
-        "summary": "TikTok Video Transcript API",
-        "description": "Extract transcripts from public TikTok videos.",
-        "tags": [
-          "tiktok"
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "language": {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  "urls": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "minItems": 1,
-                    "description": "Public profile or content URLs."
-                  }
-                },
-                "required": [
-                  "urls"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Task accepted",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/tiktok/trending-feed": {
       "post": {
         "operationId": "socq_tiktok_trending_feed",
-        "summary": "TikTok Trending Feed API",
-        "description": "Collect trending TikTok videos for a region.",
+        "summary": "Get TikTok Trending Feed",
+        "description": "Fetch normalized trending feed data from TikTok.",
         "tags": [
           "tiktok"
         ],
@@ -4386,8 +5184,8 @@
     "/v1/tiktok/user-videos": {
       "post": {
         "operationId": "socq_tiktok_user_videos",
-        "summary": "TikTok User Videos API",
-        "description": "Collect public videos from TikTok profiles.",
+        "summary": "Get TikTok User Videos",
+        "description": "Fetch normalized user videos data from TikTok.",
         "tags": [
           "tiktok"
         ],
@@ -4457,11 +5255,71 @@
         }
       }
     },
+    "/v1/tiktok/video-transcript": {
+      "post": {
+        "operationId": "socq_tiktok_video_transcript",
+        "summary": "Get TikTok Video Transcript",
+        "description": "Fetch normalized video transcript data from TikTok.",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "language": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tiktok/videos": {
       "post": {
         "operationId": "socq_tiktok_videos",
-        "summary": "TikTok Videos API",
-        "description": "TikTok Videos API",
+        "summary": "Get TikTok Videos",
+        "description": "Fetch normalized videos data from TikTok.",
         "tags": [
           "tiktok"
         ],
@@ -4516,8 +5374,8 @@
     "/v1/x/followers-list": {
       "post": {
         "operationId": "socq_x_followers_list",
-        "summary": "X Followers List API",
-        "description": "Collect public X follower profiles.",
+        "summary": "Get X Followers List",
+        "description": "Fetch normalized followers list data from X.",
         "tags": [
           "x"
         ],
@@ -4583,8 +5441,8 @@
     "/v1/x/following-list": {
       "post": {
         "operationId": "socq_x_following_list",
-        "summary": "X Following List API",
-        "description": "Collect public X followed profiles.",
+        "summary": "Get X Following List",
+        "description": "Fetch normalized following list data from X.",
         "tags": [
           "x"
         ],
@@ -4650,8 +5508,8 @@
     "/v1/x/post-quotes": {
       "post": {
         "operationId": "socq_x_post_quotes",
-        "summary": "X Post Quotes API",
-        "description": "Collect public quotes of X posts.",
+        "summary": "Get X Post Quotes",
+        "description": "Fetch normalized post quotes data from X.",
         "tags": [
           "x"
         ],
@@ -4717,8 +5575,8 @@
     "/v1/x/post-replies": {
       "post": {
         "operationId": "socq_x_post_replies",
-        "summary": "X Post Replies API",
-        "description": "Collect public replies to X posts.",
+        "summary": "Get X Post Replies",
+        "description": "Fetch normalized post replies data from X.",
         "tags": [
           "x"
         ],
@@ -4788,8 +5646,8 @@
     "/v1/x/post-retweeters": {
       "post": {
         "operationId": "socq_x_post_retweeters",
-        "summary": "X Post Retweeters API",
-        "description": "Collect public profiles that reposted X posts.",
+        "summary": "Get X Post Retweeters",
+        "description": "Fetch normalized post retweeters data from X.",
         "tags": [
           "x"
         ],
@@ -4855,8 +5713,8 @@
     "/v1/x/posts": {
       "post": {
         "operationId": "socq_x_posts",
-        "summary": "X Posts API",
-        "description": "X Posts API",
+        "summary": "Get X Posts",
+        "description": "Fetch normalized posts data from X.",
         "tags": [
           "x"
         ],
@@ -4911,8 +5769,8 @@
     "/v1/x/profiles": {
       "post": {
         "operationId": "socq_x_profiles",
-        "summary": "X Profiles API",
-        "description": "X Profiles API",
+        "summary": "Get X Profiles",
+        "description": "Fetch normalized profiles data from X.",
         "tags": [
           "x"
         ],
@@ -4967,8 +5825,8 @@
     "/v1/x/search": {
       "post": {
         "operationId": "socq_x_search",
-        "summary": "X Search API",
-        "description": "X Search API",
+        "summary": "Get X Search",
+        "description": "Fetch normalized search data from X.",
         "tags": [
           "x"
         ],
@@ -5028,8 +5886,8 @@
     "/v1/x/trends": {
       "post": {
         "operationId": "socq_x_trends",
-        "summary": "X Trends API",
-        "description": "Collect public X trends by location identifier.",
+        "summary": "Get X Trends",
+        "description": "Fetch normalized trends data from X.",
         "tags": [
           "x"
         ],
@@ -5094,8 +5952,8 @@
     "/v1/x/user-posts": {
       "post": {
         "operationId": "socq_x_user_posts",
-        "summary": "X User Posts API",
-        "description": "X User Posts API",
+        "summary": "Get X User Posts",
+        "description": "Fetch normalized user posts data from X.",
         "tags": [
           "x"
         ],
@@ -5155,8 +6013,8 @@
     "/v1/youtube/channel-live-videos": {
       "post": {
         "operationId": "socq_youtube_channel_live_videos",
-        "summary": "YouTube Channel Live Videos API",
-        "description": "Collect public YouTube channel live videos.",
+        "summary": "Get YouTube Channel Live Videos",
+        "description": "Fetch normalized channel live videos data from YouTube.",
         "tags": [
           "youtube"
         ],
@@ -5221,8 +6079,8 @@
     "/v1/youtube/channel-videos": {
       "post": {
         "operationId": "socq_youtube_channel_videos",
-        "summary": "YouTube Channel Videos API",
-        "description": "YouTube Channel Videos API",
+        "summary": "Get YouTube Channel Videos",
+        "description": "Fetch normalized channel videos data from YouTube.",
         "tags": [
           "youtube"
         ],
@@ -5282,8 +6140,8 @@
     "/v1/youtube/channels": {
       "post": {
         "operationId": "socq_youtube_channels",
-        "summary": "YouTube Channels API",
-        "description": "YouTube Channels API",
+        "summary": "Get YouTube Channels",
+        "description": "Fetch normalized channels data from YouTube.",
         "tags": [
           "youtube"
         ],
@@ -5338,8 +6196,8 @@
     "/v1/youtube/comment-replies": {
       "post": {
         "operationId": "socq_youtube_comment_replies",
-        "summary": "YouTube Comment Replies API",
-        "description": "Collect public YouTube comment replies.",
+        "summary": "Get YouTube Comment Replies",
+        "description": "Fetch normalized comment replies data from YouTube.",
         "tags": [
           "youtube"
         ],
@@ -5400,8 +6258,8 @@
     "/v1/youtube/comments": {
       "post": {
         "operationId": "socq_youtube_comments",
-        "summary": "YouTube Comments API",
-        "description": "YouTube Comments API",
+        "summary": "Get YouTube Comments",
+        "description": "Fetch normalized comments data from YouTube.",
         "tags": [
           "youtube"
         ],
@@ -5465,8 +6323,8 @@
     "/v1/youtube/community-posts": {
       "post": {
         "operationId": "socq_youtube_community_posts",
-        "summary": "YouTube Community Posts API",
-        "description": "Collect public YouTube community posts.",
+        "summary": "Get YouTube Community Posts",
+        "description": "Fetch normalized community posts data from YouTube.",
         "tags": [
           "youtube"
         ],
@@ -5531,8 +6389,8 @@
     "/v1/youtube/hashtag-search": {
       "post": {
         "operationId": "socq_youtube_hashtag_search",
-        "summary": "YouTube Hashtag Search API",
-        "description": "Search public YouTube videos by hashtag.",
+        "summary": "Get YouTube Hashtag Search",
+        "description": "Fetch normalized hashtag search data from YouTube.",
         "tags": [
           "youtube"
         ],
@@ -5601,8 +6459,8 @@
     "/v1/youtube/playlist-videos": {
       "post": {
         "operationId": "socq_youtube_playlist_videos",
-        "summary": "YouTube Playlist Videos API",
-        "description": "Collect videos from a public YouTube playlist.",
+        "summary": "Get YouTube Playlist Videos",
+        "description": "Fetch normalized playlist videos data from YouTube.",
         "tags": [
           "youtube"
         ],
@@ -5662,8 +6520,8 @@
     "/v1/youtube/search": {
       "post": {
         "operationId": "socq_youtube_search",
-        "summary": "YouTube Search API",
-        "description": "YouTube Search API",
+        "summary": "Get YouTube Search",
+        "description": "Fetch normalized search data from YouTube.",
         "tags": [
           "youtube"
         ],
@@ -5734,8 +6592,8 @@
     "/v1/youtube/shorts": {
       "post": {
         "operationId": "socq_youtube_shorts",
-        "summary": "YouTube Shorts API",
-        "description": "YouTube Shorts API",
+        "summary": "Get YouTube Shorts",
+        "description": "Fetch normalized shorts data from YouTube.",
         "tags": [
           "youtube"
         ],
@@ -5795,8 +6653,8 @@
     "/v1/youtube/transcripts": {
       "post": {
         "operationId": "socq_youtube_transcripts",
-        "summary": "YouTube Transcripts API",
-        "description": "YouTube Transcripts API",
+        "summary": "Get YouTube Transcripts",
+        "description": "Fetch normalized transcripts data from YouTube.",
         "tags": [
           "youtube"
         ],
@@ -5855,8 +6713,8 @@
     "/v1/youtube/videos": {
       "post": {
         "operationId": "socq_youtube_videos",
-        "summary": "YouTube Videos API",
-        "description": "YouTube Videos API",
+        "summary": "Get YouTube Videos",
+        "description": "Fetch normalized videos data from YouTube.",
         "tags": [
           "youtube"
         ],

@@ -1,5 +1,5 @@
 {
-  "schema_version": "v1-82a413bb5c3c",
+  "schema_version": "v1-c8347f9103e7",
   "platforms": [
     {
       "platform": "facebook",
@@ -101,6 +101,23 @@
       ]
     },
     {
+      "platform": "seo",
+      "title": "SEO",
+      "endpoint_count": 10,
+      "tools": [
+        "socq_seo_google_organic_serp",
+        "socq_seo_keyword_difficulty",
+        "socq_seo_keyword_overview",
+        "socq_seo_keyword_search_volume",
+        "socq_seo_keyword_suggestions",
+        "socq_seo_keywords_for_site",
+        "socq_seo_ranked_keywords",
+        "socq_seo_related_keywords",
+        "socq_seo_relevant_pages",
+        "socq_seo_search_intent"
+      ]
+    },
+    {
       "platform": "threads",
       "title": "Threads",
       "endpoint_count": 3,
@@ -123,9 +140,9 @@
         "socq_tiktok_live_room_info",
         "socq_tiktok_profiles",
         "socq_tiktok_search",
-        "socq_tiktok_video_transcript",
         "socq_tiktok_trending_feed",
         "socq_tiktok_user_videos",
+        "socq_tiktok_video_transcript",
         "socq_tiktok_videos"
       ]
     },
@@ -184,8 +201,8 @@
       "platform": "facebook-ad-library",
       "resource": "ad",
       "tool_name": "socq_facebook_ad_library_ad",
-      "title": "Facebook Ad Library Ad API",
-      "description": "Facebook Ad Library Ad API",
+      "title": "Get Facebook Ad Library Ad",
+      "description": "Fetch normalized ad data from Facebook Ad Library.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -285,20 +302,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.6,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.6,
-          "estimate_input_field": "url"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -322,8 +332,8 @@
       "platform": "facebook-ad-library",
       "resource": "company-ads",
       "tool_name": "socq_facebook_ad_library_company_ads",
-      "title": "Facebook Ad Library Company Ads API",
-      "description": "Facebook Ad Library Company Ads API",
+      "title": "Get Facebook Ad Library Company Ads",
+      "description": "Fetch normalized company ads data from Facebook Ad Library.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -456,20 +466,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -493,8 +496,8 @@
       "platform": "facebook-ad-library",
       "resource": "company-search",
       "tool_name": "socq_facebook_ad_library_company_search",
-      "title": "Facebook Ad Library Company Search API",
-      "description": "Facebook Ad Library Company Search API",
+      "title": "Get Facebook Ad Library Company Search",
+      "description": "Fetch normalized company search data from Facebook Ad Library.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -594,20 +597,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 10
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -631,8 +627,8 @@
       "platform": "facebook-ad-library",
       "resource": "search",
       "tool_name": "socq_facebook_ad_library_search",
-      "title": "Facebook Ad Library Search API",
-      "description": "Facebook Ad Library Search API",
+      "title": "Get Facebook Ad Library Search",
+      "description": "Fetch normalized search data from Facebook Ad Library.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -769,20 +765,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -806,8 +795,8 @@
       "platform": "facebook-marketplace",
       "resource": "item",
       "tool_name": "socq_facebook_marketplace_item",
-      "title": "Facebook Marketplace Item API",
-      "description": "Facebook Marketplace Item API",
+      "title": "Get Facebook Marketplace Item",
+      "description": "Fetch normalized item data from Facebook Marketplace.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -911,20 +900,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.6,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.6,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -950,8 +932,8 @@
       "platform": "facebook-marketplace",
       "resource": "location-search",
       "tool_name": "socq_facebook_marketplace_location_search",
-      "title": "Facebook Marketplace Location Search API",
-      "description": "Facebook Marketplace Location Search API",
+      "title": "Get Facebook Marketplace Location Search",
+      "description": "Fetch normalized location search data from Facebook Marketplace.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -1051,20 +1033,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.3,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.3,
-          "estimate_result_count": 10
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -1088,8 +1063,8 @@
       "platform": "facebook-marketplace",
       "resource": "search",
       "tool_name": "socq_facebook_marketplace_search",
-      "title": "Facebook Marketplace Search API",
-      "description": "Facebook Marketplace Search API",
+      "title": "Get Facebook Marketplace Search",
+      "description": "Fetch normalized search data from Facebook Marketplace.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -1238,20 +1213,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.7,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.7,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -1277,8 +1245,8 @@
       "platform": "facebook",
       "resource": "ad-transcript",
       "tool_name": "socq_facebook_ad_transcript",
-      "title": "Facebook Ad Transcript API",
-      "description": "Extract transcripts from public Facebook ads.",
+      "title": "Get Facebook Ad Transcript",
+      "description": "Fetch normalized ad transcript data from Facebook.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -1386,19 +1354,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -1424,8 +1386,8 @@
       "platform": "facebook",
       "resource": "comment-replies",
       "tool_name": "socq_facebook_comment_replies",
-      "title": "Facebook Comment Replies API",
-      "description": "Collect public Facebook comment replies.",
+      "title": "Get Facebook Comment Replies",
+      "description": "Fetch normalized comment replies data from Facebook.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -1541,20 +1503,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.3,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.3,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -1580,8 +1535,8 @@
       "platform": "facebook",
       "resource": "comments",
       "tool_name": "socq_facebook_comments",
-      "title": "Facebook Comments API",
-      "description": "Facebook Comments API",
+      "title": "Get Facebook Comments",
+      "description": "Fetch normalized comments data from Facebook.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -1689,20 +1644,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.3,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.3,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -1728,8 +1676,8 @@
       "platform": "facebook",
       "resource": "company-reviews",
       "tool_name": "socq_facebook_company_reviews",
-      "title": "Facebook Company Reviews API",
-      "description": "Collect public Facebook company reviews.",
+      "title": "Get Facebook Company Reviews",
+      "description": "Fetch normalized company reviews data from Facebook.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -1843,21 +1791,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -1884,8 +1824,8 @@
       "platform": "facebook",
       "resource": "event-details",
       "tool_name": "socq_facebook_event_details",
-      "title": "Facebook Event Details API",
-      "description": "Collect public Facebook event details.",
+      "title": "Get Facebook Event Details",
+      "description": "Fetch normalized event details data from Facebook.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -1993,19 +1933,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -2031,8 +1965,8 @@
       "platform": "facebook",
       "resource": "events-search",
       "tool_name": "socq_facebook_events_search",
-      "title": "Facebook Events Search API",
-      "description": "Search public Facebook events by keyword.",
+      "title": "Get Facebook Events Search",
+      "description": "Fetch normalized events search data from Facebook.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -2137,19 +2071,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.6,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.6,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -2174,8 +2102,8 @@
       "platform": "facebook",
       "resource": "group-posts",
       "tool_name": "socq_facebook_group_posts",
-      "title": "Facebook Group Posts API",
-      "description": "Collect posts from public Facebook groups.",
+      "title": "Get Facebook Group Posts",
+      "description": "Fetch normalized group posts data from Facebook.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -2288,21 +2216,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 1.2,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 1.2,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -2328,8 +2248,8 @@
       "platform": "facebook",
       "resource": "pages",
       "tool_name": "socq_facebook_pages",
-      "title": "Facebook Page API",
-      "description": "Facebook Page API",
+      "title": "Get Facebook Pages",
+      "description": "Fetch normalized pages data from Facebook.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -2471,20 +2391,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 2.4,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 2.4,
-          "estimate_input_field": "urls",
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -2510,8 +2423,8 @@
       "platform": "facebook",
       "resource": "posts",
       "tool_name": "socq_facebook_posts",
-      "title": "Facebook Posts API",
-      "description": "Facebook Posts API",
+      "title": "Get Facebook Posts",
+      "description": "Fetch normalized posts data from Facebook.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -2653,19 +2566,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 1,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 1,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -2691,8 +2598,8 @@
       "platform": "facebook",
       "resource": "profile-events",
       "tool_name": "socq_facebook_profile_events",
-      "title": "Facebook Profile Events API",
-      "description": "Collect public Facebook profile events.",
+      "title": "Get Facebook Profile Events",
+      "description": "Fetch normalized profile events data from Facebook.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -2806,21 +2713,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.6,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.6,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -2847,8 +2746,8 @@
       "platform": "facebook",
       "resource": "profile-photos",
       "tool_name": "socq_facebook_profile_photos",
-      "title": "Facebook Profile Photos API",
-      "description": "Collect public Facebook profile photos.",
+      "title": "Get Facebook Profile Photos",
+      "description": "Fetch normalized profile photos data from Facebook.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -2962,21 +2861,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -3003,8 +2894,8 @@
       "platform": "facebook",
       "resource": "profiles",
       "tool_name": "socq_facebook_profiles",
-      "title": "Facebook Profiles API",
-      "description": "Collect public Facebook profile details.",
+      "title": "Get Facebook Profiles",
+      "description": "Fetch normalized profiles data from Facebook.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -3112,19 +3003,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 1.2,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 1.2,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -3150,8 +3035,8 @@
       "platform": "facebook",
       "resource": "reels",
       "tool_name": "socq_facebook_reels",
-      "title": "Facebook Reels API",
-      "description": "Collect public Facebook profile reels.",
+      "title": "Get Facebook Reels",
+      "description": "Fetch normalized reels data from Facebook.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -3265,21 +3150,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.7,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.7,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -3306,8 +3183,8 @@
       "platform": "facebook",
       "resource": "video-transcript",
       "tool_name": "socq_facebook_video_transcript",
-      "title": "Facebook Video Transcripts API",
-      "description": "Extract transcripts from public Facebook videos and reels.",
+      "title": "Get Facebook Video Transcript",
+      "description": "Fetch normalized video transcript data from Facebook.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -3411,19 +3288,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.7,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.7,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -3449,8 +3320,8 @@
       "platform": "instagram",
       "resource": "audio-reels",
       "tool_name": "socq_instagram_audio_reels",
-      "title": "Instagram Audio Reels API",
-      "description": "Collect public Instagram reels by audio identifier.",
+      "title": "Get Instagram Audio Reels",
+      "description": "Fetch normalized audio reels data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -3564,21 +3435,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "audio_ids"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -3605,8 +3468,8 @@
       "platform": "instagram",
       "resource": "comments",
       "tool_name": "socq_instagram_comments",
-      "title": "Instagram Comments API",
-      "description": "Instagram Comments API",
+      "title": "Get Instagram Comments",
+      "description": "Fetch normalized comments data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -3714,20 +3577,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.3,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.3,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -3753,8 +3609,8 @@
       "platform": "instagram",
       "resource": "followers-count",
       "tool_name": "socq_instagram_followers_count",
-      "title": "Instagram Followers Count API",
-      "description": "Instagram Followers Count API",
+      "title": "Get Instagram Followers Count",
+      "description": "Fetch normalized followers count data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -3896,20 +3752,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.52,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.52,
-          "estimate_input_field": "usernames",
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -3935,8 +3784,8 @@
       "platform": "instagram",
       "resource": "followers-list",
       "tool_name": "socq_instagram_followers_list",
-      "title": "Instagram Followers API",
-      "description": "Collect public profiles from an Instagram account follower list.",
+      "title": "Get Instagram Followers List",
+      "description": "Fetch normalized followers list data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4045,21 +3894,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.3,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.3,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "usernames"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -4086,8 +3927,8 @@
       "platform": "instagram",
       "resource": "following-list",
       "tool_name": "socq_instagram_following_list",
-      "title": "Instagram Following API",
-      "description": "Collect public profiles followed by an Instagram account.",
+      "title": "Get Instagram Following List",
+      "description": "Fetch normalized following list data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4196,21 +4037,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.3,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.3,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "usernames"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -4237,8 +4070,8 @@
       "platform": "instagram",
       "resource": "hashtag-posts",
       "tool_name": "socq_instagram_hashtag_posts",
-      "title": "Instagram Hashtag Posts API",
-      "description": "Collect public Instagram posts matching a hashtag.",
+      "title": "Get Instagram Hashtag Posts",
+      "description": "Fetch normalized hashtag posts data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4355,21 +4188,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "hashtags"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -4396,8 +4221,8 @@
       "platform": "instagram",
       "resource": "highlight-items",
       "tool_name": "socq_instagram_highlight_items",
-      "title": "Instagram Highlight Items API",
-      "description": "Collect public Instagram highlight items.",
+      "title": "Get Instagram Highlight Items",
+      "description": "Fetch normalized highlight items data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4505,21 +4330,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 20,
-          "estimate_result_count_per_input_field": "highlight_ids"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -4545,8 +4362,8 @@
       "platform": "instagram",
       "resource": "post-info",
       "tool_name": "socq_instagram_post_info",
-      "title": "Instagram Post Info API",
-      "description": "Collect public Instagram post details.",
+      "title": "Get Instagram Post Info",
+      "description": "Fetch normalized post info data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4654,19 +4471,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -4692,8 +4503,8 @@
       "platform": "instagram",
       "resource": "posts",
       "tool_name": "socq_instagram_posts",
-      "title": "Instagram Posts API",
-      "description": "Instagram Post API",
+      "title": "Get Instagram Posts",
+      "description": "Fetch normalized posts data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4835,19 +4646,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.34,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.34,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -4873,8 +4678,8 @@
       "platform": "instagram",
       "resource": "profiles",
       "tool_name": "socq_instagram_profiles",
-      "title": "Instagram Profiles API",
-      "description": "Collect public Instagram profile metadata and statistics.",
+      "title": "Get Instagram Profiles",
+      "description": "Fetch normalized profiles data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -4978,19 +4783,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.6,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.6,
-          "estimate_input_field": "usernames"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -5016,8 +4815,8 @@
       "platform": "instagram",
       "resource": "reels",
       "tool_name": "socq_instagram_reels",
-      "title": "Instagram Reels API",
-      "description": "Instagram Reel API",
+      "title": "Get Instagram Reels",
+      "description": "Fetch normalized reels data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -5159,19 +4958,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.52,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.52,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -5197,8 +4990,8 @@
       "platform": "instagram",
       "resource": "reels-search",
       "tool_name": "socq_instagram_reels_search",
-      "title": "Instagram Reels Search API",
-      "description": "Search public Instagram reels.",
+      "title": "Get Instagram Reels Search",
+      "description": "Fetch normalized reels search data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -5312,20 +5105,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -5350,8 +5136,8 @@
       "platform": "instagram",
       "resource": "search",
       "tool_name": "socq_instagram_search",
-      "title": "Instagram Search API",
-      "description": "Instagram Search API",
+      "title": "Get Instagram Search",
+      "description": "Fetch normalized search data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -5493,19 +5279,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.54,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.54,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -5529,8 +5309,8 @@
       "platform": "instagram",
       "resource": "story-highlights",
       "tool_name": "socq_instagram_story_highlights",
-      "title": "Instagram Story Highlights API",
-      "description": "Collect public Instagram story highlights.",
+      "title": "Get Instagram Story Highlights",
+      "description": "Fetch normalized story highlights data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -5638,21 +5418,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 20,
-          "estimate_result_count_per_input_field": "usernames"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -5678,8 +5450,8 @@
       "platform": "instagram",
       "resource": "tagged-posts",
       "tool_name": "socq_instagram_tagged_posts",
-      "title": "Instagram Tagged Posts API",
-      "description": "Collect public posts that tag an Instagram profile.",
+      "title": "Get Instagram Tagged Posts",
+      "description": "Fetch normalized tagged posts data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -5788,21 +5560,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "usernames"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -5829,8 +5593,8 @@
       "platform": "instagram",
       "resource": "transcript",
       "tool_name": "socq_instagram_transcript",
-      "title": "Instagram Transcripts API",
-      "description": "Extract transcripts from public Instagram posts and reels.",
+      "title": "Get Instagram Transcript",
+      "description": "Fetch normalized transcript data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -5934,19 +5698,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.7,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.7,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -5972,8 +5730,8 @@
       "platform": "instagram",
       "resource": "trending-reels",
       "tool_name": "socq_instagram_trending_reels",
-      "title": "Instagram Trending Reels API",
-      "description": "Collect public trending Instagram reels.",
+      "title": "Get Instagram Trending Reels",
+      "description": "Fetch normalized trending reels data from Instagram.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6070,20 +5828,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 20
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -6105,8 +5856,8 @@
       "platform": "linkedin",
       "resource": "companies",
       "tool_name": "socq_linkedin_companies",
-      "title": "LinkedIn Companies API",
-      "description": "LinkedIn Companies API",
+      "title": "Get LinkedIn Companies",
+      "description": "Fetch normalized companies data from LinkedIn.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6210,20 +5961,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 2,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 2,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -6249,8 +5993,8 @@
       "platform": "linkedin",
       "resource": "jobs",
       "tool_name": "socq_linkedin_jobs",
-      "title": "LinkedIn Jobs API",
-      "description": "LinkedIn Jobs API",
+      "title": "Get LinkedIn Jobs",
+      "description": "Fetch normalized jobs data from LinkedIn.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6354,20 +6098,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.8,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.8,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -6393,8 +6130,8 @@
       "platform": "linkedin",
       "resource": "posts",
       "tool_name": "socq_linkedin_posts",
-      "title": "LinkedIn Posts API",
-      "description": "LinkedIn Posts API",
+      "title": "Get LinkedIn Posts",
+      "description": "Fetch normalized posts data from LinkedIn.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6498,20 +6235,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 1,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 1,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -6537,8 +6267,8 @@
       "platform": "linkedin",
       "resource": "profiles",
       "tool_name": "socq_linkedin_profiles",
-      "title": "LinkedIn Profiles API",
-      "description": "LinkedIn Profiles API",
+      "title": "Get LinkedIn Profiles",
+      "description": "Fetch normalized profiles data from LinkedIn.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6642,20 +6372,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 2.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 2.5,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -6681,8 +6404,8 @@
       "platform": "pinterest",
       "resource": "pins",
       "tool_name": "socq_pinterest_pins",
-      "title": "Pinterest Pins API",
-      "description": "Pinterest Pins API",
+      "title": "Get Pinterest Pins",
+      "description": "Fetch normalized pins data from Pinterest.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6786,20 +6509,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -6825,8 +6541,8 @@
       "platform": "pinterest",
       "resource": "profiles",
       "tool_name": "socq_pinterest_profiles",
-      "title": "Pinterest Profiles API",
-      "description": "Pinterest Profiles API",
+      "title": "Get Pinterest Profiles",
+      "description": "Fetch normalized profiles data from Pinterest.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -6930,20 +6646,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.6,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.6,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -6969,8 +6678,8 @@
       "platform": "pinterest",
       "resource": "search",
       "tool_name": "socq_pinterest_search",
-      "title": "Pinterest Search API",
-      "description": "Pinterest Search API",
+      "title": "Get Pinterest Search",
+      "description": "Fetch normalized search data from Pinterest.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -7075,20 +6784,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.6,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.6,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -7112,8 +6814,8 @@
       "platform": "pinterest",
       "resource": "user-pins",
       "tool_name": "socq_pinterest_user_pins",
-      "title": "Pinterest User Pins API",
-      "description": "Pinterest User Pins API",
+      "title": "Get Pinterest User Pins",
+      "description": "Fetch normalized user pins data from Pinterest.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -7222,21 +6924,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -7262,8 +6956,8 @@
       "platform": "reddit",
       "resource": "comments",
       "tool_name": "socq_reddit_comments",
-      "title": "Reddit Comments API",
-      "description": "Reddit Comments API",
+      "title": "Get Reddit Comments",
+      "description": "Fetch normalized comments data from Reddit.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -7367,21 +7061,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.3,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.3,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -7407,8 +7093,8 @@
       "platform": "reddit",
       "resource": "posts",
       "tool_name": "socq_reddit_posts",
-      "title": "Reddit Posts API",
-      "description": "Reddit Posts API",
+      "title": "Get Reddit Posts",
+      "description": "Fetch normalized posts data from Reddit.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -7512,20 +7198,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -7551,8 +7230,8 @@
       "platform": "reddit",
       "resource": "search",
       "tool_name": "socq_reddit_search",
-      "title": "Reddit Search API",
-      "description": "Reddit Search API",
+      "title": "Get Reddit Search",
+      "description": "Fetch normalized search data from Reddit.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -7661,20 +7340,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.6,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.6,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -7698,8 +7370,8 @@
       "platform": "reddit",
       "resource": "subreddit-posts",
       "tool_name": "socq_reddit_subreddit_posts",
-      "title": "Reddit Subreddit Posts API",
-      "description": "Reddit Subreddit Posts API",
+      "title": "Get Reddit Subreddit Posts",
+      "description": "Fetch normalized subreddit posts data from Reddit.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -7812,21 +7484,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -7848,12 +7512,1693 @@
       "docs_url": "https://docs.socq.ai/api-manual/reddit/subreddit-posts"
     },
     {
+      "public_id": "seo/google-organic-serp",
+      "platform": "seo",
+      "resource": "google-organic-serp",
+      "tool_name": "socq_seo_google_organic_serp",
+      "title": "Get SEO Google Organic Serp",
+      "description": "Fetch normalized google organic serp data from SEO.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "device": {
+            "type": "string",
+            "enum": [
+              "desktop",
+              "mobile"
+            ]
+          },
+          "language": {
+            "type": "string",
+            "minLength": 1
+          },
+          "language_code": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 10
+          },
+          "location_code": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Search market location code."
+          },
+          "location_name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search market location name."
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search query."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 700,
+            "default": 10
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "fixed",
+        "credits": null,
+        "base_credits": null,
+        "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "query": "keyword research",
+          "location_code": 2840,
+          "language_code": "en",
+          "results_limit": 10
+        }
+      ],
+      "tags": [
+        "seo",
+        "google-organic-serp"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/seo/google-organic-serp"
+    },
+    {
+      "public_id": "seo/keyword-difficulty",
+      "platform": "seo",
+      "resource": "keyword-difficulty",
+      "tool_name": "socq_seo_keyword_difficulty",
+      "title": "Get SEO Keyword Difficulty",
+      "description": "Fetch normalized keyword difficulty data from SEO.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            "minItems": 1,
+            "maxItems": 1000,
+            "description": "Keywords to analyze in one batch."
+          },
+          "language": {
+            "type": "string",
+            "minLength": 1
+          },
+          "language_code": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 10
+          },
+          "location_code": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Search market location code."
+          },
+          "location_name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search market location name."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000
+          }
+        },
+        "required": [
+          "keywords"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "fixed",
+        "credits": null,
+        "base_credits": null,
+        "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "keywords": [
+            "keyword research"
+          ],
+          "location_code": 2840,
+          "language_code": "en"
+        }
+      ],
+      "tags": [
+        "seo",
+        "keyword-difficulty"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/seo/keyword-difficulty"
+    },
+    {
+      "public_id": "seo/keyword-overview",
+      "platform": "seo",
+      "resource": "keyword-overview",
+      "tool_name": "socq_seo_keyword_overview",
+      "title": "Get SEO Keyword Overview",
+      "description": "Fetch normalized keyword overview data from SEO.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            "minItems": 1,
+            "maxItems": 1000,
+            "description": "Keywords to analyze in one batch."
+          },
+          "language": {
+            "type": "string",
+            "minLength": 1
+          },
+          "language_code": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 10
+          },
+          "location_code": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Search market location code."
+          },
+          "location_name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search market location name."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000
+          }
+        },
+        "required": [
+          "keywords"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "fixed",
+        "credits": null,
+        "base_credits": null,
+        "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "keywords": [
+            "keyword research"
+          ],
+          "location_code": 2840,
+          "language_code": "en"
+        }
+      ],
+      "tags": [
+        "seo",
+        "keyword-overview"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/seo/keyword-overview"
+    },
+    {
+      "public_id": "seo/keyword-search-volume",
+      "platform": "seo",
+      "resource": "keyword-search-volume",
+      "tool_name": "socq_seo_keyword_search_volume",
+      "title": "Get SEO Keyword Search Volume",
+      "description": "Fetch normalized keyword search volume data from SEO.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            "minItems": 1,
+            "maxItems": 1000,
+            "description": "Keywords to analyze in one batch."
+          },
+          "language": {
+            "type": "string",
+            "minLength": 1
+          },
+          "language_code": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 10
+          },
+          "location_code": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Search market location code."
+          },
+          "location_name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search market location name."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000
+          }
+        },
+        "required": [
+          "keywords"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "fixed",
+        "credits": null,
+        "base_credits": null,
+        "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "keywords": [
+            "keyword research"
+          ],
+          "location_code": 2840,
+          "language_code": "en"
+        }
+      ],
+      "tags": [
+        "seo",
+        "keyword-search-volume"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/seo/keyword-search-volume"
+    },
+    {
+      "public_id": "seo/keyword-suggestions",
+      "platform": "seo",
+      "resource": "keyword-suggestions",
+      "tool_name": "socq_seo_keyword_suggestions",
+      "title": "Get SEO Keyword Suggestions",
+      "description": "Fetch normalized keyword suggestions data from SEO.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "language": {
+            "type": "string",
+            "minLength": 1
+          },
+          "language_code": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 10
+          },
+          "location_code": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Search market location code."
+          },
+          "location_name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search market location name."
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search query."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000,
+            "default": 100
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "fixed",
+        "credits": null,
+        "base_credits": null,
+        "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "query": "keyword research",
+          "location_code": 2840,
+          "language_code": "en",
+          "results_limit": 100
+        }
+      ],
+      "tags": [
+        "seo",
+        "keyword-suggestions"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/seo/keyword-suggestions"
+    },
+    {
+      "public_id": "seo/keywords-for-site",
+      "platform": "seo",
+      "resource": "keywords-for-site",
+      "tool_name": "socq_seo_keywords_for_site",
+      "title": "Get SEO Keywords For Site",
+      "description": "Fetch normalized keywords for site data from SEO.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "language": {
+            "type": "string",
+            "minLength": 1
+          },
+          "language_code": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 10
+          },
+          "location_code": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Search market location code."
+          },
+          "location_name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search market location name."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000,
+            "default": 100
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Domain, subdomain, or page URL."
+          }
+        },
+        "required": [
+          "target"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "fixed",
+        "credits": null,
+        "base_credits": null,
+        "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "target": "example.com",
+          "location_code": 2840,
+          "language_code": "en",
+          "results_limit": 100
+        }
+      ],
+      "tags": [
+        "seo",
+        "keywords-for-site"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/seo/keywords-for-site"
+    },
+    {
+      "public_id": "seo/ranked-keywords",
+      "platform": "seo",
+      "resource": "ranked-keywords",
+      "tool_name": "socq_seo_ranked_keywords",
+      "title": "Get SEO Ranked Keywords",
+      "description": "Fetch normalized ranked keywords data from SEO.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "language": {
+            "type": "string",
+            "minLength": 1
+          },
+          "language_code": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 10
+          },
+          "location_code": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Search market location code."
+          },
+          "location_name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search market location name."
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000,
+            "default": 100
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Domain, subdomain, or page URL."
+          }
+        },
+        "required": [
+          "target"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "fixed",
+        "credits": null,
+        "base_credits": null,
+        "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "target": "example.com",
+          "location_code": 2840,
+          "language_code": "en",
+          "results_limit": 100
+        }
+      ],
+      "tags": [
+        "seo",
+        "ranked-keywords"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/seo/ranked-keywords"
+    },
+    {
+      "public_id": "seo/related-keywords",
+      "platform": "seo",
+      "resource": "related-keywords",
+      "tool_name": "socq_seo_related_keywords",
+      "title": "Get SEO Related Keywords",
+      "description": "Fetch normalized related keywords data from SEO.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "depth": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4
+          },
+          "language": {
+            "type": "string",
+            "minLength": 1
+          },
+          "language_code": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 10
+          },
+          "location_code": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Search market location code."
+          },
+          "location_name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search market location name."
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search query."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000,
+            "default": 100
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "fixed",
+        "credits": null,
+        "base_credits": null,
+        "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "query": "keyword research",
+          "location_code": 2840,
+          "language_code": "en",
+          "results_limit": 100
+        }
+      ],
+      "tags": [
+        "seo",
+        "related-keywords"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/seo/related-keywords"
+    },
+    {
+      "public_id": "seo/relevant-pages",
+      "platform": "seo",
+      "resource": "relevant-pages",
+      "tool_name": "socq_seo_relevant_pages",
+      "title": "Get SEO Relevant Pages",
+      "description": "Fetch normalized relevant pages data from SEO.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "language": {
+            "type": "string",
+            "minLength": 1
+          },
+          "language_code": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 10
+          },
+          "location_code": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Search market location code."
+          },
+          "location_name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search market location name."
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000,
+            "default": 100
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Domain, subdomain, or page URL."
+          }
+        },
+        "required": [
+          "target"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "fixed",
+        "credits": null,
+        "base_credits": null,
+        "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "target": "example.com",
+          "location_code": 2840,
+          "language_code": "en",
+          "results_limit": 100
+        }
+      ],
+      "tags": [
+        "seo",
+        "relevant-pages"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/seo/relevant-pages"
+    },
+    {
+      "public_id": "seo/search-intent",
+      "platform": "seo",
+      "resource": "search-intent",
+      "tool_name": "socq_seo_search_intent",
+      "title": "Get SEO Search Intent",
+      "description": "Fetch normalized search intent data from SEO.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            "minItems": 1,
+            "maxItems": 1000,
+            "description": "Keywords to analyze in one batch."
+          },
+          "language": {
+            "type": "string",
+            "minLength": 1
+          },
+          "language_code": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 10
+          },
+          "location_code": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Search market location code."
+          },
+          "location_name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search market location name."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000
+          }
+        },
+        "required": [
+          "keywords"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "fixed",
+        "credits": null,
+        "base_credits": null,
+        "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "keywords": [
+            "keyword research"
+          ],
+          "language_code": "en"
+        }
+      ],
+      "tags": [
+        "seo",
+        "search-intent"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": true,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/seo/search-intent"
+    },
+    {
       "public_id": "threads/posts",
       "platform": "threads",
       "resource": "posts",
       "tool_name": "socq_threads_posts",
-      "title": "Threads Posts API",
-      "description": "Threads Posts API",
+      "title": "Get Threads Posts",
+      "description": "Fetch normalized posts data from Threads.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -7957,20 +9302,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -7996,8 +9334,8 @@
       "platform": "threads",
       "resource": "profiles",
       "tool_name": "socq_threads_profiles",
-      "title": "Threads Profiles API",
-      "description": "Threads Profiles API",
+      "title": "Get Threads Profiles",
+      "description": "Fetch normalized profiles data from Threads.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -8101,20 +9439,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.6,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.6,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -8140,8 +9471,8 @@
       "platform": "threads",
       "resource": "user-posts",
       "tool_name": "socq_threads_user_posts",
-      "title": "Threads User Posts API",
-      "description": "Threads User Posts API",
+      "title": "Get Threads User Posts",
+      "description": "Fetch normalized user posts data from Threads.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -8250,21 +9581,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -8290,8 +9613,8 @@
       "platform": "tiktok-shop",
       "resource": "product",
       "tool_name": "socq_tiktok_shop_product",
-      "title": "TikTok Shop Product API",
-      "description": "TikTok Shop Product API",
+      "title": "Get TikTok Shop Product",
+      "description": "Fetch normalized product data from TikTok Shop.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -8395,20 +9718,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.7,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.7,
-          "estimate_input_field": "url"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -8432,8 +9748,8 @@
       "platform": "tiktok-shop",
       "resource": "product-reviews",
       "tool_name": "socq_tiktok_shop_product_reviews",
-      "title": "TikTok Shop Product Reviews API",
-      "description": "TikTok Shop Product Reviews API",
+      "title": "Get TikTok Shop Product Reviews",
+      "description": "Fetch normalized product reviews data from TikTok Shop.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -8542,20 +9858,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.3,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.3,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -8579,8 +9888,8 @@
       "platform": "tiktok-shop",
       "resource": "products",
       "tool_name": "socq_tiktok_shop_products",
-      "title": "TikTok Shop Products API",
-      "description": "TikTok Shop Products API",
+      "title": "Get TikTok Shop Products",
+      "description": "Fetch normalized products data from TikTok Shop.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -8693,20 +10002,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.7,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.7,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -8730,8 +10032,8 @@
       "platform": "tiktok-shop",
       "resource": "search",
       "tool_name": "socq_tiktok_shop_search",
-      "title": "TikTok Shop Search API",
-      "description": "TikTok Shop Search API",
+      "title": "Get TikTok Shop Search",
+      "description": "Fetch normalized search data from TikTok Shop.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -8840,20 +10142,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.7,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.7,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -8877,8 +10172,8 @@
       "platform": "tiktok-shop",
       "resource": "user-showcase",
       "tool_name": "socq_tiktok_shop_user_showcase",
-      "title": "TikTok Shop User Showcase API",
-      "description": "TikTok Shop User Showcase API",
+      "title": "Get TikTok Shop User Showcase",
+      "description": "Fetch normalized user showcase data from TikTok Shop.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -8987,20 +10282,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.7,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.7,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -9024,8 +10312,8 @@
       "platform": "tiktok",
       "resource": "comment-replies",
       "tool_name": "socq_tiktok_comment_replies",
-      "title": "TikTok Comment Replies API",
-      "description": "Collect public TikTok comment replies.",
+      "title": "Get TikTok Comment Replies",
+      "description": "Fetch normalized comment replies data from TikTok.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -9141,20 +10429,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -9180,8 +10461,8 @@
       "platform": "tiktok",
       "resource": "comments",
       "tool_name": "socq_tiktok_comments",
-      "title": "TikTok Comments API",
-      "description": "TikTok Comments API",
+      "title": "Get TikTok Comments",
+      "description": "Fetch normalized comments data from TikTok.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -9290,21 +10571,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.25,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.25,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -9330,8 +10603,8 @@
       "platform": "tiktok",
       "resource": "followers-list",
       "tool_name": "socq_tiktok_followers_list",
-      "title": "TikTok Followers List API",
-      "description": "Collect public TikTok follower profiles.",
+      "title": "Get TikTok Followers List",
+      "description": "Fetch normalized followers list data from TikTok.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -9445,21 +10718,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "usernames"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -9486,8 +10751,8 @@
       "platform": "tiktok",
       "resource": "following-list",
       "tool_name": "socq_tiktok_following_list",
-      "title": "TikTok Following List API",
-      "description": "Collect public TikTok followed profiles.",
+      "title": "Get TikTok Following List",
+      "description": "Fetch normalized following list data from TikTok.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -9601,21 +10866,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "usernames"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -9642,8 +10899,8 @@
       "platform": "tiktok",
       "resource": "hashtags",
       "tool_name": "socq_tiktok_hashtags",
-      "title": "TikTok Hashtags API",
-      "description": "TikTok Hashtags API",
+      "title": "Get TikTok Hashtags",
+      "description": "Fetch normalized hashtags data from TikTok.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -9752,21 +11009,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.7,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.7,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "hashtags"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -9792,8 +11041,8 @@
       "platform": "tiktok",
       "resource": "live-room-info",
       "tool_name": "socq_tiktok_live_room_info",
-      "title": "TikTok Live Room Info API",
-      "description": "Collect public TikTok live room metadata and audience metrics.",
+      "title": "Get TikTok Live Room Info",
+      "description": "Fetch normalized live room info data from TikTok.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -9899,19 +11148,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 1
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -9936,8 +11179,8 @@
       "platform": "tiktok",
       "resource": "profiles",
       "tool_name": "socq_tiktok_profiles",
-      "title": "TikTok Profiles API",
-      "description": "TikTok Profiles API",
+      "title": "Get TikTok Profiles",
+      "description": "Fetch normalized profiles data from TikTok.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -10041,20 +11284,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.6,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.6,
-          "estimate_input_field": "usernames"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -10080,8 +11316,8 @@
       "platform": "tiktok",
       "resource": "search",
       "tool_name": "socq_tiktok_search",
-      "title": "TikTok Search API",
-      "description": "TikTok Search API",
+      "title": "Get TikTok Search",
+      "description": "Fetch normalized search data from TikTok.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -10194,20 +11430,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.7,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.7,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -10227,160 +11456,12 @@
       "docs_url": "https://docs.socq.ai/api-manual/tiktok/search"
     },
     {
-      "public_id": "tiktok/video-transcript",
-      "platform": "tiktok",
-      "resource": "video-transcript",
-      "tool_name": "socq_tiktok_video_transcript",
-      "title": "TikTok Video Transcript API",
-      "description": "Extract transcripts from public TikTok videos.",
-      "input_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "language": {
-            "type": "string",
-            "minLength": 1
-          },
-          "urls": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "minLength": 1
-            },
-            "minItems": 1,
-            "description": "Public profile or content URLs."
-          }
-        },
-        "required": [
-          "urls"
-        ]
-      },
-      "output_schema": {
-        "type": "object",
-        "properties": {
-          "task_id": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "results": {
-            "type": "object",
-            "properties": {
-              "items": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "additionalProperties": true,
-                  "properties": {
-                    "platform": {
-                      "type": "string"
-                    },
-                    "resource": {
-                      "type": "string"
-                    },
-                    "type": {
-                      "type": "string"
-                    },
-                    "id": {
-                      "type": [
-                        "string",
-                        "number",
-                        "null"
-                      ]
-                    },
-                    "url": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    },
-                    "author": {
-                      "type": "object",
-                      "additionalProperties": true
-                    },
-                    "text": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    },
-                    "metrics": {
-                      "type": "object",
-                      "additionalProperties": true
-                    },
-                    "media": {
-                      "type": [
-                        "object",
-                        "array"
-                      ],
-                      "additionalProperties": true
-                    },
-                    "published_at": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    }
-                  }
-                }
-              },
-              "next_cursor": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "has_more": {
-                "type": "boolean"
-              }
-            }
-          }
-        }
-      },
-      "billing": {
-        "mode": "base_plus_result",
-        "credits": null,
-        "base_credits": 0,
-        "unit": "result",
-        "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_input_field": "urls"
-        },
-        "dynamic": true
-      },
-      "examples": [
-        {
-          "urls": [
-            "https://www.tiktok.com/@scout2015/video/6718335390845095173"
-          ],
-          "language": "en"
-        }
-      ],
-      "tags": [
-        "tiktok",
-        "video-transcript"
-      ],
-      "execution_mode": "async",
-      "supports_pagination": true,
-      "supports_files": true,
-      "supports_callback": false,
-      "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/tiktok/video-transcript"
-    },
-    {
       "public_id": "tiktok/trending-feed",
       "platform": "tiktok",
       "resource": "trending-feed",
       "tool_name": "socq_tiktok_trending_feed",
-      "title": "TikTok Trending Feed API",
-      "description": "Collect trending TikTok videos for a region.",
+      "title": "Get TikTok Trending Feed",
+      "description": "Fetch normalized trending feed data from TikTok.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -10484,19 +11565,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.7,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.7,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -10521,8 +11596,8 @@
       "platform": "tiktok",
       "resource": "user-videos",
       "tool_name": "socq_tiktok_user_videos",
-      "title": "TikTok User Videos API",
-      "description": "Collect public videos from TikTok profiles.",
+      "title": "Get TikTok User Videos",
+      "description": "Fetch normalized user videos data from TikTok.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -10644,21 +11719,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "usernames"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -10681,12 +11748,154 @@
       "docs_url": "https://docs.socq.ai/api-manual/tiktok/user-videos"
     },
     {
+      "public_id": "tiktok/video-transcript",
+      "platform": "tiktok",
+      "resource": "video-transcript",
+      "tool_name": "socq_tiktok_video_transcript",
+      "title": "Get TikTok Video Transcript",
+      "description": "Fetch normalized video transcript data from TikTok.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "language": {
+            "type": "string",
+            "minLength": 1
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "platform": {
+                      "type": "string"
+                    },
+                    "resource": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "author": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "text": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "metrics": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "media": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "additionalProperties": true
+                    },
+                    "published_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "billing": {
+        "mode": "fixed",
+        "credits": null,
+        "base_credits": null,
+        "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
+        "config": {},
+        "dynamic": true
+      },
+      "examples": [
+        {
+          "urls": [
+            "https://www.tiktok.com/@scout2015/video/6718335390845095173"
+          ],
+          "language": "en"
+        }
+      ],
+      "tags": [
+        "tiktok",
+        "video-transcript"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": false,
+      "status": "stable",
+      "docs_url": "https://docs.socq.ai/api-manual/tiktok/video-transcript"
+    },
+    {
       "public_id": "tiktok/videos",
       "platform": "tiktok",
       "resource": "videos",
       "tool_name": "socq_tiktok_videos",
-      "title": "TikTok Videos API",
-      "description": "TikTok Videos API",
+      "title": "Get TikTok Videos",
+      "description": "Fetch normalized videos data from TikTok.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -10790,20 +11999,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.7,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.7,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -10829,8 +12031,8 @@
       "platform": "x",
       "resource": "followers-list",
       "tool_name": "socq_x_followers_list",
-      "title": "X Followers List API",
-      "description": "Collect public X follower profiles.",
+      "title": "Get X Followers List",
+      "description": "Fetch normalized followers list data from X.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -10945,21 +12147,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 200,
-          "estimate_result_count_per_input_field": "usernames"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -10986,8 +12180,8 @@
       "platform": "x",
       "resource": "following-list",
       "tool_name": "socq_x_following_list",
-      "title": "X Following List API",
-      "description": "Collect public X followed profiles.",
+      "title": "Get X Following List",
+      "description": "Fetch normalized following list data from X.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -11102,21 +12296,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 200,
-          "estimate_result_count_per_input_field": "usernames"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -11143,8 +12329,8 @@
       "platform": "x",
       "resource": "post-quotes",
       "tool_name": "socq_x_post_quotes",
-      "title": "X Post Quotes API",
-      "description": "Collect public quotes of X posts.",
+      "title": "Get X Post Quotes",
+      "description": "Fetch normalized post quotes data from X.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -11259,21 +12445,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -11300,8 +12478,8 @@
       "platform": "x",
       "resource": "post-replies",
       "tool_name": "socq_x_post_replies",
-      "title": "X Post Replies API",
-      "description": "Collect public replies to X posts.",
+      "title": "Get X Post Replies",
+      "description": "Fetch normalized post replies data from X.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -11420,21 +12598,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -11461,8 +12631,8 @@
       "platform": "x",
       "resource": "post-retweeters",
       "tool_name": "socq_x_post_retweeters",
-      "title": "X Post Retweeters API",
-      "description": "Collect public profiles that reposted X posts.",
+      "title": "Get X Post Retweeters",
+      "description": "Fetch normalized post retweeters data from X.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -11577,21 +12747,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -11618,8 +12780,8 @@
       "platform": "x",
       "resource": "posts",
       "tool_name": "socq_x_posts",
-      "title": "X Posts API",
-      "description": "X Posts API",
+      "title": "Get X Posts",
+      "description": "Fetch normalized posts data from X.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -11723,20 +12885,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -11762,8 +12917,8 @@
       "platform": "x",
       "resource": "profiles",
       "tool_name": "socq_x_profiles",
-      "title": "X Profiles API",
-      "description": "X Profiles API",
+      "title": "Get X Profiles",
+      "description": "Fetch normalized profiles data from X.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -11867,20 +13022,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.6,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.6,
-          "estimate_input_field": "usernames"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -11906,8 +13054,8 @@
       "platform": "x",
       "resource": "search",
       "tool_name": "socq_x_search",
-      "title": "X Search API",
-      "description": "X Search API",
+      "title": "Get X Search",
+      "description": "Fetch normalized search data from X.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -12016,20 +13164,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.7,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.7,
-          "estimate_result_count": 20
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -12053,8 +13194,8 @@
       "platform": "x",
       "resource": "trends",
       "tool_name": "socq_x_trends",
-      "title": "X Trends API",
-      "description": "Collect public X trends by location identifier.",
+      "title": "Get X Trends",
+      "description": "Fetch normalized trends data from X.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -12168,21 +13309,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "woeids"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -12209,8 +13342,8 @@
       "platform": "x",
       "resource": "user-posts",
       "tool_name": "socq_x_user_posts",
-      "title": "X User Posts API",
-      "description": "X User Posts API",
+      "title": "Get X User Posts",
+      "description": "Fetch normalized user posts data from X.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -12319,21 +13452,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 20,
-          "estimate_result_count_per_input_field": "usernames"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -12359,8 +13484,8 @@
       "platform": "youtube",
       "resource": "channel-live-videos",
       "tool_name": "socq_youtube_channel_live_videos",
-      "title": "YouTube Channel Live Videos API",
-      "description": "Collect public YouTube channel live videos.",
+      "title": "Get YouTube Channel Live Videos",
+      "description": "Fetch normalized channel live videos data from YouTube.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -12474,21 +13599,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -12515,8 +13632,8 @@
       "platform": "youtube",
       "resource": "channel-videos",
       "tool_name": "socq_youtube_channel_videos",
-      "title": "YouTube Channel Videos API",
-      "description": "YouTube Channel Videos API",
+      "title": "Get YouTube Channel Videos",
+      "description": "Fetch normalized channel videos data from YouTube.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -12625,21 +13742,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -12665,8 +13774,8 @@
       "platform": "youtube",
       "resource": "channels",
       "tool_name": "socq_youtube_channels",
-      "title": "YouTube Channels API",
-      "description": "YouTube Channels API",
+      "title": "Get YouTube Channels",
+      "description": "Fetch normalized channels data from YouTube.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -12770,20 +13879,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.26,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.26,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -12809,8 +13911,8 @@
       "platform": "youtube",
       "resource": "comment-replies",
       "tool_name": "socq_youtube_comment_replies",
-      "title": "YouTube Comment Replies API",
-      "description": "Collect public YouTube comment replies.",
+      "title": "Get YouTube Comment Replies",
+      "description": "Fetch normalized comment replies data from YouTube.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -12920,20 +14022,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -12958,8 +14053,8 @@
       "platform": "youtube",
       "resource": "comments",
       "tool_name": "socq_youtube_comments",
-      "title": "YouTube Comments API",
-      "description": "YouTube Comments API",
+      "title": "Get YouTube Comments",
+      "description": "Fetch normalized comments data from YouTube.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -13072,21 +14167,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.3,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.3,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -13112,8 +14199,8 @@
       "platform": "youtube",
       "resource": "community-posts",
       "tool_name": "socq_youtube_community_posts",
-      "title": "YouTube Community Posts API",
-      "description": "Collect public YouTube community posts.",
+      "title": "Get YouTube Community Posts",
+      "description": "Fetch normalized community posts data from YouTube.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -13227,21 +14314,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -13268,8 +14347,8 @@
       "platform": "youtube",
       "resource": "hashtag-search",
       "tool_name": "socq_youtube_hashtag_search",
-      "title": "YouTube Hashtag Search API",
-      "description": "Search public YouTube videos by hashtag.",
+      "title": "Get YouTube Hashtag Search",
+      "description": "Fetch normalized hashtag search data from YouTube.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -13387,21 +14466,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "hashtags"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -13428,8 +14499,8 @@
       "platform": "youtube",
       "resource": "playlist-videos",
       "tool_name": "socq_youtube_playlist_videos",
-      "title": "YouTube Playlist Videos API",
-      "description": "Collect videos from a public YouTube playlist.",
+      "title": "Get YouTube Playlist Videos",
+      "description": "Fetch normalized playlist videos data from YouTube.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -13538,21 +14609,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -13579,8 +14642,8 @@
       "platform": "youtube",
       "resource": "search",
       "tool_name": "socq_youtube_search",
-      "title": "YouTube Search API",
-      "description": "YouTube Search API",
+      "title": "Get YouTube Search",
+      "description": "Fetch normalized search data from YouTube.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -13700,20 +14763,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -13737,8 +14793,8 @@
       "platform": "youtube",
       "resource": "shorts",
       "tool_name": "socq_youtube_shorts",
-      "title": "YouTube Shorts API",
-      "description": "YouTube Shorts API",
+      "title": "Get YouTube Shorts",
+      "description": "Fetch normalized shorts data from YouTube.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -13847,21 +14903,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -13887,8 +14935,8 @@
       "platform": "youtube",
       "resource": "transcripts",
       "tool_name": "socq_youtube_transcripts",
-      "title": "YouTube Transcripts API",
-      "description": "YouTube Transcripts API",
+      "title": "Get YouTube Transcripts",
+      "description": "Fetch normalized transcripts data from YouTube.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -13996,20 +15044,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [
@@ -14036,8 +15077,8 @@
       "platform": "youtube",
       "resource": "videos",
       "tool_name": "socq_youtube_videos",
-      "title": "YouTube Videos API",
-      "description": "YouTube Videos API",
+      "title": "Get YouTube Videos",
+      "description": "Fetch normalized videos data from YouTube.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -14141,20 +15182,13 @@
         }
       },
       "billing": {
-        "mode": "base_plus_result",
+        "mode": "fixed",
         "credits": null,
-        "base_credits": 0,
-        "unit": "result",
+        "base_credits": null,
+        "unit": "request",
         "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "allow_overage": 1,
-          "result_unit_size": 1,
-          "empty_result_policy": "base_only",
-          "result_unit_credits": 0.5,
-          "estimate_input_field": "urls"
-        },
+        "unit_credits": null,
+        "config": {},
         "dynamic": true
       },
       "examples": [

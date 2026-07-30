@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API 中文版",
-    "version": "v1-82a413bb5c3c",
+    "version": "v1-c8347f9103e7",
     "description": "根据 SocQ 能力目录生成的异步社交数据 API。"
   },
   "servers": [
@@ -3324,6 +3324,902 @@
         }
       }
     },
+    "/v1/seo/google-organic-serp": {
+      "post": {
+        "operationId": "socq_seo_google_organic_serp",
+        "summary": "Google Organic SERP",
+        "description": "Retrieve live Google organic search results.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "device": {
+                    "type": "string",
+                    "enum": [
+                      "desktop",
+                      "mobile"
+                    ],
+                    "description": "请求参数。"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "语言代码或语言筛选条件。"
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10,
+                    "description": "请求参数。"
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 700,
+                    "default": 10,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/keyword-difficulty": {
+      "post": {
+        "operationId": "socq_seo_keyword_difficulty",
+        "summary": "Keyword Difficulty",
+        "description": "Batch keyword ranking-difficulty scores.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "keywords": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80
+                    },
+                    "description": "Keywords to analyze in one batch，至少提供 1 项，最多提供 1000 项。"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "语言代码或语言筛选条件。"
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10,
+                    "description": "请求参数。"
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "keywords"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/keyword-overview": {
+      "post": {
+        "operationId": "socq_seo_keyword_overview",
+        "summary": "Keyword Overview",
+        "description": "Retrieve combined keyword metrics in one request.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "keywords": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80
+                    },
+                    "description": "Keywords to analyze in one batch，至少提供 1 项，最多提供 1000 项。"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "语言代码或语言筛选条件。"
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10,
+                    "description": "请求参数。"
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "keywords"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/keyword-search-volume": {
+      "post": {
+        "operationId": "socq_seo_keyword_search_volume",
+        "summary": "Keyword Search Volume",
+        "description": "Batch search volume, CPC, competition, and monthly trends.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "keywords": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80
+                    },
+                    "description": "Keywords to analyze in one batch，至少提供 1 项，最多提供 1000 项。"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "语言代码或语言筛选条件。"
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10,
+                    "description": "请求参数。"
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "keywords"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/keyword-suggestions": {
+      "post": {
+        "operationId": "socq_seo_keyword_suggestions",
+        "summary": "Keyword Suggestions",
+        "description": "Find long-tail keywords containing a seed phrase.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "语言代码或语言筛选条件。"
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10,
+                    "description": "请求参数。"
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "请求参数。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/keywords-for-site": {
+      "post": {
+        "operationId": "socq_seo_keywords_for_site",
+        "summary": "Keywords for Site",
+        "description": "Generate keyword ideas from a website topic.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "语言代码或语言筛选条件。"
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10,
+                    "description": "请求参数。"
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "target": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Domain, subdomain, or page URL."
+                  }
+                },
+                "required": [
+                  "target"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/ranked-keywords": {
+      "post": {
+        "operationId": "socq_seo_ranked_keywords",
+        "summary": "Ranked Keywords",
+        "description": "Find keywords a domain, subdomain, or page already ranks for.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "语言代码或语言筛选条件。"
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10,
+                    "description": "请求参数。"
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "请求参数。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "target": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Domain, subdomain, or page URL."
+                  }
+                },
+                "required": [
+                  "target"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/related-keywords": {
+      "post": {
+        "operationId": "socq_seo_related_keywords",
+        "summary": "Related Keywords",
+        "description": "Find semantically and lexically related search terms.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "depth": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4,
+                    "description": "请求参数。"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "语言代码或语言筛选条件。"
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10,
+                    "description": "请求参数。"
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "请求参数。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/relevant-pages": {
+      "post": {
+        "operationId": "socq_seo_relevant_pages",
+        "summary": "Relevant Pages",
+        "description": "Find pages with measurable organic or paid search value.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "语言代码或语言筛选条件。"
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10,
+                    "description": "请求参数。"
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "请求参数。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "target": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Domain, subdomain, or page URL."
+                  }
+                },
+                "required": [
+                  "target"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/seo/search-intent": {
+      "post": {
+        "operationId": "socq_seo_search_intent",
+        "summary": "Search Intent",
+        "description": "Classify informational, navigational, commercial, and transactional intent.",
+        "tags": [
+          "seo"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "keywords": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80
+                    },
+                    "description": "Keywords to analyze in one batch，至少提供 1 项，最多提供 1000 项。"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "语言代码或语言筛选条件。"
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 10,
+                    "description": "请求参数。"
+                  },
+                  "location_code": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Search market location code."
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search market location name."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "keywords"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/threads/posts": {
       "post": {
         "operationId": "socq_threads_posts",
@@ -4316,66 +5212,6 @@
         }
       }
     },
-    "/v1/tiktok/video-transcript": {
-      "post": {
-        "operationId": "socq_tiktok_video_transcript",
-        "summary": "TikTok 视频字幕",
-        "description": "从公开 TikTok 视频中提取视频字幕。",
-        "tags": [
-          "tiktok"
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "language": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "语言代码或语言筛选条件。"
-                  },
-                  "urls": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
-                  }
-                },
-                "required": [
-                  "urls"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "任务已受理",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/tiktok/trending-feed": {
       "post": {
         "operationId": "socq_tiktok_trending_feed",
@@ -4492,6 +5328,66 @@
                 },
                 "required": [
                   "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/video-transcript": {
+      "post": {
+        "operationId": "socq_tiktok_video_transcript",
+        "summary": "TikTok 视频字幕",
+        "description": "从公开 TikTok 视频中提取视频字幕。",
+        "tags": [
+          "tiktok"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "语言代码或语言筛选条件。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
                 ]
               }
             }
