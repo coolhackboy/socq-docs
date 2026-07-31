@@ -10,11 +10,28 @@ Collect public replies for a Facebook comment. Results are normalized and billed
 
 ```json
 {
-  "feedback_id": "feedback_123",
-  "expansion_token": "reply_token",
+  "url": "https://www.facebook.com/NASA/posts/would-you-lie-in-bed-for-60-days-for-scientific-research11-volunteers-did-exactl/1271494461012594/",
+  "comment_id": "Y29tbWVudDoxMjcxNDk0NDYxMDEyNTk0XzU4NzcxOTAzMTA0Mjk5MQ==",
   "results_limit": 20
 }
 ```
+
+<Info>
+  Pass the stable post URL and parent comment ID. SOCQ finds the parent comment
+  across comment pages and resolves the provider reply tokens internally. Legacy
+  `feedback_id` plus `expansion_token` input remains supported, but those tokens
+  can expire and should not be stored as a reusable request example.
+</Info>
+
+## Reply resolution errors
+
+| Error code | Meaning |
+| --- | --- |
+| `facebook_parent_comment_not_found` | The comment was not found within the supported comment-page search range. Check that the URL and comment ID belong together. |
+| `facebook_reply_token_missing` | The parent comment reports replies but does not expose the tokens required by the provider. |
+| `facebook_reply_token_expired` | A supplied legacy token has expired. Retry with `url` and `comment_id`. |
+| `facebook_reply_token_incompatible` | The provider returned a token that its reply endpoint would not accept. Retry later or use another parent comment. |
+| `facebook_reply_upstream_failure` | The upstream Facebook reply service failed. Retry later. |
 
 {/* mcp-usage:start */}
 ## Use with MCP

@@ -10,10 +10,24 @@ Collect public replies for a YouTube comment. Results are normalized and billed 
 
 ```json
 {
-  "continuation_token": "reply_continuation_token",
+  "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "comment_id": "Ugzge340dBgB75hWBm54AaABAg",
   "results_limit": 20
 }
 ```
+
+<Info>
+  Pass the stable video URL and parent comment ID. SOCQ resolves the current
+  continuation token internally. A legacy `continuation_token` is still accepted,
+  but it should not be stored as a reusable request example.
+</Info>
+
+## Reply resolution errors
+
+| Error code | Meaning |
+| --- | --- |
+| `youtube_parent_comment_not_found` | The comment was not found for the supplied video URL. |
+| `youtube_reply_token_missing` | The parent comment does not expose a reply continuation token. |
 
 {/* mcp-usage:start */}
 ## Use with MCP

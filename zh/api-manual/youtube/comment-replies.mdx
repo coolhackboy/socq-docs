@@ -10,10 +10,23 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/youtube/comment-repli
 
 ```json
 {
-  "continuation_token": "reply_continuation_token",
+  "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "comment_id": "Ugzge340dBgB75hWBm54AaABAg",
   "results_limit": 20
 }
 ```
+
+<Info>
+  请传入稳定的视频 URL 和父评论 ID，SOCQ 会在服务端自动解析当前 continuation token。
+  旧版 `continuation_token` 入参仍然兼容，但不应保存为可复用示例。
+</Info>
+
+## 回复解析错误
+
+| 错误码 | 含义 |
+| --- | --- |
+| `youtube_parent_comment_not_found` | 在指定视频 URL 中未找到父评论。 |
+| `youtube_reply_token_missing` | 父评论未提供回复 continuation token。 |
 
 {/* mcp-usage:start */}
 ## 通过 MCP 使用

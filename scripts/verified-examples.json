@@ -1,0 +1,105 @@
+{
+  "facebook/comment-replies": {
+    "url": "https://www.facebook.com/NASA/posts/would-you-lie-in-bed-for-60-days-for-scientific-research11-volunteers-did-exactl/1271494461012594/",
+    "comment_id": "Y29tbWVudDoxMjcxNDk0NDYxMDEyNTk0XzU4NzcxOTAzMTA0Mjk5MQ==",
+    "results_limit": 20
+  },
+  "facebook-ad-library/ad": {
+    "url": "https://www.facebook.com/ads/library?id=1545582153738441"
+  },
+  "facebook-marketplace/item": {
+    "urls": ["https://www.facebook.com/marketplace/item/978385068564936/"]
+  },
+  "facebook/ad-transcript": {
+    "urls": ["https://www.facebook.com/ads/library?id=1545582153738441"]
+  },
+  "facebook/comments": {
+    "urls": ["https://www.facebook.com/reel/1064194079626979/"]
+  },
+  "instagram/post-info": {
+    "urls": ["https://www.instagram.com/p/DbbY9pdm6Q2/"]
+  },
+  "instagram/comments": {
+    "urls": ["https://www.instagram.com/reel/DBZMUClOJjZ/"]
+  },
+  "instagram/audio-reels": {
+    "audio_ids": ["1383262936846577"],
+    "results_limit": 20
+  },
+  "linkedin/jobs": {
+    "urls": ["https://www.linkedin.com/jobs/view/4435421919/"]
+  },
+  "linkedin/posts": {
+    "urls": ["https://www.linkedin.com/posts/microsoft_ai-is-entering-a-new-era-defined-by-real-world-activity-7403848387738955776-hCMS"]
+  },
+  "pinterest/pins": {
+    "urls": ["https://www.pinterest.com/pin/1091841503437618715"]
+  },
+  "reddit/comments": {
+    "urls": ["https://www.reddit.com/r/technology/comments/1vbchyh/second_major_ai_company_says_its_systems_hacked/"]
+  },
+  "reddit/posts": {
+    "urls": ["https://www.reddit.com/r/technology/comments/1vbchyh/second_major_ai_company_says_its_systems_hacked/"]
+  },
+  "seo/keywords-for-site": {
+    "target": "microsoft.com",
+    "location_code": 2840,
+    "language_code": "en",
+    "results_limit": 5
+  },
+  "seo/ranked-keywords": {
+    "target": "microsoft.com",
+    "location_code": 2840,
+    "language_code": "en",
+    "results_limit": 5
+  },
+  "seo/relevant-pages": {
+    "target": "microsoft.com",
+    "location_code": 2840,
+    "language_code": "en",
+    "results_limit": 5
+  },
+  "threads/posts": {
+    "urls": ["https://www.threads.com/@instagram/post/DbbbOW8D-T1"]
+  },
+  "tiktok-shop/product": {
+    "url": "https://www.tiktok.com/shop/pdp/1729548220307968132"
+  },
+  "tiktok-shop/product-reviews": {
+    "url": "https://www.tiktok.com/shop/pdp/1729548220307968132",
+    "results_limit": 20
+  },
+  "tiktok-shop/products": {
+    "url": "https://www.tiktok.com/shop/store/cmf-by-nothing/7495669706651568260",
+    "results_limit": 20
+  },
+  "tiktok-shop/user-showcase": {
+    "username": "simplymandys",
+    "results_limit": 20
+  },
+  "tiktok/comment-replies": {
+    "url": "https://www.tiktok.com/@scout2015/video/6718335390845095173",
+    "comment_id": "6718335906996502534",
+    "results_limit": 20
+  },
+  "x/post-quotes": {
+    "urls": ["https://x.com/X/status/2073395918011789670"],
+    "results_limit": 20
+  },
+  "x/post-replies": {
+    "urls": ["https://x.com/X/status/2073395918011789670"],
+    "results_limit": 20
+  },
+  "x/post-retweeters": {
+    "urls": ["https://x.com/X/status/2073395918011789670"],
+    "results_limit": 100
+  },
+  "x/posts": {
+    "urls": ["https://x.com/X/status/2073395918011789670"]
+  },
+  "youtube/comment-replies": {
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "comment_id": "Ugzge340dBgB75hWBm54AaABAg",
+    "results_limit": 20
+  }
+}

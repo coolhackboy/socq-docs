@@ -10,11 +10,26 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/facebook/comment-repl
 
 ```json
 {
-  "feedback_id": "feedback_123",
-  "expansion_token": "reply_token",
+  "url": "https://www.facebook.com/NASA/posts/would-you-lie-in-bed-for-60-days-for-scientific-research11-volunteers-did-exactl/1271494461012594/",
+  "comment_id": "Y29tbWVudDoxMjcxNDk0NDYxMDEyNTk0XzU4NzcxOTAzMTA0Mjk5MQ==",
   "results_limit": 20
 }
 ```
+
+<Info>
+  请传入稳定的帖子 URL 和父评论 ID。SOCQ 会自动跨评论分页定位父评论，并在服务端解析回复 token。
+  旧版 `feedback_id` 与 `expansion_token` 入参仍然兼容，但 token 可能过期，不应保存为可复用示例。
+</Info>
+
+## 回复解析错误
+
+| 错误码 | 含义 |
+| --- | --- |
+| `facebook_parent_comment_not_found` | 在支持的评论分页范围内未找到父评论，请确认 URL 与评论 ID 属于同一帖子。 |
+| `facebook_reply_token_missing` | 父评论显示存在回复，但上游未提供回复接口所需 token。 |
+| `facebook_reply_token_expired` | 传入的旧版 token 已过期，请改用 `url` 和 `comment_id` 重试。 |
+| `facebook_reply_token_incompatible` | 上游返回的 token 无法被其回复接口接受，请稍后重试或更换父评论。 |
+| `facebook_reply_upstream_failure` | Facebook 上游回复服务故障，请稍后重试。 |
 
 {/* mcp-usage:start */}
 ## 通过 MCP 使用

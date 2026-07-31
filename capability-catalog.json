@@ -320,7 +320,7 @@
       },
       "examples": [
         {
-          "url": "https://www.facebook.com/ads/library/?id=123456789012345"
+          "url": "https://www.facebook.com/ads/library?id=1545582153738441"
         }
       ],
       "tags": [
@@ -947,7 +947,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.facebook.com/marketplace/item/123456789012345/"
+            "https://www.facebook.com/marketplace/item/978385068564936/"
           ]
         }
       ],
@@ -1421,7 +1421,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.facebook.com/ads/library/?id=123456789012345"
+            "https://www.facebook.com/ads/library?id=1545582153738441"
           ]
         }
       ],
@@ -1574,13 +1574,6 @@
         },
         "dynamic": true
       },
-      "examples": [
-        {
-          "feedback_id": "feedback_123",
-          "expansion_token": "reply_token",
-          "results_limit": 20
-        }
-      ],
       "tags": [
         "facebook",
         "comment-replies"
@@ -1590,7 +1583,14 @@
       "supports_files": true,
       "supports_callback": true,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/facebook/comment-replies"
+      "docs_url": "https://docs.socq.ai/api-manual/facebook/comment-replies",
+      "examples": [
+        {
+          "url": "https://www.facebook.com/NASA/posts/would-you-lie-in-bed-for-60-days-for-scientific-research11-volunteers-did-exactl/1271494461012594/",
+          "comment_id": "Y29tbWVudDoxMjcxNDk0NDYxMDEyNTk0XzU4NzcxOTAzMTA0Mjk5MQ==",
+          "results_limit": 20
+        }
+      ]
     },
     {
       "public_id": "facebook/comments",
@@ -1725,7 +1725,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.facebook.com/nasa/posts/1234567890"
+            "https://www.facebook.com/reel/1064194079626979/"
           ]
         }
       ],
@@ -3601,7 +3601,7 @@
       "examples": [
         {
           "audio_ids": [
-            "123456789012345"
+            "1383262936846577"
           ],
           "results_limit": 20
         }
@@ -3750,7 +3750,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.instagram.com/p/ABC123xyz/"
+            "https://www.instagram.com/reel/DBZMUClOJjZ/"
           ]
         }
       ],
@@ -4689,7 +4689,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.instagram.com/p/ABC123xyz/"
+            "https://www.instagram.com/p/DbbY9pdm6Q2/"
           ]
         }
       ],
@@ -6390,7 +6390,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.linkedin.com/jobs/view/1234567890/"
+            "https://www.linkedin.com/jobs/view/4435421919/"
           ]
         }
       ],
@@ -6534,7 +6534,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.linkedin.com/posts/microsoft_ai-activity-1234567890"
+            "https://www.linkedin.com/posts/microsoft_ai-is-entering-a-new-era-defined-by-real-world-activity-7403848387738955776-hCMS"
           ]
         }
       ],
@@ -6822,7 +6822,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.pinterest.com/pin/123456789012345678/"
+            "https://www.pinterest.com/pin/1091841503437618715"
           ]
         }
       ],
@@ -7404,7 +7404,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.reddit.com/r/technology/comments/abc123/example_post/"
+            "https://www.reddit.com/r/technology/comments/1vbchyh/second_major_ai_company_says_its_systems_hacked/"
           ]
         }
       ],
@@ -7548,7 +7548,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.reddit.com/r/technology/comments/abc123/example_post/"
+            "https://www.reddit.com/r/technology/comments/1vbchyh/second_major_ai_company_says_its_systems_hacked/"
           ]
         }
       ],
@@ -8887,10 +8887,10 @@
       },
       "examples": [
         {
-          "target": "example.com",
+          "target": "microsoft.com",
           "location_code": 2840,
           "language_code": "en",
-          "results_limit": 100
+          "results_limit": 5
         }
       ],
       "tags": [
@@ -9061,10 +9061,10 @@
       },
       "examples": [
         {
-          "target": "example.com",
+          "target": "microsoft.com",
           "location_code": 2840,
           "language_code": "en",
-          "results_limit": 100
+          "results_limit": 5
         }
       ],
       "tags": [
@@ -9414,10 +9414,10 @@
       },
       "examples": [
         {
-          "target": "example.com",
+          "target": "microsoft.com",
           "location_code": 2840,
           "language_code": "en",
-          "results_limit": 100
+          "results_limit": 5
         }
       ],
       "tags": [
@@ -9733,7 +9733,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.threads.net/@instagram/post/ABC123/"
+            "https://www.threads.com/@instagram/post/DbbbOW8D-T1"
           ]
         }
       ],
@@ -10170,7 +10170,7 @@
       },
       "examples": [
         {
-          "url": "https://www.tiktok.com/shop/pdp/example-product/1234567890123456789"
+          "url": "https://www.tiktok.com/shop/pdp/1729548220307968132"
         }
       ],
       "tags": [
@@ -10317,7 +10317,8 @@
       },
       "examples": [
         {
-          "url": "https://www.tiktok.com/shop/pdp/example-product/1234567890123456789"
+          "url": "https://www.tiktok.com/shop/pdp/1729548220307968132",
+          "results_limit": 20
         }
       ],
       "tags": [
@@ -10468,7 +10469,8 @@
       },
       "examples": [
         {
-          "url": "https://www.tiktok.com/shop/store/example-store/1234567890123456789"
+          "url": "https://www.tiktok.com/shop/store/cmf-by-nothing/7495669706651568260",
+          "results_limit": 20
         }
       ],
       "tags": [
@@ -10762,7 +10764,8 @@
       },
       "examples": [
         {
-          "username": "example_creator"
+          "username": "simplymandys",
+          "results_limit": 20
         }
       ],
       "tags": [
@@ -10917,7 +10920,7 @@
       "examples": [
         {
           "url": "https://www.tiktok.com/@scout2015/video/6718335390845095173",
-          "comment_id": "1234567890",
+          "comment_id": "6718335906996502534",
           "results_limit": 20
         }
       ],
@@ -13036,7 +13039,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/1234567890123456789"
+            "https://x.com/X/status/2073395918011789670"
           ],
           "results_limit": 20
         }
@@ -13197,7 +13200,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/1234567890123456789"
+            "https://x.com/X/status/2073395918011789670"
           ],
           "results_limit": 20
         }
@@ -13354,7 +13357,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/1234567890123456789"
+            "https://x.com/X/status/2073395918011789670"
           ],
           "results_limit": 100
         }
@@ -13499,7 +13502,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/1234567890123456789"
+            "https://x.com/X/status/2073395918011789670"
           ]
         }
       ],
@@ -14693,12 +14696,6 @@
         },
         "dynamic": true
       },
-      "examples": [
-        {
-          "continuation_token": "reply_continuation_token",
-          "results_limit": 20
-        }
-      ],
       "tags": [
         "youtube",
         "comment-replies"
@@ -14708,7 +14705,14 @@
       "supports_files": true,
       "supports_callback": true,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/youtube/comment-replies"
+      "docs_url": "https://docs.socq.ai/api-manual/youtube/comment-replies",
+      "examples": [
+        {
+          "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          "comment_id": "Ugzge340dBgB75hWBm54AaABAg",
+          "results_limit": 20
+        }
+      ]
     },
     {
       "public_id": "youtube/comments",
