@@ -1,0 +1,25 @@
+---
+title: "Google Ad Library Company Ads"
+description: "Collect normalized public google ad library company ads data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/company-ads"
+---
+
+# Google Ad Library Company Ads
+
+```json
+{
+  "domain": "example.com",
+  "results_limit": 20
+}
+```
+
+## Use with MCP and CLI
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/google-ad-library/company-ads` |
+| Compact MCP | `socq_execute` with `endpoint: "google-ad-library/company-ads"` |
+| Typed MCP | `socq_google_ad_library_company_ads` |
+| CLI | `socq google-ad-library company-ads` |
+
+The endpoint uses the asynchronous task flow and returns a task_id. Poll the task endpoint to read normalized results.

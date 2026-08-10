@@ -1,0 +1,25 @@
+---
+title: "LinkedIn ????"
+description: "????????LinkedIn ???????"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/post-comments"
+---
+
+# LinkedIn ????
+
+```json
+{
+  "url": "https://www.linkedin.com/posts/example_activity-123",
+  "results_limit": 20
+}
+```
+
+## ?? MCP ? CLI ??
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/linkedin/post-comments` |
+| Compact MCP | `socq_execute` with `endpoint: "linkedin/post-comments"` |
+| Typed MCP | `socq_linkedin_post_comments` |
+| CLI | `socq linkedin post-comments` |
+
+????????????? task_id????????????????

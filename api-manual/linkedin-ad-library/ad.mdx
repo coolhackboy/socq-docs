@@ -1,0 +1,24 @@
+---
+title: "LinkedIn Ad Details"
+description: "Collect normalized public linkedin ad details data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin-ad-library/ad"
+---
+
+# LinkedIn Ad Details
+
+```json
+{
+  "url": "https://www.linkedin.com/ad-library/detail/666281156"
+}
+```
+
+## Use with MCP and CLI
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/linkedin-ad-library/ad` |
+| Compact MCP | `socq_execute` with `endpoint: "linkedin-ad-library/ad"` |
+| Typed MCP | `socq_linkedin_ad_library_ad` |
+| CLI | `socq linkedin-ad-library ad` |
+
+The endpoint uses the asynchronous task flow and returns a task_id. Poll the task endpoint to read normalized results.

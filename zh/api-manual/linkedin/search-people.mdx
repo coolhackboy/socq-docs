@@ -1,0 +1,27 @@
+---
+title: "LinkedIn ????"
+description: "????????LinkedIn ???????"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/search-people"
+---
+
+# LinkedIn ????
+
+```json
+{
+  "urls": [
+    "https://www.linkedin.com/search/results/people/?keywords=engineer"
+  ],
+  "results_limit": 20
+}
+```
+
+## ?? MCP ? CLI ??
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/linkedin/search-people` |
+| Compact MCP | `socq_execute` with `endpoint: "linkedin/search-people"` |
+| Typed MCP | `socq_linkedin_search_people` |
+| CLI | `socq linkedin search-people` |
+
+????????????? task_id????????????????

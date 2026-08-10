@@ -256,7 +256,14 @@
                   "api-manual/linkedin/profiles",
                   "api-manual/linkedin/companies",
                   "api-manual/linkedin/posts",
-                  "api-manual/linkedin/jobs"
+                  "api-manual/linkedin/jobs",
+                  "api-manual/linkedin/post-comments",
+                  "api-manual/linkedin/search-posts",
+                  "api-manual/linkedin/company-posts",
+                  "api-manual/linkedin/profile-posts",
+                  "api-manual/linkedin/search-people",
+                  "api-manual/linkedin/search-jobs",
+                  "api-manual/linkedin/company-jobs"
                 ]
               },
               {
@@ -312,6 +319,31 @@
                   "api-manual/agent-api/status",
                   "api-manual/agent-api/files",
                   "api-manual/agent-api/errors"
+                ]
+              },
+              {
+                "group": "TikTok Ad Library",
+                "pages": [
+                  "api-manual/tiktok-ad-library/overview",
+                  "api-manual/tiktok-ad-library/search",
+                  "api-manual/tiktok-ad-library/ad"
+                ]
+              },
+              {
+                "group": "Google Ad Library",
+                "pages": [
+                  "api-manual/google-ad-library/overview",
+                  "api-manual/google-ad-library/advertiser-search",
+                  "api-manual/google-ad-library/company-ads",
+                  "api-manual/google-ad-library/ad"
+                ]
+              },
+              {
+                "group": "LinkedIn Ad Library",
+                "pages": [
+                  "api-manual/linkedin-ad-library/overview",
+                  "api-manual/linkedin-ad-library/search",
+                  "api-manual/linkedin-ad-library/ad"
                 ]
               }
             ]
@@ -500,7 +532,14 @@
                   "zh/api-manual/linkedin/profiles",
                   "zh/api-manual/linkedin/companies",
                   "zh/api-manual/linkedin/posts",
-                  "zh/api-manual/linkedin/jobs"
+                  "zh/api-manual/linkedin/jobs",
+                  "zh/api-manual/linkedin/post-comments",
+                  "zh/api-manual/linkedin/search-posts",
+                  "zh/api-manual/linkedin/company-posts",
+                  "zh/api-manual/linkedin/profile-posts",
+                  "zh/api-manual/linkedin/search-people",
+                  "zh/api-manual/linkedin/search-jobs",
+                  "zh/api-manual/linkedin/company-jobs"
                 ]
               },
               {
@@ -556,6 +595,31 @@
                   "zh/api-manual/agent-api/status",
                   "zh/api-manual/agent-api/files",
                   "zh/api-manual/agent-api/errors"
+                ]
+              },
+              {
+                "group": "TikTok Ad Library",
+                "pages": [
+                  "api-manual/tiktok-ad-library/overview",
+                  "api-manual/tiktok-ad-library/search",
+                  "api-manual/tiktok-ad-library/ad"
+                ]
+              },
+              {
+                "group": "Google Ad Library",
+                "pages": [
+                  "api-manual/google-ad-library/overview",
+                  "api-manual/google-ad-library/advertiser-search",
+                  "api-manual/google-ad-library/company-ads",
+                  "api-manual/google-ad-library/ad"
+                ]
+              },
+              {
+                "group": "LinkedIn Ad Library",
+                "pages": [
+                  "api-manual/linkedin-ad-library/overview",
+                  "api-manual/linkedin-ad-library/search",
+                  "api-manual/linkedin-ad-library/ad"
                 ]
               }
             ]

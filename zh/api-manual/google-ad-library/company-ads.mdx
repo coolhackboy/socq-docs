@@ -1,0 +1,25 @@
+---
+title: "Google ????"
+description: "????????Google ???????"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/company-ads"
+---
+
+# Google ????
+
+```json
+{
+  "domain": "example.com",
+  "results_limit": 20
+}
+```
+
+## ?? MCP ? CLI ??
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/google-ad-library/company-ads` |
+| Compact MCP | `socq_execute` with `endpoint: "google-ad-library/company-ads"` |
+| Typed MCP | `socq_google_ad_library_company_ads` |
+| CLI | `socq google-ad-library company-ads` |
+
+????????????? task_id????????????????

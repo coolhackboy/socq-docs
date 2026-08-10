@@ -1,0 +1,26 @@
+---
+title: "Google Ad Library Advertiser Search"
+description: "Collect normalized public google ad library advertiser search data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/advertiser-search"
+---
+
+# Google Ad Library Advertiser Search
+
+```json
+{
+  "query": "Acme",
+  "region": "US",
+  "results_limit": 20
+}
+```
+
+## Use with MCP and CLI
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/google-ad-library/advertiser-search` |
+| Compact MCP | `socq_execute` with `endpoint: "google-ad-library/advertiser-search"` |
+| Typed MCP | `socq_google_ad_library_advertiser_search` |
+| CLI | `socq google-ad-library advertiser-search` |
+
+The endpoint uses the asynchronous task flow and returns a task_id. Poll the task endpoint to read normalized results.

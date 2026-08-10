@@ -1,0 +1,25 @@
+---
+title: "TikTok ????"
+description: "????????TikTok ???????"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok-ad-library/search"
+---
+
+# TikTok ????
+
+```json
+{
+  "query": "running shoes",
+  "results_limit": 20
+}
+```
+
+## ?? MCP ? CLI ??
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/tiktok-ad-library/search` |
+| Compact MCP | `socq_execute` with `endpoint: "tiktok-ad-library/search"` |
+| Typed MCP | `socq_tiktok_ad_library_search` |
+| CLI | `socq tiktok-ad-library search` |
+
+????????????? task_id????????????????

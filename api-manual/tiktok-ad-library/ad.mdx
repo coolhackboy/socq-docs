@@ -1,0 +1,24 @@
+---
+title: "TikTok Ad Details"
+description: "Collect normalized public tiktok ad details data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok-ad-library/ad"
+---
+
+# TikTok Ad Details
+
+```json
+{
+  "url": "https://library.tiktok.com/ads/detail/?id=123"
+}
+```
+
+## Use with MCP and CLI
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/tiktok-ad-library/ad` |
+| Compact MCP | `socq_execute` with `endpoint: "tiktok-ad-library/ad"` |
+| Typed MCP | `socq_tiktok_ad_library_ad` |
+| CLI | `socq tiktok-ad-library ad` |
+
+The endpoint uses the asynchronous task flow and returns a task_id. Poll the task endpoint to read normalized results.

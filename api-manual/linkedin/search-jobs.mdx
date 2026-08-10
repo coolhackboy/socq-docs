@@ -1,0 +1,27 @@
+---
+title: "LinkedIn Job Search"
+description: "Collect normalized public linkedin job search data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/search-jobs"
+---
+
+# LinkedIn Job Search
+
+```json
+{
+  "location": "Seattle",
+  "keyword": "Python",
+  "country": "US",
+  "results_limit": 20
+}
+```
+
+## Use with MCP and CLI
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/linkedin/search-jobs` |
+| Compact MCP | `socq_execute` with `endpoint: "linkedin/search-jobs"` |
+| Typed MCP | `socq_linkedin_search_jobs` |
+| CLI | `socq linkedin search-jobs` |
+
+The endpoint uses the asynchronous task flow and returns a task_id. Poll the task endpoint to read normalized results.

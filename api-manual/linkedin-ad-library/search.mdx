@@ -1,0 +1,28 @@
+---
+title: "LinkedIn Ad Library Search"
+description: "Collect normalized public linkedin ad library search data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin-ad-library/search"
+---
+
+# LinkedIn Ad Library Search
+
+```json
+{
+  "company": "Microsoft",
+  "countries": [
+    "US"
+  ],
+  "results_limit": 20
+}
+```
+
+## Use with MCP and CLI
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/linkedin-ad-library/search` |
+| Compact MCP | `socq_execute` with `endpoint: "linkedin-ad-library/search"` |
+| Typed MCP | `socq_linkedin_ad_library_search` |
+| CLI | `socq linkedin-ad-library search` |
+
+The endpoint uses the asynchronous task flow and returns a task_id. Poll the task endpoint to read normalized results.

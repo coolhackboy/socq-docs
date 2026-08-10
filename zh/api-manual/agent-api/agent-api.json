@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API 中文版",
-    "version": "v1-c8347f9103e7",
+    "version": "v1-85cfc881f7f4",
     "description": "根据 SocQ 能力目录生成的异步社交数据 API。"
   },
   "servers": [
@@ -615,6 +615,11 @@
                     "format": "uri",
                     "description": "可选的任务完成回调 URL。"
                   },
+                  "comment_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开评论的 ID。"
+                  },
                   "expansion_token": {
                     "type": "string",
                     "minLength": 1,
@@ -631,11 +636,27 @@
                     "maximum": 2000,
                     "default": 100,
                     "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开内容、主页或商品 URL。"
                   }
                 },
-                "required": [
-                  "expansion_token",
-                  "feedback_id"
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "comment_id",
+                      "url"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "expansion_token",
+                      "feedback_id"
+                    ]
+                  }
                 ]
               }
             }
@@ -1451,6 +1472,226 @@
                 },
                 "required": [
                   "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/google-ad-library/ad": {
+      "post": {
+        "operationId": "socq_google_ad_library_ad",
+        "summary": "Google ????",
+        "description": "????????Google ???????",
+        "tags": [
+          "google-ad-library"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开内容、主页或商品 URL。"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/google-ad-library/advertiser-search": {
+      "post": {
+        "operationId": "socq_google_ad_library_advertiser_search",
+        "summary": "Google ?????",
+        "description": "????????Google ????????",
+        "tags": [
+          "google-ad-library"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "region": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "地区代码。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/google-ad-library/company-ads": {
+      "post": {
+        "operationId": "socq_google_ad_library_company_ads",
+        "summary": "Google ????",
+        "description": "????????Google ???????",
+        "tags": [
+          "google-ad-library"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "advertiser_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "domain": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "end_date": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "筛选结束日期，格式为 YYYY-MM-DD。"
+                  },
+                  "format": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "platform": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "region": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "地区代码。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "start_date": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "筛选开始日期，格式为 YYYY-MM-DD。"
+                  },
+                  "topic": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "advertiser_id"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "domain"
+                    ]
+                  }
                 ]
               }
             }
@@ -2636,6 +2877,160 @@
         }
       }
     },
+    "/v1/linkedin-ad-library/ad": {
+      "post": {
+        "operationId": "socq_linkedin_ad_library_ad",
+        "summary": "LinkedIn ????",
+        "description": "????????LinkedIn ???????",
+        "tags": [
+          "linkedin-ad-library"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开内容、主页或商品 URL。"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/linkedin-ad-library/search": {
+      "post": {
+        "operationId": "socq_linkedin_ad_library_search",
+        "summary": "LinkedIn ????",
+        "description": "????????LinkedIn ???????",
+        "tags": [
+          "linkedin-ad-library"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "company": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "company_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "countries": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z]{2}$"
+                    },
+                    "description": "请求参数，至少提供 1 项。"
+                  },
+                  "end_date": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "筛选结束日期，格式为 YYYY-MM-DD。"
+                  },
+                  "keyword": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "start_date": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "筛选开始日期，格式为 YYYY-MM-DD。"
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "company"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "company_id"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "keyword"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/linkedin/companies": {
       "post": {
         "operationId": "socq_linkedin_companies",
@@ -2661,6 +3056,140 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/linkedin/company-jobs": {
+      "post": {
+        "operationId": "socq_linkedin_company_jobs",
+        "summary": "LinkedIn ????",
+        "description": "????????LinkedIn ???????",
+        "tags": [
+          "linkedin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/linkedin/company-posts": {
+      "post": {
+        "operationId": "socq_linkedin_company_posts",
+        "summary": "LinkedIn ????",
+        "description": "????????LinkedIn ???????",
+        "tags": [
+          "linkedin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "end_date": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "筛选结束日期，格式为 YYYY-MM-DD。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "start_date": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "筛选开始日期，格式为 YYYY-MM-DD。"
+                  },
                   "urls": {
                     "type": "array",
                     "items": {
@@ -2746,6 +3275,65 @@
         }
       }
     },
+    "/v1/linkedin/post-comments": {
+      "post": {
+        "operationId": "socq_linkedin_post_comments",
+        "summary": "LinkedIn ????",
+        "description": "????????LinkedIn ???????",
+        "tags": [
+          "linkedin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开内容、主页或商品 URL。"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/linkedin/posts": {
       "post": {
         "operationId": "socq_linkedin_posts",
@@ -2771,6 +3359,82 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/linkedin/profile-posts": {
+      "post": {
+        "operationId": "socq_linkedin_profile_posts",
+        "summary": "LinkedIn ????",
+        "description": "????????LinkedIn ???????",
+        "tags": [
+          "linkedin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "end_date": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "筛选结束日期，格式为 YYYY-MM-DD。"
+                  },
+                  "only_authored_posts": {
+                    "type": "boolean",
+                    "description": "请求参数。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "start_date": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "筛选开始日期，格式为 YYYY-MM-DD。"
+                  },
                   "urls": {
                     "type": "array",
                     "items": {
@@ -2837,6 +3501,243 @@
                 },
                 "required": [
                   "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/linkedin/search-jobs": {
+      "post": {
+        "operationId": "socq_linkedin_search_jobs",
+        "summary": "LinkedIn ????",
+        "description": "????????LinkedIn ???????",
+        "tags": [
+          "linkedin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "company": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "country": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "国家或地区筛选条件。"
+                  },
+                  "experience_level": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "job_type": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "jobs_to_not_include": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "请求参数。"
+                  },
+                  "keyword": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "location": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "location_radius": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "remote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "selective_search": {
+                    "type": "boolean",
+                    "description": "请求参数。"
+                  },
+                  "time_range": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  }
+                },
+                "required": [
+                  "location"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/linkedin/search-people": {
+      "post": {
+        "operationId": "socq_linkedin_search_people",
+        "summary": "LinkedIn ????",
+        "description": "????????LinkedIn ???????",
+        "tags": [
+          "linkedin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/linkedin/search-posts": {
+      "post": {
+        "operationId": "socq_linkedin_search_posts",
+        "summary": "LinkedIn ????",
+        "description": "????????LinkedIn ???????",
+        "tags": [
+          "linkedin"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "date_posted": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "请求参数。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "query"
                 ]
               }
             }
@@ -4372,6 +5273,117 @@
                 },
                 "required": [
                   "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok-ad-library/ad": {
+      "post": {
+        "operationId": "socq_tiktok_ad_library_ad",
+        "summary": "TikTok ????",
+        "description": "????????TikTok ???????",
+        "tags": [
+          "tiktok-ad-library"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开内容、主页或商品 URL。"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok-ad-library/search": {
+      "post": {
+        "operationId": "socq_tiktok_ad_library_search",
+        "summary": "TikTok ????",
+        "description": "????????TikTok ???????",
+        "tags": [
+          "tiktok-ad-library"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "query"
                 ]
               }
             }
@@ -6321,6 +7333,11 @@
                     "format": "uri",
                     "description": "可选的任务完成回调 URL。"
                   },
+                  "comment_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开评论的 ID。"
+                  },
                   "continuation_token": {
                     "type": "string",
                     "minLength": 1,
@@ -6332,10 +7349,26 @@
                     "maximum": 2000,
                     "default": 100,
                     "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开内容、主页或商品 URL。"
                   }
                 },
-                "required": [
-                  "continuation_token"
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "comment_id",
+                      "url"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "continuation_token"
+                    ]
+                  }
                 ]
               }
             }

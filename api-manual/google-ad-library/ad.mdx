@@ -1,0 +1,24 @@
+---
+title: "Google Ad Details"
+description: "Collect normalized public google ad details data."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/ad"
+---
+
+# Google Ad Details
+
+```json
+{
+  "url": "https://adstransparency.google.com/advertiser/AR123/creative/CR123"
+}
+```
+
+## Use with MCP and CLI
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/google-ad-library/ad` |
+| Compact MCP | `socq_execute` with `endpoint: "google-ad-library/ad"` |
+| Typed MCP | `socq_google_ad_library_ad` |
+| CLI | `socq google-ad-library ad` |
+
+The endpoint uses the asynchronous task flow and returns a task_id. Poll the task endpoint to read normalized results.
