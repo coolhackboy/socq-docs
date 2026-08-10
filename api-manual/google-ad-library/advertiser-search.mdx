@@ -9,10 +9,11 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/advert
 ```json
 {
   "query": "Acme",
-  "region": "US",
-  "results_limit": 20
+  "region": "US"
 }
 ```
+
+The endpoint returns the complete result set produced by the search and bills the actual number of stored advertisers.
 
 ## Use with MCP and CLI
 

@@ -600,26 +600,26 @@
               {
                 "group": "TikTok Ad Library",
                 "pages": [
-                  "api-manual/tiktok-ad-library/overview",
-                  "api-manual/tiktok-ad-library/search",
-                  "api-manual/tiktok-ad-library/ad"
+                  "zh/api-manual/tiktok-ad-library/overview",
+                  "zh/api-manual/tiktok-ad-library/search",
+                  "zh/api-manual/tiktok-ad-library/ad"
                 ]
               },
               {
                 "group": "Google Ad Library",
                 "pages": [
-                  "api-manual/google-ad-library/overview",
-                  "api-manual/google-ad-library/advertiser-search",
-                  "api-manual/google-ad-library/company-ads",
-                  "api-manual/google-ad-library/ad"
+                  "zh/api-manual/google-ad-library/overview",
+                  "zh/api-manual/google-ad-library/advertiser-search",
+                  "zh/api-manual/google-ad-library/company-ads",
+                  "zh/api-manual/google-ad-library/ad"
                 ]
               },
               {
                 "group": "LinkedIn Ad Library",
                 "pages": [
-                  "api-manual/linkedin-ad-library/overview",
-                  "api-manual/linkedin-ad-library/search",
-                  "api-manual/linkedin-ad-library/ad"
+                  "zh/api-manual/linkedin-ad-library/overview",
+                  "zh/api-manual/linkedin-ad-library/search",
+                  "zh/api-manual/linkedin-ad-library/ad"
                 ]
               }
             ]

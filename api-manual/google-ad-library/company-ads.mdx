@@ -9,9 +9,11 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/compan
 ```json
 {
   "domain": "example.com",
-  "results_limit": 20
+  "results_limit": 40
 }
 ```
+
+`results_limit` must be a multiple of the 40-record page size.
 
 ## Use with MCP and CLI
 

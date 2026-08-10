@@ -1,5 +1,5 @@
 {
-  "schema_version": "v1-85cfc881f7f4",
+  "schema_version": "v1-e4178ca97338",
   "platforms": [
     {
       "platform": "facebook",
@@ -3522,12 +3522,6 @@
           "region": {
             "type": "string",
             "minLength": 1
-          },
-          "results_limit": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 2000,
-            "default": 100
           }
         },
         "required": [
@@ -3682,9 +3676,10 @@
           },
           "results_limit": {
             "type": "integer",
-            "minimum": 1,
+            "minimum": 40,
             "maximum": 2000,
-            "default": 100
+            "default": 40,
+            "multipleOf": 40
           },
           "start_date": {
             "type": "string",
@@ -3805,7 +3800,7 @@
       "examples": [
         {
           "domain": "example.com",
-          "results_limit": 20
+          "results_limit": 40
         }
       ],
       "tags": [
@@ -6524,9 +6519,10 @@
           },
           "results_limit": {
             "type": "integer",
-            "minimum": 1,
+            "minimum": 24,
             "maximum": 2000,
-            "default": 100
+            "default": 24,
+            "multipleOf": 24
           },
           "start_date": {
             "type": "string",
@@ -6651,7 +6647,7 @@
           "countries": [
             "US"
           ],
-          "results_limit": 20
+          "results_limit": 24
         }
       ],
       "tags": [
@@ -7247,12 +7243,6 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "results_limit": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 2000,
-            "default": 100
-          },
           "url": {
             "type": "string",
             "minLength": 1,
@@ -7358,8 +7348,7 @@
       },
       "examples": [
         {
-          "url": "https://www.linkedin.com/posts/microsoft_ai-activity-1234567890",
-          "results_limit": 20
+          "url": "https://www.linkedin.com/posts/microsoft_ai-activity-1234567890"
         }
       ],
       "tags": [
@@ -7996,12 +7985,6 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "results_limit": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 2000,
-            "default": 100
-          },
           "urls": {
             "type": "array",
             "items": {
@@ -8113,8 +8096,7 @@
         {
           "urls": [
             "https://www.linkedin.com/search/results/people/?keywords=engineer"
-          ],
-          "results_limit": 20
+          ]
         }
       ],
       "tags": [
@@ -8151,9 +8133,10 @@
           },
           "results_limit": {
             "type": "integer",
-            "minimum": 1,
+            "minimum": 10,
             "maximum": 2000,
-            "default": 100
+            "default": 10,
+            "multipleOf": 10
           }
         },
         "required": [
@@ -11630,9 +11613,10 @@
           },
           "results_limit": {
             "type": "integer",
-            "minimum": 1,
+            "minimum": 12,
             "maximum": 2000,
-            "default": 100
+            "default": 12,
+            "multipleOf": 12
           }
         },
         "required": [
@@ -11735,7 +11719,7 @@
       "examples": [
         {
           "query": "running shoes",
-          "results_limit": 20
+          "results_limit": 24
         }
       ],
       "tags": [

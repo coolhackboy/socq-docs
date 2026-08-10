@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-85cfc881f7f4",
+    "version": "v1-e4178ca97338",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -1542,12 +1542,6 @@
                   "region": {
                     "type": "string",
                     "minLength": 1
-                  },
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 2000,
-                    "default": 100
                   }
                 },
                 "required": [
@@ -1622,9 +1616,10 @@
                   },
                   "results_limit": {
                     "type": "integer",
-                    "minimum": 1,
+                    "minimum": 40,
                     "maximum": 2000,
-                    "default": 100
+                    "default": 40,
+                    "multipleOf": 40
                   },
                   "start_date": {
                     "type": "string",
@@ -2930,9 +2925,10 @@
                   },
                   "results_limit": {
                     "type": "integer",
-                    "minimum": 1,
+                    "minimum": 24,
                     "maximum": 2000,
-                    "default": 100
+                    "default": 24,
+                    "multipleOf": 24
                   },
                   "start_date": {
                     "type": "string",
@@ -3244,12 +3240,6 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 2000,
-                    "default": 100
-                  },
                   "url": {
                     "type": "string",
                     "minLength": 1,
@@ -3586,12 +3576,6 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 2000,
-                    "default": 100
-                  },
                   "urls": {
                     "type": "array",
                     "items": {
@@ -3659,9 +3643,10 @@
                   },
                   "results_limit": {
                     "type": "integer",
-                    "minimum": 1,
+                    "minimum": 10,
                     "maximum": 2000,
-                    "default": 100
+                    "default": 10,
+                    "multipleOf": 10
                   }
                 },
                 "required": [
@@ -5268,9 +5253,10 @@
                   },
                   "results_limit": {
                     "type": "integer",
-                    "minimum": 1,
+                    "minimum": 12,
                     "maximum": 2000,
-                    "default": 100
+                    "default": 12,
+                    "multipleOf": 12
                   }
                 },
                 "required": [

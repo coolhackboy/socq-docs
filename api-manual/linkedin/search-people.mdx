@@ -10,10 +10,11 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/search-people"
 {
   "urls": [
     "https://www.linkedin.com/search/results/people/?keywords=engineer"
-  ],
-  "results_limit": 20
+  ]
 }
 ```
+
+This endpoint returns all records produced for each submitted search URL. The data source does not support a result limit, so usage is billed from the actual number of stored results.
 
 ## Use with MCP and CLI
 

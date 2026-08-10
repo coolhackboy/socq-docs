@@ -9,9 +9,11 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok-ad-library/search
 ```json
 {
   "query": "running shoes",
-  "results_limit": 20
+  "results_limit": 24
 }
 ```
+
+`results_limit` must be a multiple of the 12-record page size.
 
 ## Use with MCP and CLI
 

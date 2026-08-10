@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API 中文版",
-    "version": "v1-85cfc881f7f4",
+    "version": "v1-e4178ca97338",
     "description": "根据 SocQ 能力目录生成的异步社交数据 API。"
   },
   "servers": [
@@ -1577,13 +1577,6 @@
                     "type": "string",
                     "minLength": 1,
                     "description": "地区代码。"
-                  },
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 2000,
-                    "default": 100,
-                    "description": "最多保存的结果数，实际结果可能少于该值。"
                   }
                 },
                 "required": [
@@ -1664,9 +1657,10 @@
                   },
                   "results_limit": {
                     "type": "integer",
-                    "minimum": 1,
+                    "minimum": 40,
                     "maximum": 2000,
-                    "default": 100,
+                    "default": 40,
+                    "multipleOf": 40,
                     "description": "最多保存的结果数，实际结果可能少于该值。"
                   },
                   "start_date": {
@@ -2984,9 +2978,10 @@
                   },
                   "results_limit": {
                     "type": "integer",
-                    "minimum": 1,
+                    "minimum": 24,
                     "maximum": 2000,
-                    "default": 100,
+                    "default": 24,
+                    "multipleOf": 24,
                     "description": "最多保存的结果数，实际结果可能少于该值。"
                   },
                   "start_date": {
@@ -3300,13 +3295,6 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 2000,
-                    "default": 100,
-                    "description": "最多保存的结果数，实际结果可能少于该值。"
-                  },
                   "url": {
                     "type": "string",
                     "minLength": 1,
@@ -3656,13 +3644,6 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 2000,
-                    "default": 100,
-                    "description": "最多保存的结果数，实际结果可能少于该值。"
-                  },
                   "urls": {
                     "type": "array",
                     "items": {
@@ -3730,9 +3711,10 @@
                   },
                   "results_limit": {
                     "type": "integer",
-                    "minimum": 1,
+                    "minimum": 10,
                     "maximum": 2000,
-                    "default": 100,
+                    "default": 10,
+                    "multipleOf": 10,
                     "description": "最多保存的结果数，实际结果可能少于该值。"
                   }
                 },
@@ -5376,9 +5358,10 @@
                   },
                   "results_limit": {
                     "type": "integer",
-                    "minimum": 1,
+                    "minimum": 12,
                     "maximum": 2000,
-                    "default": 100,
+                    "default": 12,
+                    "multipleOf": 12,
                     "description": "最多保存的结果数，实际结果可能少于该值。"
                   }
                 },
