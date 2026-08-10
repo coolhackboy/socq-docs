@@ -187,6 +187,15 @@
                 ]
               },
               {
+                "group": "Google Ad Library",
+                "pages": [
+                  "api-manual/google-ad-library/overview",
+                  "api-manual/google-ad-library/advertiser-search",
+                  "api-manual/google-ad-library/company-ads",
+                  "api-manual/google-ad-library/ad"
+                ]
+              },
+              {
                 "group": "YouTube",
                 "pages": [
                   "api-manual/youtube/overview",
@@ -220,6 +229,14 @@
                   "api-manual/tiktok/following-list",
                   "api-manual/tiktok/comment-replies",
                   "api-manual/tiktok/user-videos"
+                ]
+              },
+              {
+                "group": "TikTok Ad Library",
+                "pages": [
+                  "api-manual/tiktok-ad-library/overview",
+                  "api-manual/tiktok-ad-library/search",
+                  "api-manual/tiktok-ad-library/ad"
                 ]
               },
               {
@@ -264,6 +281,14 @@
                   "api-manual/linkedin/search-people",
                   "api-manual/linkedin/search-jobs",
                   "api-manual/linkedin/company-jobs"
+                ]
+              },
+              {
+                "group": "LinkedIn Ad Library",
+                "pages": [
+                  "api-manual/linkedin-ad-library/overview",
+                  "api-manual/linkedin-ad-library/search",
+                  "api-manual/linkedin-ad-library/ad"
                 ]
               },
               {
@@ -319,31 +344,6 @@
                   "api-manual/agent-api/status",
                   "api-manual/agent-api/files",
                   "api-manual/agent-api/errors"
-                ]
-              },
-              {
-                "group": "TikTok Ad Library",
-                "pages": [
-                  "api-manual/tiktok-ad-library/overview",
-                  "api-manual/tiktok-ad-library/search",
-                  "api-manual/tiktok-ad-library/ad"
-                ]
-              },
-              {
-                "group": "Google Ad Library",
-                "pages": [
-                  "api-manual/google-ad-library/overview",
-                  "api-manual/google-ad-library/advertiser-search",
-                  "api-manual/google-ad-library/company-ads",
-                  "api-manual/google-ad-library/ad"
-                ]
-              },
-              {
-                "group": "LinkedIn Ad Library",
-                "pages": [
-                  "api-manual/linkedin-ad-library/overview",
-                  "api-manual/linkedin-ad-library/search",
-                  "api-manual/linkedin-ad-library/ad"
                 ]
               }
             ]
@@ -463,6 +463,15 @@
                 ]
               },
               {
+                "group": "Google 广告资料库",
+                "pages": [
+                  "zh/api-manual/google-ad-library/overview",
+                  "zh/api-manual/google-ad-library/advertiser-search",
+                  "zh/api-manual/google-ad-library/company-ads",
+                  "zh/api-manual/google-ad-library/ad"
+                ]
+              },
+              {
                 "group": "YouTube",
                 "pages": [
                   "zh/api-manual/youtube/overview",
@@ -496,6 +505,14 @@
                   "zh/api-manual/tiktok/following-list",
                   "zh/api-manual/tiktok/comment-replies",
                   "zh/api-manual/tiktok/user-videos"
+                ]
+              },
+              {
+                "group": "TikTok 广告资料库",
+                "pages": [
+                  "zh/api-manual/tiktok-ad-library/overview",
+                  "zh/api-manual/tiktok-ad-library/search",
+                  "zh/api-manual/tiktok-ad-library/ad"
                 ]
               },
               {
@@ -540,6 +557,14 @@
                   "zh/api-manual/linkedin/search-people",
                   "zh/api-manual/linkedin/search-jobs",
                   "zh/api-manual/linkedin/company-jobs"
+                ]
+              },
+              {
+                "group": "LinkedIn 广告资料库",
+                "pages": [
+                  "zh/api-manual/linkedin-ad-library/overview",
+                  "zh/api-manual/linkedin-ad-library/search",
+                  "zh/api-manual/linkedin-ad-library/ad"
                 ]
               },
               {
@@ -595,31 +620,6 @@
                   "zh/api-manual/agent-api/status",
                   "zh/api-manual/agent-api/files",
                   "zh/api-manual/agent-api/errors"
-                ]
-              },
-              {
-                "group": "TikTok Ad Library",
-                "pages": [
-                  "zh/api-manual/tiktok-ad-library/overview",
-                  "zh/api-manual/tiktok-ad-library/search",
-                  "zh/api-manual/tiktok-ad-library/ad"
-                ]
-              },
-              {
-                "group": "Google Ad Library",
-                "pages": [
-                  "zh/api-manual/google-ad-library/overview",
-                  "zh/api-manual/google-ad-library/advertiser-search",
-                  "zh/api-manual/google-ad-library/company-ads",
-                  "zh/api-manual/google-ad-library/ad"
-                ]
-              },
-              {
-                "group": "LinkedIn Ad Library",
-                "pages": [
-                  "zh/api-manual/linkedin-ad-library/overview",
-                  "zh/api-manual/linkedin-ad-library/search",
-                  "zh/api-manual/linkedin-ad-library/ad"
                 ]
               }
             ]

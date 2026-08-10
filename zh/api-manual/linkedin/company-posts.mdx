@@ -1,10 +1,10 @@
 ---
-title: "LinkedIn ????"
-description: "????????LinkedIn ???????"
+title: "LinkedIn 公司帖子"
+description: "采集并标准化公开的 LinkedIn 公司帖子。"
 openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/company-posts"
 ---
 
-# LinkedIn ????
+# LinkedIn 公司帖子
 
 ```json
 {
@@ -15,13 +15,13 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/company-post
 }
 ```
 
-## ?? MCP ? CLI ??
+## 与 MCP 和 CLI 一起使用
 
-| Interface | Value |
+| 接口 | 值 |
 | --- | --- |
 | REST | `POST /v1/linkedin/company-posts` |
-| Compact MCP | `socq_execute` with `endpoint: "linkedin/company-posts"` |
+| Compact MCP | `socq_execute` 与 `endpoint: "linkedin/company-posts"` |
 | Typed MCP | `socq_linkedin_company_posts` |
 | CLI | `socq linkedin company-posts` |
 
-????????????? task_id????????????????
+该接口使用异步任务流程并返回 `task_id`。轮询任务接口以读取标准化结果。

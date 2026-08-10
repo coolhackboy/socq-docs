@@ -1494,8 +1494,8 @@
     "/v1/google-ad-library/ad": {
       "post": {
         "operationId": "socq_google_ad_library_ad",
-        "summary": "Google ????",
-        "description": "????????Google ???????",
+        "summary": "Google 广告详情",
+        "description": "采集并标准化公开的 Google 广告详情。",
         "tags": [
           "google-ad-library"
         ],
@@ -1546,8 +1546,8 @@
     "/v1/google-ad-library/advertiser-search": {
       "post": {
         "operationId": "socq_google_ad_library_advertiser_search",
-        "summary": "Google ?????",
-        "description": "????????Google ????????",
+        "summary": "Google 广告主搜索",
+        "description": "搜索并标准化公开的 Google 广告主数据。",
         "tags": [
           "google-ad-library"
         ],
@@ -1603,8 +1603,8 @@
     "/v1/google-ad-library/company-ads": {
       "post": {
         "operationId": "socq_google_ad_library_company_ads",
-        "summary": "Google ????",
-        "description": "????????Google ???????",
+        "summary": "Google 公司广告",
+        "description": "采集并标准化公开的 Google 公司广告数据。",
         "tags": [
           "google-ad-library"
         ],
@@ -2874,8 +2874,8 @@
     "/v1/linkedin-ad-library/ad": {
       "post": {
         "operationId": "socq_linkedin_ad_library_ad",
-        "summary": "LinkedIn ????",
-        "description": "????????LinkedIn ???????",
+        "summary": "LinkedIn 广告详情",
+        "description": "采集并标准化公开的 LinkedIn 广告详情。",
         "tags": [
           "linkedin-ad-library"
         ],
@@ -2926,8 +2926,8 @@
     "/v1/linkedin-ad-library/search": {
       "post": {
         "operationId": "socq_linkedin_ad_library_search",
-        "summary": "LinkedIn ????",
-        "description": "????????LinkedIn ???????",
+        "summary": "LinkedIn 广告搜索",
+        "description": "搜索并标准化公开的 LinkedIn 广告数据。",
         "tags": [
           "linkedin-ad-library"
         ],
@@ -3084,8 +3084,8 @@
     "/v1/linkedin/company-jobs": {
       "post": {
         "operationId": "socq_linkedin_company_jobs",
-        "summary": "LinkedIn ????",
-        "description": "????????LinkedIn ???????",
+        "summary": "LinkedIn 公司职位",
+        "description": "采集并标准化公开的 LinkedIn 公司职位。",
         "tags": [
           "linkedin"
         ],
@@ -3146,8 +3146,8 @@
     "/v1/linkedin/company-posts": {
       "post": {
         "operationId": "socq_linkedin_company_posts",
-        "summary": "LinkedIn ????",
-        "description": "????????LinkedIn ???????",
+        "summary": "LinkedIn 公司帖子",
+        "description": "采集并标准化公开的 LinkedIn 公司帖子。",
         "tags": [
           "linkedin"
         ],
@@ -3273,8 +3273,8 @@
     "/v1/linkedin/post-comments": {
       "post": {
         "operationId": "socq_linkedin_post_comments",
-        "summary": "LinkedIn ????",
-        "description": "????????LinkedIn ???????",
+        "summary": "LinkedIn 帖子评论",
+        "description": "采集并标准化公开的 LinkedIn 帖子评论。",
         "tags": [
           "linkedin"
         ],
@@ -3380,8 +3380,8 @@
     "/v1/linkedin/profile-posts": {
       "post": {
         "operationId": "socq_linkedin_profile_posts",
-        "summary": "LinkedIn ????",
-        "description": "????????LinkedIn ???????",
+        "summary": "LinkedIn 个人帖子",
+        "description": "采集并标准化公开的 LinkedIn 个人帖子。",
         "tags": [
           "linkedin"
         ],
@@ -3511,8 +3511,8 @@
     "/v1/linkedin/search-jobs": {
       "post": {
         "operationId": "socq_linkedin_search_jobs",
-        "summary": "LinkedIn ????",
-        "description": "????????LinkedIn ???????",
+        "summary": "LinkedIn 职位搜索",
+        "description": "搜索并标准化公开的 LinkedIn 职位数据。",
         "tags": [
           "linkedin"
         ],
@@ -3622,8 +3622,8 @@
     "/v1/linkedin/search-people": {
       "post": {
         "operationId": "socq_linkedin_search_people",
-        "summary": "LinkedIn ????",
-        "description": "????????LinkedIn ???????",
+        "summary": "LinkedIn 人员搜索",
+        "description": "搜索并标准化公开的 LinkedIn 人员数据。",
         "tags": [
           "linkedin"
         ],
@@ -3677,8 +3677,8 @@
     "/v1/linkedin/search-posts": {
       "post": {
         "operationId": "socq_linkedin_search_posts",
-        "summary": "LinkedIn ????",
-        "description": "????????LinkedIn ???????",
+        "summary": "LinkedIn 帖子搜索",
+        "description": "搜索并标准化公开的 LinkedIn 帖子数据。",
         "tags": [
           "linkedin"
         ],
@@ -5277,8 +5277,8 @@
     "/v1/tiktok-ad-library/ad": {
       "post": {
         "operationId": "socq_tiktok_ad_library_ad",
-        "summary": "TikTok ????",
-        "description": "????????TikTok ???????",
+        "summary": "TikTok 广告详情",
+        "description": "采集并标准化公开的 TikTok 广告详情。",
         "tags": [
           "tiktok-ad-library"
         ],
@@ -5329,8 +5329,8 @@
     "/v1/tiktok-ad-library/search": {
       "post": {
         "operationId": "socq_tiktok_ad_library_search",
-        "summary": "TikTok ????",
-        "description": "????????TikTok ???????",
+        "summary": "TikTok 广告搜索",
+        "description": "搜索并标准化公开的 TikTok 广告数据。",
         "tags": [
           "tiktok-ad-library"
         ],

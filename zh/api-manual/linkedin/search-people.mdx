@@ -1,10 +1,10 @@
 ---
-title: "LinkedIn ????"
-description: "????????LinkedIn ???????"
+title: "LinkedIn 人员搜索"
+description: "搜索并标准化公开的 LinkedIn 人员数据。"
 openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/search-people"
 ---
 
-# LinkedIn ????
+# LinkedIn 人员搜索
 
 ```json
 {
@@ -16,13 +16,13 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/search-peopl
 
 此接口返回每个搜索 URL 实际产生的全部记录。数据源不支持限制返回条数，因此按成功存储的实际结果条数计费。
 
-## ?? MCP ? CLI ??
+## 与 MCP 和 CLI 一起使用
 
-| Interface | Value |
+| 接口 | 值 |
 | --- | --- |
 | REST | `POST /v1/linkedin/search-people` |
-| Compact MCP | `socq_execute` with `endpoint: "linkedin/search-people"` |
+| Compact MCP | `socq_execute` 与 `endpoint: "linkedin/search-people"` |
 | Typed MCP | `socq_linkedin_search_people` |
 | CLI | `socq linkedin search-people` |
 
-????????????? task_id????????????????
+该接口使用异步任务流程并返回 `task_id`。轮询任务接口以读取标准化结果。

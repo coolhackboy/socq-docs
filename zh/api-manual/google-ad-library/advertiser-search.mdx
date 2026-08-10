@@ -1,10 +1,10 @@
 ---
-title: "Google ?????"
-description: "????????Google ????????"
+title: "Google 广告主搜索"
+description: "搜索并标准化公开的 Google 广告主数据。"
 openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/advertiser-search"
 ---
 
-# Google ?????
+# Google 广告主搜索
 
 ```json
 {
@@ -15,13 +15,13 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/adv
 
 接口返回本次搜索实际产生的完整结果，并按成功存储的广告主条数计费。
 
-## ?? MCP ? CLI ??
+## 与 MCP 和 CLI 一起使用
 
-| Interface | Value |
+| 接口 | 值 |
 | --- | --- |
 | REST | `POST /v1/google-ad-library/advertiser-search` |
-| Compact MCP | `socq_execute` with `endpoint: "google-ad-library/advertiser-search"` |
+| Compact MCP | `socq_execute` 与 `endpoint: "google-ad-library/advertiser-search"` |
 | Typed MCP | `socq_google_ad_library_advertiser_search` |
 | CLI | `socq google-ad-library advertiser-search` |
 
-????????????? task_id????????????????
+该接口使用异步任务流程并返回 `task_id`。轮询任务接口以读取标准化结果。

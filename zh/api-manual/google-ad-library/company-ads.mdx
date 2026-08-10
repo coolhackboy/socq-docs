@@ -1,10 +1,10 @@
 ---
-title: "Google ????"
-description: "????????Google ???????"
+title: "Google 公司广告"
+description: "采集并标准化公开的 Google 公司广告数据。"
 openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/company-ads"
 ---
 
-# Google ????
+# Google 公司广告
 
 ```json
 {
@@ -15,13 +15,13 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/com
 
 `results_limit` 必须是每页 40 条的整数倍。
 
-## ?? MCP ? CLI ??
+## 与 MCP 和 CLI 一起使用
 
-| Interface | Value |
+| 接口 | 值 |
 | --- | --- |
 | REST | `POST /v1/google-ad-library/company-ads` |
-| Compact MCP | `socq_execute` with `endpoint: "google-ad-library/company-ads"` |
+| Compact MCP | `socq_execute` 与 `endpoint: "google-ad-library/company-ads"` |
 | Typed MCP | `socq_google_ad_library_company_ads` |
 | CLI | `socq google-ad-library company-ads` |
 
-????????????? task_id????????????????
+该接口使用异步任务流程并返回 `task_id`。轮询任务接口以读取标准化结果。
