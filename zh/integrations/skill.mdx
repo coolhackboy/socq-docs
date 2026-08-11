@@ -6,7 +6,7 @@ icon: "wand-magic-sparkles"
 
 # Agent Skill
 
-安装 `socq-social-research` Skill，让编码 Agent 学会选择 SocQ API、填写输入参数、控制成本并完成异步数据采集。
+安装 `socq-social-research` Skill，让编程 Agent 学会选择 SocQ API、填写输入参数、控制成本并完成异步数据采集。
 
 ```bash
 npx skills add SocQAPI/socq-devtools
@@ -21,23 +21,23 @@ npx skills add SocQAPI/socq-devtools
 
 建议同时使用两者。MCP 负责执行；Agent Skill 负责选择 API、理解计费规则、轮询任务、翻页读取结果，以及协调跨平台调研流程。
 
-计费行为和 API 密钥限制记录在 [API 概述](/zh/api-manual/agent-api/overview) 和 [身份验证](/zh/api-manual/agent-api/authentication) 中。
+计费行为和 API 密钥限制记录在 [API 概览](/zh/api-manual/agent-api/overview)和[身份验证](/zh/api-manual/agent-api/authentication)中。
 
 ## 使用示例
 
 ```text
-Collect the latest comments from this Instagram Reel, wait for the task,
-then summarize recurring positive and negative themes.
+收集这个 Instagram Reel 的最新评论，等待任务完成，
+然后总结反复出现的正面和负面主题。
 ```
 
 ```text
-Compare the latest posts from these three X profiles. Use the same result
-limit for each profile and return a normalized engagement table.
+比较这三个 X 账号的最新帖子。每个账号使用相同的结果上限，
+并返回标准化的互动数据表。
 ```
 
 ```text
-Find recent YouTube videos about AI coding agents, collect their comments,
-and explain which topics produce the strongest audience response.
+查找最近关于 AI 编程 Agent 的 YouTube 视频，收集评论，
+并说明哪些主题获得了最强的受众回应。
 ```
 
 该 Skill 会指导 Agent：
@@ -46,20 +46,29 @@ and explain which topics produce the strongest audience response.
 - 选择 URL、用户名、主题标签或查询输入；
 - 在运行大型任务前检查参数结构并估算所需积分；
 - 提交可能需要重试的任务时使用幂等密钥；
-- 轮询异步任务而不是重新提交；
+- 轮询异步任务，而不是重复提交；
 - 使用游标翻页并获取原始文件；
 - 处理身份验证、参数校验、请求频率限制、积分不足和数据提供方错误；
 - 组织口径一致、结果可比较的跨平台调研。
 
-## 执行偏好
+对于付费的大批量、跨平台或多端点任务，Skill 会先报告预计积分成本并请求确认，不会静默重试失败的付费请求。
+
+## 执行优先级
 
 该 Skill 按以下顺序选择执行方式：
 
 1. 远程 MCP；
 2. SocQ stdio MCP 转接程序；
-3. MCP 不可用时使用 CLI 或 REST。
+3. MCP 不可用时使用 SocQ CLI；
+4. 仅在其他方式不可用时直接使用 REST。
 
-Skill、MCP 和 OpenAPI 都使用同一份能力目录，因此不同集成方式中的 API 端点 ID 和输入字段保持一致。
+Skill、MCP 和 OpenAPI 使用同一份能力目录，因此不同集成方式中的 API 端点 ID 和输入字段保持一致。
+
+## 结果与报告
+
+该 Skill 在 MCP、CLI 和 REST 中请求稳定的 `standard` 结果视图。它将 `queued` 和 `running` 视为未完成状态，保存任务 ID 以便恢复，沿不透明的 `next_cursor` 翻页至已批准的上限，并在标准化分页结果不足时获取原始 JSONL 文件。
+
+完成后的回复会说明所选端点和执行方式、输入与过滤条件、可用时的预计及实际积分、任务 ID 和最终状态、结果数与页数，并明确披露失败的平台、不支持的过滤条件或不完整的覆盖范围。
 
 ## 请求归属
 
@@ -71,4 +80,4 @@ Agent Skill 提交任务时，会在 `request_source` 中记录 Skill 及其执�
 | CLI 回退 | `skill-cli` |
 | 直接 REST 回退 | `skill-rest` |
 
-该技能将 `_request_source: "skill"` 传递到 MCP 执行工具，将 `--request-source skill` 传递到 CLI 命令，或将 `X-Socq-Source: skill-rest` 传递到直接 REST 请求。轮询现有任务不需要归因标记。
+该 Skill 将 `_request_source: "skill"` 传递给 MCP 执行工具，将 `--request-source skill` 传递给 CLI 命令，或将 `X-Socq-Source: skill-rest` 传递给直接 REST 请求。轮询现有任务不需要归属标记。

@@ -51,15 +51,24 @@ The Skill guides the agent through:
 - recovering from authentication, validation, rate, credit, and provider errors;
 - coordinating comparable cross-platform research.
 
+Before a paid large-volume, cross-platform, or multi-endpoint run, the Skill reports the expected credit cost and asks for confirmation. It does not silently retry failed paid requests.
+
 ## Execution preference
 
 The Skill prefers:
 
 1. remote MCP;
 2. the SocQ stdio MCP bridge;
-3. CLI or REST when MCP is unavailable.
+3. the SocQ CLI when MCP is unavailable;
+4. direct REST only as the final fallback.
 
 Endpoint references are generated from the same Capability Registry as MCP and OpenAPI, so endpoint IDs and input fields remain consistent across integrations.
+
+## Results and reporting
+
+The Skill requests the stable `standard` result view across MCP, CLI, and REST integrations. It treats `queued` and `running` tasks as incomplete, saves task IDs for resumption, follows opaque `next_cursor` values to the approved limit, and retrieves raw JSONL files when normalized pages are insufficient.
+
+A completed response identifies the selected endpoints and execution path, summarizes inputs and filters, reports expected and actual credits when available, lists task IDs and terminal states, states result and page counts, and discloses failed platforms, unsupported filters, or incomplete coverage.
 
 ## Request attribution
 
