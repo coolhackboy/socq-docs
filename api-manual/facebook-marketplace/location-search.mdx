@@ -38,6 +38,35 @@ Use the JSON request body above as the nested `input` object for `socq_execute`,
 See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
 {/* mcp-usage:end */}
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `name` | `string` | Yes | Normalized name field. |
+| `location` | `object` | Yes | Normalized location field. |
+| `location.name` | `string` | Yes | Normalized name field. |
+| `location.city` | `string` | Yes | Normalized city field. |
+| `location.region` | `string` | Yes | Normalized region field. |
+| `location.country` | `string` | Yes | Normalized country field. |
+| `location.latitude` | `number` | Yes | Normalized latitude field. |
+| `location.longitude` | `number` | Yes | Normalized longitude field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -53,27 +82,22 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
-      "items": [{
-        "id": "106224666074625",
-        "platform": "facebook-marketplace",
-        "resource": "location-search",
-        "type": "location",
-        "url": null,
-        "name": "Austin, Texas",
-        "text": "City",
-        "metrics": {},
-        "media": [],
-        "created_at": null,
-        "collected_at": "2026-07-18T10:30:00",
-        "extra": {
-          "search_query": "Austin",
-          "address": [],
-          "city": "Austin",
-          "postal_code": "78701",
-          "latitude": 30.2677,
-          "longitude": -97.7475
+      "view": "standard",
+      "schema_id": "marketplace-location",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "106224666074625",
+          "platform": "facebook-marketplace",
+          "resource": "location-search",
+          "type": "location",
+          "url": null,
+          "published_at": null,
+          "collected_at": "2026-07-18T10:30:00Z",
+          "name": "Austin, Texas",
+          "location": null
         }
-      }]
+      ]
     }
   }
 }

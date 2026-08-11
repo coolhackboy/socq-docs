@@ -15,6 +15,47 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/compan
 
 `results_limit` must be a multiple of the 40-record page size.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `advertiser` | `object` | Yes | Normalized advertiser field. |
+| `advertiser.id` | `string` | Yes | Normalized id field. |
+| `advertiser.name` | `string` | Yes | Normalized name field. |
+| `advertiser.url` | `string` | Yes | Normalized url field. |
+| `advertiser.logo_url` | `string` | Yes | Normalized logo url field. |
+| `start_date` | `string` | Yes | Normalized start date field. |
+| `end_date` | `string` | Yes | Normalized end date field. |
+| `countries` | `array<string>` | Yes | Normalized countries field. |
+| `platforms` | `array<string>` | Yes | Normalized platforms field. |
+| `format` | `string` | Yes | Normalized format field. |
+| `landing_page_url` | `string` | Yes | Normalized landing page url field. |
+| `impressions` | `integer` | Yes | Normalized impressions field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -30,6 +71,9 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/compan
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "ad",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "CR12684696772090527745",
@@ -37,17 +81,23 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/compan
           "resource": "company-ads",
           "type": "ad",
           "url": "https://adstransparency.google.com/advertiser/AR01614014350098432001/creative/CR12684696772090527745",
-          "author": {
+          "published_at": "2026-01-13T21:19:35Z",
+          "collected_at": "2026-08-11T03:03:35.816323Z",
+          "text": null,
+          "advertiser": {
             "id": "AR01614014350098432001",
-            "name": "lululemon athletica canada inc."
+            "name": "lululemon athletica canada inc.",
+            "url": null,
+            "logo_url": null
           },
-          "metrics": {},
-          "media": [],
-          "created_at": "2026-01-13T21:19:35",
-          "extra": {
-            "end_at": "2026-08-09T07:22:13",
-            "format": "image"
-          }
+          "start_date": null,
+          "end_date": null,
+          "countries": null,
+          "platforms": null,
+          "format": null,
+          "landing_page_url": null,
+          "impressions": null,
+          "media": []
         }
       ]
     }

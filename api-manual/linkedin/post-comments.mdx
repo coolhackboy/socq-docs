@@ -14,6 +14,41 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/post-comments"
 
 The endpoint returns all comments exposed with the post and bills the actual number of stored comments.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `author` | `object` | Yes | Normalized author field. |
+| `author.id` | `string` | Yes | Normalized id field. |
+| `author.username` | `string` | Yes | Normalized username field. |
+| `author.name` | `string` | Yes | Normalized name field. |
+| `author.url` | `string` | Yes | Normalized url field. |
+| `author.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `author.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `author.is_private` | `boolean` | Yes | Normalized is private field. |
+| `parent_id` | `string` | Yes | Normalized parent id field. |
+| `post_id` | `string` | Yes | Normalized post id field. |
+| `metrics` | `object` | Yes | Normalized metrics field. |
+| `metrics.likes_count` | `integer` | Yes | Normalized likes count field. |
+| `metrics.replies_count` | `integer` | Yes | Normalized replies count field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -29,6 +64,9 @@ The endpoint returns all comments exposed with the post and bills the actual num
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "comment",
+      "schema_version": "1.0",
       "items": [
         {
           "id": null,
@@ -36,17 +74,21 @@ The endpoint returns all comments exposed with the post and bills the actual num
           "resource": "post-comments",
           "type": "comment",
           "url": "https://www.linkedin.com/posts/aagupta_what-you-need-to-know-ai-agents-activity-7354600338621906944-RvXR",
+          "published_at": null,
+          "collected_at": "2026-08-11T03:03:36.428610Z",
           "text": "This hit different tbh bruh",
           "author": {
+            "id": null,
+            "username": null,
             "name": "Akil Rakuten A.",
-            "url": "https://www.linkedin.com/in/akil-rakuten-a-60739a229"
+            "url": "https://www.linkedin.com/in/akil-rakuten-a-60739a229",
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
           },
-          "metrics": {
-            "likes_count": null,
-            "replies_count": null
-          },
-          "media": [],
-          "created_at": null
+          "parent_id": null,
+          "post_id": null,
+          "metrics": null
         }
       ]
     }

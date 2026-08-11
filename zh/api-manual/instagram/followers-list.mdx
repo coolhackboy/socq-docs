@@ -21,6 +21,44 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/instagram/followers-l
 
 只能返回对公共个人资料可见的关系。
 
+
+
+
+
+
+{/* result-schema:start */}
+## 标准结果字段
+
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 标准化的 id 字段。 |
+| `platform` | `string` | 否 | 标准化的 platform 字段。 |
+| `resource` | `string` | 否 | 标准化的 resource 字段。 |
+| `type` | `string` | 否 | 标准化的 type 字段。 |
+| `url` | `string` | 是 | 标准化的 url 字段。 |
+| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
+| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
+| `actor` | `object` | 是 | 标准化的 actor 字段。 |
+| `actor.id` | `string` | 是 | 标准化的 id 字段。 |
+| `actor.username` | `string` | 是 | 标准化的 username 字段。 |
+| `actor.name` | `string` | 是 | 标准化的 name 字段。 |
+| `actor.url` | `string` | 是 | 标准化的 url 字段。 |
+| `actor.avatar_url` | `string` | 是 | 标准化的 avatar url 字段。 |
+| `actor.is_verified` | `boolean` | 是 | 标准化的 is verified 字段。 |
+| `actor.is_private` | `boolean` | 是 | 标准化的 is private 字段。 |
+| `related_actor` | `object` | 是 | 标准化的 related actor 字段。 |
+| `related_actor.id` | `string` | 是 | 标准化的 id 字段。 |
+| `related_actor.username` | `string` | 是 | 标准化的 username 字段。 |
+| `related_actor.name` | `string` | 是 | 标准化的 name 字段。 |
+| `related_actor.url` | `string` | 是 | 标准化的 url 字段。 |
+| `related_actor.avatar_url` | `string` | 是 | 标准化的 avatar url 字段。 |
+| `related_actor.is_verified` | `boolean` | 是 | 标准化的 is verified 字段。 |
+| `related_actor.is_private` | `boolean` | 是 | 标准化的 is private 字段。 |
+| `relationship` | `string` | 是 | 标准化的 relationship 字段。 |
+{/* result-schema:end */}
+
 ## 任务完成响应
 
 ```json
@@ -36,35 +74,29 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/instagram/followers-l
       "limit": 1,
       "next_cursor": "NjQ2Ng",
       "has_more": true,
+      "view": "standard",
+      "schema_id": "relationship",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "64155866175",
-          "url": "https://www.instagram.com/kanishka_____krishna8522/",
-          "name": "krishna",
-          "type": "profile",
-          "extra": {
-            "position": 1,
-            "relationship": "follower",
-            "source_username": "instagram"
-          },
-          "metrics": {
-            "likes_count": null,
-            "plays_count": null,
-            "posts_count": null,
-            "views_count": null,
-            "shares_count": null,
-            "comments_count": null,
-            "followers_count": null,
-            "following_count": null
-          },
           "platform": "instagram",
-          "resource": "followers",
-          "username": "kanishka_____krishna8522",
-          "avatar_url": "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-19/723686404_17958078264138176_6668438638250663053_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2gGHn5SNI6SfnzOfKI6LamTlH6mE7xvTnmmino7kGy_NdxlUvtmX9AeCXCFXOqrGAjM&_nc_ohc=VFdfB3KUVWcQ7kNvwE1gbJc&_nc_gid=u5rwo7eae0Wd-fcIhBRxVQ&edm=AOG-cTkBAAAA&ccb=7-5&oh=00_AQH3JdNh2QLUzF0gxwtJp4UpQGprJp7LdBvqBN5H7od-7Q&oe=6A71C951&_nc_sid=17ea04",
-          "created_at": null,
-          "is_private": false,
-          "is_verified": false,
-          "collected_at": "2026-07-31T02:22:43.794329+00:00"
+          "resource": "followers-list",
+          "type": "profile",
+          "url": "https://www.instagram.com/kanishka_____krishna8522/",
+          "published_at": null,
+          "collected_at": "2026-07-31T02:22:43.794329Z",
+          "actor": null,
+          "related_actor": {
+            "id": "64155866175",
+            "username": null,
+            "name": null,
+            "url": "https://www.instagram.com/kanishka_____krishna8522/",
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
+          },
+          "relationship": "follower"
         }
       ]
     }

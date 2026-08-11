@@ -61,10 +61,12 @@ If a command returns before the collection finishes, keep the task ID:
 
 ```bash
 socq task get TASK_ID
-socq task wait TASK_ID --timeout 180
-socq task results TASK_ID --format csv --output results.csv
+socq task wait TASK_ID --timeout 180 --result-view standard
+socq task results TASK_ID --result-view standard --result-fields id,url,text,author.username --format csv --output results.csv
 socq task files TASK_ID
 ```
+
+`--result-view full` preserves the V1 compatible result. `--result-view standard` returns the fixed resource schema; pair it with optional `--result-fields` for a smaller projection.
 
 Do not submit the original collection again just because a local wait timed out. Resume the existing task.
 

@@ -11,13 +11,13 @@ openapi: "/zh/api-manual/agent-api/agent-api.json GET /v1/tasks/{task_id}"
 ## 端点
 
 ```http
-GET https://api.socq.ai/v1/tasks/{task_id}
+GET https://api.socq.ai/v1/tasks/{task_id}?view=standard
 ```
 
 使用`results`下返回的`next_cursor`来读取下一页：
 
 ```http
-GET https://api.socq.ai/v1/tasks/{task_id}?limit=50&cursor=NTY3ODkw
+GET https://api.socq.ai/v1/tasks/{task_id}?view=standard&limit=50&cursor=NTY3ODkw
 ```
 
 ## 响应
@@ -37,22 +37,32 @@ GET https://api.socq.ai/v1/tasks/{task_id}?limit=50&cursor=NTY3ODkw
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "account",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "25025320",
           "platform": "instagram",
           "resource": "followers-count",
           "type": "profile_metrics",
+          "url": "https://www.instagram.com/instagram",
+          "published_at": null,
+          "collected_at": "2026-07-07T18:30:48Z",
           "username": "instagram",
           "name": "Instagram",
-          "url": "https://www.instagram.com/instagram",
+          "text": null,
+          "avatar_url": null,
+          "cover_url": null,
+          "website": null,
+          "is_verified": true,
+          "is_private": false,
+          "location": null,
           "metrics": {
             "followers_count": 685829413,
             "following_count": 251,
             "posts_count": 8000
-          },
-          "collected_at": "2026-07-07T18:30:48",
-          "extra": {}
+          }
         }
       ]
     }
@@ -73,12 +83,21 @@ GET https://api.socq.ai/v1/tasks/{task_id}?limit=50&cursor=NTY3ODkw
 | `finished_time` |字符串|任务完成时间|
 | `results` |对象|仅当`status`为`succeeded`时存在；包含分页规范化记录 |
 
+| `results.view` | 字符串 | `full` 兼容视图或固定的 `standard` 视图 |
+| `results.schema_id` | 字符串或 null | 资源 Schema ID，仅在 `standard` 中提供 |
+| `results.schema_version` | 字符串或 null | 资源 Schema 版本，仅在 `standard` 中提供 |
+
 ## 分页
 
 |查询 |类型 |默认 |描述 |
 | --- | --- | --- | --- |
 | `limit` |整数 | `50` |返回的记录数，最大值 `500` |
 | `cursor` |字符串| `null` | Cursor 源自之前的 `results.next_cursor`。在第一页中省略它。 |
+
+| `view` | 字符串 | `full` | `full` 保留 V1 输出；`standard` 返回固定资源 Schema。 |
+| `fields` | 字符串 | `null` | 最多 50 个逗号分隔字段或点路径，仅可与 `view=standard` 一起使用。 |
+
+在标准视图中，除非被 `fields` 投影省略，否则所有声明字段都会保留。不可获得的标量和对象返回 `null`；确定为零、假值和空集合时分别保留 `0`、`false` 和 `[]`。
 
 <Tip>
   当任务是 `queued`、`running` 或 `failed` 时，此端点返回不带 `results` 的任务元数据。

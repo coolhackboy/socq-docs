@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API 中文版",
-    "version": "v1-e4178ca97338",
+    "version": "v1-603ff741990d",
     "description": "根据 SocQ 能力目录生成的异步社交数据 API。"
   },
   "servers": [
@@ -19,6 +19,9 @@
         "tags": [
           "facebook-ad-library"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -71,6 +74,9 @@
         "tags": [
           "facebook-ad-library"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -164,6 +170,9 @@
         "tags": [
           "facebook-ad-library"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdvertiserItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -216,6 +225,9 @@
         "tags": [
           "facebook-ad-library"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -314,6 +326,9 @@
         "tags": [
           "facebook-marketplace"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ListingItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -369,6 +384,9 @@
         "tags": [
           "facebook-marketplace"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/MarketplaceLocationItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -421,6 +439,9 @@
         "tags": [
           "facebook-marketplace"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ListingItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -533,6 +554,9 @@
         "tags": [
           "facebook"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/TranscriptItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -593,6 +617,9 @@
         "tags": [
           "facebook"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -684,6 +711,9 @@
         "tags": [
           "facebook"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -744,6 +774,9 @@
         "tags": [
           "facebook"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReviewItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -811,6 +844,9 @@
         "tags": [
           "facebook"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/EventItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -871,6 +907,9 @@
         "tags": [
           "facebook"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/EventItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -929,6 +968,9 @@
         "tags": [
           "facebook"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -995,6 +1037,9 @@
         "tags": [
           "facebook"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -1089,6 +1134,9 @@
         "tags": [
           "facebook"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -1183,6 +1231,9 @@
         "tags": [
           "facebook"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/EventItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -1250,6 +1301,9 @@
         "tags": [
           "facebook"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -1317,6 +1371,9 @@
         "tags": [
           "facebook"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -1377,6 +1434,9 @@
         "tags": [
           "facebook"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -1444,6 +1504,9 @@
         "tags": [
           "facebook"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/TranscriptItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -1499,6 +1562,9 @@
         "tags": [
           "google-ad-library"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -1551,6 +1617,9 @@
         "tags": [
           "google-ad-library"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdvertiserItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -1608,6 +1677,9 @@
         "tags": [
           "google-ad-library"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -1713,6 +1785,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -1780,6 +1855,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -1840,6 +1918,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -1934,6 +2015,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/RelationshipItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -1995,6 +2079,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/RelationshipItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -2056,6 +2143,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -2127,6 +2217,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/HighlightItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -2187,6 +2280,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -2247,6 +2343,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -2341,6 +2440,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -2396,6 +2498,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -2490,6 +2595,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -2559,6 +2667,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -2653,6 +2764,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/HighlightItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -2713,6 +2827,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -2774,6 +2891,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/TranscriptItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -2829,6 +2949,9 @@
         "tags": [
           "instagram"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -2879,6 +3002,9 @@
         "tags": [
           "linkedin-ad-library"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -2931,6 +3057,9 @@
         "tags": [
           "linkedin-ad-library"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3034,6 +3163,9 @@
         "tags": [
           "linkedin"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CompanyItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3089,6 +3221,9 @@
         "tags": [
           "linkedin"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/JobItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3151,6 +3286,9 @@
         "tags": [
           "linkedin"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3223,6 +3361,9 @@
         "tags": [
           "linkedin"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/JobItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3278,6 +3419,9 @@
         "tags": [
           "linkedin"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3330,6 +3474,9 @@
         "tags": [
           "linkedin"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3385,6 +3532,9 @@
         "tags": [
           "linkedin"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3461,6 +3611,9 @@
         "tags": [
           "linkedin"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3516,6 +3669,9 @@
         "tags": [
           "linkedin"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/JobItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3627,6 +3783,9 @@
         "tags": [
           "linkedin"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3682,6 +3841,9 @@
         "tags": [
           "linkedin"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3747,6 +3909,9 @@
         "tags": [
           "pinterest"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3802,6 +3967,9 @@
         "tags": [
           "pinterest"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3857,6 +4025,9 @@
         "tags": [
           "pinterest"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3915,6 +4086,9 @@
         "tags": [
           "pinterest"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -3976,6 +4150,9 @@
         "tags": [
           "reddit"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -4031,6 +4208,9 @@
         "tags": [
           "reddit"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -4086,6 +4266,9 @@
         "tags": [
           "reddit"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -4149,6 +4332,9 @@
         "tags": [
           "reddit"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -4215,6 +4401,9 @@
         "tags": [
           "seo"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/SerpResultItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -4308,6 +4497,9 @@
         "tags": [
           "seo"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/SEOKeywordItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -4396,6 +4588,9 @@
         "tags": [
           "seo"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/SEOKeywordItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -4484,6 +4679,9 @@
         "tags": [
           "seo"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/SEOKeywordItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -4572,6 +4770,9 @@
         "tags": [
           "seo"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/SEOKeywordItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -4662,6 +4863,9 @@
         "tags": [
           "seo"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/SEOKeywordItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -4747,6 +4951,9 @@
         "tags": [
           "seo"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/SEOKeywordItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -4837,6 +5044,9 @@
         "tags": [
           "seo"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/SEOKeywordItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -4933,6 +5143,9 @@
         "tags": [
           "seo"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/SerpResultItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5023,6 +5236,9 @@
         "tags": [
           "seo"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/SEOKeywordItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5111,6 +5327,9 @@
         "tags": [
           "threads"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5166,6 +5385,9 @@
         "tags": [
           "threads"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5221,6 +5443,9 @@
         "tags": [
           "threads"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5282,6 +5507,9 @@
         "tags": [
           "tiktok-ad-library"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5334,6 +5562,9 @@
         "tags": [
           "tiktok-ad-library"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5394,6 +5625,9 @@
         "tags": [
           "tiktok-shop"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ProductItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5451,6 +5685,9 @@
         "tags": [
           "tiktok-shop"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReviewItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5514,6 +5751,9 @@
         "tags": [
           "tiktok-shop"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ProductItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5582,6 +5822,9 @@
         "tags": [
           "tiktok-shop"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ProductItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5645,6 +5888,9 @@
         "tags": [
           "tiktok-shop"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ProductItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5708,6 +5954,9 @@
         "tags": [
           "tiktok"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5778,6 +6027,9 @@
         "tags": [
           "tiktok"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5839,6 +6091,9 @@
         "tags": [
           "tiktok"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/RelationshipItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5906,6 +6161,9 @@
         "tags": [
           "tiktok"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/RelationshipItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -5973,6 +6231,9 @@
         "tags": [
           "tiktok"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/HashtagTrendItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6034,6 +6295,9 @@
         "tags": [
           "tiktok"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/LiveRoomItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6092,6 +6356,9 @@
         "tags": [
           "tiktok"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6147,6 +6414,9 @@
         "tags": [
           "tiktok"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6215,6 +6485,9 @@
         "tags": [
           "tiktok"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6273,6 +6546,9 @@
         "tags": [
           "tiktok"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6350,6 +6626,9 @@
         "tags": [
           "tiktok"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/TranscriptItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6410,6 +6689,9 @@
         "tags": [
           "tiktok"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6465,6 +6747,9 @@
         "tags": [
           "x"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/RelationshipItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6533,6 +6818,9 @@
         "tags": [
           "x"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/RelationshipItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6601,6 +6889,9 @@
         "tags": [
           "x"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6669,6 +6960,9 @@
         "tags": [
           "x"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6742,6 +7036,9 @@
         "tags": [
           "x"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/RelationshipItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6810,6 +7107,9 @@
         "tags": [
           "x"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6865,6 +7165,9 @@
         "tags": [
           "x"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6920,6 +7223,9 @@
         "tags": [
           "x"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -6983,6 +7289,9 @@
         "tags": [
           "x"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/HashtagTrendItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7050,6 +7359,9 @@
         "tags": [
           "x"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7111,6 +7423,9 @@
         "tags": [
           "youtube"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7178,6 +7493,9 @@
         "tags": [
           "youtube"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7239,6 +7557,9 @@
         "tags": [
           "youtube"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7294,6 +7615,9 @@
         "tags": [
           "youtube"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7379,6 +7703,9 @@
         "tags": [
           "youtube"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7445,6 +7772,9 @@
         "tags": [
           "youtube"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7512,6 +7842,9 @@
         "tags": [
           "youtube"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7584,6 +7917,9 @@
         "tags": [
           "youtube"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7645,6 +7981,9 @@
         "tags": [
           "youtube"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7722,6 +8061,9 @@
         "tags": [
           "youtube"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7783,6 +8125,9 @@
         "tags": [
           "youtube"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/TranscriptItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7843,6 +8188,9 @@
         "tags": [
           "youtube"
         ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
         "security": [
           {
             "bearerAuth": []
@@ -7928,6 +8276,27 @@
               "default": 50
             },
             "description": "本次返回的最大记录数。"
+          },
+          {
+            "name": "view",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "full",
+                "standard"
+              ],
+              "default": "full"
+            },
+            "description": "请求参数。"
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "请求参数。"
           }
         ],
         "responses": {
@@ -8050,6 +8419,3839 @@
             ]
           }
         }
+      },
+      "AccountItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "username": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Username"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text"
+          },
+          "avatar_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Avatar Url"
+          },
+          "cover_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cover Url"
+          },
+          "website": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Website"
+          },
+          "is_verified": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Is Verified"
+          },
+          "is_private": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Is Private"
+          },
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AccountMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "username",
+          "name",
+          "text",
+          "avatar_url",
+          "cover_url",
+          "website",
+          "is_verified",
+          "is_private",
+          "location",
+          "metrics"
+        ],
+        "title": "AccountItem",
+        "type": "object",
+        "x-schema-id": "account",
+        "x-schema-version": "1.0"
+      },
+      "AccountMetrics": {
+        "additionalProperties": false,
+        "properties": {
+          "followers_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Followers Count"
+          },
+          "following_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Following Count"
+          },
+          "posts_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Posts Count"
+          }
+        },
+        "title": "AccountMetrics",
+        "type": "object",
+        "required": [
+          "followers_count",
+          "following_count",
+          "posts_count"
+        ]
+      },
+      "Location": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "city": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "City"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Region"
+          },
+          "country": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Country"
+          },
+          "latitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Latitude"
+          },
+          "longitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Longitude"
+          }
+        },
+        "title": "Location",
+        "type": "object",
+        "required": [
+          "name",
+          "city",
+          "region",
+          "country",
+          "latitude",
+          "longitude"
+        ]
+      },
+      "RelationshipItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "actor": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "related_actor": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "relationship": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Relationship"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "actor",
+          "related_actor",
+          "relationship"
+        ],
+        "title": "RelationshipItem",
+        "type": "object",
+        "x-schema-id": "relationship",
+        "x-schema-version": "1.0"
+      },
+      "ActorRef": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "username": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Username"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "avatar_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Avatar Url"
+          },
+          "is_verified": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Is Verified"
+          },
+          "is_private": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Is Private"
+          }
+        },
+        "title": "ActorRef",
+        "type": "object",
+        "required": [
+          "id",
+          "username",
+          "name",
+          "url",
+          "avatar_url",
+          "is_verified",
+          "is_private"
+        ]
+      },
+      "PostItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Metrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media"
+          },
+          "hashtags": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Hashtags"
+          },
+          "mentions": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Mentions"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "text",
+          "author",
+          "metrics",
+          "media",
+          "hashtags",
+          "mentions"
+        ],
+        "title": "PostItem",
+        "type": "object",
+        "x-schema-id": "post",
+        "x-schema-version": "1.0"
+      },
+      "Media": {
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Type"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "thumbnail_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Thumbnail Url"
+          },
+          "width": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Width"
+          },
+          "height": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Height"
+          },
+          "duration_seconds": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Duration Seconds"
+          }
+        },
+        "title": "Media",
+        "type": "object",
+        "required": [
+          "type",
+          "url",
+          "thumbnail_url",
+          "width",
+          "height",
+          "duration_seconds"
+        ]
+      },
+      "Metrics": {
+        "additionalProperties": false,
+        "properties": {
+          "likes_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Likes Count"
+          },
+          "comments_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Comments Count"
+          },
+          "shares_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Shares Count"
+          },
+          "views_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Views Count"
+          }
+        },
+        "title": "Metrics",
+        "type": "object",
+        "required": [
+          "likes_count",
+          "comments_count",
+          "shares_count",
+          "views_count"
+        ]
+      },
+      "ReelVideoItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ReelMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media"
+          },
+          "hashtags": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Hashtags"
+          },
+          "mentions": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Mentions"
+          },
+          "shortcode": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Shortcode"
+          },
+          "duration_seconds": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Duration Seconds"
+          },
+          "audio": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Audio"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "text",
+          "author",
+          "metrics",
+          "media",
+          "hashtags",
+          "mentions",
+          "shortcode",
+          "duration_seconds",
+          "audio"
+        ],
+        "title": "ReelVideoItem",
+        "type": "object",
+        "x-schema-id": "reel-video",
+        "x-schema-version": "1.0"
+      },
+      "Audio": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Title"
+          },
+          "artist": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Artist"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          }
+        },
+        "title": "Audio",
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "artist",
+          "url"
+        ]
+      },
+      "ReelMetrics": {
+        "additionalProperties": false,
+        "properties": {
+          "likes_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Likes Count"
+          },
+          "comments_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Comments Count"
+          },
+          "shares_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Shares Count"
+          },
+          "plays_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Plays Count"
+          },
+          "views_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Views Count"
+          }
+        },
+        "title": "ReelMetrics",
+        "type": "object",
+        "required": [
+          "likes_count",
+          "comments_count",
+          "shares_count",
+          "plays_count",
+          "views_count"
+        ]
+      },
+      "CommentItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "parent_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Parent Id"
+          },
+          "post_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Post Id"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CommentMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "text",
+          "author",
+          "parent_id",
+          "post_id",
+          "metrics"
+        ],
+        "title": "CommentItem",
+        "type": "object",
+        "x-schema-id": "comment",
+        "x-schema-version": "1.0"
+      },
+      "CommentMetrics": {
+        "additionalProperties": false,
+        "properties": {
+          "likes_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Likes Count"
+          },
+          "replies_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Replies Count"
+          }
+        },
+        "title": "CommentMetrics",
+        "type": "object",
+        "required": [
+          "likes_count",
+          "replies_count"
+        ]
+      },
+      "TranscriptItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Language"
+          },
+          "format": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Format"
+          },
+          "duration_seconds": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Duration Seconds"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "text",
+          "language",
+          "format",
+          "duration_seconds"
+        ],
+        "title": "TranscriptItem",
+        "type": "object",
+        "x-schema-id": "transcript",
+        "x-schema-version": "1.0"
+      },
+      "HighlightItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Title"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "cover_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cover Url"
+          },
+          "item_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Item Count"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "title",
+          "author",
+          "cover_url",
+          "item_count",
+          "media"
+        ],
+        "title": "HighlightItem",
+        "type": "object",
+        "x-schema-id": "highlight",
+        "x-schema-version": "1.0"
+      },
+      "HashtagTrendItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rank"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Region"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TrendMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "name",
+          "rank",
+          "region",
+          "metrics"
+        ],
+        "title": "HashtagTrendItem",
+        "type": "object",
+        "x-schema-id": "hashtag-trend",
+        "x-schema-version": "1.0"
+      },
+      "TrendMetrics": {
+        "additionalProperties": false,
+        "properties": {
+          "posts_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Posts Count"
+          },
+          "views_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Views Count"
+          }
+        },
+        "title": "TrendMetrics",
+        "type": "object",
+        "required": [
+          "posts_count",
+          "views_count"
+        ]
+      },
+      "LiveRoomItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Title"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Status"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LiveMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "title",
+          "author",
+          "status",
+          "metrics",
+          "media"
+        ],
+        "title": "LiveRoomItem",
+        "type": "object",
+        "x-schema-id": "live-room",
+        "x-schema-version": "1.0"
+      },
+      "LiveMetrics": {
+        "additionalProperties": false,
+        "properties": {
+          "viewers_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Viewers Count"
+          },
+          "likes_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Likes Count"
+          }
+        },
+        "title": "LiveMetrics",
+        "type": "object",
+        "required": [
+          "viewers_count",
+          "likes_count"
+        ]
+      },
+      "CompanyItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text"
+          },
+          "website": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Website"
+          },
+          "industry": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Industry"
+          },
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "logo_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Logo Url"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CompanyMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "name",
+          "text",
+          "website",
+          "industry",
+          "location",
+          "logo_url",
+          "metrics"
+        ],
+        "title": "CompanyItem",
+        "type": "object",
+        "x-schema-id": "company",
+        "x-schema-version": "1.0"
+      },
+      "CompanyMetrics": {
+        "additionalProperties": false,
+        "properties": {
+          "followers_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Followers Count"
+          },
+          "reviews_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Reviews Count"
+          },
+          "rating": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rating"
+          }
+        },
+        "title": "CompanyMetrics",
+        "type": "object",
+        "required": [
+          "followers_count",
+          "reviews_count",
+          "rating"
+        ]
+      },
+      "JobItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Title"
+          },
+          "company": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CompanyRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text"
+          },
+          "employment_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Employment Type"
+          },
+          "experience_level": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Experience Level"
+          },
+          "is_remote": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Is Remote"
+          },
+          "salary": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Price"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "expires_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Expires At"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "title",
+          "company",
+          "location",
+          "text",
+          "employment_type",
+          "experience_level",
+          "is_remote",
+          "salary",
+          "expires_at"
+        ],
+        "title": "JobItem",
+        "type": "object",
+        "x-schema-id": "job",
+        "x-schema-version": "1.0"
+      },
+      "CompanyRef": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "logo_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Logo Url"
+          }
+        },
+        "title": "CompanyRef",
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "url",
+          "logo_url"
+        ]
+      },
+      "Price": {
+        "additionalProperties": false,
+        "properties": {
+          "amount": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Amount"
+          },
+          "currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Currency"
+          },
+          "formatted": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Formatted"
+          }
+        },
+        "title": "Price",
+        "type": "object",
+        "required": [
+          "amount",
+          "currency",
+          "formatted"
+        ]
+      },
+      "AdItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text"
+          },
+          "advertiser": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CompanyRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "start_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Start Date"
+          },
+          "end_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "End Date"
+          },
+          "countries": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Countries"
+          },
+          "platforms": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Platforms"
+          },
+          "format": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Format"
+          },
+          "landing_page_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Landing Page Url"
+          },
+          "impressions": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Impressions"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "text",
+          "advertiser",
+          "start_date",
+          "end_date",
+          "countries",
+          "platforms",
+          "format",
+          "landing_page_url",
+          "impressions",
+          "media"
+        ],
+        "title": "AdItem",
+        "type": "object",
+        "x-schema-id": "ad",
+        "x-schema-version": "1.0"
+      },
+      "AdvertiserItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "website": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Website"
+          },
+          "logo_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Logo Url"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Region"
+          },
+          "ads_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Ads Count"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "name",
+          "website",
+          "logo_url",
+          "region",
+          "ads_count"
+        ],
+        "title": "AdvertiserItem",
+        "type": "object",
+        "x-schema-id": "advertiser",
+        "x-schema-version": "1.0"
+      },
+      "EventItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Title"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text"
+          },
+          "organizer": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "start_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Start At"
+          },
+          "end_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "End At"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "title",
+          "text",
+          "organizer",
+          "location",
+          "start_at",
+          "end_at",
+          "media"
+        ],
+        "title": "EventItem",
+        "type": "object",
+        "x-schema-id": "event",
+        "x-schema-version": "1.0"
+      },
+      "MarketplaceLocationItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name"
+          },
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "name",
+          "location"
+        ],
+        "title": "MarketplaceLocationItem",
+        "type": "object",
+        "x-schema-id": "marketplace-location",
+        "x-schema-version": "1.0"
+      },
+      "ListingItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Title"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text"
+          },
+          "seller": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "price": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Price"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "condition": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Condition"
+          },
+          "availability": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Availability"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "title",
+          "text",
+          "seller",
+          "price",
+          "location",
+          "condition",
+          "availability",
+          "media"
+        ],
+        "title": "ListingItem",
+        "type": "object",
+        "x-schema-id": "listing",
+        "x-schema-version": "1.0"
+      },
+      "ProductItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Title"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text"
+          },
+          "seller": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "price": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Price"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "rating": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rating"
+          },
+          "reviews_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Reviews Count"
+          },
+          "sold_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Sold Count"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "title",
+          "text",
+          "seller",
+          "price",
+          "rating",
+          "reviews_count",
+          "sold_count",
+          "media"
+        ],
+        "title": "ProductItem",
+        "type": "object",
+        "x-schema-id": "product",
+        "x-schema-version": "1.0"
+      },
+      "ReviewItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "rating": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rating"
+          },
+          "subject_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Subject Id"
+          },
+          "subject_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Subject Url"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "text",
+          "author",
+          "rating",
+          "subject_id",
+          "subject_url",
+          "media"
+        ],
+        "title": "ReviewItem",
+        "type": "object",
+        "x-schema-id": "review",
+        "x-schema-version": "1.0"
+      },
+      "SEOKeywordItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "keyword": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Keyword"
+          },
+          "search_volume": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Search Volume"
+          },
+          "difficulty": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Difficulty"
+          },
+          "intent": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Intent"
+          },
+          "cpc": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cpc"
+          },
+          "competition": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Competition"
+          },
+          "rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rank"
+          },
+          "target_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Target Url"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "keyword",
+          "search_volume",
+          "difficulty",
+          "intent",
+          "cpc",
+          "competition",
+          "rank",
+          "target_url"
+        ],
+        "title": "SEOKeywordItem",
+        "type": "object",
+        "x-schema-id": "seo-keyword",
+        "x-schema-version": "1.0"
+      },
+      "SerpResultItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Title"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text"
+          },
+          "rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rank"
+          },
+          "domain": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Domain"
+          },
+          "result_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Result Type"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "title",
+          "text",
+          "rank",
+          "domain",
+          "result_type"
+        ],
+        "title": "SerpResultItem",
+        "type": "object",
+        "x-schema-id": "serp-result",
+        "x-schema-version": "1.0"
       }
     }
   }

@@ -49,6 +49,58 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 Results use the normalized video structure documented in [YouTube Videos](/api-manual/youtube/videos), with `resource` set to `search`.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `author` | `object` | Yes | Normalized author field. |
+| `author.id` | `string` | Yes | Normalized id field. |
+| `author.username` | `string` | Yes | Normalized username field. |
+| `author.name` | `string` | Yes | Normalized name field. |
+| `author.url` | `string` | Yes | Normalized url field. |
+| `author.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `author.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `author.is_private` | `boolean` | Yes | Normalized is private field. |
+| `metrics` | `object` | Yes | Normalized metrics field. |
+| `metrics.likes_count` | `integer` | Yes | Normalized likes count field. |
+| `metrics.comments_count` | `integer` | Yes | Normalized comments count field. |
+| `metrics.shares_count` | `integer` | Yes | Normalized shares count field. |
+| `metrics.plays_count` | `integer` | Yes | Normalized plays count field. |
+| `metrics.views_count` | `integer` | Yes | Normalized views count field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `hashtags` | `array<string>` | Yes | Normalized hashtags field. |
+| `mentions` | `array<string>` | Yes | Normalized mentions field. |
+| `shortcode` | `string` | Yes | Normalized shortcode field. |
+| `duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `audio` | `object` | Yes | Normalized audio field. |
+| `audio.id` | `string` | Yes | Normalized id field. |
+| `audio.title` | `string` | Yes | Normalized title field. |
+| `audio.artist` | `string` | Yes | Normalized artist field. |
+| `audio.url` | `string` | Yes | Normalized url field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -64,81 +116,50 @@ Results use the normalized video structure documented in [YouTube Videos](/api-m
       "limit": 1,
       "next_cursor": "OTgwNQ",
       "has_more": true,
+      "view": "standard",
+      "schema_id": "reel-video",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "m8uUUUsMD3Y",
-          "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y",
+          "platform": "youtube",
+          "resource": "search",
           "type": "video",
-          "extra": {
-            "location": null,
-            "source_url": "https://www.youtube.com/results?search_query=OpenAI+official+demo&sp=CAASAhAB",
-            "content_type": "video",
-            "published_text": "2026-07-15T19:42:38.000Z",
-            "is_members_only": false,
-            "is_paid_content": false,
-            "description_links": [
-              {
-                "url": "https://openai.com/supply/",
-                "text": "https://openai.com/supply/"
-              },
-              {
-                "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y",
-                "text": "00:00"
-              },
-              {
-                "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y&t=24s",
-                "text": "00:24"
-              },
-              {
-                "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y&t=45s",
-                "text": "00:45"
-              },
-              {
-                "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y&t=61s",
-                "text": "01:01"
-              },
-              {
-                "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y&t=76s",
-                "text": "01:16"
-              },
-              {
-                "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y&t=88s",
-                "text": "01:28"
-              },
-              {
-                "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y&t=109s",
-                "text": "01:49"
-              }
-            ]
-          },
-          "media": [
-            {
-              "url": "https://i.ytimg.com/vi/m8uUUUsMD3Y/maxresdefault.jpg",
-              "type": "image"
-            }
-          ],
-          "title": "Introducing the Codex Micro",
+          "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y",
+          "published_at": "2026-07-15T19:42:38Z",
+          "collected_at": "2026-07-31T02:44:52.355765Z",
+          "text": "See how the Codex Micro, a customizable keyboard built with Work Louder for Codex, helps you move through a build without leaving your flow. In this demo, GPT-5.6 Sol creates a word game while the Micro handles voice dictation, task switching, reasoning controls, permission requests, and follow-up prompts.\n\nGet yours: https://openai.com/supply/\n\nChapters:\n00:00 Introducing the Codex Micro\n00:24 Voice dictation\n00:45 Skills, Plan mode, and reasoning\n01:01 Switching between tasks\n01:16 Notifications and permissions\n01:28 Queueing follow-up work\n01:49 Game result and customization",
           "author": {
             "id": "UCXZCJLdBC09xxGZ6gcdrc6A",
-            "url": "https://www.youtube.com/@OpenAI",
-            "name": "OpenAI",
             "username": "OpenAI",
+            "name": "OpenAI",
+            "url": "https://www.youtube.com/@OpenAI",
             "avatar_url": null,
-            "is_private": null,
-            "is_verified": null
+            "is_verified": null,
+            "is_private": null
           },
           "metrics": {
             "likes_count": 5600,
-            "views_count": 254056,
-            "comments_count": 0
+            "comments_count": 0,
+            "shares_count": null,
+            "plays_count": null,
+            "views_count": 254056
           },
+          "media": [
+            {
+              "type": "image",
+              "url": "https://i.ytimg.com/vi/m8uUUUsMD3Y/maxresdefault.jpg",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ],
           "hashtags": [],
-          "platform": "youtube",
-          "resource": "search",
-          "created_at": "2026-07-15T19:42:38",
-          "description": "See how the Codex Micro, a customizable keyboard built with Work Louder for Codex, helps you move through a build without leaving your flow. In this demo, GPT-5.6 Sol creates a word game while the Micro handles voice dictation, task switching, reasoning controls, permission requests, and follow-up prompts.\n\nGet yours: https://openai.com/supply/\n\nChapters:\n00:00 Introducing the Codex Micro\n00:24 Voice dictation\n00:45 Skills, Plan mode, and reasoning\n01:01 Switching between tasks\n01:16 Notifications and permissions\n01:28 Queueing follow-up work\n01:49 Game result and customization",
-          "collected_at": "2026-07-31T02:44:52.355765",
-          "duration_seconds": 135
+          "mentions": null,
+          "shortcode": null,
+          "duration_seconds": 135.0,
+          "audio": null
         }
       ]
     }

@@ -42,6 +42,57 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/facebook-marketplace/
 
 根据成功返回的商品记录数进行计费。不产生记录的 URL 不包含在最终费用中。
 
+
+
+
+
+
+{/* result-schema:start */}
+## 标准结果字段
+
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 标准化的 id 字段。 |
+| `platform` | `string` | 否 | 标准化的 platform 字段。 |
+| `resource` | `string` | 否 | 标准化的 resource 字段。 |
+| `type` | `string` | 否 | 标准化的 type 字段。 |
+| `url` | `string` | 是 | 标准化的 url 字段。 |
+| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
+| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
+| `title` | `string` | 是 | 标准化的 title 字段。 |
+| `text` | `string` | 是 | 标准化的 text 字段。 |
+| `seller` | `object` | 是 | 标准化的 seller 字段。 |
+| `seller.id` | `string` | 是 | 标准化的 id 字段。 |
+| `seller.username` | `string` | 是 | 标准化的 username 字段。 |
+| `seller.name` | `string` | 是 | 标准化的 name 字段。 |
+| `seller.url` | `string` | 是 | 标准化的 url 字段。 |
+| `seller.avatar_url` | `string` | 是 | 标准化的 avatar url 字段。 |
+| `seller.is_verified` | `boolean` | 是 | 标准化的 is verified 字段。 |
+| `seller.is_private` | `boolean` | 是 | 标准化的 is private 字段。 |
+| `price` | `object` | 是 | 标准化的 price 字段。 |
+| `price.amount` | `number` | 是 | 标准化的 amount 字段。 |
+| `price.currency` | `string` | 是 | 标准化的 currency 字段。 |
+| `price.formatted` | `string` | 是 | 标准化的 formatted 字段。 |
+| `location` | `object` | 是 | 标准化的 location 字段。 |
+| `location.name` | `string` | 是 | 标准化的 name 字段。 |
+| `location.city` | `string` | 是 | 标准化的 city 字段。 |
+| `location.region` | `string` | 是 | 标准化的 region 字段。 |
+| `location.country` | `string` | 是 | 标准化的 country 字段。 |
+| `location.latitude` | `number` | 是 | 标准化的 latitude 字段。 |
+| `location.longitude` | `number` | 是 | 标准化的 longitude 字段。 |
+| `condition` | `string` | 是 | 标准化的 condition 字段。 |
+| `availability` | `string` | 是 | 标准化的 availability 字段。 |
+| `media` | `array<object>` | 是 | 标准化的 media 字段。 |
+| `media.type` | `string` | 是 | 标准化的 type 字段。 |
+| `media.url` | `string` | 是 | 标准化的 url 字段。 |
+| `media.thumbnail_url` | `string` | 是 | 标准化的 thumbnail url 字段。 |
+| `media.width` | `integer` | 是 | 标准化的 width 字段。 |
+| `media.height` | `integer` | 是 | 标准化的 height 字段。 |
+| `media.duration_seconds` | `number` | 是 | 标准化的 duration seconds 字段。 |
+{/* result-schema:end */}
+
 ## 任务完成响应
 
 ```json
@@ -57,28 +108,37 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/facebook-marketplace/
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
-      "items": [{
-        "id": "1656586118821988",
-        "platform": "facebook-marketplace",
-        "resource": "item",
-        "type": "listing",
-        "url": "https://www.facebook.com/marketplace/item/1656586118821988/",
-        "name": "Mountain bike",
-        "text": "Used bike in good condition.",
-        "author": {"id": null, "username": null, "name": null, "url": null},
-        "metrics": {},
-        "media": [{"type": "image", "url": "https://example.com/item.jpg", "width": 960, "height": 720}],
-        "created_at": "2026-05-15T16:57:39",
-        "collected_at": "2026-07-18T10:30:00",
-        "extra": {
-          "input_url": "https://www.facebook.com/marketplace/item/1656586118821988/",
-          "price": {"amount": 380, "currency": "USD", "formatted": "$380"},
-          "location": {"text": "Austin, TX", "latitude": 30.4019, "longitude": -97.7618},
-          "attributes": [{"attribute_name": "Condition", "value": "used_good", "label": "Used - Good"}],
-          "is_live": true,
-          "is_sold": false
+      "view": "standard",
+      "schema_id": "listing",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "1656586118821988",
+          "platform": "facebook-marketplace",
+          "resource": "item",
+          "type": "listing",
+          "url": "https://www.facebook.com/marketplace/item/1656586118821988/",
+          "published_at": "2026-05-15T16:57:39Z",
+          "collected_at": "2026-07-18T10:30:00Z",
+          "title": "Mountain bike",
+          "text": "Used bike in good condition.",
+          "seller": null,
+          "price": null,
+          "location": null,
+          "condition": null,
+          "availability": null,
+          "media": [
+            {
+              "type": "image",
+              "url": "https://example.com/item.jpg",
+              "thumbnail_url": null,
+              "width": 960,
+              "height": 720,
+              "duration_seconds": null
+            }
+          ]
         }
-      }]
+      ]
     }
   }
 }

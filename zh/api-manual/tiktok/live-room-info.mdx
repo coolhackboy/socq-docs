@@ -21,6 +21,47 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/live-room-info
 
 结果包括实时状态、标题、封面图片、所有者、观看者计数和点赞计数。
 
+
+
+
+
+
+{/* result-schema:start */}
+## 标准结果字段
+
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 标准化的 id 字段。 |
+| `platform` | `string` | 否 | 标准化的 platform 字段。 |
+| `resource` | `string` | 否 | 标准化的 resource 字段。 |
+| `type` | `string` | 否 | 标准化的 type 字段。 |
+| `url` | `string` | 是 | 标准化的 url 字段。 |
+| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
+| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
+| `title` | `string` | 是 | 标准化的 title 字段。 |
+| `author` | `object` | 是 | 标准化的 author 字段。 |
+| `author.id` | `string` | 是 | 标准化的 id 字段。 |
+| `author.username` | `string` | 是 | 标准化的 username 字段。 |
+| `author.name` | `string` | 是 | 标准化的 name 字段。 |
+| `author.url` | `string` | 是 | 标准化的 url 字段。 |
+| `author.avatar_url` | `string` | 是 | 标准化的 avatar url 字段。 |
+| `author.is_verified` | `boolean` | 是 | 标准化的 is verified 字段。 |
+| `author.is_private` | `boolean` | 是 | 标准化的 is private 字段。 |
+| `status` | `string` | 是 | 标准化的 status 字段。 |
+| `metrics` | `object` | 是 | 标准化的 metrics 字段。 |
+| `metrics.viewers_count` | `integer` | 是 | 标准化的 viewers count 字段。 |
+| `metrics.likes_count` | `integer` | 是 | 标准化的 likes count 字段。 |
+| `media` | `array<object>` | 是 | 标准化的 media 字段。 |
+| `media.type` | `string` | 是 | 标准化的 type 字段。 |
+| `media.url` | `string` | 是 | 标准化的 url 字段。 |
+| `media.thumbnail_url` | `string` | 是 | 标准化的 thumbnail url 字段。 |
+| `media.width` | `integer` | 是 | 标准化的 width 字段。 |
+| `media.height` | `integer` | 是 | 标准化的 height 字段。 |
+| `media.duration_seconds` | `number` | 是 | 标准化的 duration seconds 字段。 |
+{/* result-schema:end */}
+
 ## 任务完成响应
 
 ```json
@@ -36,29 +77,31 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/live-room-info
       "limit": 1,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "live-room",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "7523685855395842871",
-          "url": "",
+          "platform": "tiktok",
+          "resource": "live-room-info",
           "type": "live_room",
-          "extra": {
-            "status": null
-          },
-          "media": [],
+          "url": null,
+          "published_at": null,
+          "collected_at": "2026-07-31T02:26:30.747319Z",
           "title": null,
           "author": {
             "id": "6742945285876515845",
+            "username": null,
             "name": null,
-            "username": null
+            "url": null,
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
           },
-          "metrics": {
-            "likes_count": null,
-            "viewers_count": null
-          },
-          "platform": "tiktok",
-          "resource": "live-room-info",
-          "created_at": null,
-          "collected_at": "2026-07-31T02:26:30.747319"
+          "status": null,
+          "metrics": null,
+          "media": []
         }
       ]
     }

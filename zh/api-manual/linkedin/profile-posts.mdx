@@ -16,6 +16,50 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/profile-post
 }
 ```
 
+
+
+
+
+
+{/* result-schema:start */}
+## 标准结果字段
+
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 标准化的 id 字段。 |
+| `platform` | `string` | 否 | 标准化的 platform 字段。 |
+| `resource` | `string` | 否 | 标准化的 resource 字段。 |
+| `type` | `string` | 否 | 标准化的 type 字段。 |
+| `url` | `string` | 是 | 标准化的 url 字段。 |
+| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
+| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
+| `text` | `string` | 是 | 标准化的 text 字段。 |
+| `author` | `object` | 是 | 标准化的 author 字段。 |
+| `author.id` | `string` | 是 | 标准化的 id 字段。 |
+| `author.username` | `string` | 是 | 标准化的 username 字段。 |
+| `author.name` | `string` | 是 | 标准化的 name 字段。 |
+| `author.url` | `string` | 是 | 标准化的 url 字段。 |
+| `author.avatar_url` | `string` | 是 | 标准化的 avatar url 字段。 |
+| `author.is_verified` | `boolean` | 是 | 标准化的 is verified 字段。 |
+| `author.is_private` | `boolean` | 是 | 标准化的 is private 字段。 |
+| `metrics` | `object` | 是 | 标准化的 metrics 字段。 |
+| `metrics.likes_count` | `integer` | 是 | 标准化的 likes count 字段。 |
+| `metrics.comments_count` | `integer` | 是 | 标准化的 comments count 字段。 |
+| `metrics.shares_count` | `integer` | 是 | 标准化的 shares count 字段。 |
+| `metrics.views_count` | `integer` | 是 | 标准化的 views count 字段。 |
+| `media` | `array<object>` | 是 | 标准化的 media 字段。 |
+| `media.type` | `string` | 是 | 标准化的 type 字段。 |
+| `media.url` | `string` | 是 | 标准化的 url 字段。 |
+| `media.thumbnail_url` | `string` | 是 | 标准化的 thumbnail url 字段。 |
+| `media.width` | `integer` | 是 | 标准化的 width 字段。 |
+| `media.height` | `integer` | 是 | 标准化的 height 字段。 |
+| `media.duration_seconds` | `number` | 是 | 标准化的 duration seconds 字段。 |
+| `hashtags` | `array<string>` | 是 | 标准化的 hashtags 字段。 |
+| `mentions` | `array<string>` | 是 | 标准化的 mentions 字段。 |
+{/* result-schema:end */}
+
 ## 任务完成响应
 
 ```json
@@ -31,30 +75,46 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/profile-post
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "post",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "7488406960443183104",
           "platform": "linkedin",
-          "resource": "posts",
+          "resource": "profile-posts",
           "type": "post",
           "url": "https://www.linkedin.com/posts/satyanadella_some-more-detail-on-the-roic-intelligence-activity-7488406960443183104-g52O",
+          "published_at": "2026-07-30T01:35:47.220000Z",
+          "collected_at": "2026-08-11T03:03:36.453564Z",
           "text": "Some more detail on the ROIC Intelligence App I built yesterday and mentioned on today's earnings call.",
           "author": {
             "id": "satyanadella",
+            "username": null,
             "name": "Satya Nadella",
-            "url": "https://www.linkedin.com/in/satyanadella"
+            "url": "https://www.linkedin.com/in/satyanadella",
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
           },
           "metrics": {
             "likes_count": 7792,
-            "comments_count": 424
+            "comments_count": 424,
+            "shares_count": null,
+            "views_count": null
           },
           "media": [
             {
               "type": "image",
-              "url": "https://media.licdn.com/dms/image/v2/D5622AQES105T-agpcQ/feedshare-shrink_800"
+              "url": "https://media.licdn.com/dms/image/v2/D5622AQES105T-agpcQ/feedshare-shrink_800",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
             }
           ],
-          "created_at": "2026-07-30T01:35:47.220000"
+          "hashtags": null,
+          "mentions": null
         }
       ]
     }

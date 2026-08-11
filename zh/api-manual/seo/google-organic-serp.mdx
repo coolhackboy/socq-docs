@@ -12,6 +12,32 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/seo/google-organic-se
 
 Each item is one search-result element with its URL, title, rank, and available enriched fields.
 
+
+
+
+
+
+{/* result-schema:start */}
+## 标准结果字段
+
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 标准化的 id 字段。 |
+| `platform` | `string` | 否 | 标准化的 platform 字段。 |
+| `resource` | `string` | 否 | 标准化的 resource 字段。 |
+| `type` | `string` | 否 | 标准化的 type 字段。 |
+| `url` | `string` | 是 | 标准化的 url 字段。 |
+| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
+| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
+| `title` | `string` | 是 | 标准化的 title 字段。 |
+| `text` | `string` | 是 | 标准化的 text 字段。 |
+| `rank` | `integer` | 是 | 标准化的 rank 字段。 |
+| `domain` | `string` | 是 | 标准化的 domain 字段。 |
+| `result_type` | `string` | 是 | 标准化的 result type 字段。 |
+{/* result-schema:end */}
+
 ## 任务完成响应
 
 ```json
@@ -27,65 +53,23 @@ Each item is one search-result element with its URL, title, rank, and available 
       "limit": 1,
       "next_cursor": "NjU4Nw",
       "has_more": true,
+      "view": "standard",
+      "schema_id": "serp-result",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "https://www.semrush.com/analytics/keywordmagic/",
-          "url": "https://www.semrush.com/analytics/keywordmagic/",
-          "rank": {
-            "page": 1,
-            "group": 1,
-            "absolute": 1
-          },
-          "text": "Free Keyword Tool: Find the Right Keywords for SEO & AI ...",
-          "type": "google-organic-serp",
-          "extra": {
-            "faq": null,
-            "url": "https://www.semrush.com/analytics/keywordmagic/",
-            "page": 1,
-            "type": "organic",
-            "links": null,
-            "price": null,
-            "title": "Free Keyword Tool: Find the Right Keywords for SEO & AI ...",
-            "xpath": "/html[1]/body[1]/div[3]/div[1]/div[12]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]",
-            "checks": null,
-            "domain": "www.semrush.com",
-            "images": null,
-            "rating": null,
-            "is_image": false,
-            "is_video": false,
-            "position": "left",
-            "cache_url": null,
-            "rectangle": null,
-            "timestamp": null,
-            "breadcrumb": "https://www.semrush.com › analytics › keywordmagic",
-            "rank_group": 1,
-            "amp_version": false,
-            "description": "Free keyword research tool to help you find the right keywords for SEO and AI search using real Google searches and reliable keyword metrics.",
-            "highlighted": [
-              "Free keyword research tool"
-            ],
-            "pre_snippet": null,
-            "is_malicious": false,
-            "is_web_story": false,
-            "website_name": "Semrush",
-            "rank_absolute": 1,
-            "related_result": null,
-            "extended_snippet": null,
-            "about_this_result": null,
-            "related_search_url": null,
-            "is_featured_snippet": false,
-            "extended_people_also_search": null
-          },
-          "keyword": null,
-          "metrics": {
-            "rank_group": 1,
-            "rank_absolute": 1
-          },
           "platform": "seo",
           "resource": "google-organic-serp",
-          "collected_at": "2026-07-31T02:25:00.673956",
-          "search_intent": null,
-          "monthly_searches": []
+          "type": "google-organic-serp",
+          "url": "https://www.semrush.com/analytics/keywordmagic/",
+          "published_at": null,
+          "collected_at": "2026-07-31T02:25:00.673956Z",
+          "title": "Free Keyword Tool: Find the Right Keywords for SEO & AI ...",
+          "text": "Free Keyword Tool: Find the Right Keywords for SEO & AI ...",
+          "rank": null,
+          "domain": null,
+          "result_type": "google-organic-serp"
         }
       ]
     }

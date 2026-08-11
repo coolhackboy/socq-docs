@@ -12,6 +12,35 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/seo/search-intent"
 
 Each result contains the primary intent and available intent probabilities for one input keyword.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `keyword` | `string` | Yes | Normalized keyword field. |
+| `search_volume` | `integer` | Yes | Normalized search volume field. |
+| `difficulty` | `number` | Yes | Normalized difficulty field. |
+| `intent` | `string` | Yes | Normalized intent field. |
+| `cpc` | `number` | Yes | Normalized cpc field. |
+| `competition` | `number` | Yes | Normalized competition field. |
+| `rank` | `integer` | Yes | Normalized rank field. |
+| `target_url` | `string` | Yes | Normalized target url field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -27,28 +56,26 @@ Each result contains the primary intent and available intent probabilities for o
       "limit": 1,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "seo-keyword",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "keyword research",
-          "url": null,
-          "rank": {},
-          "text": "keyword research",
-          "type": "search-intent",
-          "extra": {
-            "keyword": "keyword research",
-            "keyword_intent": {
-              "label": "informational",
-              "probability": 0.9277
-            },
-            "secondary_keyword_intents": null
-          },
-          "keyword": "keyword research",
-          "metrics": {},
           "platform": "seo",
           "resource": "search-intent",
-          "collected_at": "2026-07-31T02:25:38.089612",
-          "search_intent": null,
-          "monthly_searches": []
+          "type": "search-intent",
+          "url": null,
+          "published_at": null,
+          "collected_at": "2026-07-31T02:25:38.089612Z",
+          "keyword": "keyword research",
+          "search_volume": null,
+          "difficulty": null,
+          "intent": null,
+          "cpc": null,
+          "competition": null,
+          "rank": null,
+          "target_url": null
         }
       ]
     }

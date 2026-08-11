@@ -16,6 +16,46 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/search-people"
 
 This endpoint returns all records produced for each submitted search URL. The data source does not support a result limit, so usage is billed from the actual number of stored results.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `username` | `string` | Yes | Normalized username field. |
+| `name` | `string` | Yes | Normalized name field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `cover_url` | `string` | Yes | Normalized cover url field. |
+| `website` | `string` | Yes | Normalized website field. |
+| `is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `is_private` | `boolean` | Yes | Normalized is private field. |
+| `location` | `object` | Yes | Normalized location field. |
+| `location.name` | `string` | Yes | Normalized name field. |
+| `location.city` | `string` | Yes | Normalized city field. |
+| `location.region` | `string` | Yes | Normalized region field. |
+| `location.country` | `string` | Yes | Normalized country field. |
+| `location.latitude` | `number` | Yes | Normalized latitude field. |
+| `location.longitude` | `number` | Yes | Normalized longitude field. |
+| `metrics` | `object` | Yes | Normalized metrics field. |
+| `metrics.followers_count` | `integer` | Yes | Normalized followers count field. |
+| `metrics.following_count` | `integer` | Yes | Normalized following count field. |
+| `metrics.posts_count` | `integer` | Yes | Normalized posts count field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -31,24 +71,28 @@ This endpoint returns all records produced for each submitted search URL. The da
       "limit": 1,
       "next_cursor": "MTAzMDM",
       "has_more": true,
+      "view": "standard",
+      "schema_id": "account",
+      "schema_version": "1.0",
       "items": [
         {
           "id": null,
           "platform": "linkedin",
-          "resource": "profiles",
+          "resource": "search-people",
           "type": "profile",
           "url": "https://in.linkedin.com/in/aakash-gupta-5ky",
+          "published_at": null,
+          "collected_at": "2026-08-11T03:03:36.539782Z",
+          "username": null,
           "name": "Aakash Gupta",
-          "description": null,
+          "text": null,
           "avatar_url": null,
-          "metrics": {
-            "followers_count": null,
-            "connections_count": null
-          },
-          "created_at": null,
-          "extra": {
-            "experience": "Think Evolve Labs, +4 more"
-          }
+          "cover_url": null,
+          "website": null,
+          "is_verified": null,
+          "is_private": null,
+          "location": null,
+          "metrics": null
         }
       ]
     }

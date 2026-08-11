@@ -42,6 +42,47 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 The final result can contain fewer records than `results_limit` when no additional page is available or duplicate ad IDs are removed.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `advertiser` | `object` | Yes | Normalized advertiser field. |
+| `advertiser.id` | `string` | Yes | Normalized id field. |
+| `advertiser.name` | `string` | Yes | Normalized name field. |
+| `advertiser.url` | `string` | Yes | Normalized url field. |
+| `advertiser.logo_url` | `string` | Yes | Normalized logo url field. |
+| `start_date` | `string` | Yes | Normalized start date field. |
+| `end_date` | `string` | Yes | Normalized end date field. |
+| `countries` | `array<string>` | Yes | Normalized countries field. |
+| `platforms` | `array<string>` | Yes | Normalized platforms field. |
+| `format` | `string` | Yes | Normalized format field. |
+| `landing_page_url` | `string` | Yes | Normalized landing page url field. |
+| `impressions` | `integer` | Yes | Normalized impressions field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -57,21 +98,44 @@ The final result can contain fewer records than `results_limit` when no addition
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
-      "items": [{
-        "id": "1162496978867592",
-        "platform": "facebook-ad-library",
-        "resource": "company-ads",
-        "type": "ad",
-        "url": "https://www.facebook.com/ads/library/?id=1162496978867592",
-        "name": "New collection",
-        "text": "Explore the latest collection.",
-        "author": {"id": "51212153078", "username": null, "name": "Example Sports", "url": null},
-        "metrics": {"page_likes_count": 1200000, "reach": null},
-        "media": [{"type": "image", "url": "https://example.com/ad.jpg"}],
-        "created_at": "2026-07-10T00:00:00",
-        "collected_at": "2026-07-18T10:30:00",
-        "extra": {"input_page_id": "51212153078", "is_active": true, "cta_text": "Shop now"}
-      }]
+      "view": "standard",
+      "schema_id": "ad",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "1162496978867592",
+          "platform": "facebook-ad-library",
+          "resource": "company-ads",
+          "type": "ad",
+          "url": "https://www.facebook.com/ads/library/?id=1162496978867592",
+          "published_at": "2026-07-10T00:00:00Z",
+          "collected_at": "2026-07-18T10:30:00Z",
+          "text": "Explore the latest collection.",
+          "advertiser": {
+            "id": "51212153078",
+            "name": "Example Sports",
+            "url": null,
+            "logo_url": null
+          },
+          "start_date": null,
+          "end_date": null,
+          "countries": null,
+          "platforms": null,
+          "format": null,
+          "landing_page_url": null,
+          "impressions": null,
+          "media": [
+            {
+              "type": "image",
+              "url": "https://example.com/ad.jpg",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ]
+        }
+      ]
     }
   }
 }

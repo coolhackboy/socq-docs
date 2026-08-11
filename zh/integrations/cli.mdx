@@ -61,10 +61,12 @@ socq run youtube comments \
 
 ```bash
 socq task get TASK_ID
-socq task wait TASK_ID --timeout 180
-socq task results TASK_ID --format csv --output results.csv
+socq task wait TASK_ID --timeout 180 --result-view standard
+socq task results TASK_ID --result-view standard --result-fields id,url,text,author.username --format csv --output results.csv
 socq task files TASK_ID
 ```
+
+`--result-view full` 保留 V1 兼容结果；`--result-view standard` 返回固定资源 Schema，可配合 `--result-fields` 获取更小的字段投影。
 
 不要因为本地等待超时就重新提交采集请求，请继续查询现有任务。
 

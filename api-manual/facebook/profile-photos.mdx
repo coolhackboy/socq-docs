@@ -37,6 +37,58 @@ Use the JSON request body above as the nested `input` object for `socq_execute`,
 See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
 {/* mcp-usage:end */}
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `author` | `object` | Yes | Normalized author field. |
+| `author.id` | `string` | Yes | Normalized id field. |
+| `author.username` | `string` | Yes | Normalized username field. |
+| `author.name` | `string` | Yes | Normalized name field. |
+| `author.url` | `string` | Yes | Normalized url field. |
+| `author.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `author.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `author.is_private` | `boolean` | Yes | Normalized is private field. |
+| `metrics` | `object` | Yes | Normalized metrics field. |
+| `metrics.likes_count` | `integer` | Yes | Normalized likes count field. |
+| `metrics.comments_count` | `integer` | Yes | Normalized comments count field. |
+| `metrics.shares_count` | `integer` | Yes | Normalized shares count field. |
+| `metrics.plays_count` | `integer` | Yes | Normalized plays count field. |
+| `metrics.views_count` | `integer` | Yes | Normalized views count field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `hashtags` | `array<string>` | Yes | Normalized hashtags field. |
+| `mentions` | `array<string>` | Yes | Normalized mentions field. |
+| `shortcode` | `string` | Yes | Normalized shortcode field. |
+| `duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `audio` | `object` | Yes | Normalized audio field. |
+| `audio.id` | `string` | Yes | Normalized id field. |
+| `audio.title` | `string` | Yes | Normalized title field. |
+| `audio.artist` | `string` | Yes | Normalized artist field. |
+| `audio.url` | `string` | Yes | Normalized url field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -52,6 +104,9 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "reel-video",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "example-id",
@@ -59,18 +114,25 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
           "resource": "profile-photos",
           "type": "photo",
           "url": "https://www.facebook.com/example/item",
+          "published_at": "2026-07-24T08:00:00Z",
+          "collected_at": "2026-07-24T10:30:00Z",
           "text": "Example public photo content.",
           "author": {
             "id": "author-id",
             "username": "example",
             "name": "Example",
-            "url": "https://www.facebook.com/example"
+            "url": "https://www.facebook.com/example",
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
           },
-          "metrics": {},
+          "metrics": null,
           "media": [],
-          "created_at": "2026-07-24T08:00:00",
-          "collected_at": "2026-07-24T10:30:00",
-          "extra": {}
+          "hashtags": null,
+          "mentions": null,
+          "shortcode": null,
+          "duration_seconds": null,
+          "audio": null
         }
       ]
     }

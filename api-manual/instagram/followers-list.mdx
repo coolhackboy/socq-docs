@@ -21,6 +21,44 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/followers-list
 
 Only relationships visible for public profiles can be returned.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `actor` | `object` | Yes | Normalized actor field. |
+| `actor.id` | `string` | Yes | Normalized id field. |
+| `actor.username` | `string` | Yes | Normalized username field. |
+| `actor.name` | `string` | Yes | Normalized name field. |
+| `actor.url` | `string` | Yes | Normalized url field. |
+| `actor.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `actor.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `actor.is_private` | `boolean` | Yes | Normalized is private field. |
+| `related_actor` | `object` | Yes | Normalized related actor field. |
+| `related_actor.id` | `string` | Yes | Normalized id field. |
+| `related_actor.username` | `string` | Yes | Normalized username field. |
+| `related_actor.name` | `string` | Yes | Normalized name field. |
+| `related_actor.url` | `string` | Yes | Normalized url field. |
+| `related_actor.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `related_actor.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `related_actor.is_private` | `boolean` | Yes | Normalized is private field. |
+| `relationship` | `string` | Yes | Normalized relationship field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -36,35 +74,29 @@ Only relationships visible for public profiles can be returned.
       "limit": 1,
       "next_cursor": "NjQ2Ng",
       "has_more": true,
+      "view": "standard",
+      "schema_id": "relationship",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "64155866175",
-          "url": "https://www.instagram.com/kanishka_____krishna8522/",
-          "name": "krishna",
-          "type": "profile",
-          "extra": {
-            "position": 1,
-            "relationship": "follower",
-            "source_username": "instagram"
-          },
-          "metrics": {
-            "likes_count": null,
-            "plays_count": null,
-            "posts_count": null,
-            "views_count": null,
-            "shares_count": null,
-            "comments_count": null,
-            "followers_count": null,
-            "following_count": null
-          },
           "platform": "instagram",
-          "resource": "followers",
-          "username": "kanishka_____krishna8522",
-          "avatar_url": "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-19/723686404_17958078264138176_6668438638250663053_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2gGHn5SNI6SfnzOfKI6LamTlH6mE7xvTnmmino7kGy_NdxlUvtmX9AeCXCFXOqrGAjM&_nc_ohc=VFdfB3KUVWcQ7kNvwE1gbJc&_nc_gid=u5rwo7eae0Wd-fcIhBRxVQ&edm=AOG-cTkBAAAA&ccb=7-5&oh=00_AQH3JdNh2QLUzF0gxwtJp4UpQGprJp7LdBvqBN5H7od-7Q&oe=6A71C951&_nc_sid=17ea04",
-          "created_at": null,
-          "is_private": false,
-          "is_verified": false,
-          "collected_at": "2026-07-31T02:22:43.794329+00:00"
+          "resource": "followers-list",
+          "type": "profile",
+          "url": "https://www.instagram.com/kanishka_____krishna8522/",
+          "published_at": null,
+          "collected_at": "2026-07-31T02:22:43.794329Z",
+          "actor": null,
+          "related_actor": {
+            "id": "64155866175",
+            "username": null,
+            "name": null,
+            "url": "https://www.instagram.com/kanishka_____krishna8522/",
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
+          },
+          "relationship": "follower"
         }
       ]
     }

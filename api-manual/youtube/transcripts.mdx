@@ -39,6 +39,31 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 Videos without an available transcript do not produce a result.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `language` | `string` | Yes | Normalized language field. |
+| `format` | `string` | Yes | Normalized format field. |
+| `duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -54,6 +79,9 @@ Videos without an available transcript do not produce a result.
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "transcript",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "VIDEO_ID",
@@ -61,17 +89,12 @@ Videos without an available transcript do not produce a result.
           "resource": "transcripts",
           "type": "transcript",
           "url": "https://www.youtube.com/watch?v=VIDEO_ID",
-          "title": "Example video",
+          "published_at": null,
+          "collected_at": "2026-07-15T10:30:00Z",
           "text": "Plain-text transcript content...",
           "language": "en",
-          "available_languages": [
-            "en",
-            "es"
-          ],
           "format": "plaintext",
-          "transcript_source": "user_generated",
-          "collected_at": "2026-07-15T10:30:00",
-          "extra": {}
+          "duration_seconds": null
         }
       ]
     }

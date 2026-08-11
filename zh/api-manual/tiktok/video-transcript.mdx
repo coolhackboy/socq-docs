@@ -21,6 +21,31 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/video-transcri
 
 `language` 是可选的。没有可用语音或字幕的视频可能不会返回任何结果。
 
+
+
+
+
+
+{/* result-schema:start */}
+## 标准结果字段
+
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 标准化的 id 字段。 |
+| `platform` | `string` | 否 | 标准化的 platform 字段。 |
+| `resource` | `string` | 否 | 标准化的 resource 字段。 |
+| `type` | `string` | 否 | 标准化的 type 字段。 |
+| `url` | `string` | 是 | 标准化的 url 字段。 |
+| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
+| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
+| `text` | `string` | 是 | 标准化的 text 字段。 |
+| `language` | `string` | 是 | 标准化的 language 字段。 |
+| `format` | `string` | 是 | 标准化的 format 字段。 |
+| `duration_seconds` | `number` | 是 | 标准化的 duration seconds 字段。 |
+{/* result-schema:end */}
+
 ## 任务完成响应
 
 ```json
@@ -36,21 +61,22 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/video-transcri
       "limit": 1,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "transcript",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "6718335390845095173",
-          "url": "https://www.tiktok.com/@scout2015/video/6718335390845095173",
-          "text": null,
-          "type": "transcript",
-          "extra": {
-            "shortcode": null
-          },
-          "format": "plaintext",
-          "language": null,
           "platform": "tiktok",
           "resource": "video-transcript",
-          "created_at": null,
-          "collected_at": "2026-07-31T02:26:55.237032"
+          "type": "transcript",
+          "url": "https://www.tiktok.com/@scout2015/video/6718335390845095173",
+          "published_at": null,
+          "collected_at": "2026-07-31T02:26:55.237032Z",
+          "text": null,
+          "language": null,
+          "format": "plaintext",
+          "duration_seconds": null
         }
       ]
     }

@@ -24,6 +24,58 @@ Collect normalized video records from one or more public playlists.
 Playlist IDs may be passed directly in `urls`. Results include playlist context under `extra`.
 `results_limit` defaults to 100, accepts values from 10 through 2,000, and applies to each playlist.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `author` | `object` | Yes | Normalized author field. |
+| `author.id` | `string` | Yes | Normalized id field. |
+| `author.username` | `string` | Yes | Normalized username field. |
+| `author.name` | `string` | Yes | Normalized name field. |
+| `author.url` | `string` | Yes | Normalized url field. |
+| `author.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `author.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `author.is_private` | `boolean` | Yes | Normalized is private field. |
+| `metrics` | `object` | Yes | Normalized metrics field. |
+| `metrics.likes_count` | `integer` | Yes | Normalized likes count field. |
+| `metrics.comments_count` | `integer` | Yes | Normalized comments count field. |
+| `metrics.shares_count` | `integer` | Yes | Normalized shares count field. |
+| `metrics.plays_count` | `integer` | Yes | Normalized plays count field. |
+| `metrics.views_count` | `integer` | Yes | Normalized views count field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `hashtags` | `array<string>` | Yes | Normalized hashtags field. |
+| `mentions` | `array<string>` | Yes | Normalized mentions field. |
+| `shortcode` | `string` | Yes | Normalized shortcode field. |
+| `duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `audio` | `object` | Yes | Normalized audio field. |
+| `audio.id` | `string` | Yes | Normalized id field. |
+| `audio.title` | `string` | Yes | Normalized title field. |
+| `audio.artist` | `string` | Yes | Normalized artist field. |
+| `audio.url` | `string` | Yes | Normalized url field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -39,35 +91,44 @@ Playlist IDs may be passed directly in `urls`. Results include playlist context 
       "limit": 1,
       "next_cursor": "OTQyOQ",
       "has_more": true,
+      "view": "standard",
+      "schema_id": "reel-video",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "GvgqDSnpRQM",
-          "url": "https://www.youtube.com/watch?v=GvgqDSnpRQM",
-          "type": "video",
-          "extra": {
-            "length_text": "1:30",
-            "playlist_id": "PLBCF2DAC6FFB574DE",
-            "playlist_title": "Google Search Stories"
-          },
-          "media": [
-            {
-              "url": "https://i.ytimg.com/vi/GvgqDSnpRQM/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCUlchJX7g_3l_SO094FoS3Ud8D4g",
-              "type": "image"
-            }
-          ],
-          "title": "Andrew Willis, Skatepark Engineer",
-          "author": {
-            "id": "UCvceBgMIpKb4zK1ss-Sh90w",
-            "url": "https://www.youtube.com/@SearchStories",
-            "name": "Google Search Stories",
-            "username": "SearchStories"
-          },
-          "metrics": {},
           "platform": "youtube",
           "resource": "playlist-videos",
-          "created_at": null,
-          "collected_at": "2026-07-31T02:27:54.658848",
-          "duration_seconds": 90
+          "type": "video",
+          "url": "https://www.youtube.com/watch?v=GvgqDSnpRQM",
+          "published_at": null,
+          "collected_at": "2026-07-31T02:27:54.658848Z",
+          "text": null,
+          "author": {
+            "id": "UCvceBgMIpKb4zK1ss-Sh90w",
+            "username": "SearchStories",
+            "name": "Google Search Stories",
+            "url": "https://www.youtube.com/@SearchStories",
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
+          },
+          "metrics": null,
+          "media": [
+            {
+              "type": "image",
+              "url": "https://i.ytimg.com/vi/GvgqDSnpRQM/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCUlchJX7g_3l_SO094FoS3Ud8D4g",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ],
+          "hashtags": null,
+          "mentions": null,
+          "shortcode": null,
+          "duration_seconds": 90.0,
+          "audio": null
         }
       ]
     }

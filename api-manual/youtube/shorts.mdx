@@ -39,6 +39,58 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 Results use the normalized video structure documented in [YouTube Videos](/api-manual/youtube/videos), with `resource` set to `shorts` and `type` set to `short`.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `author` | `object` | Yes | Normalized author field. |
+| `author.id` | `string` | Yes | Normalized id field. |
+| `author.username` | `string` | Yes | Normalized username field. |
+| `author.name` | `string` | Yes | Normalized name field. |
+| `author.url` | `string` | Yes | Normalized url field. |
+| `author.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `author.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `author.is_private` | `boolean` | Yes | Normalized is private field. |
+| `metrics` | `object` | Yes | Normalized metrics field. |
+| `metrics.likes_count` | `integer` | Yes | Normalized likes count field. |
+| `metrics.comments_count` | `integer` | Yes | Normalized comments count field. |
+| `metrics.shares_count` | `integer` | Yes | Normalized shares count field. |
+| `metrics.plays_count` | `integer` | Yes | Normalized plays count field. |
+| `metrics.views_count` | `integer` | Yes | Normalized views count field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `hashtags` | `array<string>` | Yes | Normalized hashtags field. |
+| `mentions` | `array<string>` | Yes | Normalized mentions field. |
+| `shortcode` | `string` | Yes | Normalized shortcode field. |
+| `duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `audio` | `object` | Yes | Normalized audio field. |
+| `audio.id` | `string` | Yes | Normalized id field. |
+| `audio.title` | `string` | Yes | Normalized title field. |
+| `audio.artist` | `string` | Yes | Normalized artist field. |
+| `audio.url` | `string` | Yes | Normalized url field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -54,48 +106,50 @@ Results use the normalized video structure documented in [YouTube Videos](/api-m
       "limit": 1,
       "next_cursor": "OTQ1Ng",
       "has_more": true,
+      "view": "standard",
+      "schema_id": "reel-video",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "S7oSvAq7-rM",
-          "url": "https://www.youtube.com/shorts/S7oSvAq7-rM",
+          "platform": "youtube",
+          "resource": "shorts",
           "type": "short",
-          "extra": {
-            "location": null,
-            "source_url": "https://www.youtube.com/@YouTube/shorts",
-            "content_type": "shorts",
-            "published_text": "2026-07-28T05:00:27.000Z",
-            "is_members_only": false,
-            "is_paid_content": false,
-            "description_links": []
-          },
-          "media": [
-            {
-              "url": "https://i.ytimg.com/vi/S7oSvAq7-rM/maxres2.jpg?sqp=-oaymwEoCIAKENAF8quKqQMcGADwAQH4AbYIgAKAD4oCDAgAEAEYciBaKCcwDw==&rs=AOn4CLBrJ6k1lqKq-dqbDD1AigStuLG9BQ",
-              "type": "image"
-            }
-          ],
-          "title": "is dubai chewy kimbap the new dubai chewy cookie??",
+          "url": "https://www.youtube.com/shorts/S7oSvAq7-rM",
+          "published_at": "2026-07-28T05:00:27Z",
+          "collected_at": "2026-07-31T02:28:46.548886Z",
+          "text": null,
           "author": {
             "id": "UCBR8-60-B28hp2BmDPdntcQ",
-            "url": "https://www.youtube.com/channel/UCBR8-60-B28hp2BmDPdntcQ",
-            "name": "YouTube",
             "username": "YouTube",
+            "name": "YouTube",
+            "url": "https://www.youtube.com/channel/UCBR8-60-B28hp2BmDPdntcQ",
             "avatar_url": "https://yt3.googleusercontent.com/3s6evpqAiDU9tQR4sC2siJippbH2RWVPnwHgyl4V0th2iuQz0VDQZbUhQBGmsxLYo-mjG6TqZQ=s68-c-k-c0x00ffffff-no-rj",
-            "is_private": null,
-            "is_verified": true
+            "is_verified": true,
+            "is_private": null
           },
           "metrics": {
             "likes_count": 723,
-            "views_count": 60856,
-            "comments_count": 141
+            "comments_count": 141,
+            "shares_count": null,
+            "plays_count": null,
+            "views_count": 60856
           },
+          "media": [
+            {
+              "type": "image",
+              "url": "https://i.ytimg.com/vi/S7oSvAq7-rM/maxres2.jpg?sqp=-oaymwEoCIAKENAF8quKqQMcGADwAQH4AbYIgAKAD4oCDAgAEAEYciBaKCcwDw==&rs=AOn4CLBrJ6k1lqKq-dqbDD1AigStuLG9BQ",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ],
           "hashtags": [],
-          "platform": "youtube",
-          "resource": "shorts",
-          "created_at": "2026-07-28T05:00:27",
-          "description": null,
-          "collected_at": "2026-07-31T02:28:46.548886",
-          "duration_seconds": 16
+          "mentions": null,
+          "shortcode": null,
+          "duration_seconds": 16.0,
+          "audio": null
         }
       ]
     }

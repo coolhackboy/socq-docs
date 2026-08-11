@@ -38,6 +38,35 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/facebook-marketplace/
 有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
 {/* mcp-usage:end */}
 
+
+
+
+
+
+{/* result-schema:start */}
+## 标准结果字段
+
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 标准化的 id 字段。 |
+| `platform` | `string` | 否 | 标准化的 platform 字段。 |
+| `resource` | `string` | 否 | 标准化的 resource 字段。 |
+| `type` | `string` | 否 | 标准化的 type 字段。 |
+| `url` | `string` | 是 | 标准化的 url 字段。 |
+| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
+| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
+| `name` | `string` | 是 | 标准化的 name 字段。 |
+| `location` | `object` | 是 | 标准化的 location 字段。 |
+| `location.name` | `string` | 是 | 标准化的 name 字段。 |
+| `location.city` | `string` | 是 | 标准化的 city 字段。 |
+| `location.region` | `string` | 是 | 标准化的 region 字段。 |
+| `location.country` | `string` | 是 | 标准化的 country 字段。 |
+| `location.latitude` | `number` | 是 | 标准化的 latitude 字段。 |
+| `location.longitude` | `number` | 是 | 标准化的 longitude 字段。 |
+{/* result-schema:end */}
+
 ## 任务完成响应
 
 ```json
@@ -53,27 +82,22 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/facebook-marketplace/
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
-      "items": [{
-        "id": "106224666074625",
-        "platform": "facebook-marketplace",
-        "resource": "location-search",
-        "type": "location",
-        "url": null,
-        "name": "Austin, Texas",
-        "text": "City",
-        "metrics": {},
-        "media": [],
-        "created_at": null,
-        "collected_at": "2026-07-18T10:30:00",
-        "extra": {
-          "search_query": "Austin",
-          "address": [],
-          "city": "Austin",
-          "postal_code": "78701",
-          "latitude": 30.2677,
-          "longitude": -97.7475
+      "view": "standard",
+      "schema_id": "marketplace-location",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "106224666074625",
+          "platform": "facebook-marketplace",
+          "resource": "location-search",
+          "type": "location",
+          "url": null,
+          "published_at": null,
+          "collected_at": "2026-07-18T10:30:00Z",
+          "name": "Austin, Texas",
+          "location": null
         }
-      }]
+      ]
     }
   }
 }

@@ -22,6 +22,50 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook/group-posts"
 `sort_by` accepts `top_posts`, `recent_activity`, `chronological`, or `chronological_listings`.
 `results_limit` defaults to 100, accepts values from 3 through 2,000, and applies to each group URL.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `author` | `object` | Yes | Normalized author field. |
+| `author.id` | `string` | Yes | Normalized id field. |
+| `author.username` | `string` | Yes | Normalized username field. |
+| `author.name` | `string` | Yes | Normalized name field. |
+| `author.url` | `string` | Yes | Normalized url field. |
+| `author.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `author.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `author.is_private` | `boolean` | Yes | Normalized is private field. |
+| `metrics` | `object` | Yes | Normalized metrics field. |
+| `metrics.likes_count` | `integer` | Yes | Normalized likes count field. |
+| `metrics.comments_count` | `integer` | Yes | Normalized comments count field. |
+| `metrics.shares_count` | `integer` | Yes | Normalized shares count field. |
+| `metrics.views_count` | `integer` | Yes | Normalized views count field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `hashtags` | `array<string>` | Yes | Normalized hashtags field. |
+| `mentions` | `array<string>` | Yes | Normalized mentions field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -37,29 +81,37 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook/group-posts"
       "limit": 1,
       "next_cursor": "NjM4NA",
       "has_more": true,
+      "view": "standard",
+      "schema_id": "post",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "3739196799578497",
-          "url": "https://www.facebook.com/groups/1270525996445602/permalink/3739196799578497/",
-          "type": "post",
-          "extra": {
-            "group_url": "https://www.facebook.com/groups/1270525996445602/"
-          },
-          "media": [],
-          "author": {
-            "id": "1150735875",
-            "name": "Ricky Pope"
-          },
-          "message": "A pirate walks into a bar wearing a paper towel hat. The bartender asks, \"What's with the paper towel hat?\" The pirate says, \"Arr, there be a Bounty on me head.\"",
-          "metrics": {
-            "views_count": null,
-            "comments_count": 0,
-            "reactions_count": 28
-          },
           "platform": "facebook",
           "resource": "group-posts",
-          "created_at": "2026-07-30T18:44:25",
-          "collected_at": "2026-07-31T02:21:46.546342"
+          "type": "post",
+          "url": "https://www.facebook.com/groups/1270525996445602/permalink/3739196799578497/",
+          "published_at": "2026-07-30T18:44:25Z",
+          "collected_at": "2026-07-31T02:21:46.546342Z",
+          "text": "A pirate walks into a bar wearing a paper towel hat. The bartender asks, \"What's with the paper towel hat?\" The pirate says, \"Arr, there be a Bounty on me head.\"",
+          "author": {
+            "id": "1150735875",
+            "username": null,
+            "name": "Ricky Pope",
+            "url": null,
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
+          },
+          "metrics": {
+            "likes_count": null,
+            "comments_count": 0,
+            "shares_count": null,
+            "views_count": null
+          },
+          "media": [],
+          "hashtags": null,
+          "mentions": null
         }
       ]
     }

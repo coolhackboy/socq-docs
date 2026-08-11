@@ -8,7 +8,7 @@ SocQ exposes a machine-readable Capability Registry at `/v1/catalog`. It contain
 
 The default MCP connection exposes compact discovery and execution tools. Add `?platforms=youtube,tiktok` to load typed tools for at most five platforms, or `?tools=youtube_comments,x_search` for at most thirty exact tools. Do not combine both filters.
 
-Collection is asynchronous. Submit a request, retain its task ID, and poll until `succeeded` or `failed`. MCP can wait at most 30 seconds per submit call. Follow `next_cursor` for additional normalized result pages and use the task files endpoint for raw JSONL exports.
+Collection is asynchronous. Submit a request, retain its task ID, and poll until `succeeded` or `failed`. MCP can wait at most 30 seconds per submit call. Request `view=standard` for a fixed, provider-independent resource schema whose declared nullable fields remain present. V1 REST defaults to the compatible `full` view. `fields` supports at most 50 comma-separated top-level or dot-path fields and is valid only with `standard`. Follow `next_cursor` for additional result pages and use the task files endpoint for complete source exports.
 
 CLI examples:
 

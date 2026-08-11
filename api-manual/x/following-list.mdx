@@ -37,6 +37,44 @@ Use the JSON request body above as the nested `input` object for `socq_execute`,
 See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
 {/* mcp-usage:end */}
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `actor` | `object` | Yes | Normalized actor field. |
+| `actor.id` | `string` | Yes | Normalized id field. |
+| `actor.username` | `string` | Yes | Normalized username field. |
+| `actor.name` | `string` | Yes | Normalized name field. |
+| `actor.url` | `string` | Yes | Normalized url field. |
+| `actor.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `actor.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `actor.is_private` | `boolean` | Yes | Normalized is private field. |
+| `related_actor` | `object` | Yes | Normalized related actor field. |
+| `related_actor.id` | `string` | Yes | Normalized id field. |
+| `related_actor.username` | `string` | Yes | Normalized username field. |
+| `related_actor.name` | `string` | Yes | Normalized name field. |
+| `related_actor.url` | `string` | Yes | Normalized url field. |
+| `related_actor.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `related_actor.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `related_actor.is_private` | `boolean` | Yes | Normalized is private field. |
+| `relationship` | `string` | Yes | Normalized relationship field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -52,6 +90,9 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "relationship",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "example-id",
@@ -59,13 +100,19 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
           "resource": "following-list",
           "type": "profile",
           "url": "https://www.x.com/example",
-          "text": null,
-          "author": null,
-          "metrics": {},
-          "media": [],
-          "created_at": "2026-07-24T08:00:00",
-          "collected_at": "2026-07-24T10:30:00",
-          "extra": {}
+          "published_at": "2026-07-24T08:00:00Z",
+          "collected_at": "2026-07-24T10:30:00Z",
+          "actor": null,
+          "related_actor": {
+            "id": "example-id",
+            "username": null,
+            "name": null,
+            "url": "https://www.x.com/example",
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
+          },
+          "relationship": "following"
         }
       ]
     }

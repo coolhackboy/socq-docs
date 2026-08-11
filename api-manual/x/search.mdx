@@ -42,6 +42,50 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 Results use the normalized structure documented in [X Posts](/api-manual/x/posts), with `resource` set to `search`. The submitted expression is returned under `extra.search_query`.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `author` | `object` | Yes | Normalized author field. |
+| `author.id` | `string` | Yes | Normalized id field. |
+| `author.username` | `string` | Yes | Normalized username field. |
+| `author.name` | `string` | Yes | Normalized name field. |
+| `author.url` | `string` | Yes | Normalized url field. |
+| `author.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `author.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `author.is_private` | `boolean` | Yes | Normalized is private field. |
+| `metrics` | `object` | Yes | Normalized metrics field. |
+| `metrics.likes_count` | `integer` | Yes | Normalized likes count field. |
+| `metrics.comments_count` | `integer` | Yes | Normalized comments count field. |
+| `metrics.shares_count` | `integer` | Yes | Normalized shares count field. |
+| `metrics.views_count` | `integer` | Yes | Normalized views count field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `hashtags` | `array<string>` | Yes | Normalized hashtags field. |
+| `mentions` | `array<string>` | Yes | Normalized mentions field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -57,51 +101,37 @@ Results use the normalized structure documented in [X Posts](/api-manual/x/posts
       "limit": 1,
       "next_cursor": "MjUyMg",
       "has_more": true,
+      "view": "standard",
+      "schema_id": "post",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "2077807981715128702",
-          "url": "https://x.com/OpenAI/status/2077807981715128702",
-          "text": "Listen to the OpenAI Podcast on—\n\nSpotify\nhttps://t.co/hLcRdGrfUX\nApple\nhttps://t.co/UsNCsk4dvq\nYouTube\nhttps://t.co/Ji9gUYXqYp",
+          "platform": "x",
+          "resource": "search",
           "type": "post",
-          "extra": {
-            "source": "Twitter for iPhone",
-            "is_reply": true,
-            "input_url": null,
-            "search_query": "from:OpenAI",
-            "in_reply_to_id": "2077807977193714080",
-            "input_username": null,
-            "quoted_post_id": null,
-            "conversation_id": "2077807977193714080",
-            "is_limited_reply": false,
-            "reposted_post_id": null,
-            "in_reply_to_user_id": "4398626122",
-            "in_reply_to_username": "OpenAI"
-          },
-          "media": [],
+          "url": "https://x.com/OpenAI/status/2077807981715128702",
+          "published_at": "2026-07-16T17:30:01Z",
+          "collected_at": "2026-07-17T07:05:45.186861Z",
+          "text": "Listen to the OpenAI Podcast on—\n\nSpotify\nhttps://t.co/hLcRdGrfUX\nApple\nhttps://t.co/UsNCsk4dvq\nYouTube\nhttps://t.co/Ji9gUYXqYp",
           "author": {
             "id": "4398626122",
-            "url": "https://x.com/OpenAI",
-            "name": "OpenAI",
             "username": "OpenAI",
+            "name": "OpenAI",
+            "url": "https://x.com/OpenAI",
             "avatar_url": "https://pbs.twimg.com/profile_images/1885410181409820672/ztsaR0JW_normal.jpg",
-            "is_private": null,
-            "is_verified": true
+            "is_verified": true,
+            "is_private": null
           },
           "metrics": {
             "likes_count": 61,
-            "views_count": 49237,
-            "quotes_count": 2,
-            "reposts_count": 5,
             "comments_count": 7,
-            "bookmarks_count": 7
+            "shares_count": null,
+            "views_count": 49237
           },
+          "media": [],
           "hashtags": [],
-          "language": "en",
-          "mentions": [],
-          "platform": "x",
-          "resource": "search",
-          "created_at": "2026-07-16T17:30:01",
-          "collected_at": "2026-07-17T07:05:45.186861"
+          "mentions": []
         }
       ]
     }

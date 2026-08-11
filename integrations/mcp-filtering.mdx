@@ -87,16 +87,20 @@ Call the typed tool with API input fields directly:
   "results_limit": 100,
   "sort_by": "newest",
   "_wait_seconds": 30,
-  "_result_limit": 25
+  "_result_limit": 25,
+  "_result_view": "standard",
+  "_result_fields": "id,url,text,author.username"
 }
 ```
 
-Typed tools add three optional control fields:
+Typed tools add five optional control fields:
 
 | Field | Purpose |
 | --- | --- |
 | `_wait_seconds` | Wait up to 30 seconds before returning the task |
 | `_result_limit` | Limit normalized records returned with this response, from 1 to 100 |
+| `_result_view` | Return the compatible `full` view or fixed `standard` view; Skills should prefer `standard` |
+| `_result_fields` | Project at most 50 comma-separated fields or dot paths from `standard` |
 | `_idempotency_key` | Make a retry return the original task instead of creating another one |
 
 These are separate from business inputs such as `results_limit`. For example, `results_limit: 100` requests up to 100 collected comments, while `_result_limit: 25` limits the current response page to 25 records.

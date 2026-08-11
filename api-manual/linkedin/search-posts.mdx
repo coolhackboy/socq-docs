@@ -16,6 +16,50 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/search-posts"
 
 `results_limit` must be a multiple of the 10-record page size.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `author` | `object` | Yes | Normalized author field. |
+| `author.id` | `string` | Yes | Normalized id field. |
+| `author.username` | `string` | Yes | Normalized username field. |
+| `author.name` | `string` | Yes | Normalized name field. |
+| `author.url` | `string` | Yes | Normalized url field. |
+| `author.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `author.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `author.is_private` | `boolean` | Yes | Normalized is private field. |
+| `metrics` | `object` | Yes | Normalized metrics field. |
+| `metrics.likes_count` | `integer` | Yes | Normalized likes count field. |
+| `metrics.comments_count` | `integer` | Yes | Normalized comments count field. |
+| `metrics.shares_count` | `integer` | Yes | Normalized shares count field. |
+| `metrics.views_count` | `integer` | Yes | Normalized views count field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `hashtags` | `array<string>` | Yes | Normalized hashtags field. |
+| `mentions` | `array<string>` | Yes | Normalized mentions field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -31,26 +75,24 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/search-posts"
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "post",
+      "schema_version": "1.0",
       "items": [
         {
           "id": null,
           "platform": "linkedin",
-          "resource": "posts",
+          "resource": "search-posts",
           "type": "post",
           "url": "https://www.linkedin.com/posts/ondrej-pokorny-opo_agents-agents-agents-the-rise-of-agentic-activity-7491031239655874560-xuxl",
+          "published_at": null,
+          "collected_at": "2026-08-11T03:03:36.542288Z",
           "text": null,
-          "author": {
-            "id": null,
-            "name": null,
-            "url": null
-          },
-          "metrics": {
-            "likes_count": null,
-            "comments_count": null,
-            "reposts_count": null
-          },
+          "author": null,
+          "metrics": null,
           "media": [],
-          "created_at": null
+          "hashtags": null,
+          "mentions": null
         }
       ]
     }

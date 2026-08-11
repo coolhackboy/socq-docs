@@ -17,6 +17,32 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/seo/relevant-pages"
 
 Each item is one page record with ranking distribution and estimated search-traffic metrics.
 
+
+
+
+
+
+{/* result-schema:start */}
+## 标准结果字段
+
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 标准化的 id 字段。 |
+| `platform` | `string` | 否 | 标准化的 platform 字段。 |
+| `resource` | `string` | 否 | 标准化的 resource 字段。 |
+| `type` | `string` | 否 | 标准化的 type 字段。 |
+| `url` | `string` | 是 | 标准化的 url 字段。 |
+| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
+| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
+| `title` | `string` | 是 | 标准化的 title 字段。 |
+| `text` | `string` | 是 | 标准化的 text 字段。 |
+| `rank` | `integer` | 是 | 标准化的 rank 字段。 |
+| `domain` | `string` | 是 | 标准化的 domain 字段。 |
+| `result_type` | `string` | 是 | 标准化的 result type 字段。 |
+{/* result-schema:end */}
+
 ## 任务完成响应
 
 ```json
@@ -32,76 +58,23 @@ Each item is one page record with ranking distribution and estimated search-traf
       "limit": 1,
       "next_cursor": "OTc3Mw",
       "has_more": true,
+      "view": "standard",
+      "schema_id": "serp-result",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec",
-          "url": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec",
-          "rank": {},
-          "text": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec",
-          "type": "relevant-pages",
-          "extra": {
-            "metrics": {
-              "paid": {
-                "etv": 0,
-                "count": 0,
-                "is_up": 0,
-                "pos_1": 0,
-                "is_new": 0,
-                "is_down": 0,
-                "is_lost": 0,
-                "pos_2_3": 0,
-                "pos_4_10": 0,
-                "pos_11_20": 0,
-                "pos_21_30": 0,
-                "pos_31_40": 0,
-                "pos_41_50": 0,
-                "pos_51_60": 0,
-                "pos_61_70": 0,
-                "pos_71_80": 0,
-                "pos_81_90": 0,
-                "pos_91_100": 0,
-                "clickstream_etv": null,
-                "estimated_paid_traffic_cost": 0,
-                "clickstream_age_distribution": null,
-                "clickstream_gender_distribution": null
-              },
-              "organic": {
-                "etv": 594617.3855088986,
-                "count": 3877,
-                "is_up": 585,
-                "pos_1": 1441,
-                "is_new": 786,
-                "is_down": 1277,
-                "is_lost": 0,
-                "pos_2_3": 1272,
-                "pos_4_10": 726,
-                "pos_11_20": 120,
-                "pos_21_30": 90,
-                "pos_31_40": 54,
-                "pos_41_50": 39,
-                "pos_51_60": 38,
-                "pos_61_70": 33,
-                "pos_71_80": 26,
-                "pos_81_90": 19,
-                "pos_91_100": 19,
-                "clickstream_etv": null,
-                "estimated_paid_traffic_cost": 199624.19869861787,
-                "clickstream_age_distribution": null,
-                "clickstream_gender_distribution": null
-              },
-              "local_pack": null,
-              "featured_snippet": null
-            },
-            "se_type": "google",
-            "page_address": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec"
-          },
-          "keyword": null,
-          "metrics": {},
           "platform": "seo",
           "resource": "relevant-pages",
-          "collected_at": "2026-07-31T02:44:31.961617",
-          "search_intent": null,
-          "monthly_searches": []
+          "type": "relevant-pages",
+          "url": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec",
+          "published_at": null,
+          "collected_at": "2026-07-31T02:44:31.961617Z",
+          "title": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec",
+          "text": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec",
+          "rank": null,
+          "domain": null,
+          "result_type": "relevant-pages"
         }
       ]
     }

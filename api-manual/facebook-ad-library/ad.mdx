@@ -38,6 +38,47 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 One task accepts one ad URL and produces at most one normalized ad record.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `advertiser` | `object` | Yes | Normalized advertiser field. |
+| `advertiser.id` | `string` | Yes | Normalized id field. |
+| `advertiser.name` | `string` | Yes | Normalized name field. |
+| `advertiser.url` | `string` | Yes | Normalized url field. |
+| `advertiser.logo_url` | `string` | Yes | Normalized logo url field. |
+| `start_date` | `string` | Yes | Normalized start date field. |
+| `end_date` | `string` | Yes | Normalized end date field. |
+| `countries` | `array<string>` | Yes | Normalized countries field. |
+| `platforms` | `array<string>` | Yes | Normalized platforms field. |
+| `format` | `string` | Yes | Normalized format field. |
+| `landing_page_url` | `string` | Yes | Normalized landing page url field. |
+| `impressions` | `integer` | Yes | Normalized impressions field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -53,21 +94,44 @@ One task accepts one ad URL and produces at most one normalized ad record.
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
-      "items": [{
-        "id": "702369045530963",
-        "platform": "facebook-ad-library",
-        "resource": "ad",
-        "type": "ad",
-        "url": "https://www.facebook.com/ads/library/?id=702369045530963",
-        "name": "Summer offer",
-        "text": "Discover the summer offer.",
-        "author": {"id": "166258896830103", "username": null, "name": "Example Brand", "url": null},
-        "metrics": {"page_likes_count": null, "reach": null},
-        "media": [{"type": "video", "url": "https://example.com/creative.mp4"}],
-        "created_at": "2026-07-01T00:00:00",
-        "collected_at": "2026-07-18T10:30:00",
-        "extra": {"input_url": "https://www.facebook.com/ads/library/?id=702369045530963", "is_active": true, "cta_text": "Learn more"}
-      }]
+      "view": "standard",
+      "schema_id": "ad",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "702369045530963",
+          "platform": "facebook-ad-library",
+          "resource": "ad",
+          "type": "ad",
+          "url": "https://www.facebook.com/ads/library/?id=702369045530963",
+          "published_at": "2026-07-01T00:00:00Z",
+          "collected_at": "2026-07-18T10:30:00Z",
+          "text": "Discover the summer offer.",
+          "advertiser": {
+            "id": "166258896830103",
+            "name": "Example Brand",
+            "url": null,
+            "logo_url": null
+          },
+          "start_date": null,
+          "end_date": null,
+          "countries": null,
+          "platforms": null,
+          "format": null,
+          "landing_page_url": null,
+          "impressions": null,
+          "media": [
+            {
+              "type": "video",
+              "url": "https://example.com/creative.mp4",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ]
+        }
+      ]
     }
   }
 }

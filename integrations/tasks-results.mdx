@@ -24,14 +24,16 @@ If the task remains `queued` or `running`, keep its ID and call `socq_get_task`:
 ```json
 {
   "task_id": "TASK_ID",
-  "limit": 100
+  "limit": 100,
+  "view": "standard",
+  "fields": "id,url,text,author.username"
 }
 ```
 
 The CLI can poll the same task without holding an API request open:
 
 ```bash
-socq task wait TASK_ID --timeout 180
+socq task wait TASK_ID --timeout 180 --result-view standard
 ```
 
 <Warning>
@@ -52,9 +54,13 @@ Use an idempotency key when a network or client failure might trigger a submissi
 }
 ```
 
-## Read normalized results
+## Choose a result view
 
-Successful tasks return normalized records in `results.items`. MCP pages default to 25 items and accept at most 100.
+Successful tasks return records in `results.items`. V1 REST defaults to `full`, which preserves the existing normalized output. Request `standard` for the fixed resource-level schema shared by REST, MCP, CLI, SDK, and Skills.
+
+Standard results retain declared nullable fields and exclude `raw` and unstable `extra`. Use `fields` only with `standard`; it accepts at most 50 comma-separated top-level fields or dot paths. A field is omitted only when the projection did not request it.
+
+MCP and Skills should normally request `view: "standard"`; typed MCP tools use `_result_view` and `_result_fields`. CLI uses `--result-view standard` and optional `--result-fields`.
 
 When `has_more` is true, pass `next_cursor` unchanged to the next `socq_get_task` call. Stop when the cursor is null or your requested research limit has been reached.
 

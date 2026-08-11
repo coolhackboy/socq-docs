@@ -38,6 +38,51 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 One task accepts one product URL and produces at most one normalized product record.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `title` | `string` | Yes | Normalized title field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `seller` | `object` | Yes | Normalized seller field. |
+| `seller.id` | `string` | Yes | Normalized id field. |
+| `seller.username` | `string` | Yes | Normalized username field. |
+| `seller.name` | `string` | Yes | Normalized name field. |
+| `seller.url` | `string` | Yes | Normalized url field. |
+| `seller.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `seller.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `seller.is_private` | `boolean` | Yes | Normalized is private field. |
+| `price` | `object` | Yes | Normalized price field. |
+| `price.amount` | `number` | Yes | Normalized amount field. |
+| `price.currency` | `string` | Yes | Normalized currency field. |
+| `price.formatted` | `string` | Yes | Normalized formatted field. |
+| `rating` | `number` | Yes | Normalized rating field. |
+| `reviews_count` | `integer` | Yes | Normalized reviews count field. |
+| `sold_count` | `integer` | Yes | Normalized sold count field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -53,21 +98,37 @@ One task accepts one product URL and produces at most one normalized product rec
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
-      "items": [{
-        "id": "1729587769570529799",
-        "platform": "tiktok-shop",
-        "resource": "product",
-        "type": "product",
-        "url": "https://www.tiktok.com/shop/pdp/example-product/1729587769570529799",
-        "name": "Example Product",
-        "text": "Example Product",
-        "author": {"id": "7496021452055022168", "username": "7098283607022158891", "name": "Example Store", "url": "https://www.tiktok.com/@7098283607022158891"},
-        "metrics": {"rating": 4.7, "reviews_count": 1200, "sold_count": 8500},
-        "media": [{"type": "image", "url": "https://example.com/product.jpg"}],
-        "created_at": null,
-        "collected_at": "2026-07-18T10:30:00",
-        "extra": {"input_url": "https://www.tiktok.com/shop/pdp/example-product/1729587769570529799", "region": "US", "price": {"amount": 29.99, "currency": "USD"}}
-      }]
+      "view": "standard",
+      "schema_id": "product",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "1729587769570529799",
+          "platform": "tiktok-shop",
+          "resource": "product",
+          "type": "product",
+          "url": "https://www.tiktok.com/shop/pdp/example-product/1729587769570529799",
+          "published_at": null,
+          "collected_at": "2026-07-18T10:30:00Z",
+          "title": "Example Product",
+          "text": "Example Product",
+          "seller": null,
+          "price": null,
+          "rating": null,
+          "reviews_count": null,
+          "sold_count": null,
+          "media": [
+            {
+              "type": "image",
+              "url": "https://example.com/product.jpg",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ]
+        }
+      ]
     }
   }
 }

@@ -21,6 +21,46 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/profiles"
 
 Results include biography, profile links, verification status, and follower, following, and post counts.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `username` | `string` | Yes | Normalized username field. |
+| `name` | `string` | Yes | Normalized name field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `cover_url` | `string` | Yes | Normalized cover url field. |
+| `website` | `string` | Yes | Normalized website field. |
+| `is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `is_private` | `boolean` | Yes | Normalized is private field. |
+| `location` | `object` | Yes | Normalized location field. |
+| `location.name` | `string` | Yes | Normalized name field. |
+| `location.city` | `string` | Yes | Normalized city field. |
+| `location.region` | `string` | Yes | Normalized region field. |
+| `location.country` | `string` | Yes | Normalized country field. |
+| `location.latitude` | `number` | Yes | Normalized latitude field. |
+| `location.longitude` | `number` | Yes | Normalized longitude field. |
+| `metrics` | `object` | Yes | Normalized metrics field. |
+| `metrics.followers_count` | `integer` | Yes | Normalized followers count field. |
+| `metrics.following_count` | `integer` | Yes | Normalized following count field. |
+| `metrics.posts_count` | `integer` | Yes | Normalized posts count field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -36,40 +76,32 @@ Results include biography, profile links, verification status, and follower, fol
       "limit": 1,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "account",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "25025320",
-          "bio": "Discover what's new on Instagram 🔎✨",
-          "url": "https://www.instagram.com/instagram/",
-          "name": "Instagram",
-          "type": "profile",
-          "extra": {
-            "category": null,
-            "bio_links": [
-              {
-                "url": "http://help.instagram.com",
-                "title": "",
-                "lynx_url": "https://l.instagram.com/?u=http%3A%2F%2Fhelp.instagram.com%2F&e=AUDiJTowLLwbmCJVrT1eomZtSvAKusJv54Vd-KC7EG8K8ywpzltgBhQovyJVHM4uBLuUnRblfrqe9Ye936dGayxV9AufX-7Ni5H2W7iSjDJHa36s",
-                "link_type": "external"
-              }
-            ],
-            "is_business": false,
-            "is_professional": true
-          },
-          "metrics": {
-            "posts_count": 8542,
-            "followers_count": 685851936,
-            "following_count": 267
-          },
           "platform": "instagram",
           "resource": "profiles",
+          "type": "profile",
+          "url": "https://www.instagram.com/instagram/",
+          "published_at": null,
+          "collected_at": "2026-07-31T02:23:09.347321Z",
           "username": "instagram",
+          "name": "Instagram",
+          "text": null,
           "avatar_url": "https://instagram.fric1-1.fna.fbcdn.net/v/t51.82787-19/550891366_18667771684001321_1383210656577177067_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fric1-1.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2gHssx2eeqXBaL-N5Ca9GMTS_UGg_fD5F6bulrtLyPTPKkhjeiZ4VbJHa6hpJuqe93q6FesnWb2mcwRWjE17sjH5&_nc_ohc=QkjK3831euQQ7kNvwG8Z9Eo&_nc_gid=9-oa2ppx7eS64rk-Dk5Wxw&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AQE025h4eH7_HdrFXbrojhBa22dNuaQcAfPQsTMu666fBQ&oe=6A71DEE7&_nc_sid=8b3546",
-          "created_at": null,
-          "is_private": false,
+          "cover_url": null,
+          "website": null,
           "is_verified": true,
-          "collected_at": "2026-07-31T02:23:09.347321",
-          "external_url": "http://help.instagram.com/"
+          "is_private": false,
+          "location": null,
+          "metrics": {
+            "followers_count": 685851936,
+            "following_count": 267,
+            "posts_count": 8542
+          }
         }
       ]
     }

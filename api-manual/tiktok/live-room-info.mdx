@@ -21,6 +21,47 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/live-room-info"
 
 The result includes live status, title, cover image, owner, viewer count, and like count.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `title` | `string` | Yes | Normalized title field. |
+| `author` | `object` | Yes | Normalized author field. |
+| `author.id` | `string` | Yes | Normalized id field. |
+| `author.username` | `string` | Yes | Normalized username field. |
+| `author.name` | `string` | Yes | Normalized name field. |
+| `author.url` | `string` | Yes | Normalized url field. |
+| `author.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `author.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `author.is_private` | `boolean` | Yes | Normalized is private field. |
+| `status` | `string` | Yes | Normalized status field. |
+| `metrics` | `object` | Yes | Normalized metrics field. |
+| `metrics.viewers_count` | `integer` | Yes | Normalized viewers count field. |
+| `metrics.likes_count` | `integer` | Yes | Normalized likes count field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -36,29 +77,31 @@ The result includes live status, title, cover image, owner, viewer count, and li
       "limit": 1,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "live-room",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "7523685855395842871",
-          "url": "",
+          "platform": "tiktok",
+          "resource": "live-room-info",
           "type": "live_room",
-          "extra": {
-            "status": null
-          },
-          "media": [],
+          "url": null,
+          "published_at": null,
+          "collected_at": "2026-07-31T02:26:30.747319Z",
           "title": null,
           "author": {
             "id": "6742945285876515845",
+            "username": null,
             "name": null,
-            "username": null
+            "url": null,
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
           },
-          "metrics": {
-            "likes_count": null,
-            "viewers_count": null
-          },
-          "platform": "tiktok",
-          "resource": "live-room-info",
-          "created_at": null,
-          "collected_at": "2026-07-31T02:26:30.747319"
+          "status": null,
+          "metrics": null,
+          "media": []
         }
       ]
     }

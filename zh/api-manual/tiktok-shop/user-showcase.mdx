@@ -39,6 +39,51 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok-shop/user-show
 
 一项任务接受一个用户名。 `@` 前缀是可选的。
 
+
+
+
+
+
+{/* result-schema:start */}
+## 标准结果字段
+
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 标准化的 id 字段。 |
+| `platform` | `string` | 否 | 标准化的 platform 字段。 |
+| `resource` | `string` | 否 | 标准化的 resource 字段。 |
+| `type` | `string` | 否 | 标准化的 type 字段。 |
+| `url` | `string` | 是 | 标准化的 url 字段。 |
+| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
+| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
+| `title` | `string` | 是 | 标准化的 title 字段。 |
+| `text` | `string` | 是 | 标准化的 text 字段。 |
+| `seller` | `object` | 是 | 标准化的 seller 字段。 |
+| `seller.id` | `string` | 是 | 标准化的 id 字段。 |
+| `seller.username` | `string` | 是 | 标准化的 username 字段。 |
+| `seller.name` | `string` | 是 | 标准化的 name 字段。 |
+| `seller.url` | `string` | 是 | 标准化的 url 字段。 |
+| `seller.avatar_url` | `string` | 是 | 标准化的 avatar url 字段。 |
+| `seller.is_verified` | `boolean` | 是 | 标准化的 is verified 字段。 |
+| `seller.is_private` | `boolean` | 是 | 标准化的 is private 字段。 |
+| `price` | `object` | 是 | 标准化的 price 字段。 |
+| `price.amount` | `number` | 是 | 标准化的 amount 字段。 |
+| `price.currency` | `string` | 是 | 标准化的 currency 字段。 |
+| `price.formatted` | `string` | 是 | 标准化的 formatted 字段。 |
+| `rating` | `number` | 是 | 标准化的 rating 字段。 |
+| `reviews_count` | `integer` | 是 | 标准化的 reviews count 字段。 |
+| `sold_count` | `integer` | 是 | 标准化的 sold count 字段。 |
+| `media` | `array<object>` | 是 | 标准化的 media 字段。 |
+| `media.type` | `string` | 是 | 标准化的 type 字段。 |
+| `media.url` | `string` | 是 | 标准化的 url 字段。 |
+| `media.thumbnail_url` | `string` | 是 | 标准化的 thumbnail url 字段。 |
+| `media.width` | `integer` | 是 | 标准化的 width 字段。 |
+| `media.height` | `integer` | 是 | 标准化的 height 字段。 |
+| `media.duration_seconds` | `number` | 是 | 标准化的 duration seconds 字段。 |
+{/* result-schema:end */}
+
 ## 任务完成响应
 
 ```json
@@ -54,21 +99,37 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok-shop/user-show
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
-      "items": [{
-        "id": "1732210666230419545",
-        "platform": "tiktok-shop",
-        "resource": "user-showcase",
-        "type": "product",
-        "url": "https://www.tiktok.com/shop/pdp/1732210666230419545",
-        "name": "Featured Product",
-        "text": "Featured Product",
-        "author": {"id": "7495572938346760281", "username": null, "name": null, "url": null},
-        "metrics": {"rating": 4.5, "reviews_count": 326, "sold_count": 5457},
-        "media": [{"type": "image", "url": "https://example.com/featured.jpg"}],
-        "created_at": null,
-        "collected_at": "2026-07-18T10:30:00",
-        "extra": {"input_username": "mrtiktokreviews", "price": {"amount": 46.58, "currency": "USD"}}
-      }]
+      "view": "standard",
+      "schema_id": "product",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "1732210666230419545",
+          "platform": "tiktok-shop",
+          "resource": "user-showcase",
+          "type": "product",
+          "url": "https://www.tiktok.com/shop/pdp/1732210666230419545",
+          "published_at": null,
+          "collected_at": "2026-07-18T10:30:00Z",
+          "title": "Featured Product",
+          "text": "Featured Product",
+          "seller": null,
+          "price": null,
+          "rating": null,
+          "reviews_count": null,
+          "sold_count": null,
+          "media": [
+            {
+              "type": "image",
+              "url": "https://example.com/featured.jpg",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ]
+        }
+      ]
     }
   }
 }

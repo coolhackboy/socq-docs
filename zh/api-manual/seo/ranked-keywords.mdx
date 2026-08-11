@@ -17,6 +17,35 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/seo/ranked-keywords"
 
 Each item is one ranked keyword record with keyword metrics and the matching search-result position.
 
+
+
+
+
+
+{/* result-schema:start */}
+## 标准结果字段
+
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 标准化的 id 字段。 |
+| `platform` | `string` | 否 | 标准化的 platform 字段。 |
+| `resource` | `string` | 否 | 标准化的 resource 字段。 |
+| `type` | `string` | 否 | 标准化的 type 字段。 |
+| `url` | `string` | 是 | 标准化的 url 字段。 |
+| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
+| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
+| `keyword` | `string` | 是 | 标准化的 keyword 字段。 |
+| `search_volume` | `integer` | 是 | 标准化的 search volume 字段。 |
+| `difficulty` | `number` | 是 | 标准化的 difficulty 字段。 |
+| `intent` | `string` | 是 | 标准化的 intent 字段。 |
+| `cpc` | `number` | 是 | 标准化的 cpc 字段。 |
+| `competition` | `number` | 是 | 标准化的 competition 字段。 |
+| `rank` | `integer` | 是 | 标准化的 rank 字段。 |
+| `target_url` | `string` | 是 | 标准化的 target url 字段。 |
+{/* result-schema:end */}
+
 ## 任务完成响应
 
 ```json
@@ -32,293 +61,26 @@ Each item is one ranked keyword record with keyword metrics and the matching sea
       "limit": 1,
       "next_cursor": "OTc3OA",
       "has_more": true,
+      "view": "standard",
+      "schema_id": "seo-keyword",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "0 0 excel",
-          "url": "https://support.microsoft.com/en-us/office/display-or-hide-zero-values-3ec7a433-46b8-4516-8085-a00e9e476b03",
-          "rank": {
-            "group": 1,
-            "absolute": 2
-          },
-          "text": "0 0 excel",
-          "type": "ranked-keywords",
-          "extra": {
-            "se_type": "google",
-            "keyword_data": {
-              "keyword": "0 0 excel",
-              "se_type": "google",
-              "serp_info": {
-                "se_type": "google",
-                "check_url": "https://www.google.com/search?q=0%200%20excel&hl=en&gl=US&ie=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
-                "serp_item_types": [
-                  "ai_overview",
-                  "organic",
-                  "people_also_ask",
-                  "video",
-                  "images",
-                  "related_searches"
-                ],
-                "se_results_count": 582000000,
-                "last_updated_time": "2026-05-08 08:34:30 +00:00",
-                "previous_updated_time": "2026-03-26 00:27:31 +00:00"
-              },
-              "keyword_info": {
-                "cpc": null,
-                "se_type": "google",
-                "categories": [
-                  10019,
-                  10168,
-                  10885,
-                  12209
-                ],
-                "competition": 0,
-                "search_volume": 70,
-                "monthly_searches": [
-                  {
-                    "year": 2026,
-                    "month": 6,
-                    "search_volume": 30
-                  },
-                  {
-                    "year": 2026,
-                    "month": 5,
-                    "search_volume": 30
-                  },
-                  {
-                    "year": 2026,
-                    "month": 4,
-                    "search_volume": 50
-                  },
-                  {
-                    "year": 2026,
-                    "month": 3,
-                    "search_volume": 90
-                  },
-                  {
-                    "year": 2026,
-                    "month": 2,
-                    "search_volume": 50
-                  },
-                  {
-                    "year": 2026,
-                    "month": 1,
-                    "search_volume": 70
-                  },
-                  {
-                    "year": 2025,
-                    "month": 12,
-                    "search_volume": 70
-                  },
-                  {
-                    "year": 2025,
-                    "month": 11,
-                    "search_volume": 50
-                  },
-                  {
-                    "year": 2025,
-                    "month": 10,
-                    "search_volume": 50
-                  },
-                  {
-                    "year": 2025,
-                    "month": 9,
-                    "search_volume": 70
-                  },
-                  {
-                    "year": 2025,
-                    "month": 8,
-                    "search_volume": 70
-                  },
-                  {
-                    "year": 2025,
-                    "month": 7,
-                    "search_volume": 110
-                  }
-                ],
-                "competition_level": "LOW",
-                "last_updated_time": "2026-07-14 05:03:59 +00:00",
-                "low_top_of_page_bid": null,
-                "search_volume_trend": {
-                  "yearly": -57,
-                  "monthly": 0,
-                  "quarterly": -40
-                },
-                "high_top_of_page_bid": null
-              },
-              "language_code": "en",
-              "location_code": 2840,
-              "avg_backlinks_info": {
-                "rank": 54.599998474121094,
-                "se_type": "google",
-                "dofollow": 8.600000381469727,
-                "backlinks": 14.300000190734863,
-                "referring_pages": 12.600000381469728,
-                "main_domain_rank": 632.2999877929688,
-                "last_updated_time": "2026-05-08 08:34:30 +00:00",
-                "referring_domains": 8.800000190734863,
-                "referring_main_domains": 8.100000381469727
-              },
-              "keyword_properties": {
-                "se_type": "google",
-                "core_keyword": null,
-                "detected_language": "en",
-                "keyword_difficulty": 3,
-                "is_another_language": false,
-                "synonym_clustering_algorithm": "text_processing"
-              },
-              "search_intent_info": {
-                "se_type": "google",
-                "main_intent": "informational",
-                "foreign_intent": null,
-                "last_updated_time": "2026-04-25 02:16:15 +00:00"
-              },
-              "clickstream_keyword_info": null,
-              "keyword_info_normalized_with_bing": null,
-              "keyword_info_normalized_with_clickstream": null
-            },
-            "ranked_serp_element": {
-              "is_lost": false,
-              "se_type": "google",
-              "check_url": "https://www.google.com/search?q=0%200%20excel&hl=en&gl=US&ie=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
-              "serp_item": {
-                "etv": 21.280000686645508,
-                "url": "https://support.microsoft.com/en-us/office/display-or-hide-zero-values-3ec7a433-46b8-4516-8085-a00e9e476b03",
-                "type": "organic",
-                "links": null,
-                "title": "Display or hide zero values",
-                "xpath": "/html[1]/body[1]/div[3]/div[1]/div[12]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]",
-                "domain": "support.microsoft.com",
-                "rating": null,
-                "se_type": "google",
-                "is_image": false,
-                "is_video": false,
-                "position": "left",
-                "rank_info": {
-                  "page_rank": 187,
-                  "main_domain_rank": 798
-                },
-                "breadcrumb": "https://support.microsoft.com › en-us › office",
-                "rank_group": 1,
-                "amp_version": false,
-                "description": "To display zero (0) values in cells, check the Show a zero in cells that have zero value check box. To display zero (0) values as blank cells, uncheck the Show ... Read more",
-                "highlighted": [
-                  "Show a zero in cells that have zero value check box"
-                ],
-                "main_domain": "microsoft.com",
-                "pre_snippet": null,
-                "is_malicious": false,
-                "rank_changes": {
-                  "is_up": false,
-                  "is_new": true,
-                  "is_down": false,
-                  "previous_rank_absolute": null
-                },
-                "relative_url": "/en-us/office/display-or-hide-zero-values-3ec7a433-46b8-4516-8085-a00e9e476b03",
-                "website_name": "Microsoft Support",
-                "rank_absolute": 2,
-                "backlinks_info": {
-                  "dofollow": 20,
-                  "backlinks": 41,
-                  "time_update": "2026-07-11 03:44:28 +00:00",
-                  "referring_pages": 34,
-                  "referring_domains": 21,
-                  "referring_main_domains": 21
-                },
-                "clickstream_etv": null,
-                "extended_snippet": null,
-                "about_this_result": null,
-                "is_featured_snippet": false,
-                "estimated_paid_traffic_cost": null
-              },
-              "serp_item_types": [
-                "ai_overview",
-                "organic",
-                "people_also_ask",
-                "video",
-                "images",
-                "related_searches"
-              ],
-              "se_results_count": 582000000,
-              "last_updated_time": "2026-05-08 08:34:30 +00:00",
-              "keyword_difficulty": 3,
-              "previous_updated_time": "2026-03-26 00:27:31 +00:00"
-            }
-          },
-          "keyword": "0 0 excel",
-          "metrics": {
-            "rank_group": 1,
-            "competition": 0,
-            "rank_absolute": 2,
-            "search_volume": 70,
-            "competition_level": "LOW",
-            "keyword_difficulty": 3
-          },
           "platform": "seo",
           "resource": "ranked-keywords",
-          "collected_at": "2026-07-31T02:44:32.835914",
-          "search_intent": null,
-          "monthly_searches": [
-            {
-              "year": 2026,
-              "month": 6,
-              "search_volume": 30
-            },
-            {
-              "year": 2026,
-              "month": 5,
-              "search_volume": 30
-            },
-            {
-              "year": 2026,
-              "month": 4,
-              "search_volume": 50
-            },
-            {
-              "year": 2026,
-              "month": 3,
-              "search_volume": 90
-            },
-            {
-              "year": 2026,
-              "month": 2,
-              "search_volume": 50
-            },
-            {
-              "year": 2026,
-              "month": 1,
-              "search_volume": 70
-            },
-            {
-              "year": 2025,
-              "month": 12,
-              "search_volume": 70
-            },
-            {
-              "year": 2025,
-              "month": 11,
-              "search_volume": 50
-            },
-            {
-              "year": 2025,
-              "month": 10,
-              "search_volume": 50
-            },
-            {
-              "year": 2025,
-              "month": 9,
-              "search_volume": 70
-            },
-            {
-              "year": 2025,
-              "month": 8,
-              "search_volume": 70
-            },
-            {
-              "year": 2025,
-              "month": 7,
-              "search_volume": 110
-            }
-          ]
+          "type": "ranked-keywords",
+          "url": "https://support.microsoft.com/en-us/office/display-or-hide-zero-values-3ec7a433-46b8-4516-8085-a00e9e476b03",
+          "published_at": null,
+          "collected_at": "2026-07-31T02:44:32.835914Z",
+          "keyword": "0 0 excel",
+          "search_volume": null,
+          "difficulty": null,
+          "intent": null,
+          "cpc": null,
+          "competition": null,
+          "rank": null,
+          "target_url": null
         }
       ]
     }

@@ -22,6 +22,53 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook/events-search"
 Results include event identity, schedule text, place, attendance metrics, and cover media when available.
 `results_limit` defaults to 100 and accepts values from 7 through 2,000.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `title` | `string` | Yes | Normalized title field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `organizer` | `object` | Yes | Normalized organizer field. |
+| `organizer.id` | `string` | Yes | Normalized id field. |
+| `organizer.username` | `string` | Yes | Normalized username field. |
+| `organizer.name` | `string` | Yes | Normalized name field. |
+| `organizer.url` | `string` | Yes | Normalized url field. |
+| `organizer.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `organizer.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `organizer.is_private` | `boolean` | Yes | Normalized is private field. |
+| `location` | `object` | Yes | Normalized location field. |
+| `location.name` | `string` | Yes | Normalized name field. |
+| `location.city` | `string` | Yes | Normalized city field. |
+| `location.region` | `string` | Yes | Normalized region field. |
+| `location.country` | `string` | Yes | Normalized country field. |
+| `location.latitude` | `number` | Yes | Normalized latitude field. |
+| `location.longitude` | `number` | Yes | Normalized longitude field. |
+| `start_at` | `string` | Yes | Normalized start at field. |
+| `end_at` | `string` | Yes | Normalized end at field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -37,35 +84,34 @@ Results include event identity, schedule text, place, attendance metrics, and co
       "limit": 1,
       "next_cursor": "MzUxNw",
       "has_more": true,
+      "view": "standard",
+      "schema_id": "event",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "1344037984140417",
-          "url": "https://www.facebook.com/events/1344037984140417/",
-          "text": "Sat, Aug 22 at 8:00 AM IST",
-          "type": "event",
-          "extra": {
-            "is_past": false,
-            "place_id": "1006053132174672",
-            "is_online": false,
-            "place_name": "Crowne Plaza New Delhi Mayur Vihar Noida",
-            "search_query": "technology conference"
-          },
-          "media": [
-            {
-              "url": "https://scontent-phl2-1.xx.fbcdn.net/v/t39.30808-6/730083140_1006053152174670_1558267321117374093_n.jpg?stp=c200.0.1200.800a_dst-jpg_s350x350_tt6&_nc_cat=108&ccb=1-7&_nc_sid=75d36f&_nc_ohc=Hw7l01xDPJkQ7kNvwHujFPk&_nc_oc=AdqbgqZmrho8JhGeyjeDPTau-Ik4uf0Wi20a4XGOwjgSUugXY6pvW0B5yPUODbTgI3g&_nc_zt=23&_nc_ht=scontent-phl2-1.xx&_nc_gid=DduVuS5Al0vfrHrEzvDaJg&_nc_ss=7f289&oh=00_AQAGrZ2PI9w918lJcAjukiO2j81xHa5-8NecUzxC6SwnAQ&oe=6A6643B6",
-              "type": "image"
-            }
-          ],
-          "title": "4th Information Technology Conference 2026 | New Delhi",
-          "metrics": {
-            "went_count": null,
-            "going_count": 3,
-            "interested_count": 33
-          },
           "platform": "facebook",
           "resource": "events-search",
-          "created_at": "2026-08-22T02:30:00",
-          "collected_at": "2026-07-22T08:30:44.753823"
+          "type": "event",
+          "url": "https://www.facebook.com/events/1344037984140417/",
+          "published_at": "2026-08-22T02:30:00Z",
+          "collected_at": "2026-07-22T08:30:44.753823Z",
+          "title": "4th Information Technology Conference 2026 | New Delhi",
+          "text": "Sat, Aug 22 at 8:00 AM IST",
+          "organizer": null,
+          "location": null,
+          "start_at": null,
+          "end_at": null,
+          "media": [
+            {
+              "type": "image",
+              "url": "https://scontent-phl2-1.xx.fbcdn.net/v/t39.30808-6/730083140_1006053152174670_1558267321117374093_n.jpg?stp=c200.0.1200.800a_dst-jpg_s350x350_tt6&_nc_cat=108&ccb=1-7&_nc_sid=75d36f&_nc_ohc=Hw7l01xDPJkQ7kNvwHujFPk&_nc_oc=AdqbgqZmrho8JhGeyjeDPTau-Ik4uf0Wi20a4XGOwjgSUugXY6pvW0B5yPUODbTgI3g&_nc_zt=23&_nc_ht=scontent-phl2-1.xx&_nc_gid=DduVuS5Al0vfrHrEzvDaJg&_nc_ss=7f289&oh=00_AQAGrZ2PI9w918lJcAjukiO2j81xHa5-8NecUzxC6SwnAQ&oe=6A6643B6",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ]
         }
       ]
     }

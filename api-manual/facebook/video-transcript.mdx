@@ -21,6 +21,31 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/facebook/video-transcrip
 
 Each available transcript is returned as normalized plain text.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `language` | `string` | Yes | Normalized language field. |
+| `format` | `string` | Yes | Normalized format field. |
+| `duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -36,21 +61,22 @@ Each available transcript is returned as normalized plain text.
       "limit": 1,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "transcript",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "https://www.facebook.com/reel/1535656380759655",
-          "url": "https://www.facebook.com/reel/1535656380759655",
-          "text": "1\n00:00:00,000 --> 00:00:02,561\nA recipe that **** Throw one\nripe banana into a bowl and\n\n2\n00:00:02,561 --> 00:00:05,121\ngive it a mash. Followed by\nvanilla protein yogurt, cocoa\n\n3\n00:00:05,121 --> 00:00:08,161\npowder, egg whites, oat flour,\nbaking powder, some vanilla\n\n4\n00:00:08,161 --> 00:00:10,881\nextract and give it a good mix\nand pour into a baking tin. Add\n\n5\n00:00:10,881 --> 00:00:12,881\nin a cheeky square of dark\nchocolate if you please and\n\n6\n00:00:12,881 --> 00:00:14,961\nbake in the air fryer for 20\nminutes and now you got\n\n7\n00:00:14,961 --> 00:00:18,241\nyourself a dessert that 100%\n**** packing 27 grams of\n\n8\n00:00:18,241 --> 00:00:20,961\nprotein. Full recipe's in the\ndescription so until next time.\n\n9\n00:00:20,961 --> 00:00:24,881\nBon appetite and we'll see you\nin the next video.",
-          "type": "transcript",
-          "extra": {
-            "shortcode": null
-          },
-          "format": "plaintext",
-          "language": null,
           "platform": "facebook",
           "resource": "video-transcript",
-          "created_at": null,
-          "collected_at": "2026-07-31T02:22:25.290686"
+          "type": "transcript",
+          "url": "https://www.facebook.com/reel/1535656380759655",
+          "published_at": null,
+          "collected_at": "2026-07-31T02:22:25.290686Z",
+          "text": "1\n00:00:00,000 --> 00:00:02,561\nA recipe that **** Throw one\nripe banana into a bowl and\n\n2\n00:00:02,561 --> 00:00:05,121\ngive it a mash. Followed by\nvanilla protein yogurt, cocoa\n\n3\n00:00:05,121 --> 00:00:08,161\npowder, egg whites, oat flour,\nbaking powder, some vanilla\n\n4\n00:00:08,161 --> 00:00:10,881\nextract and give it a good mix\nand pour into a baking tin. Add\n\n5\n00:00:10,881 --> 00:00:12,881\nin a cheeky square of dark\nchocolate if you please and\n\n6\n00:00:12,881 --> 00:00:14,961\nbake in the air fryer for 20\nminutes and now you got\n\n7\n00:00:14,961 --> 00:00:18,241\nyourself a dessert that 100%\n**** packing 27 grams of\n\n8\n00:00:18,241 --> 00:00:20,961\nprotein. Full recipe's in the\ndescription so until next time.\n\n9\n00:00:20,961 --> 00:00:24,881\nBon appetite and we'll see you\nin the next video.",
+          "language": null,
+          "format": "plaintext",
+          "duration_seconds": null
         }
       ]
     }

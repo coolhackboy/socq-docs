@@ -39,6 +39,46 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 One task accepts one product URL. Duplicate review IDs are saved once and all saved reviews participate in billing.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `author` | `object` | Yes | Normalized author field. |
+| `author.id` | `string` | Yes | Normalized id field. |
+| `author.username` | `string` | Yes | Normalized username field. |
+| `author.name` | `string` | Yes | Normalized name field. |
+| `author.url` | `string` | Yes | Normalized url field. |
+| `author.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `author.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `author.is_private` | `boolean` | Yes | Normalized is private field. |
+| `rating` | `number` | Yes | Normalized rating field. |
+| `subject_id` | `string` | Yes | Normalized subject id field. |
+| `subject_url` | `string` | Yes | Normalized subject url field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -54,21 +94,43 @@ One task accepts one product URL. Duplicate review IDs are saved once and all sa
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
-      "items": [{
-        "id": "7449648277383333678",
-        "platform": "tiktok-shop",
-        "resource": "product-reviews",
-        "type": "review",
-        "url": "https://www.tiktok.com/shop/pdp/example-product/1729587769570529799",
-        "name": "Example Product",
-        "text": "Arrived quickly and works well.",
-        "author": {"id": "7118466497416561707", "username": null, "name": "W**n", "url": null},
-        "metrics": {"rating": 5},
-        "media": [{"type": "image", "url": "https://example.com/review.jpg"}],
-        "created_at": "2026-07-01T12:00:00",
-        "collected_at": "2026-07-18T10:30:00",
-        "extra": {"product_id": "1729587769570529799", "is_verified_purchase": true, "review_country": "US"}
-      }]
+      "view": "standard",
+      "schema_id": "review",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7449648277383333678",
+          "platform": "tiktok-shop",
+          "resource": "product-reviews",
+          "type": "review",
+          "url": "https://www.tiktok.com/shop/pdp/example-product/1729587769570529799",
+          "published_at": "2026-07-01T12:00:00Z",
+          "collected_at": "2026-07-18T10:30:00Z",
+          "text": "Arrived quickly and works well.",
+          "author": {
+            "id": "7118466497416561707",
+            "username": null,
+            "name": "W**n",
+            "url": null,
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
+          },
+          "rating": null,
+          "subject_id": null,
+          "subject_url": null,
+          "media": [
+            {
+              "type": "image",
+              "url": "https://example.com/review.jpg",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ]
+        }
+      ]
     }
   }
 }

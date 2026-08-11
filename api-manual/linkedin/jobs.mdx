@@ -36,6 +36,49 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 Each URL must identify a job details page. Results use `resource="jobs"` and `type="job"`; title, description, company, location, employment type, and application details are normalized.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `title` | `string` | Yes | Normalized title field. |
+| `company` | `object` | Yes | Normalized company field. |
+| `company.id` | `string` | Yes | Normalized id field. |
+| `company.name` | `string` | Yes | Normalized name field. |
+| `company.url` | `string` | Yes | Normalized url field. |
+| `company.logo_url` | `string` | Yes | Normalized logo url field. |
+| `location` | `object` | Yes | Normalized location field. |
+| `location.name` | `string` | Yes | Normalized name field. |
+| `location.city` | `string` | Yes | Normalized city field. |
+| `location.region` | `string` | Yes | Normalized region field. |
+| `location.country` | `string` | Yes | Normalized country field. |
+| `location.latitude` | `number` | Yes | Normalized latitude field. |
+| `location.longitude` | `number` | Yes | Normalized longitude field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `employment_type` | `string` | Yes | Normalized employment type field. |
+| `experience_level` | `string` | Yes | Normalized experience level field. |
+| `is_remote` | `boolean` | Yes | Normalized is remote field. |
+| `salary` | `object` | Yes | Normalized salary field. |
+| `salary.amount` | `number` | Yes | Normalized amount field. |
+| `salary.currency` | `string` | Yes | Normalized currency field. |
+| `salary.formatted` | `string` | Yes | Normalized formatted field. |
+| `expires_at` | `string` | Yes | Normalized expires at field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -51,21 +94,29 @@ Each URL must identify a job details page. Results use `resource="jobs"` and `ty
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
-      "items": [{
-        "id": "3986111804",
-        "platform": "linkedin",
-        "resource": "jobs",
-        "type": "job",
-        "url": "https://www.linkedin.com/jobs/view/3986111804",
-        "name": "Software Engineer",
-        "text": "Build and maintain customer-facing software.",
-        "author": {"id": "example-company", "username": "Example Company", "name": "Example Company", "url": "https://www.linkedin.com/company/example"},
-        "metrics": {},
-        "media": [],
-        "created_at": "2026-07-15T08:00:00",
-        "collected_at": "2026-07-17T10:30:00",
-        "extra": {"location": "Remote", "seniority_level": "Mid-Senior level", "employment_type": "Full-time", "is_easy_apply": true}
-      }]
+      "view": "standard",
+      "schema_id": "job",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "3986111804",
+          "platform": "linkedin",
+          "resource": "jobs",
+          "type": "job",
+          "url": "https://www.linkedin.com/jobs/view/3986111804",
+          "published_at": "2026-07-15T08:00:00Z",
+          "collected_at": "2026-07-17T10:30:00Z",
+          "title": "Software Engineer",
+          "company": null,
+          "location": null,
+          "text": "Build and maintain customer-facing software.",
+          "employment_type": null,
+          "experience_level": null,
+          "is_remote": null,
+          "salary": null,
+          "expires_at": null
+        }
+      ]
     }
   }
 }

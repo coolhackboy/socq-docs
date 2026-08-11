@@ -21,6 +21,31 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/video-transcript"
 
 `language` is optional. Videos without available speech or captions may return no result.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `language` | `string` | Yes | Normalized language field. |
+| `format` | `string` | Yes | Normalized format field. |
+| `duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -36,21 +61,22 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/video-transcript"
       "limit": 1,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "transcript",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "6718335390845095173",
-          "url": "https://www.tiktok.com/@scout2015/video/6718335390845095173",
-          "text": null,
-          "type": "transcript",
-          "extra": {
-            "shortcode": null
-          },
-          "format": "plaintext",
-          "language": null,
           "platform": "tiktok",
           "resource": "video-transcript",
-          "created_at": null,
-          "collected_at": "2026-07-31T02:26:55.237032"
+          "type": "transcript",
+          "url": "https://www.tiktok.com/@scout2015/video/6718335390845095173",
+          "published_at": null,
+          "collected_at": "2026-07-31T02:26:55.237032Z",
+          "text": null,
+          "language": null,
+          "format": "plaintext",
+          "duration_seconds": null
         }
       ]
     }

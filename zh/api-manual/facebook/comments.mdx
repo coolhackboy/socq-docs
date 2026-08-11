@@ -46,6 +46,41 @@ POST https://api.socq.ai/v1/facebook/comments
 
 所有返回评论均按实际结果数计费。此端点不接受结果计数限制。
 
+
+
+
+
+
+{/* result-schema:start */}
+## 标准结果字段
+
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 标准化的 id 字段。 |
+| `platform` | `string` | 否 | 标准化的 platform 字段。 |
+| `resource` | `string` | 否 | 标准化的 resource 字段。 |
+| `type` | `string` | 否 | 标准化的 type 字段。 |
+| `url` | `string` | 是 | 标准化的 url 字段。 |
+| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
+| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
+| `text` | `string` | 是 | 标准化的 text 字段。 |
+| `author` | `object` | 是 | 标准化的 author 字段。 |
+| `author.id` | `string` | 是 | 标准化的 id 字段。 |
+| `author.username` | `string` | 是 | 标准化的 username 字段。 |
+| `author.name` | `string` | 是 | 标准化的 name 字段。 |
+| `author.url` | `string` | 是 | 标准化的 url 字段。 |
+| `author.avatar_url` | `string` | 是 | 标准化的 avatar url 字段。 |
+| `author.is_verified` | `boolean` | 是 | 标准化的 is verified 字段。 |
+| `author.is_private` | `boolean` | 是 | 标准化的 is private 字段。 |
+| `parent_id` | `string` | 是 | 标准化的 parent id 字段。 |
+| `post_id` | `string` | 是 | 标准化的 post id 字段。 |
+| `metrics` | `object` | 是 | 标准化的 metrics 字段。 |
+| `metrics.likes_count` | `integer` | 是 | 标准化的 likes count 字段。 |
+| `metrics.replies_count` | `integer` | 是 | 标准化的 replies count 字段。 |
+{/* result-schema:end */}
+
 ## 任务完成响应
 
 ```json
@@ -61,6 +96,9 @@ POST https://api.socq.ai/v1/facebook/comments
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "comment",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "1569965031842178_123456789",
@@ -68,6 +106,8 @@ POST https://api.socq.ai/v1/facebook/comments
           "resource": "comments",
           "type": "comment",
           "url": "https://www.facebook.com/facebook/posts/POST_ID",
+          "published_at": "2026-07-07T19:17:33Z",
+          "collected_at": "2026-07-08T08:59:45Z",
           "text": "Comment text",
           "author": {
             "id": "100064860875397",
@@ -78,18 +118,11 @@ POST https://api.socq.ai/v1/facebook/comments
             "is_verified": null,
             "is_private": null
           },
+          "parent_id": null,
+          "post_id": null,
           "metrics": {
             "likes_count": 18,
             "replies_count": 2
-          },
-          "media": [],
-          "created_at": "2026-07-07T19:17:33",
-          "collected_at": "2026-07-08T08:59:45",
-          "extra": {
-            "post_id": "1569965031842178",
-            "post_url": "https://www.facebook.com/facebook/posts/POST_ID",
-            "parent_comment_id": null,
-            "input_url": "https://www.facebook.com/facebook/posts/POST_ID"
           }
         }
       ]

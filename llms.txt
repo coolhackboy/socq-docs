@@ -18,4 +18,4 @@ SocQ provides asynchronous public social-data APIs and AI-agent integrations.
 - JSON index: https://docs.socq.ai/llms.json
 - Hosted MCP: https://api.socq.ai/mcp
 
-Authentication uses `Authorization: Bearer SOCQ_API_KEY`. Collection endpoints return a task ID; poll the task endpoint until it succeeds or fails, then follow cursor pagination.
+Authentication uses `Authorization: Bearer SOCQ_API_KEY`. Collection endpoints return a task ID; poll `GET /v1/tasks/{task_id}?view=standard` for the fixed resource schema, then follow cursor pagination. V1 defaults to the compatible `full` view when `view` is omitted. Use `fields` only with `standard`, and use result files for complete source data.

@@ -14,6 +14,41 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/post-comment
 
 接口返回帖子公开提供的全部评论，并按成功存储的实际评论条数计费。
 
+
+
+
+
+
+{/* result-schema:start */}
+## 标准结果字段
+
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 标准化的 id 字段。 |
+| `platform` | `string` | 否 | 标准化的 platform 字段。 |
+| `resource` | `string` | 否 | 标准化的 resource 字段。 |
+| `type` | `string` | 否 | 标准化的 type 字段。 |
+| `url` | `string` | 是 | 标准化的 url 字段。 |
+| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
+| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
+| `text` | `string` | 是 | 标准化的 text 字段。 |
+| `author` | `object` | 是 | 标准化的 author 字段。 |
+| `author.id` | `string` | 是 | 标准化的 id 字段。 |
+| `author.username` | `string` | 是 | 标准化的 username 字段。 |
+| `author.name` | `string` | 是 | 标准化的 name 字段。 |
+| `author.url` | `string` | 是 | 标准化的 url 字段。 |
+| `author.avatar_url` | `string` | 是 | 标准化的 avatar url 字段。 |
+| `author.is_verified` | `boolean` | 是 | 标准化的 is verified 字段。 |
+| `author.is_private` | `boolean` | 是 | 标准化的 is private 字段。 |
+| `parent_id` | `string` | 是 | 标准化的 parent id 字段。 |
+| `post_id` | `string` | 是 | 标准化的 post id 字段。 |
+| `metrics` | `object` | 是 | 标准化的 metrics 字段。 |
+| `metrics.likes_count` | `integer` | 是 | 标准化的 likes count 字段。 |
+| `metrics.replies_count` | `integer` | 是 | 标准化的 replies count 字段。 |
+{/* result-schema:end */}
+
 ## 任务完成响应
 
 ```json
@@ -29,6 +64,9 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/post-comment
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "comment",
+      "schema_version": "1.0",
       "items": [
         {
           "id": null,
@@ -36,17 +74,21 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/post-comment
           "resource": "post-comments",
           "type": "comment",
           "url": "https://www.linkedin.com/posts/aagupta_what-you-need-to-know-ai-agents-activity-7354600338621906944-RvXR",
+          "published_at": null,
+          "collected_at": "2026-08-11T03:03:36.428610Z",
           "text": "This hit different tbh bruh",
           "author": {
+            "id": null,
+            "username": null,
             "name": "Akil Rakuten A.",
-            "url": "https://www.linkedin.com/in/akil-rakuten-a-60739a229"
+            "url": "https://www.linkedin.com/in/akil-rakuten-a-60739a229",
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
           },
-          "metrics": {
-            "likes_count": null,
-            "replies_count": null
-          },
-          "media": [],
-          "created_at": null
+          "parent_id": null,
+          "post_id": null,
+          "metrics": null
         }
       ]
     }

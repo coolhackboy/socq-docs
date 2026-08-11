@@ -39,6 +39,50 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 Results use the normalized structure documented in [X Posts](/api-manual/x/posts), with `resource` set to `user-posts`. The submitted username is returned under `extra.input_username`.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `author` | `object` | Yes | Normalized author field. |
+| `author.id` | `string` | Yes | Normalized id field. |
+| `author.username` | `string` | Yes | Normalized username field. |
+| `author.name` | `string` | Yes | Normalized name field. |
+| `author.url` | `string` | Yes | Normalized url field. |
+| `author.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `author.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `author.is_private` | `boolean` | Yes | Normalized is private field. |
+| `metrics` | `object` | Yes | Normalized metrics field. |
+| `metrics.likes_count` | `integer` | Yes | Normalized likes count field. |
+| `metrics.comments_count` | `integer` | Yes | Normalized comments count field. |
+| `metrics.shares_count` | `integer` | Yes | Normalized shares count field. |
+| `metrics.views_count` | `integer` | Yes | Normalized views count field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `hashtags` | `array<string>` | Yes | Normalized hashtags field. |
+| `mentions` | `array<string>` | Yes | Normalized mentions field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -54,51 +98,37 @@ Results use the normalized structure documented in [X Posts](/api-manual/x/posts
       "limit": 1,
       "next_cursor": "OTUzMQ",
       "has_more": true,
+      "view": "standard",
+      "schema_id": "post",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "2081809802515136887",
-          "url": "https://x.com/X/status/2081809802515136887",
-          "text": "make money moves on X",
+          "platform": "x",
+          "resource": "user-posts",
           "type": "post",
-          "extra": {
-            "source": "Twitter for iPhone",
-            "is_reply": false,
-            "input_url": null,
-            "search_query": null,
-            "in_reply_to_id": null,
-            "input_username": "X",
-            "quoted_post_id": "2081802002539876506",
-            "conversation_id": "2081809802515136887",
-            "is_limited_reply": false,
-            "reposted_post_id": null,
-            "in_reply_to_user_id": null,
-            "in_reply_to_username": null
-          },
-          "media": [],
+          "url": "https://x.com/X/status/2081809802515136887",
+          "published_at": "2026-07-27T18:31:49Z",
+          "collected_at": "2026-07-31T02:38:29.901529Z",
+          "text": "make money moves on X",
           "author": {
             "id": "783214",
-            "url": "https://x.com/X",
-            "name": "X",
             "username": "X",
+            "name": "X",
+            "url": "https://x.com/X",
             "avatar_url": "https://pbs.twimg.com/profile_images/1955359038532653056/OSHY3ewP_normal.jpg",
-            "is_private": null,
-            "is_verified": true
+            "is_verified": true,
+            "is_private": null
           },
           "metrics": {
             "likes_count": 6149,
-            "views_count": 2051165,
-            "quotes_count": 132,
-            "reposts_count": 743,
             "comments_count": 817,
-            "bookmarks_count": 507
+            "shares_count": null,
+            "views_count": 2051165
           },
+          "media": [],
           "hashtags": [],
-          "language": "en",
-          "mentions": [],
-          "platform": "x",
-          "resource": "user-posts",
-          "created_at": "2026-07-27T18:31:49",
-          "collected_at": "2026-07-31T02:38:29.901529"
+          "mentions": []
         }
       ]
     }

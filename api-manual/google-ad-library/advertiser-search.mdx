@@ -15,6 +15,32 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/advert
 
 The endpoint returns the complete result set produced by the search and bills the actual number of stored advertisers.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `name` | `string` | Yes | Normalized name field. |
+| `website` | `string` | Yes | Normalized website field. |
+| `logo_url` | `string` | Yes | Normalized logo url field. |
+| `region` | `string` | Yes | Normalized region field. |
+| `ads_count` | `integer` | Yes | Normalized ads count field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -30,6 +56,9 @@ The endpoint returns the complete result set produced by the search and bills th
       "limit": 1,
       "next_cursor": "MTAyOTE",
       "has_more": true,
+      "view": "standard",
+      "schema_id": "advertiser",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "AR18100938063227125761",
@@ -37,14 +66,13 @@ The endpoint returns the complete result set produced by the search and bills th
           "resource": "advertiser-search",
           "type": "advertiser",
           "url": null,
+          "published_at": null,
+          "collected_at": "2026-08-11T03:03:35.784530Z",
           "name": "Nike Lee",
-          "author": {
-            "name": "Nike Lee",
-            "username": "Nike Lee"
-          },
-          "metrics": {},
-          "media": [],
-          "created_at": null
+          "website": null,
+          "logo_url": null,
+          "region": null,
+          "ads_count": null
         }
       ]
     }

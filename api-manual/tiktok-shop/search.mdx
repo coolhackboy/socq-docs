@@ -40,6 +40,51 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 SocQ requests result pages until `results_limit` is reached or no additional products are available. Duplicate product IDs are saved once.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `title` | `string` | Yes | Normalized title field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `seller` | `object` | Yes | Normalized seller field. |
+| `seller.id` | `string` | Yes | Normalized id field. |
+| `seller.username` | `string` | Yes | Normalized username field. |
+| `seller.name` | `string` | Yes | Normalized name field. |
+| `seller.url` | `string` | Yes | Normalized url field. |
+| `seller.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `seller.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `seller.is_private` | `boolean` | Yes | Normalized is private field. |
+| `price` | `object` | Yes | Normalized price field. |
+| `price.amount` | `number` | Yes | Normalized amount field. |
+| `price.currency` | `string` | Yes | Normalized currency field. |
+| `price.formatted` | `string` | Yes | Normalized formatted field. |
+| `rating` | `number` | Yes | Normalized rating field. |
+| `reviews_count` | `integer` | Yes | Normalized reviews count field. |
+| `sold_count` | `integer` | Yes | Normalized sold count field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -55,21 +100,37 @@ SocQ requests result pages until `results_limit` is reached or no additional pro
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
-      "items": [{
-        "id": "1730213444857467838",
-        "platform": "tiktok-shop",
-        "resource": "search",
-        "type": "product",
-        "url": "https://www.tiktok.com/shop/pdp/example/1730213444857467838",
-        "name": "Running Shoes",
-        "text": "Running Shoes",
-        "author": {"id": "7495832567110863806", "username": null, "name": "Example Shop", "url": null},
-        "metrics": {"rating": 4.8, "reviews_count": 2493, "sold_count": 24737},
-        "media": [{"type": "image", "url": "https://example.com/product.jpg"}],
-        "created_at": null,
-        "collected_at": "2026-07-18T10:30:00",
-        "extra": {"search_query": "running shoes", "price": {"amount": 49.99, "currency": "USD", "formatted": "49.99"}}
-      }]
+      "view": "standard",
+      "schema_id": "product",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "1730213444857467838",
+          "platform": "tiktok-shop",
+          "resource": "search",
+          "type": "product",
+          "url": "https://www.tiktok.com/shop/pdp/example/1730213444857467838",
+          "published_at": null,
+          "collected_at": "2026-07-18T10:30:00Z",
+          "title": "Running Shoes",
+          "text": "Running Shoes",
+          "seller": null,
+          "price": null,
+          "rating": null,
+          "reviews_count": null,
+          "sold_count": null,
+          "media": [
+            {
+              "type": "image",
+              "url": "https://example.com/product.jpg",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ]
+        }
+      ]
     }
   }
 }

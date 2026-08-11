@@ -46,6 +46,58 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 Results use the normalized structure documented in [TikTok Videos](/api-manual/tiktok/videos), with `resource` set to `search`. The submitted query is returned under `extra.search_query` when available.
 
+
+
+
+
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Normalized id field. |
+| `platform` | `string` | No | Normalized platform field. |
+| `resource` | `string` | No | Normalized resource field. |
+| `type` | `string` | No | Normalized type field. |
+| `url` | `string` | Yes | Normalized url field. |
+| `published_at` | `string` | Yes | Normalized published at field. |
+| `collected_at` | `string` | No | Normalized collected at field. |
+| `text` | `string` | Yes | Normalized text field. |
+| `author` | `object` | Yes | Normalized author field. |
+| `author.id` | `string` | Yes | Normalized id field. |
+| `author.username` | `string` | Yes | Normalized username field. |
+| `author.name` | `string` | Yes | Normalized name field. |
+| `author.url` | `string` | Yes | Normalized url field. |
+| `author.avatar_url` | `string` | Yes | Normalized avatar url field. |
+| `author.is_verified` | `boolean` | Yes | Normalized is verified field. |
+| `author.is_private` | `boolean` | Yes | Normalized is private field. |
+| `metrics` | `object` | Yes | Normalized metrics field. |
+| `metrics.likes_count` | `integer` | Yes | Normalized likes count field. |
+| `metrics.comments_count` | `integer` | Yes | Normalized comments count field. |
+| `metrics.shares_count` | `integer` | Yes | Normalized shares count field. |
+| `metrics.plays_count` | `integer` | Yes | Normalized plays count field. |
+| `metrics.views_count` | `integer` | Yes | Normalized views count field. |
+| `media` | `array<object>` | Yes | Normalized media field. |
+| `media.type` | `string` | Yes | Normalized type field. |
+| `media.url` | `string` | Yes | Normalized url field. |
+| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
+| `media.width` | `integer` | Yes | Normalized width field. |
+| `media.height` | `integer` | Yes | Normalized height field. |
+| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `hashtags` | `array<string>` | Yes | Normalized hashtags field. |
+| `mentions` | `array<string>` | Yes | Normalized mentions field. |
+| `shortcode` | `string` | Yes | Normalized shortcode field. |
+| `duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `audio` | `object` | Yes | Normalized audio field. |
+| `audio.id` | `string` | Yes | Normalized id field. |
+| `audio.title` | `string` | Yes | Normalized title field. |
+| `audio.artist` | `string` | Yes | Normalized artist field. |
+| `audio.url` | `string` | Yes | Normalized url field. |
+{/* result-schema:end */}
+
 ## Completed Task Response
 
 ```json
@@ -61,63 +113,50 @@ Results use the normalized structure documented in [TikTok Videos](/api-manual/t
       "limit": 1,
       "next_cursor": null,
       "has_more": false,
+      "view": "standard",
+      "schema_id": "reel-video",
+      "schema_version": "1.0",
       "items": [
         {
           "id": "7662002084908190989",
-          "url": "https://www.tiktok.com/@yangzhujun1/video/7662002084908190989",
+          "platform": "tiktok",
+          "resource": "search",
           "type": "video",
-          "extra": {
-            "input": null,
-            "is_ad": false,
-            "is_muted": null,
-            "location": null,
-            "is_pinned": false,
-            "is_slideshow": false,
-            "is_sponsored": null,
-            "search_query": "OpenAI",
-            "matched_hashtag": null,
-            "hashtag_views_count": null
+          "url": "https://www.tiktok.com/@yangzhujun1/video/7662002084908190989",
+          "published_at": "2026-07-13T13:22:09Z",
+          "collected_at": "2026-07-15T11:00:49.541712Z",
+          "text": "Codex和GPT正式合并，内置最新发布的GPT5.6，你终于拥有了超能助理 #ai #GPT56 #Codex #ChatGPT #OpenAI",
+          "author": {
+            "id": "7407476938992174111",
+            "username": "yangzhujun1",
+            "name": "杨竹筠",
+            "url": "https://www.tiktok.com/@yangzhujun1",
+            "avatar_url": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-avt-0068-tx/911797ed4accd5f1d4990c82fa35b558~tplv-tiktokx-cropcenter:720:720.jpeg?dr=9640&refresh_token=93067c08&x-expires=1784286000&x-signature=oFgXWXLv2dPnatVaalcLbYgfaJw%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast5",
+            "is_verified": false,
+            "is_private": false
+          },
+          "metrics": {
+            "likes_count": 1315,
+            "comments_count": 22,
+            "shares_count": 316,
+            "plays_count": null,
+            "views_count": 52300
           },
           "media": [
             {
+              "type": "image",
               "url": "https://p16-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oArBFHpYAtAIRAnUqckLIzeqEEmetASUTAG5Ef~tplv-tiktokx-origin.image?dr=9636&x-expires=1784286000&x-signature=z7EjpJt%2FOe%2ByHByw6xNGzrI81pQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-              "type": "image"
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
             }
           ],
-          "music": {
-            "id": "7662002280333445901",
-            "url": "https://v16-webapp-prime.us.tiktok.com/video/tos/useast5/tos-useast5-v-27dcd7-tx/oo5fUFsUEEBEgOV7OUfaCAECJAnRqDSsDA5oBG/?a=1988&bti=ODszNWYuMDE6&&bt=125&ft=GcAInInz7Th~5eaGXq8Zmo&mime_type=audio_mpeg&rc=M25tPHk5cjRoPDMzZzU8NEBpM25tPHk5cjRoPDMzZzU8NEAuanFqMmQ0YV5hLS1kMS9zYSMuanFqMmQ0YV5hLS1kMS9zcw%3D%3D&expire=1784134963&l=20260715110034566648C59DAF7D168C22&ply_type=3&policy=3&signature=b845bb9fb6ba861969c860d35106f4d9&tk=0&btag=e00050000",
-            "name": "原聲 - 杨竹筠",
-            "author": "杨竹筠",
-            "cover_url": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-avt-0068-tx/911797ed4accd5f1d4990c82fa35b558~tplv-tiktokx-cropcenter:720:720.jpeg?dr=9640&refresh_token=93067c08&x-expires=1784286000&x-signature=oFgXWXLv2dPnatVaalcLbYgfaJw%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast5",
-            "is_original": true
-          },
-          "author": {
-            "id": "7407476938992174111",
-            "url": "https://www.tiktok.com/@yangzhujun1",
-            "name": "杨竹筠",
-            "username": "yangzhujun1",
-            "avatar_url": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-avt-0068-tx/911797ed4accd5f1d4990c82fa35b558~tplv-tiktokx-cropcenter:720:720.jpeg?dr=9640&refresh_token=93067c08&x-expires=1784286000&x-signature=oFgXWXLv2dPnatVaalcLbYgfaJw%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast5",
-            "is_private": false,
-            "is_verified": false
-          },
-          "caption": "Codex和GPT正式合并，内置最新发布的GPT5.6，你终于拥有了超能助理 #ai #GPT56 #Codex #ChatGPT #OpenAI",
-          "metrics": {
-            "likes_count": 1315,
-            "saves_count": 675,
-            "views_count": 52300,
-            "shares_count": 316,
-            "reposts_count": 0,
-            "comments_count": 22
-          },
           "hashtags": [],
-          "language": "zh-Hans",
           "mentions": [],
-          "platform": "tiktok",
-          "resource": "search",
-          "created_at": "2026-07-13T13:22:09",
-          "collected_at": "2026-07-15T11:00:49.541712",
-          "duration_seconds": 128
+          "shortcode": null,
+          "duration_seconds": 128.0,
+          "audio": null
         }
       ]
     }

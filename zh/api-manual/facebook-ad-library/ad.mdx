@@ -38,6 +38,47 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/facebook-ad-library/a
 
 一项任务接受一个广告 URL，并最多生成一条标准化广告记录。
 
+
+
+
+
+
+{/* result-schema:start */}
+## 标准结果字段
+
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 标准化的 id 字段。 |
+| `platform` | `string` | 否 | 标准化的 platform 字段。 |
+| `resource` | `string` | 否 | 标准化的 resource 字段。 |
+| `type` | `string` | 否 | 标准化的 type 字段。 |
+| `url` | `string` | 是 | 标准化的 url 字段。 |
+| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
+| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
+| `text` | `string` | 是 | 标准化的 text 字段。 |
+| `advertiser` | `object` | 是 | 标准化的 advertiser 字段。 |
+| `advertiser.id` | `string` | 是 | 标准化的 id 字段。 |
+| `advertiser.name` | `string` | 是 | 标准化的 name 字段。 |
+| `advertiser.url` | `string` | 是 | 标准化的 url 字段。 |
+| `advertiser.logo_url` | `string` | 是 | 标准化的 logo url 字段。 |
+| `start_date` | `string` | 是 | 标准化的 start date 字段。 |
+| `end_date` | `string` | 是 | 标准化的 end date 字段。 |
+| `countries` | `array<string>` | 是 | 标准化的 countries 字段。 |
+| `platforms` | `array<string>` | 是 | 标准化的 platforms 字段。 |
+| `format` | `string` | 是 | 标准化的 format 字段。 |
+| `landing_page_url` | `string` | 是 | 标准化的 landing page url 字段。 |
+| `impressions` | `integer` | 是 | 标准化的 impressions 字段。 |
+| `media` | `array<object>` | 是 | 标准化的 media 字段。 |
+| `media.type` | `string` | 是 | 标准化的 type 字段。 |
+| `media.url` | `string` | 是 | 标准化的 url 字段。 |
+| `media.thumbnail_url` | `string` | 是 | 标准化的 thumbnail url 字段。 |
+| `media.width` | `integer` | 是 | 标准化的 width 字段。 |
+| `media.height` | `integer` | 是 | 标准化的 height 字段。 |
+| `media.duration_seconds` | `number` | 是 | 标准化的 duration seconds 字段。 |
+{/* result-schema:end */}
+
 ## 任务完成响应
 
 ```json
@@ -53,21 +94,44 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/facebook-ad-library/a
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
-      "items": [{
-        "id": "702369045530963",
-        "platform": "facebook-ad-library",
-        "resource": "ad",
-        "type": "ad",
-        "url": "https://www.facebook.com/ads/library/?id=702369045530963",
-        "name": "Summer offer",
-        "text": "Discover the summer offer.",
-        "author": {"id": "166258896830103", "username": null, "name": "Example Brand", "url": null},
-        "metrics": {"page_likes_count": null, "reach": null},
-        "media": [{"type": "video", "url": "https://example.com/creative.mp4"}],
-        "created_at": "2026-07-01T00:00:00",
-        "collected_at": "2026-07-18T10:30:00",
-        "extra": {"input_url": "https://www.facebook.com/ads/library/?id=702369045530963", "is_active": true, "cta_text": "Learn more"}
-      }]
+      "view": "standard",
+      "schema_id": "ad",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "702369045530963",
+          "platform": "facebook-ad-library",
+          "resource": "ad",
+          "type": "ad",
+          "url": "https://www.facebook.com/ads/library/?id=702369045530963",
+          "published_at": "2026-07-01T00:00:00Z",
+          "collected_at": "2026-07-18T10:30:00Z",
+          "text": "Discover the summer offer.",
+          "advertiser": {
+            "id": "166258896830103",
+            "name": "Example Brand",
+            "url": null,
+            "logo_url": null
+          },
+          "start_date": null,
+          "end_date": null,
+          "countries": null,
+          "platforms": null,
+          "format": null,
+          "landing_page_url": null,
+          "impressions": null,
+          "media": [
+            {
+              "type": "video",
+              "url": "https://example.com/creative.mp4",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ]
+        }
+      ]
     }
   }
 }
