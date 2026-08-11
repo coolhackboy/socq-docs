@@ -8132,24 +8132,12 @@
             }
           },
           {
-            "name": "view",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "full",
-                "standard"
-              ],
-              "default": "full"
-            }
-          },
-          {
             "name": "fields",
             "in": "query",
             "schema": {
               "type": "string"
             },
-            "description": "Comma-separated fields; valid only for the standard view."
+            "description": "Up to 50 comma-separated fields or dot paths."
           }
         ],
         "responses": {

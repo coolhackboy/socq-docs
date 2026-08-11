@@ -265,10 +265,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "ad"
@@ -703,7 +699,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -812,10 +807,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "ad"
@@ -1250,7 +1241,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -1326,10 +1316,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "advertiser"
@@ -1511,7 +1497,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -1624,10 +1609,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "ad"
@@ -2062,7 +2043,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -2142,10 +2122,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "listing"
@@ -2740,7 +2716,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -2818,10 +2793,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "marketplace-location"
@@ -3058,7 +3029,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -3183,10 +3153,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "listing"
@@ -3781,7 +3747,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -3867,10 +3832,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "transcript"
@@ -4037,7 +3998,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -4152,10 +4112,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "comment"
@@ -4490,7 +4446,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -4576,10 +4531,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "comment"
@@ -4914,7 +4865,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -5006,10 +4956,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "review"
@@ -5423,7 +5369,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -5510,10 +5455,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "event"
@@ -6040,7 +5981,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -6123,10 +6063,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "event"
@@ -6653,7 +6589,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -6743,10 +6678,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -7234,7 +7165,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -7354,10 +7284,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "account"
@@ -7767,7 +7693,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -7887,10 +7812,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -8378,7 +8299,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -8470,10 +8390,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "event"
@@ -9000,7 +8916,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -9093,10 +9008,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -9712,7 +9623,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -9799,10 +9709,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "account"
@@ -10212,7 +10118,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -10304,10 +10209,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -10923,7 +10824,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -11006,10 +10906,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "transcript"
@@ -11176,7 +11072,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -11254,10 +11149,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "ad"
@@ -11692,7 +11583,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -11772,10 +11662,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "advertiser"
@@ -11957,7 +11843,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -12078,10 +11963,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "ad"
@@ -12516,7 +12397,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -12607,10 +12487,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -13226,7 +13102,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -13313,10 +13188,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "comment"
@@ -13651,7 +13522,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -13771,10 +13641,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "account"
@@ -14184,7 +14050,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -14271,10 +14136,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "relationship"
@@ -14540,7 +14401,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -14628,10 +14488,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "relationship"
@@ -14897,7 +14753,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -14993,10 +14848,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -15484,7 +15335,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -15571,10 +15421,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "highlight"
@@ -15973,7 +15819,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -16059,10 +15904,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -16550,7 +16391,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -16670,10 +16510,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -17161,7 +16997,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -17243,10 +17078,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "account"
@@ -17656,7 +17487,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -17776,10 +17606,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -18395,7 +18221,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -18487,10 +18312,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -19106,7 +18927,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -19225,10 +19045,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "account"
@@ -19638,7 +19454,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -19722,10 +19537,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "highlight"
@@ -20124,7 +19935,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -20211,10 +20021,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -20702,7 +20508,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -20785,10 +20590,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "transcript"
@@ -20955,7 +20756,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -21030,10 +20830,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -21649,7 +21445,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -21723,10 +21518,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "ad"
@@ -22161,7 +21952,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -22282,10 +22072,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "ad"
@@ -22720,7 +22506,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -22804,10 +22589,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "company"
@@ -23172,7 +22953,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -23260,10 +23040,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "job"
@@ -23726,7 +23502,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -23823,10 +23598,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -24314,7 +24085,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -24397,10 +24167,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "job"
@@ -24863,7 +24629,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -24941,10 +24706,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "comment"
@@ -25279,7 +25040,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -25359,10 +25119,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -25850,7 +25606,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -25949,10 +25704,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -26440,7 +26191,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -26524,10 +26274,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "account"
@@ -26937,7 +26683,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -27062,10 +26807,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "job"
@@ -27528,7 +27269,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -27611,10 +27351,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "account"
@@ -28024,7 +27760,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -28113,10 +27848,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -28604,7 +28335,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -28686,10 +28416,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -29177,7 +28903,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -29259,10 +28984,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "account"
@@ -29672,7 +29393,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -29755,10 +29475,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -30246,7 +29962,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -30331,10 +30046,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -30822,7 +30533,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -30904,10 +30614,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "comment"
@@ -31242,7 +30948,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -31324,10 +31029,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -31815,7 +31516,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -31902,10 +31602,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -32393,7 +32089,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -32482,10 +32177,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -32973,7 +32664,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -33087,10 +32777,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "serp-result"
@@ -33272,7 +32958,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -33385,10 +33070,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "seo-keyword"
@@ -33615,7 +33296,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -33729,10 +33409,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "seo-keyword"
@@ -33959,7 +33635,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -34073,10 +33748,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "seo-keyword"
@@ -34303,7 +33974,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -34416,10 +34086,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "seo-keyword"
@@ -34646,7 +34312,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -34754,10 +34419,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "seo-keyword"
@@ -34984,7 +34645,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -35096,10 +34756,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "seo-keyword"
@@ -35326,7 +34982,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -35443,10 +35098,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "seo-keyword"
@@ -35673,7 +35324,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -35785,10 +35435,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "serp-result"
@@ -35970,7 +35616,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -36083,10 +35728,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "seo-keyword"
@@ -36313,7 +35954,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -36396,10 +36036,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -36887,7 +36523,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -36969,10 +36604,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "account"
@@ -37382,7 +37013,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -37469,10 +37099,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -37960,7 +37586,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -38038,10 +37663,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "ad"
@@ -38476,7 +38097,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -38559,10 +38179,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "ad"
@@ -38997,7 +38613,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -39078,10 +38693,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "product"
@@ -39578,7 +39189,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -39663,10 +39273,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "review"
@@ -40080,7 +39686,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -40170,10 +39775,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "product"
@@ -40670,7 +40271,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -40756,10 +40356,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "product"
@@ -41256,7 +40852,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -41341,10 +40936,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "product"
@@ -41841,7 +41432,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -41934,10 +41524,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "comment"
@@ -42272,7 +41858,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -42359,10 +41944,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "comment"
@@ -42697,7 +42278,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -42789,10 +42369,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "relationship"
@@ -43058,7 +42634,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -43151,10 +42726,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "relationship"
@@ -43420,7 +42991,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -43508,10 +43078,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "hashtag-trend"
@@ -43718,7 +43284,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -43802,10 +43367,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "live-room"
@@ -44242,7 +43803,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -44323,10 +43883,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "account"
@@ -44736,7 +44292,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -44827,10 +44382,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -45446,7 +44997,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -45526,10 +45076,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -46145,7 +45691,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -46244,10 +45789,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -46863,7 +46404,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -46950,10 +46490,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "transcript"
@@ -47120,7 +46656,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -47203,10 +46738,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -47822,7 +47353,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -47915,10 +47445,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "relationship"
@@ -48184,7 +47710,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -48278,10 +47803,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "relationship"
@@ -48547,7 +48068,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -48641,10 +48161,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -49132,7 +48648,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -49230,10 +48745,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "comment"
@@ -49568,7 +49079,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -49662,10 +49172,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "relationship"
@@ -49931,7 +49437,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -50014,10 +49519,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -50505,7 +50006,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -50587,10 +50087,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "account"
@@ -51000,7 +50496,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -51087,10 +50582,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -51578,7 +51069,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -51668,10 +51158,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "hashtag-trend"
@@ -51878,7 +51364,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -51966,10 +51451,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -52457,7 +51938,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -52549,10 +52029,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -53168,7 +52644,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -53256,10 +52731,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -53875,7 +53346,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -53957,10 +53427,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "account"
@@ -54370,7 +53836,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -54479,10 +53944,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "comment"
@@ -54817,7 +54278,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -54908,10 +54368,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "comment"
@@ -55246,7 +54702,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -55338,10 +54793,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "post"
@@ -55829,7 +55280,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -55926,10 +55376,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -56545,7 +55991,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -56633,10 +56078,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -57252,7 +56693,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -57351,10 +56791,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -57970,7 +57406,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -58055,10 +57490,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -58674,7 +58105,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -58760,10 +58190,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "transcript"
@@ -58930,7 +58356,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",
@@ -59013,10 +58438,6 @@
           "results": {
             "type": "object",
             "properties": {
-              "view": {
-                "type": "string",
-                "const": "standard"
-              },
               "schema_id": {
                 "type": "string",
                 "const": "reel-video"
@@ -59632,7 +59053,6 @@
               }
             },
             "required": [
-              "view",
               "schema_id",
               "schema_version",
               "items",

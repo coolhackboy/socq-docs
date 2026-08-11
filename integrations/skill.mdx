@@ -66,7 +66,7 @@ Endpoint references are generated from the same Capability Registry as MCP and O
 
 ## Results and reporting
 
-The Skill requests the stable `standard` result view across MCP, CLI, and REST integrations. It treats `queued` and `running` tasks as incomplete, saves task IDs for resumption, follows opaque `next_cursor` values to the approved limit, and retrieves raw JSONL files when normalized pages are insufficient.
+The Skill uses the same stable result schema across MCP, CLI, and REST integrations. It treats `queued` and `running` tasks as incomplete, saves task IDs for resumption, and follows opaque `next_cursor` values to the approved limit.
 
 A completed response identifies the selected endpoints and execution path, summarizes inputs and filters, reports expected and actual credits when available, lists task IDs and terminal states, states result and page counts, and discloses failed platforms, unsupported filters, or incomplete coverage.
 

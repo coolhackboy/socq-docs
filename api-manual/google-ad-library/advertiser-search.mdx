@@ -23,9 +23,9 @@ The endpoint returns the complete result set produced by the search and bills th
 
 
 {/* result-schema:start */}
-## Standard Result Fields
+## Result Fields
 
-Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. The standard view maps source-specific field names and formats to the stable SocQ fields below; it does not infer or enrich values that the source did not provide. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
 
 | Field | Type | Nullable | Description |
 | --- | --- | --- | --- |
@@ -58,7 +58,6 @@ Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. The 
       "limit": 1,
       "next_cursor": "MTAyOTE",
       "has_more": true,
-      "view": "standard",
       "schema_id": "advertiser",
       "schema_version": "1.0",
       "items": [

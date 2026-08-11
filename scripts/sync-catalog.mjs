@@ -40,7 +40,7 @@ async function fetchCatalog() {
       throw new Error("Capability Catalog schema_version changed during pagination");
     }
 
-    endpoints.push(...items);
+    endpoints.push(...items.map(buildPublicEndpoint));
     pageCount += 1;
 
     if (!paginatedEndpoints) break;
@@ -79,7 +79,7 @@ const catalog = {
   platforms,
   endpoints,
 };
-const openapi = await fetchJson("/v1/catalog/openapi.json");
+const openapi = buildPublicOpenApi(await fetchJson("/v1/catalog/openapi.json"));
 const zhOpenapi = await buildZhOpenApi(openapi, root);
 
 await Promise.all([
@@ -94,4 +94,29 @@ process.stdout.write(
 
 async function writeJson(path, value) {
   await writeFile(path, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function buildPublicOpenApi(source) {
+  const openapi = structuredClone(source);
+  const taskOperation = openapi.paths?.["/v1/tasks/{task_id}"]?.get;
+  if (!taskOperation) return openapi;
+
+  taskOperation.parameters = (taskOperation.parameters ?? []).filter(
+    (parameter) => parameter?.name !== "view"
+  );
+  const fields = taskOperation.parameters.find((parameter) => parameter?.name === "fields");
+  if (fields) fields.description = "Up to 50 comma-separated fields or dot paths.";
+  return openapi;
+}
+
+function buildPublicEndpoint(source) {
+  const endpoint = structuredClone(source);
+  const results = endpoint.output_schema?.properties?.results;
+  if (!results) return endpoint;
+
+  if (results.properties) delete results.properties.view;
+  if (Array.isArray(results.required)) {
+    results.required = results.required.filter((name) => name !== "view");
+  }
+  return endpoint;
 }

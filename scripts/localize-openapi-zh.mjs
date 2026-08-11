@@ -72,6 +72,7 @@ const PARAMETER_DESCRIPTIONS = {
   task_id: "任务 ID。",
   cursor: "分页游标。",
   limit: "本次返回的最大记录数。",
+  fields: "最多 50 个逗号分隔字段或点路径。",
 };
 
 export async function buildZhOpenApi(openapi, root = defaultRoot) {

@@ -8278,25 +8278,12 @@
             "description": "本次返回的最大记录数。"
           },
           {
-            "name": "view",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "full",
-                "standard"
-              ],
-              "default": "full"
-            },
-            "description": "请求参数。"
-          },
-          {
             "name": "fields",
             "in": "query",
             "schema": {
               "type": "string"
             },
-            "description": "请求参数。"
+            "description": "最多 50 个逗号分隔字段或点路径。"
           }
         ],
         "responses": {

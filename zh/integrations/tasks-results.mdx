@@ -25,7 +25,6 @@ MCP 默认不会等待任务完成。可以为 `socq_execute` 设置 `wait_secon
 {
   "task_id": "TASK_ID",
   "limit": 100,
-  "view": "standard",
   "fields": "id,url,text,author.username"
 }
 ```
@@ -33,7 +32,7 @@ MCP 默认不会等待任务完成。可以为 `socq_execute` 设置 `wait_secon
 CLI 可以轮询同一任务，而无需保持 API 请求打开：
 
 ```bash
-socq task wait TASK_ID --timeout 180 --result-view standard
+socq task wait TASK_ID --timeout 180
 ```
 
 <Warning>
@@ -54,19 +53,19 @@ socq task wait TASK_ID --timeout 180 --result-view standard
 }
 ```
 
-## 选择结果视图
+## 读取任务结果
 
-成功任务在 `results.items` 中返回记录。V1 REST 默认使用 `full`，保留现有标准化输出；请求 `standard` 可获得 REST、MCP、CLI、SDK 与 Skills 共用的资源级固定 Schema。
+成功任务在 `results.items` 中返回记录，并统一使用 REST、MCP、CLI、SDK 与 Skills 共用的资源级固定 Schema。
 
-标准结果会保留已声明的可空字段，并排除 `raw` 和不稳定的 `extra`。`fields` 只能与 `standard` 一起使用，最多接受 50 个逗号分隔的顶层字段或点路径。只有调用方未通过投影请求字段时，该字段才会省略。
+结果会保留已声明的可空字段，并排除数据提供方特有的实现细节。可选的 `fields` 参数最多接受 50 个逗号分隔的顶层字段或点路径。只有调用方未通过投影请求字段时，该字段才会省略。
 
-MCP 与 Skills 通常应请求 `view: "standard"`；Typed MCP 工具使用 `_result_view` 和 `_result_fields`，CLI 使用 `--result-view standard` 和可选的 `--result-fields`。
+Typed MCP 工具使用 `_result_fields`，CLI 使用可选的 `--result-fields`。
 
 成功任务会在 `results.items` 中返回标准化记录。MCP 每页默认返回 25 条，最多返回 100 条。
 
 当 `has_more` 为 `true` 时，把 `next_cursor` 原样传给下一次 `socq_get_task` 调用。当游标为空或已经取得所需数量的结果时停止。
 
-## 下载原始文件
+## 下载来源文件（高级）
 
 使用 `socq_get_files` 或 CLI 检索原始 JSONL 导出：
 
@@ -74,6 +73,6 @@ MCP 与 Skills 通常应请求 `view: "standard"`；Typed MCP 工具使用 `_res
 socq task files TASK_ID
 ```
 
-文件 URL 可能过期。原始文件会保留数据提供方返回的详细字段；分页任务结果则使用 SocQ 的标准化数据结构。
+文件 URL 可能过期。大多数集成应使用分页任务结果；来源文件仅用于高级处理和问题排查。
 
 有关任务状态和响应字段，请参阅[任务状态和结果](/zh/api-manual/agent-api/status) 和[结果文件](/zh/api-manual/agent-api/files)。

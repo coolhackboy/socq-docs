@@ -88,19 +88,17 @@ socq_account
   "sort_by": "newest",
   "_wait_seconds": 30,
   "_result_limit": 25,
-  "_result_view": "standard",
   "_result_fields": "id,url,text,author.username"
 }
 ```
 
-类型化工具还提供 5 个可选控制字段：
+类型化工具还提供 4 个可选控制字段：
 
 | 字段 | 用途 |
 | --- | --- |
 | `_wait_seconds` | 返回任务前最多等待 30 秒 |
 | `_result_limit` | 将本次响应返回的标准化记录限制在 1 到 100 条 |
-| `_result_view` | 返回兼容的 `full` 视图或固定的 `standard` 视图；Skills 应优先使用 `standard` |
-| `_result_fields` | 从 `standard` 中投影最多 50 个逗号分隔字段或点路径 |
+| `_result_fields` | 投影最多 50 个逗号分隔字段或点路径 |
 | `_idempotency_key` | 重试时返回原任务，而不是创建新任务 |
 
 这些与 `results_limit` 等业务输入是分开的。例如，`results_limit: 100` 请求最多采集 100 条评论，而 `_result_limit: 25` 将当前响应页面限制为 25 条记录。

@@ -70,7 +70,7 @@ function validateCompletedTaskResponse(source, publicId, locale) {
   if (!endpoint?.output_schema_id || !endpoint?.output_schema_version) {
     throw new Error(`${publicId} is missing output schema metadata`);
   }
-  if (results.view !== "standard") throw new Error(`${locale}: ${publicId} result view must be standard`);
+  if ("view" in results) throw new Error(`${locale}: ${publicId} publicly exposes the internal result view`);
   if (results.schema_id !== endpoint.output_schema_id) throw new Error(`${locale}: ${publicId} schema_id is out of sync`);
   if (results.schema_version !== endpoint.output_schema_version) throw new Error(`${locale}: ${publicId} schema_version is out of sync`);
   if (!source.includes("{/* result-schema:start */}")) {

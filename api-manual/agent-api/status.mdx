@@ -11,13 +11,13 @@ Query a task by `task_id`. When the task status is `succeeded`, the response aut
 ## Endpoint
 
 ```http
-GET https://api.socq.ai/v1/tasks/{task_id}?view=standard
+GET https://api.socq.ai/v1/tasks/{task_id}
 ```
 
 Use the `next_cursor` returned under `results` to read the next page:
 
 ```http
-GET https://api.socq.ai/v1/tasks/{task_id}?view=standard&limit=50&cursor=NTY3ODkw
+GET https://api.socq.ai/v1/tasks/{task_id}?limit=50&cursor=NTY3ODkw
 ```
 
 ## Response
@@ -37,7 +37,6 @@ GET https://api.socq.ai/v1/tasks/{task_id}?view=standard&limit=50&cursor=NTY3ODk
       "limit": 50,
       "next_cursor": null,
       "has_more": false,
-      "view": "standard",
       "schema_id": "account",
       "schema_version": "1.0",
       "items": [
@@ -82,9 +81,8 @@ GET https://api.socq.ai/v1/tasks/{task_id}?view=standard&limit=50&cursor=NTY3ODk
 | `created_time` | string | Task creation time |
 | `finished_time` | string | Task completion time |
 | `results` | object | Present only when `status` is `succeeded`; contains paginated normalized records |
-| `results.view` | string | `full` compatibility view or fixed `standard` view |
-| `results.schema_id` | string or null | Resource schema ID; present for `standard` |
-| `results.schema_version` | string or null | Resource schema version; present for `standard` |
+| `results.schema_id` | string | Resource schema ID |
+| `results.schema_version` | string | Resource schema version |
 
 ## Pagination
 
@@ -92,10 +90,9 @@ GET https://api.socq.ai/v1/tasks/{task_id}?view=standard&limit=50&cursor=NTY3ODk
 | --- | --- | --- | --- |
 | `limit` | integer | `50` | Number of records to return, max `500` |
 | `cursor` | string | `null` | Cursor from the previous `results.next_cursor`. Omit it for the first page. |
-| `view` | string | `full` | `full` preserves V1 output; `standard` returns the fixed resource schema. |
-| `fields` | string | `null` | Up to 50 comma-separated fields or dot paths. Valid only with `view=standard`. |
+| `fields` | string | `null` | Up to 50 comma-separated fields or dot paths. |
 
-In the standard view, every declared field is present unless it was omitted by `fields`. Unavailable scalar values and objects are `null`; known zero values remain `0`, false values remain `false`, and known empty collections remain `[]`.
+Every declared field is present unless it was omitted by `fields`. Unavailable scalar values and objects are `null`; known zero values remain `0`, false values remain `false`, and known empty collections remain `[]`.
 
 <Tip>
   While a task is `queued`, `running`, or `failed`, this endpoint returns task metadata without `results`.
