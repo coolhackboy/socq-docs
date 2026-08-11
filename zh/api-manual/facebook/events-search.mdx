@@ -27,46 +27,48 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/facebook/events-searc
 
 
 
+
+
 {/* result-schema:start */}
 ## 标准结果字段
 
-通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。标准视图会将来源特有的字段名和格式映射为下表所列的稳定 SocQ 字段，但不会推断或补充来源未提供的数据。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
 
 | 字段 | 类型 | 可空 | 说明 |
 | --- | --- | --- | --- |
-| `id` | `string` | 是 | 标准化的 id 字段。 |
-| `platform` | `string` | 否 | 标准化的 platform 字段。 |
-| `resource` | `string` | 否 | 标准化的 resource 字段。 |
-| `type` | `string` | 否 | 标准化的 type 字段。 |
-| `url` | `string` | 是 | 标准化的 url 字段。 |
-| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
-| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
-| `title` | `string` | 是 | 标准化的 title 字段。 |
-| `text` | `string` | 是 | 标准化的 text 字段。 |
-| `organizer` | `object` | 是 | 标准化的 organizer 字段。 |
-| `organizer.id` | `string` | 是 | 标准化的 id 字段。 |
-| `organizer.username` | `string` | 是 | 标准化的 username 字段。 |
-| `organizer.name` | `string` | 是 | 标准化的 name 字段。 |
-| `organizer.url` | `string` | 是 | 标准化的 url 字段。 |
-| `organizer.avatar_url` | `string` | 是 | 标准化的 avatar url 字段。 |
-| `organizer.is_verified` | `boolean` | 是 | 标准化的 is verified 字段。 |
-| `organizer.is_private` | `boolean` | 是 | 标准化的 is private 字段。 |
-| `location` | `object` | 是 | 标准化的 location 字段。 |
-| `location.name` | `string` | 是 | 标准化的 name 字段。 |
-| `location.city` | `string` | 是 | 标准化的 city 字段。 |
-| `location.region` | `string` | 是 | 标准化的 region 字段。 |
-| `location.country` | `string` | 是 | 标准化的 country 字段。 |
-| `location.latitude` | `number` | 是 | 标准化的 latitude 字段。 |
-| `location.longitude` | `number` | 是 | 标准化的 longitude 字段。 |
-| `start_at` | `string` | 是 | 标准化的 start at 字段。 |
-| `end_at` | `string` | 是 | 标准化的 end at 字段。 |
-| `media` | `array<object>` | 是 | 标准化的 media 字段。 |
-| `media.type` | `string` | 是 | 标准化的 type 字段。 |
-| `media.url` | `string` | 是 | 标准化的 url 字段。 |
-| `media.thumbnail_url` | `string` | 是 | 标准化的 thumbnail url 字段。 |
-| `media.width` | `integer` | 是 | 标准化的 width 字段。 |
-| `media.height` | `integer` | 是 | 标准化的 height 字段。 |
-| `media.duration_seconds` | `number` | 是 | 标准化的 duration seconds 字段。 |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `title` | `string` | 是 | 活动标题。 |
+| `text` | `string` | 是 | 活动描述。 |
+| `organizer` | `object` | 是 | 活动的组织者账号或机构。 |
+| `organizer.id` | `string` | 是 | 组织者的唯一标识。 |
+| `organizer.username` | `string` | 是 | 账号的公开用户名或账号标识。 |
+| `organizer.name` | `string` | 是 | 组织者的显示名称。 |
+| `organizer.url` | `string` | 是 | 组织者的公开访问地址（如可获得）。 |
+| `organizer.avatar_url` | `string` | 是 | 账号头像图片的地址。 |
+| `organizer.is_verified` | `boolean` | 是 | 账号是否已通过平台认证。 |
+| `organizer.is_private` | `boolean` | 是 | 账号是否为私密账号。 |
+| `location` | `object` | 是 | 结果关联的地理位置信息。 |
+| `location.name` | `string` | 是 | 便于阅读的地点名称。 |
+| `location.city` | `string` | 是 | 城市名称。 |
+| `location.region` | `string` | 是 | 地区、州或省份名称。 |
+| `location.country` | `string` | 是 | 国家或地区名称或代码。 |
+| `location.latitude` | `number` | 是 | 十进制度格式的纬度。 |
+| `location.longitude` | `number` | 是 | 十进制度格式的经度。 |
+| `start_at` | `string` | 是 | 活动开始时间（如可获得），使用 ISO 8601 格式。 |
+| `end_at` | `string` | 是 | 活动结束时间（如可获得），使用 ISO 8601 格式。 |
+| `media` | `array<object>` | 是 | 结果附带的图片、视频或其他媒体。 |
+| `media.type` | `string` | 是 | 媒体类型，例如 `image` 或 `video`。 |
+| `media.url` | `string` | 是 | 媒体文件的地址。 |
+| `media.thumbnail_url` | `string` | 是 | 媒体预览图的地址。 |
+| `media.width` | `integer` | 是 | 媒体宽度，单位为像素。 |
+| `media.height` | `integer` | 是 | 媒体高度，单位为像素。 |
+| `media.duration_seconds` | `number` | 是 | 媒体时长，单位为秒。 |
 {/* result-schema:end */}
 
 ## 任务完成响应

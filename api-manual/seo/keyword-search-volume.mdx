@@ -17,28 +17,30 @@ Accepts up to 1,000 keywords. Each returned record corresponds to a keyword for 
 
 
 
+
+
 {/* result-schema:start */}
 ## Standard Result Fields
 
-Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. The standard view maps source-specific field names and formats to the stable SocQ fields below; it does not infer or enrich values that the source did not provide. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
 
 | Field | Type | Nullable | Description |
 | --- | --- | --- | --- |
-| `id` | `string` | Yes | Normalized id field. |
-| `platform` | `string` | No | Normalized platform field. |
-| `resource` | `string` | No | Normalized resource field. |
-| `type` | `string` | No | Normalized type field. |
-| `url` | `string` | Yes | Normalized url field. |
-| `published_at` | `string` | Yes | Normalized published at field. |
-| `collected_at` | `string` | No | Normalized collected at field. |
-| `keyword` | `string` | Yes | Normalized keyword field. |
-| `search_volume` | `integer` | Yes | Normalized search volume field. |
-| `difficulty` | `number` | Yes | Normalized difficulty field. |
-| `intent` | `string` | Yes | Normalized intent field. |
-| `cpc` | `number` | Yes | Normalized cpc field. |
-| `competition` | `number` | Yes | Normalized competition field. |
-| `rank` | `integer` | Yes | Normalized rank field. |
-| `target_url` | `string` | Yes | Normalized target url field. |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `keyword` | `string` | Yes | Keyword represented by the result. |
+| `search_volume` | `integer` | Yes | Estimated number of searches for the keyword in the configured period and market. |
+| `difficulty` | `number` | Yes | Estimated ranking difficulty score for the keyword. |
+| `intent` | `string` | Yes | Detected primary search intent for the keyword. |
+| `cpc` | `number` | Yes | Estimated cost per click for the keyword. |
+| `competition` | `number` | Yes | Advertiser competition level for the keyword. |
+| `rank` | `integer` | Yes | Ranking position of the target page for the keyword. |
+| `target_url` | `string` | Yes | Page URL associated with the keyword ranking. |
 {/* result-schema:end */}
 
 ## Completed Task Response

@@ -42,37 +42,39 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 
 
+
+
 {/* result-schema:start */}
 ## Standard Result Fields
 
-Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. The standard view maps source-specific field names and formats to the stable SocQ fields below; it does not infer or enrich values that the source did not provide. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
 
 | Field | Type | Nullable | Description |
 | --- | --- | --- | --- |
-| `id` | `string` | Yes | Normalized id field. |
-| `platform` | `string` | No | Normalized platform field. |
-| `resource` | `string` | No | Normalized resource field. |
-| `type` | `string` | No | Normalized type field. |
-| `url` | `string` | Yes | Normalized url field. |
-| `published_at` | `string` | Yes | Normalized published at field. |
-| `collected_at` | `string` | No | Normalized collected at field. |
-| `actor` | `object` | Yes | Normalized actor field. |
-| `actor.id` | `string` | Yes | Normalized id field. |
-| `actor.username` | `string` | Yes | Normalized username field. |
-| `actor.name` | `string` | Yes | Normalized name field. |
-| `actor.url` | `string` | Yes | Normalized url field. |
-| `actor.avatar_url` | `string` | Yes | Normalized avatar url field. |
-| `actor.is_verified` | `boolean` | Yes | Normalized is verified field. |
-| `actor.is_private` | `boolean` | Yes | Normalized is private field. |
-| `related_actor` | `object` | Yes | Normalized related actor field. |
-| `related_actor.id` | `string` | Yes | Normalized id field. |
-| `related_actor.username` | `string` | Yes | Normalized username field. |
-| `related_actor.name` | `string` | Yes | Normalized name field. |
-| `related_actor.url` | `string` | Yes | Normalized url field. |
-| `related_actor.avatar_url` | `string` | Yes | Normalized avatar url field. |
-| `related_actor.is_verified` | `boolean` | Yes | Normalized is verified field. |
-| `related_actor.is_private` | `boolean` | Yes | Normalized is private field. |
-| `relationship` | `string` | Yes | Normalized relationship field. |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `actor` | `object` | Yes | Account at the primary side of the relationship. |
+| `actor.id` | `string` | Yes | Unique identifier of the primary account. |
+| `actor.username` | `string` | Yes | Public username or handle of the account. |
+| `actor.name` | `string` | Yes | Display name of the primary account. |
+| `actor.url` | `string` | Yes | Public URL of the primary account when available. |
+| `actor.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `actor.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `actor.is_private` | `boolean` | Yes | Whether the account is private. |
+| `related_actor` | `object` | Yes | Account related to the primary account. |
+| `related_actor.id` | `string` | Yes | Unique identifier of the related account. |
+| `related_actor.username` | `string` | Yes | Public username or handle of the account. |
+| `related_actor.name` | `string` | Yes | Display name of the related account. |
+| `related_actor.url` | `string` | Yes | Public URL of the related account when available. |
+| `related_actor.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `related_actor.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `related_actor.is_private` | `boolean` | Yes | Whether the account is private. |
+| `relationship` | `string` | Yes | Relationship represented by the item, such as `follower`, `following`, or `retweeter`. |
 {/* result-schema:end */}
 
 ## Completed Task Response

@@ -27,46 +27,48 @@ Results include event identity, schedule text, place, attendance metrics, and co
 
 
 
+
+
 {/* result-schema:start */}
 ## Standard Result Fields
 
-Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. The standard view maps source-specific field names and formats to the stable SocQ fields below; it does not infer or enrich values that the source did not provide. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
 
 | Field | Type | Nullable | Description |
 | --- | --- | --- | --- |
-| `id` | `string` | Yes | Normalized id field. |
-| `platform` | `string` | No | Normalized platform field. |
-| `resource` | `string` | No | Normalized resource field. |
-| `type` | `string` | No | Normalized type field. |
-| `url` | `string` | Yes | Normalized url field. |
-| `published_at` | `string` | Yes | Normalized published at field. |
-| `collected_at` | `string` | No | Normalized collected at field. |
-| `title` | `string` | Yes | Normalized title field. |
-| `text` | `string` | Yes | Normalized text field. |
-| `organizer` | `object` | Yes | Normalized organizer field. |
-| `organizer.id` | `string` | Yes | Normalized id field. |
-| `organizer.username` | `string` | Yes | Normalized username field. |
-| `organizer.name` | `string` | Yes | Normalized name field. |
-| `organizer.url` | `string` | Yes | Normalized url field. |
-| `organizer.avatar_url` | `string` | Yes | Normalized avatar url field. |
-| `organizer.is_verified` | `boolean` | Yes | Normalized is verified field. |
-| `organizer.is_private` | `boolean` | Yes | Normalized is private field. |
-| `location` | `object` | Yes | Normalized location field. |
-| `location.name` | `string` | Yes | Normalized name field. |
-| `location.city` | `string` | Yes | Normalized city field. |
-| `location.region` | `string` | Yes | Normalized region field. |
-| `location.country` | `string` | Yes | Normalized country field. |
-| `location.latitude` | `number` | Yes | Normalized latitude field. |
-| `location.longitude` | `number` | Yes | Normalized longitude field. |
-| `start_at` | `string` | Yes | Normalized start at field. |
-| `end_at` | `string` | Yes | Normalized end at field. |
-| `media` | `array<object>` | Yes | Normalized media field. |
-| `media.type` | `string` | Yes | Normalized type field. |
-| `media.url` | `string` | Yes | Normalized url field. |
-| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
-| `media.width` | `integer` | Yes | Normalized width field. |
-| `media.height` | `integer` | Yes | Normalized height field. |
-| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `title` | `string` | Yes | Event title. |
+| `text` | `string` | Yes | Event description. |
+| `organizer` | `object` | Yes | Account or organization responsible for the event. |
+| `organizer.id` | `string` | Yes | Unique identifier of the organizer. |
+| `organizer.username` | `string` | Yes | Public username or handle of the account. |
+| `organizer.name` | `string` | Yes | Display name of the organizer. |
+| `organizer.url` | `string` | Yes | Public URL of the organizer when available. |
+| `organizer.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `organizer.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `organizer.is_private` | `boolean` | Yes | Whether the account is private. |
+| `location` | `object` | Yes | Geographic location associated with the result. |
+| `location.name` | `string` | Yes | Human-readable location name. |
+| `location.city` | `string` | Yes | City name. |
+| `location.region` | `string` | Yes | Region, state, or province name. |
+| `location.country` | `string` | Yes | Country or territory name or code. |
+| `location.latitude` | `number` | Yes | Latitude in decimal degrees. |
+| `location.longitude` | `number` | Yes | Longitude in decimal degrees. |
+| `start_at` | `string` | Yes | Event start time in ISO 8601 format when available. |
+| `end_at` | `string` | Yes | Event end time in ISO 8601 format when available. |
+| `media` | `array<object>` | Yes | Images, videos, or other media attached to the result. |
+| `media.type` | `string` | Yes | Media kind, such as `image` or `video`. |
+| `media.url` | `string` | Yes | URL of the media asset. |
+| `media.thumbnail_url` | `string` | Yes | URL of the media preview image. |
+| `media.width` | `integer` | Yes | Media width in pixels. |
+| `media.height` | `integer` | Yes | Media height in pixels. |
+| `media.duration_seconds` | `number` | Yes | Media duration in seconds. |
 {/* result-schema:end */}
 
 ## Completed Task Response

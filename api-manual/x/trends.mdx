@@ -42,26 +42,28 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 
 
+
+
 {/* result-schema:start */}
 ## Standard Result Fields
 
-Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. The standard view maps source-specific field names and formats to the stable SocQ fields below; it does not infer or enrich values that the source did not provide. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
 
 | Field | Type | Nullable | Description |
 | --- | --- | --- | --- |
-| `id` | `string` | Yes | Normalized id field. |
-| `platform` | `string` | No | Normalized platform field. |
-| `resource` | `string` | No | Normalized resource field. |
-| `type` | `string` | No | Normalized type field. |
-| `url` | `string` | Yes | Normalized url field. |
-| `published_at` | `string` | Yes | Normalized published at field. |
-| `collected_at` | `string` | No | Normalized collected at field. |
-| `name` | `string` | Yes | Normalized name field. |
-| `rank` | `integer` | Yes | Normalized rank field. |
-| `region` | `string` | Yes | Normalized region field. |
-| `metrics` | `object` | Yes | Normalized metrics field. |
-| `metrics.posts_count` | `integer` | Yes | Normalized posts count field. |
-| `metrics.views_count` | `integer` | Yes | Normalized views count field. |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `name` | `string` | Yes | Hashtag or trend name. |
+| `rank` | `integer` | Yes | Position of the trend in the source ranking. |
+| `region` | `string` | Yes | Region, state, or province name. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.posts_count` | `integer` | Yes | Number of posts or posts associated with the trend. |
+| `metrics.views_count` | `integer` | Yes | Number of views reported by the platform. |
 {/* result-schema:end */}
 
 ## Completed Task Response

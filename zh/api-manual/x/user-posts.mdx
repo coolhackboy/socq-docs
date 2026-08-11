@@ -44,43 +44,45 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/x/user-posts"
 
 
 
+
+
 {/* result-schema:start */}
 ## 标准结果字段
 
-通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。标准视图会将来源特有的字段名和格式映射为下表所列的稳定 SocQ 字段，但不会推断或补充来源未提供的数据。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
 
 | 字段 | 类型 | 可空 | 说明 |
 | --- | --- | --- | --- |
-| `id` | `string` | 是 | 标准化的 id 字段。 |
-| `platform` | `string` | 否 | 标准化的 platform 字段。 |
-| `resource` | `string` | 否 | 标准化的 resource 字段。 |
-| `type` | `string` | 否 | 标准化的 type 字段。 |
-| `url` | `string` | 是 | 标准化的 url 字段。 |
-| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
-| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
-| `text` | `string` | 是 | 标准化的 text 字段。 |
-| `author` | `object` | 是 | 标准化的 author 字段。 |
-| `author.id` | `string` | 是 | 标准化的 id 字段。 |
-| `author.username` | `string` | 是 | 标准化的 username 字段。 |
-| `author.name` | `string` | 是 | 标准化的 name 字段。 |
-| `author.url` | `string` | 是 | 标准化的 url 字段。 |
-| `author.avatar_url` | `string` | 是 | 标准化的 avatar url 字段。 |
-| `author.is_verified` | `boolean` | 是 | 标准化的 is verified 字段。 |
-| `author.is_private` | `boolean` | 是 | 标准化的 is private 字段。 |
-| `metrics` | `object` | 是 | 标准化的 metrics 字段。 |
-| `metrics.likes_count` | `integer` | 是 | 标准化的 likes count 字段。 |
-| `metrics.comments_count` | `integer` | 是 | 标准化的 comments count 字段。 |
-| `metrics.shares_count` | `integer` | 是 | 标准化的 shares count 字段。 |
-| `metrics.views_count` | `integer` | 是 | 标准化的 views count 字段。 |
-| `media` | `array<object>` | 是 | 标准化的 media 字段。 |
-| `media.type` | `string` | 是 | 标准化的 type 字段。 |
-| `media.url` | `string` | 是 | 标准化的 url 字段。 |
-| `media.thumbnail_url` | `string` | 是 | 标准化的 thumbnail url 字段。 |
-| `media.width` | `integer` | 是 | 标准化的 width 字段。 |
-| `media.height` | `integer` | 是 | 标准化的 height 字段。 |
-| `media.duration_seconds` | `number` | 是 | 标准化的 duration seconds 字段。 |
-| `hashtags` | `array<string>` | 是 | 标准化的 hashtags 字段。 |
-| `mentions` | `array<string>` | 是 | 标准化的 mentions 字段。 |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `text` | `string` | 是 | 帖子的正文、说明文字或消息内容。 |
+| `author` | `object` | 是 | 内容的作者或发布者。 |
+| `author.id` | `string` | 是 | 作者的唯一标识。 |
+| `author.username` | `string` | 是 | 账号的公开用户名或账号标识。 |
+| `author.name` | `string` | 是 | 作者的显示名称。 |
+| `author.url` | `string` | 是 | 作者的公开访问地址（如可获得）。 |
+| `author.avatar_url` | `string` | 是 | 账号头像图片的地址。 |
+| `author.is_verified` | `boolean` | 是 | 账号是否已通过平台认证。 |
+| `author.is_private` | `boolean` | 是 | 账号是否为私密账号。 |
+| `metrics` | `object` | 是 | 结果项可获得的计数和度量数据。 |
+| `metrics.likes_count` | `integer` | 是 | 点赞数量。 |
+| `metrics.comments_count` | `integer` | 是 | 评论数量。 |
+| `metrics.shares_count` | `integer` | 是 | 分享或转发数量。 |
+| `metrics.views_count` | `integer` | 是 | 平台报告的观看数量。 |
+| `media` | `array<object>` | 是 | 结果附带的图片、视频或其他媒体。 |
+| `media.type` | `string` | 是 | 媒体类型，例如 `image` 或 `video`。 |
+| `media.url` | `string` | 是 | 媒体文件的地址。 |
+| `media.thumbnail_url` | `string` | 是 | 媒体预览图的地址。 |
+| `media.width` | `integer` | 是 | 媒体宽度，单位为像素。 |
+| `media.height` | `integer` | 是 | 媒体高度，单位为像素。 |
+| `media.duration_seconds` | `number` | 是 | 媒体时长，单位为秒。 |
+| `hashtags` | `array<string>` | 是 | 内容关联的话题标签，保留源数据中的拼写。 |
+| `mentions` | `array<string>` | 是 | 内容中提及的账号。 |
 {/* result-schema:end */}
 
 ## 任务完成响应

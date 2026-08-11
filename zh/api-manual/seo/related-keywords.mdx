@@ -17,28 +17,30 @@ Each item is one related keyword record. `depth` accepts 0鈥?; larger depth exp
 
 
 
+
+
 {/* result-schema:start */}
 ## 标准结果字段
 
-通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。标准视图会将来源特有的字段名和格式映射为下表所列的稳定 SocQ 字段，但不会推断或补充来源未提供的数据。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
 
 | 字段 | 类型 | 可空 | 说明 |
 | --- | --- | --- | --- |
-| `id` | `string` | 是 | 标准化的 id 字段。 |
-| `platform` | `string` | 否 | 标准化的 platform 字段。 |
-| `resource` | `string` | 否 | 标准化的 resource 字段。 |
-| `type` | `string` | 否 | 标准化的 type 字段。 |
-| `url` | `string` | 是 | 标准化的 url 字段。 |
-| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
-| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
-| `keyword` | `string` | 是 | 标准化的 keyword 字段。 |
-| `search_volume` | `integer` | 是 | 标准化的 search volume 字段。 |
-| `difficulty` | `number` | 是 | 标准化的 difficulty 字段。 |
-| `intent` | `string` | 是 | 标准化的 intent 字段。 |
-| `cpc` | `number` | 是 | 标准化的 cpc 字段。 |
-| `competition` | `number` | 是 | 标准化的 competition 字段。 |
-| `rank` | `integer` | 是 | 标准化的 rank 字段。 |
-| `target_url` | `string` | 是 | 标准化的 target url 字段。 |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `keyword` | `string` | 是 | 该结果对应的关键词。 |
+| `search_volume` | `integer` | 是 | 在指定周期和市场内对该关键词搜索次数的估算值。 |
+| `difficulty` | `number` | 是 | 关键词排名难度的估算分值。 |
+| `intent` | `string` | 是 | 识别出的关键词主要搜索意图。 |
+| `cpc` | `number` | 是 | 关键词的预估单次点击费用。 |
+| `competition` | `number` | 是 | 关键词的广告竞争程度。 |
+| `rank` | `integer` | 是 | 目标页面针对该关键词的排名位置。 |
+| `target_url` | `string` | 是 | 与关键词排名关联的页面地址。 |
 {/* result-schema:end */}
 
 ## 任务完成响应

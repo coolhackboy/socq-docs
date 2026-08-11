@@ -76,7 +76,11 @@ function validateCompletedTaskResponse(source, publicId, locale) {
   if (!source.includes("{/* result-schema:start */}")) {
     throw new Error(`${locale}: ${publicId} is missing the generated result field table`);
   }
+  if (/Normalized [^\r\n|]* field\.|标准化的 [^\r\n|]* 字段。/.test(source)) {
+    throw new Error(`${locale}: ${publicId} contains a placeholder result-field description`);
+  }
   const itemSchema = endpoint.output_schema?.properties?.results?.properties?.items?.items;
+  validateSchemaDescriptions(itemSchema, itemSchema, `${publicId}:output_schema`);
   for (const [index, item] of results.items.entries()) {
     validateSchemaValue(item, itemSchema, itemSchema, `${locale}:${publicId}:items[${index}]`);
   }
@@ -121,6 +125,37 @@ function validateSchemaValue(value, schema, root, path) {
   if (type === "boolean" && typeof value !== "boolean") throw new Error(`${path} must be a boolean`);
   if (type === "number" && typeof value !== "number") throw new Error(`${path} must be a number`);
   if (type === "integer" && !Number.isInteger(value)) throw new Error(`${path} must be an integer`);
+}
+
+function validateSchemaDescriptions(schema, root, path) {
+  if (!schema) throw new Error(`${path} has no schema`);
+  if (schema.$ref) {
+    const name = schema.$ref.split("/").at(-1);
+    return validateSchemaDescriptions(root.$defs?.[name], root, path);
+  }
+  if (schema.anyOf) {
+    const choice = schema.anyOf.find((item) => item.type !== "null");
+    return validateSchemaDescriptions(choice, root, path);
+  }
+  if (schema.type === "array") {
+    return validateSchemaDescriptions(schema.items, root, `${path}[]`);
+  }
+  for (const [name, property] of Object.entries(schema.properties ?? {})) {
+    const fieldPath = `${path}.${name}`;
+    if (typeof property.description !== "string" || !property.description.trim()) {
+      throw new Error(`${fieldPath} is missing an English description`);
+    }
+    if (typeof property["x-description-zh"] !== "string" || !property["x-description-zh"].trim()) {
+      throw new Error(`${fieldPath} is missing a Chinese description`);
+    }
+    if (/^Normalized .* field\.$/.test(property.description)) {
+      throw new Error(`${fieldPath} uses a placeholder English description`);
+    }
+    if (/^标准化的 .* 字段。$/.test(property["x-description-zh"])) {
+      throw new Error(`${fieldPath} uses a placeholder Chinese description`);
+    }
+    validateSchemaDescriptions(property, root, fieldPath);
+  }
 }
 
 if (new Set(ids).size !== ids.length) throw new Error("Duplicate public_id in capability-catalog.json");

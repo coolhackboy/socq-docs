@@ -26,39 +26,41 @@ Results include biography, profile links, verification status, and follower, fol
 
 
 
+
+
 {/* result-schema:start */}
 ## Standard Result Fields
 
-Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. The standard view maps source-specific field names and formats to the stable SocQ fields below; it does not infer or enrich values that the source did not provide. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
 
 | Field | Type | Nullable | Description |
 | --- | --- | --- | --- |
-| `id` | `string` | Yes | Normalized id field. |
-| `platform` | `string` | No | Normalized platform field. |
-| `resource` | `string` | No | Normalized resource field. |
-| `type` | `string` | No | Normalized type field. |
-| `url` | `string` | Yes | Normalized url field. |
-| `published_at` | `string` | Yes | Normalized published at field. |
-| `collected_at` | `string` | No | Normalized collected at field. |
-| `username` | `string` | Yes | Normalized username field. |
-| `name` | `string` | Yes | Normalized name field. |
-| `text` | `string` | Yes | Normalized text field. |
-| `avatar_url` | `string` | Yes | Normalized avatar url field. |
-| `cover_url` | `string` | Yes | Normalized cover url field. |
-| `website` | `string` | Yes | Normalized website field. |
-| `is_verified` | `boolean` | Yes | Normalized is verified field. |
-| `is_private` | `boolean` | Yes | Normalized is private field. |
-| `location` | `object` | Yes | Normalized location field. |
-| `location.name` | `string` | Yes | Normalized name field. |
-| `location.city` | `string` | Yes | Normalized city field. |
-| `location.region` | `string` | Yes | Normalized region field. |
-| `location.country` | `string` | Yes | Normalized country field. |
-| `location.latitude` | `number` | Yes | Normalized latitude field. |
-| `location.longitude` | `number` | Yes | Normalized longitude field. |
-| `metrics` | `object` | Yes | Normalized metrics field. |
-| `metrics.followers_count` | `integer` | Yes | Normalized followers count field. |
-| `metrics.following_count` | `integer` | Yes | Normalized following count field. |
-| `metrics.posts_count` | `integer` | Yes | Normalized posts count field. |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `username` | `string` | Yes | Public username or handle of the account. |
+| `name` | `string` | Yes | Display name of the account or profile. |
+| `text` | `string` | Yes | Biography or description of the account or profile. |
+| `avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `cover_url` | `string` | Yes | URL of the cover image. |
+| `website` | `string` | Yes | Website associated with the account, company, or advertiser. |
+| `is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `is_private` | `boolean` | Yes | Whether the account is private. |
+| `location` | `object` | Yes | Geographic location associated with the result. |
+| `location.name` | `string` | Yes | Human-readable location name. |
+| `location.city` | `string` | Yes | City name. |
+| `location.region` | `string` | Yes | Region, state, or province name. |
+| `location.country` | `string` | Yes | Country or territory name or code. |
+| `location.latitude` | `number` | Yes | Latitude in decimal degrees. |
+| `location.longitude` | `number` | Yes | Longitude in decimal degrees. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.followers_count` | `integer` | Yes | Number of followers. |
+| `metrics.following_count` | `integer` | Yes | Number of accounts followed. |
+| `metrics.posts_count` | `integer` | Yes | Number of posts or posts associated with the trend. |
 {/* result-schema:end */}
 
 ## Completed Task Response

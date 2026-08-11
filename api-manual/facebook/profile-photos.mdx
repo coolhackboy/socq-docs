@@ -42,51 +42,53 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 
 
+
+
 {/* result-schema:start */}
 ## Standard Result Fields
 
-Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. The standard view maps source-specific field names and formats to the stable SocQ fields below; it does not infer or enrich values that the source did not provide. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
 
 | Field | Type | Nullable | Description |
 | --- | --- | --- | --- |
-| `id` | `string` | Yes | Normalized id field. |
-| `platform` | `string` | No | Normalized platform field. |
-| `resource` | `string` | No | Normalized resource field. |
-| `type` | `string` | No | Normalized type field. |
-| `url` | `string` | Yes | Normalized url field. |
-| `published_at` | `string` | Yes | Normalized published at field. |
-| `collected_at` | `string` | No | Normalized collected at field. |
-| `text` | `string` | Yes | Normalized text field. |
-| `author` | `object` | Yes | Normalized author field. |
-| `author.id` | `string` | Yes | Normalized id field. |
-| `author.username` | `string` | Yes | Normalized username field. |
-| `author.name` | `string` | Yes | Normalized name field. |
-| `author.url` | `string` | Yes | Normalized url field. |
-| `author.avatar_url` | `string` | Yes | Normalized avatar url field. |
-| `author.is_verified` | `boolean` | Yes | Normalized is verified field. |
-| `author.is_private` | `boolean` | Yes | Normalized is private field. |
-| `metrics` | `object` | Yes | Normalized metrics field. |
-| `metrics.likes_count` | `integer` | Yes | Normalized likes count field. |
-| `metrics.comments_count` | `integer` | Yes | Normalized comments count field. |
-| `metrics.shares_count` | `integer` | Yes | Normalized shares count field. |
-| `metrics.plays_count` | `integer` | Yes | Normalized plays count field. |
-| `metrics.views_count` | `integer` | Yes | Normalized views count field. |
-| `media` | `array<object>` | Yes | Normalized media field. |
-| `media.type` | `string` | Yes | Normalized type field. |
-| `media.url` | `string` | Yes | Normalized url field. |
-| `media.thumbnail_url` | `string` | Yes | Normalized thumbnail url field. |
-| `media.width` | `integer` | Yes | Normalized width field. |
-| `media.height` | `integer` | Yes | Normalized height field. |
-| `media.duration_seconds` | `number` | Yes | Normalized duration seconds field. |
-| `hashtags` | `array<string>` | Yes | Normalized hashtags field. |
-| `mentions` | `array<string>` | Yes | Normalized mentions field. |
-| `shortcode` | `string` | Yes | Normalized shortcode field. |
-| `duration_seconds` | `number` | Yes | Normalized duration seconds field. |
-| `audio` | `object` | Yes | Normalized audio field. |
-| `audio.id` | `string` | Yes | Normalized id field. |
-| `audio.title` | `string` | Yes | Normalized title field. |
-| `audio.artist` | `string` | Yes | Normalized artist field. |
-| `audio.url` | `string` | Yes | Normalized url field. |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `text` | `string` | Yes | Video caption or description. |
+| `author` | `object` | Yes | Author or publisher of the content. |
+| `author.id` | `string` | Yes | Unique identifier of the author. |
+| `author.username` | `string` | Yes | Public username or handle of the account. |
+| `author.name` | `string` | Yes | Display name of the author. |
+| `author.url` | `string` | Yes | Public URL of the author when available. |
+| `author.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `author.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `author.is_private` | `boolean` | Yes | Whether the account is private. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.likes_count` | `integer` | Yes | Number of likes. |
+| `metrics.comments_count` | `integer` | Yes | Number of comments. |
+| `metrics.shares_count` | `integer` | Yes | Number of shares or reposts. |
+| `metrics.plays_count` | `integer` | Yes | Number of video playback starts reported by the platform. |
+| `metrics.views_count` | `integer` | Yes | Number of views reported by the platform. |
+| `media` | `array<object>` | Yes | Images, videos, or other media attached to the result. |
+| `media.type` | `string` | Yes | Media kind, such as `image` or `video`. |
+| `media.url` | `string` | Yes | URL of the media asset. |
+| `media.thumbnail_url` | `string` | Yes | URL of the media preview image. |
+| `media.width` | `integer` | Yes | Media width in pixels. |
+| `media.height` | `integer` | Yes | Media height in pixels. |
+| `media.duration_seconds` | `number` | Yes | Media duration in seconds. |
+| `hashtags` | `array<string>` | Yes | Hashtags associated with the content, without changing their source spelling. |
+| `mentions` | `array<string>` | Yes | Accounts mentioned in the content. |
+| `shortcode` | `string` | Yes | Platform shortcode used to identify the media item. |
+| `duration_seconds` | `number` | Yes | Duration in seconds. |
+| `audio` | `object` | Yes | Audio or music metadata associated with the video. |
+| `audio.id` | `string` | Yes | Identifier of the audio or music track. |
+| `audio.title` | `string` | Yes | Title of the audio or music track. |
+| `audio.artist` | `string` | Yes | Name of the audio artist or creator. |
+| `audio.url` | `string` | Yes | URL of the audio or music track when available. |
 {/* result-schema:end */}
 
 ## Completed Task Response

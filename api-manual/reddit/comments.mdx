@@ -41,34 +41,36 @@ This endpoint does not accept `results_limit`. All returned comments are saved a
 
 
 
+
+
 {/* result-schema:start */}
 ## Standard Result Fields
 
-Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
+Poll `GET /v1/tasks/{task_id}?view=standard` for the fixed result contract. The standard view maps source-specific field names and formats to the stable SocQ fields below; it does not infer or enrich values that the source did not provide. For MCP use `view`/`fields` on `socq_get_task` or `_result_view`/`_result_fields` on typed tools; CLI uses `--result-view`/`--result-fields`. Declared fields remain present when their value is `null`; use the task files for complete source data.
 
 | Field | Type | Nullable | Description |
 | --- | --- | --- | --- |
-| `id` | `string` | Yes | Normalized id field. |
-| `platform` | `string` | No | Normalized platform field. |
-| `resource` | `string` | No | Normalized resource field. |
-| `type` | `string` | No | Normalized type field. |
-| `url` | `string` | Yes | Normalized url field. |
-| `published_at` | `string` | Yes | Normalized published at field. |
-| `collected_at` | `string` | No | Normalized collected at field. |
-| `text` | `string` | Yes | Normalized text field. |
-| `author` | `object` | Yes | Normalized author field. |
-| `author.id` | `string` | Yes | Normalized id field. |
-| `author.username` | `string` | Yes | Normalized username field. |
-| `author.name` | `string` | Yes | Normalized name field. |
-| `author.url` | `string` | Yes | Normalized url field. |
-| `author.avatar_url` | `string` | Yes | Normalized avatar url field. |
-| `author.is_verified` | `boolean` | Yes | Normalized is verified field. |
-| `author.is_private` | `boolean` | Yes | Normalized is private field. |
-| `parent_id` | `string` | Yes | Normalized parent id field. |
-| `post_id` | `string` | Yes | Normalized post id field. |
-| `metrics` | `object` | Yes | Normalized metrics field. |
-| `metrics.likes_count` | `integer` | Yes | Normalized likes count field. |
-| `metrics.replies_count` | `integer` | Yes | Normalized replies count field. |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `text` | `string` | Yes | Comment or reply text. |
+| `author` | `object` | Yes | Author or publisher of the content. |
+| `author.id` | `string` | Yes | Unique identifier of the author. |
+| `author.username` | `string` | Yes | Public username or handle of the account. |
+| `author.name` | `string` | Yes | Display name of the author. |
+| `author.url` | `string` | Yes | Public URL of the author when available. |
+| `author.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `author.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `author.is_private` | `boolean` | Yes | Whether the account is private. |
+| `parent_id` | `string` | Yes | Identifier of the parent comment for a reply. |
+| `post_id` | `string` | Yes | Identifier of the post containing the comment. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.likes_count` | `integer` | Yes | Number of likes. |
+| `metrics.replies_count` | `integer` | Yes | Number of replies. |
 {/* result-schema:end */}
 
 ## Completed Task Response

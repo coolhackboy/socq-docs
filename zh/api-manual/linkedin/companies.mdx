@@ -39,36 +39,38 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/companies"
 
 
 
+
+
 {/* result-schema:start */}
 ## 标准结果字段
 
-通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
+通过 `GET /v1/tasks/{task_id}?view=standard` 获取固定结果结构。标准视图会将来源特有的字段名和格式映射为下表所列的稳定 SocQ 字段，但不会推断或补充来源未提供的数据。MCP 查询使用 `view`/`fields`，Typed 工具使用 `_result_view`/`_result_fields`，CLI 使用 `--result-view`/`--result-fields`。声明字段在值为 `null` 时仍会保留；如需完整源数据，请使用任务结果文件。
 
 | 字段 | 类型 | 可空 | 说明 |
 | --- | --- | --- | --- |
-| `id` | `string` | 是 | 标准化的 id 字段。 |
-| `platform` | `string` | 否 | 标准化的 platform 字段。 |
-| `resource` | `string` | 否 | 标准化的 resource 字段。 |
-| `type` | `string` | 否 | 标准化的 type 字段。 |
-| `url` | `string` | 是 | 标准化的 url 字段。 |
-| `published_at` | `string` | 是 | 标准化的 published at 字段。 |
-| `collected_at` | `string` | 否 | 标准化的 collected at 字段。 |
-| `name` | `string` | 是 | 标准化的 name 字段。 |
-| `text` | `string` | 是 | 标准化的 text 字段。 |
-| `website` | `string` | 是 | 标准化的 website 字段。 |
-| `industry` | `string` | 是 | 标准化的 industry 字段。 |
-| `location` | `object` | 是 | 标准化的 location 字段。 |
-| `location.name` | `string` | 是 | 标准化的 name 字段。 |
-| `location.city` | `string` | 是 | 标准化的 city 字段。 |
-| `location.region` | `string` | 是 | 标准化的 region 字段。 |
-| `location.country` | `string` | 是 | 标准化的 country 字段。 |
-| `location.latitude` | `number` | 是 | 标准化的 latitude 字段。 |
-| `location.longitude` | `number` | 是 | 标准化的 longitude 字段。 |
-| `logo_url` | `string` | 是 | 标准化的 logo url 字段。 |
-| `metrics` | `object` | 是 | 标准化的 metrics 字段。 |
-| `metrics.followers_count` | `integer` | 是 | 标准化的 followers count 字段。 |
-| `metrics.reviews_count` | `integer` | 是 | 标准化的 reviews count 字段。 |
-| `metrics.rating` | `number` | 是 | 标准化的 rating 字段。 |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `name` | `string` | 是 | 公司名称。 |
+| `text` | `string` | 是 | 公司简介或概述。 |
+| `website` | `string` | 是 | 账号、公司或广告主关联的网站。 |
+| `industry` | `string` | 是 | 公司所属行业。 |
+| `location` | `object` | 是 | 结果关联的地理位置信息。 |
+| `location.name` | `string` | 是 | 便于阅读的地点名称。 |
+| `location.city` | `string` | 是 | 城市名称。 |
+| `location.region` | `string` | 是 | 地区、州或省份名称。 |
+| `location.country` | `string` | 是 | 国家或地区名称或代码。 |
+| `location.latitude` | `number` | 是 | 十进制度格式的纬度。 |
+| `location.longitude` | `number` | 是 | 十进制度格式的经度。 |
+| `logo_url` | `string` | 是 | 公司或广告主徽标的地址。 |
+| `metrics` | `object` | 是 | 结果项可获得的计数和度量数据。 |
+| `metrics.followers_count` | `integer` | 是 | 粉丝数量。 |
+| `metrics.reviews_count` | `integer` | 是 | 评价数量。 |
+| `metrics.rating` | `number` | 是 | 平台报告的评分值。 |
 {/* result-schema:end */}
 
 ## 任务完成响应

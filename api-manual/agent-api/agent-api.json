@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-603ff741990d",
+    "version": "v1-c051f5df2885",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -8278,19 +8278,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -8302,7 +8310,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -8314,11 +8324,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "username": {
             "anyOf": [
@@ -8330,7 +8344,9 @@
               }
             ],
             "default": null,
-            "title": "Username"
+            "title": "Username",
+            "description": "Public username or handle of the account.",
+            "x-description-zh": "账号的公开用户名或账号标识。"
           },
           "name": {
             "anyOf": [
@@ -8342,7 +8358,9 @@
               }
             ],
             "default": null,
-            "title": "Name"
+            "title": "Name",
+            "description": "Display name of the account or profile.",
+            "x-description-zh": "账号或主页的显示名称。"
           },
           "text": {
             "anyOf": [
@@ -8354,7 +8372,9 @@
               }
             ],
             "default": null,
-            "title": "Text"
+            "title": "Text",
+            "description": "Biography or description of the account or profile.",
+            "x-description-zh": "账号或主页的简介。"
           },
           "avatar_url": {
             "anyOf": [
@@ -8366,7 +8386,9 @@
               }
             ],
             "default": null,
-            "title": "Avatar Url"
+            "title": "Avatar Url",
+            "description": "URL of the account avatar image.",
+            "x-description-zh": "账号头像图片的地址。"
           },
           "cover_url": {
             "anyOf": [
@@ -8378,7 +8400,9 @@
               }
             ],
             "default": null,
-            "title": "Cover Url"
+            "title": "Cover Url",
+            "description": "URL of the cover image.",
+            "x-description-zh": "封面图片的地址。"
           },
           "website": {
             "anyOf": [
@@ -8390,7 +8414,9 @@
               }
             ],
             "default": null,
-            "title": "Website"
+            "title": "Website",
+            "description": "Website associated with the account, company, or advertiser.",
+            "x-description-zh": "账号、公司或广告主关联的网站。"
           },
           "is_verified": {
             "anyOf": [
@@ -8402,7 +8428,9 @@
               }
             ],
             "default": null,
-            "title": "Is Verified"
+            "title": "Is Verified",
+            "description": "Whether the account is verified on the platform.",
+            "x-description-zh": "账号是否已通过平台认证。"
           },
           "is_private": {
             "anyOf": [
@@ -8414,7 +8442,9 @@
               }
             ],
             "default": null,
-            "title": "Is Private"
+            "title": "Is Private",
+            "description": "Whether the account is private.",
+            "x-description-zh": "账号是否为私密账号。"
           },
           "location": {
             "anyOf": [
@@ -8425,7 +8455,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Geographic location associated with the result.",
+            "x-description-zh": "结果关联的地理位置信息。"
           },
           "metrics": {
             "anyOf": [
@@ -8436,7 +8468,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
           }
         },
         "required": [
@@ -8476,7 +8510,9 @@
               }
             ],
             "default": null,
-            "title": "Followers Count"
+            "title": "Followers Count",
+            "description": "Number of followers.",
+            "x-description-zh": "粉丝数量。"
           },
           "following_count": {
             "anyOf": [
@@ -8488,7 +8524,9 @@
               }
             ],
             "default": null,
-            "title": "Following Count"
+            "title": "Following Count",
+            "description": "Number of accounts followed.",
+            "x-description-zh": "关注的账号数量。"
           },
           "posts_count": {
             "anyOf": [
@@ -8500,7 +8538,9 @@
               }
             ],
             "default": null,
-            "title": "Posts Count"
+            "title": "Posts Count",
+            "description": "Number of posts or posts associated with the trend.",
+            "x-description-zh": "帖子数量，或与趋势关联的帖子数量。"
           }
         },
         "title": "AccountMetrics",
@@ -8524,7 +8564,9 @@
               }
             ],
             "default": null,
-            "title": "Name"
+            "title": "Name",
+            "description": "Human-readable location name.",
+            "x-description-zh": "便于阅读的地点名称。"
           },
           "city": {
             "anyOf": [
@@ -8536,7 +8578,9 @@
               }
             ],
             "default": null,
-            "title": "City"
+            "title": "City",
+            "description": "City name.",
+            "x-description-zh": "城市名称。"
           },
           "region": {
             "anyOf": [
@@ -8548,7 +8592,9 @@
               }
             ],
             "default": null,
-            "title": "Region"
+            "title": "Region",
+            "description": "Region, state, or province name.",
+            "x-description-zh": "地区、州或省份名称。"
           },
           "country": {
             "anyOf": [
@@ -8560,7 +8606,9 @@
               }
             ],
             "default": null,
-            "title": "Country"
+            "title": "Country",
+            "description": "Country or territory name or code.",
+            "x-description-zh": "国家或地区名称或代码。"
           },
           "latitude": {
             "anyOf": [
@@ -8572,7 +8620,9 @@
               }
             ],
             "default": null,
-            "title": "Latitude"
+            "title": "Latitude",
+            "description": "Latitude in decimal degrees.",
+            "x-description-zh": "十进制度格式的纬度。"
           },
           "longitude": {
             "anyOf": [
@@ -8584,7 +8634,9 @@
               }
             ],
             "default": null,
-            "title": "Longitude"
+            "title": "Longitude",
+            "description": "Longitude in decimal degrees.",
+            "x-description-zh": "十进制度格式的经度。"
           }
         },
         "title": "Location",
@@ -8611,19 +8663,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -8635,7 +8695,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -8647,11 +8709,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "actor": {
             "anyOf": [
@@ -8662,7 +8728,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Account at the primary side of the relationship.",
+            "x-description-zh": "关系中的主体账号。"
           },
           "related_actor": {
             "anyOf": [
@@ -8673,7 +8741,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Account related to the primary account.",
+            "x-description-zh": "与主体账号存在关系的账号。"
           },
           "relationship": {
             "anyOf": [
@@ -8685,7 +8755,9 @@
               }
             ],
             "default": null,
-            "title": "Relationship"
+            "title": "Relationship",
+            "description": "Relationship represented by the item, such as `follower`, `following`, or `retweeter`.",
+            "x-description-zh": "该结果表示的关系，例如 `follower`、`following` 或 `retweeter`。"
           }
         },
         "required": [
@@ -8718,7 +8790,9 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier of the related account.",
+            "x-description-zh": "关联账号的唯一标识。"
           },
           "username": {
             "anyOf": [
@@ -8730,7 +8804,9 @@
               }
             ],
             "default": null,
-            "title": "Username"
+            "title": "Username",
+            "description": "Public username or handle of the account.",
+            "x-description-zh": "账号的公开用户名或账号标识。"
           },
           "name": {
             "anyOf": [
@@ -8742,7 +8818,9 @@
               }
             ],
             "default": null,
-            "title": "Name"
+            "title": "Name",
+            "description": "Display name of the related account.",
+            "x-description-zh": "关联账号的显示名称。"
           },
           "url": {
             "anyOf": [
@@ -8754,7 +8832,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the related account when available.",
+            "x-description-zh": "关联账号的公开访问地址（如可获得）。"
           },
           "avatar_url": {
             "anyOf": [
@@ -8766,7 +8846,9 @@
               }
             ],
             "default": null,
-            "title": "Avatar Url"
+            "title": "Avatar Url",
+            "description": "URL of the account avatar image.",
+            "x-description-zh": "账号头像图片的地址。"
           },
           "is_verified": {
             "anyOf": [
@@ -8778,7 +8860,9 @@
               }
             ],
             "default": null,
-            "title": "Is Verified"
+            "title": "Is Verified",
+            "description": "Whether the account is verified on the platform.",
+            "x-description-zh": "账号是否已通过平台认证。"
           },
           "is_private": {
             "anyOf": [
@@ -8790,7 +8874,9 @@
               }
             ],
             "default": null,
-            "title": "Is Private"
+            "title": "Is Private",
+            "description": "Whether the account is private.",
+            "x-description-zh": "账号是否为私密账号。"
           }
         },
         "title": "ActorRef",
@@ -8818,19 +8904,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -8842,7 +8936,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -8854,11 +8950,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "text": {
             "anyOf": [
@@ -8870,7 +8970,9 @@
               }
             ],
             "default": null,
-            "title": "Text"
+            "title": "Text",
+            "description": "Post body, caption, or message.",
+            "x-description-zh": "帖子的正文、说明文字或消息内容。"
           },
           "author": {
             "anyOf": [
@@ -8881,7 +8983,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
           },
           "metrics": {
             "anyOf": [
@@ -8892,7 +8996,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
           },
           "media": {
             "anyOf": [
@@ -8907,7 +9013,9 @@
               }
             ],
             "default": null,
-            "title": "Media"
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
           },
           "hashtags": {
             "anyOf": [
@@ -8922,7 +9030,9 @@
               }
             ],
             "default": null,
-            "title": "Hashtags"
+            "title": "Hashtags",
+            "description": "Hashtags associated with the content, without changing their source spelling.",
+            "x-description-zh": "内容关联的话题标签，保留源数据中的拼写。"
           },
           "mentions": {
             "anyOf": [
@@ -8937,7 +9047,9 @@
               }
             ],
             "default": null,
-            "title": "Mentions"
+            "title": "Mentions",
+            "description": "Accounts mentioned in the content.",
+            "x-description-zh": "内容中提及的账号。"
           }
         },
         "required": [
@@ -8973,7 +9085,9 @@
               }
             ],
             "default": null,
-            "title": "Type"
+            "title": "Type",
+            "description": "Media kind, such as `image` or `video`.",
+            "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
           },
           "url": {
             "anyOf": [
@@ -8985,7 +9099,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "URL of the media asset.",
+            "x-description-zh": "媒体文件的地址。"
           },
           "thumbnail_url": {
             "anyOf": [
@@ -8997,7 +9113,9 @@
               }
             ],
             "default": null,
-            "title": "Thumbnail Url"
+            "title": "Thumbnail Url",
+            "description": "URL of the media preview image.",
+            "x-description-zh": "媒体预览图的地址。"
           },
           "width": {
             "anyOf": [
@@ -9009,7 +9127,9 @@
               }
             ],
             "default": null,
-            "title": "Width"
+            "title": "Width",
+            "description": "Media width in pixels.",
+            "x-description-zh": "媒体宽度，单位为像素。"
           },
           "height": {
             "anyOf": [
@@ -9021,7 +9141,9 @@
               }
             ],
             "default": null,
-            "title": "Height"
+            "title": "Height",
+            "description": "Media height in pixels.",
+            "x-description-zh": "媒体高度，单位为像素。"
           },
           "duration_seconds": {
             "anyOf": [
@@ -9033,7 +9155,9 @@
               }
             ],
             "default": null,
-            "title": "Duration Seconds"
+            "title": "Duration Seconds",
+            "description": "Media duration in seconds.",
+            "x-description-zh": "媒体时长，单位为秒。"
           }
         },
         "title": "Media",
@@ -9060,7 +9184,9 @@
               }
             ],
             "default": null,
-            "title": "Likes Count"
+            "title": "Likes Count",
+            "description": "Number of likes.",
+            "x-description-zh": "点赞数量。"
           },
           "comments_count": {
             "anyOf": [
@@ -9072,7 +9198,9 @@
               }
             ],
             "default": null,
-            "title": "Comments Count"
+            "title": "Comments Count",
+            "description": "Number of comments.",
+            "x-description-zh": "评论数量。"
           },
           "shares_count": {
             "anyOf": [
@@ -9084,7 +9212,9 @@
               }
             ],
             "default": null,
-            "title": "Shares Count"
+            "title": "Shares Count",
+            "description": "Number of shares or reposts.",
+            "x-description-zh": "分享或转发数量。"
           },
           "views_count": {
             "anyOf": [
@@ -9096,7 +9226,9 @@
               }
             ],
             "default": null,
-            "title": "Views Count"
+            "title": "Views Count",
+            "description": "Number of views reported by the platform.",
+            "x-description-zh": "平台报告的观看数量。"
           }
         },
         "title": "Metrics",
@@ -9121,19 +9253,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -9145,7 +9285,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -9157,11 +9299,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "text": {
             "anyOf": [
@@ -9173,7 +9319,9 @@
               }
             ],
             "default": null,
-            "title": "Text"
+            "title": "Text",
+            "description": "Video caption or description.",
+            "x-description-zh": "视频的说明文字或描述。"
           },
           "author": {
             "anyOf": [
@@ -9184,7 +9332,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
           },
           "metrics": {
             "anyOf": [
@@ -9195,7 +9345,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
           },
           "media": {
             "anyOf": [
@@ -9210,7 +9362,9 @@
               }
             ],
             "default": null,
-            "title": "Media"
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
           },
           "hashtags": {
             "anyOf": [
@@ -9225,7 +9379,9 @@
               }
             ],
             "default": null,
-            "title": "Hashtags"
+            "title": "Hashtags",
+            "description": "Hashtags associated with the content, without changing their source spelling.",
+            "x-description-zh": "内容关联的话题标签，保留源数据中的拼写。"
           },
           "mentions": {
             "anyOf": [
@@ -9240,7 +9396,9 @@
               }
             ],
             "default": null,
-            "title": "Mentions"
+            "title": "Mentions",
+            "description": "Accounts mentioned in the content.",
+            "x-description-zh": "内容中提及的账号。"
           },
           "shortcode": {
             "anyOf": [
@@ -9252,7 +9410,9 @@
               }
             ],
             "default": null,
-            "title": "Shortcode"
+            "title": "Shortcode",
+            "description": "Platform shortcode used to identify the media item.",
+            "x-description-zh": "平台用于标识媒体内容的短代码。"
           },
           "duration_seconds": {
             "anyOf": [
@@ -9264,7 +9424,9 @@
               }
             ],
             "default": null,
-            "title": "Duration Seconds"
+            "title": "Duration Seconds",
+            "description": "Duration in seconds.",
+            "x-description-zh": "时长，单位为秒。"
           },
           "audio": {
             "anyOf": [
@@ -9275,7 +9437,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Audio or music metadata associated with the video.",
+            "x-description-zh": "视频关联的音频或音乐信息。"
           }
         },
         "required": [
@@ -9314,7 +9478,9 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Identifier of the audio or music track.",
+            "x-description-zh": "音频或音乐曲目的标识。"
           },
           "title": {
             "anyOf": [
@@ -9326,7 +9492,9 @@
               }
             ],
             "default": null,
-            "title": "Title"
+            "title": "Title",
+            "description": "Title of the audio or music track.",
+            "x-description-zh": "音频或音乐曲目的标题。"
           },
           "artist": {
             "anyOf": [
@@ -9338,7 +9506,9 @@
               }
             ],
             "default": null,
-            "title": "Artist"
+            "title": "Artist",
+            "description": "Name of the audio artist or creator.",
+            "x-description-zh": "音频艺术家或创作者名称。"
           },
           "url": {
             "anyOf": [
@@ -9350,7 +9520,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "URL of the audio or music track when available.",
+            "x-description-zh": "音频或音乐曲目的地址（如可获得）。"
           }
         },
         "title": "Audio",
@@ -9375,7 +9547,9 @@
               }
             ],
             "default": null,
-            "title": "Likes Count"
+            "title": "Likes Count",
+            "description": "Number of likes.",
+            "x-description-zh": "点赞数量。"
           },
           "comments_count": {
             "anyOf": [
@@ -9387,7 +9561,9 @@
               }
             ],
             "default": null,
-            "title": "Comments Count"
+            "title": "Comments Count",
+            "description": "Number of comments.",
+            "x-description-zh": "评论数量。"
           },
           "shares_count": {
             "anyOf": [
@@ -9399,7 +9575,9 @@
               }
             ],
             "default": null,
-            "title": "Shares Count"
+            "title": "Shares Count",
+            "description": "Number of shares or reposts.",
+            "x-description-zh": "分享或转发数量。"
           },
           "plays_count": {
             "anyOf": [
@@ -9411,7 +9589,9 @@
               }
             ],
             "default": null,
-            "title": "Plays Count"
+            "title": "Plays Count",
+            "description": "Number of video playback starts reported by the platform.",
+            "x-description-zh": "平台报告的视频播放次数。"
           },
           "views_count": {
             "anyOf": [
@@ -9423,7 +9603,9 @@
               }
             ],
             "default": null,
-            "title": "Views Count"
+            "title": "Views Count",
+            "description": "Number of views reported by the platform.",
+            "x-description-zh": "平台报告的观看数量。"
           }
         },
         "title": "ReelMetrics",
@@ -9449,19 +9631,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -9473,7 +9663,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -9485,11 +9677,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "text": {
             "anyOf": [
@@ -9501,7 +9697,9 @@
               }
             ],
             "default": null,
-            "title": "Text"
+            "title": "Text",
+            "description": "Comment or reply text.",
+            "x-description-zh": "评论或回复的文本内容。"
           },
           "author": {
             "anyOf": [
@@ -9512,7 +9710,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
           },
           "parent_id": {
             "anyOf": [
@@ -9524,7 +9724,9 @@
               }
             ],
             "default": null,
-            "title": "Parent Id"
+            "title": "Parent Id",
+            "description": "Identifier of the parent comment for a reply.",
+            "x-description-zh": "回复所对应的父评论标识。"
           },
           "post_id": {
             "anyOf": [
@@ -9536,7 +9738,9 @@
               }
             ],
             "default": null,
-            "title": "Post Id"
+            "title": "Post Id",
+            "description": "Identifier of the post containing the comment.",
+            "x-description-zh": "评论所属帖子的标识。"
           },
           "metrics": {
             "anyOf": [
@@ -9547,7 +9751,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
           }
         },
         "required": [
@@ -9582,7 +9788,9 @@
               }
             ],
             "default": null,
-            "title": "Likes Count"
+            "title": "Likes Count",
+            "description": "Number of likes.",
+            "x-description-zh": "点赞数量。"
           },
           "replies_count": {
             "anyOf": [
@@ -9594,7 +9802,9 @@
               }
             ],
             "default": null,
-            "title": "Replies Count"
+            "title": "Replies Count",
+            "description": "Number of replies.",
+            "x-description-zh": "回复数量。"
           }
         },
         "title": "CommentMetrics",
@@ -9617,19 +9827,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -9641,7 +9859,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -9653,11 +9873,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "text": {
             "anyOf": [
@@ -9669,7 +9893,9 @@
               }
             ],
             "default": null,
-            "title": "Text"
+            "title": "Text",
+            "description": "Transcript text for the audio or video content.",
+            "x-description-zh": "音频或视频内容的转录文本。"
           },
           "language": {
             "anyOf": [
@@ -9681,7 +9907,9 @@
               }
             ],
             "default": null,
-            "title": "Language"
+            "title": "Language",
+            "description": "Language of the transcript when available.",
+            "x-description-zh": "转录文本的语言（如可获得）。"
           },
           "format": {
             "anyOf": [
@@ -9693,7 +9921,9 @@
               }
             ],
             "default": null,
-            "title": "Format"
+            "title": "Format",
+            "description": "Transcript representation, such as plain text or timed segments.",
+            "x-description-zh": "转录结果的表示格式，例如纯文本或带时间片段。"
           },
           "duration_seconds": {
             "anyOf": [
@@ -9705,7 +9935,9 @@
               }
             ],
             "default": null,
-            "title": "Duration Seconds"
+            "title": "Duration Seconds",
+            "description": "Duration in seconds.",
+            "x-description-zh": "时长，单位为秒。"
           }
         },
         "required": [
@@ -9739,19 +9971,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -9763,7 +10003,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -9775,11 +10017,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "title": {
             "anyOf": [
@@ -9791,7 +10037,9 @@
               }
             ],
             "default": null,
-            "title": "Title"
+            "title": "Title",
+            "description": "Title of the highlight collection or item.",
+            "x-description-zh": "精选内容集合或项目的标题。"
           },
           "author": {
             "anyOf": [
@@ -9802,7 +10050,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
           },
           "cover_url": {
             "anyOf": [
@@ -9814,7 +10064,9 @@
               }
             ],
             "default": null,
-            "title": "Cover Url"
+            "title": "Cover Url",
+            "description": "URL of the cover image.",
+            "x-description-zh": "封面图片的地址。"
           },
           "item_count": {
             "anyOf": [
@@ -9826,7 +10078,9 @@
               }
             ],
             "default": null,
-            "title": "Item Count"
+            "title": "Item Count",
+            "description": "Number of items contained in the collection.",
+            "x-description-zh": "集合中包含的项目数量。"
           },
           "media": {
             "anyOf": [
@@ -9841,7 +10095,9 @@
               }
             ],
             "default": null,
-            "title": "Media"
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
           }
         },
         "required": [
@@ -9876,19 +10132,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -9900,7 +10164,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -9912,11 +10178,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "name": {
             "anyOf": [
@@ -9928,7 +10198,9 @@
               }
             ],
             "default": null,
-            "title": "Name"
+            "title": "Name",
+            "description": "Hashtag or trend name.",
+            "x-description-zh": "话题标签或趋势名称。"
           },
           "rank": {
             "anyOf": [
@@ -9940,7 +10212,9 @@
               }
             ],
             "default": null,
-            "title": "Rank"
+            "title": "Rank",
+            "description": "Position of the trend in the source ranking.",
+            "x-description-zh": "趋势在来源榜单中的排名。"
           },
           "region": {
             "anyOf": [
@@ -9952,7 +10226,9 @@
               }
             ],
             "default": null,
-            "title": "Region"
+            "title": "Region",
+            "description": "Region, state, or province name.",
+            "x-description-zh": "地区、州或省份名称。"
           },
           "metrics": {
             "anyOf": [
@@ -9963,7 +10239,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
           }
         },
         "required": [
@@ -9997,7 +10275,9 @@
               }
             ],
             "default": null,
-            "title": "Posts Count"
+            "title": "Posts Count",
+            "description": "Number of posts or posts associated with the trend.",
+            "x-description-zh": "帖子数量，或与趋势关联的帖子数量。"
           },
           "views_count": {
             "anyOf": [
@@ -10009,7 +10289,9 @@
               }
             ],
             "default": null,
-            "title": "Views Count"
+            "title": "Views Count",
+            "description": "Number of views reported by the platform.",
+            "x-description-zh": "平台报告的观看数量。"
           }
         },
         "title": "TrendMetrics",
@@ -10032,19 +10314,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -10056,7 +10346,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -10068,11 +10360,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "title": {
             "anyOf": [
@@ -10084,7 +10380,9 @@
               }
             ],
             "default": null,
-            "title": "Title"
+            "title": "Title",
+            "description": "Title of the live room or broadcast.",
+            "x-description-zh": "直播间或直播内容的标题。"
           },
           "author": {
             "anyOf": [
@@ -10095,7 +10393,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
           },
           "status": {
             "anyOf": [
@@ -10107,7 +10407,9 @@
               }
             ],
             "default": null,
-            "title": "Status"
+            "title": "Status",
+            "description": "Current status reported for the live room.",
+            "x-description-zh": "直播间当前状态。"
           },
           "metrics": {
             "anyOf": [
@@ -10118,7 +10420,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
           },
           "media": {
             "anyOf": [
@@ -10133,7 +10437,9 @@
               }
             ],
             "default": null,
-            "title": "Media"
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
           }
         },
         "required": [
@@ -10168,7 +10474,9 @@
               }
             ],
             "default": null,
-            "title": "Viewers Count"
+            "title": "Viewers Count",
+            "description": "Number of viewers in the live room.",
+            "x-description-zh": "直播间观众数量。"
           },
           "likes_count": {
             "anyOf": [
@@ -10180,7 +10488,9 @@
               }
             ],
             "default": null,
-            "title": "Likes Count"
+            "title": "Likes Count",
+            "description": "Number of likes.",
+            "x-description-zh": "点赞数量。"
           }
         },
         "title": "LiveMetrics",
@@ -10203,19 +10513,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -10227,7 +10545,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -10239,11 +10559,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "name": {
             "anyOf": [
@@ -10255,7 +10579,9 @@
               }
             ],
             "default": null,
-            "title": "Name"
+            "title": "Name",
+            "description": "Company name.",
+            "x-description-zh": "公司名称。"
           },
           "text": {
             "anyOf": [
@@ -10267,7 +10593,9 @@
               }
             ],
             "default": null,
-            "title": "Text"
+            "title": "Text",
+            "description": "Company description or overview.",
+            "x-description-zh": "公司简介或概述。"
           },
           "website": {
             "anyOf": [
@@ -10279,7 +10607,9 @@
               }
             ],
             "default": null,
-            "title": "Website"
+            "title": "Website",
+            "description": "Website associated with the account, company, or advertiser.",
+            "x-description-zh": "账号、公司或广告主关联的网站。"
           },
           "industry": {
             "anyOf": [
@@ -10291,7 +10621,9 @@
               }
             ],
             "default": null,
-            "title": "Industry"
+            "title": "Industry",
+            "description": "Industry associated with the company.",
+            "x-description-zh": "公司所属行业。"
           },
           "location": {
             "anyOf": [
@@ -10302,7 +10634,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Geographic location associated with the result.",
+            "x-description-zh": "结果关联的地理位置信息。"
           },
           "logo_url": {
             "anyOf": [
@@ -10314,7 +10648,9 @@
               }
             ],
             "default": null,
-            "title": "Logo Url"
+            "title": "Logo Url",
+            "description": "URL of the company or advertiser logo.",
+            "x-description-zh": "公司或广告主徽标的地址。"
           },
           "metrics": {
             "anyOf": [
@@ -10325,7 +10661,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
           }
         },
         "required": [
@@ -10362,7 +10700,9 @@
               }
             ],
             "default": null,
-            "title": "Followers Count"
+            "title": "Followers Count",
+            "description": "Number of followers.",
+            "x-description-zh": "粉丝数量。"
           },
           "reviews_count": {
             "anyOf": [
@@ -10374,7 +10714,9 @@
               }
             ],
             "default": null,
-            "title": "Reviews Count"
+            "title": "Reviews Count",
+            "description": "Number of reviews.",
+            "x-description-zh": "评价数量。"
           },
           "rating": {
             "anyOf": [
@@ -10386,7 +10728,9 @@
               }
             ],
             "default": null,
-            "title": "Rating"
+            "title": "Rating",
+            "description": "Rating value reported by the platform.",
+            "x-description-zh": "平台报告的评分值。"
           }
         },
         "title": "CompanyMetrics",
@@ -10410,19 +10754,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -10434,7 +10786,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -10446,11 +10800,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "title": {
             "anyOf": [
@@ -10462,7 +10820,9 @@
               }
             ],
             "default": null,
-            "title": "Title"
+            "title": "Title",
+            "description": "Job title.",
+            "x-description-zh": "职位名称。"
           },
           "company": {
             "anyOf": [
@@ -10473,7 +10833,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Company associated with the job.",
+            "x-description-zh": "职位所属公司。"
           },
           "location": {
             "anyOf": [
@@ -10484,7 +10846,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Geographic location associated with the result.",
+            "x-description-zh": "结果关联的地理位置信息。"
           },
           "text": {
             "anyOf": [
@@ -10496,7 +10860,9 @@
               }
             ],
             "default": null,
-            "title": "Text"
+            "title": "Text",
+            "description": "Job description.",
+            "x-description-zh": "职位描述。"
           },
           "employment_type": {
             "anyOf": [
@@ -10508,7 +10874,9 @@
               }
             ],
             "default": null,
-            "title": "Employment Type"
+            "title": "Employment Type",
+            "description": "Employment type, such as full-time, part-time, or contract.",
+            "x-description-zh": "雇佣类型，例如全职、兼职或合同制。"
           },
           "experience_level": {
             "anyOf": [
@@ -10520,7 +10888,9 @@
               }
             ],
             "default": null,
-            "title": "Experience Level"
+            "title": "Experience Level",
+            "description": "Experience or seniority level requested for the job.",
+            "x-description-zh": "职位要求的经验或职级。"
           },
           "is_remote": {
             "anyOf": [
@@ -10532,7 +10902,9 @@
               }
             ],
             "default": null,
-            "title": "Is Remote"
+            "title": "Is Remote",
+            "description": "Whether the job is marked as remote.",
+            "x-description-zh": "职位是否标记为远程工作。"
           },
           "salary": {
             "anyOf": [
@@ -10543,7 +10915,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Compensation information reported for the job.",
+            "x-description-zh": "职位标注的薪酬信息。"
           },
           "expires_at": {
             "anyOf": [
@@ -10555,7 +10929,9 @@
               }
             ],
             "default": null,
-            "title": "Expires At"
+            "title": "Expires At",
+            "description": "Time the job or listing expires, in ISO 8601 format when available.",
+            "x-description-zh": "职位或条目的到期时间（如可获得），使用 ISO 8601 格式。"
           }
         },
         "required": [
@@ -10594,7 +10970,9 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier of the company.",
+            "x-description-zh": "公司的唯一标识。"
           },
           "name": {
             "anyOf": [
@@ -10606,7 +10984,9 @@
               }
             ],
             "default": null,
-            "title": "Name"
+            "title": "Name",
+            "description": "Display name of the company.",
+            "x-description-zh": "公司的显示名称。"
           },
           "url": {
             "anyOf": [
@@ -10618,7 +10998,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the company when available.",
+            "x-description-zh": "公司的公开访问地址（如可获得）。"
           },
           "logo_url": {
             "anyOf": [
@@ -10630,7 +11012,9 @@
               }
             ],
             "default": null,
-            "title": "Logo Url"
+            "title": "Logo Url",
+            "description": "URL of the company or advertiser logo.",
+            "x-description-zh": "公司或广告主徽标的地址。"
           }
         },
         "title": "CompanyRef",
@@ -10655,7 +11039,9 @@
               }
             ],
             "default": null,
-            "title": "Amount"
+            "title": "Amount",
+            "description": "Numeric monetary amount.",
+            "x-description-zh": "货币金额的数值。"
           },
           "currency": {
             "anyOf": [
@@ -10667,7 +11053,9 @@
               }
             ],
             "default": null,
-            "title": "Currency"
+            "title": "Currency",
+            "description": "Currency code or symbol reported for the monetary value.",
+            "x-description-zh": "货币金额所使用的币种代码或符号。"
           },
           "formatted": {
             "anyOf": [
@@ -10679,7 +11067,9 @@
               }
             ],
             "default": null,
-            "title": "Formatted"
+            "title": "Formatted",
+            "description": "Human-readable price or salary text.",
+            "x-description-zh": "便于阅读的价格或薪酬文本。"
           }
         },
         "title": "Price",
@@ -10703,19 +11093,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -10727,7 +11125,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -10739,11 +11139,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "text": {
             "anyOf": [
@@ -10755,7 +11159,9 @@
               }
             ],
             "default": null,
-            "title": "Text"
+            "title": "Text",
+            "description": "Advertising copy or creative text.",
+            "x-description-zh": "广告文案或创意文本。"
           },
           "advertiser": {
             "anyOf": [
@@ -10766,7 +11172,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Advertiser responsible for the ad.",
+            "x-description-zh": "广告的投放主体。"
           },
           "start_date": {
             "anyOf": [
@@ -10778,7 +11186,9 @@
               }
             ],
             "default": null,
-            "title": "Start Date"
+            "title": "Start Date",
+            "description": "Date the ad started running when available.",
+            "x-description-zh": "广告开始投放的日期（如可获得）。"
           },
           "end_date": {
             "anyOf": [
@@ -10790,7 +11200,9 @@
               }
             ],
             "default": null,
-            "title": "End Date"
+            "title": "End Date",
+            "description": "Date the ad stopped running when available.",
+            "x-description-zh": "广告结束投放的日期（如可获得）。"
           },
           "countries": {
             "anyOf": [
@@ -10805,7 +11217,9 @@
               }
             ],
             "default": null,
-            "title": "Countries"
+            "title": "Countries",
+            "description": "Countries or regions where the ad was delivered.",
+            "x-description-zh": "广告投放的国家或地区。"
           },
           "platforms": {
             "anyOf": [
@@ -10820,7 +11234,9 @@
               }
             ],
             "default": null,
-            "title": "Platforms"
+            "title": "Platforms",
+            "description": "Placements or platforms where the ad was delivered.",
+            "x-description-zh": "广告投放的平台或版位。"
           },
           "format": {
             "anyOf": [
@@ -10832,7 +11248,9 @@
               }
             ],
             "default": null,
-            "title": "Format"
+            "title": "Format",
+            "description": "Advertising creative format, such as image or video.",
+            "x-description-zh": "广告创意格式，例如图片或视频。"
           },
           "landing_page_url": {
             "anyOf": [
@@ -10844,7 +11262,9 @@
               }
             ],
             "default": null,
-            "title": "Landing Page Url"
+            "title": "Landing Page Url",
+            "description": "Destination URL opened from the ad.",
+            "x-description-zh": "点击广告后打开的落地页地址。"
           },
           "impressions": {
             "anyOf": [
@@ -10856,7 +11276,9 @@
               }
             ],
             "default": null,
-            "title": "Impressions"
+            "title": "Impressions",
+            "description": "Number of ad impressions when reported.",
+            "x-description-zh": "广告展示次数（如有报告）。"
           },
           "media": {
             "anyOf": [
@@ -10871,7 +11293,9 @@
               }
             ],
             "default": null,
-            "title": "Media"
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
           }
         },
         "required": [
@@ -10911,19 +11335,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -10935,7 +11367,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -10947,11 +11381,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "name": {
             "anyOf": [
@@ -10963,7 +11401,9 @@
               }
             ],
             "default": null,
-            "title": "Name"
+            "title": "Name",
+            "description": "Advertiser or organization name.",
+            "x-description-zh": "广告主或机构名称。"
           },
           "website": {
             "anyOf": [
@@ -10975,7 +11415,9 @@
               }
             ],
             "default": null,
-            "title": "Website"
+            "title": "Website",
+            "description": "Website associated with the account, company, or advertiser.",
+            "x-description-zh": "账号、公司或广告主关联的网站。"
           },
           "logo_url": {
             "anyOf": [
@@ -10987,7 +11429,9 @@
               }
             ],
             "default": null,
-            "title": "Logo Url"
+            "title": "Logo Url",
+            "description": "URL of the company or advertiser logo.",
+            "x-description-zh": "公司或广告主徽标的地址。"
           },
           "region": {
             "anyOf": [
@@ -10999,7 +11443,9 @@
               }
             ],
             "default": null,
-            "title": "Region"
+            "title": "Region",
+            "description": "Region, state, or province name.",
+            "x-description-zh": "地区、州或省份名称。"
           },
           "ads_count": {
             "anyOf": [
@@ -11011,7 +11457,9 @@
               }
             ],
             "default": null,
-            "title": "Ads Count"
+            "title": "Ads Count",
+            "description": "Number of ads associated with the advertiser.",
+            "x-description-zh": "与广告主关联的广告数量。"
           }
         },
         "required": [
@@ -11046,19 +11494,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -11070,7 +11526,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -11082,11 +11540,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "title": {
             "anyOf": [
@@ -11098,7 +11560,9 @@
               }
             ],
             "default": null,
-            "title": "Title"
+            "title": "Title",
+            "description": "Event title.",
+            "x-description-zh": "活动标题。"
           },
           "text": {
             "anyOf": [
@@ -11110,7 +11574,9 @@
               }
             ],
             "default": null,
-            "title": "Text"
+            "title": "Text",
+            "description": "Event description.",
+            "x-description-zh": "活动描述。"
           },
           "organizer": {
             "anyOf": [
@@ -11121,7 +11587,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Account or organization responsible for the event.",
+            "x-description-zh": "活动的组织者账号或机构。"
           },
           "location": {
             "anyOf": [
@@ -11132,7 +11600,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Geographic location associated with the result.",
+            "x-description-zh": "结果关联的地理位置信息。"
           },
           "start_at": {
             "anyOf": [
@@ -11144,7 +11614,9 @@
               }
             ],
             "default": null,
-            "title": "Start At"
+            "title": "Start At",
+            "description": "Event start time in ISO 8601 format when available.",
+            "x-description-zh": "活动开始时间（如可获得），使用 ISO 8601 格式。"
           },
           "end_at": {
             "anyOf": [
@@ -11156,7 +11628,9 @@
               }
             ],
             "default": null,
-            "title": "End At"
+            "title": "End At",
+            "description": "Event end time in ISO 8601 format when available.",
+            "x-description-zh": "活动结束时间（如可获得），使用 ISO 8601 格式。"
           },
           "media": {
             "anyOf": [
@@ -11171,7 +11645,9 @@
               }
             ],
             "default": null,
-            "title": "Media"
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
           }
         },
         "required": [
@@ -11208,19 +11684,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -11232,7 +11716,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -11244,11 +11730,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "name": {
             "anyOf": [
@@ -11260,7 +11750,9 @@
               }
             ],
             "default": null,
-            "title": "Name"
+            "title": "Name",
+            "description": "Marketplace location name.",
+            "x-description-zh": "Marketplace 地点名称。"
           },
           "location": {
             "anyOf": [
@@ -11271,7 +11763,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Geographic location associated with the result.",
+            "x-description-zh": "结果关联的地理位置信息。"
           }
         },
         "required": [
@@ -11303,19 +11797,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -11327,7 +11829,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -11339,11 +11843,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "title": {
             "anyOf": [
@@ -11355,7 +11863,9 @@
               }
             ],
             "default": null,
-            "title": "Title"
+            "title": "Title",
+            "description": "Listing title.",
+            "x-description-zh": "条目标题。"
           },
           "text": {
             "anyOf": [
@@ -11367,7 +11877,9 @@
               }
             ],
             "default": null,
-            "title": "Text"
+            "title": "Text",
+            "description": "Listing description.",
+            "x-description-zh": "条目描述。"
           },
           "seller": {
             "anyOf": [
@@ -11378,7 +11890,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Seller or merchant associated with the item.",
+            "x-description-zh": "商品或条目关联的卖家。"
           },
           "price": {
             "anyOf": [
@@ -11389,7 +11903,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Price information for the listing or product.",
+            "x-description-zh": "条目或商品的价格信息。"
           },
           "location": {
             "anyOf": [
@@ -11400,7 +11916,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Geographic location associated with the result.",
+            "x-description-zh": "结果关联的地理位置信息。"
           },
           "condition": {
             "anyOf": [
@@ -11412,7 +11930,9 @@
               }
             ],
             "default": null,
-            "title": "Condition"
+            "title": "Condition",
+            "description": "Condition of the listed item.",
+            "x-description-zh": "所列商品的新旧或状态。"
           },
           "availability": {
             "anyOf": [
@@ -11424,7 +11944,9 @@
               }
             ],
             "default": null,
-            "title": "Availability"
+            "title": "Availability",
+            "description": "Availability reported for the listing.",
+            "x-description-zh": "条目报告的可用或在售状态。"
           },
           "media": {
             "anyOf": [
@@ -11439,7 +11961,9 @@
               }
             ],
             "default": null,
-            "title": "Media"
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
           }
         },
         "required": [
@@ -11477,19 +12001,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -11501,7 +12033,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -11513,11 +12047,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "title": {
             "anyOf": [
@@ -11529,7 +12067,9 @@
               }
             ],
             "default": null,
-            "title": "Title"
+            "title": "Title",
+            "description": "Product title.",
+            "x-description-zh": "商品标题。"
           },
           "text": {
             "anyOf": [
@@ -11541,7 +12081,9 @@
               }
             ],
             "default": null,
-            "title": "Text"
+            "title": "Text",
+            "description": "Product description.",
+            "x-description-zh": "商品描述。"
           },
           "seller": {
             "anyOf": [
@@ -11552,7 +12094,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Seller or merchant associated with the item.",
+            "x-description-zh": "商品或条目关联的卖家。"
           },
           "price": {
             "anyOf": [
@@ -11563,7 +12107,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Price information for the listing or product.",
+            "x-description-zh": "条目或商品的价格信息。"
           },
           "rating": {
             "anyOf": [
@@ -11575,7 +12121,9 @@
               }
             ],
             "default": null,
-            "title": "Rating"
+            "title": "Rating",
+            "description": "Average product rating reported by the platform.",
+            "x-description-zh": "平台报告的商品平均评分。"
           },
           "reviews_count": {
             "anyOf": [
@@ -11587,7 +12135,9 @@
               }
             ],
             "default": null,
-            "title": "Reviews Count"
+            "title": "Reviews Count",
+            "description": "Number of reviews.",
+            "x-description-zh": "评价数量。"
           },
           "sold_count": {
             "anyOf": [
@@ -11599,7 +12149,9 @@
               }
             ],
             "default": null,
-            "title": "Sold Count"
+            "title": "Sold Count",
+            "description": "Number of units sold when reported.",
+            "x-description-zh": "已售数量（如有报告）。"
           },
           "media": {
             "anyOf": [
@@ -11614,7 +12166,9 @@
               }
             ],
             "default": null,
-            "title": "Media"
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
           }
         },
         "required": [
@@ -11652,19 +12206,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -11676,7 +12238,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -11688,11 +12252,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "text": {
             "anyOf": [
@@ -11704,7 +12272,9 @@
               }
             ],
             "default": null,
-            "title": "Text"
+            "title": "Text",
+            "description": "Review text.",
+            "x-description-zh": "评价文本。"
           },
           "author": {
             "anyOf": [
@@ -11715,7 +12285,9 @@
                 "type": "null"
               }
             ],
-            "default": null
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
           },
           "rating": {
             "anyOf": [
@@ -11727,7 +12299,9 @@
               }
             ],
             "default": null,
-            "title": "Rating"
+            "title": "Rating",
+            "description": "Rating given in the review.",
+            "x-description-zh": "该条评价给出的评分。"
           },
           "subject_id": {
             "anyOf": [
@@ -11739,7 +12313,9 @@
               }
             ],
             "default": null,
-            "title": "Subject Id"
+            "title": "Subject Id",
+            "description": "Identifier of the product, company, or other object being reviewed.",
+            "x-description-zh": "被评价的商品、公司或其他对象的标识。"
           },
           "subject_url": {
             "anyOf": [
@@ -11751,7 +12327,9 @@
               }
             ],
             "default": null,
-            "title": "Subject Url"
+            "title": "Subject Url",
+            "description": "Public URL of the object being reviewed.",
+            "x-description-zh": "被评价对象的公开访问地址。"
           },
           "media": {
             "anyOf": [
@@ -11766,7 +12344,9 @@
               }
             ],
             "default": null,
-            "title": "Media"
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
           }
         },
         "required": [
@@ -11802,19 +12382,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -11826,7 +12414,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -11838,11 +12428,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "keyword": {
             "anyOf": [
@@ -11854,7 +12448,9 @@
               }
             ],
             "default": null,
-            "title": "Keyword"
+            "title": "Keyword",
+            "description": "Keyword represented by the result.",
+            "x-description-zh": "该结果对应的关键词。"
           },
           "search_volume": {
             "anyOf": [
@@ -11866,7 +12462,9 @@
               }
             ],
             "default": null,
-            "title": "Search Volume"
+            "title": "Search Volume",
+            "description": "Estimated number of searches for the keyword in the configured period and market.",
+            "x-description-zh": "在指定周期和市场内对该关键词搜索次数的估算值。"
           },
           "difficulty": {
             "anyOf": [
@@ -11878,7 +12476,9 @@
               }
             ],
             "default": null,
-            "title": "Difficulty"
+            "title": "Difficulty",
+            "description": "Estimated ranking difficulty score for the keyword.",
+            "x-description-zh": "关键词排名难度的估算分值。"
           },
           "intent": {
             "anyOf": [
@@ -11890,7 +12490,9 @@
               }
             ],
             "default": null,
-            "title": "Intent"
+            "title": "Intent",
+            "description": "Detected primary search intent for the keyword.",
+            "x-description-zh": "识别出的关键词主要搜索意图。"
           },
           "cpc": {
             "anyOf": [
@@ -11902,7 +12504,9 @@
               }
             ],
             "default": null,
-            "title": "Cpc"
+            "title": "Cpc",
+            "description": "Estimated cost per click for the keyword.",
+            "x-description-zh": "关键词的预估单次点击费用。"
           },
           "competition": {
             "anyOf": [
@@ -11914,7 +12518,9 @@
               }
             ],
             "default": null,
-            "title": "Competition"
+            "title": "Competition",
+            "description": "Advertiser competition level for the keyword.",
+            "x-description-zh": "关键词的广告竞争程度。"
           },
           "rank": {
             "anyOf": [
@@ -11926,7 +12532,9 @@
               }
             ],
             "default": null,
-            "title": "Rank"
+            "title": "Rank",
+            "description": "Ranking position of the target page for the keyword.",
+            "x-description-zh": "目标页面针对该关键词的排名位置。"
           },
           "target_url": {
             "anyOf": [
@@ -11938,7 +12546,9 @@
               }
             ],
             "default": null,
-            "title": "Target Url"
+            "title": "Target Url",
+            "description": "Page URL associated with the keyword ranking.",
+            "x-description-zh": "与关键词排名关联的页面地址。"
           }
         },
         "required": [
@@ -11976,19 +12586,27 @@
               }
             ],
             "default": null,
-            "title": "Id"
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
           },
           "platform": {
             "title": "Platform",
-            "type": "string"
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
           },
           "resource": {
             "title": "Resource",
-            "type": "string"
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
           },
           "type": {
             "title": "Type",
-            "type": "string"
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
           },
           "url": {
             "anyOf": [
@@ -12000,7 +12618,9 @@
               }
             ],
             "default": null,
-            "title": "Url"
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
           },
           "published_at": {
             "anyOf": [
@@ -12012,11 +12632,15 @@
               }
             ],
             "default": null,
-            "title": "Published At"
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
           },
           "collected_at": {
             "title": "Collected At",
-            "type": "string"
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
           },
           "title": {
             "anyOf": [
@@ -12028,7 +12652,9 @@
               }
             ],
             "default": null,
-            "title": "Title"
+            "title": "Title",
+            "description": "Search result title.",
+            "x-description-zh": "搜索结果标题。"
           },
           "text": {
             "anyOf": [
@@ -12040,7 +12666,9 @@
               }
             ],
             "default": null,
-            "title": "Text"
+            "title": "Text",
+            "description": "Search result snippet or summary.",
+            "x-description-zh": "搜索结果摘要。"
           },
           "rank": {
             "anyOf": [
@@ -12052,7 +12680,9 @@
               }
             ],
             "default": null,
-            "title": "Rank"
+            "title": "Rank",
+            "description": "Position of the item in the search results.",
+            "x-description-zh": "该项目在搜索结果中的位置。"
           },
           "domain": {
             "anyOf": [
@@ -12064,7 +12694,9 @@
               }
             ],
             "default": null,
-            "title": "Domain"
+            "title": "Domain",
+            "description": "Domain of the search result.",
+            "x-description-zh": "搜索结果所属域名。"
           },
           "result_type": {
             "anyOf": [
@@ -12076,7 +12708,9 @@
               }
             ],
             "default": null,
-            "title": "Result Type"
+            "title": "Result Type",
+            "description": "Kind of search result returned by the search engine.",
+            "x-description-zh": "搜索引擎返回的结果类型。"
           }
         },
         "required": [
