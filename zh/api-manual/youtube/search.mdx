@@ -48,3 +48,100 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/youtube/search"
 `results_limit` 默认为 100。
 
 结果使用 [YouTube 视频](/zh/api-manual/youtube/videos) 中记录的标准化视频结构，其中 `resource` 设置为 `search`。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "KC5W8L6C8BJRESEV",
+    "status": "succeeded",
+    "public_id": "youtube/search",
+    "result_count": 5,
+    "credits_amount": 2.5,
+    "results": {
+      "limit": 1,
+      "next_cursor": "OTgwNQ",
+      "has_more": true,
+      "items": [
+        {
+          "id": "m8uUUUsMD3Y",
+          "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y",
+          "type": "video",
+          "extra": {
+            "location": null,
+            "source_url": "https://www.youtube.com/results?search_query=OpenAI+official+demo&sp=CAASAhAB",
+            "content_type": "video",
+            "published_text": "2026-07-15T19:42:38.000Z",
+            "is_members_only": false,
+            "is_paid_content": false,
+            "description_links": [
+              {
+                "url": "https://openai.com/supply/",
+                "text": "https://openai.com/supply/"
+              },
+              {
+                "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y",
+                "text": "00:00"
+              },
+              {
+                "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y&t=24s",
+                "text": "00:24"
+              },
+              {
+                "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y&t=45s",
+                "text": "00:45"
+              },
+              {
+                "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y&t=61s",
+                "text": "01:01"
+              },
+              {
+                "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y&t=76s",
+                "text": "01:16"
+              },
+              {
+                "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y&t=88s",
+                "text": "01:28"
+              },
+              {
+                "url": "https://www.youtube.com/watch?v=m8uUUUsMD3Y&t=109s",
+                "text": "01:49"
+              }
+            ]
+          },
+          "media": [
+            {
+              "url": "https://i.ytimg.com/vi/m8uUUUsMD3Y/maxresdefault.jpg",
+              "type": "image"
+            }
+          ],
+          "title": "Introducing the Codex Micro",
+          "author": {
+            "id": "UCXZCJLdBC09xxGZ6gcdrc6A",
+            "url": "https://www.youtube.com/@OpenAI",
+            "name": "OpenAI",
+            "username": "OpenAI",
+            "avatar_url": null,
+            "is_private": null,
+            "is_verified": null
+          },
+          "metrics": {
+            "likes_count": 5600,
+            "views_count": 254056,
+            "comments_count": 0
+          },
+          "hashtags": [],
+          "platform": "youtube",
+          "resource": "search",
+          "created_at": "2026-07-15T19:42:38",
+          "description": "See how the Codex Micro, a customizable keyboard built with Work Louder for Codex, helps you move through a build without leaving your flow. In this demo, GPT-5.6 Sol creates a word game while the Micro handles voice dictation, task switching, reasoning controls, permission requests, and follow-up prompts.\n\nGet yours: https://openai.com/supply/\n\nChapters:\n00:00 Introducing the Codex Micro\n00:24 Voice dictation\n00:45 Skills, Plan mode, and reasoning\n01:01 Switching between tasks\n01:16 Notifications and permissions\n01:28 Queueing follow-up work\n01:49 Game result and customization",
+          "collected_at": "2026-07-31T02:44:52.355765",
+          "duration_seconds": 135
+        }
+      ]
+    }
+  }
+}
+```

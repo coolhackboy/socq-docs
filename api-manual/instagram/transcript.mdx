@@ -20,3 +20,40 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/transcript"
 | CLI | `socq instagram transcripts` |
 
 Carousel posts may produce more than one transcript record. Media without speech may return no result.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "M2TZQRIQFWOZY7TD",
+    "status": "succeeded",
+    "public_id": "instagram/transcript",
+    "result_count": 1,
+    "credits_amount": 0.7,
+    "results": {
+      "limit": 1,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "3597267389859272809",
+          "url": "https://www.instagram.com/reel/DHsD6HGqJhp/",
+          "text": "Let's fry up the perfect Banh Xeo. Beautiful. Everybody. Shh. The perfect Banh Xeo. Let me show you my Banh Xeo. When it comes down to Banh Xeo, we make it the crispiest. Hear the crunch? Heaven.",
+          "type": "transcript",
+          "extra": {
+            "shortcode": "DHsD6HGqJhp"
+          },
+          "format": "plaintext",
+          "language": null,
+          "platform": "instagram",
+          "resource": "transcript",
+          "created_at": null,
+          "collected_at": "2026-07-31T02:23:40.245414"
+        }
+      ]
+    }
+  }
+}
+```

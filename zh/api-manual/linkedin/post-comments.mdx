@@ -8,11 +8,51 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/post-comment
 
 ```json
 {
-  "url": "https://www.linkedin.com/posts/example_activity-123"
+  "url": "https://www.linkedin.com/posts/aagupta_what-you-need-to-know-ai-agents-activity-7354600338621906944-RvXR"
 }
 ```
 
 接口返回帖子公开提供的全部评论，并按成功存储的实际评论条数计费。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "MUH5DCQXDCZ3ZAGW",
+    "status": "succeeded",
+    "public_id": "linkedin/post-comments",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": null,
+          "platform": "linkedin",
+          "resource": "post-comments",
+          "type": "comment",
+          "url": "https://www.linkedin.com/posts/aagupta_what-you-need-to-know-ai-agents-activity-7354600338621906944-RvXR",
+          "text": "This hit different tbh bruh",
+          "author": {
+            "name": "Akil Rakuten A.",
+            "url": "https://www.linkedin.com/in/akil-rakuten-a-60739a229"
+          },
+          "metrics": {
+            "likes_count": null,
+            "replies_count": null
+          },
+          "media": [],
+          "created_at": null
+        }
+      ]
+    }
+  }
+}
+```
 
 ## 与 MCP 和 CLI 一起使用
 

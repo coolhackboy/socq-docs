@@ -11,3 +11,47 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/seo/search-intent"
 ```
 
 Each result contains the primary intent and available intent probabilities for one input keyword.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "UITV6Z3LRYBJ5W10",
+    "status": "succeeded",
+    "public_id": "seo/search-intent",
+    "result_count": 1,
+    "credits_amount": 0.1,
+    "results": {
+      "limit": 1,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "keyword research",
+          "url": null,
+          "rank": {},
+          "text": "keyword research",
+          "type": "search-intent",
+          "extra": {
+            "keyword": "keyword research",
+            "keyword_intent": {
+              "label": "informational",
+              "probability": 0.9277
+            },
+            "secondary_keyword_intents": null
+          },
+          "keyword": "keyword research",
+          "metrics": {},
+          "platform": "seo",
+          "resource": "search-intent",
+          "collected_at": "2026-07-31T02:25:38.089612",
+          "search_intent": null,
+          "monthly_searches": []
+        }
+      ]
+    }
+  }
+}
+```

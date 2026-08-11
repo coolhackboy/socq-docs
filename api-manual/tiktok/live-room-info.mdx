@@ -20,3 +20,48 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/live-room-info"
 | CLI | `socq tiktok live-room-info` |
 
 The result includes live status, title, cover image, owner, viewer count, and like count.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "88090HDJT3H9T2DZ",
+    "status": "succeeded",
+    "public_id": "tiktok/live-room-info",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 1,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "7523685855395842871",
+          "url": "",
+          "type": "live_room",
+          "extra": {
+            "status": null
+          },
+          "media": [],
+          "title": null,
+          "author": {
+            "id": "6742945285876515845",
+            "name": null,
+            "username": null
+          },
+          "metrics": {
+            "likes_count": null,
+            "viewers_count": null
+          },
+          "platform": "tiktok",
+          "resource": "live-room-info",
+          "created_at": null,
+          "collected_at": "2026-07-31T02:26:30.747319"
+        }
+      ]
+    }
+  }
+}
+```

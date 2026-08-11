@@ -9,12 +9,52 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/search-people"
 ```json
 {
   "urls": [
-    "https://www.linkedin.com/search/results/people/?keywords=engineer"
+    "https://www.linkedin.com/search/results/people/?keywords=Aakash%20Gupta"
   ]
 }
 ```
 
 This endpoint returns all records produced for each submitted search URL. The data source does not support a result limit, so usage is billed from the actual number of stored results.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "UI7YV8UO9CR4PS4S",
+    "status": "succeeded",
+    "public_id": "linkedin/search-people",
+    "result_count": 50,
+    "credits_amount": 50,
+    "results": {
+      "limit": 1,
+      "next_cursor": "MTAzMDM",
+      "has_more": true,
+      "items": [
+        {
+          "id": null,
+          "platform": "linkedin",
+          "resource": "profiles",
+          "type": "profile",
+          "url": "https://in.linkedin.com/in/aakash-gupta-5ky",
+          "name": "Aakash Gupta",
+          "description": null,
+          "avatar_url": null,
+          "metrics": {
+            "followers_count": null,
+            "connections_count": null
+          },
+          "created_at": null,
+          "extra": {
+            "experience": "Think Evolve Labs, +4 more"
+          }
+        }
+      ]
+    }
+  }
+}
+```
 
 ## Use with MCP and CLI
 

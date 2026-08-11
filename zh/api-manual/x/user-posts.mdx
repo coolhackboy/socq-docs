@@ -38,3 +38,70 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/x/user-posts"
 `results_limit` 指定每个用户名返回的最大帖子数。结果总数最多可达用户名数量乘以 `results_limit`。根据返回结果的总数计费。
 
 结果使用 [X 帖子](/zh/api-manual/x/posts) 中记录的归一化结构，其中 `resource` 设置为 `user-posts`。提交的用户名返回到 `extra.input_username` 下。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "71CI2V4IMYHAWJ6A",
+    "status": "succeeded",
+    "public_id": "x/user-posts",
+    "result_count": 20,
+    "credits_amount": 10,
+    "results": {
+      "limit": 1,
+      "next_cursor": "OTUzMQ",
+      "has_more": true,
+      "items": [
+        {
+          "id": "2081809802515136887",
+          "url": "https://x.com/X/status/2081809802515136887",
+          "text": "make money moves on X",
+          "type": "post",
+          "extra": {
+            "source": "Twitter for iPhone",
+            "is_reply": false,
+            "input_url": null,
+            "search_query": null,
+            "in_reply_to_id": null,
+            "input_username": "X",
+            "quoted_post_id": "2081802002539876506",
+            "conversation_id": "2081809802515136887",
+            "is_limited_reply": false,
+            "reposted_post_id": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_username": null
+          },
+          "media": [],
+          "author": {
+            "id": "783214",
+            "url": "https://x.com/X",
+            "name": "X",
+            "username": "X",
+            "avatar_url": "https://pbs.twimg.com/profile_images/1955359038532653056/OSHY3ewP_normal.jpg",
+            "is_private": null,
+            "is_verified": true
+          },
+          "metrics": {
+            "likes_count": 6149,
+            "views_count": 2051165,
+            "quotes_count": 132,
+            "reposts_count": 743,
+            "comments_count": 817,
+            "bookmarks_count": 507
+          },
+          "hashtags": [],
+          "language": "en",
+          "mentions": [],
+          "platform": "x",
+          "resource": "user-posts",
+          "created_at": "2026-07-27T18:31:49",
+          "collected_at": "2026-07-31T02:38:29.901529"
+        }
+      ]
+    }
+  }
+}
+```

@@ -12,3 +12,83 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/seo/google-organic-se
 
 Each item is one search-result element with its URL, title, rank, and available enriched fields.
 
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "Z6OEM0TKEEZFLLJ8",
+    "status": "succeeded",
+    "public_id": "seo/google-organic-serp",
+    "result_count": 8,
+    "credits_amount": 0.8,
+    "results": {
+      "limit": 1,
+      "next_cursor": "NjU4Nw",
+      "has_more": true,
+      "items": [
+        {
+          "id": "https://www.semrush.com/analytics/keywordmagic/",
+          "url": "https://www.semrush.com/analytics/keywordmagic/",
+          "rank": {
+            "page": 1,
+            "group": 1,
+            "absolute": 1
+          },
+          "text": "Free Keyword Tool: Find the Right Keywords for SEO & AI ...",
+          "type": "google-organic-serp",
+          "extra": {
+            "faq": null,
+            "url": "https://www.semrush.com/analytics/keywordmagic/",
+            "page": 1,
+            "type": "organic",
+            "links": null,
+            "price": null,
+            "title": "Free Keyword Tool: Find the Right Keywords for SEO & AI ...",
+            "xpath": "/html[1]/body[1]/div[3]/div[1]/div[12]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]",
+            "checks": null,
+            "domain": "www.semrush.com",
+            "images": null,
+            "rating": null,
+            "is_image": false,
+            "is_video": false,
+            "position": "left",
+            "cache_url": null,
+            "rectangle": null,
+            "timestamp": null,
+            "breadcrumb": "https://www.semrush.com › analytics › keywordmagic",
+            "rank_group": 1,
+            "amp_version": false,
+            "description": "Free keyword research tool to help you find the right keywords for SEO and AI search using real Google searches and reliable keyword metrics.",
+            "highlighted": [
+              "Free keyword research tool"
+            ],
+            "pre_snippet": null,
+            "is_malicious": false,
+            "is_web_story": false,
+            "website_name": "Semrush",
+            "rank_absolute": 1,
+            "related_result": null,
+            "extended_snippet": null,
+            "about_this_result": null,
+            "related_search_url": null,
+            "is_featured_snippet": false,
+            "extended_people_also_search": null
+          },
+          "keyword": null,
+          "metrics": {
+            "rank_group": 1,
+            "rank_absolute": 1
+          },
+          "platform": "seo",
+          "resource": "google-organic-serp",
+          "collected_at": "2026-07-31T02:25:00.673956",
+          "search_intent": null,
+          "monthly_searches": []
+        }
+      ]
+    }
+  }
+}
+```

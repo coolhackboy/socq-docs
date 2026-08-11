@@ -20,3 +20,54 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/following-list
 | CLI | `socq instagram following` |
 
 Only relationships visible for public profiles can be returned.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "WKNIUSMO2POSO9Y7",
+    "status": "succeeded",
+    "public_id": "instagram/following-list",
+    "result_count": 5,
+    "credits_amount": 1.5,
+    "results": {
+      "limit": 1,
+      "next_cursor": "NjQ3MQ",
+      "has_more": true,
+      "items": [
+        {
+          "id": "5516590483",
+          "url": "https://www.instagram.com/prodlaila/",
+          "name": "Laila!",
+          "type": "profile",
+          "extra": {
+            "position": 1,
+            "relationship": "following",
+            "source_username": "instagram"
+          },
+          "metrics": {
+            "likes_count": null,
+            "plays_count": null,
+            "posts_count": null,
+            "views_count": null,
+            "shares_count": null,
+            "comments_count": null,
+            "followers_count": null,
+            "following_count": null
+          },
+          "platform": "instagram",
+          "resource": "following",
+          "username": "prodlaila",
+          "avatar_url": "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-19/751485471_18420712621182484_2934865060199003514_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=1&_nc_oc=Q6cZ2gEw2FdQEiAnY4dbDO-6WL9a3AdbEWwEwe1uRpW_jwtV47DIsYr7PU9AqMISY4OwCOE&_nc_ohc=gUN_eYW9cncQ7kNvwFkX-zO&_nc_gid=rVxc6FdWpX2gi_xx2nFFOQ&edm=ANg5bX4BAAAA&ccb=7-5&oh=00_AQEGyKRSoOn371wnGmt6E0bLZsYSpqRR-xc24-36jXXBMQ&oe=6A71C26E&_nc_sid=0055be",
+          "created_at": null,
+          "is_private": false,
+          "is_verified": true,
+          "collected_at": "2026-07-31T02:22:43.919697+00:00"
+        }
+      ]
+    }
+  }
+}
+```

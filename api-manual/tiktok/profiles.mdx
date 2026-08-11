@@ -34,30 +34,47 @@ Use the JSON request body above as the nested `input` object for `socq_execute`,
 See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
 {/* mcp-usage:end */}
 
-## Result Item
+## Completed Task Response
 
 ```json
 {
-  "id": "6784642169778881542",
-  "platform": "tiktok",
-  "resource": "profiles",
-  "type": "profile",
-  "username": "example",
-  "name": "Example Creator",
-  "url": "https://www.tiktok.com/@example",
-  "description": "Public profile description",
-  "avatar_url": "https://example.com/avatar.jpg",
-  "is_verified": false,
-  "is_private": false,
-  "metrics": {
-    "followers_count": 12500,
-    "following_count": 120,
-    "videos_count": 48,
-    "likes_count": 98000
-  },
-  "created_at": null,
-  "collected_at": "2026-07-15T10:30:00",
-  "extra": {}
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "tiktok/profiles",
+    "result_count": 1,
+    "credits_amount": 0.6,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "6784642169778881542",
+          "platform": "tiktok",
+          "resource": "profiles",
+          "type": "profile",
+          "username": "example",
+          "name": "Example Creator",
+          "url": "https://www.tiktok.com/@example",
+          "description": "Public profile description",
+          "avatar_url": "https://example.com/avatar.jpg",
+          "is_verified": false,
+          "is_private": false,
+          "metrics": {
+            "followers_count": 12500,
+            "following_count": 120,
+            "videos_count": 48,
+            "likes_count": 98000
+          },
+          "created_at": null,
+          "collected_at": "2026-07-15T10:30:00",
+          "extra": {}
+        }
+      ]
+    }
+  }
 }
 ```
 

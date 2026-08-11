@@ -38,3 +38,92 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 `results_limit` defaults to 100 and applies to each hashtag.
 
 Results use the normalized structure documented in [TikTok Videos](/api-manual/tiktok/videos), with `resource` set to `hashtags`. The matched hashtag and its available metrics are returned under `extra`.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "XN7I2RAYRFVR1S6P",
+    "status": "succeeded",
+    "public_id": "tiktok/hashtags",
+    "result_count": 5,
+    "credits_amount": 3.5,
+    "results": {
+      "limit": 1,
+      "next_cursor": "NjY2NA",
+      "has_more": true,
+      "items": [
+        {
+          "id": "7606390788867575071",
+          "url": "https://www.tiktok.com/@destinationinspiration/video/7606390788867575071",
+          "text": "Why is a weekend trip to Guatemala actually cheap? 🇬🇹🌋\n\n2026 is the year we ALL start traveling more…\n\nBecause one of the best adventures in the world is only a few hundred dollars and a long weekend away (weekendmaxing) \n\nHow to do this weekend trip (1.5 days of PTO):\n✈️ Friday: Fly into Guatemala City ➡️ shuttle to Antigua\n🥾 Saturday: Hike Acatenango + Fuego with OX Expeditions, camp on the volcano\n🌄 Sunday: Sunrise above the clouds ➡️ hike down ➡️ spend the afternoon exploring Antigua Guatemala\n✈️ Monday: Fly home\n\nCost Breakdown:\nFlights: $250+ (found using @Skyscanner)\nHostel: $42 (for 2 nights)\nHike: $150 (with @oxexpeditions)\nFood: $35\nShuttle Bus: $40\n\nWould you do this weekend trip? And if so…\n\nWhere should the next adventure be? 🌍⬇️\n\n#Guatemalatravel #Acatenango #FuegoVolcano #Weekendtrip #placestovisit",
+          "type": "video",
+          "extra": {
+            "input": "travel",
+            "is_ad": false,
+            "is_muted": null,
+            "location": null,
+            "is_pinned": false,
+            "is_slideshow": false,
+            "is_sponsored": false,
+            "search_query": null,
+            "matched_hashtag": "travel",
+            "hashtag_views_count": 743100000000
+          },
+          "media": [
+            {
+              "url": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/oMfUAPCC60xVEAinVqAizCRBBKALxIIPo9KAAi~tplv-tiktokx-origin.image?dr=9636&x-expires=1785636000&x-signature=YkJW%2BxROGKz5n%2BIAMCeXa2J4NBU%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
+              "type": "image"
+            }
+          ],
+          "music": {
+            "id": "7606390689068911391",
+            "url": "https://v19.tiktokcdn-us.com/bf965bdb563d42c712bf156d69f9ec0c/6a6c5c5b/video/tos/useast8/tos-useast8-v-27dcd7-tx2/oQEPEAIATVlHE4GTfLCCee1qEh3odIAAq4qCCi/?a=1233&bti=ODszNWYuMDE6&&bt=125&ft=GSDrKInz7ThHnmNGXq8Zmo&mime_type=audio_mpeg&rc=M3hld3c5cmVvOTMzaTU8NEBpM3hld3c5cmVvOTMzaTU8NEAvbF5zMmRrNTRhLS1kMTJzYSMvbF5zMmRrNTRhLS1kMTJzcw%3D%3D&vvpl=1&l=20260731022621F7A05894DE7A9A0328AE&btag=e00048000",
+            "name": "original sound",
+            "author": "Garrett Sears",
+            "cover_url": "https://p16-common-sign.tiktokcdn-us.com/tos-useast5-avt-0068-tx/de1bd03e7e8860b8567f5c6b9dafbddd~tplv-tiktokx-cropcenter:720:720.jpeg?dr=9640&refresh_token=e6efe828&x-expires=1785636000&x-signature=koad4aMZtZNXPtvsVhwUGWV99XE%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast8",
+            "is_original": true
+          },
+          "author": {
+            "id": "6825429627587314694",
+            "url": "https://www.tiktok.com/@destinationinspiration",
+            "name": "Garrett Sears",
+            "username": "destinationinspiration",
+            "avatar_url": "https://p16-common-sign.tiktokcdn-us.com/tos-useast5-avt-0068-tx/de1bd03e7e8860b8567f5c6b9dafbddd~tplv-tiktokx-cropcenter:720:720.jpeg?dr=9640&refresh_token=e6efe828&x-expires=1785636000&x-signature=koad4aMZtZNXPtvsVhwUGWV99XE%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast8",
+            "is_private": false,
+            "is_verified": false
+          },
+          "caption": "Why is a weekend trip to Guatemala actually cheap? 🇬🇹🌋\n\n2026 is the year we ALL start traveling more…\n\nBecause one of the best adventures in the world is only a few hundred dollars and a long weekend away (weekendmaxing) \n\nHow to do this weekend trip (1.5 days of PTO):\n✈️ Friday: Fly into Guatemala City ➡️ shuttle to Antigua\n🥾 Saturday: Hike Acatenango + Fuego with OX Expeditions, camp on the volcano\n🌄 Sunday: Sunrise above the clouds ➡️ hike down ➡️ spend the afternoon exploring Antigua Guatemala\n✈️ Monday: Fly home\n\nCost Breakdown:\nFlights: $250+ (found using @Skyscanner)\nHostel: $42 (for 2 nights)\nHike: $150 (with @oxexpeditions)\nFood: $35\nShuttle Bus: $40\n\nWould you do this weekend trip? And if so…\n\nWhere should the next adventure be? 🌍⬇️\n\n#Guatemalatravel #Acatenango #FuegoVolcano #Weekendtrip #placestovisit",
+          "metrics": {
+            "likes_count": 459300,
+            "saves_count": 119236,
+            "views_count": 3200000,
+            "shares_count": 94800,
+            "reposts_count": null,
+            "comments_count": 1274
+          },
+          "hashtags": [
+            "guatemalatravel",
+            "acatenango",
+            "fuegovolcano",
+            "weekendtrip",
+            "placestovisit"
+          ],
+          "language": "en",
+          "mentions": [
+            "@Skyscanner",
+            "@oxexpeditions"
+          ],
+          "platform": "tiktok",
+          "resource": "hashtags",
+          "created_at": "2026-02-13T16:41:15",
+          "collected_at": "2026-07-31T02:26:38.115834",
+          "duration_seconds": 45
+        }
+      ]
+    }
+  }
+}
+```

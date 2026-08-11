@@ -38,3 +38,67 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 `results_limit` defaults to 100 and applies to each channel URL.
 
 Results use the normalized video structure documented in [YouTube Videos](/api-manual/youtube/videos), with `resource` set to `shorts` and `type` set to `short`.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "I9XH5UG68L4RDPDV",
+    "status": "succeeded",
+    "public_id": "youtube/shorts",
+    "result_count": 5,
+    "credits_amount": 2.5,
+    "results": {
+      "limit": 1,
+      "next_cursor": "OTQ1Ng",
+      "has_more": true,
+      "items": [
+        {
+          "id": "S7oSvAq7-rM",
+          "url": "https://www.youtube.com/shorts/S7oSvAq7-rM",
+          "type": "short",
+          "extra": {
+            "location": null,
+            "source_url": "https://www.youtube.com/@YouTube/shorts",
+            "content_type": "shorts",
+            "published_text": "2026-07-28T05:00:27.000Z",
+            "is_members_only": false,
+            "is_paid_content": false,
+            "description_links": []
+          },
+          "media": [
+            {
+              "url": "https://i.ytimg.com/vi/S7oSvAq7-rM/maxres2.jpg?sqp=-oaymwEoCIAKENAF8quKqQMcGADwAQH4AbYIgAKAD4oCDAgAEAEYciBaKCcwDw==&rs=AOn4CLBrJ6k1lqKq-dqbDD1AigStuLG9BQ",
+              "type": "image"
+            }
+          ],
+          "title": "is dubai chewy kimbap the new dubai chewy cookie??",
+          "author": {
+            "id": "UCBR8-60-B28hp2BmDPdntcQ",
+            "url": "https://www.youtube.com/channel/UCBR8-60-B28hp2BmDPdntcQ",
+            "name": "YouTube",
+            "username": "YouTube",
+            "avatar_url": "https://yt3.googleusercontent.com/3s6evpqAiDU9tQR4sC2siJippbH2RWVPnwHgyl4V0th2iuQz0VDQZbUhQBGmsxLYo-mjG6TqZQ=s68-c-k-c0x00ffffff-no-rj",
+            "is_private": null,
+            "is_verified": true
+          },
+          "metrics": {
+            "likes_count": 723,
+            "views_count": 60856,
+            "comments_count": 141
+          },
+          "hashtags": [],
+          "platform": "youtube",
+          "resource": "shorts",
+          "created_at": "2026-07-28T05:00:27",
+          "description": null,
+          "collected_at": "2026-07-31T02:28:46.548886",
+          "duration_seconds": 16
+        }
+      ]
+    }
+  }
+}
+```

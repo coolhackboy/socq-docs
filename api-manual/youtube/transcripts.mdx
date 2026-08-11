@@ -39,22 +39,42 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 Videos without an available transcript do not produce a result.
 
-## Result Item
+## Completed Task Response
 
 ```json
 {
-  "id": "VIDEO_ID",
-  "platform": "youtube",
-  "resource": "transcripts",
-  "type": "transcript",
-  "url": "https://www.youtube.com/watch?v=VIDEO_ID",
-  "title": "Example video",
-  "text": "Plain-text transcript content...",
-  "language": "en",
-  "available_languages": ["en", "es"],
-  "format": "plaintext",
-  "transcript_source": "user_generated",
-  "collected_at": "2026-07-15T10:30:00",
-  "extra": {}
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "youtube/transcripts",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "VIDEO_ID",
+          "platform": "youtube",
+          "resource": "transcripts",
+          "type": "transcript",
+          "url": "https://www.youtube.com/watch?v=VIDEO_ID",
+          "title": "Example video",
+          "text": "Plain-text transcript content...",
+          "language": "en",
+          "available_languages": [
+            "en",
+            "es"
+          ],
+          "format": "plaintext",
+          "transcript_source": "user_generated",
+          "collected_at": "2026-07-15T10:30:00",
+          "extra": {}
+        }
+      ]
+    }
+  }
 }
 ```

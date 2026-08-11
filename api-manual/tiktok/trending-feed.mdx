@@ -21,3 +21,57 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/trending-feed"
 
 `region` is a two-letter region code used to localize feed availability.
 `results_limit` defaults to 100 and accepts values from 4 through 2,000.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "WV9W7DPG4Q5CWIA5",
+    "status": "succeeded",
+    "public_id": "tiktok/trending-feed",
+    "result_count": 4,
+    "credits_amount": 2.8,
+    "results": {
+      "limit": 1,
+      "next_cursor": "NjY4NQ",
+      "has_more": true,
+      "items": [
+        {
+          "id": "7649507186493771041",
+          "url": "https://www.tiktok.com/@juleko_o/video/7649507186493771041",
+          "type": "video",
+          "extra": {
+            "is_ad": false,
+            "region": "PL"
+          },
+          "media": [
+            {
+              "url": "https://p16-common-sign.tiktokcdn.com/tos-useast2a-p-0037-euttp/occuY8S9MGRUWNII1RQBQeQJUDMQF0egeajFQA~tplv-tiktokx-origin.webp?dr=1370&refresh_token=ebbf0e64&x-expires=1785549600&x-signature=XpWCR2BXq3ZHMmgmN37qUEWQX%2FY%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=1a816805&idc=my&biz_tag=tt_video&s=FEED&sc=cover&item=7649507186493771041",
+              "type": "image"
+            }
+          ],
+          "author": {
+            "id": "7081331206307398662",
+            "name": "￴",
+            "username": "juleko_o"
+          },
+          "caption": "夜雨 #china #fyp",
+          "metrics": {
+            "likes_count": 2410787,
+            "saves_count": 299726,
+            "views_count": 9338894,
+            "shares_count": 215853,
+            "comments_count": 16276
+          },
+          "platform": "tiktok",
+          "resource": "trending-feed",
+          "created_at": "2026-06-09T21:14:47",
+          "collected_at": "2026-07-31T02:26:49.422685"
+        }
+      ]
+    }
+  }
+}
+```

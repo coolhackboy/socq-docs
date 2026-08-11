@@ -12,6 +12,48 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin-ad-library/ad"
 }
 ```
 
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "5WECIDYRDQ5QO9KP",
+    "status": "succeeded",
+    "public_id": "linkedin-ad-library/ad",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "666281156",
+          "platform": "linkedin-ad-library",
+          "resource": "ad",
+          "type": "ad",
+          "url": "https://www.linkedin.com/ad-library/detail/666281156",
+          "author": {
+            "id": null,
+            "name": null,
+            "url": null
+          },
+          "metrics": {
+            "impressions": null
+          },
+          "media": [],
+          "created_at": null,
+          "extra": {
+            "targeting": {}
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 ## Use with MCP and CLI
 
 | Interface | Value |

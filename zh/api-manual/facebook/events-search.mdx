@@ -21,3 +21,54 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/facebook/events-searc
 
 结果包括活动标识、日程安排文本、地点、出席率指标以及可用的封面媒体。
 `results_limit` 默认为 100，接受 7 到 2,000 之间的值。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "QLKHHY59VND6PARO",
+    "status": "succeeded",
+    "public_id": "facebook/events-search",
+    "result_count": 7,
+    "credits_amount": 4.2,
+    "results": {
+      "limit": 1,
+      "next_cursor": "MzUxNw",
+      "has_more": true,
+      "items": [
+        {
+          "id": "1344037984140417",
+          "url": "https://www.facebook.com/events/1344037984140417/",
+          "text": "Sat, Aug 22 at 8:00 AM IST",
+          "type": "event",
+          "extra": {
+            "is_past": false,
+            "place_id": "1006053132174672",
+            "is_online": false,
+            "place_name": "Crowne Plaza New Delhi Mayur Vihar Noida",
+            "search_query": "technology conference"
+          },
+          "media": [
+            {
+              "url": "https://scontent-phl2-1.xx.fbcdn.net/v/t39.30808-6/730083140_1006053152174670_1558267321117374093_n.jpg?stp=c200.0.1200.800a_dst-jpg_s350x350_tt6&_nc_cat=108&ccb=1-7&_nc_sid=75d36f&_nc_ohc=Hw7l01xDPJkQ7kNvwHujFPk&_nc_oc=AdqbgqZmrho8JhGeyjeDPTau-Ik4uf0Wi20a4XGOwjgSUugXY6pvW0B5yPUODbTgI3g&_nc_zt=23&_nc_ht=scontent-phl2-1.xx&_nc_gid=DduVuS5Al0vfrHrEzvDaJg&_nc_ss=7f289&oh=00_AQAGrZ2PI9w918lJcAjukiO2j81xHa5-8NecUzxC6SwnAQ&oe=6A6643B6",
+              "type": "image"
+            }
+          ],
+          "title": "4th Information Technology Conference 2026 | New Delhi",
+          "metrics": {
+            "went_count": null,
+            "going_count": 3,
+            "interested_count": 33
+          },
+          "platform": "facebook",
+          "resource": "events-search",
+          "created_at": "2026-08-22T02:30:00",
+          "collected_at": "2026-07-22T08:30:44.753823"
+        }
+      ]
+    }
+  }
+}
+```

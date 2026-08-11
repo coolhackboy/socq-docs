@@ -8,7 +8,58 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/ad"
 
 ```json
 {
-  "url": "https://adstransparency.google.com/advertiser/AR123/creative/CR123"
+  "url": "https://adstransparency.google.com/advertiser/AR01614014350098432001/creative/CR10449491775734153217"
+}
+```
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "I8ZBF5ZX3VK3202F",
+    "status": "succeeded",
+    "public_id": "google-ad-library/ad",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "CR10449491775734153217",
+          "platform": "google-ad-library",
+          "resource": "ad",
+          "type": "ad",
+          "url": "https://adstransparency.google.com/advertiser/AR01614014350098432001/creative/CR10449491775734153217",
+          "author": {
+            "id": "AR01614014350098432001",
+            "name": null
+          },
+          "metrics": {
+            "impressions": {
+              "min": null,
+              "max": null
+            }
+          },
+          "media": [],
+          "created_at": null,
+          "extra": {
+            "end_at": "2025-10-31T17:42:04",
+            "format": "text",
+            "countries": [
+              {
+                "regionCode": "US",
+                "regionName": "United States"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
 }
 ```
 

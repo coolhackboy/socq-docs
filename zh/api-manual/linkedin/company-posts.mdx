@@ -15,6 +15,47 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/company-post
 }
 ```
 
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "GHBLOIQT5WQ03X09",
+    "status": "succeeded",
+    "public_id": "linkedin/company-posts",
+    "result_count": 1,
+    "credits_amount": 1,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "7488370638122807296",
+          "platform": "linkedin",
+          "resource": "posts",
+          "type": "post",
+          "url": "https://www.linkedin.com/posts/microsoft_activity-7488370638122807296-vIdk",
+          "text": "Just wrapped our earnings call. It was a very strong close to what was a record fiscal year for Microsoft.",
+          "author": {
+            "id": "satyanadella",
+            "name": "Satya Nadella",
+            "url": "https://www.linkedin.com/in/satyanadella"
+          },
+          "metrics": {
+            "likes_count": 11310,
+            "comments_count": 477
+          },
+          "media": [],
+          "created_at": "2026-07-29T23:11:27.327000"
+        }
+      ]
+    }
+  }
+}
+```
+
 ## 与 MCP 和 CLI 一起使用
 
 | 接口 | 值 |

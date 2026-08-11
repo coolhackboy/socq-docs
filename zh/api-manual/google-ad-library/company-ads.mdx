@@ -8,12 +8,52 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/com
 
 ```json
 {
-  "domain": "example.com",
+  "domain": "lululemon.com",
   "results_limit": 40
 }
 ```
 
 `results_limit` 必须是每页 40 条的整数倍。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "AZWYE4Q9BYNNINOY",
+    "status": "succeeded",
+    "public_id": "google-ad-library/company-ads",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "CR12684696772090527745",
+          "platform": "google-ad-library",
+          "resource": "company-ads",
+          "type": "ad",
+          "url": "https://adstransparency.google.com/advertiser/AR01614014350098432001/creative/CR12684696772090527745",
+          "author": {
+            "id": "AR01614014350098432001",
+            "name": "lululemon athletica canada inc."
+          },
+          "metrics": {},
+          "media": [],
+          "created_at": "2026-01-13T21:19:35",
+          "extra": {
+            "end_at": "2026-08-09T07:22:13",
+            "format": "image"
+          }
+        }
+      ]
+    }
+  }
+}
+```
 
 ## 与 MCP 和 CLI 一起使用
 

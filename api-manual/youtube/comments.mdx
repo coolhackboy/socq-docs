@@ -38,30 +38,47 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 `results_limit` defaults to 100 per video. `sort_by` accepts `newest` or `relevance`.
 
-## Result Item
+## Completed Task Response
 
 ```json
 {
-  "id": "COMMENT_ID",
-  "platform": "youtube",
-  "resource": "comments",
-  "type": "comment",
-  "url": "https://www.youtube.com/watch?v=VIDEO_ID",
-  "text": "Comment text",
-  "author": {
-    "id": "UC_VIEWER",
-    "username": "viewer",
-    "name": "Viewer"
-  },
-  "metrics": {
-    "likes_count": 15,
-    "replies_count": 2
-  },
-  "created_at": "2026-07-14T08:00:00",
-  "collected_at": "2026-07-15T10:30:00",
-  "extra": {
-    "video_id": "VIDEO_ID",
-    "parent_comment_id": null
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "youtube/comments",
+    "result_count": 1,
+    "credits_amount": 0.3,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "COMMENT_ID",
+          "platform": "youtube",
+          "resource": "comments",
+          "type": "comment",
+          "url": "https://www.youtube.com/watch?v=VIDEO_ID",
+          "text": "Comment text",
+          "author": {
+            "id": "UC_VIEWER",
+            "username": "viewer",
+            "name": "Viewer"
+          },
+          "metrics": {
+            "likes_count": 15,
+            "replies_count": 2
+          },
+          "created_at": "2026-07-14T08:00:00",
+          "collected_at": "2026-07-15T10:30:00",
+          "extra": {
+            "video_id": "VIDEO_ID",
+            "parent_comment_id": null
+          }
+        }
+      ]
+    }
   }
 }
 ```

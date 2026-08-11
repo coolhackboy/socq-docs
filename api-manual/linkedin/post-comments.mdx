@@ -8,11 +8,51 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/post-comments"
 
 ```json
 {
-  "url": "https://www.linkedin.com/posts/example_activity-123"
+  "url": "https://www.linkedin.com/posts/aagupta_what-you-need-to-know-ai-agents-activity-7354600338621906944-RvXR"
 }
 ```
 
 The endpoint returns all comments exposed with the post and bills the actual number of stored comments.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "MUH5DCQXDCZ3ZAGW",
+    "status": "succeeded",
+    "public_id": "linkedin/post-comments",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": null,
+          "platform": "linkedin",
+          "resource": "post-comments",
+          "type": "comment",
+          "url": "https://www.linkedin.com/posts/aagupta_what-you-need-to-know-ai-agents-activity-7354600338621906944-RvXR",
+          "text": "This hit different tbh bruh",
+          "author": {
+            "name": "Akil Rakuten A.",
+            "url": "https://www.linkedin.com/in/akil-rakuten-a-60739a229"
+          },
+          "metrics": {
+            "likes_count": null,
+            "replies_count": null
+          },
+          "media": [],
+          "created_at": null
+        }
+      ]
+    }
+  }
+}
+```
 
 ## Use with MCP and CLI
 

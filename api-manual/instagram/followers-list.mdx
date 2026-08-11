@@ -20,3 +20,54 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/followers-list
 | CLI | `socq instagram followers` |
 
 Only relationships visible for public profiles can be returned.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "8JGL1AEDH5QVGXR0",
+    "status": "succeeded",
+    "public_id": "instagram/followers-list",
+    "result_count": 5,
+    "credits_amount": 1.5,
+    "results": {
+      "limit": 1,
+      "next_cursor": "NjQ2Ng",
+      "has_more": true,
+      "items": [
+        {
+          "id": "64155866175",
+          "url": "https://www.instagram.com/kanishka_____krishna8522/",
+          "name": "krishna",
+          "type": "profile",
+          "extra": {
+            "position": 1,
+            "relationship": "follower",
+            "source_username": "instagram"
+          },
+          "metrics": {
+            "likes_count": null,
+            "plays_count": null,
+            "posts_count": null,
+            "views_count": null,
+            "shares_count": null,
+            "comments_count": null,
+            "followers_count": null,
+            "following_count": null
+          },
+          "platform": "instagram",
+          "resource": "followers",
+          "username": "kanishka_____krishna8522",
+          "avatar_url": "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-19/723686404_17958078264138176_6668438638250663053_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2gGHn5SNI6SfnzOfKI6LamTlH6mE7xvTnmmino7kGy_NdxlUvtmX9AeCXCFXOqrGAjM&_nc_ohc=VFdfB3KUVWcQ7kNvwE1gbJc&_nc_gid=u5rwo7eae0Wd-fcIhBRxVQ&edm=AOG-cTkBAAAA&ccb=7-5&oh=00_AQH3JdNh2QLUzF0gxwtJp4UpQGprJp7LdBvqBN5H7od-7Q&oe=6A71C951&_nc_sid=17ea04",
+          "created_at": null,
+          "is_private": false,
+          "is_verified": false,
+          "collected_at": "2026-07-31T02:22:43.794329+00:00"
+        }
+      ]
+    }
+  }
+}
+```

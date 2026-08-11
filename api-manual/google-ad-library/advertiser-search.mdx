@@ -8,12 +8,49 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-ad-library/advert
 
 ```json
 {
-  "query": "Acme",
+  "query": "Nike",
   "region": "US"
 }
 ```
 
 The endpoint returns the complete result set produced by the search and bills the actual number of stored advertisers.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "24KN5RQK3NBJRXUB",
+    "status": "succeeded",
+    "public_id": "google-ad-library/advertiser-search",
+    "result_count": 10,
+    "credits_amount": 5,
+    "results": {
+      "limit": 1,
+      "next_cursor": "MTAyOTE",
+      "has_more": true,
+      "items": [
+        {
+          "id": "AR18100938063227125761",
+          "platform": "google-ad-library",
+          "resource": "advertiser-search",
+          "type": "advertiser",
+          "url": null,
+          "name": "Nike Lee",
+          "author": {
+            "name": "Nike Lee",
+            "username": "Nike Lee"
+          },
+          "metrics": {},
+          "media": [],
+          "created_at": null
+        }
+      ]
+    }
+  }
+}
+```
 
 ## Use with MCP and CLI
 

@@ -10,11 +10,53 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/search-posts"
 {
   "query": "AI agents",
   "date_posted": "last-week",
-  "results_limit": 20
+  "results_limit": 10
 }
 ```
 
 `results_limit` must be a multiple of the 10-record page size.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "RJTPFIDUNLJAUFBN",
+    "status": "succeeded",
+    "public_id": "linkedin/search-posts",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": null,
+          "platform": "linkedin",
+          "resource": "posts",
+          "type": "post",
+          "url": "https://www.linkedin.com/posts/ondrej-pokorny-opo_agents-agents-agents-the-rise-of-agentic-activity-7491031239655874560-xuxl",
+          "text": null,
+          "author": {
+            "id": null,
+            "name": null,
+            "url": null
+          },
+          "metrics": {
+            "likes_count": null,
+            "comments_count": null,
+            "reposts_count": null
+          },
+          "media": [],
+          "created_at": null
+        }
+      ]
+    }
+  }
+}
+```
 
 ## Use with MCP and CLI
 

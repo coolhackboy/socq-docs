@@ -20,3 +20,40 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/video-transcri
 | CLI | `socq tiktok video-transcript` |
 
 `language` 是可选的。没有可用语音或字幕的视频可能不会返回任何结果。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "OFQZZYEYOE6M14VG",
+    "status": "succeeded",
+    "public_id": "tiktok/video-transcript",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 1,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "6718335390845095173",
+          "url": "https://www.tiktok.com/@scout2015/video/6718335390845095173",
+          "text": null,
+          "type": "transcript",
+          "extra": {
+            "shortcode": null
+          },
+          "format": "plaintext",
+          "language": null,
+          "platform": "tiktok",
+          "resource": "video-transcript",
+          "created_at": null,
+          "collected_at": "2026-07-31T02:26:55.237032"
+        }
+      ]
+    }
+  }
+}
+```

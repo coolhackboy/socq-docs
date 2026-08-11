@@ -1,4 +1,60 @@
 {
+  "linkedin/post-comments": {
+    "url": "https://www.linkedin.com/posts/aagupta_what-you-need-to-know-ai-agents-activity-7354600338621906944-RvXR"
+  },
+  "linkedin/search-posts": {
+    "query": "AI agents",
+    "date_posted": "last-week",
+    "results_limit": 10
+  },
+  "tiktok-ad-library/search": {
+    "query": "Anysphere",
+    "results_limit": 12
+  },
+  "tiktok-ad-library/ad": {
+    "url": "https://library.tiktok.com/ads/detail/?id=1871655924410641"
+  },
+  "google-ad-library/advertiser-search": {
+    "query": "Nike",
+    "region": "US"
+  },
+  "google-ad-library/company-ads": {
+    "domain": "lululemon.com",
+    "results_limit": 40
+  },
+  "google-ad-library/ad": {
+    "url": "https://adstransparency.google.com/advertiser/AR01614014350098432001/creative/CR10449491775734153217"
+  },
+  "linkedin-ad-library/search": {
+    "company": "Microsoft",
+    "countries": ["US"],
+    "results_limit": 24
+  },
+  "linkedin-ad-library/ad": {
+    "url": "https://www.linkedin.com/ad-library/detail/666281156"
+  },
+  "linkedin/company-posts": {
+    "urls": ["https://www.linkedin.com/company/microsoft/"],
+    "results_limit": 20
+  },
+  "linkedin/profile-posts": {
+    "urls": ["https://www.linkedin.com/in/satyanadella/"],
+    "only_authored_posts": true,
+    "results_limit": 20
+  },
+  "linkedin/search-people": {
+    "urls": ["https://www.linkedin.com/search/results/people/?keywords=Aakash%20Gupta"]
+  },
+  "linkedin/search-jobs": {
+    "location": "Seattle",
+    "keyword": "Python",
+    "country": "US",
+    "results_limit": 20
+  },
+  "linkedin/company-jobs": {
+    "urls": ["https://www.linkedin.com/jobs/microsoft-jobs/"],
+    "results_limit": 20
+  },
   "facebook/comment-replies": {
     "url": "https://www.facebook.com/NASA/posts/would-you-lie-in-bed-for-60-days-for-scientific-research11-volunteers-did-exactl/1271494461012594/",
     "comment_id": "Y29tbWVudDoxMjcxNDk0NDYxMDEyNTk0XzU4NzcxOTAzMTA0Mjk5MQ==",

@@ -18,6 +18,55 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin-ad-library/s
 
 `results_limit` 必须是每页 24 条的整数倍。
 
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "CMRCG314KXN6XW2D",
+    "status": "succeeded",
+    "public_id": "linkedin-ad-library/search",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "1537832396",
+          "platform": "linkedin-ad-library",
+          "resource": "search",
+          "type": "ad",
+          "url": "https://www.linkedin.com/ad-library/detail/1537832396",
+          "name": "When AI agents take action",
+          "text": "Where leaders are winning with AI: everywhere.",
+          "author": {
+            "name": "Microsoft in Business",
+            "url": "https://www.linkedin.com/company/107855954"
+          },
+          "metrics": {
+            "impressions": null
+          },
+          "media": [
+            {
+              "type": "video",
+              "url": "https://dms.licdn.com/playlist/vid/v2/D4E10AQHHxfk-Y_8UCg/mp4-720p-30fp-crf28"
+            }
+          ],
+          "created_at": null,
+          "extra": {
+            "format": "Video Ad",
+            "targeting": {}
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 ## 与 MCP 和 CLI 一起使用
 
 | 接口 | 值 |

@@ -21,3 +21,68 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/hashtag-posts"
 
 `published_within` accepts `hour`, `day`, `week`, `month`, or `year`; `media_type` accepts `all` or `reels`.
 `results_limit` defaults to 100, accepts values from 10 through 2,000, and applies to each hashtag.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "96RD5GEV1XUS9K19",
+    "status": "succeeded",
+    "public_id": "instagram/hashtag-posts",
+    "result_count": 10,
+    "credits_amount": 5,
+    "results": {
+      "limit": 1,
+      "next_cursor": "OTc4OA",
+      "has_more": true,
+      "items": [
+        {
+          "id": "3612399257609778990",
+          "url": "https://www.instagram.com/reel/DIh0fxItzcu/",
+          "type": "post",
+          "extra": {
+            "hashtag": "technology",
+            "product_type": "clips",
+            "tagged_users": []
+          },
+          "media": [
+            {
+              "url": "https://scontent-phx1-1.cdninstagram.com/o1/v/t2/f2/m367/AQNMgy2aYDhN1HESfBPm06N1idFSGB2yZhv98HEGJIRE_J6_q4D8AAz9aRCm_ao-ho8hsz8PUOScEIXaKq-t99j4nnYTuY9nBGMLut0.mp4?_nc_cat=103&_nc_sid=5e9851&_nc_ht=scontent-phx1-1.cdninstagram.com&_nc_ohc=s-nzQrPEjC0Q7kNvwFshY9E&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0xJUFMuQzMuNzIwLmRhc2hfYmFzZWxpbmVfMV92MSIsInhwdl9hc3NldF9pZCI6OTQwOTQ4MTExMjUxMzcxMiwiYXNzZXRfYWdlX2RheXMiOjQ3MCwidmlfdXNlY2FzZV9pZCI6MTAwOTksImR1cmF0aW9uX3MiOjYwLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=cf890ec2ffbc0044&_nc_vs=HBksFQIYQGlnX2VwaGVtZXJhbC8xQzQ1Q0I2NTIxMTZENEQ5NUNEQjlGRTU3QzYwRkQ5Nl92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYR2lnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8xMzUwODU4NjY2MTQ5NDk2Xzg0MTc1MjU5MTYyMTMyMTk0MzgubXA0FQICyAESACgAGAAbAogHdXNlX29pbAExEnByb2dyZXNzaXZlX3JlY2lwZQExFQAAJuCy27Px97YhFQIoAkMzLBdATful41P3zxgSZGFzaF9iYXNlbGluZV8xX3YxEQB1_gdl5p0BAA&_nc_gid=pjOWgi2H47v2_EzB0xr4Xw&_nc_zt=28&_nc_ss=7a22e&oh=00_AQE3wMRKwpB1ODXbsZdq0R7AygpeQWzxpsqEhYxLPam8hA&oe=6A71E940",
+              "type": "video",
+              "width": null,
+              "height": null,
+              "thumbnail_url": null,
+              "duration_seconds": null
+            }
+          ],
+          "author": {
+            "id": "7334109605",
+            "url": "https://www.instagram.com/amanabdulalim/",
+            "name": "Aman | Tech Creative",
+            "username": "amanabdulalim",
+            "avatar_url": "https://scontent-phx1-1.cdninstagram.com/v/t51.2885-19/469257559_1118123979870732_8588937633533678745_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-phx1-1.cdninstagram.com&_nc_cat=100&_nc_oc=Q6cZ2gGFG3v0i6R3k-DGcQIVKmV3tpCCs8Ue0uMpCT2_jxm2EQqbsEvjGb_1rDnKRWQUGMlg_WYIMiQ7el54C6b-plq0&_nc_ohc=1UmqLaz5kcYQ7kNvwG80jYr&_nc_gid=pjOWgi2H47v2_EzB0xr4Xw&edm=ADp7STQBAAAA&ccb=7-5&oh=00_AQE3lshGx9KhSI0fxnps_YM16eD2MD_BqRYlPBym9bJqqA&oe=6A71D5C8&_nc_sid=c6f216",
+            "is_private": false,
+            "is_verified": false
+          },
+          "caption": "What is technology?\n\n#technology #techgram #softwareengineering",
+          "metrics": {
+            "likes_count": 55,
+            "plays_count": 1393,
+            "views_count": 353,
+            "comments_count": 9
+          },
+          "hashtags": [],
+          "mentions": [],
+          "platform": "instagram",
+          "resource": "hashtag-posts",
+          "shortcode": "DIh0fxItzcu",
+          "created_at": "2025-04-17T01:00:18",
+          "collected_at": "2026-07-31T02:44:37.111600"
+        }
+      ]
+    }
+  }
+}
+```

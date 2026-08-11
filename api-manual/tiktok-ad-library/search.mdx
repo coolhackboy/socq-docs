@@ -8,12 +8,55 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok-ad-library/search
 
 ```json
 {
-  "query": "running shoes",
-  "results_limit": 24
+  "query": "Anysphere",
+  "results_limit": 12
 }
 ```
 
 `results_limit` must be a multiple of the 12-record page size.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "59QTHGPQAGWL15HU",
+    "status": "succeeded",
+    "public_id": "tiktok-ad-library/search",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "1871316066418689",
+          "platform": "tiktok-ad-library",
+          "resource": "search",
+          "type": "ad",
+          "url": null,
+          "name": "Anysphere",
+          "author": {
+            "name": "Anysphere",
+            "username": "Anysphere"
+          },
+          "metrics": {
+            "impressions": 0
+          },
+          "media": [],
+          "created_at": "2026-07-21T00:00:00",
+          "extra": {
+            "end_at": "2026-08-09T00:00:00",
+            "format": "2"
+          }
+        }
+      ]
+    }
+  }
+}
+```
 
 ## Use with MCP and CLI
 

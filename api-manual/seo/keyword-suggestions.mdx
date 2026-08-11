@@ -11,3 +11,163 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/seo/keyword-suggestions"
 ```
 
 Each item in `results.items` is one returned keyword record. `results_limit` can be 1–1,000.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "RWZ4UEU3P31E08SK",
+    "status": "succeeded",
+    "public_id": "seo/keyword-suggestions",
+    "result_count": 5,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 1,
+      "next_cursor": "NjU5Nw",
+      "has_more": true,
+      "items": [
+        {
+          "id": "keyword research",
+          "url": null,
+          "rank": {},
+          "text": "keyword research",
+          "type": "keyword-suggestions",
+          "extra": {
+            "keyword": "keyword research",
+            "se_type": "google",
+            "serp_info": null,
+            "keyword_info": {
+              "cpc": 16.71,
+              "se_type": "google",
+              "categories": [
+                10004,
+                10276,
+                11088,
+                12381
+              ],
+              "competition": 0.01,
+              "search_volume": 368000,
+              "monthly_searches": [
+                {
+                  "year": 2026,
+                  "month": 6,
+                  "search_volume": 201000
+                },
+                {
+                  "year": 2026,
+                  "month": 5,
+                  "search_volume": 450000
+                },
+                {
+                  "year": 2026,
+                  "month": 4,
+                  "search_volume": 60500
+                },
+                {
+                  "year": 2026,
+                  "month": 3,
+                  "search_volume": 14800
+                },
+                {
+                  "year": 2026,
+                  "month": 2,
+                  "search_volume": 3600
+                },
+                {
+                  "year": 2026,
+                  "month": 1,
+                  "search_volume": 2900
+                },
+                {
+                  "year": 2025,
+                  "month": 12,
+                  "search_volume": 1900
+                },
+                {
+                  "year": 2025,
+                  "month": 11,
+                  "search_volume": 2400
+                },
+                {
+                  "year": 2025,
+                  "month": 10,
+                  "search_volume": 8100
+                },
+                {
+                  "year": 2025,
+                  "month": 9,
+                  "search_volume": 74000
+                },
+                {
+                  "year": 2025,
+                  "month": 8,
+                  "search_volume": 1830000
+                },
+                {
+                  "year": 2025,
+                  "month": 7,
+                  "search_volume": 1500000
+                }
+              ],
+              "competition_level": "LOW",
+              "last_updated_time": "2026-07-15 16:40:02 +00:00",
+              "low_top_of_page_bid": 3.41,
+              "search_volume_trend": {
+                "yearly": -33,
+                "monthly": -55,
+                "quarterly": 232
+              },
+              "high_top_of_page_bid": 21.17
+            },
+            "language_code": "en",
+            "location_code": 2840,
+            "avg_backlinks_info": {
+              "rank": 405.6,
+              "se_type": "google",
+              "dofollow": 7363.2,
+              "backlinks": 9611.8,
+              "referring_pages": 8926.9,
+              "main_domain_rank": 632.5,
+              "last_updated_time": "2026-07-30 03:43:03 +00:00",
+              "referring_domains": 2238.8,
+              "referring_main_domains": 2137.8
+            },
+            "keyword_properties": {
+              "se_type": "google",
+              "words_count": 2,
+              "core_keyword": null,
+              "detected_language": "en",
+              "keyword_difficulty": 88,
+              "is_another_language": false,
+              "synonym_clustering_algorithm": "text_processing"
+            },
+            "search_intent_info": {
+              "se_type": "google",
+              "main_intent": "informational",
+              "foreign_intent": null,
+              "last_updated_time": "2026-04-28 07:15:35 +00:00"
+            },
+            "clickstream_keyword_info": null,
+            "keyword_info_normalized_with_bing": null,
+            "keyword_info_normalized_with_clickstream": null
+          },
+          "keyword": "keyword research",
+          "metrics": {},
+          "platform": "seo",
+          "resource": "keyword-suggestions",
+          "collected_at": "2026-07-31T02:25:18.257457",
+          "search_intent": {
+            "se_type": "google",
+            "main_intent": "informational",
+            "foreign_intent": null,
+            "last_updated_time": "2026-04-28 07:15:35 +00:00"
+          },
+          "monthly_searches": []
+        }
+      ]
+    }
+  }
+}
+```

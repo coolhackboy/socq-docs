@@ -17,3 +17,94 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/seo/relevant-pages"
 
 Each item is one page record with ranking distribution and estimated search-traffic metrics.
 
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "BYUG07YJY4QJR1K0",
+    "status": "succeeded",
+    "public_id": "seo/relevant-pages",
+    "result_count": 5,
+    "credits_amount": 0.75,
+    "results": {
+      "limit": 1,
+      "next_cursor": "OTc3Mw",
+      "has_more": true,
+      "items": [
+        {
+          "id": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec",
+          "url": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec",
+          "rank": {},
+          "text": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec",
+          "type": "relevant-pages",
+          "extra": {
+            "metrics": {
+              "paid": {
+                "etv": 0,
+                "count": 0,
+                "is_up": 0,
+                "pos_1": 0,
+                "is_new": 0,
+                "is_down": 0,
+                "is_lost": 0,
+                "pos_2_3": 0,
+                "pos_4_10": 0,
+                "pos_11_20": 0,
+                "pos_21_30": 0,
+                "pos_31_40": 0,
+                "pos_41_50": 0,
+                "pos_51_60": 0,
+                "pos_61_70": 0,
+                "pos_71_80": 0,
+                "pos_81_90": 0,
+                "pos_91_100": 0,
+                "clickstream_etv": null,
+                "estimated_paid_traffic_cost": 0,
+                "clickstream_age_distribution": null,
+                "clickstream_gender_distribution": null
+              },
+              "organic": {
+                "etv": 594617.3855088986,
+                "count": 3877,
+                "is_up": 585,
+                "pos_1": 1441,
+                "is_new": 786,
+                "is_down": 1277,
+                "is_lost": 0,
+                "pos_2_3": 1272,
+                "pos_4_10": 726,
+                "pos_11_20": 120,
+                "pos_21_30": 90,
+                "pos_31_40": 54,
+                "pos_41_50": 39,
+                "pos_51_60": 38,
+                "pos_61_70": 33,
+                "pos_71_80": 26,
+                "pos_81_90": 19,
+                "pos_91_100": 19,
+                "clickstream_etv": null,
+                "estimated_paid_traffic_cost": 199624.19869861787,
+                "clickstream_age_distribution": null,
+                "clickstream_gender_distribution": null
+              },
+              "local_pack": null,
+              "featured_snippet": null
+            },
+            "se_type": "google",
+            "page_address": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec"
+          },
+          "keyword": null,
+          "metrics": {},
+          "platform": "seo",
+          "resource": "relevant-pages",
+          "collected_at": "2026-07-31T02:44:31.961617",
+          "search_intent": null,
+          "monthly_searches": []
+        }
+      ]
+    }
+  }
+}
+```

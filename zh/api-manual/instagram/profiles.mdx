@@ -20,3 +20,59 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/instagram/profiles"
 | CLI | `socq instagram profiles` |
 
 结果包括个人简介、个人资料链接、验证状态以及关注者、关注者和帖子计数。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "SIREDWC2N78YJ8CR",
+    "status": "succeeded",
+    "public_id": "instagram/profiles",
+    "result_count": 1,
+    "credits_amount": 0.6,
+    "results": {
+      "limit": 1,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "25025320",
+          "bio": "Discover what's new on Instagram 🔎✨",
+          "url": "https://www.instagram.com/instagram/",
+          "name": "Instagram",
+          "type": "profile",
+          "extra": {
+            "category": null,
+            "bio_links": [
+              {
+                "url": "http://help.instagram.com",
+                "title": "",
+                "lynx_url": "https://l.instagram.com/?u=http%3A%2F%2Fhelp.instagram.com%2F&e=AUDiJTowLLwbmCJVrT1eomZtSvAKusJv54Vd-KC7EG8K8ywpzltgBhQovyJVHM4uBLuUnRblfrqe9Ye936dGayxV9AufX-7Ni5H2W7iSjDJHa36s",
+                "link_type": "external"
+              }
+            ],
+            "is_business": false,
+            "is_professional": true
+          },
+          "metrics": {
+            "posts_count": 8542,
+            "followers_count": 685851936,
+            "following_count": 267
+          },
+          "platform": "instagram",
+          "resource": "profiles",
+          "username": "instagram",
+          "avatar_url": "https://instagram.fric1-1.fna.fbcdn.net/v/t51.82787-19/550891366_18667771684001321_1383210656577177067_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fric1-1.fna.fbcdn.net&_nc_cat=1&_nc_oc=Q6cZ2gHssx2eeqXBaL-N5Ca9GMTS_UGg_fD5F6bulrtLyPTPKkhjeiZ4VbJHa6hpJuqe93q6FesnWb2mcwRWjE17sjH5&_nc_ohc=QkjK3831euQQ7kNvwG8Z9Eo&_nc_gid=9-oa2ppx7eS64rk-Dk5Wxw&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AQE025h4eH7_HdrFXbrojhBa22dNuaQcAfPQsTMu666fBQ&oe=6A71DEE7&_nc_sid=8b3546",
+          "created_at": null,
+          "is_private": false,
+          "is_verified": true,
+          "collected_at": "2026-07-31T02:23:09.347321",
+          "external_url": "http://help.instagram.com/"
+        }
+      ]
+    }
+  }
+}
+```

@@ -34,28 +34,45 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/youtube/channels"
 有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
 {/* mcp-usage:end */}
 
-## 结果项
+## 任务完成响应
 
 ```json
 {
-  "id": "UC123456789",
-  "platform": "youtube",
-  "resource": "channels",
-  "type": "channel",
-  "username": "example",
-  "name": "Example Channel",
-  "url": "https://www.youtube.com/@example",
-  "description": "Public channel description",
-  "avatar_url": "https://example.com/avatar.jpg",
-  "banner_url": "https://example.com/banner.jpg",
-  "is_verified": true,
-  "metrics": {
-    "subscribers_count": 125000,
-    "videos_count": 240,
-    "views_count": 18000000
-  },
-  "created_at": "2017-01-04T00:00:00",
-  "collected_at": "2026-07-15T10:30:00",
-  "extra": {}
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "youtube/channels",
+    "result_count": 1,
+    "credits_amount": 0.26,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "UC123456789",
+          "platform": "youtube",
+          "resource": "channels",
+          "type": "channel",
+          "username": "example",
+          "name": "Example Channel",
+          "url": "https://www.youtube.com/@example",
+          "description": "Public channel description",
+          "avatar_url": "https://example.com/avatar.jpg",
+          "banner_url": "https://example.com/banner.jpg",
+          "is_verified": true,
+          "metrics": {
+            "subscribers_count": 125000,
+            "videos_count": 240,
+            "views_count": 18000000
+          },
+          "created_at": "2017-01-04T00:00:00",
+          "collected_at": "2026-07-15T10:30:00",
+          "extra": {}
+        }
+      ]
+    }
+  }
 }
 ```

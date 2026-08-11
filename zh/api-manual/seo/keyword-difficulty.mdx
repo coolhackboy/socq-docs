@@ -12,3 +12,45 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/seo/keyword-difficult
 
 Accepts up to 1,000 keywords and returns a 0鈥?00 difficulty score per available keyword.
 
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "9IQOH4KUR1HCRZAT",
+    "status": "succeeded",
+    "public_id": "seo/keyword-difficulty",
+    "result_count": 1,
+    "credits_amount": 0.1,
+    "results": {
+      "limit": 1,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "keyword research",
+          "url": null,
+          "rank": {},
+          "text": "keyword research",
+          "type": "keyword-difficulty",
+          "extra": {
+            "keyword": "keyword research",
+            "se_type": "google",
+            "keyword_difficulty": 88
+          },
+          "keyword": "keyword research",
+          "metrics": {
+            "keyword_difficulty": 88
+          },
+          "platform": "seo",
+          "resource": "keyword-difficulty",
+          "collected_at": "2026-07-31T02:24:56.580315",
+          "search_intent": null,
+          "monthly_searches": []
+        }
+      ]
+    }
+  }
+}
+```

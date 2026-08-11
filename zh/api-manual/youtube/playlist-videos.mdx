@@ -23,3 +23,54 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/youtube/playlist-vide
 
 播放列表ID可以直接在`urls`中传递。结果包括 `extra` 下的播放列表上下文。
 `results_limit` 默认为 100，接受 10 到 2,000 之间的值，并应用于每个播放列表。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "PFMZF501PNVRX5D0",
+    "status": "succeeded",
+    "public_id": "youtube/playlist-videos",
+    "result_count": 10,
+    "credits_amount": 5,
+    "results": {
+      "limit": 1,
+      "next_cursor": "OTQyOQ",
+      "has_more": true,
+      "items": [
+        {
+          "id": "GvgqDSnpRQM",
+          "url": "https://www.youtube.com/watch?v=GvgqDSnpRQM",
+          "type": "video",
+          "extra": {
+            "length_text": "1:30",
+            "playlist_id": "PLBCF2DAC6FFB574DE",
+            "playlist_title": "Google Search Stories"
+          },
+          "media": [
+            {
+              "url": "https://i.ytimg.com/vi/GvgqDSnpRQM/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCUlchJX7g_3l_SO094FoS3Ud8D4g",
+              "type": "image"
+            }
+          ],
+          "title": "Andrew Willis, Skatepark Engineer",
+          "author": {
+            "id": "UCvceBgMIpKb4zK1ss-Sh90w",
+            "url": "https://www.youtube.com/@SearchStories",
+            "name": "Google Search Stories",
+            "username": "SearchStories"
+          },
+          "metrics": {},
+          "platform": "youtube",
+          "resource": "playlist-videos",
+          "created_at": null,
+          "collected_at": "2026-07-31T02:27:54.658848",
+          "duration_seconds": 90
+        }
+      ]
+    }
+  }
+}
+```

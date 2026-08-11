@@ -16,6 +16,52 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/profile-posts"
 }
 ```
 
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "9TM461Z3P8E84O3A",
+    "status": "succeeded",
+    "public_id": "linkedin/profile-posts",
+    "result_count": 1,
+    "credits_amount": 1,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "7488406960443183104",
+          "platform": "linkedin",
+          "resource": "posts",
+          "type": "post",
+          "url": "https://www.linkedin.com/posts/satyanadella_some-more-detail-on-the-roic-intelligence-activity-7488406960443183104-g52O",
+          "text": "Some more detail on the ROIC Intelligence App I built yesterday and mentioned on today's earnings call.",
+          "author": {
+            "id": "satyanadella",
+            "name": "Satya Nadella",
+            "url": "https://www.linkedin.com/in/satyanadella"
+          },
+          "metrics": {
+            "likes_count": 7792,
+            "comments_count": 424
+          },
+          "media": [
+            {
+              "type": "image",
+              "url": "https://media.licdn.com/dms/image/v2/D5622AQES105T-agpcQ/feedshare-shrink_800"
+            }
+          ],
+          "created_at": "2026-07-30T01:35:47.220000"
+        }
+      ]
+    }
+  }
+}
+```
+
 ## Use with MCP and CLI
 
 | Interface | Value |

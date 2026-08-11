@@ -38,3 +38,112 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/youtube/channel-video
 `results_limit` 默认为 100 并适用于每个通道 URL。
 
 结果使用 [YouTube 视频](/zh/api-manual/youtube/videos) 中记录的标准化视频结构，其中 `resource` 设置为 `channel-videos`。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "E4O8BVIRP55GBD4P",
+    "status": "succeeded",
+    "public_id": "youtube/channel-videos",
+    "result_count": 5,
+    "credits_amount": 2.5,
+    "results": {
+      "limit": 1,
+      "next_cursor": "OTQ0NA",
+      "has_more": true,
+      "items": [
+        {
+          "id": "C0H9gGqAGxo",
+          "url": "https://www.youtube.com/watch?v=C0H9gGqAGxo",
+          "type": "video",
+          "extra": {
+            "location": null,
+            "source_url": "https://www.youtube.com/@YouTube/videos",
+            "content_type": "video",
+            "published_text": "2026-07-29T15:58:06.000Z",
+            "is_members_only": false,
+            "is_paid_content": false,
+            "description_links": [
+              {
+                "url": "https://www.youtube.com/@pabllovittar",
+                "text": "‪@pabllovittar‬"
+              },
+              {
+                "url": "https://www.youtube.com/@pabllovittar",
+                "text": "‪@pabllovittar‬"
+              },
+              {
+                "url": "https://www.youtube.com/@BLACKPINK",
+                "text": "‪@BLACKPINK‬"
+              },
+              {
+                "url": "https://www.youtube.com/@ChakraFrequenciesMusic",
+                "text": "‪@ChakraFrequenciesMusic‬"
+              },
+              {
+                "url": "https://www.youtube.com/@DragBrunchBrasil",
+                "text": "‪@DragBrunchBrasil‬"
+              },
+              {
+                "url": "https://www.youtube.com/@giantfoodmaker",
+                "text": "‪@giantfoodmaker‬"
+              },
+              {
+                "url": "https://www.youtube.com/@JaquelineGuerreiroOficial",
+                "text": "‪@JaquelineGuerreiroOficial‬"
+              },
+              {
+                "url": "https://www.youtube.com/@kingjoe83",
+                "text": "‪@kingjoe83‬"
+              },
+              {
+                "url": "https://www.youtube.com/@missfamenyc",
+                "text": "‪@missfamenyc‬"
+              },
+              {
+                "url": "https://www.youtube.com/@PlastiqueTiara",
+                "text": "‪@PlastiqueTiara‬"
+              },
+              {
+                "url": "https://www.youtube.com/@VogueBrasil",
+                "text": "‪@VogueBrasil‬"
+              }
+            ]
+          },
+          "media": [
+            {
+              "url": "https://i.ytimg.com/vi/C0H9gGqAGxo/maxresdefault.jpg",
+              "type": "image"
+            }
+          ],
+          "title": "Pabllo Vittar reacts to her Watch History (ROCKSTAR) | Watch History",
+          "author": {
+            "id": "UCBR8-60-B28hp2BmDPdntcQ",
+            "url": "https://www.youtube.com/channel/UCBR8-60-B28hp2BmDPdntcQ",
+            "name": "YouTube",
+            "username": "YouTube",
+            "avatar_url": "https://yt3.googleusercontent.com/3s6evpqAiDU9tQR4sC2siJippbH2RWVPnwHgyl4V0th2iuQz0VDQZbUhQBGmsxLYo-mjG6TqZQ=s68-c-k-c0x00ffffff-no-rj",
+            "is_private": null,
+            "is_verified": true
+          },
+          "metrics": {
+            "likes_count": 2100,
+            "views_count": 21426,
+            "comments_count": 295
+          },
+          "hashtags": [],
+          "platform": "youtube",
+          "resource": "channel-videos",
+          "created_at": "2026-07-29T15:58:06",
+          "description": "HONEY! Fresh off her new single “ROCKSTAR,” global drag icon and musical artist @pabllovittar is opening her YouTube Watch History for the very first time! \n\nShe takes us on an unfiltered tour of what she is watching, revealing the videos that inspire everything from her upcoming album “LOST IN LUST” to her KILLER QUEEN moves in Fortnite. From stanning BLACKPINK, to true crime deep dives with Jaqueline Guerreiro, to incredible drag beauty secrets from Plastique Tiara, Pabllo’s Watch HIstory is EVERYTHING. Plus, Pabllo opens up about the power of Brazilian drag culture and reflects on her iconic performance with her “mama” Madonna. \n\nFeatured Creators:\n@pabllovittar \n@BLACKPINK \n@ChakraFrequenciesMusic \n@DragBrunchBrasil \n@giantfoodmaker \n@JaquelineGuerreiroOficial \n@kingjoe83 \n@missfamenyc \n@PlastiqueTiara \n@VogueBrasil \n\nCredits: \n\nCreated & Produced by Somehow Studios\n\nCo-founder, Executive Producer: Greg T. Gordon\nCo-founder, Chief Creative Officer: Joe Sabia\nCreative Producer: Grace Lauson\nDirector, Post Production: Doug Larsen\n\nDirector: Grace Lauson\nProducer: Sam Weiser\n\nDirector of Photography: Jordan \nGaffer: \nKey Grip: \nScript Supervisor: \nPA’s: \n\nEditor: Phil \nGraphics: Louis Hamwey\n\nYouTube Team: \nJulia Templeman\nJake Wright\nMonica Honorato\nRyan Briggs\nMarly Ellis\nRed Fabbri",
+          "collected_at": "2026-07-31T02:28:03.221505",
+          "duration_seconds": 427
+        }
+      ]
+    }
+  }
+}
+```

@@ -20,3 +20,98 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/tagged-posts"
 | CLI | `socq instagram tagged-posts` |
 
 Results use the normalized Instagram post shape and include available tags, mentions, media, and engagement metrics.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "G5L9ZSVUSLKGMIL2",
+    "status": "succeeded",
+    "public_id": "instagram/tagged-posts",
+    "result_count": 5,
+    "credits_amount": 2.5,
+    "results": {
+      "limit": 1,
+      "next_cursor": "NjUzNQ",
+      "has_more": true,
+      "items": [
+        {
+          "id": "2251138696266127152",
+          "url": "https://www.instagram.com/p/B89prebFBcw/",
+          "type": "post",
+          "extra": {
+            "hashtag": null,
+            "product_type": "feed",
+            "tagged_users": [
+              {
+                "id": "25025320",
+                "username": "instagram",
+                "full_name": "Instagram",
+                "is_private": false,
+                "is_verified": true,
+                "profile_pic_id": "3725434617063385984",
+                "profile_pic_url": "https://scontent-iev1-1.cdninstagram.com/v/t51.82787-19/550891366_18667771684001321_1383210656577177067_n.jpg?stp=dst-jpg_e0_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-iev1-1.cdninstagram.com&_nc_cat=1&_nc_oc=Q6cZ2gFQfok6fBs0tQsBnfl_D_g7wV2yV1sXTKxL9l05BdQNE4TSlOc8_cNZCq7jumUxrCE&_nc_ohc=QkjK3831euQQ7kNvwHSsQ4J&_nc_gid=vDc_3BFhiq8MKoXQEqV17w&edm=APGXKFABAAAA&ccb=7-5&ig_cache_key=GGbv1SApFvlLPVJCAOtF0XrDJjITbmNDAQAB1501500j-ccb7-5&oh=00_AQEsoDAsurwAGxaE9xHATzak92gWXr7CT-TqmTOx8sMbAQ&oe=6A71DEE7&_nc_sid=a8b8e2"
+              },
+              {
+                "id": "572969530",
+                "username": "faber_castell_br",
+                "full_name": "Faber-Castell BR",
+                "is_private": false,
+                "is_verified": true,
+                "profile_pic_id": "2937990255455905890",
+                "profile_pic_url": "https://scontent-iev1-1.cdninstagram.com/v/t51.2885-19/309171988_2121391741401917_6641035407242420247_n.jpg?stp=dst-jpg_e0_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby44MDAuYzIifQ&_nc_ht=scontent-iev1-1.cdninstagram.com&_nc_cat=1&_nc_oc=Q6cZ2gFQfok6fBs0tQsBnfl_D_g7wV2yV1sXTKxL9l05BdQNE4TSlOc8_cNZCq7jumUxrCE&_nc_ohc=8WEv6nXF0eUQ7kNvwEJ0HnK&_nc_gid=vDc_3BFhiq8MKoXQEqV17w&edm=APGXKFABAAAA&ccb=7-5&ig_cache_key=GBSXbRI9_ywBZYkHABfgeWWEsilcbkULAAAB1501500j-ccb7-5&oh=00_AQGoDCE7nrSoNuKcP_8LxTzldiT251JFa4oqkYzejx1yfA&oe=6A71C9F0&_nc_sid=a8b8e2"
+              },
+              {
+                "id": "7121552278",
+                "username": "rosiane_v_mendes",
+                "full_name": "Rosiane/ Viagem/ Fotografia/Corrida🏃🏽‍♀️Hospedagens Incríveis",
+                "is_private": false,
+                "is_verified": false,
+                "profile_pic_id": "3929424453684004064",
+                "profile_pic_url": "https://scontent-iev1-1.cdninstagram.com/v/t51.82787-19/731232833_18363952762232279_3053973674653145641_n.jpg?stp=dst-jpg_e0_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-iev1-1.cdninstagram.com&_nc_cat=111&_nc_oc=Q6cZ2gFQfok6fBs0tQsBnfl_D_g7wV2yV1sXTKxL9l05BdQNE4TSlOc8_cNZCq7jumUxrCE&_nc_ohc=Q_-toZCIMCoQ7kNvwFbsfQc&_nc_gid=vDc_3BFhiq8MKoXQEqV17w&edm=APGXKFABAAAA&ccb=7-5&ig_cache_key=GEG6lSvXnRDx6j1BAClaGF-g5GEqbmNDAQAB1501500j-ccb7-5&oh=00_AQHzISZWxYvdeVebk54-3BT8CdBbh2iNxVm_7OttRJTLAA&oe=6A71C424&_nc_sid=a8b8e2"
+              }
+            ]
+          },
+          "media": [
+            {
+              "url": "https://scontent-iev1-1.cdninstagram.com/v/t51.82787-15/621585839_18092087866989349_3372003390585135619_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=MjI1MTEzODY5NjI2NjEyNzE1Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=CH-XViRL-3MQ7kNvwE_hxY3&_nc_oc=AdqllXfBCRo7CL60skDMRd--PFUL-0CQy3TmWTAQGbyKM7m4GE9px64T8ZvXZjpBjbM&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&se=8&_nc_ht=scontent-iev1-1.cdninstagram.com&_nc_gid=vDc_3BFhiq8MKoXQEqV17w&_nc_ss=7a3ba&oh=00_AQHh8WwSqzL7n7pHJRLFROY5WkQVamXQZ6sUUklRL6lnzA&oe=6A71E37C",
+              "type": "image",
+              "width": 1440,
+              "height": 1800,
+              "thumbnail_url": "https://scontent-iev1-1.cdninstagram.com/v/t51.82787-15/621585839_18092087866989349_3372003390585135619_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=MjI1MTEzODY5NjI2NjEyNzE1Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=CH-XViRL-3MQ7kNvwE_hxY3&_nc_oc=AdqllXfBCRo7CL60skDMRd--PFUL-0CQy3TmWTAQGbyKM7m4GE9px64T8ZvXZjpBjbM&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&se=8&_nc_ht=scontent-iev1-1.cdninstagram.com&_nc_gid=vDc_3BFhiq8MKoXQEqV17w&_nc_ss=7a3ba&oh=00_AQHh8WwSqzL7n7pHJRLFROY5WkQVamXQZ6sUUklRL6lnzA&oe=6A71E37C",
+              "duration_seconds": null
+            }
+          ],
+          "author": {
+            "id": "3021079942",
+            "url": "https://www.instagram.com/lucasramosmendes/",
+            "name": "LUCAS RAMOS MENDES ®",
+            "username": "lucasramosmendes",
+            "avatar_url": null,
+            "is_private": null,
+            "is_verified": null
+          },
+          "caption": "Uma homenagem a rede social que contribui muito para divulgação do meu trabalho.\n.\nO Instagram tem sido para mim muito mais que uma simples rede social; essa plataforma que além de criar uma conexão com pessoas que queremos por perto, tem ajudado assim como eu  milhões de pessoas a divulgar o seu negócio.\nEssa poderosa Midia social, gerou milhares de empregos, e continua dando a oportunidade para todos os que desejam divulgar o que fazem de melhor.\n.\n.\n\nA tribute to the social network that contributes a lot to spread my work. . For me, Instagram has been much more than just a social network; this platform that in addition to creating a connection with people we want close by, has helped millions of people to publicize their business just like me. This powerful social media has created thousands of jobs, and continues to provide an opportunity for everyone who wants to spread the word about what they do best. .\nTHANK YOU @instagram!",
+          "metrics": {
+            "likes_count": 149853,
+            "plays_count": null,
+            "views_count": null,
+            "comments_count": 10253
+          },
+          "hashtags": [],
+          "mentions": [
+            "instagram"
+          ],
+          "platform": "instagram",
+          "resource": "tagged-posts",
+          "shortcode": "B89prebFBcw",
+          "created_at": "2020-02-24T20:37:46",
+          "collected_at": "2026-07-31T02:23:32.685890"
+        }
+      ]
+    }
+  }
+}
+```

@@ -12,3 +12,179 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/seo/keyword-search-vo
 
 Accepts up to 1,000 keywords. Each returned record corresponds to a keyword for which metrics are available. Similar keywords can occasionally share aggregated search-volume values.
 
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "C7P8NOJPFV7838GU",
+    "status": "succeeded",
+    "public_id": "seo/keyword-search-volume",
+    "result_count": 1,
+    "credits_amount": 24,
+    "results": {
+      "limit": 1,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "keyword research",
+          "url": null,
+          "rank": {},
+          "text": "keyword research",
+          "type": "keyword-search-volume",
+          "extra": {
+            "cpc": 16.71,
+            "spell": null,
+            "keyword": "keyword research",
+            "competition": "LOW",
+            "language_code": "en",
+            "location_code": 2840,
+            "search_volume": 368000,
+            "search_partners": false,
+            "monthly_searches": [
+              {
+                "year": 2026,
+                "month": 6,
+                "search_volume": 201000
+              },
+              {
+                "year": 2026,
+                "month": 5,
+                "search_volume": 450000
+              },
+              {
+                "year": 2026,
+                "month": 4,
+                "search_volume": 60500
+              },
+              {
+                "year": 2026,
+                "month": 3,
+                "search_volume": 14800
+              },
+              {
+                "year": 2026,
+                "month": 2,
+                "search_volume": 3600
+              },
+              {
+                "year": 2026,
+                "month": 1,
+                "search_volume": 2900
+              },
+              {
+                "year": 2025,
+                "month": 12,
+                "search_volume": 1900
+              },
+              {
+                "year": 2025,
+                "month": 11,
+                "search_volume": 2400
+              },
+              {
+                "year": 2025,
+                "month": 10,
+                "search_volume": 8100
+              },
+              {
+                "year": 2025,
+                "month": 9,
+                "search_volume": 74000
+              },
+              {
+                "year": 2025,
+                "month": 8,
+                "search_volume": 1830000
+              },
+              {
+                "year": 2025,
+                "month": 7,
+                "search_volume": 1500000
+              }
+            ],
+            "competition_index": 1,
+            "low_top_of_page_bid": 3.41,
+            "high_top_of_page_bid": 21.17
+          },
+          "keyword": "keyword research",
+          "metrics": {
+            "cpc": 16.71,
+            "competition": "LOW",
+            "search_volume": 368000,
+            "competition_index": 1
+          },
+          "platform": "seo",
+          "resource": "keyword-search-volume",
+          "collected_at": "2026-07-31T02:25:10.519540",
+          "search_intent": null,
+          "monthly_searches": [
+            {
+              "year": 2026,
+              "month": 6,
+              "search_volume": 201000
+            },
+            {
+              "year": 2026,
+              "month": 5,
+              "search_volume": 450000
+            },
+            {
+              "year": 2026,
+              "month": 4,
+              "search_volume": 60500
+            },
+            {
+              "year": 2026,
+              "month": 3,
+              "search_volume": 14800
+            },
+            {
+              "year": 2026,
+              "month": 2,
+              "search_volume": 3600
+            },
+            {
+              "year": 2026,
+              "month": 1,
+              "search_volume": 2900
+            },
+            {
+              "year": 2025,
+              "month": 12,
+              "search_volume": 1900
+            },
+            {
+              "year": 2025,
+              "month": 11,
+              "search_volume": 2400
+            },
+            {
+              "year": 2025,
+              "month": 10,
+              "search_volume": 8100
+            },
+            {
+              "year": 2025,
+              "month": 9,
+              "search_volume": 74000
+            },
+            {
+              "year": 2025,
+              "month": 8,
+              "search_volume": 1830000
+            },
+            {
+              "year": 2025,
+              "month": 7,
+              "search_volume": 1500000
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```

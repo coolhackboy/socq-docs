@@ -17,3 +17,152 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/seo/keywords-for-site
 
 Each item is one website-relevant keyword record with available volume, competition, CPC, and trend metrics.
 
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "PBBP1MF42C6LTVVN",
+    "status": "succeeded",
+    "public_id": "seo/keywords-for-site",
+    "result_count": 5,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 1,
+      "next_cursor": "OTc4Mw",
+      "has_more": true,
+      "items": [
+        {
+          "id": "azure and microsoft teams",
+          "url": null,
+          "rank": {},
+          "text": "azure and microsoft teams",
+          "type": "keywords-for-site",
+          "extra": {
+            "keyword": "azure and microsoft teams",
+            "se_type": "google",
+            "serp_info": null,
+            "keyword_info": {
+              "cpc": null,
+              "se_type": "google",
+              "categories": [
+                10019,
+                10168,
+                10885,
+                12209
+              ],
+              "competition": null,
+              "search_volume": 10,
+              "monthly_searches": [
+                {
+                  "year": 2026,
+                  "month": 6,
+                  "search_volume": 0
+                },
+                {
+                  "year": 2026,
+                  "month": 5,
+                  "search_volume": 10
+                },
+                {
+                  "year": 2026,
+                  "month": 4,
+                  "search_volume": 0
+                },
+                {
+                  "year": 2026,
+                  "month": 3,
+                  "search_volume": 10
+                },
+                {
+                  "year": 2026,
+                  "month": 2,
+                  "search_volume": 0
+                },
+                {
+                  "year": 2026,
+                  "month": 1,
+                  "search_volume": 0
+                },
+                {
+                  "year": 2025,
+                  "month": 12,
+                  "search_volume": 0
+                },
+                {
+                  "year": 2025,
+                  "month": 11,
+                  "search_volume": 0
+                },
+                {
+                  "year": 2025,
+                  "month": 10,
+                  "search_volume": 10
+                },
+                {
+                  "year": 2025,
+                  "month": 9,
+                  "search_volume": 0
+                },
+                {
+                  "year": 2025,
+                  "month": 8,
+                  "search_volume": 0
+                },
+                {
+                  "year": 2025,
+                  "month": 7,
+                  "search_volume": 0
+                }
+              ],
+              "competition_level": null,
+              "last_updated_time": "2026-07-15 05:10:04 +00:00",
+              "low_top_of_page_bid": null,
+              "search_volume_trend": {
+                "yearly": 0,
+                "monthly": -100,
+                "quarterly": 0
+              },
+              "high_top_of_page_bid": null
+            },
+            "language_code": "en",
+            "location_code": 2840,
+            "avg_backlinks_info": null,
+            "keyword_properties": {
+              "se_type": "google",
+              "words_count": 4,
+              "core_keyword": null,
+              "detected_language": "en",
+              "keyword_difficulty": null,
+              "is_another_language": false,
+              "synonym_clustering_algorithm": "text_processing"
+            },
+            "search_intent_info": {
+              "se_type": "google",
+              "main_intent": "navigational",
+              "foreign_intent": null,
+              "last_updated_time": "2026-04-29 00:59:12 +00:00"
+            },
+            "clickstream_keyword_info": null,
+            "keyword_info_normalized_with_bing": null,
+            "keyword_info_normalized_with_clickstream": null
+          },
+          "keyword": "azure and microsoft teams",
+          "metrics": {},
+          "platform": "seo",
+          "resource": "keywords-for-site",
+          "collected_at": "2026-07-31T02:44:35.783531",
+          "search_intent": {
+            "se_type": "google",
+            "main_intent": "navigational",
+            "foreign_intent": null,
+            "last_updated_time": "2026-04-29 00:59:12 +00:00"
+          },
+          "monthly_searches": []
+        }
+      ]
+    }
+  }
+}
+```

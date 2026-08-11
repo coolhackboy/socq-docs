@@ -41,3 +41,70 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/x/search"
 | `sort_by` | `latest`、`top` |
 
 结果使用 [X 帖子](/zh/api-manual/x/posts) 中记录的归一化结构，其中 `resource` 设置为 `search`。提交的表达式在 `extra.search_query` 下返回。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "WTKBMSYYT3XIZQH0",
+    "status": "succeeded",
+    "public_id": "x/search",
+    "result_count": 20,
+    "credits_amount": 14,
+    "results": {
+      "limit": 1,
+      "next_cursor": "MjUyMg",
+      "has_more": true,
+      "items": [
+        {
+          "id": "2077807981715128702",
+          "url": "https://x.com/OpenAI/status/2077807981715128702",
+          "text": "Listen to the OpenAI Podcast on—\n\nSpotify\nhttps://t.co/hLcRdGrfUX\nApple\nhttps://t.co/UsNCsk4dvq\nYouTube\nhttps://t.co/Ji9gUYXqYp",
+          "type": "post",
+          "extra": {
+            "source": "Twitter for iPhone",
+            "is_reply": true,
+            "input_url": null,
+            "search_query": "from:OpenAI",
+            "in_reply_to_id": "2077807977193714080",
+            "input_username": null,
+            "quoted_post_id": null,
+            "conversation_id": "2077807977193714080",
+            "is_limited_reply": false,
+            "reposted_post_id": null,
+            "in_reply_to_user_id": "4398626122",
+            "in_reply_to_username": "OpenAI"
+          },
+          "media": [],
+          "author": {
+            "id": "4398626122",
+            "url": "https://x.com/OpenAI",
+            "name": "OpenAI",
+            "username": "OpenAI",
+            "avatar_url": "https://pbs.twimg.com/profile_images/1885410181409820672/ztsaR0JW_normal.jpg",
+            "is_private": null,
+            "is_verified": true
+          },
+          "metrics": {
+            "likes_count": 61,
+            "views_count": 49237,
+            "quotes_count": 2,
+            "reposts_count": 5,
+            "comments_count": 7,
+            "bookmarks_count": 7
+          },
+          "hashtags": [],
+          "language": "en",
+          "mentions": [],
+          "platform": "x",
+          "resource": "search",
+          "created_at": "2026-07-16T17:30:01",
+          "collected_at": "2026-07-17T07:05:45.186861"
+        }
+      ]
+    }
+  }
+}
+```

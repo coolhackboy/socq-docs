@@ -15,6 +15,49 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/search-jobs"
 }
 ```
 
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "KH66AAF39JDV50DF",
+    "status": "succeeded",
+    "public_id": "linkedin/search-jobs",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "4378399183",
+          "platform": "linkedin",
+          "resource": "jobs",
+          "type": "job",
+          "url": "https://www.linkedin.com/jobs/view/python-automation-developer-onsite-at-veridian-tech-solutions-inc-4378399183",
+          "name": "Python Automation Developer (Onsite)",
+          "text": "Python Automation Developer in Renton, WA / Everett, WA.",
+          "author": {
+            "id": "33125878",
+            "name": "Veridian Tech Solutions, Inc.",
+            "url": "https://www.linkedin.com/company/veridian-tech-solutions-inc."
+          },
+          "metrics": {},
+          "media": [],
+          "extra": {
+            "location": "Seattle, WA",
+            "employment_type": "Full-time",
+            "is_easy_apply": true
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 ## 与 MCP 和 CLI 一起使用
 
 | 接口 | 值 |

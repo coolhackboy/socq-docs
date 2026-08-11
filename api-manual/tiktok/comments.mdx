@@ -37,37 +37,54 @@ See [MCP quickstart](/integrations/mcp) for the complete submission and polling 
 
 `results_limit` defaults to 100 and applies to each video URL.
 
-## Result Item
+## Completed Task Response
 
 ```json
 {
-  "id": "7234567890123456790",
-  "platform": "tiktok",
-  "resource": "comments",
-  "type": "comment",
-  "url": "https://www.tiktok.com/@example/video/7234567890123456789",
-  "text": "Great video!",
-  "author": {
-    "id": "6784642169778881543",
-    "username": "viewer",
-    "name": "Viewer",
-    "url": "https://www.tiktok.com/@viewer",
-    "avatar_url": "https://example.com/avatar.jpg",
-    "is_verified": false,
-    "is_private": null
-  },
-  "metrics": {
-    "likes_count": 42,
-    "replies_count": 5
-  },
-  "mentions": [],
-  "media": [],
-  "created_at": "2023-01-01T00:00:00",
-  "collected_at": "2026-07-15T10:30:00",
-  "extra": {
-    "parent_comment_id": null,
-    "liked_by_author": false,
-    "pinned_by_author": false
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "tiktok/comments",
+    "result_count": 1,
+    "credits_amount": 0.25,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "items": [
+        {
+          "id": "7234567890123456790",
+          "platform": "tiktok",
+          "resource": "comments",
+          "type": "comment",
+          "url": "https://www.tiktok.com/@example/video/7234567890123456789",
+          "text": "Great video!",
+          "author": {
+            "id": "6784642169778881543",
+            "username": "viewer",
+            "name": "Viewer",
+            "url": "https://www.tiktok.com/@viewer",
+            "avatar_url": "https://example.com/avatar.jpg",
+            "is_verified": false,
+            "is_private": null
+          },
+          "metrics": {
+            "likes_count": 42,
+            "replies_count": 5
+          },
+          "mentions": [],
+          "media": [],
+          "created_at": "2023-01-01T00:00:00",
+          "collected_at": "2026-07-15T10:30:00",
+          "extra": {
+            "parent_comment_id": null,
+            "liked_by_author": false,
+            "pinned_by_author": false
+          }
+        }
+      ]
+    }
   }
 }
 ```
