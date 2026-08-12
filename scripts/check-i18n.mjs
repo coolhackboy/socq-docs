@@ -59,6 +59,9 @@ for (const sourcePath of sourcePaths) {
     readFile(sourcePath, "utf8"),
     readFile(join(zhRoot, name), "utf8")
   ]);
+  if (/\?{4}|\uFFFD/.test(translated)) {
+    errors.push(`Likely garbled text: zh/${name}`);
+  }
   if (JSON.stringify(codeBlocks(source)) !== JSON.stringify(codeBlocks(translated))) {
     errors.push(`Code blocks changed: zh/${name}`);
   }
