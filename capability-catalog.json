@@ -928,7 +928,7 @@
           "urls": [
             "https://www.amazon.com/Best-Sellers-Electronics/zgbs/electronics"
           ],
-          "results_limit": 20
+          "results_limit": 3
         }
       ],
       "tags": [
@@ -2018,7 +2018,7 @@
           "urls": [
             "https://www.amazon.com/dp/B0CHHSFMRL"
           ],
-          "results_limit": 20
+          "results_limit": 3
         }
       ],
       "tags": [
@@ -2608,7 +2608,7 @@
         {
           "query": "wireless earbuds",
           "domain": "https://www.amazon.com",
-          "results_limit": 20
+          "results_limit": 3
         }
       ],
       "tags": [
@@ -2990,7 +2990,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.amazon.com/sp?seller=EXAMPLE"
+            "https://www.amazon.com/sp?seller=A2L77EE7U53NWQ"
           ]
         }
       ],
@@ -4026,9 +4026,9 @@
       "examples": [
         {
           "urls": [
-            "https://apps.apple.com/us/charts/iphone/productivity-apps/6007"
+            "https://apps.apple.com/us/iphone/charts/6007"
           ],
-          "results_limit": 20
+          "results_limit": 3
         }
       ],
       "tags": [
@@ -4535,7 +4535,7 @@
           "urls": [
             "https://apps.apple.com/us/app/chatgpt/id6448311069"
           ],
-          "results_limit": 20
+          "results_limit": 3
         }
       ],
       "tags": [
@@ -5099,7 +5099,7 @@
       },
       "examples": [
         {
-          "url": "https://bsky.app/profile/bsky.app/post/example"
+          "url": "https://bsky.app/profile/jay.bsky.team/post/3micofpyeys2g"
         }
       ],
       "tags": [
@@ -5585,7 +5585,7 @@
       },
       "examples": [
         {
-          "username": "bsky.app"
+          "username": "jay.bsky.team"
         }
       ],
       "tags": [
@@ -6164,7 +6164,7 @@
       },
       "examples": [
         {
-          "username": "bsky.app"
+          "username": "jay.bsky.team"
         }
       ],
       "tags": [
@@ -6581,8 +6581,8 @@
       },
       "examples": [
         {
-          "url": "https://www.douyin.com/video/7123456789012345678",
-          "results_limit": 20
+          "url": "https://www.douyin.com/video/7448118827402972455",
+          "results_limit": 3
         }
       ],
       "tags": [
@@ -7680,9 +7680,9 @@
       },
       "examples": [
         {
-          "room_id": "7356742011975715619",
-          "author_id": "2207432981615527",
-          "results_limit": 20
+          "room_id": "7462723839303093032",
+          "author_id": "82194685715",
+          "results_limit": 3
         }
       ],
       "tags": [
@@ -8183,7 +8183,7 @@
       },
       "examples": [
         {
-          "user_id": "MS4wLjABAAAAExample"
+          "user_id": "MS4wLjABAAAAW9FWcqS7RdQAWPd2AA5fL_ilmqsIFUCQ_Iym6Yh9_cUa6ZRqVLjVQSUjlHrfXY1Y"
         }
       ],
       "tags": [
@@ -9588,8 +9588,8 @@
       },
       "examples": [
         {
-          "user_id": "MS4wLjABAAAAExample",
-          "results_limit": 20
+          "user_id": "MS4wLjABAAAANXSltcLCzDGmdNFI2Q_QixVTr67NiYzjKOIP5s03CAE",
+          "results_limit": 3
         }
       ],
       "tags": [
@@ -10281,7 +10281,7 @@
       },
       "examples": [
         {
-          "url": "https://www.douyin.com/video/7123456789012345678"
+          "url": "https://www.douyin.com/video/7448118827402972455"
         }
       ],
       "tags": [
@@ -10790,7 +10790,7 @@
       },
       "examples": [
         {
-          "url": "https://www.facebook.com/ads/library/?id=123456789012345"
+          "url": "https://www.facebook.com/ads/library?id=1545582153738441"
         }
       ],
       "tags": [
@@ -12808,7 +12808,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.facebook.com/marketplace/item/123456789012345/"
+            "https://www.facebook.com/marketplace/item/978385068564936/"
           ]
         }
       ],
@@ -14090,7 +14090,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.facebook.com/ads/library/?id=123456789012345"
+            "https://www.facebook.com/ads/library?id=1545582153738441"
           ]
         }
       ],
@@ -14957,7 +14957,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.facebook.com/nasa/posts/1234567890"
+            "https://www.facebook.com/reel/1064194079626979/"
           ]
         }
       ],
@@ -23429,7 +23429,7 @@
             "https://www.google.com/maps/place/Empire+State+Building"
           ],
           "days_limit": 30,
-          "results_limit": 20
+          "results_limit": 3
         }
       ],
       "tags": [
@@ -23884,7 +23884,7 @@
           "query": "coffee",
           "location": "New York, NY",
           "country": "US",
-          "results_limit": 20
+          "results_limit": 3
         }
       ],
       "tags": [
@@ -24919,9 +24919,9 @@
       "examples": [
         {
           "urls": [
-            "https://play.google.com/store/apps/category/PRODUCTIVITY"
+            "https://play.google.com/store/apps/collection/topselling_free"
           ],
-          "results_limit": 20
+          "results_limit": 3
         }
       ],
       "tags": [
@@ -25433,7 +25433,7 @@
             "https://play.google.com/store/apps/details?id=com.openai.chatgpt"
           ],
           "country": "US",
-          "results_limit": 20
+          "results_limit": 3
         }
       ],
       "tags": [
@@ -26138,7 +26138,7 @@
       "examples": [
         {
           "audio_ids": [
-            "123456789012345"
+            "1383262936846577"
           ],
           "results_limit": 20
         }
@@ -26558,7 +26558,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.instagram.com/p/ABC123xyz/"
+            "https://www.instagram.com/reel/DBZMUClOJjZ/"
           ]
         }
       ],
@@ -29427,7 +29427,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.instagram.com/p/ABC123xyz/"
+            "https://www.instagram.com/p/DbbY9pdm6Q2/"
           ]
         }
       ],
@@ -35042,7 +35042,7 @@
       },
       "examples": [
         {
-          "url": "https://www.kwai.com/short-video/example"
+          "url": "https://www.kwai.com/@ShortShortz8/photo/5235021727595785285"
         }
       ],
       "tags": [
@@ -35543,7 +35543,7 @@
       },
       "examples": [
         {
-          "username": "example"
+          "url": "https://www.kwai.com/@ShortShortz8"
         }
       ],
       "tags": [
@@ -36122,7 +36122,7 @@
       },
       "examples": [
         {
-          "username": "example"
+          "url": "https://www.kwai.com/@ShortShortz8"
         }
       ],
       "tags": [
@@ -39309,7 +39309,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.linkedin.com/jobs/view/1234567890/"
+            "https://www.linkedin.com/jobs/view/4435421919/"
           ]
         }
       ],
@@ -40286,7 +40286,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.linkedin.com/posts/microsoft_ai-activity-1234567890"
+            "https://www.linkedin.com/posts/microsoft_ai-is-entering-a-new-era-defined-by-real-world-activity-7403848387738955776-hCMS"
           ]
         }
       ],
@@ -43016,7 +43016,7 @@
         {
           "query": "AI agents",
           "date_posted": "last-week",
-          "results_limit": 20
+          "results_limit": 10
         }
       ],
       "tags": [
@@ -43583,7 +43583,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.pinterest.com/pin/123456789012345678/"
+            "https://www.pinterest.com/pin/1091841503437618715"
           ]
         }
       ],
@@ -45628,7 +45628,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.reddit.com/r/technology/comments/abc123/example_post/"
+            "https://www.reddit.com/r/technology/comments/1vbchyh/second_major_ai_company_says_its_systems_hacked/"
           ]
         }
       ],
@@ -46196,7 +46196,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.reddit.com/r/technology/comments/abc123/example_post/"
+            "https://www.reddit.com/r/technology/comments/1vbchyh/second_major_ai_company_says_its_systems_hacked/"
           ]
         }
       ],
@@ -47762,8 +47762,8 @@
       },
       "examples": [
         {
-          "url": "https://www.xiaohongshu.com/explore/example",
-          "comment_id": "example_comment_id"
+          "url": "https://www.xiaohongshu.com/explore/6a6174d6000000001d02013b?xsec_token=AB4sNisHvFy2q4C5ujG23AV858osk5rYC63eCgf8YTVOI%3D&xsec_source=pc_feed",
+          "comment_id": "6a6327f6000000002b026c1d"
         }
       ],
       "tags": [
@@ -48174,7 +48174,7 @@
       },
       "examples": [
         {
-          "url": "https://www.xiaohongshu.com/explore/example"
+          "url": "https://www.xiaohongshu.com/explore/6a6174d6000000001d02013b?xsec_token=AB4sNisHvFy2q4C5ujG23AV858osk5rYC63eCgf8YTVOI%3D&xsec_source=pc_feed"
         }
       ],
       "tags": [
@@ -48746,7 +48746,8 @@
       "examples": [
         {
           "category": "homefeed_recommend",
-          "results_limit": 20
+          "media_type": "all",
+          "results_limit": 3
         }
       ],
       "tags": [
@@ -49310,7 +49311,7 @@
       },
       "examples": [
         {
-          "url": "https://www.xiaohongshu.com/explore/example?xsec_token=example"
+          "url": "https://www.xiaohongshu.com/explore/6a6174d6000000001d02013b?xsec_token=AB4sNisHvFy2q4C5ujG23AV858osk5rYC63eCgf8YTVOI%3D&xsec_source=pc_feed"
         }
       ],
       "tags": [
@@ -49811,7 +49812,7 @@
       },
       "examples": [
         {
-          "user_id": "example_user_id"
+          "user_id": "65d8c7d40000000005033a6b"
         }
       ],
       "tags": [
@@ -51454,7 +51455,7 @@
       },
       "examples": [
         {
-          "user_id": "example_user_id"
+          "user_id": "65d8c7d40000000005033a6b"
         }
       ],
       "tags": [
@@ -53433,10 +53434,10 @@
       },
       "examples": [
         {
-          "target": "example.com",
+          "target": "microsoft.com",
           "location_code": 2840,
           "language_code": "en",
-          "results_limit": 100
+          "results_limit": 5
         }
       ],
       "tags": [
@@ -53770,10 +53771,10 @@
       },
       "examples": [
         {
-          "target": "example.com",
+          "target": "microsoft.com",
           "location_code": 2840,
           "language_code": "en",
-          "results_limit": 100
+          "results_limit": 5
         }
       ],
       "tags": [
@@ -54404,10 +54405,10 @@
       },
       "examples": [
         {
-          "target": "example.com",
+          "target": "microsoft.com",
           "location_code": 2840,
           "language_code": "en",
-          "results_limit": 100
+          "results_limit": 5
         }
       ],
       "tags": [
@@ -55231,7 +55232,7 @@
       },
       "examples": [
         {
-          "username": "snapchat"
+          "username": "zane"
         }
       ],
       "tags": [
@@ -55642,7 +55643,7 @@
       },
       "examples": [
         {
-          "url": "https://www.snapchat.com/spotlight/example"
+          "url": "https://www.snapchat.com/@queenhaley_13/spotlight/W7_EDlXWTBiXAEEniNoMPwAAYY2pnZnF0bG52AZslQsUdAZslQoRQAAAAAQ"
         }
       ],
       "tags": [
@@ -56334,7 +56335,7 @@
       },
       "examples": [
         {
-          "url": "https://www.snapchat.com/spotlight/example"
+          "url": "https://www.snapchat.com/@queenhaley_13/spotlight/W7_EDlXWTBiXAEEniNoMPwAAYY2pnZnF0bG52AZslQsUdAZslQoRQAAAAAQ"
         }
       ],
       "tags": [
@@ -56901,7 +56902,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.threads.net/@instagram/post/ABC123/"
+            "https://www.threads.com/@instagram/post/DbbbOW8D-T1"
           ]
         }
       ],
@@ -59566,7 +59567,7 @@
       },
       "examples": [
         {
-          "url": "https://www.tiktok.com/shop/pdp/example-product/1234567890123456789"
+          "url": "https://www.tiktok.com/shop/pdp/1729548220307968132"
         }
       ],
       "tags": [
@@ -60063,7 +60064,8 @@
       },
       "examples": [
         {
-          "url": "https://www.tiktok.com/shop/pdp/example-product/1234567890123456789"
+          "url": "https://www.tiktok.com/shop/pdp/1729548220307968132",
+          "results_limit": 20
         }
       ],
       "tags": [
@@ -60647,7 +60649,8 @@
       },
       "examples": [
         {
-          "url": "https://www.tiktok.com/shop/store/example-store/1234567890123456789"
+          "url": "https://www.tiktok.com/shop/store/cmf-by-nothing/7495669706651568260",
+          "results_limit": 20
         }
       ],
       "tags": [
@@ -61807,7 +61810,8 @@
       },
       "examples": [
         {
-          "username": "example_creator"
+          "username": "simplymandys",
+          "results_limit": 20
         }
       ],
       "tags": [
@@ -62233,7 +62237,7 @@
       "examples": [
         {
           "url": "https://www.tiktok.com/@scout2015/video/6718335390845095173",
-          "comment_id": "1234567890",
+          "comment_id": "6718335906996502534",
           "results_limit": 20
         }
       ],
@@ -68293,7 +68297,7 @@
       },
       "examples": [
         {
-          "url": "https://truthsocial.com/@example/posts/123456"
+          "url": "https://truthsocial.com/@realDonaldTrump/117091934703272898"
         }
       ],
       "tags": [
@@ -70053,7 +70057,7 @@
       },
       "examples": [
         {
-          "url": "https://www.twitch.tv/example/clip/ExampleClip"
+          "url": "https://clips.twitch.tv/CorrectBlushingCormorantPanicVis-tJuGowksdDy5wuEs"
         }
       ],
       "tags": [
@@ -70539,7 +70543,7 @@
       },
       "examples": [
         {
-          "username": "twitch"
+          "username": "ninja"
         }
       ],
       "tags": [
@@ -71239,7 +71243,7 @@
       },
       "examples": [
         {
-          "username": "twitch",
+          "username": "ninja",
           "filter_by": "all",
           "sort_by": "time"
         }
@@ -72535,7 +72539,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/1234567890123456789"
+            "https://x.com/X/status/2073395918011789670"
           ],
           "results_limit": 20
         }
@@ -72966,7 +72970,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/1234567890123456789"
+            "https://x.com/X/status/2073395918011789670"
           ],
           "results_limit": 20
         }
@@ -73324,7 +73328,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/1234567890123456789"
+            "https://x.com/X/status/2073395918011789670"
           ],
           "results_limit": 100
         }
@@ -73893,7 +73897,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/1234567890123456789"
+            "https://x.com/X/status/2073395918011789670"
           ]
         }
       ],

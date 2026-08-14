@@ -157,5 +157,162 @@
     "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     "comment_id": "Ugzge340dBgB75hWBm54AaABAg",
     "results_limit": 20
+  },
+  "snapchat/profiles": {
+    "username": "zane"
+  },
+  "snapchat/spotlights": {
+    "url": "https://www.snapchat.com/@queenhaley_13/spotlight/W7_EDlXWTBiXAEEniNoMPwAAYY2pnZnF0bG52AZslQsUdAZslQoRQAAAAAQ"
+  },
+  "snapchat/spotlight-comments": {
+    "url": "https://www.snapchat.com/@queenhaley_13/spotlight/W7_EDlXWTBiXAEEniNoMPwAAYY2pnZnF0bG52AZslQsUdAZslQoRQAAAAAQ"
+  },
+  "twitch/profiles": {
+    "username": "ninja"
+  },
+  "twitch/user-videos": {
+    "username": "ninja",
+    "filter_by": "all",
+    "sort_by": "time"
+  },
+  "twitch/clips": {
+    "url": "https://clips.twitch.tv/CorrectBlushingCormorantPanicVis-tJuGowksdDy5wuEs"
+  },
+  "bluesky/profiles": {
+    "username": "jay.bsky.team"
+  },
+  "bluesky/user-posts": {
+    "username": "jay.bsky.team"
+  },
+  "bluesky/posts": {
+    "url": "https://bsky.app/profile/jay.bsky.team/post/3micofpyeys2g"
+  },
+  "kwai/profiles": {
+    "url": "https://www.kwai.com/@ShortShortz8"
+  },
+  "kwai/user-posts": {
+    "url": "https://www.kwai.com/@ShortShortz8"
+  },
+  "kwai/posts": {
+    "url": "https://www.kwai.com/@ShortShortz8/photo/5235021727595785285"
+  },
+  "truth-social/profiles": {
+    "username": "realDonaldTrump"
+  },
+  "truth-social/user-posts": {
+    "username": "realDonaldTrump"
+  },
+  "truth-social/posts": {
+    "url": "https://truthsocial.com/@realDonaldTrump/117091934703272898"
+  },
+  "google-maps/search": {
+    "query": "coffee",
+    "location": "New York, NY",
+    "country": "US",
+    "results_limit": 3
+  },
+  "google-maps/places": {
+    "urls": ["https://www.google.com/maps/place/Empire+State+Building"]
+  },
+  "google-maps/reviews": {
+    "urls": ["https://www.google.com/maps/place/Empire+State+Building"],
+    "days_limit": 30,
+    "results_limit": 3
+  },
+  "amazon/search": {
+    "query": "wireless earbuds",
+    "domain": "https://www.amazon.com",
+    "results_limit": 3
+  },
+  "amazon/products": {
+    "urls": ["https://www.amazon.com/dp/B0CHHSFMRL"]
+  },
+  "amazon/reviews": {
+    "urls": ["https://www.amazon.com/dp/B0CHHSFMRL"],
+    "results_limit": 3
+  },
+  "amazon/sellers": {
+    "urls": ["https://www.amazon.com/sp?seller=A2L77EE7U53NWQ"]
+  },
+  "amazon/best-sellers": {
+    "urls": ["https://www.amazon.com/Best-Sellers-Electronics/zgbs/electronics"],
+    "results_limit": 3
+  },
+  "google-play/apps": {
+    "urls": ["https://play.google.com/store/apps/details?id=com.openai.chatgpt"]
+  },
+  "google-play/reviews": {
+    "urls": ["https://play.google.com/store/apps/details?id=com.openai.chatgpt"],
+    "country": "US",
+    "results_limit": 3
+  },
+  "google-play/rankings": {
+    "urls": ["https://play.google.com/store/apps/collection/topselling_free"],
+    "results_limit": 3
+  },
+  "apple-app-store/apps": {
+    "urls": ["https://apps.apple.com/us/app/chatgpt/id6448311069"]
+  },
+  "apple-app-store/reviews": {
+    "urls": ["https://apps.apple.com/us/app/chatgpt/id6448311069"],
+    "results_limit": 3
+  },
+  "apple-app-store/rankings": {
+    "urls": ["https://apps.apple.com/us/iphone/charts/6007"],
+    "results_limit": 3
+  },
+  "rednote/notes": {
+    "url": "https://www.xiaohongshu.com/explore/6a6174d6000000001d02013b?xsec_token=AB4sNisHvFy2q4C5ujG23AV858osk5rYC63eCgf8YTVOI%3D&xsec_source=pc_feed"
+  },
+  "rednote/profiles": {
+    "user_id": "65d8c7d40000000005033a6b"
+  },
+  "rednote/user-notes": {
+    "user_id": "65d8c7d40000000005033a6b"
+  },
+  "rednote/search": {
+    "query": "旅行攻略",
+    "sort_by": "general",
+    "media_type": "all"
+  },
+  "rednote/search-users": {
+    "query": "摄影"
+  },
+  "rednote/comments": {
+    "url": "https://www.xiaohongshu.com/explore/6a6174d6000000001d02013b?xsec_token=AB4sNisHvFy2q4C5ujG23AV858osk5rYC63eCgf8YTVOI%3D&xsec_source=pc_feed"
+  },
+  "rednote/comment-replies": {
+    "url": "https://www.xiaohongshu.com/explore/6a6174d6000000001d02013b?xsec_token=AB4sNisHvFy2q4C5ujG23AV858osk5rYC63eCgf8YTVOI%3D&xsec_source=pc_feed",
+    "comment_id": "6a6327f6000000002b026c1d"
+  },
+  "rednote/home-recommendations": {
+    "category": "homefeed_recommend",
+    "media_type": "all",
+    "results_limit": 3
+  },
+  "douyin/videos": {
+    "url": "https://www.douyin.com/video/7448118827402972455"
+  },
+  "douyin/profiles": {
+    "user_id": "MS4wLjABAAAAW9FWcqS7RdQAWPd2AA5fL_ilmqsIFUCQ_Iym6Yh9_cUa6ZRqVLjVQSUjlHrfXY1Y"
+  },
+  "douyin/user-videos": {
+    "user_id": "MS4wLjABAAAANXSltcLCzDGmdNFI2Q_QixVTr67NiYzjKOIP5s03CAE",
+    "results_limit": 3
+  },
+  "douyin/search": {
+    "query": "人工智能"
+  },
+  "douyin/comments": {
+    "url": "https://www.douyin.com/video/7448118827402972455",
+    "results_limit": 3
+  },
+  "douyin/live-room-info": {
+    "room_id": "7462723839303093032"
+  },
+  "douyin/live-room-products": {
+    "room_id": "7462723839303093032",
+    "author_id": "82194685715",
+    "results_limit": 3
   }
 }
