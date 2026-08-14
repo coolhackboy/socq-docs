@@ -19,3 +19,19 @@ SocQ provides asynchronous public social-data APIs and AI-agent integrations.
 - Hosted MCP: https://api.socq.ai/mcp
 
 Authentication uses `Authorization: Bearer SOCQ_API_KEY`. Collection endpoints return a task ID; poll `GET /v1/tasks/{task_id}?view=standard` for the fixed resource schema, then follow cursor pagination. V1 defaults to the compatible `full` view when `view` is omitted. Use `fields` only with `standard`, and use result files for complete source data.
+
+<!-- platform-apis:start -->
+## Expanded platform APIs
+
+- https://docs.socq.ai/api-manual/snapchat/overview
+- https://docs.socq.ai/api-manual/twitch/overview
+- https://docs.socq.ai/api-manual/bluesky/overview
+- https://docs.socq.ai/api-manual/kwai/overview
+- https://docs.socq.ai/api-manual/truth-social/overview
+- https://docs.socq.ai/api-manual/google-maps/overview
+- https://docs.socq.ai/api-manual/amazon/overview
+- https://docs.socq.ai/api-manual/google-play/overview
+- https://docs.socq.ai/api-manual/apple-app-store/overview
+- https://docs.socq.ai/api-manual/rednote/overview
+- https://docs.socq.ai/api-manual/douyin/overview
+<!-- platform-apis:end -->

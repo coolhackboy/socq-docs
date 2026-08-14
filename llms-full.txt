@@ -21,3 +21,379 @@ CLI examples:
 Use an idempotency key when retrying a submission after a transport failure. Reusing the key with identical input returns the original task; changing input produces a conflict.
 
 See https://docs.socq.ai/llms.json for the complete generated endpoint catalog.
+
+<!-- platform-apis:start -->
+# Snapchat APIs
+
+## Get Snapchat Profiles
+
+Fetch normalized profiles data from Snapchat.
+
+- REST: POST /v1/snapchat/profiles
+- MCP: socq_snapchat_profiles
+- CLI: socq snapchat profiles
+
+## Get Snapchat Spotlights
+
+Fetch normalized spotlights data from Snapchat.
+
+- REST: POST /v1/snapchat/spotlights
+- MCP: socq_snapchat_spotlights
+- CLI: socq snapchat spotlights
+
+## Get Snapchat Spotlight Comments
+
+Fetch normalized spotlight comments data from Snapchat.
+
+- REST: POST /v1/snapchat/spotlight-comments
+- MCP: socq_snapchat_spotlight_comments
+- CLI: socq snapchat spotlight-comments
+
+# Twitch APIs
+
+## Get Twitch Profiles
+
+Fetch normalized profiles data from Twitch.
+
+- REST: POST /v1/twitch/profiles
+- MCP: socq_twitch_profiles
+- CLI: socq twitch profiles
+
+## Get Twitch User Videos
+
+Fetch normalized user videos data from Twitch.
+
+- REST: POST /v1/twitch/user-videos
+- MCP: socq_twitch_user_videos
+- CLI: socq twitch user-videos
+
+## Get Twitch Clips
+
+Fetch normalized clips data from Twitch.
+
+- REST: POST /v1/twitch/clips
+- MCP: socq_twitch_clips
+- CLI: socq twitch clips
+
+# Bluesky APIs
+
+## Get Bluesky Profiles
+
+Fetch normalized profiles data from Bluesky.
+
+- REST: POST /v1/bluesky/profiles
+- MCP: socq_bluesky_profiles
+- CLI: socq bluesky profiles
+
+## Get Bluesky User Posts
+
+Fetch normalized user posts data from Bluesky.
+
+- REST: POST /v1/bluesky/user-posts
+- MCP: socq_bluesky_user_posts
+- CLI: socq bluesky user-posts
+
+## Get Bluesky Posts
+
+Fetch normalized posts data from Bluesky.
+
+- REST: POST /v1/bluesky/posts
+- MCP: socq_bluesky_posts
+- CLI: socq bluesky posts
+
+# Kwai APIs
+
+## Get Kwai Profiles
+
+Fetch normalized profiles data from Kwai.
+
+- REST: POST /v1/kwai/profiles
+- MCP: socq_kwai_profiles
+- CLI: socq kwai profiles
+
+## Get Kwai User Posts
+
+Fetch normalized user posts data from Kwai.
+
+- REST: POST /v1/kwai/user-posts
+- MCP: socq_kwai_user_posts
+- CLI: socq kwai user-posts
+
+## Get Kwai Posts
+
+Fetch normalized posts data from Kwai.
+
+- REST: POST /v1/kwai/posts
+- MCP: socq_kwai_posts
+- CLI: socq kwai posts
+
+# Truth Social APIs
+
+## Get Truth Social Profiles
+
+Fetch normalized profiles data from Truth Social.
+
+- REST: POST /v1/truth-social/profiles
+- MCP: socq_truth_social_profiles
+- CLI: socq truth-social profiles
+
+## Get Truth Social User Posts
+
+Fetch normalized user posts data from Truth Social.
+
+- REST: POST /v1/truth-social/user-posts
+- MCP: socq_truth_social_user_posts
+- CLI: socq truth-social user-posts
+
+## Get Truth Social Posts
+
+Fetch normalized posts data from Truth Social.
+
+- REST: POST /v1/truth-social/posts
+- MCP: socq_truth_social_posts
+- CLI: socq truth-social posts
+
+# Google Maps APIs
+
+## Get Google Maps Search
+
+Fetch normalized search data from Google Maps.
+
+- REST: POST /v1/google-maps/search
+- MCP: socq_google_maps_search
+- CLI: socq google-maps search
+
+## Get Google Maps Places
+
+Fetch normalized places data from Google Maps.
+
+- REST: POST /v1/google-maps/places
+- MCP: socq_google_maps_places
+- CLI: socq google-maps places
+
+## Get Google Maps Reviews
+
+Fetch normalized reviews data from Google Maps.
+
+- REST: POST /v1/google-maps/reviews
+- MCP: socq_google_maps_reviews
+- CLI: socq google-maps reviews
+
+# Amazon APIs
+
+## Get Amazon Search
+
+Fetch normalized search data from Amazon.
+
+- REST: POST /v1/amazon/search
+- MCP: socq_amazon_search
+- CLI: socq amazon search
+
+## Get Amazon Products
+
+Fetch normalized products data from Amazon.
+
+- REST: POST /v1/amazon/products
+- MCP: socq_amazon_products
+- CLI: socq amazon products
+
+## Get Amazon Reviews
+
+Fetch normalized reviews data from Amazon.
+
+- REST: POST /v1/amazon/reviews
+- MCP: socq_amazon_reviews
+- CLI: socq amazon reviews
+
+## Get Amazon Sellers
+
+Fetch normalized sellers data from Amazon.
+
+- REST: POST /v1/amazon/sellers
+- MCP: socq_amazon_sellers
+- CLI: socq amazon sellers
+
+## Get Amazon Best Sellers
+
+Fetch normalized best sellers data from Amazon.
+
+- REST: POST /v1/amazon/best-sellers
+- MCP: socq_amazon_best_sellers
+- CLI: socq amazon best-sellers
+
+# Google Play APIs
+
+## Get Google Play Apps
+
+Fetch normalized apps data from Google Play.
+
+- REST: POST /v1/google-play/apps
+- MCP: socq_google_play_apps
+- CLI: socq google-play apps
+
+## Get Google Play Reviews
+
+Fetch normalized reviews data from Google Play.
+
+- REST: POST /v1/google-play/reviews
+- MCP: socq_google_play_reviews
+- CLI: socq google-play reviews
+
+## Get Google Play Rankings
+
+Fetch normalized rankings data from Google Play.
+
+- REST: POST /v1/google-play/rankings
+- MCP: socq_google_play_rankings
+- CLI: socq google-play rankings
+
+# Apple App Store APIs
+
+## Get Apple App Store Apps
+
+Fetch normalized apps data from Apple App Store.
+
+- REST: POST /v1/apple-app-store/apps
+- MCP: socq_apple_app_store_apps
+- CLI: socq apple-app-store apps
+
+## Get Apple App Store Reviews
+
+Fetch normalized reviews data from Apple App Store.
+
+- REST: POST /v1/apple-app-store/reviews
+- MCP: socq_apple_app_store_reviews
+- CLI: socq apple-app-store reviews
+
+## Get Apple App Store Rankings
+
+Fetch normalized rankings data from Apple App Store.
+
+- REST: POST /v1/apple-app-store/rankings
+- MCP: socq_apple_app_store_rankings
+- CLI: socq apple-app-store rankings
+
+# Rednote APIs
+
+## Get Rednote Notes
+
+Fetch normalized notes data from Rednote.
+
+- REST: POST /v1/rednote/notes
+- MCP: socq_rednote_notes
+- CLI: socq rednote notes
+
+## Get Rednote Profiles
+
+Fetch normalized profiles data from Rednote.
+
+- REST: POST /v1/rednote/profiles
+- MCP: socq_rednote_profiles
+- CLI: socq rednote profiles
+
+## Get Rednote User Notes
+
+Fetch normalized user notes data from Rednote.
+
+- REST: POST /v1/rednote/user-notes
+- MCP: socq_rednote_user_notes
+- CLI: socq rednote user-notes
+
+## Get Rednote Search
+
+Fetch normalized search data from Rednote.
+
+- REST: POST /v1/rednote/search
+- MCP: socq_rednote_search
+- CLI: socq rednote search
+
+## Get Rednote Search Users
+
+Fetch normalized search users data from Rednote.
+
+- REST: POST /v1/rednote/search-users
+- MCP: socq_rednote_search_users
+- CLI: socq rednote search-users
+
+## Get Rednote Comments
+
+Fetch normalized comments data from Rednote.
+
+- REST: POST /v1/rednote/comments
+- MCP: socq_rednote_comments
+- CLI: socq rednote comments
+
+## Get Rednote Comment Replies
+
+Fetch normalized comment replies data from Rednote.
+
+- REST: POST /v1/rednote/comment-replies
+- MCP: socq_rednote_comment_replies
+- CLI: socq rednote comment-replies
+
+## Get Rednote Home Recommendations
+
+Fetch normalized home recommendations data from Rednote.
+
+- REST: POST /v1/rednote/home-recommendations
+- MCP: socq_rednote_home_recommendations
+- CLI: socq rednote home-recommendations
+
+# Douyin APIs
+
+## Get Douyin Videos
+
+Fetch normalized videos data from Douyin.
+
+- REST: POST /v1/douyin/videos
+- MCP: socq_douyin_videos
+- CLI: socq douyin videos
+
+## Get Douyin Profiles
+
+Fetch normalized profiles data from Douyin.
+
+- REST: POST /v1/douyin/profiles
+- MCP: socq_douyin_profiles
+- CLI: socq douyin profiles
+
+## Get Douyin User Videos
+
+Fetch normalized user videos data from Douyin.
+
+- REST: POST /v1/douyin/user-videos
+- MCP: socq_douyin_user_videos
+- CLI: socq douyin user-videos
+
+## Get Douyin Search
+
+Fetch normalized search data from Douyin.
+
+- REST: POST /v1/douyin/search
+- MCP: socq_douyin_search
+- CLI: socq douyin search
+
+## Get Douyin Comments
+
+Fetch normalized comments data from Douyin.
+
+- REST: POST /v1/douyin/comments
+- MCP: socq_douyin_comments
+- CLI: socq douyin comments
+
+## Get Douyin Live Room Info
+
+Fetch normalized live room info data from Douyin.
+
+- REST: POST /v1/douyin/live-room-info
+- MCP: socq_douyin_live_room_info
+- CLI: socq douyin live-room-info
+
+## Get Douyin Live Room Products
+
+Fetch normalized live room products data from Douyin.
+
+- REST: POST /v1/douyin/live-room-products
+- MCP: socq_douyin_live_room_products
+- CLI: socq douyin live-room-products
+<!-- platform-apis:end -->

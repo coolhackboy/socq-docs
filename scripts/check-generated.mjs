@@ -9,6 +9,7 @@ const openapi = JSON.parse(await readFile(join(root, "api-manual", "agent-api", 
 const zhOpenapi = JSON.parse(
   await readFile(join(root, "zh", "api-manual", "agent-api", "agent-api.json"), "utf8")
 );
+const docsConfig = JSON.parse(await readFile(join(root, "docs.json"), "utf8"));
 const ids = catalog.endpoints.map((item) => item.public_id).sort();
 const llmsIds = llms.endpoints.map((item) => item.public_id).sort();
 const openapiIds = Object.keys(openapi.paths)
@@ -168,10 +169,47 @@ if (JSON.stringify(Object.keys(openapi.paths).sort()) !== JSON.stringify(Object.
 if (openapi.info.version !== zhOpenapi.info.version) {
   throw new Error("Chinese OpenAPI schema_version mismatch");
 }
+
+for (const language of docsConfig.navigation.languages) {
+  const apiGroups = language.tabs[0].groups.filter((group) =>
+    group.pages?.[0]?.endsWith("/overview") && !group.pages[0].includes("agent-api")
+  );
+  if (apiGroups.length !== 27) {
+    throw new Error(`${language.language}: expected 27 API overview groups, found ${apiGroups.length}`);
+  }
+  for (const group of apiGroups) {
+    if (group.root) throw new Error(`${language.language}: ${group.group} must expose Overview as a page`);
+    if (group.group !== "SEO" && !group.icon) {
+      throw new Error(`${language.language}: ${group.group} is missing its platform icon`);
+    }
+    const overviewPath = join(root, `${group.pages[0]}.mdx`);
+    const overview = await readFile(overviewPath, "utf8");
+    if (!/^sidebarTitle:\s*".+"/m.test(overview)) {
+      throw new Error(`${language.language}: ${group.group} overview has no sidebarTitle`);
+    }
+    if (/^icon(Type)?:/m.test(overview.split("---")[1] ?? "")) {
+      throw new Error(`${language.language}: ${group.group} overview repeats the group icon`);
+    }
+    if (group.group === "SEO") continue;
+    const tableHeader = language.language === "zh"
+      ? /\|\s*API\s*\|\s*方法\s*\|\s*端点\s*\|/
+      : /\|\s*API\s*\|\s*Method\s*\|\s*Endpoint\s*\|/;
+    if (!tableHeader.test(overview)) {
+      throw new Error(`${language.language}: ${group.group} overview does not use the API table template`);
+    }
+    for (const page of group.pages.slice(1)) {
+      const publicId = page.replace(/^zh\//, "").replace(/^api-manual\//, "");
+      if (!overview.includes(`\`/v1/${publicId}\``)) {
+        throw new Error(`${language.language}: ${group.group} overview is missing /v1/${publicId}`);
+      }
+    }
+  }
+}
+
 for (const publicId of ids) {
   const enSource = await readFile(join(root, "api-manual", `${publicId}.mdx`), "utf8");
   const zhSource = await readFile(join(root, "zh", "api-manual", `${publicId}.mdx`), "utf8");
-  if (/scrape\s*creators|bright\s*data/i.test(`${enSource}\n${zhSource}`)) {
+  if (/scrape\s*creators|bright\s*data|tikhub/i.test(`${enSource}\n${zhSource}`)) {
     throw new Error(`${publicId} public documentation contains a provider name`);
   }
   const enResponse = validateCompletedTaskResponse(enSource, publicId, "en");

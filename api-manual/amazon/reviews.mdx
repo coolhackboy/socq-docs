@@ -1,0 +1,90 @@
+---
+title: "Get Amazon Reviews"
+description: "Fetch normalized reviews data from Amazon."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/amazon/reviews"
+---
+
+# Get Amazon Reviews
+
+Fetch normalized reviews data from Amazon.
+
+Each successfully returned standard result costs `0.15` credits. List endpoints reserve by `results_limit` and settle against the actual result count.
+
+## Request Body
+
+```json
+{
+  "urls": [
+    "https://www.amazon.com/dp/B0CHHSFMRL"
+  ],
+  "results_limit": 20
+}
+```
+
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/amazon/reviews` |
+| Compact MCP | `socq_execute` with `endpoint: "amazon/reviews"` |
+| Typed MCP | `socq_amazon_reviews` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=amazon_reviews` |
+| CLI | `socq amazon reviews` |
+
+<Info>
+A successful request returns a `task_id`. Poll it with `socq_get_task`, then read normalized records from `results.items`.
+</Info>
+{/* mcp-usage:end */}
+
+{/* result-schema:start */}
+## Result Fields
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `text` | `string` | Yes | Review text. |
+| `author` | `object` | Yes | Author or publisher of the content. |
+| `author` | `object` | No | Field value in the standard result. |
+| `author.id` | `string` | Yes | Unique identifier of the author. |
+| `author.username` | `string` | Yes | Public username or handle of the account. |
+| `author.name` | `string` | Yes | Display name of the author. |
+| `author.url` | `string` | Yes | Public URL of the author when available. |
+| `author.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `author.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `author.is_private` | `boolean` | Yes | Whether the account is private. |
+| `rating` | `number` | Yes | Rating given in the review. |
+| `subject_id` | `string` | Yes | Identifier of the product, company, or other object being reviewed. |
+| `subject_url` | `string` | Yes | Public URL of the object being reviewed. |
+| `media` | `array<object>` | Yes | Images, videos, or other media attached to the result. |
+{/* result-schema:end */}
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "message": "success",
+  "data": {
+    "task_id": "task_example",
+    "public_id": "amazon/reviews",
+    "status": "succeeded",
+    "result_count": 0,
+    "credits_amount": 0,
+    "results": {
+      "schema_id": "review",
+      "schema_version": "1.0",
+      "items": [],
+      "limit": 20,
+      "next_cursor": null,
+      "has_more": false
+    }
+  }
+}
+```

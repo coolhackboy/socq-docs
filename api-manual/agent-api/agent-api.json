@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-c051f5df2885",
+    "version": "v1-132d958902f5",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -11,6 +11,1308 @@
     }
   ],
   "paths": {
+    "/v1/amazon/best-sellers": {
+      "post": {
+        "operationId": "socq_amazon_best_sellers",
+        "summary": "Get Amazon Best Sellers",
+        "description": "Fetch normalized best sellers data from Amazon.",
+        "tags": [
+          "amazon"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ProductItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/amazon/products": {
+      "post": {
+        "operationId": "socq_amazon_products",
+        "summary": "Get Amazon Products",
+        "description": "Fetch normalized products data from Amazon.",
+        "tags": [
+          "amazon"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ProductItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/amazon/reviews": {
+      "post": {
+        "operationId": "socq_amazon_reviews",
+        "summary": "Get Amazon Reviews",
+        "description": "Fetch normalized reviews data from Amazon.",
+        "tags": [
+          "amazon"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReviewItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/amazon/search": {
+      "post": {
+        "operationId": "socq_amazon_search",
+        "summary": "Get Amazon Search",
+        "description": "Fetch normalized search data from Amazon.",
+        "tags": [
+          "amazon"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ProductItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "domain": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  }
+                },
+                "required": [
+                  "domain",
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/amazon/sellers": {
+      "post": {
+        "operationId": "socq_amazon_sellers",
+        "summary": "Get Amazon Sellers",
+        "description": "Fetch normalized sellers data from Amazon.",
+        "tags": [
+          "amazon"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/SellerItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/apple-app-store/apps": {
+      "post": {
+        "operationId": "socq_apple_app_store_apps",
+        "summary": "Get Apple App Store Apps",
+        "description": "Fetch normalized apps data from Apple App Store.",
+        "tags": [
+          "apple-app-store"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AppItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/apple-app-store/rankings": {
+      "post": {
+        "operationId": "socq_apple_app_store_rankings",
+        "summary": "Get Apple App Store Rankings",
+        "description": "Fetch normalized rankings data from Apple App Store.",
+        "tags": [
+          "apple-app-store"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AppItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/apple-app-store/reviews": {
+      "post": {
+        "operationId": "socq_apple_app_store_reviews",
+        "summary": "Get Apple App Store Reviews",
+        "description": "Fetch normalized reviews data from Apple App Store.",
+        "tags": [
+          "apple-app-store"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReviewItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/bluesky/posts": {
+      "post": {
+        "operationId": "socq_bluesky_posts",
+        "summary": "Get Bluesky Posts",
+        "description": "Fetch normalized posts data from Bluesky.",
+        "tags": [
+          "bluesky"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/bluesky/profiles": {
+      "post": {
+        "operationId": "socq_bluesky_profiles",
+        "summary": "Get Bluesky Profiles",
+        "description": "Fetch normalized profiles data from Bluesky.",
+        "tags": [
+          "bluesky"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account username."
+                  }
+                },
+                "required": [
+                  "username"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/bluesky/user-posts": {
+      "post": {
+        "operationId": "socq_bluesky_user_posts",
+        "summary": "Get Bluesky User Posts",
+        "description": "Fetch normalized user posts data from Bluesky.",
+        "tags": [
+          "bluesky"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "user_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account identifier."
+                  },
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account username."
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "user_id"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "username"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/douyin/comments": {
+      "post": {
+        "operationId": "socq_douyin_comments",
+        "summary": "Get Douyin Comments",
+        "description": "Fetch normalized comments data from Douyin.",
+        "tags": [
+          "douyin"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 20,
+                    "default": 20
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/douyin/live-room-info": {
+      "post": {
+        "operationId": "socq_douyin_live_room_info",
+        "summary": "Get Douyin Live Room Info",
+        "description": "Fetch normalized live room info data from Douyin.",
+        "tags": [
+          "douyin"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/LiveRoomItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "room_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public live room identifier."
+                  }
+                },
+                "required": [
+                  "room_id"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/douyin/live-room-products": {
+      "post": {
+        "operationId": "socq_douyin_live_room_products",
+        "summary": "Get Douyin Live Room Products",
+        "description": "Fetch normalized live room products data from Douyin.",
+        "tags": [
+          "douyin"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ProductItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "author_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public author identifier."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 20,
+                    "default": 20
+                  },
+                  "room_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public live room identifier."
+                  }
+                },
+                "required": [
+                  "author_id",
+                  "room_id"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/douyin/profiles": {
+      "post": {
+        "operationId": "socq_douyin_profiles",
+        "summary": "Get Douyin Profiles",
+        "description": "Fetch normalized profiles data from Douyin.",
+        "tags": [
+          "douyin"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account identifier."
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "url"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "user_id"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/douyin/search": {
+      "post": {
+        "operationId": "socq_douyin_search",
+        "summary": "Get Douyin Search",
+        "description": "Fetch normalized search data from Douyin.",
+        "tags": [
+          "douyin"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/douyin/user-videos": {
+      "post": {
+        "operationId": "socq_douyin_user_videos",
+        "summary": "Get Douyin User Videos",
+        "description": "Fetch normalized user videos data from Douyin.",
+        "tags": [
+          "douyin"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 20,
+                    "default": 20
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account identifier."
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "url"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "user_id"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/douyin/videos": {
+      "post": {
+        "operationId": "socq_douyin_videos",
+        "summary": "Get Douyin Videos",
+        "description": "Fetch normalized videos data from Douyin.",
+        "tags": [
+          "douyin"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/facebook-ad-library/ad": {
       "post": {
         "operationId": "socq_facebook_ad_library_ad",
@@ -59,6 +1361,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -150,6 +1462,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -202,6 +1524,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -297,6 +1629,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -356,6 +1698,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -408,6 +1760,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -515,6 +1877,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -575,6 +1947,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -670,6 +2052,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -730,6 +2122,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -802,6 +2204,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -865,6 +2277,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -922,6 +2344,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -990,6 +2422,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -1090,6 +2532,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -1187,6 +2639,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -1253,6 +2715,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -1325,6 +2797,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -1385,6 +2867,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -1457,6 +2949,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -1516,6 +3018,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -1568,6 +3080,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -1627,6 +3149,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -1729,6 +3261,482 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/google-maps/places": {
+      "post": {
+        "operationId": "socq_google_maps_places",
+        "summary": "Get Google Maps Places",
+        "description": "Fetch normalized places data from Google Maps.",
+        "tags": [
+          "google-maps"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PlaceItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/google-maps/reviews": {
+      "post": {
+        "operationId": "socq_google_maps_reviews",
+        "summary": "Get Google Maps Reviews",
+        "description": "Fetch normalized reviews data from Google Maps.",
+        "tags": [
+          "google-maps"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReviewItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "days_limit": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/google-maps/search": {
+      "post": {
+        "operationId": "socq_google_maps_search",
+        "summary": "Get Google Maps Search",
+        "description": "Fetch normalized search data from Google Maps.",
+        "tags": [
+          "google-maps"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PlaceItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "country": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "latitude": {
+                    "type": "number",
+                    "minimum": -90,
+                    "maximum": 90
+                  },
+                  "location": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "minimum": -180,
+                    "maximum": 180
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "zoom_level": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 21
+                  }
+                },
+                "required": [
+                  "location",
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/google-play/apps": {
+      "post": {
+        "operationId": "socq_google_play_apps",
+        "summary": "Get Google Play Apps",
+        "description": "Fetch normalized apps data from Google Play.",
+        "tags": [
+          "google-play"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AppItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/google-play/rankings": {
+      "post": {
+        "operationId": "socq_google_play_rankings",
+        "summary": "Get Google Play Rankings",
+        "description": "Fetch normalized rankings data from Google Play.",
+        "tags": [
+          "google-play"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AppItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/google-play/reviews": {
+      "post": {
+        "operationId": "socq_google_play_reviews",
+        "summary": "Get Google Play Reviews",
+        "description": "Fetch normalized reviews data from Google Play.",
+        "tags": [
+          "google-play"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReviewItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "country": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -1798,6 +3806,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -1858,6 +3876,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -1958,6 +3986,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -2022,6 +4060,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -2083,6 +4131,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -2158,6 +4216,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -2221,6 +4289,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -2281,6 +4359,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -2381,6 +4469,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -2437,6 +4535,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -2537,6 +4645,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -2603,6 +4721,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -2703,6 +4831,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -2763,6 +4901,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -2830,6 +4978,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -2889,6 +5047,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -2938,6 +5106,241 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/kwai/posts": {
+      "post": {
+        "operationId": "socq_kwai_posts",
+        "summary": "Get Kwai Posts",
+        "description": "Fetch normalized posts data from Kwai.",
+        "tags": [
+          "kwai"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/kwai/profiles": {
+      "post": {
+        "operationId": "socq_kwai_profiles",
+        "summary": "Get Kwai Profiles",
+        "description": "Fetch normalized profiles data from Kwai.",
+        "tags": [
+          "kwai"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  },
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account username."
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "url"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "username"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/kwai/user-posts": {
+      "post": {
+        "operationId": "socq_kwai_user_posts",
+        "summary": "Get Kwai User Posts",
+        "description": "Fetch normalized user posts data from Kwai.",
+        "tags": [
+          "kwai"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  },
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account username."
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "url"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "username"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -2993,6 +5396,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -3096,6 +5509,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -3152,6 +5575,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -3217,6 +5650,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -3293,6 +5736,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -3352,6 +5805,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -3404,6 +5867,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -3463,6 +5936,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -3542,6 +6025,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -3598,6 +6091,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -3703,6 +6206,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -3759,6 +6272,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -3828,6 +6351,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -3884,6 +6417,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -3946,6 +6489,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -4003,6 +6556,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -4070,6 +6633,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -4129,6 +6702,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -4185,6 +6768,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -4249,6 +6842,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -4317,6 +6920,591 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/rednote/comment-replies": {
+      "post": {
+        "operationId": "socq_rednote_comment_replies",
+        "summary": "Get Rednote Comment Replies",
+        "description": "Fetch normalized comment replies data from Rednote.",
+        "tags": [
+          "rednote"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "comment_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public comment identifier."
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [
+                  "comment_id",
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/rednote/comments": {
+      "post": {
+        "operationId": "socq_rednote_comments",
+        "summary": "Get Rednote Comments",
+        "description": "Fetch normalized comments data from Rednote.",
+        "tags": [
+          "rednote"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/rednote/home-recommendations": {
+      "post": {
+        "operationId": "socq_rednote_home_recommendations",
+        "summary": "Get Rednote Home Recommendations",
+        "description": "Fetch normalized home recommendations data from Rednote.",
+        "tags": [
+          "rednote"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "media_type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 40,
+                    "default": 20
+                  }
+                },
+                "required": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/rednote/notes": {
+      "post": {
+        "operationId": "socq_rednote_notes",
+        "summary": "Get Rednote Notes",
+        "description": "Fetch normalized notes data from Rednote.",
+        "tags": [
+          "rednote"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/rednote/profiles": {
+      "post": {
+        "operationId": "socq_rednote_profiles",
+        "summary": "Get Rednote Profiles",
+        "description": "Fetch normalized profiles data from Rednote.",
+        "tags": [
+          "rednote"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account identifier."
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "url"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "user_id"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/rednote/search": {
+      "post": {
+        "operationId": "socq_rednote_search",
+        "summary": "Get Rednote Search",
+        "description": "Fetch normalized search data from Rednote.",
+        "tags": [
+          "rednote"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "media_type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "published_within": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/rednote/search-users": {
+      "post": {
+        "operationId": "socq_rednote_search_users",
+        "summary": "Get Rednote Search Users",
+        "description": "Fetch normalized search users data from Rednote.",
+        "tags": [
+          "rednote"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/rednote/user-notes": {
+      "post": {
+        "operationId": "socq_rednote_user_notes",
+        "summary": "Get Rednote User Notes",
+        "description": "Fetch normalized user notes data from Rednote.",
+        "tags": [
+          "rednote"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account identifier."
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "url"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "user_id"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -4411,6 +7599,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -4497,6 +7695,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -4589,6 +7797,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -4675,6 +7893,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -4766,6 +7994,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -4847,6 +8085,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -4935,6 +8183,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -5031,6 +8289,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -5116,6 +8384,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -5208,6 +8486,211 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/snapchat/profiles": {
+      "post": {
+        "operationId": "socq_snapchat_profiles",
+        "summary": "Get Snapchat Profiles",
+        "description": "Fetch normalized profiles data from Snapchat.",
+        "tags": [
+          "snapchat"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account username."
+                  }
+                },
+                "required": [
+                  "username"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/snapchat/spotlight-comments": {
+      "post": {
+        "operationId": "socq_snapchat_spotlight_comments",
+        "summary": "Get Snapchat Spotlight Comments",
+        "description": "Fetch normalized spotlight comments data from Snapchat.",
+        "tags": [
+          "snapchat"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/snapchat/spotlights": {
+      "post": {
+        "operationId": "socq_snapchat_spotlights",
+        "summary": "Get Snapchat Spotlights",
+        "description": "Fetch normalized spotlights data from Snapchat.",
+        "tags": [
+          "snapchat"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -5267,6 +8750,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -5323,6 +8816,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -5390,6 +8893,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -5442,6 +8955,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -5507,6 +9030,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -5563,6 +9096,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -5627,6 +9170,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -5698,6 +9251,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -5762,6 +9325,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -5823,6 +9396,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -5897,6 +9480,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -5958,6 +9551,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -6030,6 +9633,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -6099,6 +9712,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -6163,6 +9786,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -6224,6 +9857,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -6280,6 +9923,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -6351,6 +10004,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -6407,6 +10070,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -6487,6 +10160,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -6550,6 +10233,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -6606,6 +10299,432 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/truth-social/posts": {
+      "post": {
+        "operationId": "socq_truth_social_posts",
+        "summary": "Get Truth Social Posts",
+        "description": "Fetch normalized posts data from Truth Social.",
+        "tags": [
+          "truth-social"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/truth-social/profiles": {
+      "post": {
+        "operationId": "socq_truth_social_profiles",
+        "summary": "Get Truth Social Profiles",
+        "description": "Fetch normalized profiles data from Truth Social.",
+        "tags": [
+          "truth-social"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account username."
+                  }
+                },
+                "required": [
+                  "username"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/truth-social/user-posts": {
+      "post": {
+        "operationId": "socq_truth_social_user_posts",
+        "summary": "Get Truth Social User Posts",
+        "description": "Fetch normalized user posts data from Truth Social.",
+        "tags": [
+          "truth-social"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "trim": {
+                    "type": "boolean"
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account identifier."
+                  },
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account username."
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "user_id"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "username"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/twitch/clips": {
+      "post": {
+        "operationId": "socq_twitch_clips",
+        "summary": "Get Twitch Clips",
+        "description": "Fetch normalized clips data from Twitch.",
+        "tags": [
+          "twitch"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/twitch/profiles": {
+      "post": {
+        "operationId": "socq_twitch_profiles",
+        "summary": "Get Twitch Profiles",
+        "description": "Fetch normalized profiles data from Twitch.",
+        "tags": [
+          "twitch"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account username."
+                  }
+                },
+                "required": [
+                  "username"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/twitch/user-videos": {
+      "post": {
+        "operationId": "socq_twitch_user_videos",
+        "summary": "Get Twitch User Videos",
+        "description": "Fetch normalized user videos data from Twitch.",
+        "tags": [
+          "twitch"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "filter_by": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account username."
+                  }
+                },
+                "required": [
+                  "username"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -6679,6 +10798,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -6749,6 +10878,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -6816,6 +10955,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -6893,6 +11042,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -6963,6 +11122,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -7022,6 +11191,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -7078,6 +11257,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -7142,6 +11331,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -7214,6 +11413,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -7275,6 +11484,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -7347,6 +11566,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -7411,6 +11640,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -7467,6 +11706,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -7556,6 +11805,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -7621,6 +11880,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -7690,6 +11959,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -7766,6 +12045,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -7827,6 +12116,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -7905,6 +12204,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -7966,6 +12275,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -8032,6 +12351,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -8088,6 +12417,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
                 }
               }
             }
@@ -8252,6 +12591,37 @@
             ]
           }
         }
+      },
+      "AgentValidationErrorResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "const": 422
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "details": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "message",
+              "type"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "error"
+        ]
       },
       "AccountItem": {
         "additionalProperties": false,
@@ -12718,6 +17088,648 @@
         "title": "SerpResultItem",
         "type": "object",
         "x-schema-id": "serp-result",
+        "x-schema-version": "1.0"
+      },
+      "PlaceItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name",
+            "description": "Place or business name.",
+            "x-description-zh": "地点或商家名称。"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text",
+            "description": "Primary text associated with the result item.",
+            "x-description-zh": "结果项的主要文本内容。"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Category",
+            "description": "Category assigned to the result item.",
+            "x-description-zh": "结果项所属分类。"
+          },
+          "address": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Address",
+            "description": "Public street or formatted address.",
+            "x-description-zh": "公开街道地址或格式化地址。"
+          },
+          "phone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Phone",
+            "description": "Public contact phone number.",
+            "x-description-zh": "公开联系电话。"
+          },
+          "website": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Website",
+            "description": "Website associated with the account, company, or advertiser.",
+            "x-description-zh": "账号、公司或广告主关联的网站。"
+          },
+          "rating": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rating",
+            "description": "Rating value reported by the platform.",
+            "x-description-zh": "平台报告的评分值。"
+          },
+          "reviews_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Reviews Count",
+            "description": "Number of reviews.",
+            "x-description-zh": "评价数量。"
+          },
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Geographic location associated with the result.",
+            "x-description-zh": "结果关联的地理位置信息。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "name",
+          "text",
+          "category",
+          "address",
+          "phone",
+          "website",
+          "rating",
+          "reviews_count",
+          "location"
+        ],
+        "title": "PlaceItem",
+        "type": "object",
+        "x-schema-id": "place",
+        "x-schema-version": "1.0"
+      },
+      "AppItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "app_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "App Id",
+            "description": "Public application identifier or package name.",
+            "x-description-zh": "应用的公开标识或包名。"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name",
+            "description": "Application name.",
+            "x-description-zh": "应用名称。"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text",
+            "description": "Primary text associated with the result item.",
+            "x-description-zh": "结果项的主要文本内容。"
+          },
+          "developer": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Developer",
+            "description": "Application developer or publisher name.",
+            "x-description-zh": "应用开发者或发行方名称。"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Category",
+            "description": "Category assigned to the result item.",
+            "x-description-zh": "结果项所属分类。"
+          },
+          "rating": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rating",
+            "description": "Rating value reported by the platform.",
+            "x-description-zh": "平台报告的评分值。"
+          },
+          "reviews_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Reviews Count",
+            "description": "Number of reviews.",
+            "x-description-zh": "评价数量。"
+          },
+          "installs": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Installs",
+            "description": "Install or download range reported by the store.",
+            "x-description-zh": "应用商店报告的安装量或下载量区间。"
+          },
+          "price": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Price"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Price information for the listing or product.",
+            "x-description-zh": "条目或商品的价格信息。"
+          },
+          "rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rank",
+            "description": "Position of the result in its source list or ranking.",
+            "x-description-zh": "结果在来源列表或排名中的位置。"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "app_id",
+          "name",
+          "text",
+          "developer",
+          "category",
+          "rating",
+          "reviews_count",
+          "installs",
+          "price",
+          "rank",
+          "media"
+        ],
+        "title": "AppItem",
+        "type": "object",
+        "x-schema-id": "app",
+        "x-schema-version": "1.0"
+      },
+      "SellerItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name",
+            "description": "Seller or business name.",
+            "x-description-zh": "卖家或企业名称。"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text",
+            "description": "Primary text associated with the result item.",
+            "x-description-zh": "结果项的主要文本内容。"
+          },
+          "website": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Website",
+            "description": "Website associated with the account, company, or advertiser.",
+            "x-description-zh": "账号、公司或广告主关联的网站。"
+          },
+          "rating": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rating",
+            "description": "Rating value reported by the platform.",
+            "x-description-zh": "平台报告的评分值。"
+          },
+          "feedback_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Feedback Count",
+            "description": "Number of seller feedback entries.",
+            "x-description-zh": "卖家反馈数量。"
+          },
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Geographic location associated with the result.",
+            "x-description-zh": "结果关联的地理位置信息。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "name",
+          "text",
+          "website",
+          "rating",
+          "feedback_count",
+          "location"
+        ],
+        "title": "SellerItem",
+        "type": "object",
+        "x-schema-id": "seller",
         "x-schema-version": "1.0"
       }
     }

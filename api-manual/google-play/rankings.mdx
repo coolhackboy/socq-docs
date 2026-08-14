@@ -1,0 +1,91 @@
+---
+title: "Get Google Play Rankings"
+description: "Fetch normalized rankings data from Google Play."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-play/rankings"
+---
+
+# Get Google Play Rankings
+
+Fetch normalized rankings data from Google Play.
+
+Each successfully returned standard result costs `0.15` credits. List endpoints reserve by `results_limit` and settle against the actual result count.
+
+## Request Body
+
+```json
+{
+  "urls": [
+    "https://play.google.com/store/apps/category/PRODUCTIVITY"
+  ],
+  "results_limit": 20
+}
+```
+
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/google-play/rankings` |
+| Compact MCP | `socq_execute` with `endpoint: "google-play/rankings"` |
+| Typed MCP | `socq_google_play_rankings` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=google_play_rankings` |
+| CLI | `socq google-play rankings` |
+
+<Info>
+A successful request returns a `task_id`. Poll it with `socq_get_task`, then read normalized records from `results.items`.
+</Info>
+{/* mcp-usage:end */}
+
+{/* result-schema:start */}
+## Result Fields
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `app_id` | `string` | Yes | Public application identifier or package name. |
+| `name` | `string` | Yes | Application name. |
+| `text` | `string` | Yes | Primary text associated with the result item. |
+| `developer` | `string` | Yes | Application developer or publisher name. |
+| `category` | `string` | Yes | Category assigned to the result item. |
+| `rating` | `number` | Yes | Rating value reported by the platform. |
+| `reviews_count` | `integer` | Yes | Number of reviews. |
+| `installs` | `string` | Yes | Install or download range reported by the store. |
+| `price` | `object` | Yes | Price information for the listing or product. |
+| `price` | `object` | No | Field value in the standard result. |
+| `price.amount` | `number` | Yes | Numeric monetary amount. |
+| `price.currency` | `string` | Yes | Currency code or symbol reported for the monetary value. |
+| `price.formatted` | `string` | Yes | Human-readable price or salary text. |
+| `rank` | `integer` | Yes | Position of the result in its source list or ranking. |
+| `media` | `array<object>` | Yes | Images, videos, or other media attached to the result. |
+{/* result-schema:end */}
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "message": "success",
+  "data": {
+    "task_id": "task_example",
+    "public_id": "google-play/rankings",
+    "status": "succeeded",
+    "result_count": 0,
+    "credits_amount": 0,
+    "results": {
+      "schema_id": "app",
+      "schema_version": "1.0",
+      "items": [],
+      "limit": 20,
+      "next_cursor": null,
+      "has_more": false
+    }
+  }
+}
+```

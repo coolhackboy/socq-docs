@@ -1,0 +1,90 @@
+---
+title: "抖音 Comments"
+description: "获取 抖音 的标准化公开 Comments 数据。"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/douyin/comments"
+---
+
+# 抖音 Comments
+
+获取 抖音 的标准化公开 Comments 数据。
+
+每个成功任务固定扣除 `0.10` 积分。
+
+## 请求体
+
+```json
+{
+  "url": "https://www.douyin.com/video/7123456789012345678",
+  "results_limit": 20
+}
+```
+
+{/* mcp-usage:start */}
+## 通过 MCP 使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/douyin/comments` |
+| Compact MCP | `socq_execute` with `endpoint: "douyin/comments"` |
+| Typed MCP | `socq_douyin_comments` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=douyin_comments` |
+| CLI | `socq douyin comments` |
+
+<Info>
+请求成功后会返回 `task_id`。使用 `socq_get_task` 查询任务，成功后从 `results.items` 读取标准化结果。
+</Info>
+{/* mcp-usage:end */}
+
+{/* result-schema:start */}
+## 结果字段
+
+| 字段 | 类型 | 可为空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `text` | `string` | 是 | 评论或回复的文本内容。 |
+| `author` | `object` | 是 | 内容的作者或发布者。 |
+| `author` | `object` | 否 | 标准结果中的字段值。 |
+| `author.id` | `string` | 是 | 作者的唯一标识。 |
+| `author.username` | `string` | 是 | 账号的公开用户名或账号标识。 |
+| `author.name` | `string` | 是 | 作者的显示名称。 |
+| `author.url` | `string` | 是 | 作者的公开访问地址（如可获得）。 |
+| `author.avatar_url` | `string` | 是 | 账号头像图片的地址。 |
+| `author.is_verified` | `boolean` | 是 | 账号是否已通过平台认证。 |
+| `author.is_private` | `boolean` | 是 | 账号是否为私密账号。 |
+| `parent_id` | `string` | 是 | 回复所对应的父评论标识。 |
+| `post_id` | `string` | 是 | 评论所属帖子的标识。 |
+| `metrics` | `object` | 是 | 结果项可获得的计数和度量数据。 |
+| `metrics` | `object` | 否 | 标准结果中的字段值。 |
+| `metrics.likes_count` | `integer` | 是 | 点赞数量。 |
+| `metrics.replies_count` | `integer` | 是 | 回复数量。 |
+{/* result-schema:end */}
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "message": "success",
+  "data": {
+    "task_id": "task_example",
+    "public_id": "douyin/comments",
+    "status": "succeeded",
+    "result_count": 0,
+    "credits_amount": 0,
+    "results": {
+      "schema_id": "comment",
+      "schema_version": "1.0",
+      "items": [],
+      "limit": 20,
+      "next_cursor": null,
+      "has_more": false
+    }
+  }
+}
+```

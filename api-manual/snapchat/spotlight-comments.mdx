@@ -1,0 +1,89 @@
+---
+title: "Get Snapchat Spotlight Comments"
+description: "Fetch normalized spotlight comments data from Snapchat."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/snapchat/spotlight-comments"
+---
+
+# Get Snapchat Spotlight Comments
+
+Fetch normalized spotlight comments data from Snapchat.
+
+Each successful task costs a fixed `0.19` credits.
+
+## Request Body
+
+```json
+{
+  "url": "https://www.snapchat.com/spotlight/example"
+}
+```
+
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/snapchat/spotlight-comments` |
+| Compact MCP | `socq_execute` with `endpoint: "snapchat/spotlight-comments"` |
+| Typed MCP | `socq_snapchat_spotlight_comments` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=snapchat_spotlight_comments` |
+| CLI | `socq snapchat spotlight-comments` |
+
+<Info>
+A successful request returns a `task_id`. Poll it with `socq_get_task`, then read normalized records from `results.items`.
+</Info>
+{/* mcp-usage:end */}
+
+{/* result-schema:start */}
+## Result Fields
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `text` | `string` | Yes | Comment or reply text. |
+| `author` | `object` | Yes | Author or publisher of the content. |
+| `author` | `object` | No | Field value in the standard result. |
+| `author.id` | `string` | Yes | Unique identifier of the author. |
+| `author.username` | `string` | Yes | Public username or handle of the account. |
+| `author.name` | `string` | Yes | Display name of the author. |
+| `author.url` | `string` | Yes | Public URL of the author when available. |
+| `author.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `author.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `author.is_private` | `boolean` | Yes | Whether the account is private. |
+| `parent_id` | `string` | Yes | Identifier of the parent comment for a reply. |
+| `post_id` | `string` | Yes | Identifier of the post containing the comment. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics` | `object` | No | Field value in the standard result. |
+| `metrics.likes_count` | `integer` | Yes | Number of likes. |
+| `metrics.replies_count` | `integer` | Yes | Number of replies. |
+{/* result-schema:end */}
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "message": "success",
+  "data": {
+    "task_id": "task_example",
+    "public_id": "snapchat/spotlight-comments",
+    "status": "succeeded",
+    "result_count": 0,
+    "credits_amount": 0,
+    "results": {
+      "schema_id": "comment",
+      "schema_version": "1.0",
+      "items": [],
+      "limit": 20,
+      "next_cursor": null,
+      "has_more": false
+    }
+  }
+}
+```
