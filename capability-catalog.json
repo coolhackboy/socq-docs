@@ -22916,7 +22916,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.google.com/maps/place/Empire+State+Building"
+            "https://www.google.com/maps/place/Coffee%20Project%20New%20York%20%7C%20East%20Village/data=!4m7!3m6!1s0x89c2599b5a24d7fd:0x9e354f6cf514b9fc!8m2!3d40.7270884!4d-73.9893820!16s%2Fg%2F11c3svpqld!19sChIJ_dckWptZwokR_LkU9WxPNZ4?authuser=0&hl=en&rclk=1"
           ]
         }
       ],
@@ -23426,9 +23426,9 @@
       "examples": [
         {
           "urls": [
-            "https://www.google.com/maps/place/Empire+State+Building"
+            "https://www.google.com/maps/place/Coffee%20Project%20New%20York%20%7C%20East%20Village/data=!4m7!3m6!1s0x89c2599b5a24d7fd:0x9e354f6cf514b9fc!8m2!3d40.7270884!4d-73.9893820!16s%2Fg%2F11c3svpqld!19sChIJ_dckWptZwokR_LkU9WxPNZ4?authuser=0&hl=en&rclk=1"
           ],
-          "days_limit": 30,
+          "days_limit": 3650,
           "results_limit": 3
         }
       ],
@@ -49311,7 +49311,7 @@
       },
       "examples": [
         {
-          "url": "https://www.xiaohongshu.com/explore/6a6174d6000000001d02013b?xsec_token=AB4sNisHvFy2q4C5ujG23AV858osk5rYC63eCgf8YTVOI%3D&xsec_source=pc_feed"
+          "url": "https://www.xiaohongshu.com/explore/6a2f423d000000001003cb36?xsec_token=ABtexB6bX5HgLD42SFrK1scGUmSO8YV5_isaLrDy9sLxQ%3D"
         }
       ],
       "tags": [
