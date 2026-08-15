@@ -67,14 +67,6 @@ Fetch normalized user videos data from Twitch.
 - MCP: socq_twitch_user_videos
 - CLI: socq twitch user-videos
 
-## Get Twitch Clips
-
-Fetch normalized clips data from Twitch.
-
-- REST: POST /v1/twitch/clips
-- MCP: socq_twitch_clips
-- CLI: socq twitch clips
-
 # Bluesky APIs
 
 ## Get Bluesky Profiles

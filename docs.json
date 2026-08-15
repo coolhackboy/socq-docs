@@ -351,8 +351,7 @@
                 "pages": [
                   "api-manual/twitch/overview",
                   "api-manual/twitch/profiles",
-                  "api-manual/twitch/user-videos",
-                  "api-manual/twitch/clips"
+                  "api-manual/twitch/user-videos"
                 ]
               },
               {
@@ -763,8 +762,7 @@
                 "pages": [
                   "zh/api-manual/twitch/overview",
                   "zh/api-manual/twitch/profiles",
-                  "zh/api-manual/twitch/user-videos",
-                  "zh/api-manual/twitch/clips"
+                  "zh/api-manual/twitch/user-videos"
                 ]
               },
               {

@@ -175,9 +175,6 @@
     "filter_by": "all",
     "sort_by": "time"
   },
-  "twitch/clips": {
-    "url": "https://clips.twitch.tv/CorrectBlushingCormorantPanicVis-tJuGowksdDy5wuEs"
-  },
   "bluesky/profiles": {
     "username": "jay.bsky.team"
   },

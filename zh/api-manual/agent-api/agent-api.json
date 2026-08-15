@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API 中文版",
-    "version": "v1-132d958902f5",
+    "version": "v1-457a38f62a01",
     "description": "根据 SocQ 能力目录生成的异步社交数据 API。"
   },
   "servers": [
@@ -10641,71 +10641,6 @@
                       "username"
                     ]
                   }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "任务已受理",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/twitch/clips": {
-      "post": {
-        "operationId": "socq_twitch_clips",
-        "summary": "Twitch Clips",
-        "description": "获取 Twitch 的标准化公开 Clips 数据。",
-        "tags": [
-          "twitch"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/ReelVideoItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "url": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "公开内容、主页或商品 URL。"
-                  }
-                },
-                "required": [
-                  "url"
                 ]
               }
             }
