@@ -18,7 +18,7 @@ CLI examples:
   socq youtube comments --urls URL --wait
   socq task results TASK_ID --format jsonl --output result.jsonl
 
-Use an idempotency key when retrying a submission after a transport failure. Reusing the key with identical input returns the original task; changing input produces a conflict.
+Use an idempotency key when retrying a submission after a transport failure. For 24 hours, reusing the key with identical input returns the original task; changing input produces a conflict. Unfinished tasks remain protected until they finish.
 
 See https://docs.socq.ai/llms.json for the complete generated endpoint catalog.
 

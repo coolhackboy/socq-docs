@@ -12690,10 +12690,6 @@
                   "null"
                 ],
                 "description": "任务创建时间。"
-              },
-              "idempotent_replay": {
-                "type": "boolean",
-                "description": "是否复用了由相同 Idempotency-Key 创建的已有任务。false 表示新任务，true 表示重复提交返回原任务。"
               }
             },
             "required": [

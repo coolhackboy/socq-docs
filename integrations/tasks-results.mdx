@@ -41,7 +41,7 @@ socq task wait TASK_ID --timeout 180
 
 ## Retry a submission safely
 
-Use an idempotency key when a network or client failure might trigger a submission retry. The same user, key, endpoint, and input return the original task; reusing the key with different input returns a conflict.
+Use an idempotency key when a network or client failure might trigger a submission retry. For 24 hours, the same user, key, endpoint, and input return the original task; reusing the key with different input returns a conflict. An unfinished task remains protected after the 24-hour window until it finishes.
 
 ```json
 {

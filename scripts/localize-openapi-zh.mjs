@@ -180,10 +180,6 @@ function localizeSubmitResponse(schema) {
   if (data.task_id) data.task_id.description = "任务 ID，用于查询任务状态和结果。";
   if (data.status) data.status.description = "任务当前状态。";
   if (data.created_time) data.created_time.description = "任务创建时间。";
-  if (data.idempotent_replay) {
-    data.idempotent_replay.description =
-      "是否复用了由相同 Idempotency-Key 创建的已有任务。false 表示新任务，true 表示重复提交返回原任务。";
-  }
 }
 
 async function main() {

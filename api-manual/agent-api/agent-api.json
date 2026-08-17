@@ -12520,9 +12520,6 @@
                   "string",
                   "null"
                 ]
-              },
-              "idempotent_replay": {
-                "type": "boolean"
               }
             },
             "required": [

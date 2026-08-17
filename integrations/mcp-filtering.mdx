@@ -99,7 +99,7 @@ Typed tools add four optional control fields:
 | `_wait_seconds` | Wait up to 30 seconds before returning the task |
 | `_result_limit` | Limit normalized records returned with this response, from 1 to 100 |
 | `_result_fields` | Project at most 50 comma-separated fields or dot paths |
-| `_idempotency_key` | Make a retry return the original task instead of creating another one |
+| `_idempotency_key` | Return the original task when retrying identical input within 24 hours; unfinished tasks remain protected until they finish |
 
 These are separate from business inputs such as `results_limit`. For example, `results_limit: 100` requests up to 100 collected comments, while `_result_limit: 25` limits the current response page to 25 records.
 
