@@ -18,6 +18,14 @@ Each successful task costs a fixed `0.19` credits.
 }
 ```
 
+## Request Constraints
+
+- Submit at least one of `username` or `user_id`; both non-empty values can be supplied together.
+- `username` must contain 1 to 253 ASCII letters, digits, periods, or hyphens, matching `^[A-Za-z0-9.-]{1,253}$`, without a leading `@`.
+- `user_id` must be a DID matching `^did:[a-z0-9]+:[A-Za-z0-9._:%-]+$`.
+- Only `username` and `user_id` are accepted. `results_limit`, a source cursor, and additional request fields are rejected.
+- Provider collection does not follow source pagination and saves records only from the first returned source page. Cursor and `limit` on `GET /v1/tasks/{task_id}` only paginate saved records; the read limit is 1 to 500.
+
 {/* mcp-usage:start */}
 ## Use with MCP
 

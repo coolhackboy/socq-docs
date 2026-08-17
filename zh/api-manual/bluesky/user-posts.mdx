@@ -18,6 +18,14 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/bluesky/user-posts"
 }
 ```
 
+## 请求限制
+
+- `username` 和 `user_id` 至少提交一个，也可以同时提交两个非空值。
+- `username` 必须由 1 到 253 个 ASCII 字母、数字、点或连字符组成，匹配 `^[A-Za-z0-9.-]{1,253}$`，且不能以 `@` 开头。
+- `user_id` 必须是匹配 `^did:[a-z0-9]+:[A-Za-z0-9._:%-]+$` 的 DID。
+- 请求只接受 `username` 和 `user_id`；`results_limit`、源站 cursor 和其他额外字段都会被拒绝。
+- Provider 采集不会跟随源站分页，只保存首次返回源站页面中的记录。`GET /v1/tasks/{task_id}` 上的 cursor 和 `limit` 仅对已保存记录分页，读取 limit 范围为 1 到 500。
+
 {/* mcp-usage:start */}
 ## 通过 MCP 使用
 

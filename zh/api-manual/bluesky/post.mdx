@@ -18,6 +18,13 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/bluesky/post"
 }
 ```
 
+## 请求限制
+
+- `url` 为必填的非空字符串，解析后的主机名必须是 `bsky.app` 或其子域名。
+- 使用任意 scheme 时，地址必须包含 authority 和 hostname；同时支持 `//bsky.app/...` 形式的协议相对地址。opaque URI、没有主机名或使用其他域名的值会被拒绝。
+- 提交校验不检查帖子专用路径；无法解析为受支持公开帖子的地址仍可能在 provider 执行阶段失败。
+- 请求只接受 `url`；不支持 `results_limit`、源站 cursor 或其他额外请求字段。
+
 {/* mcp-usage:start */}
 ## 通过 MCP 使用
 

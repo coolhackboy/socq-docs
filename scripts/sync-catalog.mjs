@@ -6,6 +6,35 @@ import {buildZhOpenApi} from "./localize-openapi-zh.mjs";
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const baseUrl = (process.env.SOCQ_BASE_URL ?? "https://api.socq.ai").replace(/\/$/, "");
 
+const BLUESKY_INPUT_OVERRIDES = {
+  "bluesky/posts": {
+    url: {
+      description:
+        "A non-empty post reference with an authority component whose parsed hostname is bsky.app or a bsky.app subdomain. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted.",
+    },
+  },
+  "bluesky/profiles": {
+    username: {
+      maxLength: 253,
+      pattern: "^[A-Za-z0-9.-]{1,253}$",
+      description:
+        "A Bluesky username containing 1 to 253 ASCII letters, digits, periods, or hyphens, without a leading @.",
+    },
+  },
+  "bluesky/user-posts": {
+    user_id: {
+      pattern: "^did:[a-z0-9]+:[A-Za-z0-9._:%-]+$",
+      description: "A Bluesky decentralized identifier in did:method:identifier form.",
+    },
+    username: {
+      maxLength: 253,
+      pattern: "^[A-Za-z0-9.-]{1,253}$",
+      description:
+        "A Bluesky handle containing 1 to 253 ASCII letters, digits, periods, or hyphens, without a leading @.",
+    },
+  },
+};
+
 async function fetchJson(path) {
   const response = await fetch(`${baseUrl}${path}`, {headers: {Accept: "application/json"}});
   if (!response.ok) {
@@ -99,18 +128,24 @@ async function writeJson(path, value) {
 function buildPublicOpenApi(source) {
   const openapi = structuredClone(source);
   const taskOperation = openapi.paths?.["/v1/tasks/{task_id}"]?.get;
-  if (!taskOperation) return openapi;
+  if (taskOperation) {
+    taskOperation.parameters = (taskOperation.parameters ?? []).filter(
+      (parameter) => parameter?.name !== "view"
+    );
+    const fields = taskOperation.parameters.find((parameter) => parameter?.name === "fields");
+    if (fields) fields.description = "Up to 50 comma-separated fields or dot paths.";
+  }
 
-  taskOperation.parameters = (taskOperation.parameters ?? []).filter(
-    (parameter) => parameter?.name !== "view"
-  );
-  const fields = taskOperation.parameters.find((parameter) => parameter?.name === "fields");
-  if (fields) fields.description = "Up to 50 comma-separated fields or dot paths.";
+  for (const publicId of Object.keys(BLUESKY_INPUT_OVERRIDES)) {
+    const schema = openapi.paths?.[`/v1/${publicId}`]?.post?.requestBody?.content?.["application/json"]?.schema;
+    applyInputOverrides(publicId, schema);
+  }
   return openapi;
 }
 
 function buildPublicEndpoint(source) {
   const endpoint = structuredClone(source);
+  applyInputOverrides(endpoint.public_id, endpoint.input_schema);
   const results = endpoint.output_schema?.properties?.results;
   if (!results) return endpoint;
 
@@ -119,4 +154,12 @@ function buildPublicEndpoint(source) {
     results.required = results.required.filter((name) => name !== "view");
   }
   return endpoint;
+}
+
+function applyInputOverrides(publicId, schema) {
+  const overrides = BLUESKY_INPUT_OVERRIDES[publicId];
+  if (!overrides || !schema?.properties) return;
+  for (const [name, values] of Object.entries(overrides)) {
+    if (schema.properties[name]) Object.assign(schema.properties[name], values);
+  }
 }

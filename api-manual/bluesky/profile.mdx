@@ -18,6 +18,12 @@ Each successful task costs a fixed `0.19` credits.
 }
 ```
 
+## Request Constraints
+
+- `username` is required and must contain 1 to 253 ASCII letters, digits, periods, or hyphens, matching `^[A-Za-z0-9.-]{1,253}$`.
+- A leading `@`, underscores, colons, DIDs, profile URLs, empty values, and additional request fields are rejected.
+- Each task accepts one username. `user_id`, username arrays, `results_limit`, and a source cursor are not supported.
+
 {/* mcp-usage:start */}
 ## Use with MCP
 
