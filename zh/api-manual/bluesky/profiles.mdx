@@ -18,6 +18,12 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/bluesky/profiles"
 }
 ```
 
+## 请求限制
+
+- `username` 为必填项，必须由 1 到 253 个 ASCII 字母、数字、点或连字符组成，并匹配 `^[A-Za-z0-9.-]{1,253}$`。
+- 开头的 `@`、下划线、冒号、DID、主页 URL、空值和额外请求字段都会被拒绝。
+- 每个任务只接受一个 username；不支持 `user_id`、username 数组、`results_limit` 或源站 cursor。
+
 {/* mcp-usage:start */}
 ## 通过 MCP 使用
 

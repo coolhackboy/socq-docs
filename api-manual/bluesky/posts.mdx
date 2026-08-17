@@ -18,6 +18,13 @@ Each successful task costs a fixed `0.19` credits.
 }
 ```
 
+## Request Constraints
+
+- `url` is required and must be a non-empty string whose parsed hostname is `bsky.app` or a `bsky.app` subdomain.
+- Validation accepts references using any scheme when they include an authority and hostname, plus protocol-relative references such as `//bsky.app/...`; opaque or hostless values and other domains are rejected.
+- Submission validation does not enforce a post-specific path. A reference that does not resolve to a supported public post can still fail during provider execution.
+- The request accepts only `url`. `results_limit`, a source cursor, and additional request fields are not supported.
+
 {/* mcp-usage:start */}
 ## Use with MCP
 

@@ -75,6 +75,16 @@ const PARAMETER_DESCRIPTIONS = {
   fields: "最多 50 个逗号分隔字段或点路径。",
 };
 
+const INPUT_DESCRIPTION_OVERRIDES = {
+  "bluesky/posts.url":
+    "包含 authority 的非空帖子地址，解析后的主机名必须为 bsky.app 或其子域名；任意 scheme 均可使用，但必须包含 authority 和 hostname，同时支持协议相对地址。",
+  "bluesky/profiles.username":
+    "由 1 到 253 个 ASCII 字母、数字、点或连字符组成，且不带开头 @ 的 Bluesky username。",
+  "bluesky/user-posts.user_id": "采用 did:method:identifier 格式的 Bluesky 去中心化标识符。",
+  "bluesky/user-posts.username":
+    "由 1 到 253 个 ASCII 字母、数字、点或连字符组成，且不带开头 @ 的 Bluesky handle。",
+};
+
 export async function buildZhOpenApi(openapi, root = defaultRoot) {
   const localized = structuredClone(openapi);
   localized.info.title = "SocQ Agent API 中文版";
@@ -92,7 +102,7 @@ export async function buildZhOpenApi(openapi, root = defaultRoot) {
         if (operation.responses?.["200"]) {
           operation.responses["200"].description = "任务已受理";
         }
-        localizeInputSchema(operation.requestBody?.content?.["application/json"]?.schema);
+        localizeInputSchema(operation.requestBody?.content?.["application/json"]?.schema, publicId);
       } else {
         localizeCommonOperation(path, operation);
       }
@@ -126,13 +136,17 @@ function frontmatterValue(content, key) {
   return match[1];
 }
 
-function localizeInputSchema(schema) {
+function localizeInputSchema(schema, publicId) {
   if (!schema?.properties) return;
   for (const [name, property] of Object.entries(schema.properties)) {
     const constraints = [];
     if (property.minItems != null) constraints.push(`至少提供 ${property.minItems} 项`);
     if (property.maxItems != null) constraints.push(`最多提供 ${property.maxItems} 项`);
-    const description = FIELD_DESCRIPTIONS[name] ?? property.description ?? "请求参数。";
+    const description =
+      INPUT_DESCRIPTION_OVERRIDES[`${publicId}.${name}`] ??
+      FIELD_DESCRIPTIONS[name] ??
+      property.description ??
+      "请求参数。";
     property.description = constraints.length
       ? `${description.replace(/[。.]$/, "")}，${constraints.join("，")}。`
       : description;

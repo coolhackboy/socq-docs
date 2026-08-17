@@ -625,7 +625,7 @@
                   "url": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A public content or product URL."
+                    "description": "A non-empty post reference with an authority component whose parsed hostname is bsky.app or a bsky.app subdomain. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted."
                   }
                 },
                 "required": [
@@ -690,7 +690,9 @@
                   "username": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A public account username."
+                    "maxLength": 253,
+                    "pattern": "^[A-Za-z0-9.-]{1,253}$",
+                    "description": "A Bluesky username containing 1 to 253 ASCII letters, digits, periods, or hyphens, without a leading @."
                   }
                 },
                 "required": [
@@ -755,12 +757,15 @@
                   "user_id": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A public account identifier."
+                    "pattern": "^did:[a-z0-9]+:[A-Za-z0-9._:%-]+$",
+                    "description": "A Bluesky decentralized identifier in did:method:identifier form."
                   },
                   "username": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A public account username."
+                    "maxLength": 253,
+                    "pattern": "^[A-Za-z0-9.-]{1,253}$",
+                    "description": "A Bluesky handle containing 1 to 253 ASCII letters, digits, periods, or hyphens, without a leading @."
                   }
                 },
                 "required": [],
