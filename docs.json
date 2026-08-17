@@ -340,8 +340,8 @@
                 "icon": "https://cdn.simpleicons.org/snapchat",
                 "pages": [
                   "api-manual/snapchat/overview",
-                  "api-manual/snapchat/profiles",
-                  "api-manual/snapchat/spotlights",
+                  "api-manual/snapchat/profile",
+                  "api-manual/snapchat/spotlight",
                   "api-manual/snapchat/spotlight-comments"
                 ]
               },
@@ -350,7 +350,7 @@
                 "icon": "https://cdn.simpleicons.org/twitch",
                 "pages": [
                   "api-manual/twitch/overview",
-                  "api-manual/twitch/profiles",
+                  "api-manual/twitch/profile",
                   "api-manual/twitch/user-videos"
                 ]
               },
@@ -359,9 +359,9 @@
                 "icon": "https://cdn.simpleicons.org/bluesky",
                 "pages": [
                   "api-manual/bluesky/overview",
-                  "api-manual/bluesky/profiles",
+                  "api-manual/bluesky/profile",
                   "api-manual/bluesky/user-posts",
-                  "api-manual/bluesky/posts"
+                  "api-manual/bluesky/post"
                 ]
               },
               {
@@ -369,9 +369,9 @@
                 "icon": "https://cdn.simpleicons.org/kuaishou",
                 "pages": [
                   "api-manual/kwai/overview",
-                  "api-manual/kwai/profiles",
+                  "api-manual/kwai/profile",
                   "api-manual/kwai/user-posts",
-                  "api-manual/kwai/posts"
+                  "api-manual/kwai/post"
                 ]
               },
               {
@@ -379,9 +379,9 @@
                 "icon": "https://static-assets-1.truthsocial.com/tmtg%3Aprime-ts-assets/site_uploads/files/000/000/035/original/Truth_Social_Profile_Icon.png",
                 "pages": [
                   "api-manual/truth-social/overview",
-                  "api-manual/truth-social/profiles",
+                  "api-manual/truth-social/profile",
                   "api-manual/truth-social/user-posts",
-                  "api-manual/truth-social/posts"
+                  "api-manual/truth-social/post"
                 ]
               },
               {
@@ -390,7 +390,7 @@
                 "pages": [
                   "api-manual/google-maps/overview",
                   "api-manual/google-maps/search",
-                  "api-manual/google-maps/places",
+                  "api-manual/google-maps/place-details",
                   "api-manual/google-maps/reviews"
                 ]
               },
@@ -399,10 +399,10 @@
                 "icon": "https://api.iconify.design/simple-icons/amazon.svg?color=%23FF9900",
                 "pages": [
                   "api-manual/amazon/overview",
-                  "api-manual/amazon/search",
-                  "api-manual/amazon/products",
+                  "api-manual/amazon/product-search",
+                  "api-manual/amazon/product-detail",
                   "api-manual/amazon/reviews",
-                  "api-manual/amazon/sellers",
+                  "api-manual/amazon/seller-info",
                   "api-manual/amazon/best-sellers"
                 ]
               },
@@ -411,9 +411,9 @@
                 "icon": "https://cdn.simpleicons.org/googleplay",
                 "pages": [
                   "api-manual/google-play/overview",
-                  "api-manual/google-play/apps",
-                  "api-manual/google-play/reviews",
-                  "api-manual/google-play/rankings"
+                  "api-manual/google-play/app-detail",
+                  "api-manual/google-play/app-reviews",
+                  "api-manual/google-play/app-rankings"
                 ]
               },
               {
@@ -421,8 +421,8 @@
                 "icon": "https://cdn.simpleicons.org/appstore",
                 "pages": [
                   "api-manual/apple-app-store/overview",
-                  "api-manual/apple-app-store/apps",
-                  "api-manual/apple-app-store/reviews",
+                  "api-manual/apple-app-store/app-detail",
+                  "api-manual/apple-app-store/app-reviews",
                   "api-manual/apple-app-store/rankings"
                 ]
               },
@@ -431,12 +431,12 @@
                 "icon": "https://cdn.simpleicons.org/xiaohongshu",
                 "pages": [
                   "api-manual/rednote/overview",
-                  "api-manual/rednote/notes",
-                  "api-manual/rednote/profiles",
+                  "api-manual/rednote/note-detail",
+                  "api-manual/rednote/user-profile",
                   "api-manual/rednote/user-notes",
-                  "api-manual/rednote/search",
+                  "api-manual/rednote/search-notes",
                   "api-manual/rednote/search-users",
-                  "api-manual/rednote/comments",
+                  "api-manual/rednote/note-comments",
                   "api-manual/rednote/comment-replies",
                   "api-manual/rednote/home-recommendations"
                 ]
@@ -446,13 +446,13 @@
                 "icon": "https://cdn.simpleicons.org/tiktok",
                 "pages": [
                   "api-manual/douyin/overview",
-                  "api-manual/douyin/videos",
-                  "api-manual/douyin/profiles",
+                  "api-manual/douyin/video-detail",
+                  "api-manual/douyin/user-profile",
                   "api-manual/douyin/user-videos",
-                  "api-manual/douyin/search",
-                  "api-manual/douyin/comments",
-                  "api-manual/douyin/live-room-info",
-                  "api-manual/douyin/live-room-products"
+                  "api-manual/douyin/video-search",
+                  "api-manual/douyin/video-comments",
+                  "api-manual/douyin/live-room-detail",
+                  "api-manual/douyin/product-data"
                 ]
               },
               {
@@ -751,8 +751,8 @@
                 "icon": "https://cdn.simpleicons.org/snapchat",
                 "pages": [
                   "zh/api-manual/snapchat/overview",
-                  "zh/api-manual/snapchat/profiles",
-                  "zh/api-manual/snapchat/spotlights",
+                  "zh/api-manual/snapchat/profile",
+                  "zh/api-manual/snapchat/spotlight",
                   "zh/api-manual/snapchat/spotlight-comments"
                 ]
               },
@@ -761,7 +761,7 @@
                 "icon": "https://cdn.simpleicons.org/twitch",
                 "pages": [
                   "zh/api-manual/twitch/overview",
-                  "zh/api-manual/twitch/profiles",
+                  "zh/api-manual/twitch/profile",
                   "zh/api-manual/twitch/user-videos"
                 ]
               },
@@ -770,9 +770,9 @@
                 "icon": "https://cdn.simpleicons.org/bluesky",
                 "pages": [
                   "zh/api-manual/bluesky/overview",
-                  "zh/api-manual/bluesky/profiles",
+                  "zh/api-manual/bluesky/profile",
                   "zh/api-manual/bluesky/user-posts",
-                  "zh/api-manual/bluesky/posts"
+                  "zh/api-manual/bluesky/post"
                 ]
               },
               {
@@ -780,9 +780,9 @@
                 "icon": "https://cdn.simpleicons.org/kuaishou",
                 "pages": [
                   "zh/api-manual/kwai/overview",
-                  "zh/api-manual/kwai/profiles",
+                  "zh/api-manual/kwai/profile",
                   "zh/api-manual/kwai/user-posts",
-                  "zh/api-manual/kwai/posts"
+                  "zh/api-manual/kwai/post"
                 ]
               },
               {
@@ -790,9 +790,9 @@
                 "icon": "https://static-assets-1.truthsocial.com/tmtg%3Aprime-ts-assets/site_uploads/files/000/000/035/original/Truth_Social_Profile_Icon.png",
                 "pages": [
                   "zh/api-manual/truth-social/overview",
-                  "zh/api-manual/truth-social/profiles",
+                  "zh/api-manual/truth-social/profile",
                   "zh/api-manual/truth-social/user-posts",
-                  "zh/api-manual/truth-social/posts"
+                  "zh/api-manual/truth-social/post"
                 ]
               },
               {
@@ -801,7 +801,7 @@
                 "pages": [
                   "zh/api-manual/google-maps/overview",
                   "zh/api-manual/google-maps/search",
-                  "zh/api-manual/google-maps/places",
+                  "zh/api-manual/google-maps/place-details",
                   "zh/api-manual/google-maps/reviews"
                 ]
               },
@@ -810,10 +810,10 @@
                 "icon": "https://api.iconify.design/simple-icons/amazon.svg?color=%23FF9900",
                 "pages": [
                   "zh/api-manual/amazon/overview",
-                  "zh/api-manual/amazon/search",
-                  "zh/api-manual/amazon/products",
+                  "zh/api-manual/amazon/product-search",
+                  "zh/api-manual/amazon/product-detail",
                   "zh/api-manual/amazon/reviews",
-                  "zh/api-manual/amazon/sellers",
+                  "zh/api-manual/amazon/seller-info",
                   "zh/api-manual/amazon/best-sellers"
                 ]
               },
@@ -822,9 +822,9 @@
                 "icon": "https://cdn.simpleicons.org/googleplay",
                 "pages": [
                   "zh/api-manual/google-play/overview",
-                  "zh/api-manual/google-play/apps",
-                  "zh/api-manual/google-play/reviews",
-                  "zh/api-manual/google-play/rankings"
+                  "zh/api-manual/google-play/app-detail",
+                  "zh/api-manual/google-play/app-reviews",
+                  "zh/api-manual/google-play/app-rankings"
                 ]
               },
               {
@@ -832,8 +832,8 @@
                 "icon": "https://cdn.simpleicons.org/appstore",
                 "pages": [
                   "zh/api-manual/apple-app-store/overview",
-                  "zh/api-manual/apple-app-store/apps",
-                  "zh/api-manual/apple-app-store/reviews",
+                  "zh/api-manual/apple-app-store/app-detail",
+                  "zh/api-manual/apple-app-store/app-reviews",
                   "zh/api-manual/apple-app-store/rankings"
                 ]
               },
@@ -842,12 +842,12 @@
                 "icon": "https://cdn.simpleicons.org/xiaohongshu",
                 "pages": [
                   "zh/api-manual/rednote/overview",
-                  "zh/api-manual/rednote/notes",
-                  "zh/api-manual/rednote/profiles",
+                  "zh/api-manual/rednote/note-detail",
+                  "zh/api-manual/rednote/user-profile",
                   "zh/api-manual/rednote/user-notes",
-                  "zh/api-manual/rednote/search",
+                  "zh/api-manual/rednote/search-notes",
                   "zh/api-manual/rednote/search-users",
-                  "zh/api-manual/rednote/comments",
+                  "zh/api-manual/rednote/note-comments",
                   "zh/api-manual/rednote/comment-replies",
                   "zh/api-manual/rednote/home-recommendations"
                 ]
@@ -857,13 +857,13 @@
                 "icon": "https://cdn.simpleicons.org/tiktok",
                 "pages": [
                   "zh/api-manual/douyin/overview",
-                  "zh/api-manual/douyin/videos",
-                  "zh/api-manual/douyin/profiles",
+                  "zh/api-manual/douyin/video-detail",
+                  "zh/api-manual/douyin/user-profile",
                   "zh/api-manual/douyin/user-videos",
-                  "zh/api-manual/douyin/search",
-                  "zh/api-manual/douyin/comments",
-                  "zh/api-manual/douyin/live-room-info",
-                  "zh/api-manual/douyin/live-room-products"
+                  "zh/api-manual/douyin/video-search",
+                  "zh/api-manual/douyin/video-comments",
+                  "zh/api-manual/douyin/live-room-detail",
+                  "zh/api-manual/douyin/product-data"
                 ]
               },
               {

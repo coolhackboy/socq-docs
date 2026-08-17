@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-457a38f62a01",
+    "version": "v1-7220ff41bac6",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -86,9 +86,9 @@
         }
       }
     },
-    "/v1/amazon/products": {
+    "/v1/amazon/product-detail": {
       "post": {
-        "operationId": "socq_amazon_products",
+        "operationId": "socq_amazon_product_detail",
         "summary": "Amazon Product Details API",
         "description": "Collect public Amazon product details.",
         "tags": [
@@ -230,9 +230,9 @@
         }
       }
     },
-    "/v1/amazon/search": {
+    "/v1/amazon/product-search": {
       "post": {
-        "operationId": "socq_amazon_search",
+        "operationId": "socq_amazon_product_search",
         "summary": "Amazon Product Search API",
         "description": "Search public Amazon products.",
         "tags": [
@@ -306,9 +306,9 @@
         }
       }
     },
-    "/v1/amazon/sellers": {
+    "/v1/amazon/seller-info": {
       "post": {
-        "operationId": "socq_amazon_sellers",
+        "operationId": "socq_amazon_seller_info",
         "summary": "Amazon Seller Info API",
         "description": "Collect public Amazon seller information.",
         "tags": [
@@ -375,9 +375,9 @@
         }
       }
     },
-    "/v1/apple-app-store/apps": {
+    "/v1/apple-app-store/app-detail": {
       "post": {
-        "operationId": "socq_apple_app_store_apps",
+        "operationId": "socq_apple_app_store_app_detail",
         "summary": "Apple App Store App Details API",
         "description": "Collect public Apple App Store app details.",
         "tags": [
@@ -519,9 +519,9 @@
         }
       }
     },
-    "/v1/apple-app-store/reviews": {
+    "/v1/apple-app-store/app-reviews": {
       "post": {
-        "operationId": "socq_apple_app_store_reviews",
+        "operationId": "socq_apple_app_store_app_reviews",
         "summary": "Apple App Store Reviews API",
         "description": "Collect public Apple App Store reviews.",
         "tags": [
@@ -594,9 +594,9 @@
         }
       }
     },
-    "/v1/bluesky/posts": {
+    "/v1/bluesky/post": {
       "post": {
-        "operationId": "socq_bluesky_posts",
+        "operationId": "socq_bluesky_post",
         "summary": "Bluesky Post API",
         "description": "Collect a public Bluesky post.",
         "tags": [
@@ -659,9 +659,9 @@
         }
       }
     },
-    "/v1/bluesky/profiles": {
+    "/v1/bluesky/profile": {
       "post": {
-        "operationId": "socq_bluesky_profiles",
+        "operationId": "socq_bluesky_profile",
         "summary": "Bluesky Profile API",
         "description": "Collect a public Bluesky profile.",
         "tags": [
@@ -804,9 +804,9 @@
         }
       }
     },
-    "/v1/douyin/comments": {
+    "/v1/douyin/video-comments": {
       "post": {
-        "operationId": "socq_douyin_comments",
+        "operationId": "socq_douyin_video_comments",
         "summary": "Douyin Video Comments API",
         "description": "Collect one page of public Douyin video comments.",
         "tags": [
@@ -875,9 +875,9 @@
         }
       }
     },
-    "/v1/douyin/live-room-info": {
+    "/v1/douyin/live-room-detail": {
       "post": {
-        "operationId": "socq_douyin_live_room_info",
+        "operationId": "socq_douyin_live_room_detail",
         "summary": "Douyin Live Room Details API",
         "description": "Collect public Douyin live room details.",
         "tags": [
@@ -940,9 +940,9 @@
         }
       }
     },
-    "/v1/douyin/live-room-products": {
+    "/v1/douyin/product-data": {
       "post": {
-        "operationId": "socq_douyin_live_room_products",
+        "operationId": "socq_douyin_product_data",
         "summary": "Douyin Live Room Products API",
         "description": "Collect one page of public Douyin live room products.",
         "tags": [
@@ -1017,9 +1017,9 @@
         }
       }
     },
-    "/v1/douyin/profiles": {
+    "/v1/douyin/user-profile": {
       "post": {
-        "operationId": "socq_douyin_profiles",
+        "operationId": "socq_douyin_user_profile",
         "summary": "Douyin Profile API",
         "description": "Collect a public Douyin profile.",
         "tags": [
@@ -1097,9 +1097,9 @@
         }
       }
     },
-    "/v1/douyin/search": {
+    "/v1/douyin/video-search": {
       "post": {
-        "operationId": "socq_douyin_search",
+        "operationId": "socq_douyin_video_search",
         "summary": "Douyin Video Search API",
         "description": "Search public Douyin videos.",
         "tags": [
@@ -1248,9 +1248,9 @@
         }
       }
     },
-    "/v1/douyin/videos": {
+    "/v1/douyin/video-detail": {
       "post": {
-        "operationId": "socq_douyin_videos",
+        "operationId": "socq_douyin_video_detail",
         "summary": "Douyin Video Details API",
         "description": "Collect public Douyin video details.",
         "tags": [
@@ -3275,9 +3275,9 @@
         }
       }
     },
-    "/v1/google-maps/places": {
+    "/v1/google-maps/place-details": {
       "post": {
-        "operationId": "socq_google_maps_places",
+        "operationId": "socq_google_maps_place_details",
         "summary": "Google Maps Place Details API",
         "description": "Collect public Google Maps place details.",
         "tags": [
@@ -3518,9 +3518,9 @@
         }
       }
     },
-    "/v1/google-play/apps": {
+    "/v1/google-play/app-detail": {
       "post": {
-        "operationId": "socq_google_play_apps",
+        "operationId": "socq_google_play_app_detail",
         "summary": "Google Play App Details API",
         "description": "Collect public Google Play app details.",
         "tags": [
@@ -3587,9 +3587,9 @@
         }
       }
     },
-    "/v1/google-play/rankings": {
+    "/v1/google-play/app-rankings": {
       "post": {
-        "operationId": "socq_google_play_rankings",
+        "operationId": "socq_google_play_app_rankings",
         "summary": "Google Play Rankings API",
         "description": "Collect public Google Play category rankings.",
         "tags": [
@@ -3662,9 +3662,9 @@
         }
       }
     },
-    "/v1/google-play/reviews": {
+    "/v1/google-play/app-reviews": {
       "post": {
-        "operationId": "socq_google_play_reviews",
+        "operationId": "socq_google_play_app_reviews",
         "summary": "Google Play App Reviews API",
         "description": "Collect public Google Play app reviews.",
         "tags": [
@@ -5123,9 +5123,9 @@
         }
       }
     },
-    "/v1/kwai/posts": {
+    "/v1/kwai/post": {
       "post": {
-        "operationId": "socq_kwai_posts",
+        "operationId": "socq_kwai_post",
         "summary": "Kwai Post API",
         "description": "Collect a public Kwai post.",
         "tags": [
@@ -5188,9 +5188,9 @@
         }
       }
     },
-    "/v1/kwai/profiles": {
+    "/v1/kwai/profile": {
       "post": {
-        "operationId": "socq_kwai_profiles",
+        "operationId": "socq_kwai_profile",
         "summary": "Kwai Profile API",
         "description": "Collect a public Kwai profile.",
         "tags": [
@@ -7008,9 +7008,9 @@
         }
       }
     },
-    "/v1/rednote/comments": {
+    "/v1/rednote/note-comments": {
       "post": {
-        "operationId": "socq_rednote_comments",
+        "operationId": "socq_rednote_note_comments",
         "summary": "Rednote Note Comments API",
         "description": "Collect one page of public Rednote note comments.",
         "tags": [
@@ -7145,9 +7145,9 @@
         }
       }
     },
-    "/v1/rednote/notes": {
+    "/v1/rednote/note-detail": {
       "post": {
-        "operationId": "socq_rednote_notes",
+        "operationId": "socq_rednote_note_detail",
         "summary": "Rednote Note Details API",
         "description": "Collect public Rednote note details.",
         "tags": [
@@ -7210,9 +7210,9 @@
         }
       }
     },
-    "/v1/rednote/profiles": {
+    "/v1/rednote/user-profile": {
       "post": {
-        "operationId": "socq_rednote_profiles",
+        "operationId": "socq_rednote_user_profile",
         "summary": "Rednote Profile API",
         "description": "Collect a public Rednote profile.",
         "tags": [
@@ -7290,9 +7290,9 @@
         }
       }
     },
-    "/v1/rednote/search": {
+    "/v1/rednote/search-notes": {
       "post": {
-        "operationId": "socq_rednote_search",
+        "operationId": "socq_rednote_search_notes",
         "summary": "Rednote Search Notes API",
         "description": "Search public Rednote notes.",
         "tags": [
@@ -8500,9 +8500,9 @@
         }
       }
     },
-    "/v1/snapchat/profiles": {
+    "/v1/snapchat/profile": {
       "post": {
-        "operationId": "socq_snapchat_profiles",
+        "operationId": "socq_snapchat_profile",
         "summary": "Snapchat Profile API",
         "description": "Collect a public Snapchat profile.",
         "tags": [
@@ -8630,9 +8630,9 @@
         }
       }
     },
-    "/v1/snapchat/spotlights": {
+    "/v1/snapchat/spotlight": {
       "post": {
-        "operationId": "socq_snapchat_spotlights",
+        "operationId": "socq_snapchat_spotlight",
         "summary": "Snapchat Spotlight API",
         "description": "Collect a public Snapchat Spotlight item.",
         "tags": [
@@ -10316,9 +10316,9 @@
         }
       }
     },
-    "/v1/truth-social/posts": {
+    "/v1/truth-social/post": {
       "post": {
-        "operationId": "socq_truth_social_posts",
+        "operationId": "socq_truth_social_post",
         "summary": "Truth Social Post API",
         "description": "Collect a public Truth Social post.",
         "tags": [
@@ -10381,9 +10381,9 @@
         }
       }
     },
-    "/v1/truth-social/profiles": {
+    "/v1/truth-social/profile": {
       "post": {
-        "operationId": "socq_truth_social_profiles",
+        "operationId": "socq_truth_social_profile",
         "summary": "Truth Social Profile API",
         "description": "Collect a public Truth Social profile.",
         "tags": [
@@ -10529,9 +10529,9 @@
         }
       }
     },
-    "/v1/twitch/profiles": {
+    "/v1/twitch/profile": {
       "post": {
-        "operationId": "socq_twitch_profiles",
+        "operationId": "socq_twitch_profile",
         "summary": "Twitch Profile API",
         "description": "Collect a public Twitch profile.",
         "tags": [

@@ -1,5 +1,5 @@
 {
-  "schema_version": "v1-457a38f62a01",
+  "schema_version": "v1-7220ff41bac6",
   "platforms": [
     {
       "platform": "amazon",
@@ -7,10 +7,10 @@
       "endpoint_count": 5,
       "tools": [
         "socq_amazon_best_sellers",
-        "socq_amazon_products",
+        "socq_amazon_product_detail",
         "socq_amazon_reviews",
-        "socq_amazon_search",
-        "socq_amazon_sellers"
+        "socq_amazon_product_search",
+        "socq_amazon_seller_info"
       ]
     },
     {
@@ -18,9 +18,9 @@
       "title": "Apple App Store",
       "endpoint_count": 3,
       "tools": [
-        "socq_apple_app_store_apps",
+        "socq_apple_app_store_app_detail",
         "socq_apple_app_store_rankings",
-        "socq_apple_app_store_reviews"
+        "socq_apple_app_store_app_reviews"
       ]
     },
     {
@@ -28,8 +28,8 @@
       "title": "Bluesky",
       "endpoint_count": 3,
       "tools": [
-        "socq_bluesky_posts",
-        "socq_bluesky_profiles",
+        "socq_bluesky_post",
+        "socq_bluesky_profile",
         "socq_bluesky_user_posts"
       ]
     },
@@ -38,13 +38,13 @@
       "title": "Douyin",
       "endpoint_count": 7,
       "tools": [
-        "socq_douyin_comments",
-        "socq_douyin_live_room_info",
-        "socq_douyin_live_room_products",
-        "socq_douyin_profiles",
-        "socq_douyin_search",
+        "socq_douyin_video_comments",
+        "socq_douyin_live_room_detail",
+        "socq_douyin_product_data",
+        "socq_douyin_user_profile",
+        "socq_douyin_video_search",
         "socq_douyin_user_videos",
-        "socq_douyin_videos"
+        "socq_douyin_video_detail"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "title": "Google Maps",
       "endpoint_count": 3,
       "tools": [
-        "socq_google_maps_places",
+        "socq_google_maps_place_details",
         "socq_google_maps_reviews",
         "socq_google_maps_search"
       ]
@@ -114,9 +114,9 @@
       "title": "Google Play",
       "endpoint_count": 3,
       "tools": [
-        "socq_google_play_apps",
-        "socq_google_play_rankings",
-        "socq_google_play_reviews"
+        "socq_google_play_app_detail",
+        "socq_google_play_app_rankings",
+        "socq_google_play_app_reviews"
       ]
     },
     {
@@ -148,8 +148,8 @@
       "title": "Kwai",
       "endpoint_count": 3,
       "tools": [
-        "socq_kwai_posts",
-        "socq_kwai_profiles",
+        "socq_kwai_post",
+        "socq_kwai_profile",
         "socq_kwai_user_posts"
       ]
     },
@@ -208,11 +208,11 @@
       "endpoint_count": 8,
       "tools": [
         "socq_rednote_comment_replies",
-        "socq_rednote_comments",
+        "socq_rednote_note_comments",
         "socq_rednote_home_recommendations",
-        "socq_rednote_notes",
-        "socq_rednote_profiles",
-        "socq_rednote_search",
+        "socq_rednote_note_detail",
+        "socq_rednote_user_profile",
+        "socq_rednote_search_notes",
         "socq_rednote_search_users",
         "socq_rednote_user_notes"
       ]
@@ -239,9 +239,9 @@
       "title": "Snapchat",
       "endpoint_count": 3,
       "tools": [
-        "socq_snapchat_profiles",
+        "socq_snapchat_profile",
         "socq_snapchat_spotlight_comments",
-        "socq_snapchat_spotlights"
+        "socq_snapchat_spotlight"
       ]
     },
     {
@@ -299,8 +299,8 @@
       "title": "Truth Social",
       "endpoint_count": 3,
       "tools": [
-        "socq_truth_social_posts",
-        "socq_truth_social_profiles",
+        "socq_truth_social_post",
+        "socq_truth_social_profile",
         "socq_truth_social_user_posts"
       ]
     },
@@ -309,7 +309,7 @@
       "title": "Twitch",
       "endpoint_count": 2,
       "tools": [
-        "socq_twitch_profiles",
+        "socq_twitch_profile",
         "socq_twitch_user_videos"
       ]
     },
@@ -942,10 +942,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/amazon/best-sellers"
     },
     {
-      "public_id": "amazon/products",
+      "public_id": "amazon/product-detail",
       "platform": "amazon",
       "resource": "products",
-      "tool_name": "socq_amazon_products",
+      "tool_name": "socq_amazon_product_detail",
       "title": "Amazon Product Details API",
       "description": "Collect public Amazon product details.",
       "input_schema": {
@@ -1522,7 +1522,7 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/amazon/products"
+      "docs_url": "https://docs.socq.ai/api-manual/amazon/product-detail"
     },
     {
       "public_id": "amazon/reviews",
@@ -2032,10 +2032,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/amazon/reviews"
     },
     {
-      "public_id": "amazon/search",
+      "public_id": "amazon/product-search",
       "platform": "amazon",
       "resource": "search",
-      "tool_name": "socq_amazon_search",
+      "tool_name": "socq_amazon_product_search",
       "title": "Amazon Product Search API",
       "description": "Search public Amazon products.",
       "input_schema": {
@@ -2619,13 +2619,13 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/amazon/search"
+      "docs_url": "https://docs.socq.ai/api-manual/amazon/product-search"
     },
     {
-      "public_id": "amazon/sellers",
+      "public_id": "amazon/seller-info",
       "platform": "amazon",
       "resource": "sellers",
-      "tool_name": "socq_amazon_sellers",
+      "tool_name": "socq_amazon_seller_info",
       "title": "Amazon Seller Info API",
       "description": "Collect public Amazon seller information.",
       "input_schema": {
@@ -3002,13 +3002,13 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/amazon/sellers"
+      "docs_url": "https://docs.socq.ai/api-manual/amazon/seller-info"
     },
     {
-      "public_id": "apple-app-store/apps",
+      "public_id": "apple-app-store/app-detail",
       "platform": "apple-app-store",
       "resource": "apps",
-      "tool_name": "socq_apple_app_store_apps",
+      "tool_name": "socq_apple_app_store_app_detail",
       "title": "Apple App Store App Details API",
       "description": "Collect public Apple App Store app details.",
       "input_schema": {
@@ -3517,7 +3517,7 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/apple-app-store/apps"
+      "docs_url": "https://docs.socq.ai/api-manual/apple-app-store/app-detail"
     },
     {
       "public_id": "apple-app-store/rankings",
@@ -4042,10 +4042,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/apple-app-store/rankings"
     },
     {
-      "public_id": "apple-app-store/reviews",
+      "public_id": "apple-app-store/app-reviews",
       "platform": "apple-app-store",
       "resource": "reviews",
-      "tool_name": "socq_apple_app_store_reviews",
+      "tool_name": "socq_apple_app_store_app_reviews",
       "title": "Apple App Store Reviews API",
       "description": "Collect public Apple App Store reviews.",
       "input_schema": {
@@ -4546,13 +4546,13 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/apple-app-store/reviews"
+      "docs_url": "https://docs.socq.ai/api-manual/apple-app-store/app-reviews"
     },
     {
-      "public_id": "bluesky/posts",
+      "public_id": "bluesky/post",
       "platform": "bluesky",
       "resource": "posts",
-      "tool_name": "socq_bluesky_posts",
+      "tool_name": "socq_bluesky_post",
       "title": "Bluesky Post API",
       "description": "Collect a public Bluesky post.",
       "input_schema": {
@@ -5110,13 +5110,13 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/bluesky/posts"
+      "docs_url": "https://docs.socq.ai/api-manual/bluesky/post"
     },
     {
-      "public_id": "bluesky/profiles",
+      "public_id": "bluesky/profile",
       "platform": "bluesky",
       "resource": "profiles",
-      "tool_name": "socq_bluesky_profiles",
+      "tool_name": "socq_bluesky_profile",
       "title": "Bluesky Profile API",
       "description": "Collect a public Bluesky profile.",
       "input_schema": {
@@ -5596,7 +5596,7 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/bluesky/profiles"
+      "docs_url": "https://docs.socq.ai/api-manual/bluesky/profile"
     },
     {
       "public_id": "bluesky/user-posts",
@@ -6178,10 +6178,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/bluesky/user-posts"
     },
     {
-      "public_id": "douyin/comments",
+      "public_id": "douyin/video-comments",
       "platform": "douyin",
       "resource": "comments",
-      "tool_name": "socq_douyin_comments",
+      "tool_name": "socq_douyin_video_comments",
       "title": "Douyin Video Comments API",
       "description": "Collect one page of public Douyin video comments.",
       "input_schema": {
@@ -6593,13 +6593,13 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/douyin/comments"
+      "docs_url": "https://docs.socq.ai/api-manual/douyin/video-comments"
     },
     {
-      "public_id": "douyin/live-room-info",
+      "public_id": "douyin/live-room-detail",
       "platform": "douyin",
       "resource": "live-room-info",
-      "tool_name": "socq_douyin_live_room_info",
+      "tool_name": "socq_douyin_live_room_detail",
       "title": "Douyin Live Room Details API",
       "description": "Collect public Douyin live room details.",
       "input_schema": {
@@ -7106,13 +7106,13 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/douyin/live-room-info"
+      "docs_url": "https://docs.socq.ai/api-manual/douyin/live-room-detail"
     },
     {
-      "public_id": "douyin/live-room-products",
+      "public_id": "douyin/product-data",
       "platform": "douyin",
       "resource": "live-room-products",
-      "tool_name": "socq_douyin_live_room_products",
+      "tool_name": "socq_douyin_product_data",
       "title": "Douyin Live Room Products API",
       "description": "Collect one page of public Douyin live room products.",
       "input_schema": {
@@ -7693,13 +7693,13 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/douyin/live-room-products"
+      "docs_url": "https://docs.socq.ai/api-manual/douyin/product-data"
     },
     {
-      "public_id": "douyin/profiles",
+      "public_id": "douyin/user-profile",
       "platform": "douyin",
       "resource": "profiles",
-      "tool_name": "socq_douyin_profiles",
+      "tool_name": "socq_douyin_user_profile",
       "title": "Douyin Profile API",
       "description": "Collect a public Douyin profile.",
       "input_schema": {
@@ -8194,13 +8194,13 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/douyin/profiles"
+      "docs_url": "https://docs.socq.ai/api-manual/douyin/user-profile"
     },
     {
-      "public_id": "douyin/search",
+      "public_id": "douyin/video-search",
       "platform": "douyin",
       "resource": "search",
-      "tool_name": "socq_douyin_search",
+      "tool_name": "socq_douyin_video_search",
       "title": "Douyin Video Search API",
       "description": "Search public Douyin videos.",
       "input_schema": {
@@ -8886,7 +8886,7 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/douyin/search"
+      "docs_url": "https://docs.socq.ai/api-manual/douyin/video-search"
     },
     {
       "public_id": "douyin/user-videos",
@@ -9603,10 +9603,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/douyin/user-videos"
     },
     {
-      "public_id": "douyin/videos",
+      "public_id": "douyin/video-detail",
       "platform": "douyin",
       "resource": "videos",
-      "tool_name": "socq_douyin_videos",
+      "tool_name": "socq_douyin_video_detail",
       "title": "Douyin Video Details API",
       "description": "Collect public Douyin video details.",
       "input_schema": {
@@ -10292,7 +10292,7 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/douyin/videos"
+      "docs_url": "https://docs.socq.ai/api-manual/douyin/video-detail"
     },
     {
       "public_id": "facebook-ad-library/ad",
@@ -22669,10 +22669,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/google-ad-library/company-ads"
     },
     {
-      "public_id": "google-maps/places",
+      "public_id": "google-maps/place-details",
       "platform": "google-maps",
       "resource": "places",
-      "tool_name": "socq_google_maps_places",
+      "tool_name": "socq_google_maps_place_details",
       "title": "Google Maps Place Details API",
       "description": "Collect public Google Maps place details.",
       "input_schema": {
@@ -23094,7 +23094,7 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/google-maps/places"
+      "docs_url": "https://docs.socq.ai/api-manual/google-maps/place-details"
     },
     {
       "public_id": "google-maps/reviews",
@@ -24064,10 +24064,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/google-maps/search"
     },
     {
-      "public_id": "google-play/apps",
+      "public_id": "google-play/app-detail",
       "platform": "google-play",
       "resource": "apps",
-      "tool_name": "socq_google_play_apps",
+      "tool_name": "socq_google_play_app_detail",
       "title": "Google Play App Details API",
       "description": "Collect public Google Play app details.",
       "input_schema": {
@@ -24576,13 +24576,13 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/google-play/apps"
+      "docs_url": "https://docs.socq.ai/api-manual/google-play/app-detail"
     },
     {
-      "public_id": "google-play/rankings",
+      "public_id": "google-play/app-rankings",
       "platform": "google-play",
       "resource": "rankings",
-      "tool_name": "socq_google_play_rankings",
+      "tool_name": "socq_google_play_app_rankings",
       "title": "Google Play Rankings API",
       "description": "Collect public Google Play category rankings.",
       "input_schema": {
@@ -25098,13 +25098,13 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/google-play/rankings"
+      "docs_url": "https://docs.socq.ai/api-manual/google-play/app-rankings"
     },
     {
-      "public_id": "google-play/reviews",
+      "public_id": "google-play/app-reviews",
       "platform": "google-play",
       "resource": "reviews",
-      "tool_name": "socq_google_play_reviews",
+      "tool_name": "socq_google_play_app_reviews",
       "title": "Google Play App Reviews API",
       "description": "Collect public Google Play app reviews.",
       "input_schema": {
@@ -25610,7 +25610,7 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/google-play/reviews"
+      "docs_url": "https://docs.socq.ai/api-manual/google-play/app-reviews"
     },
     {
       "public_id": "instagram/audio-reels",
@@ -34778,10 +34778,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/instagram/trending-reels"
     },
     {
-      "public_id": "kwai/posts",
+      "public_id": "kwai/post",
       "platform": "kwai",
       "resource": "posts",
-      "tool_name": "socq_kwai_posts",
+      "tool_name": "socq_kwai_post",
       "title": "Kwai Post API",
       "description": "Collect a public Kwai post.",
       "input_schema": {
@@ -35339,13 +35339,13 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/kwai/posts"
+      "docs_url": "https://docs.socq.ai/api-manual/kwai/post"
     },
     {
-      "public_id": "kwai/profiles",
+      "public_id": "kwai/profile",
       "platform": "kwai",
       "resource": "profiles",
-      "tool_name": "socq_kwai_profiles",
+      "tool_name": "socq_kwai_profile",
       "title": "Kwai Profile API",
       "description": "Collect a public Kwai profile.",
       "input_schema": {
@@ -35840,7 +35840,7 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/kwai/profiles"
+      "docs_url": "https://docs.socq.ai/api-manual/kwai/profile"
     },
     {
       "public_id": "kwai/user-posts",
@@ -48216,10 +48216,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/rednote/comment-replies"
     },
     {
-      "public_id": "rednote/comments",
+      "public_id": "rednote/note-comments",
       "platform": "rednote",
       "resource": "comments",
-      "tool_name": "socq_rednote_comments",
+      "tool_name": "socq_rednote_note_comments",
       "title": "Rednote Note Comments API",
       "description": "Collect one page of public Rednote note comments.",
       "input_schema": {
@@ -48624,7 +48624,7 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/rednote/comments"
+      "docs_url": "https://docs.socq.ai/api-manual/rednote/note-comments"
     },
     {
       "public_id": "rednote/home-recommendations",
@@ -49200,10 +49200,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/rednote/home-recommendations"
     },
     {
-      "public_id": "rednote/notes",
+      "public_id": "rednote/note-detail",
       "platform": "rednote",
       "resource": "notes",
-      "tool_name": "socq_rednote_notes",
+      "tool_name": "socq_rednote_note_detail",
       "title": "Rednote Note Details API",
       "description": "Collect public Rednote note details.",
       "input_schema": {
@@ -49761,13 +49761,13 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/rednote/notes"
+      "docs_url": "https://docs.socq.ai/api-manual/rednote/note-detail"
     },
     {
-      "public_id": "rednote/profiles",
+      "public_id": "rednote/user-profile",
       "platform": "rednote",
       "resource": "profiles",
-      "tool_name": "socq_rednote_profiles",
+      "tool_name": "socq_rednote_user_profile",
       "title": "Rednote Profile API",
       "description": "Collect a public Rednote profile.",
       "input_schema": {
@@ -50262,13 +50262,13 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/rednote/profiles"
+      "docs_url": "https://docs.socq.ai/api-manual/rednote/user-profile"
     },
     {
-      "public_id": "rednote/search",
+      "public_id": "rednote/search-notes",
       "platform": "rednote",
       "resource": "search",
-      "tool_name": "socq_rednote_search",
+      "tool_name": "socq_rednote_search_notes",
       "title": "Rednote Search Notes API",
       "description": "Search public Rednote notes.",
       "input_schema": {
@@ -50840,7 +50840,7 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/rednote/search"
+      "docs_url": "https://docs.socq.ai/api-manual/rednote/search-notes"
     },
     {
       "public_id": "rednote/search-users",
@@ -55258,10 +55258,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/seo/search-intent"
     },
     {
-      "public_id": "snapchat/profiles",
+      "public_id": "snapchat/profile",
       "platform": "snapchat",
       "resource": "profiles",
-      "tool_name": "socq_snapchat_profiles",
+      "tool_name": "socq_snapchat_profile",
       "title": "Snapchat Profile API",
       "description": "Collect a public Snapchat profile.",
       "input_schema": {
@@ -55741,7 +55741,7 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/snapchat/profiles"
+      "docs_url": "https://docs.socq.ai/api-manual/snapchat/profile"
     },
     {
       "public_id": "snapchat/spotlight-comments",
@@ -56155,10 +56155,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/snapchat/spotlight-comments"
     },
     {
-      "public_id": "snapchat/spotlights",
+      "public_id": "snapchat/spotlight",
       "platform": "snapchat",
       "resource": "spotlights",
-      "tool_name": "socq_snapchat_spotlights",
+      "tool_name": "socq_snapchat_spotlight",
       "title": "Snapchat Spotlight API",
       "description": "Collect a public Snapchat Spotlight item.",
       "input_schema": {
@@ -56844,7 +56844,7 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/snapchat/spotlights"
+      "docs_url": "https://docs.socq.ai/api-manual/snapchat/spotlight"
     },
     {
       "public_id": "threads/posts",
@@ -68398,10 +68398,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/tiktok/videos"
     },
     {
-      "public_id": "truth-social/posts",
+      "public_id": "truth-social/post",
       "platform": "truth-social",
       "resource": "posts",
-      "tool_name": "socq_truth_social_posts",
+      "tool_name": "socq_truth_social_post",
       "title": "Truth Social Post API",
       "description": "Collect a public Truth Social post.",
       "input_schema": {
@@ -68959,13 +68959,13 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/truth-social/posts"
+      "docs_url": "https://docs.socq.ai/api-manual/truth-social/post"
     },
     {
-      "public_id": "truth-social/profiles",
+      "public_id": "truth-social/profile",
       "platform": "truth-social",
       "resource": "profiles",
-      "tool_name": "socq_truth_social_profiles",
+      "tool_name": "socq_truth_social_profile",
       "title": "Truth Social Profile API",
       "description": "Collect a public Truth Social profile.",
       "input_schema": {
@@ -69445,7 +69445,7 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/truth-social/profiles"
+      "docs_url": "https://docs.socq.ai/api-manual/truth-social/profile"
     },
     {
       "public_id": "truth-social/user-posts",
@@ -70030,10 +70030,10 @@
       "docs_url": "https://docs.socq.ai/api-manual/truth-social/user-posts"
     },
     {
-      "public_id": "twitch/profiles",
+      "public_id": "twitch/profile",
       "platform": "twitch",
       "resource": "profiles",
-      "tool_name": "socq_twitch_profiles",
+      "tool_name": "socq_twitch_profile",
       "title": "Twitch Profile API",
       "description": "Collect a public Twitch profile.",
       "input_schema": {
@@ -70513,7 +70513,7 @@
       "supports_files": true,
       "supports_callback": false,
       "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/twitch/profiles"
+      "docs_url": "https://docs.socq.ai/api-manual/twitch/profile"
     },
     {
       "public_id": "twitch/user-videos",

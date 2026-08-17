@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API 中文版",
-    "version": "v1-457a38f62a01",
+    "version": "v1-7220ff41bac6",
     "description": "根据 SocQ 能力目录生成的异步社交数据 API。"
   },
   "servers": [
@@ -86,9 +86,9 @@
         }
       }
     },
-    "/v1/amazon/products": {
+    "/v1/amazon/product-detail": {
       "post": {
-        "operationId": "socq_amazon_products",
+        "operationId": "socq_amazon_product_detail",
         "summary": "Amazon Products",
         "description": "获取 Amazon 的标准化公开 Products 数据。",
         "tags": [
@@ -229,9 +229,9 @@
         }
       }
     },
-    "/v1/amazon/search": {
+    "/v1/amazon/product-search": {
       "post": {
-        "operationId": "socq_amazon_search",
+        "operationId": "socq_amazon_product_search",
         "summary": "Amazon Search",
         "description": "获取 Amazon 的标准化公开 Search 数据。",
         "tags": [
@@ -307,9 +307,9 @@
         }
       }
     },
-    "/v1/amazon/sellers": {
+    "/v1/amazon/seller-info": {
       "post": {
-        "operationId": "socq_amazon_sellers",
+        "operationId": "socq_amazon_seller_info",
         "summary": "Amazon Sellers",
         "description": "获取 Amazon 的标准化公开 Sellers 数据。",
         "tags": [
@@ -375,9 +375,9 @@
         }
       }
     },
-    "/v1/apple-app-store/apps": {
+    "/v1/apple-app-store/app-detail": {
       "post": {
-        "operationId": "socq_apple_app_store_apps",
+        "operationId": "socq_apple_app_store_app_detail",
         "summary": "Apple App Store Apps",
         "description": "获取 Apple App Store 的标准化公开 Apps 数据。",
         "tags": [
@@ -518,9 +518,9 @@
         }
       }
     },
-    "/v1/apple-app-store/reviews": {
+    "/v1/apple-app-store/app-reviews": {
       "post": {
-        "operationId": "socq_apple_app_store_reviews",
+        "operationId": "socq_apple_app_store_app_reviews",
         "summary": "Apple App Store Reviews",
         "description": "获取 Apple App Store 的标准化公开 Reviews 数据。",
         "tags": [
@@ -593,9 +593,9 @@
         }
       }
     },
-    "/v1/bluesky/posts": {
+    "/v1/bluesky/post": {
       "post": {
-        "operationId": "socq_bluesky_posts",
+        "operationId": "socq_bluesky_post",
         "summary": "Bluesky Posts",
         "description": "获取 Bluesky 的标准化公开 Posts 数据。",
         "tags": [
@@ -658,9 +658,9 @@
         }
       }
     },
-    "/v1/bluesky/profiles": {
+    "/v1/bluesky/profile": {
       "post": {
-        "operationId": "socq_bluesky_profiles",
+        "operationId": "socq_bluesky_profile",
         "summary": "Bluesky Profiles",
         "description": "获取 Bluesky 的标准化公开 Profiles 数据。",
         "tags": [
@@ -803,9 +803,9 @@
         }
       }
     },
-    "/v1/douyin/comments": {
+    "/v1/douyin/video-comments": {
       "post": {
-        "operationId": "socq_douyin_comments",
+        "operationId": "socq_douyin_video_comments",
         "summary": "抖音 Comments",
         "description": "获取 抖音 的标准化公开 Comments 数据。",
         "tags": [
@@ -875,9 +875,9 @@
         }
       }
     },
-    "/v1/douyin/live-room-info": {
+    "/v1/douyin/live-room-detail": {
       "post": {
-        "operationId": "socq_douyin_live_room_info",
+        "operationId": "socq_douyin_live_room_detail",
         "summary": "抖音 Live Room Info",
         "description": "获取 抖音 的标准化公开 Live Room Info 数据。",
         "tags": [
@@ -940,9 +940,9 @@
         }
       }
     },
-    "/v1/douyin/live-room-products": {
+    "/v1/douyin/product-data": {
       "post": {
-        "operationId": "socq_douyin_live_room_products",
+        "operationId": "socq_douyin_product_data",
         "summary": "抖音 Live Room Products",
         "description": "获取 抖音 的标准化公开 Live Room Products 数据。",
         "tags": [
@@ -1018,9 +1018,9 @@
         }
       }
     },
-    "/v1/douyin/profiles": {
+    "/v1/douyin/user-profile": {
       "post": {
-        "operationId": "socq_douyin_profiles",
+        "operationId": "socq_douyin_user_profile",
         "summary": "抖音 Profiles",
         "description": "获取 抖音 的标准化公开 Profiles 数据。",
         "tags": [
@@ -1098,9 +1098,9 @@
         }
       }
     },
-    "/v1/douyin/search": {
+    "/v1/douyin/video-search": {
       "post": {
-        "operationId": "socq_douyin_search",
+        "operationId": "socq_douyin_video_search",
         "summary": "抖音 Search",
         "description": "获取 抖音 的标准化公开 Search 数据。",
         "tags": [
@@ -1250,9 +1250,9 @@
         }
       }
     },
-    "/v1/douyin/videos": {
+    "/v1/douyin/video-detail": {
       "post": {
-        "operationId": "socq_douyin_videos",
+        "operationId": "socq_douyin_video_detail",
         "summary": "抖音 Videos",
         "description": "获取 抖音 的标准化公开 Videos 数据。",
         "tags": [
@@ -3321,9 +3321,9 @@
         }
       }
     },
-    "/v1/google-maps/places": {
+    "/v1/google-maps/place-details": {
       "post": {
-        "operationId": "socq_google_maps_places",
+        "operationId": "socq_google_maps_place_details",
         "summary": "Google 地图 Places",
         "description": "获取 Google 地图 的标准化公开 Places 数据。",
         "tags": [
@@ -3570,9 +3570,9 @@
         }
       }
     },
-    "/v1/google-play/apps": {
+    "/v1/google-play/app-detail": {
       "post": {
-        "operationId": "socq_google_play_apps",
+        "operationId": "socq_google_play_app_detail",
         "summary": "Google Play Apps",
         "description": "获取 Google Play 的标准化公开 Apps 数据。",
         "tags": [
@@ -3638,9 +3638,9 @@
         }
       }
     },
-    "/v1/google-play/rankings": {
+    "/v1/google-play/app-rankings": {
       "post": {
-        "operationId": "socq_google_play_rankings",
+        "operationId": "socq_google_play_app_rankings",
         "summary": "Google Play Rankings",
         "description": "获取 Google Play 的标准化公开 Rankings 数据。",
         "tags": [
@@ -3713,9 +3713,9 @@
         }
       }
     },
-    "/v1/google-play/reviews": {
+    "/v1/google-play/app-reviews": {
       "post": {
-        "operationId": "socq_google_play_reviews",
+        "operationId": "socq_google_play_app_reviews",
         "summary": "Google Play Reviews",
         "description": "获取 Google Play 的标准化公开 Reviews 数据。",
         "tags": [
@@ -5180,9 +5180,9 @@
         }
       }
     },
-    "/v1/kwai/posts": {
+    "/v1/kwai/post": {
       "post": {
-        "operationId": "socq_kwai_posts",
+        "operationId": "socq_kwai_post",
         "summary": "Kwai Posts",
         "description": "获取 Kwai 的标准化公开 Posts 数据。",
         "tags": [
@@ -5245,9 +5245,9 @@
         }
       }
     },
-    "/v1/kwai/profiles": {
+    "/v1/kwai/profile": {
       "post": {
-        "operationId": "socq_kwai_profiles",
+        "operationId": "socq_kwai_profile",
         "summary": "Kwai Profiles",
         "description": "获取 Kwai 的标准化公开 Profiles 数据。",
         "tags": [
@@ -7085,9 +7085,9 @@
         }
       }
     },
-    "/v1/rednote/comments": {
+    "/v1/rednote/note-comments": {
       "post": {
-        "operationId": "socq_rednote_comments",
+        "operationId": "socq_rednote_note_comments",
         "summary": "小红书（Rednote） Comments",
         "description": "获取 小红书（Rednote） 的标准化公开 Comments 数据。",
         "tags": [
@@ -7225,9 +7225,9 @@
         }
       }
     },
-    "/v1/rednote/notes": {
+    "/v1/rednote/note-detail": {
       "post": {
-        "operationId": "socq_rednote_notes",
+        "operationId": "socq_rednote_note_detail",
         "summary": "小红书（Rednote） Notes",
         "description": "获取 小红书（Rednote） 的标准化公开 Notes 数据。",
         "tags": [
@@ -7290,9 +7290,9 @@
         }
       }
     },
-    "/v1/rednote/profiles": {
+    "/v1/rednote/user-profile": {
       "post": {
-        "operationId": "socq_rednote_profiles",
+        "operationId": "socq_rednote_user_profile",
         "summary": "小红书（Rednote） Profiles",
         "description": "获取 小红书（Rednote） 的标准化公开 Profiles 数据。",
         "tags": [
@@ -7370,9 +7370,9 @@
         }
       }
     },
-    "/v1/rednote/search": {
+    "/v1/rednote/search-notes": {
       "post": {
-        "operationId": "socq_rednote_search",
+        "operationId": "socq_rednote_search_notes",
         "summary": "小红书（Rednote） Search",
         "description": "获取 小红书（Rednote） 的标准化公开 Search 数据。",
         "tags": [
@@ -8621,9 +8621,9 @@
         }
       }
     },
-    "/v1/snapchat/profiles": {
+    "/v1/snapchat/profile": {
       "post": {
-        "operationId": "socq_snapchat_profiles",
+        "operationId": "socq_snapchat_profile",
         "summary": "Snapchat Profiles",
         "description": "获取 Snapchat 的标准化公开 Profiles 数据。",
         "tags": [
@@ -8751,9 +8751,9 @@
         }
       }
     },
-    "/v1/snapchat/spotlights": {
+    "/v1/snapchat/spotlight": {
       "post": {
-        "operationId": "socq_snapchat_spotlights",
+        "operationId": "socq_snapchat_spotlight",
         "summary": "Snapchat Spotlights",
         "description": "获取 Snapchat 的标准化公开 Spotlights 数据。",
         "tags": [
@@ -10456,9 +10456,9 @@
         }
       }
     },
-    "/v1/truth-social/posts": {
+    "/v1/truth-social/post": {
       "post": {
-        "operationId": "socq_truth_social_posts",
+        "operationId": "socq_truth_social_post",
         "summary": "Truth Social Posts",
         "description": "获取 Truth Social 的标准化公开 Posts 数据。",
         "tags": [
@@ -10521,9 +10521,9 @@
         }
       }
     },
-    "/v1/truth-social/profiles": {
+    "/v1/truth-social/profile": {
       "post": {
-        "operationId": "socq_truth_social_profiles",
+        "operationId": "socq_truth_social_profile",
         "summary": "Truth Social Profiles",
         "description": "获取 Truth Social 的标准化公开 Profiles 数据。",
         "tags": [
@@ -10670,9 +10670,9 @@
         }
       }
     },
-    "/v1/twitch/profiles": {
+    "/v1/twitch/profile": {
       "post": {
-        "operationId": "socq_twitch_profiles",
+        "operationId": "socq_twitch_profile",
         "summary": "Twitch Profiles",
         "description": "获取 Twitch 的标准化公开 Profiles 数据。",
         "tags": [

@@ -1,0 +1,94 @@
+---
+title: "Get Kwai Profiles"
+description: "Fetch normalized profiles data from Kwai."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/kwai/profile"
+---
+
+# Get Kwai Profiles
+
+Fetch normalized profiles data from Kwai.
+
+Each successful task costs a fixed `0.19` credits.
+
+## Request Body
+
+```json
+{
+  "url": "https://www.kwai.com/@ShortShortz8"
+}
+```
+
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/kwai/profile` |
+| Compact MCP | `socq_execute` with `endpoint: "kwai/profile"` |
+| Typed MCP | `socq_kwai_profile` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=kwai_profiles` |
+| CLI | `socq kwai profile` |
+
+<Info>
+A successful request returns a `task_id`. Poll it with `socq_get_task`, then read normalized records from `results.items`.
+</Info>
+{/* mcp-usage:end */}
+
+{/* result-schema:start */}
+## Result Fields
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `username` | `string` | Yes | Public username or handle of the account. |
+| `name` | `string` | Yes | Display name of the account or profile. |
+| `text` | `string` | Yes | Biography or description of the account or profile. |
+| `avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `cover_url` | `string` | Yes | URL of the cover image. |
+| `website` | `string` | Yes | Website associated with the account, company, or advertiser. |
+| `is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `is_private` | `boolean` | Yes | Whether the account is private. |
+| `location` | `object` | Yes | Geographic location associated with the result. |
+| `location` | `object` | No | Field value in the standard result. |
+| `location.name` | `string` | Yes | Human-readable location name. |
+| `location.city` | `string` | Yes | City name. |
+| `location.region` | `string` | Yes | Region, state, or province name. |
+| `location.country` | `string` | Yes | Country or territory name or code. |
+| `location.latitude` | `number` | Yes | Latitude in decimal degrees. |
+| `location.longitude` | `number` | Yes | Longitude in decimal degrees. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics` | `object` | No | Field value in the standard result. |
+| `metrics.followers_count` | `integer` | Yes | Number of followers. |
+| `metrics.following_count` | `integer` | Yes | Number of accounts followed. |
+| `metrics.posts_count` | `integer` | Yes | Number of posts or posts associated with the trend. |
+{/* result-schema:end */}
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "message": "success",
+  "data": {
+    "task_id": "task_example",
+    "public_id": "kwai/profile",
+    "status": "succeeded",
+    "result_count": 0,
+    "credits_amount": 0,
+    "results": {
+      "schema_id": "account",
+      "schema_version": "1.0",
+      "items": [],
+      "limit": 20,
+      "next_cursor": null,
+      "has_more": false
+    }
+  }
+}
+```
