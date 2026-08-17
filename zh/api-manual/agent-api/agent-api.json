@@ -3360,7 +3360,7 @@
                       "type": "string",
                       "minLength": 1
                     },
-                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                    "description": "非空地址列表，解析后的主机名必须为 google.com、goo.gl 或两者的子域名；包含 authority 和 hostname 时可使用任意 scheme，同时支持协议相对地址，且不要求特定路径，至少提供 1 项。"
                   }
                 },
                 "required": [
@@ -3440,7 +3440,7 @@
                       "type": "string",
                       "minLength": 1
                     },
-                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                    "description": "非空地址列表，解析后的主机名必须为 google.com、goo.gl 或两者的子域名；包含 authority 和 hostname 时可使用任意 scheme，同时支持协议相对地址，且不要求特定路径，至少提供 1 项。"
                   }
                 },
                 "required": [
@@ -3509,9 +3509,7 @@
                   },
                   "latitude": {
                     "type": "number",
-                    "minimum": -90,
-                    "maximum": 90,
-                    "description": "搜索中心点纬度，范围为 -90 到 90。"
+                    "description": "可选的纬度数值；当前运行时只校验其为数值，不限制数值范围。"
                   },
                   "location": {
                     "type": "string",
@@ -3520,9 +3518,7 @@
                   },
                   "longitude": {
                     "type": "number",
-                    "minimum": -180,
-                    "maximum": 180,
-                    "description": "搜索中心点经度，范围为 -180 到 180。"
+                    "description": "可选的经度数值；当前运行时只校验其为数值，不限制数值范围。"
                   },
                   "query": {
                     "type": "string",
@@ -5216,7 +5212,7 @@
                   "url": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "公开内容、主页或商品 URL。"
+                    "description": "非空帖子地址，解析后的主机名必须为 kwai.com、kwai-video.com 或两者的子域名；包含 authority 和 hostname 时可使用任意 scheme，同时支持协议相对地址。"
                   }
                 },
                 "required": [
@@ -5281,12 +5277,14 @@
                   "url": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "公开内容、主页或商品 URL。"
+                    "description": "非空主页地址，解析后的主机名必须为 kwai.com、kwai-video.com 或两者的子域名；包含 authority 和 hostname 时可使用任意 scheme，同时支持协议相对地址。"
                   },
                   "username": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "公开账号用户名。"
+                    "description": "可带一个前导 @，随后由 1 至 64 个 ASCII 字母、数字、点、下划线或连字符组成，总长度最多为 65 个字符的 Kwai 用户名。",
+                    "maxLength": 65,
+                    "pattern": "^@?[A-Za-z0-9._-]{1,64}$"
                   }
                 },
                 "required": [],
@@ -5361,12 +5359,14 @@
                   "url": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "公开内容、主页或商品 URL。"
+                    "description": "非空主页地址，解析后的主机名必须为 kwai.com、kwai-video.com 或两者的子域名；包含 authority 和 hostname 时可使用任意 scheme，同时支持协议相对地址。"
                   },
                   "username": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "公开账号用户名。"
+                    "description": "可带一个前导 @，随后由 1 至 64 个 ASCII 字母、数字、点、下划线或连字符组成，总长度最多为 65 个字符的 Kwai 用户名。",
+                    "maxLength": 65,
+                    "pattern": "^@?[A-Za-z0-9._-]{1,64}$"
                   }
                 },
                 "required": [],

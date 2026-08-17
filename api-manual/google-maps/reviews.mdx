@@ -22,6 +22,13 @@ Each successfully returned standard result costs `0.15` credits. List endpoints 
 }
 ```
 
+## Request Constraints
+
+- `urls` is required and must contain at least one non-empty string. Each value must parse to a hostname of `google.com`, `goo.gl`, or a subdomain of either host.
+- Any scheme is accepted when an authority and hostname are present, protocol-relative references are also accepted, and no specific path is required.
+- `days_limit` is optional and must be an integer of at least `1`; the runtime imposes no maximum.
+- `results_limit` must be an integer from `1` through `2,000` and defaults to `100` for the whole task.
+
 {/* mcp-usage:start */}
 ## Use with MCP
 

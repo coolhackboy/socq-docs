@@ -18,6 +18,13 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/kwai/user-posts"
 }
 ```
 
+## 请求限制
+
+- `username` 与 `url` 至少提供一个；也可以同时提供，后端会将两者都转发给服务商。
+- `username` 可带一个前导 `@`，随后由 1 至 64 个 ASCII 字母、数字、点、下划线或连字符组成，总长度最多为 65 个字符。
+- `url` 必须为非空地址，解析后的 hostname 必须为 `kwai.com`、`kwai-video.com` 或两者的子域名。地址包含 authority 和 hostname 时可使用任意 scheme，也接受协议相对地址；裸域名、无法解析出 hostname 的地址和其他域名会被拒绝。
+- 请求只接受 `username` 和 `url`。来源游标、`results_limit` 及其他请求字段会被拒绝。每个任务只向服务商请求一个来源页；任务结果分页只会读取 SocQ 已存储的记录。
+
 {/* mcp-usage:start */}
 ## 通过 MCP 使用
 

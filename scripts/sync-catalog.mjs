@@ -7,13 +7,13 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const baseUrl = (process.env.SOCQ_BASE_URL ?? "https://api.socq.ai").replace(/\/$/, "");
 
 const BLUESKY_INPUT_OVERRIDES = {
-  "bluesky/posts": {
+  "bluesky/post": {
     url: {
       description:
         "A non-empty post reference with an authority component whose parsed hostname is bsky.app or a bsky.app subdomain. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted.",
     },
   },
-  "bluesky/profiles": {
+  "bluesky/profile": {
     username: {
       maxLength: 253,
       pattern: "^[A-Za-z0-9.-]{1,253}$",
@@ -31,6 +31,68 @@ const BLUESKY_INPUT_OVERRIDES = {
       pattern: "^[A-Za-z0-9.-]{1,253}$",
       description:
         "A Bluesky handle containing 1 to 253 ASCII letters, digits, periods, or hyphens, without a leading @.",
+    },
+  },
+};
+
+const KWAI_INPUT_OVERRIDES = {
+  "kwai/profile": {
+    url: {
+      description:
+        "A non-empty profile reference whose parsed hostname is kwai.com, kwai-video.com, or a subdomain of either host. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted.",
+    },
+    username: {
+      maxLength: 65,
+      pattern: "^@?[A-Za-z0-9._-]{1,64}$",
+      description:
+        "A Kwai username with one optional leading @ followed by 1 to 64 ASCII letters, digits, periods, underscores, or hyphens, for a maximum total length of 65 characters.",
+    },
+  },
+  "kwai/user-posts": {
+    url: {
+      description:
+        "A non-empty profile reference whose parsed hostname is kwai.com, kwai-video.com, or a subdomain of either host. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted.",
+    },
+    username: {
+      maxLength: 65,
+      pattern: "^@?[A-Za-z0-9._-]{1,64}$",
+      description:
+        "A Kwai username with one optional leading @ followed by 1 to 64 ASCII letters, digits, periods, underscores, or hyphens, for a maximum total length of 65 characters.",
+    },
+  },
+  "kwai/post": {
+    url: {
+      description:
+        "A non-empty post reference whose parsed hostname is kwai.com, kwai-video.com, or a subdomain of either host. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted.",
+    },
+  },
+};
+
+const GOOGLE_MAPS_INPUT_OVERRIDES = {
+  "google-maps/search": {
+    latitude: {
+      minimum: undefined,
+      maximum: undefined,
+      description:
+        "An optional numeric latitude value. The current runtime validates the number type but does not impose a numeric range.",
+    },
+    longitude: {
+      minimum: undefined,
+      maximum: undefined,
+      description:
+        "An optional numeric longitude value. The current runtime validates the number type but does not impose a numeric range.",
+    },
+  },
+  "google-maps/place-details": {
+    urls: {
+      description:
+        "A non-empty list of references whose parsed hostname is google.com, goo.gl, or a subdomain of either host. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted, and no specific path is required.",
+    },
+  },
+  "google-maps/reviews": {
+    urls: {
+      description:
+        "A non-empty list of references whose parsed hostname is google.com, goo.gl, or a subdomain of either host. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted, and no specific path is required.",
     },
   },
 };
@@ -136,7 +198,11 @@ function buildPublicOpenApi(source) {
     if (fields) fields.description = "Up to 50 comma-separated fields or dot paths.";
   }
 
-  for (const publicId of Object.keys(BLUESKY_INPUT_OVERRIDES)) {
+  for (const publicId of [
+    ...Object.keys(BLUESKY_INPUT_OVERRIDES),
+    ...Object.keys(KWAI_INPUT_OVERRIDES),
+    ...Object.keys(GOOGLE_MAPS_INPUT_OVERRIDES),
+  ]) {
     const schema = openapi.paths?.[`/v1/${publicId}`]?.post?.requestBody?.content?.["application/json"]?.schema;
     applyInputOverrides(publicId, schema);
   }
@@ -157,7 +223,10 @@ function buildPublicEndpoint(source) {
 }
 
 function applyInputOverrides(publicId, schema) {
-  const overrides = BLUESKY_INPUT_OVERRIDES[publicId];
+  const overrides =
+    BLUESKY_INPUT_OVERRIDES[publicId] ??
+    KWAI_INPUT_OVERRIDES[publicId] ??
+    GOOGLE_MAPS_INPUT_OVERRIDES[publicId];
   if (!overrides || !schema?.properties) return;
   for (const [name, values] of Object.entries(overrides)) {
     if (schema.properties[name]) Object.assign(schema.properties[name], values);

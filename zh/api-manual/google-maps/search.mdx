@@ -21,6 +21,13 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/google-maps/search"
 }
 ```
 
+## 请求限制
+
+- `query` 和 `location` 是必填字符串；`country`、`latitude`、`longitude`、`zoom_level` 和 `results_limit` 为选填字段。
+- `latitude` 和 `longitude` 是彼此独立的数值输入；当前运行时只校验其数值类型，不限制数值范围。
+- `zoom_level` 必须是 `0` 到 `21` 的整数。
+- `results_limit` 必须是 `1` 到 `2,000` 的整数，默认值为 `100`。
+
 {/* mcp-usage:start */}
 ## 通过 MCP 使用
 

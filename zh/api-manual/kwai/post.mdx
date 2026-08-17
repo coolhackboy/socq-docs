@@ -18,6 +18,13 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/kwai/post"
 }
 ```
 
+## 请求限制
+
+- `url` 为必填的非空地址，解析后的 hostname 必须为 `kwai.com`、`kwai-video.com` 或两者的子域名。
+- 地址包含 authority 和 hostname 时可使用任意 scheme，也接受协议相对地址；裸域名、无法解析出 hostname 的地址和其他域名会被拒绝。
+- 后端不校验特定的帖子路径格式。域名受支持但路径不是帖子或服务商不支持时，请求仍可能在服务商侧失败。
+- 请求只接受 `url`。来源游标、`results_limit` 及其他请求字段会被拒绝。每个任务只发起一次服务商请求。
+
 {/* mcp-usage:start */}
 ## 通过 MCP 使用
 

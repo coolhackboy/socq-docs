@@ -8,7 +8,7 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/google-maps/place-det
 
 获取 Google 地图 的标准化公开 Places 数据。
 
-成功返回的每条标准结果扣除 `0.15` 积分。列表接口按 `results_limit` 预扣并按实际结果结算。
+每个非空提交 URL 预留 `0.15` 积分。任务按每条成功返回的标准结果 `0.15` 积分结算，并退回未使用的预留积分。
 
 ## 请求体
 
@@ -19,6 +19,12 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/google-maps/place-det
   ]
 }
 ```
+
+## 请求限制
+
+- `urls` 为必填字段，必须包含至少一个非空字符串；该接口不接受 `results_limit`。
+- 每个值都必须能解析出 `google.com`、`goo.gl` 或两者子域名的 hostname。包含 authority 和 hostname 时可使用任意 scheme，同时支持协议相对地址。
+- 运行时不要求 `/maps/place` 等特定路径；内部结果上限等于提交的非空 URL 数量。
 
 {/* mcp-usage:start */}
 ## 通过 MCP 使用

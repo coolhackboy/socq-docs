@@ -18,6 +18,13 @@ Each successful task costs a fixed `0.19` credits.
 }
 ```
 
+## Request Constraints
+
+- `url` is required and must be non-empty. Its parsed hostname must be `kwai.com`, `kwai-video.com`, or a subdomain of either host.
+- Any scheme is accepted when the reference contains an authority and hostname; protocol-relative references are also accepted. Bare domains, hostless references, and other hosts are rejected.
+- The backend does not enforce a specific post path pattern. A supported hostname with a non-post or otherwise unsupported path may still fail at the provider.
+- Only `url` is accepted. Source cursors, `results_limit`, and other request fields are rejected. Each task makes one provider request.
+
 {/* mcp-usage:start */}
 ## Use with MCP
 

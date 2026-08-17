@@ -21,6 +21,13 @@ Each successfully returned standard result costs `0.15` credits. List endpoints 
 }
 ```
 
+## Request Constraints
+
+- `query` and `location` are required strings. `country`, `latitude`, `longitude`, `zoom_level`, and `results_limit` are optional.
+- `latitude` and `longitude` are independent numeric inputs. The current runtime validates their number type but does not impose numeric ranges.
+- `zoom_level` must be an integer from `0` through `21`.
+- `results_limit` must be an integer from `1` through `2,000` and defaults to `100`.
+
 {/* mcp-usage:start */}
 ## Use with MCP
 

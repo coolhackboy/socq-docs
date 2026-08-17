@@ -8,7 +8,7 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-maps/place-detail
 
 Fetch normalized places data from Google Maps.
 
-Each successfully returned standard result costs `0.15` credits. List endpoints reserve by `results_limit` and settle against the actual result count.
+Each non-empty submitted URL reserves `0.15` credits. The task settles at `0.15` credits per successfully returned standard result, and unused reserved credits are refunded.
 
 ## Request Body
 
@@ -19,6 +19,12 @@ Each successfully returned standard result costs `0.15` credits. List endpoints 
   ]
 }
 ```
+
+## Request Constraints
+
+- `urls` is required and must contain at least one non-empty string. This endpoint does not accept `results_limit`.
+- Each value must parse to a hostname of `google.com`, `goo.gl`, or a subdomain of either host. Any scheme is accepted when an authority and hostname are present, and protocol-relative references are also accepted.
+- The runtime does not require a specific path such as `/maps/place`. Its internal result ceiling is the number of non-empty submitted URLs.
 
 {/* mcp-usage:start */}
 ## Use with MCP

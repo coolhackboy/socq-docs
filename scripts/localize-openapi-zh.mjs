@@ -76,13 +76,31 @@ const PARAMETER_DESCRIPTIONS = {
 };
 
 const INPUT_DESCRIPTION_OVERRIDES = {
-  "bluesky/posts.url":
+  "bluesky/post.url":
     "包含 authority 的非空帖子地址，解析后的主机名必须为 bsky.app 或其子域名；任意 scheme 均可使用，但必须包含 authority 和 hostname，同时支持协议相对地址。",
-  "bluesky/profiles.username":
+  "bluesky/profile.username":
     "由 1 到 253 个 ASCII 字母、数字、点或连字符组成，且不带开头 @ 的 Bluesky username。",
   "bluesky/user-posts.user_id": "采用 did:method:identifier 格式的 Bluesky 去中心化标识符。",
   "bluesky/user-posts.username":
     "由 1 到 253 个 ASCII 字母、数字、点或连字符组成，且不带开头 @ 的 Bluesky handle。",
+  "kwai/profile.url":
+    "非空主页地址，解析后的主机名必须为 kwai.com、kwai-video.com 或两者的子域名；包含 authority 和 hostname 时可使用任意 scheme，同时支持协议相对地址。",
+  "kwai/profile.username":
+    "可带一个前导 @，随后由 1 至 64 个 ASCII 字母、数字、点、下划线或连字符组成，总长度最多为 65 个字符的 Kwai 用户名。",
+  "kwai/user-posts.url":
+    "非空主页地址，解析后的主机名必须为 kwai.com、kwai-video.com 或两者的子域名；包含 authority 和 hostname 时可使用任意 scheme，同时支持协议相对地址。",
+  "kwai/user-posts.username":
+    "可带一个前导 @，随后由 1 至 64 个 ASCII 字母、数字、点、下划线或连字符组成，总长度最多为 65 个字符的 Kwai 用户名。",
+  "kwai/post.url":
+    "非空帖子地址，解析后的主机名必须为 kwai.com、kwai-video.com 或两者的子域名；包含 authority 和 hostname 时可使用任意 scheme，同时支持协议相对地址。",
+  "google-maps/search.latitude":
+    "可选的纬度数值；当前运行时只校验其为数值，不限制数值范围。",
+  "google-maps/search.longitude":
+    "可选的经度数值；当前运行时只校验其为数值，不限制数值范围。",
+  "google-maps/place-details.urls":
+    "非空地址列表，解析后的主机名必须为 google.com、goo.gl 或两者的子域名；包含 authority 和 hostname 时可使用任意 scheme，同时支持协议相对地址，且不要求特定路径。",
+  "google-maps/reviews.urls":
+    "非空地址列表，解析后的主机名必须为 google.com、goo.gl 或两者的子域名；包含 authority 和 hostname 时可使用任意 scheme，同时支持协议相对地址，且不要求特定路径。",
 };
 
 export async function buildZhOpenApi(openapi, root = defaultRoot) {

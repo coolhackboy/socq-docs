@@ -22692,7 +22692,7 @@
               "minLength": 1
             },
             "minItems": 1,
-            "description": "Public profile or content URLs."
+            "description": "A non-empty list of references whose parsed hostname is google.com, goo.gl, or a subdomain of either host. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted, and no specific path is required."
           }
         },
         "required": [
@@ -23130,7 +23130,7 @@
               "minLength": 1
             },
             "minItems": 1,
-            "description": "Public profile or content URLs."
+            "description": "A non-empty list of references whose parsed hostname is google.com, goo.gl, or a subdomain of either host. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted, and no specific path is required."
           }
         },
         "required": [
@@ -23631,8 +23631,7 @@
           },
           "latitude": {
             "type": "number",
-            "minimum": -90,
-            "maximum": 90
+            "description": "An optional numeric latitude value. The current runtime validates the number type but does not impose a numeric range."
           },
           "location": {
             "type": "string",
@@ -23640,8 +23639,7 @@
           },
           "longitude": {
             "type": "number",
-            "minimum": -180,
-            "maximum": 180
+            "description": "An optional numeric longitude value. The current runtime validates the number type but does not impose a numeric range."
           },
           "query": {
             "type": "string",
@@ -34797,7 +34795,7 @@
           "url": {
             "type": "string",
             "minLength": 1,
-            "description": "A public content or product URL."
+            "description": "A non-empty post reference whose parsed hostname is kwai.com, kwai-video.com, or a subdomain of either host. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted."
           }
         },
         "required": [
@@ -35361,12 +35359,14 @@
           "url": {
             "type": "string",
             "minLength": 1,
-            "description": "A public content or product URL."
+            "description": "A non-empty profile reference whose parsed hostname is kwai.com, kwai-video.com, or a subdomain of either host. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted."
           },
           "username": {
             "type": "string",
             "minLength": 1,
-            "description": "A public account username."
+            "description": "A Kwai username with one optional leading @ followed by 1 to 64 ASCII letters, digits, periods, underscores, or hyphens, for a maximum total length of 65 characters.",
+            "maxLength": 65,
+            "pattern": "^@?[A-Za-z0-9._-]{1,64}$"
           }
         },
         "required": [],
@@ -35862,12 +35862,14 @@
           "url": {
             "type": "string",
             "minLength": 1,
-            "description": "A public content or product URL."
+            "description": "A non-empty profile reference whose parsed hostname is kwai.com, kwai-video.com, or a subdomain of either host. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted."
           },
           "username": {
             "type": "string",
             "minLength": 1,
-            "description": "A public account username."
+            "description": "A Kwai username with one optional leading @ followed by 1 to 64 ASCII letters, digits, periods, underscores, or hyphens, for a maximum total length of 65 characters.",
+            "maxLength": 65,
+            "pattern": "^@?[A-Za-z0-9._-]{1,64}$"
           }
         },
         "required": [],

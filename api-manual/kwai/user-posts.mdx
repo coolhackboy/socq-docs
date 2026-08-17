@@ -18,6 +18,13 @@ Each successful task costs a fixed `0.19` credits.
 }
 ```
 
+## Request Constraints
+
+- Provide at least one of `username` or `url`; both may be supplied and are forwarded to the provider.
+- `username` may have one leading `@`, followed by 1 to 64 ASCII letters, digits, periods, underscores, or hyphens. The maximum total length is 65 characters.
+- `url` must be non-empty and its parsed hostname must be `kwai.com`, `kwai-video.com`, or a subdomain of either host. Any scheme is accepted when the reference contains an authority and hostname; protocol-relative references are also accepted. Bare domains, hostless references, and other hosts are rejected.
+- Only `username` and `url` are accepted. Source cursors, `results_limit`, and other request fields are rejected. Each task makes one provider request for one source page; task-result pagination only pages the records already stored by SocQ.
+
 {/* mcp-usage:start */}
 ## Use with MCP
 
