@@ -69,20 +69,6 @@ const KWAI_INPUT_OVERRIDES = {
 };
 
 const GOOGLE_MAPS_INPUT_OVERRIDES = {
-  "google-maps/search": {
-    latitude: {
-      minimum: undefined,
-      maximum: undefined,
-      description:
-        "An optional numeric latitude value. The current runtime validates the number type but does not impose a numeric range.",
-    },
-    longitude: {
-      minimum: undefined,
-      maximum: undefined,
-      description:
-        "An optional numeric longitude value. The current runtime validates the number type but does not impose a numeric range.",
-    },
-  },
   "google-maps/place-details": {
     urls: {
       description:
@@ -230,5 +216,11 @@ function applyInputOverrides(publicId, schema) {
   if (!overrides || !schema?.properties) return;
   for (const [name, values] of Object.entries(overrides)) {
     if (schema.properties[name]) Object.assign(schema.properties[name], values);
+  }
+
+  if (publicId === "bluesky/user-posts") {
+    schema.allOf = [
+      {not: {required: ["user_id", "username"]}},
+    ];
   }
 }

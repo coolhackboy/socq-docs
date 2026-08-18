@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API 中文版",
-    "version": "v1-7220ff41bac6",
+    "version": "v1-535044043eab",
     "description": "根据 SocQ 能力目录生成的异步社交数据 API。"
   },
   "servers": [
@@ -624,7 +624,7 @@
                   "url": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "公开内容、主页或商品 URL。"
+                    "description": "包含 authority 的非空帖子地址，解析后的主机名必须为 bsky.app 或其子域名；任意 scheme 均可使用，但必须包含 authority 和 hostname，同时支持协议相对地址。"
                   }
                 },
                 "required": [
@@ -689,7 +689,9 @@
                   "username": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "公开账号用户名。"
+                    "description": "由 1 到 253 个 ASCII 字母、数字、点或连字符组成，且不带开头 @ 的 Bluesky username。",
+                    "maxLength": 253,
+                    "pattern": "^[A-Za-z0-9.-]{1,253}$"
                   }
                 },
                 "required": [
@@ -776,6 +778,16 @@
                     "required": [
                       "username"
                     ]
+                  }
+                ],
+                "allOf": [
+                  {
+                    "not": {
+                      "required": [
+                        "user_id",
+                        "username"
+                      ]
+                    }
                   }
                 ]
               }
@@ -3507,6 +3519,8 @@
                   },
                   "latitude": {
                     "type": "number",
+                    "minimum": -90,
+                    "maximum": 90,
                     "description": "可选的纬度数值；当前运行时只校验其为数值，不限制数值范围。"
                   },
                   "location": {
@@ -3516,6 +3530,8 @@
                   },
                   "longitude": {
                     "type": "number",
+                    "minimum": -180,
+                    "maximum": 180,
                     "description": "可选的经度数值；当前运行时只校验其为数值，不限制数值范围。"
                   },
                   "query": {
@@ -7124,6 +7140,11 @@
                   "media_type": {
                     "type": "string",
                     "minLength": 1,
+                    "enum": [
+                      "all",
+                      "image",
+                      "video"
+                    ],
                     "description": "媒体类型筛选条件。"
                   },
                   "results_limit": {
@@ -7324,11 +7345,22 @@
                   "media_type": {
                     "type": "string",
                     "minLength": 1,
+                    "enum": [
+                      "all",
+                      "image",
+                      "video"
+                    ],
                     "description": "媒体类型筛选条件。"
                   },
                   "published_within": {
                     "type": "string",
                     "minLength": 1,
+                    "enum": [
+                      "all",
+                      "day",
+                      "six_months",
+                      "week"
+                    ],
                     "description": "内容发布时间范围。"
                   },
                   "query": {
@@ -7339,6 +7371,11 @@
                   "sort_by": {
                     "type": "string",
                     "minLength": 1,
+                    "enum": [
+                      "general",
+                      "latest",
+                      "most_liked"
+                    ],
                     "description": "结果排序方式。"
                   }
                 },
@@ -10769,11 +10806,24 @@
                   "filter_by": {
                     "type": "string",
                     "minLength": 1,
+                    "enum": [
+                      "all",
+                      "archive",
+                      "archives",
+                      "highlight",
+                      "highlights",
+                      "upload",
+                      "uploads"
+                    ],
                     "description": "请求参数。"
                   },
                   "sort_by": {
                     "type": "string",
                     "minLength": 1,
+                    "enum": [
+                      "time",
+                      "views"
+                    ],
                     "description": "结果排序方式。"
                   },
                   "username": {

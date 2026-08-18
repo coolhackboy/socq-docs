@@ -1,5 +1,5 @@
 {
-  "schema_version": "v1-7220ff41bac6",
+  "schema_version": "v1-535044043eab",
   "platforms": [
     {
       "platform": "amazon",
@@ -4563,7 +4563,7 @@
           "url": {
             "type": "string",
             "minLength": 1,
-            "description": "A public content or product URL."
+            "description": "A non-empty post reference with an authority component whose parsed hostname is bsky.app or a bsky.app subdomain. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted."
           }
         },
         "required": [
@@ -5127,7 +5127,9 @@
           "username": {
             "type": "string",
             "minLength": 1,
-            "description": "A public account username."
+            "description": "A Bluesky username containing 1 to 253 ASCII letters, digits, periods, or hyphens, without a leading @.",
+            "maxLength": 253,
+            "pattern": "^[A-Za-z0-9.-]{1,253}$"
           }
         },
         "required": [
@@ -5635,6 +5637,16 @@
             "required": [
               "username"
             ]
+          }
+        ],
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "user_id",
+                "username"
+              ]
+            }
           }
         ]
       },
@@ -23629,7 +23641,8 @@
           },
           "latitude": {
             "type": "number",
-            "description": "An optional numeric latitude value. The current runtime validates the number type but does not impose a numeric range."
+            "minimum": -90,
+            "maximum": 90
           },
           "location": {
             "type": "string",
@@ -23637,7 +23650,8 @@
           },
           "longitude": {
             "type": "number",
-            "description": "An optional numeric longitude value. The current runtime validates the number type but does not impose a numeric range."
+            "minimum": -180,
+            "maximum": 180
           },
           "query": {
             "type": "string",
@@ -48238,7 +48252,12 @@
           },
           "media_type": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "enum": [
+              "all",
+              "image",
+              "video"
+            ]
           },
           "results_limit": {
             "type": "integer",
@@ -49782,11 +49801,22 @@
         "properties": {
           "media_type": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "enum": [
+              "all",
+              "image",
+              "video"
+            ]
           },
           "published_within": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "enum": [
+              "all",
+              "day",
+              "six_months",
+              "week"
+            ]
           },
           "query": {
             "type": "string",
@@ -49795,7 +49825,12 @@
           },
           "sort_by": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "enum": [
+              "general",
+              "latest",
+              "most_liked"
+            ]
           }
         },
         "required": [
@@ -70534,11 +70569,24 @@
         "properties": {
           "filter_by": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "enum": [
+              "all",
+              "archive",
+              "archives",
+              "highlight",
+              "highlights",
+              "upload",
+              "uploads"
+            ]
           },
           "sort_by": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "enum": [
+              "time",
+              "views"
+            ]
           },
           "username": {
             "type": "string",
