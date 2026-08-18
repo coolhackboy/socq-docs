@@ -400,30 +400,30 @@
                 "pages": [
                   "api-manual/amazon/overview",
                   "api-manual/amazon/product-search",
-                  "api-manual/amazon/product-detail",
-                  "api-manual/amazon/reviews",
-                  "api-manual/amazon/seller-info",
-                  "api-manual/amazon/best-sellers"
+                    "api-manual/amazon/product-detail",
+                    "api-manual/amazon/reviews",
+                    "api-manual/amazon/seller-info",
+                    "api-manual/amazon/best-sellers"
                 ]
               },
               {
                 "group": "Google Play",
                 "icon": "https://cdn.simpleicons.org/googleplay",
                 "pages": [
-                  "api-manual/google-play/overview",
-                  "api-manual/google-play/app-detail",
-                  "api-manual/google-play/app-reviews",
-                  "api-manual/google-play/app-rankings"
+                    "api-manual/google-play/overview",
+                    "api-manual/google-play/app-detail",
+                    "api-manual/google-play/app-reviews",
+                    "api-manual/google-play/app-rankings"
                 ]
               },
               {
                 "group": "Apple App Store",
                 "icon": "https://cdn.simpleicons.org/appstore",
                 "pages": [
-                  "api-manual/apple-app-store/overview",
-                  "api-manual/apple-app-store/app-detail",
-                  "api-manual/apple-app-store/app-reviews",
-                  "api-manual/apple-app-store/rankings"
+                    "api-manual/apple-app-store/overview",
+                    "api-manual/apple-app-store/app-detail",
+                    "api-manual/apple-app-store/app-reviews",
+                    "api-manual/apple-app-store/rankings"
                 ]
               },
               {
@@ -811,30 +811,30 @@
                 "pages": [
                   "zh/api-manual/amazon/overview",
                   "zh/api-manual/amazon/product-search",
-                  "zh/api-manual/amazon/product-detail",
-                  "zh/api-manual/amazon/reviews",
-                  "zh/api-manual/amazon/seller-info",
-                  "zh/api-manual/amazon/best-sellers"
+                    "zh/api-manual/amazon/product-detail",
+                    "zh/api-manual/amazon/reviews",
+                    "zh/api-manual/amazon/seller-info",
+                    "zh/api-manual/amazon/best-sellers"
                 ]
               },
               {
                 "group": "Google Play",
                 "icon": "https://cdn.simpleicons.org/googleplay",
                 "pages": [
-                  "zh/api-manual/google-play/overview",
-                  "zh/api-manual/google-play/app-detail",
-                  "zh/api-manual/google-play/app-reviews",
-                  "zh/api-manual/google-play/app-rankings"
+                    "zh/api-manual/google-play/overview",
+                    "zh/api-manual/google-play/app-detail",
+                    "zh/api-manual/google-play/app-reviews",
+                    "zh/api-manual/google-play/app-rankings"
                 ]
               },
               {
                 "group": "Apple App Store",
                 "icon": "https://cdn.simpleicons.org/appstore",
                 "pages": [
-                  "zh/api-manual/apple-app-store/overview",
-                  "zh/api-manual/apple-app-store/app-detail",
-                  "zh/api-manual/apple-app-store/app-reviews",
-                  "zh/api-manual/apple-app-store/rankings"
+                    "zh/api-manual/apple-app-store/overview",
+                    "zh/api-manual/apple-app-store/app-detail",
+                    "zh/api-manual/apple-app-store/app-reviews",
+                    "zh/api-manual/apple-app-store/rankings"
                 ]
               },
               {

@@ -232,7 +232,7 @@
     "urls": ["https://www.amazon.com/sp?seller=A2L77EE7U53NWQ"]
   },
   "amazon/best-sellers": {
-    "urls": ["https://www.amazon.com/Best-Sellers-Electronics/zgbs/electronics"],
+    "urls": ["https://www.amazon.com/Best-Sellers-Books/zgbs/books"],
     "results_limit": 3
   },
   "google-play/app-detail": {

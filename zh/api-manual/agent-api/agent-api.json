@@ -154,81 +154,6 @@
         }
       }
     },
-    "/v1/amazon/reviews": {
-      "post": {
-        "operationId": "socq_amazon_reviews",
-        "summary": "Amazon Reviews",
-        "description": "获取 Amazon 的标准化公开 Reviews 数据。",
-        "tags": [
-          "amazon"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/ReviewItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 2000,
-                    "default": 100,
-                    "description": "最多保存的结果数，实际结果可能少于该值。"
-                  },
-                  "urls": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
-                  }
-                },
-                "required": [
-                  "urls"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "任务已受理",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/amazon/product-search": {
       "post": {
         "operationId": "socq_amazon_product_search",
@@ -278,6 +203,81 @@
                 "required": [
                   "domain",
                   "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/amazon/reviews": {
+      "post": {
+        "operationId": "socq_amazon_reviews",
+        "summary": "Amazon Reviews",
+        "description": "获取 Amazon 的标准化公开 Reviews 数据。",
+        "tags": [
+          "amazon"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReviewItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
                 ]
               }
             }
@@ -443,16 +443,16 @@
         }
       }
     },
-    "/v1/apple-app-store/rankings": {
+    "/v1/apple-app-store/app-reviews": {
       "post": {
-        "operationId": "socq_apple_app_store_rankings",
-        "summary": "Apple App Store Rankings",
-        "description": "获取 Apple App Store 的标准化公开 Rankings 数据。",
+        "operationId": "socq_apple_app_store_app_reviews",
+        "summary": "Apple App Store Reviews",
+        "description": "获取 Apple App Store 的标准化公开 Reviews 数据。",
         "tags": [
           "apple-app-store"
         ],
         "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/AppItem"
+          "$ref": "#/components/schemas/ReviewItem"
         },
         "security": [
           {
@@ -518,16 +518,16 @@
         }
       }
     },
-    "/v1/apple-app-store/app-reviews": {
+    "/v1/apple-app-store/rankings": {
       "post": {
-        "operationId": "socq_apple_app_store_app_reviews",
-        "summary": "Apple App Store Reviews",
-        "description": "获取 Apple App Store 的标准化公开 Reviews 数据。",
+        "operationId": "socq_apple_app_store_rankings",
+        "summary": "Apple App Store Rankings",
+        "description": "获取 Apple App Store 的标准化公开 Rankings 数据。",
         "tags": [
           "apple-app-store"
         ],
         "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/ReviewItem"
+          "$ref": "#/components/schemas/AppItem"
         },
         "security": [
           {
@@ -624,7 +624,7 @@
                   "url": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "包含 authority 的非空帖子地址，解析后的主机名必须为 bsky.app 或其子域名；任意 scheme 均可使用，但必须包含 authority 和 hostname，同时支持协议相对地址。"
+                    "description": "公开内容、主页或商品 URL。"
                   }
                 },
                 "required": [
@@ -689,9 +689,7 @@
                   "username": {
                     "type": "string",
                     "minLength": 1,
-                    "maxLength": 253,
-                    "pattern": "^[A-Za-z0-9.-]{1,253}$",
-                    "description": "由 1 到 253 个 ASCII 字母、数字、点或连字符组成，且不带开头 @ 的 Bluesky username。"
+                    "description": "公开账号用户名。"
                   }
                 },
                 "required": [
@@ -756,15 +754,15 @@
                   "user_id": {
                     "type": "string",
                     "minLength": 1,
-                    "pattern": "^did:[a-z0-9]+:[A-Za-z0-9._:%-]+$",
-                    "description": "采用 did:method:identifier 格式的 Bluesky 去中心化标识符。"
+                    "description": "采用 did:method:identifier 格式的 Bluesky 去中心化标识符。",
+                    "pattern": "^did:[a-z0-9]+:[A-Za-z0-9._:%-]+$"
                   },
                   "username": {
                     "type": "string",
                     "minLength": 1,
+                    "description": "由 1 到 253 个 ASCII 字母、数字、点或连字符组成，且不带开头 @ 的 Bluesky handle。",
                     "maxLength": 253,
-                    "pattern": "^[A-Za-z0-9.-]{1,253}$",
-                    "description": "由 1 到 253 个 ASCII 字母、数字、点或连字符组成，且不带开头 @ 的 Bluesky handle。"
+                    "pattern": "^[A-Za-z0-9.-]{1,253}$"
                   }
                 },
                 "required": [],
@@ -779,78 +777,6 @@
                       "username"
                     ]
                   }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "任务已受理",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/douyin/video-comments": {
-      "post": {
-        "operationId": "socq_douyin_video_comments",
-        "summary": "抖音 Comments",
-        "description": "获取 抖音 的标准化公开 Comments 数据。",
-        "tags": [
-          "douyin"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/CommentItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 20,
-                    "default": 20,
-                    "description": "最多保存的结果数，实际结果可能少于该值。"
-                  },
-                  "url": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "公开内容、主页或商品 URL。"
-                  }
-                },
-                "required": [
-                  "url"
                 ]
               }
             }
@@ -1103,71 +1029,6 @@
         }
       }
     },
-    "/v1/douyin/video-search": {
-      "post": {
-        "operationId": "socq_douyin_video_search",
-        "summary": "抖音 Search",
-        "description": "获取 抖音 的标准化公开 Search 数据。",
-        "tags": [
-          "douyin"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/ReelVideoItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "query": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "搜索关键词。"
-                  }
-                },
-                "required": [
-                  "query"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "任务已受理",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/douyin/user-videos": {
       "post": {
         "operationId": "socq_douyin_user_videos",
@@ -1255,6 +1116,78 @@
         }
       }
     },
+    "/v1/douyin/video-comments": {
+      "post": {
+        "operationId": "socq_douyin_video_comments",
+        "summary": "抖音 Comments",
+        "description": "获取 抖音 的标准化公开 Comments 数据。",
+        "tags": [
+          "douyin"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 20,
+                    "default": 20,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开内容、主页或商品 URL。"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/douyin/video-detail": {
       "post": {
         "operationId": "socq_douyin_video_detail",
@@ -1291,6 +1224,71 @@
                 },
                 "required": [
                   "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/douyin/video-search": {
+      "post": {
+        "operationId": "socq_douyin_video_search",
+        "summary": "抖音 Search",
+        "description": "获取 抖音 的标准化公开 Search 数据。",
+        "tags": [
+          "douyin"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  }
+                },
+                "required": [
+                  "query"
                 ]
               }
             }
@@ -7090,71 +7088,6 @@
         }
       }
     },
-    "/v1/rednote/note-comments": {
-      "post": {
-        "operationId": "socq_rednote_note_comments",
-        "summary": "小红书（Rednote） Comments",
-        "description": "获取 小红书（Rednote） 的标准化公开 Comments 数据。",
-        "tags": [
-          "rednote"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/CommentItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "url": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "公开内容、主页或商品 URL。"
-                  }
-                },
-                "required": [
-                  "url"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "任务已受理",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/rednote/home-recommendations": {
       "post": {
         "operationId": "socq_rednote_home_recommendations",
@@ -7230,16 +7163,16 @@
         }
       }
     },
-    "/v1/rednote/note-detail": {
+    "/v1/rednote/note-comments": {
       "post": {
-        "operationId": "socq_rednote_note_detail",
-        "summary": "小红书（Rednote） Notes",
-        "description": "获取 小红书（Rednote） 的标准化公开 Notes 数据。",
+        "operationId": "socq_rednote_note_comments",
+        "summary": "小红书（Rednote） Comments",
+        "description": "获取 小红书（Rednote） 的标准化公开 Comments 数据。",
         "tags": [
           "rednote"
         ],
         "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/PostItem"
+          "$ref": "#/components/schemas/CommentItem"
         },
         "security": [
           {
@@ -7295,16 +7228,16 @@
         }
       }
     },
-    "/v1/rednote/user-profile": {
+    "/v1/rednote/note-detail": {
       "post": {
-        "operationId": "socq_rednote_user_profile",
-        "summary": "小红书（Rednote） Profiles",
-        "description": "获取 小红书（Rednote） 的标准化公开 Profiles 数据。",
+        "operationId": "socq_rednote_note_detail",
+        "summary": "小红书（Rednote） Notes",
+        "description": "获取 小红书（Rednote） 的标准化公开 Notes 数据。",
         "tags": [
           "rednote"
         ],
         "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/AccountItem"
+          "$ref": "#/components/schemas/PostItem"
         },
         "security": [
           {
@@ -7327,25 +7260,10 @@
                     "type": "string",
                     "minLength": 1,
                     "description": "公开内容、主页或商品 URL。"
-                  },
-                  "user_id": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "公开账号的 ID。"
                   }
                 },
-                "required": [],
-                "anyOf": [
-                  {
-                    "required": [
-                      "url"
-                    ]
-                  },
-                  {
-                    "required": [
-                      "user_id"
-                    ]
-                  }
+                "required": [
+                  "url"
                 ]
               }
             }
@@ -7530,6 +7448,86 @@
         ],
         "x-standard-result-item-schema": {
           "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开内容、主页或商品 URL。"
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开账号的 ID。"
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "url"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "user_id"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/rednote/user-profile": {
+      "post": {
+        "operationId": "socq_rednote_user_profile",
+        "summary": "小红书（Rednote） Profiles",
+        "description": "获取 小红书（Rednote） 的标准化公开 Profiles 数据。",
+        "tags": [
+          "rednote"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
         },
         "security": [
           {
@@ -8691,16 +8689,16 @@
         }
       }
     },
-    "/v1/snapchat/spotlight-comments": {
+    "/v1/snapchat/spotlight": {
       "post": {
-        "operationId": "socq_snapchat_spotlight_comments",
-        "summary": "Snapchat Spotlight Comments",
-        "description": "获取 Snapchat 的标准化公开 Spotlight Comments 数据。",
+        "operationId": "socq_snapchat_spotlight",
+        "summary": "Snapchat Spotlights",
+        "description": "获取 Snapchat 的标准化公开 Spotlights 数据。",
         "tags": [
           "snapchat"
         ],
         "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/CommentItem"
+          "$ref": "#/components/schemas/ReelVideoItem"
         },
         "security": [
           {
@@ -8756,16 +8754,16 @@
         }
       }
     },
-    "/v1/snapchat/spotlight": {
+    "/v1/snapchat/spotlight-comments": {
       "post": {
-        "operationId": "socq_snapchat_spotlight",
-        "summary": "Snapchat Spotlights",
-        "description": "获取 Snapchat 的标准化公开 Spotlights 数据。",
+        "operationId": "socq_snapchat_spotlight_comments",
+        "summary": "Snapchat Spotlight Comments",
+        "description": "获取 Snapchat 的标准化公开 Spotlight Comments 数据。",
         "tags": [
           "snapchat"
         ],
         "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/ReelVideoItem"
+          "$ref": "#/components/schemas/CommentItem"
         },
         "security": [
           {

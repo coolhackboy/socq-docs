@@ -155,81 +155,6 @@
         }
       }
     },
-    "/v1/amazon/reviews": {
-      "post": {
-        "operationId": "socq_amazon_reviews",
-        "summary": "Amazon Reviews API",
-        "description": "Collect public Amazon reviews.",
-        "tags": [
-          "amazon"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/ReviewItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 2000,
-                    "default": 100
-                  },
-                  "urls": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "minItems": 1,
-                    "description": "Public profile or content URLs."
-                  }
-                },
-                "required": [
-                  "urls"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Task accepted",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/amazon/product-search": {
       "post": {
         "operationId": "socq_amazon_product_search",
@@ -277,6 +202,81 @@
                 "required": [
                   "domain",
                   "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/amazon/reviews": {
+      "post": {
+        "operationId": "socq_amazon_reviews",
+        "summary": "Amazon Reviews API",
+        "description": "Collect public Amazon reviews.",
+        "tags": [
+          "amazon"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReviewItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
                 ]
               }
             }
@@ -444,16 +444,16 @@
         }
       }
     },
-    "/v1/apple-app-store/rankings": {
+    "/v1/apple-app-store/app-reviews": {
       "post": {
-        "operationId": "socq_apple_app_store_rankings",
-        "summary": "Apple App Store Rankings API",
-        "description": "Collect public Apple App Store category rankings.",
+        "operationId": "socq_apple_app_store_app_reviews",
+        "summary": "Apple App Store Reviews API",
+        "description": "Collect public Apple App Store reviews.",
         "tags": [
           "apple-app-store"
         ],
         "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/AppItem"
+          "$ref": "#/components/schemas/ReviewItem"
         },
         "security": [
           {
@@ -519,16 +519,16 @@
         }
       }
     },
-    "/v1/apple-app-store/app-reviews": {
+    "/v1/apple-app-store/rankings": {
       "post": {
-        "operationId": "socq_apple_app_store_app_reviews",
-        "summary": "Apple App Store Reviews API",
-        "description": "Collect public Apple App Store reviews.",
+        "operationId": "socq_apple_app_store_rankings",
+        "summary": "Apple App Store Rankings API",
+        "description": "Collect public Apple App Store category rankings.",
         "tags": [
           "apple-app-store"
         ],
         "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/ReviewItem"
+          "$ref": "#/components/schemas/AppItem"
         },
         "security": [
           {
@@ -625,7 +625,7 @@
                   "url": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A non-empty post reference with an authority component whose parsed hostname is bsky.app or a bsky.app subdomain. Any scheme is accepted when an authority and hostname are present; protocol-relative references are also accepted."
+                    "description": "A public content or product URL."
                   }
                 },
                 "required": [
@@ -690,9 +690,7 @@
                   "username": {
                     "type": "string",
                     "minLength": 1,
-                    "maxLength": 253,
-                    "pattern": "^[A-Za-z0-9.-]{1,253}$",
-                    "description": "A Bluesky username containing 1 to 253 ASCII letters, digits, periods, or hyphens, without a leading @."
+                    "description": "A public account username."
                   }
                 },
                 "required": [
@@ -757,15 +755,15 @@
                   "user_id": {
                     "type": "string",
                     "minLength": 1,
-                    "pattern": "^did:[a-z0-9]+:[A-Za-z0-9._:%-]+$",
-                    "description": "A Bluesky decentralized identifier in did:method:identifier form."
+                    "description": "A Bluesky decentralized identifier in did:method:identifier form.",
+                    "pattern": "^did:[a-z0-9]+:[A-Za-z0-9._:%-]+$"
                   },
                   "username": {
                     "type": "string",
                     "minLength": 1,
+                    "description": "A Bluesky handle containing 1 to 253 ASCII letters, digits, periods, or hyphens, without a leading @.",
                     "maxLength": 253,
-                    "pattern": "^[A-Za-z0-9.-]{1,253}$",
-                    "description": "A Bluesky handle containing 1 to 253 ASCII letters, digits, periods, or hyphens, without a leading @."
+                    "pattern": "^[A-Za-z0-9.-]{1,253}$"
                   }
                 },
                 "required": [],
@@ -780,77 +778,6 @@
                       "username"
                     ]
                   }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Task accepted",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/douyin/video-comments": {
-      "post": {
-        "operationId": "socq_douyin_video_comments",
-        "summary": "Douyin Video Comments API",
-        "description": "Collect one page of public Douyin video comments.",
-        "tags": [
-          "douyin"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/CommentItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 20,
-                    "default": 20
-                  },
-                  "url": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "A public content or product URL."
-                  }
-                },
-                "required": [
-                  "url"
                 ]
               }
             }
@@ -1102,71 +1029,6 @@
         }
       }
     },
-    "/v1/douyin/video-search": {
-      "post": {
-        "operationId": "socq_douyin_video_search",
-        "summary": "Douyin Video Search API",
-        "description": "Search public Douyin videos.",
-        "tags": [
-          "douyin"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/ReelVideoItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "query": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Search query."
-                  }
-                },
-                "required": [
-                  "query"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Task accepted",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/douyin/user-videos": {
       "post": {
         "operationId": "socq_douyin_user_videos",
@@ -1253,6 +1115,77 @@
         }
       }
     },
+    "/v1/douyin/video-comments": {
+      "post": {
+        "operationId": "socq_douyin_video_comments",
+        "summary": "Douyin Video Comments API",
+        "description": "Collect one page of public Douyin video comments.",
+        "tags": [
+          "douyin"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 20,
+                    "default": 20
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/douyin/video-detail": {
       "post": {
         "operationId": "socq_douyin_video_detail",
@@ -1289,6 +1222,71 @@
                 },
                 "required": [
                   "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/douyin/video-search": {
+      "post": {
+        "operationId": "socq_douyin_video_search",
+        "summary": "Douyin Video Search API",
+        "description": "Search public Douyin videos.",
+        "tags": [
+          "douyin"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  }
+                },
+                "required": [
+                  "query"
                 ]
               }
             }
@@ -7015,71 +7013,6 @@
         }
       }
     },
-    "/v1/rednote/note-comments": {
-      "post": {
-        "operationId": "socq_rednote_note_comments",
-        "summary": "Rednote Note Comments API",
-        "description": "Collect one page of public Rednote note comments.",
-        "tags": [
-          "rednote"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/CommentItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "url": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "A public content or product URL."
-                  }
-                },
-                "required": [
-                  "url"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Task accepted",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/rednote/home-recommendations": {
       "post": {
         "operationId": "socq_rednote_home_recommendations",
@@ -7152,16 +7085,16 @@
         }
       }
     },
-    "/v1/rednote/note-detail": {
+    "/v1/rednote/note-comments": {
       "post": {
-        "operationId": "socq_rednote_note_detail",
-        "summary": "Rednote Note Details API",
-        "description": "Collect public Rednote note details.",
+        "operationId": "socq_rednote_note_comments",
+        "summary": "Rednote Note Comments API",
+        "description": "Collect one page of public Rednote note comments.",
         "tags": [
           "rednote"
         ],
         "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/PostItem"
+          "$ref": "#/components/schemas/CommentItem"
         },
         "security": [
           {
@@ -7217,16 +7150,16 @@
         }
       }
     },
-    "/v1/rednote/user-profile": {
+    "/v1/rednote/note-detail": {
       "post": {
-        "operationId": "socq_rednote_user_profile",
-        "summary": "Rednote Profile API",
-        "description": "Collect a public Rednote profile.",
+        "operationId": "socq_rednote_note_detail",
+        "summary": "Rednote Note Details API",
+        "description": "Collect public Rednote note details.",
         "tags": [
           "rednote"
         ],
         "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/AccountItem"
+          "$ref": "#/components/schemas/PostItem"
         },
         "security": [
           {
@@ -7249,25 +7182,10 @@
                     "type": "string",
                     "minLength": 1,
                     "description": "A public content or product URL."
-                  },
-                  "user_id": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "A public account identifier."
                   }
                 },
-                "required": [],
-                "anyOf": [
-                  {
-                    "required": [
-                      "url"
-                    ]
-                  },
-                  {
-                    "required": [
-                      "user_id"
-                    ]
-                  }
+                "required": [
+                  "url"
                 ]
               }
             }
@@ -7449,6 +7367,86 @@
         ],
         "x-standard-result-item-schema": {
           "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public account identifier."
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "url"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "user_id"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/rednote/user-profile": {
+      "post": {
+        "operationId": "socq_rednote_user_profile",
+        "summary": "Rednote Profile API",
+        "description": "Collect a public Rednote profile.",
+        "tags": [
+          "rednote"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
         },
         "security": [
           {
@@ -8572,16 +8570,16 @@
         }
       }
     },
-    "/v1/snapchat/spotlight-comments": {
+    "/v1/snapchat/spotlight": {
       "post": {
-        "operationId": "socq_snapchat_spotlight_comments",
-        "summary": "Snapchat Spotlight Comments API",
-        "description": "Collect one page of public Snapchat Spotlight comments.",
+        "operationId": "socq_snapchat_spotlight",
+        "summary": "Snapchat Spotlight API",
+        "description": "Collect a public Snapchat Spotlight item.",
         "tags": [
           "snapchat"
         ],
         "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/CommentItem"
+          "$ref": "#/components/schemas/ReelVideoItem"
         },
         "security": [
           {
@@ -8637,16 +8635,16 @@
         }
       }
     },
-    "/v1/snapchat/spotlight": {
+    "/v1/snapchat/spotlight-comments": {
       "post": {
-        "operationId": "socq_snapchat_spotlight",
-        "summary": "Snapchat Spotlight API",
-        "description": "Collect a public Snapchat Spotlight item.",
+        "operationId": "socq_snapchat_spotlight_comments",
+        "summary": "Snapchat Spotlight Comments API",
+        "description": "Collect one page of public Snapchat Spotlight comments.",
         "tags": [
           "snapchat"
         ],
         "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/ReelVideoItem"
+          "$ref": "#/components/schemas/CommentItem"
         },
         "security": [
           {

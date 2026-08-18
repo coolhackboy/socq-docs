@@ -76,12 +76,42 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/google-play/app-ranki
     "task_id": "task_example",
     "public_id": "google-play/app-rankings",
     "status": "succeeded",
-    "result_count": 0,
-    "credits_amount": 0,
+    "result_count": 1,
+    "credits_amount": 0.15,
     "results": {
       "schema_id": "app",
       "schema_version": "1.0",
-      "items": [],
+      "items": [
+        {
+          "id": "com.openai.chatgpt",
+          "platform": "google-play",
+          "resource": "app-rankings",
+          "type": "app-ranking",
+          "url": "https://play.google.com/store/apps/details/ChatGPT?id=com.openai.chatgpt&hl=en",
+          "published_at": "2026-08-17T11:41:08.164000Z",
+          "collected_at": "2026-08-17T11:41:09.748230Z",
+          "app_id": "com.openai.chatgpt",
+          "name": "ChatGPT",
+          "text": "Introducing ChatGPT for Android: OpenAI's latest advancements at your fingertips.",
+          "developer": "OpenAI",
+          "category": "Productivity",
+          "rating": 4.7,
+          "reviews_count": 52491325,
+          "installs": "1477728065",
+          "price": null,
+          "rank": 1,
+          "media": [
+            {
+              "type": "image",
+              "url": "https://play-lh.googleusercontent.com/dPc3vh4x7L3gJ3_vFLT_dw9BY9ZNXEjcu3eBlXOkkn3klpNfUo3perqmeFqrmFUNB11IcU94wmbgkL9uQ4KReoA",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ]
+        }
+      ],
       "limit": 20,
       "next_cursor": null,
       "has_more": false

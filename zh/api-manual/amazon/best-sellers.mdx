@@ -15,7 +15,7 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/amazon/best-sellers"
 ```json
 {
   "urls": [
-    "https://www.amazon.com/Best-Sellers-Electronics/zgbs/electronics"
+    "https://www.amazon.com/Best-Sellers-Books/zgbs/books"
   ],
   "results_limit": 3
 }
@@ -81,12 +81,43 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/amazon/best-sellers"
     "task_id": "task_example",
     "public_id": "amazon/best-sellers",
     "status": "succeeded",
-    "result_count": 0,
-    "credits_amount": 0,
+    "result_count": 1,
+    "credits_amount": 0.15,
     "results": {
       "schema_id": "product",
       "schema_version": "1.0",
-      "items": [],
+      "items": [
+        {
+          "id": "1668236516",
+          "platform": "amazon",
+          "resource": "best-sellers",
+          "type": "best-seller",
+          "url": "https://www.amazon.com/Theo-Golden-Novel-Allen-Levi/dp/1668236516",
+          "published_at": "2026-08-17T11:40:46.699000Z",
+          "collected_at": "2026-08-17T11:40:53.895762Z",
+          "title": "Theo of Golden: A Novel",
+          "text": "THE #1 NEW YORK TIMES BESTSELLING PHENOMENON",
+          "seller": null,
+          "price": {
+            "amount": 12.99,
+            "currency": "USD",
+            "formatted": null
+          },
+          "rating": 4.7,
+          "reviews_count": 165993,
+          "sold_count": null,
+          "media": [
+            {
+              "type": "image",
+              "url": "https://m.media-amazon.com/images/I/81P0NvoRrWL._SL1500_.jpg",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ]
+        }
+      ],
       "limit": 20,
       "next_cursor": null,
       "has_more": false
