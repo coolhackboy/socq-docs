@@ -84,6 +84,7 @@ Task results use the stable SocQ fields below. Source-specific field names and f
 | `metrics` | `object` | Yes | Counters and measurements available for the result item. |
 | `metrics.likes_count` | `integer` | Yes | Number of likes. |
 | `metrics.replies_count` | `integer` | Yes | Number of replies. |
+| `media` | `array<object>` | Yes | Images, stickers, or other media attached to the comment. |
 {/* result-schema:end */}
 
 ## Completed Task Response
@@ -124,7 +125,8 @@ Task results use the stable SocQ fields below. Source-specific field names and f
           },
           "parent_id": null,
           "post_id": null,
-          "metrics": null
+          "metrics": null,
+          "media": null
         }
       ]
     }

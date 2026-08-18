@@ -1,5 +1,5 @@
 {
-  "schema_version": "v1-535044043eab",
+  "schema_version": "v1-d93e6d4f8368",
   "platforms": [
     {
       "platform": "amazon",
@@ -7276,8 +7276,8 @@
       },
       "examples": [
         {
-          "room_id": "7462723839303093032",
-          "author_id": "82194685715",
+          "room_id": "7356742011975715619",
+          "author_id": "2207432981615527",
           "results_limit": 3
         }
       ],
@@ -8711,6 +8711,105 @@
                         "likes_count",
                         "replies_count"
                       ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -8848,6 +8947,23 @@
                       "default": null,
                       "description": "Counters and measurements available for the result item.",
                       "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
                     }
                   },
                   "required": [
@@ -8862,7 +8978,8 @@
                     "author",
                     "parent_id",
                     "post_id",
-                    "metrics"
+                    "metrics",
+                    "media"
                   ],
                   "title": "CommentItem",
                   "type": "object",
@@ -10811,7 +10928,7 @@
       },
       "examples": [
         {
-          "url": "https://www.facebook.com/ads/library/?id=123456789012345"
+          "url": "https://www.facebook.com/ads/library?id=1545582153738441"
         }
       ],
       "tags": [
@@ -12857,7 +12974,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.facebook.com/marketplace/item/123456789012345/"
+            "https://www.facebook.com/marketplace/item/978385068564936/"
           ]
         }
       ],
@@ -14159,7 +14276,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.facebook.com/ads/library/?id=123456789012345"
+            "https://www.facebook.com/ads/library?id=1545582153738441"
           ]
         }
       ],
@@ -14409,6 +14526,105 @@
                         "likes_count",
                         "replies_count"
                       ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -14546,6 +14762,23 @@
                       "default": null,
                       "description": "Counters and measurements available for the result item.",
                       "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
                     }
                   },
                   "required": [
@@ -14560,7 +14793,8 @@
                     "author",
                     "parent_id",
                     "post_id",
-                    "metrics"
+                    "metrics",
+                    "media"
                   ],
                   "title": "CommentItem",
                   "type": "object",
@@ -14835,6 +15069,105 @@
                         "likes_count",
                         "replies_count"
                       ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -14972,6 +15305,23 @@
                       "default": null,
                       "description": "Counters and measurements available for the result item.",
                       "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
                     }
                   },
                   "required": [
@@ -14986,7 +15336,8 @@
                     "author",
                     "parent_id",
                     "post_id",
-                    "metrics"
+                    "metrics",
+                    "media"
                   ],
                   "title": "CommentItem",
                   "type": "object",
@@ -15040,7 +15391,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.facebook.com/nasa/posts/1234567890"
+            "https://www.facebook.com/reel/1064194079626979/"
           ]
         }
       ],
@@ -26326,7 +26677,7 @@
       "examples": [
         {
           "audio_ids": [
-            "123456789012345"
+            "1383262936846577"
           ],
           "results_limit": 20
         }
@@ -26548,6 +26899,105 @@
                         "likes_count",
                         "replies_count"
                       ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -26685,6 +27135,23 @@
                       "default": null,
                       "description": "Counters and measurements available for the result item.",
                       "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
                     }
                   },
                   "required": [
@@ -26699,7 +27166,8 @@
                     "author",
                     "parent_id",
                     "post_id",
-                    "metrics"
+                    "metrics",
+                    "media"
                   ],
                   "title": "CommentItem",
                   "type": "object",
@@ -26753,7 +27221,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.instagram.com/p/ABC123xyz/"
+            "https://www.instagram.com/reel/DBZMUClOJjZ/"
           ]
         }
       ],
@@ -29667,7 +30135,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.instagram.com/p/ABC123xyz/"
+            "https://www.instagram.com/p/DbbY9pdm6Q2/"
           ]
         }
       ],
@@ -39656,7 +40124,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.linkedin.com/jobs/view/1234567890/"
+            "https://www.linkedin.com/jobs/view/4435421919/"
           ]
         }
       ],
@@ -39869,6 +40337,105 @@
                         "likes_count",
                         "replies_count"
                       ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -40006,6 +40573,23 @@
                       "default": null,
                       "description": "Counters and measurements available for the result item.",
                       "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
                     }
                   },
                   "required": [
@@ -40020,7 +40604,8 @@
                     "author",
                     "parent_id",
                     "post_id",
-                    "metrics"
+                    "metrics",
+                    "media"
                   ],
                   "title": "CommentItem",
                   "type": "object",
@@ -40647,7 +41232,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.linkedin.com/posts/microsoft_ai-activity-1234567890"
+            "https://www.linkedin.com/posts/microsoft_ai-is-entering-a-new-era-defined-by-real-world-activity-7403848387738955776-hCMS"
           ]
         }
       ],
@@ -43414,7 +43999,7 @@
         {
           "query": "AI agents",
           "date_posted": "last-week",
-          "results_limit": 20
+          "results_limit": 10
         }
       ],
       "tags": [
@@ -43988,7 +44573,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.pinterest.com/pin/123456789012345678/"
+            "https://www.pinterest.com/pin/1091841503437618715"
           ]
         }
       ],
@@ -45857,6 +46442,105 @@
                         "likes_count",
                         "replies_count"
                       ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -45994,6 +46678,23 @@
                       "default": null,
                       "description": "Counters and measurements available for the result item.",
                       "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
                     }
                   },
                   "required": [
@@ -46008,7 +46709,8 @@
                     "author",
                     "parent_id",
                     "post_id",
-                    "metrics"
+                    "metrics",
+                    "media"
                   ],
                   "title": "CommentItem",
                   "type": "object",
@@ -46063,7 +46765,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.reddit.com/r/technology/comments/abc123/example_post/"
+            "https://www.reddit.com/r/technology/comments/1vbchyh/second_major_ai_company_says_its_systems_hacked/"
           ]
         }
       ],
@@ -46638,7 +47340,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.reddit.com/r/technology/comments/abc123/example_post/"
+            "https://www.reddit.com/r/technology/comments/1vbchyh/second_major_ai_company_says_its_systems_hacked/"
           ]
         }
       ],
@@ -48020,6 +48722,105 @@
                         "likes_count",
                         "replies_count"
                       ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -48157,6 +48958,23 @@
                       "default": null,
                       "description": "Counters and measurements available for the result item.",
                       "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
                     }
                   },
                   "required": [
@@ -48171,7 +48989,8 @@
                     "author",
                     "parent_id",
                     "post_id",
-                    "metrics"
+                    "metrics",
+                    "media"
                   ],
                   "title": "CommentItem",
                   "type": "object",
@@ -49010,6 +49829,105 @@
                         "likes_count",
                         "replies_count"
                       ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -49147,6 +50065,23 @@
                       "default": null,
                       "description": "Counters and measurements available for the result item.",
                       "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
                     }
                   },
                   "required": [
@@ -49161,7 +50096,8 @@
                     "author",
                     "parent_id",
                     "post_id",
-                    "metrics"
+                    "metrics",
+                    "media"
                   ],
                   "title": "CommentItem",
                   "type": "object",
@@ -53945,10 +54881,10 @@
       },
       "examples": [
         {
-          "target": "example.com",
+          "target": "microsoft.com",
           "location_code": 2840,
           "language_code": "en",
-          "results_limit": 100
+          "results_limit": 5
         }
       ],
       "tags": [
@@ -54289,10 +55225,10 @@
       },
       "examples": [
         {
-          "target": "example.com",
+          "target": "microsoft.com",
           "location_code": 2840,
           "language_code": "en",
-          "results_limit": 100
+          "results_limit": 5
         }
       ],
       "tags": [
@@ -54937,10 +55873,10 @@
       },
       "examples": [
         {
-          "target": "example.com",
+          "target": "microsoft.com",
           "location_code": 2840,
           "language_code": "en",
-          "results_limit": 100
+          "results_limit": 5
         }
       ],
       "tags": [
@@ -56673,6 +57609,105 @@
                         "likes_count",
                         "replies_count"
                       ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -56810,6 +57845,23 @@
                       "default": null,
                       "description": "Counters and measurements available for the result item.",
                       "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
                     }
                   },
                   "required": [
@@ -56824,7 +57876,8 @@
                     "author",
                     "parent_id",
                     "post_id",
-                    "metrics"
+                    "metrics",
+                    "media"
                   ],
                   "title": "CommentItem",
                   "type": "object",
@@ -57446,7 +58499,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.threads.net/@instagram/post/ABC123/"
+            "https://www.threads.com/@instagram/post/DbbbOW8D-T1"
           ]
         }
       ],
@@ -60146,7 +61199,7 @@
       },
       "examples": [
         {
-          "url": "https://www.tiktok.com/shop/pdp/example-product/1234567890123456789"
+          "url": "https://www.tiktok.com/shop/pdp/1729548220307968132"
         }
       ],
       "tags": [
@@ -60650,7 +61703,8 @@
       },
       "examples": [
         {
-          "url": "https://www.tiktok.com/shop/pdp/example-product/1234567890123456789"
+          "url": "https://www.tiktok.com/shop/pdp/1729548220307968132",
+          "results_limit": 20
         }
       ],
       "tags": [
@@ -61241,7 +62295,8 @@
       },
       "examples": [
         {
-          "url": "https://www.tiktok.com/shop/store/example-store/1234567890123456789"
+          "url": "https://www.tiktok.com/shop/store/cmf-by-nothing/7495669706651568260",
+          "results_limit": 20
         }
       ],
       "tags": [
@@ -62415,7 +63470,8 @@
       },
       "examples": [
         {
-          "username": "example_creator"
+          "username": "simplymandys",
+          "results_limit": 20
         }
       ],
       "tags": [
@@ -62643,6 +63699,105 @@
                         "likes_count",
                         "replies_count"
                       ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -62780,6 +63935,23 @@
                       "default": null,
                       "description": "Counters and measurements available for the result item.",
                       "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
                     }
                   },
                   "required": [
@@ -62794,7 +63966,8 @@
                     "author",
                     "parent_id",
                     "post_id",
-                    "metrics"
+                    "metrics",
+                    "media"
                   ],
                   "title": "CommentItem",
                   "type": "object",
@@ -62848,7 +64021,7 @@
       "examples": [
         {
           "url": "https://www.tiktok.com/@scout2015/video/6718335390845095173",
-          "comment_id": "1234567890",
+          "comment_id": "6718335906996502534",
           "results_limit": 20
         }
       ],
@@ -63070,6 +64243,105 @@
                         "likes_count",
                         "replies_count"
                       ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -63207,6 +64479,23 @@
                       "default": null,
                       "description": "Counters and measurements available for the result item.",
                       "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
                     }
                   },
                   "required": [
@@ -63221,7 +64510,8 @@
                     "author",
                     "parent_id",
                     "post_id",
-                    "metrics"
+                    "metrics",
+                    "media"
                   ],
                   "title": "CommentItem",
                   "type": "object",
@@ -72574,7 +73864,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/1234567890123456789"
+            "https://x.com/X/status/2073395918011789670"
           ],
           "results_limit": 20
         }
@@ -72807,6 +74097,105 @@
                         "likes_count",
                         "replies_count"
                       ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -72944,6 +74333,23 @@
                       "default": null,
                       "description": "Counters and measurements available for the result item.",
                       "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
                     }
                   },
                   "required": [
@@ -72958,7 +74364,8 @@
                     "author",
                     "parent_id",
                     "post_id",
-                    "metrics"
+                    "metrics",
+                    "media"
                   ],
                   "title": "CommentItem",
                   "type": "object",
@@ -73013,7 +74420,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/1234567890123456789"
+            "https://x.com/X/status/2073395918011789670"
           ],
           "results_limit": 20
         }
@@ -73379,7 +74786,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/1234567890123456789"
+            "https://x.com/X/status/2073395918011789670"
           ],
           "results_limit": 100
         }
@@ -73955,7 +75362,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/1234567890123456789"
+            "https://x.com/X/status/2073395918011789670"
           ]
         }
       ],
@@ -78082,6 +79489,105 @@
                         "likes_count",
                         "replies_count"
                       ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -78219,6 +79725,23 @@
                       "default": null,
                       "description": "Counters and measurements available for the result item.",
                       "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
                     }
                   },
                   "required": [
@@ -78233,7 +79756,8 @@
                     "author",
                     "parent_id",
                     "post_id",
-                    "metrics"
+                    "metrics",
+                    "media"
                   ],
                   "title": "CommentItem",
                   "type": "object",
@@ -78513,6 +80037,105 @@
                         "likes_count",
                         "replies_count"
                       ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
                     }
                   },
                   "additionalProperties": false,
@@ -78650,6 +80273,23 @@
                       "default": null,
                       "description": "Counters and measurements available for the result item.",
                       "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
                     }
                   },
                   "required": [
@@ -78664,7 +80304,8 @@
                     "author",
                     "parent_id",
                     "post_id",
-                    "metrics"
+                    "metrics",
+                    "media"
                   ],
                   "title": "CommentItem",
                   "type": "object",

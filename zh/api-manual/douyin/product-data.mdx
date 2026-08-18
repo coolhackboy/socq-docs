@@ -14,11 +14,14 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/douyin/product-data"
 
 ```json
 {
-  "room_id": "7462723839303093032",
-  "author_id": "82194685715",
+  "room_id": "7356742011975715619",
+  "author_id": "2207432981615527",
   "results_limit": 3
 }
 ```
+
+创作者每次开播时直播间 ID 都可能变化。请使用同一场有效直播对应的直播间
+ID 和作者 ID；离线或已过期的直播间可能执行失败或返回空商品列表。
 
 {/* mcp-usage:start */}
 ## 通过 MCP 使用

@@ -72,6 +72,7 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/comments"
 | `metrics` | `object` | 是 | 结果项可获得的计数和度量数据。 |
 | `metrics.likes_count` | `integer` | 是 | 点赞数量。 |
 | `metrics.replies_count` | `integer` | 是 | 回复数量。 |
+| `media` | `array<object>` | 是 | 评论附带的图片、贴纸或其他媒体。 |
 {/* result-schema:end */}
 
 ## 任务完成响应
@@ -115,7 +116,8 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/comments"
           "metrics": {
             "likes_count": 42,
             "replies_count": 5
-          }
+          },
+          "media": null
         }
       ]
     }

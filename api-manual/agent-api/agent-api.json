@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-535044043eab",
+    "version": "v1-d93e6d4f8368",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -14097,6 +14097,23 @@
             "default": null,
             "description": "Counters and measurements available for the result item.",
             "x-description-zh": "结果项可获得的计数和度量数据。"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
           }
         },
         "required": [
