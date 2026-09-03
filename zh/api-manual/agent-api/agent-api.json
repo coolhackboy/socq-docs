@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API 中文版",
-    "version": "v1-d93e6d4f8368",
+    "version": "v1-e5c51554619a",
     "description": "根据 SocQ 能力目录生成的异步社交数据 API。"
   },
   "servers": [
@@ -4482,7 +4482,8 @@
                   "query": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "搜索关键词。"
+                    "description": "已弃用：此字段不会筛选帖子，不能单独使用。请改用 usernames 或 Instagram 主页 URL；关键词搜索请调用 Instagram Search。",
+                    "deprecated": true
                   },
                   "results_limit": {
                     "type": "integer",
@@ -4509,11 +4510,6 @@
                 },
                 "required": [],
                 "anyOf": [
-                  {
-                    "required": [
-                      "query"
-                    ]
-                  },
                   {
                     "required": [
                       "urls"
@@ -4585,9 +4581,9 @@
                     "type": "array",
                     "items": {
                       "type": "string",
-                      "minLength": 1
+                      "pattern": "^@?[A-Za-z0-9._]{1,30}$"
                     },
-                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项，最多提供 100 项。"
                   }
                 },
                 "required": [
@@ -7511,7 +7507,8 @@
                   "user_id": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "公开账号的 ID。"
+                    "description": "公开账号的 ID。",
+                    "pattern": "^[0-9a-fA-F]{24}$"
                   }
                 },
                 "required": [],
@@ -7525,6 +7522,16 @@
                     "required": [
                       "user_id"
                     ]
+                  }
+                ],
+                "allOf": [
+                  {
+                    "not": {
+                      "required": [
+                        "url",
+                        "user_id"
+                      ]
+                    }
                   }
                 ]
               }
@@ -7591,7 +7598,8 @@
                   "user_id": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "公开账号的 ID。"
+                    "description": "公开账号的 ID。",
+                    "pattern": "^[0-9a-fA-F]{24}$"
                   }
                 },
                 "required": [],
@@ -7605,6 +7613,16 @@
                     "required": [
                       "user_id"
                     ]
+                  }
+                ],
+                "allOf": [
+                  {
+                    "not": {
+                      "required": [
+                        "url",
+                        "user_id"
+                      ]
+                    }
                   }
                 ]
               }
@@ -14298,7 +14316,8 @@
           "author",
           "parent_id",
           "post_id",
-          "metrics"
+          "metrics",
+          "media"
         ],
         "title": "CommentItem",
         "type": "object",

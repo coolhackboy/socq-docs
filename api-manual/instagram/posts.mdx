@@ -25,6 +25,22 @@ POST https://api.socq.ai/v1/instagram/posts
 
 Provide either `usernames` or public Instagram profile `urls`. The legacy `query` field does not select posts and cannot be used on its own; use [Instagram Search](/api-manual/instagram/search) for keyword searches.
 
+## Validation
+
+A request containing only the legacy `query` field is rejected before task creation and is not billed:
+
+```json
+{
+  "code": 422,
+  "error": {
+    "message": "missing_required_field:any_of:urls,usernames",
+    "type": "http_error"
+  }
+}
+```
+
+Existing integrations may continue sending `query` together with valid `usernames` or `urls`; the request remains compatible, but `query` is ignored.
+
 {/* mcp-usage:start */}
 ## Use with MCP
 

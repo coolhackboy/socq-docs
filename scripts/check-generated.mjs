@@ -159,6 +159,33 @@ function validateSchemaDescriptions(schema, root, path) {
   }
 }
 
+function validateInstagramPostsInputSchema(schema, locale) {
+  if (!schema?.properties) throw new Error(`${locale}: instagram/posts has no input properties`);
+  if (schema.properties.query?.deprecated !== true) {
+    throw new Error(`${locale}: instagram/posts query must be marked deprecated`);
+  }
+
+  const alternatives = (schema.anyOf ?? [])
+    .map((choice) => choice?.required)
+    .filter(Array.isArray)
+    .map((fields) => [...fields].sort())
+    .sort((left, right) => JSON.stringify(left).localeCompare(JSON.stringify(right)));
+  const expected = [["urls"], ["usernames"]].sort((left, right) =>
+    JSON.stringify(left).localeCompare(JSON.stringify(right))
+  );
+  if (JSON.stringify(alternatives) !== JSON.stringify(expected)) {
+    throw new Error(
+      `${locale}: instagram/posts must require urls or usernames; found ${JSON.stringify(alternatives)}`
+    );
+  }
+
+  const description = schema.properties.query.description ?? "";
+  const expectedDescription = locale === "zh" ? /已弃用/ : /deprecated/i;
+  if (!expectedDescription.test(description)) {
+    throw new Error(`${locale}: instagram/posts query description must explain its deprecation`);
+  }
+}
+
 if (new Set(ids).size !== ids.length) throw new Error("Duplicate public_id in capability-catalog.json");
 if (JSON.stringify(ids) !== JSON.stringify(llmsIds)) throw new Error("llms.json endpoint list is out of sync");
 if (JSON.stringify(ids) !== JSON.stringify(openapiIds)) throw new Error("OpenAPI endpoint paths are out of sync");
@@ -169,6 +196,21 @@ if (JSON.stringify(Object.keys(openapi.paths).sort()) !== JSON.stringify(Object.
 if (openapi.info.version !== zhOpenapi.info.version) {
   throw new Error("Chinese OpenAPI schema_version mismatch");
 }
+
+const instagramPostsCatalogSchema = catalog.endpoints.find(
+  (item) => item.public_id === "instagram/posts"
+)?.input_schema;
+const instagramPostsLlmsSchema = llms.endpoints.find(
+  (item) => item.public_id === "instagram/posts"
+)?.input_schema;
+const instagramPostsOpenApiSchema =
+  openapi.paths?.["/v1/instagram/posts"]?.post?.requestBody?.content?.["application/json"]?.schema;
+const instagramPostsZhOpenApiSchema =
+  zhOpenapi.paths?.["/v1/instagram/posts"]?.post?.requestBody?.content?.["application/json"]?.schema;
+validateInstagramPostsInputSchema(instagramPostsCatalogSchema, "catalog");
+validateInstagramPostsInputSchema(instagramPostsLlmsSchema, "llms");
+validateInstagramPostsInputSchema(instagramPostsOpenApiSchema, "en");
+validateInstagramPostsInputSchema(instagramPostsZhOpenApiSchema, "zh");
 
 for (const language of docsConfig.navigation.languages) {
   const apiGroups = language.tabs[0].groups.filter((group) =>

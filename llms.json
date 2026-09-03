@@ -1,5 +1,5 @@
 {
-  "schema_version": "v1-d93e6d4f8368",
+  "schema_version": "v1-e5c51554619a",
   "platforms": [
     {
       "platform": "amazon",
@@ -10928,7 +10928,7 @@
       },
       "examples": [
         {
-          "url": "https://www.facebook.com/ads/library?id=1545582153738441"
+          "url": "https://www.facebook.com/ads/library/?id=123456789012345"
         }
       ],
       "tags": [
@@ -12974,7 +12974,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.facebook.com/marketplace/item/978385068564936/"
+            "https://www.facebook.com/marketplace/item/123456789012345/"
           ]
         }
       ],
@@ -14276,7 +14276,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.facebook.com/ads/library?id=1545582153738441"
+            "https://www.facebook.com/ads/library/?id=123456789012345"
           ]
         }
       ],
@@ -15391,7 +15391,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.facebook.com/reel/1064194079626979/"
+            "https://www.facebook.com/nasa/posts/1234567890"
           ]
         }
       ],
@@ -26677,7 +26677,7 @@
       "examples": [
         {
           "audio_ids": [
-            "1383262936846577"
+            "123456789012345"
           ],
           "results_limit": 20
         }
@@ -27221,7 +27221,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.instagram.com/reel/DBZMUClOJjZ/"
+            "https://www.instagram.com/p/ABC123xyz/"
           ]
         }
       ],
@@ -30135,7 +30135,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.instagram.com/p/DbbY9pdm6Q2/"
+            "https://www.instagram.com/p/ABC123xyz/"
           ]
         }
       ],
@@ -30169,7 +30169,8 @@
           "query": {
             "type": "string",
             "minLength": 1,
-            "description": "Search query."
+            "description": "Deprecated for Instagram Posts and does not select posts. Use usernames or profile URLs, or call Instagram Search.",
+            "deprecated": true
           },
           "results_limit": {
             "type": "integer",
@@ -30197,11 +30198,6 @@
         },
         "required": [],
         "anyOf": [
-          {
-            "required": [
-              "query"
-            ]
-          },
           {
             "required": [
               "urls"
@@ -30778,10 +30774,11 @@
             "type": "array",
             "items": {
               "type": "string",
-              "minLength": 1
+              "pattern": "^@?[A-Za-z0-9._]{1,30}$"
             },
             "minItems": 1,
-            "description": "Public account usernames."
+            "description": "Public Instagram usernames, with an optional leading @.",
+            "maxItems": 100
           }
         },
         "required": [
@@ -40124,7 +40121,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.linkedin.com/jobs/view/4435421919/"
+            "https://www.linkedin.com/jobs/view/1234567890/"
           ]
         }
       ],
@@ -41232,7 +41229,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.linkedin.com/posts/microsoft_ai-is-entering-a-new-era-defined-by-real-world-activity-7403848387738955776-hCMS"
+            "https://www.linkedin.com/posts/microsoft_ai-activity-1234567890"
           ]
         }
       ],
@@ -43999,7 +43996,7 @@
         {
           "query": "AI agents",
           "date_posted": "last-week",
-          "results_limit": 10
+          "results_limit": 20
         }
       ],
       "tags": [
@@ -44573,7 +44570,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.pinterest.com/pin/1091841503437618715"
+            "https://www.pinterest.com/pin/123456789012345678/"
           ]
         }
       ],
@@ -46765,7 +46762,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.reddit.com/r/technology/comments/1vbchyh/second_major_ai_company_says_its_systems_hacked/"
+            "https://www.reddit.com/r/technology/comments/abc123/example_post/"
           ]
         }
       ],
@@ -47340,7 +47337,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.reddit.com/r/technology/comments/1vbchyh/second_major_ai_company_says_its_systems_hacked/"
+            "https://www.reddit.com/r/technology/comments/abc123/example_post/"
           ]
         }
       ],
@@ -51818,12 +51815,13 @@
           "url": {
             "type": "string",
             "minLength": 1,
-            "description": "A public content or product URL."
+            "description": "A public Rednote profile URL or xhslink.com/xhslink.cn share link."
           },
           "user_id": {
             "type": "string",
             "minLength": 1,
-            "description": "A public account identifier."
+            "description": "A 24-character internal Rednote user ID, not a nickname or Rednote number.",
+            "pattern": "^[0-9a-fA-F]{24}$"
           }
         },
         "required": [],
@@ -51837,6 +51835,16 @@
             "required": [
               "user_id"
             ]
+          }
+        ],
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "url",
+                "user_id"
+              ]
+            }
           }
         ]
       },
@@ -52397,12 +52405,13 @@
           "url": {
             "type": "string",
             "minLength": 1,
-            "description": "A public content or product URL."
+            "description": "A public Rednote profile URL or xhslink.com/xhslink.cn share link."
           },
           "user_id": {
             "type": "string",
             "minLength": 1,
-            "description": "A public account identifier."
+            "description": "A 24-character internal Rednote user ID, not a nickname or Rednote number.",
+            "pattern": "^[0-9a-fA-F]{24}$"
           }
         },
         "required": [],
@@ -52416,6 +52425,16 @@
             "required": [
               "user_id"
             ]
+          }
+        ],
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "url",
+                "user_id"
+              ]
+            }
           }
         ]
       },
@@ -54881,10 +54900,10 @@
       },
       "examples": [
         {
-          "target": "microsoft.com",
+          "target": "example.com",
           "location_code": 2840,
           "language_code": "en",
-          "results_limit": 5
+          "results_limit": 100
         }
       ],
       "tags": [
@@ -55225,10 +55244,10 @@
       },
       "examples": [
         {
-          "target": "microsoft.com",
+          "target": "example.com",
           "location_code": 2840,
           "language_code": "en",
-          "results_limit": 5
+          "results_limit": 100
         }
       ],
       "tags": [
@@ -55873,10 +55892,10 @@
       },
       "examples": [
         {
-          "target": "microsoft.com",
+          "target": "example.com",
           "location_code": 2840,
           "language_code": "en",
-          "results_limit": 5
+          "results_limit": 100
         }
       ],
       "tags": [
@@ -58499,7 +58518,7 @@
       "examples": [
         {
           "urls": [
-            "https://www.threads.com/@instagram/post/DbbbOW8D-T1"
+            "https://www.threads.net/@instagram/post/ABC123/"
           ]
         }
       ],
@@ -61199,7 +61218,7 @@
       },
       "examples": [
         {
-          "url": "https://www.tiktok.com/shop/pdp/1729548220307968132"
+          "url": "https://www.tiktok.com/shop/pdp/example-product/1234567890123456789"
         }
       ],
       "tags": [
@@ -61703,8 +61722,7 @@
       },
       "examples": [
         {
-          "url": "https://www.tiktok.com/shop/pdp/1729548220307968132",
-          "results_limit": 20
+          "url": "https://www.tiktok.com/shop/pdp/example-product/1234567890123456789"
         }
       ],
       "tags": [
@@ -62295,8 +62313,7 @@
       },
       "examples": [
         {
-          "url": "https://www.tiktok.com/shop/store/cmf-by-nothing/7495669706651568260",
-          "results_limit": 20
+          "url": "https://www.tiktok.com/shop/store/example-store/1234567890123456789"
         }
       ],
       "tags": [
@@ -63470,8 +63487,7 @@
       },
       "examples": [
         {
-          "username": "simplymandys",
-          "results_limit": 20
+          "username": "example_creator"
         }
       ],
       "tags": [
@@ -64021,7 +64037,7 @@
       "examples": [
         {
           "url": "https://www.tiktok.com/@scout2015/video/6718335390845095173",
-          "comment_id": "6718335906996502534",
+          "comment_id": "1234567890",
           "results_limit": 20
         }
       ],
@@ -73864,7 +73880,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/2073395918011789670"
+            "https://x.com/X/status/1234567890123456789"
           ],
           "results_limit": 20
         }
@@ -74420,7 +74436,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/2073395918011789670"
+            "https://x.com/X/status/1234567890123456789"
           ],
           "results_limit": 20
         }
@@ -74786,7 +74802,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/2073395918011789670"
+            "https://x.com/X/status/1234567890123456789"
           ],
           "results_limit": 100
         }
@@ -75362,7 +75378,7 @@
       "examples": [
         {
           "urls": [
-            "https://x.com/X/status/2073395918011789670"
+            "https://x.com/X/status/1234567890123456789"
           ]
         }
       ],

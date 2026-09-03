@@ -76,6 +76,8 @@ const PARAMETER_DESCRIPTIONS = {
 };
 
 const INPUT_DESCRIPTION_OVERRIDES = {
+  "instagram/posts.query":
+    "已弃用：此字段不会筛选帖子，不能单独使用。请改用 usernames 或 Instagram 主页 URL；关键词搜索请调用 Instagram Search。",
   "bluesky/post.url":
     "包含 authority 的非空帖子地址，解析后的主机名必须为 bsky.app 或其子域名；任意 scheme 均可使用，但必须包含 authority 和 hostname，同时支持协议相对地址。",
   "bluesky/profile.username":

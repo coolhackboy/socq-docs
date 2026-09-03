@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-d93e6d4f8368",
+    "version": "v1-e5c51554619a",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -4426,7 +4426,8 @@
                   "query": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "Search query."
+                    "description": "Deprecated for Instagram Posts and does not select posts. Use usernames or profile URLs, or call Instagram Search.",
+                    "deprecated": true
                   },
                   "results_limit": {
                     "type": "integer",
@@ -4454,11 +4455,6 @@
                 },
                 "required": [],
                 "anyOf": [
-                  {
-                    "required": [
-                      "query"
-                    ]
-                  },
                   {
                     "required": [
                       "urls"
@@ -4530,10 +4526,11 @@
                     "type": "array",
                     "items": {
                       "type": "string",
-                      "minLength": 1
+                      "pattern": "^@?[A-Za-z0-9._]{1,30}$"
                     },
                     "minItems": 1,
-                    "description": "Public account usernames."
+                    "description": "Public Instagram usernames, with an optional leading @.",
+                    "maxItems": 100
                   }
                 },
                 "required": [
@@ -7423,12 +7420,13 @@
                   "url": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A public content or product URL."
+                    "description": "A public Rednote profile URL or xhslink.com/xhslink.cn share link."
                   },
                   "user_id": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A public account identifier."
+                    "description": "A 24-character internal Rednote user ID, not a nickname or Rednote number.",
+                    "pattern": "^[0-9a-fA-F]{24}$"
                   }
                 },
                 "required": [],
@@ -7442,6 +7440,16 @@
                     "required": [
                       "user_id"
                     ]
+                  }
+                ],
+                "allOf": [
+                  {
+                    "not": {
+                      "required": [
+                        "url",
+                        "user_id"
+                      ]
+                    }
                   }
                 ]
               }
@@ -7503,12 +7511,13 @@
                   "url": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A public content or product URL."
+                    "description": "A public Rednote profile URL or xhslink.com/xhslink.cn share link."
                   },
                   "user_id": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "A public account identifier."
+                    "description": "A 24-character internal Rednote user ID, not a nickname or Rednote number.",
+                    "pattern": "^[0-9a-fA-F]{24}$"
                   }
                 },
                 "required": [],
@@ -7522,6 +7531,16 @@
                     "required": [
                       "user_id"
                     ]
+                  }
+                ],
+                "allOf": [
+                  {
+                    "not": {
+                      "required": [
+                        "url",
+                        "user_id"
+                      ]
+                    }
                   }
                 ]
               }
@@ -14128,7 +14147,8 @@
           "author",
           "parent_id",
           "post_id",
-          "metrics"
+          "metrics",
+          "media"
         ],
         "title": "CommentItem",
         "type": "object",
