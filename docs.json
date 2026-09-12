@@ -55,6 +55,10 @@
       {
         "label": "Website",
         "href": "https://socq.ai"
+      },
+      {
+        "type": "discord",
+        "href": "https://discord.gg/WrKvyNCvbR"
       }
     ],
     "primary": {
@@ -105,6 +109,10 @@
             {
               "label": "Website",
               "href": "https://socq.ai"
+            },
+            {
+              "type": "discord",
+              "href": "https://discord.gg/WrKvyNCvbR"
             }
           ],
           "primary": {
@@ -149,6 +157,82 @@
                 ]
               },
               {
+                "group": "TikTok",
+                "icon": "https://cdn.simpleicons.org/tiktok",
+                "pages": [
+                  "api-manual/tiktok/overview",
+                  "api-manual/tiktok/profiles",
+                  "api-manual/tiktok/videos",
+                  "api-manual/tiktok/comments",
+                  "api-manual/tiktok/search",
+                  "api-manual/tiktok/hashtags",
+                  "api-manual/tiktok/video-transcript",
+                  "api-manual/tiktok/live-room-info",
+                  "api-manual/tiktok/trending-feed",
+                  "api-manual/tiktok/followers-list",
+                  "api-manual/tiktok/following-list",
+                  "api-manual/tiktok/comment-replies",
+                  "api-manual/tiktok/user-videos",
+                  "api-manual/tiktok/search-users",
+                  "api-manual/tiktok/song",
+                  "api-manual/tiktok/song-videos"
+                ]
+              },
+              {
+                "group": "TikTok Shop",
+                "icon": "https://cdn.simpleicons.org/tiktok",
+                "pages": [
+                  "api-manual/tiktok-shop/overview",
+                  "api-manual/tiktok-shop/search",
+                  "api-manual/tiktok-shop/products",
+                  "api-manual/tiktok-shop/product",
+                  "api-manual/tiktok-shop/product-reviews",
+                  "api-manual/tiktok-shop/user-showcase"
+                ]
+              },
+              {
+                "group": "TikTok Ad Library",
+                "icon": "https://cdn.simpleicons.org/tiktok",
+                "pages": [
+                  "api-manual/tiktok-ad-library/overview",
+                  "api-manual/tiktok-ad-library/search",
+                  "api-manual/tiktok-ad-library/ad"
+                ]
+              },
+              {
+                "group": "Douyin",
+                "icon": "https://cdn.simpleicons.org/tiktok",
+                "pages": [
+                  "api-manual/douyin/overview",
+                  "api-manual/douyin/video-detail",
+                  "api-manual/douyin/user-profile",
+                  "api-manual/douyin/user-videos",
+                  "api-manual/douyin/video-search",
+                  "api-manual/douyin/video-comments",
+                  "api-manual/douyin/live-room-detail",
+                  "api-manual/douyin/product-data"
+                ]
+              },
+              {
+                "group": "YouTube",
+                "icon": "https://cdn.simpleicons.org/youtube",
+                "pages": [
+                  "api-manual/youtube/overview",
+                  "api-manual/youtube/channels",
+                  "api-manual/youtube/videos",
+                  "api-manual/youtube/channel-videos",
+                  "api-manual/youtube/comments",
+                  "api-manual/youtube/shorts",
+                  "api-manual/youtube/search",
+                  "api-manual/youtube/transcripts",
+                  "api-manual/youtube/playlist-videos",
+                  "api-manual/youtube/comment-replies",
+                  "api-manual/youtube/community-posts",
+                  "api-manual/youtube/hashtag-search",
+                  "api-manual/youtube/channel-live-videos"
+                ]
+              },
+              {
                 "group": "Facebook",
                 "icon": "https://cdn.simpleicons.org/facebook",
                 "pages": [
@@ -188,78 +272,6 @@
                   "api-manual/facebook-ad-library/company-search",
                   "api-manual/facebook-ad-library/company-ads",
                   "api-manual/facebook-ad-library/ad"
-                ]
-              },
-              {
-                "group": "Google Ad Library",
-                "icon": "https://cdn.simpleicons.org/google",
-                "pages": [
-                  "api-manual/google-ad-library/overview",
-                  "api-manual/google-ad-library/advertiser-search",
-                  "api-manual/google-ad-library/company-ads",
-                  "api-manual/google-ad-library/ad"
-                ]
-              },
-              {
-                "group": "YouTube",
-                "icon": "https://cdn.simpleicons.org/youtube",
-                "pages": [
-                  "api-manual/youtube/overview",
-                  "api-manual/youtube/channels",
-                  "api-manual/youtube/videos",
-                  "api-manual/youtube/channel-videos",
-                  "api-manual/youtube/comments",
-                  "api-manual/youtube/shorts",
-                  "api-manual/youtube/search",
-                  "api-manual/youtube/transcripts",
-                  "api-manual/youtube/playlist-videos",
-                  "api-manual/youtube/comment-replies",
-                  "api-manual/youtube/community-posts",
-                  "api-manual/youtube/hashtag-search",
-                  "api-manual/youtube/channel-live-videos"
-                ]
-              },
-              {
-                "group": "TikTok",
-                "icon": "https://cdn.simpleicons.org/tiktok",
-                "pages": [
-                  "api-manual/tiktok/overview",
-                  "api-manual/tiktok/profiles",
-                  "api-manual/tiktok/videos",
-                  "api-manual/tiktok/comments",
-                  "api-manual/tiktok/search",
-                  "api-manual/tiktok/hashtags",
-                  "api-manual/tiktok/video-transcript",
-                  "api-manual/tiktok/live-room-info",
-                  "api-manual/tiktok/trending-feed",
-                  "api-manual/tiktok/followers-list",
-                  "api-manual/tiktok/following-list",
-                  "api-manual/tiktok/comment-replies",
-                  "api-manual/tiktok/user-videos",
-                  "api-manual/tiktok/search-users",
-                  "api-manual/tiktok/song",
-                  "api-manual/tiktok/song-videos"
-                ]
-              },
-              {
-                "group": "TikTok Ad Library",
-                "icon": "https://cdn.simpleicons.org/tiktok",
-                "pages": [
-                  "api-manual/tiktok-ad-library/overview",
-                  "api-manual/tiktok-ad-library/search",
-                  "api-manual/tiktok-ad-library/ad"
-                ]
-              },
-              {
-                "group": "TikTok Shop",
-                "icon": "https://cdn.simpleicons.org/tiktok",
-                "pages": [
-                  "api-manual/tiktok-shop/overview",
-                  "api-manual/tiktok-shop/search",
-                  "api-manual/tiktok-shop/products",
-                  "api-manual/tiktok-shop/product",
-                  "api-manual/tiktok-shop/product-reviews",
-                  "api-manual/tiktok-shop/user-showcase"
                 ]
               },
               {
@@ -343,6 +355,16 @@
                 ]
               },
               {
+                "group": "Bluesky",
+                "icon": "https://cdn.simpleicons.org/bluesky",
+                "pages": [
+                  "api-manual/bluesky/overview",
+                  "api-manual/bluesky/profile",
+                  "api-manual/bluesky/user-posts",
+                  "api-manual/bluesky/post"
+                ]
+              },
+              {
                 "group": "Snapchat",
                 "icon": "https://cdn.simpleicons.org/snapchat",
                 "pages": [
@@ -362,13 +384,18 @@
                 ]
               },
               {
-                "group": "Bluesky",
-                "icon": "https://cdn.simpleicons.org/bluesky",
+                "group": "Rednote",
+                "icon": "https://cdn.simpleicons.org/xiaohongshu",
                 "pages": [
-                  "api-manual/bluesky/overview",
-                  "api-manual/bluesky/profile",
-                  "api-manual/bluesky/user-posts",
-                  "api-manual/bluesky/post"
+                  "api-manual/rednote/overview",
+                  "api-manual/rednote/note-detail",
+                  "api-manual/rednote/user-profile",
+                  "api-manual/rednote/user-notes",
+                  "api-manual/rednote/search-notes",
+                  "api-manual/rednote/search-users",
+                  "api-manual/rednote/note-comments",
+                  "api-manual/rednote/comment-replies",
+                  "api-manual/rednote/home-recommendations"
                 ]
               },
               {
@@ -392,6 +419,16 @@
                 ]
               },
               {
+                "group": "Google Ad Library",
+                "icon": "https://cdn.simpleicons.org/google",
+                "pages": [
+                  "api-manual/google-ad-library/overview",
+                  "api-manual/google-ad-library/advertiser-search",
+                  "api-manual/google-ad-library/company-ads",
+                  "api-manual/google-ad-library/ad"
+                ]
+              },
+              {
                 "group": "Google Maps",
                 "icon": "https://cdn.simpleicons.org/googlemaps",
                 "pages": [
@@ -402,64 +439,35 @@
                 ]
               },
               {
+                "group": "Google Play",
+                "icon": "https://cdn.simpleicons.org/googleplay",
+                "pages": [
+                  "api-manual/google-play/overview",
+                  "api-manual/google-play/app-detail",
+                  "api-manual/google-play/app-reviews",
+                  "api-manual/google-play/app-rankings"
+                ]
+              },
+              {
                 "group": "Amazon",
                 "icon": "https://api.iconify.design/simple-icons/amazon.svg?color=%23FF9900",
                 "pages": [
                   "api-manual/amazon/overview",
                   "api-manual/amazon/product-search",
-                    "api-manual/amazon/product-detail",
-                    "api-manual/amazon/reviews",
-                    "api-manual/amazon/seller-info",
-                    "api-manual/amazon/best-sellers"
-                ]
-              },
-              {
-                "group": "Google Play",
-                "icon": "https://cdn.simpleicons.org/googleplay",
-                "pages": [
-                    "api-manual/google-play/overview",
-                    "api-manual/google-play/app-detail",
-                    "api-manual/google-play/app-reviews",
-                    "api-manual/google-play/app-rankings"
+                  "api-manual/amazon/product-detail",
+                  "api-manual/amazon/reviews",
+                  "api-manual/amazon/seller-info",
+                  "api-manual/amazon/best-sellers"
                 ]
               },
               {
                 "group": "Apple App Store",
                 "icon": "https://cdn.simpleicons.org/appstore",
                 "pages": [
-                    "api-manual/apple-app-store/overview",
-                    "api-manual/apple-app-store/app-detail",
-                    "api-manual/apple-app-store/app-reviews",
-                    "api-manual/apple-app-store/rankings"
-                ]
-              },
-              {
-                "group": "Rednote",
-                "icon": "https://cdn.simpleicons.org/xiaohongshu",
-                "pages": [
-                  "api-manual/rednote/overview",
-                  "api-manual/rednote/note-detail",
-                  "api-manual/rednote/user-profile",
-                  "api-manual/rednote/user-notes",
-                  "api-manual/rednote/search-notes",
-                  "api-manual/rednote/search-users",
-                  "api-manual/rednote/note-comments",
-                  "api-manual/rednote/comment-replies",
-                  "api-manual/rednote/home-recommendations"
-                ]
-              },
-              {
-                "group": "Douyin",
-                "icon": "https://cdn.simpleicons.org/tiktok",
-                "pages": [
-                  "api-manual/douyin/overview",
-                  "api-manual/douyin/video-detail",
-                  "api-manual/douyin/user-profile",
-                  "api-manual/douyin/user-videos",
-                  "api-manual/douyin/video-search",
-                  "api-manual/douyin/video-comments",
-                  "api-manual/douyin/live-room-detail",
-                  "api-manual/douyin/product-data"
+                  "api-manual/apple-app-store/overview",
+                  "api-manual/apple-app-store/app-detail",
+                  "api-manual/apple-app-store/app-reviews",
+                  "api-manual/apple-app-store/rankings"
                 ]
               },
               {
@@ -523,6 +531,10 @@
             {
               "label": "官网",
               "href": "https://socq.ai"
+            },
+            {
+              "type": "discord",
+              "href": "https://discord.gg/WrKvyNCvbR"
             }
           ],
           "primary": {
@@ -567,6 +579,82 @@
                 ]
               },
               {
+                "group": "TikTok",
+                "icon": "https://cdn.simpleicons.org/tiktok",
+                "pages": [
+                  "zh/api-manual/tiktok/overview",
+                  "zh/api-manual/tiktok/profiles",
+                  "zh/api-manual/tiktok/videos",
+                  "zh/api-manual/tiktok/comments",
+                  "zh/api-manual/tiktok/search",
+                  "zh/api-manual/tiktok/hashtags",
+                  "zh/api-manual/tiktok/video-transcript",
+                  "zh/api-manual/tiktok/live-room-info",
+                  "zh/api-manual/tiktok/trending-feed",
+                  "zh/api-manual/tiktok/followers-list",
+                  "zh/api-manual/tiktok/following-list",
+                  "zh/api-manual/tiktok/comment-replies",
+                  "zh/api-manual/tiktok/user-videos",
+                  "zh/api-manual/tiktok/search-users",
+                  "zh/api-manual/tiktok/song",
+                  "zh/api-manual/tiktok/song-videos"
+                ]
+              },
+              {
+                "group": "TikTok Shop",
+                "icon": "https://cdn.simpleicons.org/tiktok",
+                "pages": [
+                  "zh/api-manual/tiktok-shop/overview",
+                  "zh/api-manual/tiktok-shop/search",
+                  "zh/api-manual/tiktok-shop/products",
+                  "zh/api-manual/tiktok-shop/product",
+                  "zh/api-manual/tiktok-shop/product-reviews",
+                  "zh/api-manual/tiktok-shop/user-showcase"
+                ]
+              },
+              {
+                "group": "TikTok 广告资料库",
+                "icon": "https://cdn.simpleicons.org/tiktok",
+                "pages": [
+                  "zh/api-manual/tiktok-ad-library/overview",
+                  "zh/api-manual/tiktok-ad-library/search",
+                  "zh/api-manual/tiktok-ad-library/ad"
+                ]
+              },
+              {
+                "group": "抖音",
+                "icon": "https://cdn.simpleicons.org/tiktok",
+                "pages": [
+                  "zh/api-manual/douyin/overview",
+                  "zh/api-manual/douyin/video-detail",
+                  "zh/api-manual/douyin/user-profile",
+                  "zh/api-manual/douyin/user-videos",
+                  "zh/api-manual/douyin/video-search",
+                  "zh/api-manual/douyin/video-comments",
+                  "zh/api-manual/douyin/live-room-detail",
+                  "zh/api-manual/douyin/product-data"
+                ]
+              },
+              {
+                "group": "YouTube",
+                "icon": "https://cdn.simpleicons.org/youtube",
+                "pages": [
+                  "zh/api-manual/youtube/overview",
+                  "zh/api-manual/youtube/channels",
+                  "zh/api-manual/youtube/videos",
+                  "zh/api-manual/youtube/channel-videos",
+                  "zh/api-manual/youtube/comments",
+                  "zh/api-manual/youtube/shorts",
+                  "zh/api-manual/youtube/search",
+                  "zh/api-manual/youtube/transcripts",
+                  "zh/api-manual/youtube/playlist-videos",
+                  "zh/api-manual/youtube/comment-replies",
+                  "zh/api-manual/youtube/community-posts",
+                  "zh/api-manual/youtube/hashtag-search",
+                  "zh/api-manual/youtube/channel-live-videos"
+                ]
+              },
+              {
                 "group": "Facebook",
                 "icon": "https://cdn.simpleicons.org/facebook",
                 "pages": [
@@ -606,78 +694,6 @@
                   "zh/api-manual/facebook-ad-library/company-search",
                   "zh/api-manual/facebook-ad-library/company-ads",
                   "zh/api-manual/facebook-ad-library/ad"
-                ]
-              },
-              {
-                "group": "Google 广告资料库",
-                "icon": "https://cdn.simpleicons.org/google",
-                "pages": [
-                  "zh/api-manual/google-ad-library/overview",
-                  "zh/api-manual/google-ad-library/advertiser-search",
-                  "zh/api-manual/google-ad-library/company-ads",
-                  "zh/api-manual/google-ad-library/ad"
-                ]
-              },
-              {
-                "group": "YouTube",
-                "icon": "https://cdn.simpleicons.org/youtube",
-                "pages": [
-                  "zh/api-manual/youtube/overview",
-                  "zh/api-manual/youtube/channels",
-                  "zh/api-manual/youtube/videos",
-                  "zh/api-manual/youtube/channel-videos",
-                  "zh/api-manual/youtube/comments",
-                  "zh/api-manual/youtube/shorts",
-                  "zh/api-manual/youtube/search",
-                  "zh/api-manual/youtube/transcripts",
-                  "zh/api-manual/youtube/playlist-videos",
-                  "zh/api-manual/youtube/comment-replies",
-                  "zh/api-manual/youtube/community-posts",
-                  "zh/api-manual/youtube/hashtag-search",
-                  "zh/api-manual/youtube/channel-live-videos"
-                ]
-              },
-              {
-                "group": "TikTok",
-                "icon": "https://cdn.simpleicons.org/tiktok",
-                "pages": [
-                  "zh/api-manual/tiktok/overview",
-                  "zh/api-manual/tiktok/profiles",
-                  "zh/api-manual/tiktok/videos",
-                  "zh/api-manual/tiktok/comments",
-                  "zh/api-manual/tiktok/search",
-                  "zh/api-manual/tiktok/hashtags",
-                  "zh/api-manual/tiktok/video-transcript",
-                  "zh/api-manual/tiktok/live-room-info",
-                  "zh/api-manual/tiktok/trending-feed",
-                  "zh/api-manual/tiktok/followers-list",
-                  "zh/api-manual/tiktok/following-list",
-                  "zh/api-manual/tiktok/comment-replies",
-                  "zh/api-manual/tiktok/user-videos",
-                  "zh/api-manual/tiktok/search-users",
-                  "zh/api-manual/tiktok/song",
-                  "zh/api-manual/tiktok/song-videos"
-                ]
-              },
-              {
-                "group": "TikTok 广告资料库",
-                "icon": "https://cdn.simpleicons.org/tiktok",
-                "pages": [
-                  "zh/api-manual/tiktok-ad-library/overview",
-                  "zh/api-manual/tiktok-ad-library/search",
-                  "zh/api-manual/tiktok-ad-library/ad"
-                ]
-              },
-              {
-                "group": "TikTok Shop",
-                "icon": "https://cdn.simpleicons.org/tiktok",
-                "pages": [
-                  "zh/api-manual/tiktok-shop/overview",
-                  "zh/api-manual/tiktok-shop/search",
-                  "zh/api-manual/tiktok-shop/products",
-                  "zh/api-manual/tiktok-shop/product",
-                  "zh/api-manual/tiktok-shop/product-reviews",
-                  "zh/api-manual/tiktok-shop/user-showcase"
                 ]
               },
               {
@@ -761,6 +777,16 @@
                 ]
               },
               {
+                "group": "Bluesky",
+                "icon": "https://cdn.simpleicons.org/bluesky",
+                "pages": [
+                  "zh/api-manual/bluesky/overview",
+                  "zh/api-manual/bluesky/profile",
+                  "zh/api-manual/bluesky/user-posts",
+                  "zh/api-manual/bluesky/post"
+                ]
+              },
+              {
                 "group": "Snapchat",
                 "icon": "https://cdn.simpleicons.org/snapchat",
                 "pages": [
@@ -780,13 +806,18 @@
                 ]
               },
               {
-                "group": "Bluesky",
-                "icon": "https://cdn.simpleicons.org/bluesky",
+                "group": "小红书（Rednote）",
+                "icon": "https://cdn.simpleicons.org/xiaohongshu",
                 "pages": [
-                  "zh/api-manual/bluesky/overview",
-                  "zh/api-manual/bluesky/profile",
-                  "zh/api-manual/bluesky/user-posts",
-                  "zh/api-manual/bluesky/post"
+                  "zh/api-manual/rednote/overview",
+                  "zh/api-manual/rednote/note-detail",
+                  "zh/api-manual/rednote/user-profile",
+                  "zh/api-manual/rednote/user-notes",
+                  "zh/api-manual/rednote/search-notes",
+                  "zh/api-manual/rednote/search-users",
+                  "zh/api-manual/rednote/note-comments",
+                  "zh/api-manual/rednote/comment-replies",
+                  "zh/api-manual/rednote/home-recommendations"
                 ]
               },
               {
@@ -810,6 +841,16 @@
                 ]
               },
               {
+                "group": "Google 广告资料库",
+                "icon": "https://cdn.simpleicons.org/google",
+                "pages": [
+                  "zh/api-manual/google-ad-library/overview",
+                  "zh/api-manual/google-ad-library/advertiser-search",
+                  "zh/api-manual/google-ad-library/company-ads",
+                  "zh/api-manual/google-ad-library/ad"
+                ]
+              },
+              {
                 "group": "Google 地图",
                 "icon": "https://cdn.simpleicons.org/googlemaps",
                 "pages": [
@@ -820,64 +861,35 @@
                 ]
               },
               {
+                "group": "Google Play",
+                "icon": "https://cdn.simpleicons.org/googleplay",
+                "pages": [
+                  "zh/api-manual/google-play/overview",
+                  "zh/api-manual/google-play/app-detail",
+                  "zh/api-manual/google-play/app-reviews",
+                  "zh/api-manual/google-play/app-rankings"
+                ]
+              },
+              {
                 "group": "Amazon",
                 "icon": "https://api.iconify.design/simple-icons/amazon.svg?color=%23FF9900",
                 "pages": [
                   "zh/api-manual/amazon/overview",
                   "zh/api-manual/amazon/product-search",
-                    "zh/api-manual/amazon/product-detail",
-                    "zh/api-manual/amazon/reviews",
-                    "zh/api-manual/amazon/seller-info",
-                    "zh/api-manual/amazon/best-sellers"
-                ]
-              },
-              {
-                "group": "Google Play",
-                "icon": "https://cdn.simpleicons.org/googleplay",
-                "pages": [
-                    "zh/api-manual/google-play/overview",
-                    "zh/api-manual/google-play/app-detail",
-                    "zh/api-manual/google-play/app-reviews",
-                    "zh/api-manual/google-play/app-rankings"
+                  "zh/api-manual/amazon/product-detail",
+                  "zh/api-manual/amazon/reviews",
+                  "zh/api-manual/amazon/seller-info",
+                  "zh/api-manual/amazon/best-sellers"
                 ]
               },
               {
                 "group": "Apple App Store",
                 "icon": "https://cdn.simpleicons.org/appstore",
                 "pages": [
-                    "zh/api-manual/apple-app-store/overview",
-                    "zh/api-manual/apple-app-store/app-detail",
-                    "zh/api-manual/apple-app-store/app-reviews",
-                    "zh/api-manual/apple-app-store/rankings"
-                ]
-              },
-              {
-                "group": "小红书（Rednote）",
-                "icon": "https://cdn.simpleicons.org/xiaohongshu",
-                "pages": [
-                  "zh/api-manual/rednote/overview",
-                  "zh/api-manual/rednote/note-detail",
-                  "zh/api-manual/rednote/user-profile",
-                  "zh/api-manual/rednote/user-notes",
-                  "zh/api-manual/rednote/search-notes",
-                  "zh/api-manual/rednote/search-users",
-                  "zh/api-manual/rednote/note-comments",
-                  "zh/api-manual/rednote/comment-replies",
-                  "zh/api-manual/rednote/home-recommendations"
-                ]
-              },
-              {
-                "group": "抖音",
-                "icon": "https://cdn.simpleicons.org/tiktok",
-                "pages": [
-                  "zh/api-manual/douyin/overview",
-                  "zh/api-manual/douyin/video-detail",
-                  "zh/api-manual/douyin/user-profile",
-                  "zh/api-manual/douyin/user-videos",
-                  "zh/api-manual/douyin/video-search",
-                  "zh/api-manual/douyin/video-comments",
-                  "zh/api-manual/douyin/live-room-detail",
-                  "zh/api-manual/douyin/product-data"
+                  "zh/api-manual/apple-app-store/overview",
+                  "zh/api-manual/apple-app-store/app-detail",
+                  "zh/api-manual/apple-app-store/app-reviews",
+                  "zh/api-manual/apple-app-store/rankings"
                 ]
               },
               {
