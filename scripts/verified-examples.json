@@ -1,18 +1,107 @@
 {
-  "linkedin/post-comments": {
-    "url": "https://www.linkedin.com/posts/aagupta_what-you-need-to-know-ai-agents-activity-7354600338621906944-RvXR"
+  "amazon/best-sellers": {
+    "urls": [
+      "https://www.amazon.com/Best-Sellers-Books/zgbs/books"
+    ],
+    "results_limit": 3
   },
-  "linkedin/search-posts": {
-    "query": "AI agents",
-    "date_posted": "last-week",
-    "results_limit": 10
+  "amazon/product-detail": {
+    "urls": [
+      "https://www.amazon.com/dp/B0CHHSFMRL"
+    ]
   },
-  "tiktok-ad-library/search": {
-    "query": "Anysphere",
-    "results_limit": 12
+  "amazon/product-search": {
+    "query": "wireless earbuds",
+    "domain": "https://www.amazon.com",
+    "results_limit": 3
   },
-  "tiktok-ad-library/ad": {
-    "url": "https://library.tiktok.com/ads/detail/?id=1871655924410641"
+  "amazon/reviews": {
+    "urls": [
+      "https://www.amazon.com/dp/B0CHHSFMRL"
+    ],
+    "results_limit": 3
+  },
+  "amazon/seller-info": {
+    "urls": [
+      "https://www.amazon.com/sp?seller=A2L77EE7U53NWQ"
+    ]
+  },
+  "apple-app-store/app-detail": {
+    "urls": [
+      "https://apps.apple.com/us/app/chatgpt/id6448311069"
+    ]
+  },
+  "apple-app-store/app-reviews": {
+    "urls": [
+      "https://apps.apple.com/us/app/chatgpt/id6448311069"
+    ],
+    "results_limit": 3
+  },
+  "apple-app-store/rankings": {
+    "urls": [
+      "https://apps.apple.com/us/iphone/charts/6007"
+    ],
+    "results_limit": 3
+  },
+  "bluesky/post": {
+    "url": "https://bsky.app/profile/jay.bsky.team/post/3micofpyeys2g"
+  },
+  "bluesky/profile": {
+    "username": "jay.bsky.team"
+  },
+  "bluesky/user-posts": {
+    "username": "jay.bsky.team"
+  },
+  "douyin/live-room-detail": {
+    "room_id": "7462723839303093032"
+  },
+  "douyin/product-data": {
+    "room_id": "7356742011975715619",
+    "author_id": "2207432981615527",
+    "results_limit": 3
+  },
+  "douyin/user-profile": {
+    "user_id": "MS4wLjABAAAAW9FWcqS7RdQAWPd2AA5fL_ilmqsIFUCQ_Iym6Yh9_cUa6ZRqVLjVQSUjlHrfXY1Y"
+  },
+  "douyin/user-videos": {
+    "user_id": "MS4wLjABAAAANXSltcLCzDGmdNFI2Q_QixVTr67NiYzjKOIP5s03CAE",
+    "results_limit": 3
+  },
+  "douyin/video-comments": {
+    "url": "https://www.douyin.com/video/7448118827402972455",
+    "results_limit": 3
+  },
+  "douyin/video-detail": {
+    "url": "https://www.douyin.com/video/7448118827402972455"
+  },
+  "douyin/video-search": {
+    "query": "人工智能"
+  },
+  "facebook-ad-library/ad": {
+    "url": "https://www.facebook.com/ads/library?id=1545582153738441"
+  },
+  "facebook-marketplace/item": {
+    "urls": [
+      "https://www.facebook.com/marketplace/item/978385068564936/"
+    ]
+  },
+  "facebook/ad-transcript": {
+    "urls": [
+      "https://www.facebook.com/ads/library?id=1545582153738441"
+    ]
+  },
+  "facebook/comment-replies": {
+    "url": "https://www.facebook.com/NASA/posts/would-you-lie-in-bed-for-60-days-for-scientific-research11-volunteers-did-exactl/1271494461012594/",
+    "comment_id": "Y29tbWVudDoxMjcxNDk0NDYxMDEyNTk0XzU4NzcxOTAzMTA0Mjk5MQ==",
+    "results_limit": 20
+  },
+  "facebook/comments": {
+    "urls": [
+      "https://www.facebook.com/reel/1064194079626979/"
+    ]
+  },
+  "google-ad-library/ad": {
+    "url": "https://adstransparency.google.com/advertiser/AR01614014350098432001/creative/CR10449491775734153217"
   },
   "google-ad-library/advertiser-search": {
     "query": "Nike",
@@ -22,28 +111,108 @@
     "domain": "lululemon.com",
     "results_limit": 40
   },
-  "google-ad-library/ad": {
-    "url": "https://adstransparency.google.com/advertiser/AR01614014350098432001/creative/CR10449491775734153217"
+  "google-maps/place-details": {
+    "urls": [
+      "https://www.google.com/maps/place/Coffee%20Project%20New%20York%20%7C%20East%20Village/data=!4m7!3m6!1s0x89c2599b5a24d7fd:0x9e354f6cf514b9fc!8m2!3d40.7270884!4d-73.9893820!16s%2Fg%2F11c3svpqld!19sChIJ_dckWptZwokR_LkU9WxPNZ4?authuser=0&hl=en&rclk=1"
+    ]
   },
-  "linkedin-ad-library/search": {
-    "company": "Microsoft",
-    "countries": ["US"],
-    "results_limit": 24
+  "google-maps/reviews": {
+    "urls": [
+      "https://www.google.com/maps/place/Coffee%20Project%20New%20York%20%7C%20East%20Village/data=!4m7!3m6!1s0x89c2599b5a24d7fd:0x9e354f6cf514b9fc!8m2!3d40.7270884!4d-73.9893820!16s%2Fg%2F11c3svpqld!19sChIJ_dckWptZwokR_LkU9WxPNZ4?authuser=0&hl=en&rclk=1"
+    ],
+    "days_limit": 3650,
+    "results_limit": 3
+  },
+  "google-maps/search": {
+    "query": "coffee",
+    "location": "New York, NY",
+    "country": "US",
+    "results_limit": 3
+  },
+  "google-play/app-detail": {
+    "urls": [
+      "https://play.google.com/store/apps/details?id=com.openai.chatgpt"
+    ]
+  },
+  "google-play/app-rankings": {
+    "urls": [
+      "https://play.google.com/store/apps/collection/topselling_free"
+    ],
+    "results_limit": 3
+  },
+  "google-play/app-reviews": {
+    "urls": [
+      "https://play.google.com/store/apps/details?id=com.openai.chatgpt"
+    ],
+    "country": "US",
+    "results_limit": 3
+  },
+  "instagram/audio-reels": {
+    "audio_ids": [
+      "1383262936846577"
+    ],
+    "results_limit": 20
+  },
+  "instagram/comments": {
+    "urls": [
+      "https://www.instagram.com/reel/DBZMUClOJjZ/"
+    ]
+  },
+  "instagram/post-info": {
+    "urls": [
+      "https://www.instagram.com/p/DbbY9pdm6Q2/"
+    ]
+  },
+  "kwai/post": {
+    "url": "https://www.kwai.com/@ShortShortz8/photo/5235021727595785285"
+  },
+  "kwai/profile": {
+    "url": "https://www.kwai.com/@ShortShortz8"
+  },
+  "kwai/user-posts": {
+    "url": "https://www.kwai.com/@ShortShortz8"
   },
   "linkedin-ad-library/ad": {
     "url": "https://www.linkedin.com/ad-library/detail/666281156"
   },
-  "linkedin/company-posts": {
-    "urls": ["https://www.linkedin.com/company/microsoft/"],
+  "linkedin-ad-library/search": {
+    "company": "Microsoft",
+    "countries": [
+      "US"
+    ],
+    "results_limit": 24
+  },
+  "linkedin/company-jobs": {
+    "urls": [
+      "https://www.linkedin.com/jobs/microsoft-jobs/"
+    ],
     "results_limit": 20
+  },
+  "linkedin/company-posts": {
+    "urls": [
+      "https://www.linkedin.com/company/microsoft/"
+    ],
+    "results_limit": 20
+  },
+  "linkedin/jobs": {
+    "urls": [
+      "https://www.linkedin.com/jobs/view/4435421919/"
+    ]
+  },
+  "linkedin/post-comments": {
+    "url": "https://www.linkedin.com/posts/aagupta_what-you-need-to-know-ai-agents-activity-7354600338621906944-RvXR"
+  },
+  "linkedin/posts": {
+    "urls": [
+      "https://www.linkedin.com/posts/microsoft_ai-is-entering-a-new-era-defined-by-real-world-activity-7403848387738955776-hCMS"
+    ]
   },
   "linkedin/profile-posts": {
-    "urls": ["https://www.linkedin.com/in/satyanadella/"],
+    "urls": [
+      "https://www.linkedin.com/in/satyanadella/"
+    ],
     "only_authored_posts": true,
     "results_limit": 20
-  },
-  "linkedin/search-people": {
-    "urls": ["https://www.linkedin.com/search/results/people/?keywords=Aakash%20Gupta"]
   },
   "linkedin/search-jobs": {
     "location": "Seattle",
@@ -51,51 +220,73 @@
     "country": "US",
     "results_limit": 20
   },
-  "linkedin/company-jobs": {
-    "urls": ["https://www.linkedin.com/jobs/microsoft-jobs/"],
-    "results_limit": 20
+  "linkedin/search-people": {
+    "urls": [
+      "https://www.linkedin.com/search/results/people/?keywords=Aakash%20Gupta"
+    ]
   },
-  "facebook/comment-replies": {
-    "url": "https://www.facebook.com/NASA/posts/would-you-lie-in-bed-for-60-days-for-scientific-research11-volunteers-did-exactl/1271494461012594/",
-    "comment_id": "Y29tbWVudDoxMjcxNDk0NDYxMDEyNTk0XzU4NzcxOTAzMTA0Mjk5MQ==",
-    "results_limit": 20
-  },
-  "facebook-ad-library/ad": {
-    "url": "https://www.facebook.com/ads/library?id=1545582153738441"
-  },
-  "facebook-marketplace/item": {
-    "urls": ["https://www.facebook.com/marketplace/item/978385068564936/"]
-  },
-  "facebook/ad-transcript": {
-    "urls": ["https://www.facebook.com/ads/library?id=1545582153738441"]
-  },
-  "facebook/comments": {
-    "urls": ["https://www.facebook.com/reel/1064194079626979/"]
-  },
-  "instagram/post-info": {
-    "urls": ["https://www.instagram.com/p/DbbY9pdm6Q2/"]
-  },
-  "instagram/comments": {
-    "urls": ["https://www.instagram.com/reel/DBZMUClOJjZ/"]
-  },
-  "instagram/audio-reels": {
-    "audio_ids": ["1383262936846577"],
-    "results_limit": 20
-  },
-  "linkedin/jobs": {
-    "urls": ["https://www.linkedin.com/jobs/view/4435421919/"]
-  },
-  "linkedin/posts": {
-    "urls": ["https://www.linkedin.com/posts/microsoft_ai-is-entering-a-new-era-defined-by-real-world-activity-7403848387738955776-hCMS"]
+  "linkedin/search-posts": {
+    "query": "AI agents",
+    "date_posted": "last-week",
+    "results_limit": 10
   },
   "pinterest/pins": {
-    "urls": ["https://www.pinterest.com/pin/1091841503437618715"]
+    "urls": [
+      "https://www.pinterest.com/pin/1091841503437618715"
+    ]
   },
   "reddit/comments": {
-    "urls": ["https://www.reddit.com/r/technology/comments/1vbchyh/second_major_ai_company_says_its_systems_hacked/"]
+    "urls": [
+      "https://www.reddit.com/r/technology/comments/1vbchyh/second_major_ai_company_says_its_systems_hacked/"
+    ]
   },
   "reddit/posts": {
-    "urls": ["https://www.reddit.com/r/technology/comments/1vbchyh/second_major_ai_company_says_its_systems_hacked/"]
+    "urls": [
+      "https://www.reddit.com/r/technology/comments/1vbchyh/second_major_ai_company_says_its_systems_hacked/"
+    ]
+  },
+  "reddit/subreddit-details": {
+    "urls": [
+      "https://www.reddit.com/r/technology/"
+    ]
+  },
+  "reddit/subreddit-search": {
+    "query": "AI agents",
+    "urls": [
+      "https://www.reddit.com/r/technology/"
+    ],
+    "results_limit": 20,
+    "sort_by": "relevance",
+    "published_within": "all"
+  },
+  "rednote/comment-replies": {
+    "url": "https://www.xiaohongshu.com/explore/6a6174d6000000001d02013b?xsec_token=AB4sNisHvFy2q4C5ujG23AV858osk5rYC63eCgf8YTVOI%3D&xsec_source=pc_feed",
+    "comment_id": "6a6327f6000000002b026c1d"
+  },
+  "rednote/home-recommendations": {
+    "category": "homefeed_recommend",
+    "media_type": "all",
+    "results_limit": 3
+  },
+  "rednote/note-comments": {
+    "url": "https://www.xiaohongshu.com/explore/6a6174d6000000001d02013b?xsec_token=AB4sNisHvFy2q4C5ujG23AV858osk5rYC63eCgf8YTVOI%3D&xsec_source=pc_feed"
+  },
+  "rednote/note-detail": {
+    "url": "https://www.xiaohongshu.com/explore/6a2f423d000000001003cb36?xsec_token=ABtexB6bX5HgLD42SFrK1scGUmSO8YV5_isaLrDy9sLxQ%3D"
+  },
+  "rednote/search-notes": {
+    "query": "旅行攻略",
+    "sort_by": "general",
+    "media_type": "all"
+  },
+  "rednote/search-users": {
+    "query": "摄影"
+  },
+  "rednote/user-notes": {
+    "user_id": "65d8c7d40000000005033a6b"
+  },
+  "rednote/user-profile": {
+    "user_id": "65d8c7d40000000005033a6b"
   },
   "seo/keywords-for-site": {
     "target": "microsoft.com",
@@ -115,8 +306,26 @@
     "language_code": "en",
     "results_limit": 5
   },
+  "snapchat/profile": {
+    "username": "zane"
+  },
+  "snapchat/spotlight": {
+    "url": "https://www.snapchat.com/@queenhaley_13/spotlight/W7_EDlXWTBiXAEEniNoMPwAAYY2pnZnF0bG52AZslQsUdAZslQoRQAAAAAQ"
+  },
+  "snapchat/spotlight-comments": {
+    "url": "https://www.snapchat.com/@queenhaley_13/spotlight/W7_EDlXWTBiXAEEniNoMPwAAYY2pnZnF0bG52AZslQsUdAZslQoRQAAAAAQ"
+  },
   "threads/posts": {
-    "urls": ["https://www.threads.com/@instagram/post/DbbbOW8D-T1"]
+    "urls": [
+      "https://www.threads.com/@instagram/post/DbbbOW8D-T1"
+    ]
+  },
+  "tiktok-ad-library/ad": {
+    "url": "https://library.tiktok.com/ads/detail/?id=1871655924410641"
+  },
+  "tiktok-ad-library/search": {
+    "query": "Anysphere",
+    "results_limit": 12
   },
   "tiktok-shop/product": {
     "url": "https://www.tiktok.com/shop/pdp/1729548220307968132"
@@ -138,34 +347,27 @@
     "comment_id": "6718335906996502534",
     "results_limit": 20
   },
-  "x/post-quotes": {
-    "urls": ["https://x.com/X/status/2073395918011789670"],
+  "tiktok/search-users": {
+    "query": "taylor swift",
     "results_limit": 20
   },
-  "x/post-replies": {
-    "urls": ["https://x.com/X/status/2073395918011789670"],
+  "tiktok/song": {
+    "music_id": "7439295283975702544"
+  },
+  "tiktok/song-videos": {
+    "music_ids": [
+      "7439295283975702544"
+    ],
     "results_limit": 20
   },
-  "x/post-retweeters": {
-    "urls": ["https://x.com/X/status/2073395918011789670"],
-    "results_limit": 100
+  "truth-social/post": {
+    "url": "https://truthsocial.com/@realDonaldTrump/117091934703272898"
   },
-  "x/posts": {
-    "urls": ["https://x.com/X/status/2073395918011789670"]
+  "truth-social/profile": {
+    "username": "realDonaldTrump"
   },
-  "youtube/comment-replies": {
-    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    "comment_id": "Ugzge340dBgB75hWBm54AaABAg",
-    "results_limit": 20
-  },
-  "snapchat/profile": {
-    "username": "zane"
-  },
-  "snapchat/spotlight": {
-    "url": "https://www.snapchat.com/@queenhaley_13/spotlight/W7_EDlXWTBiXAEEniNoMPwAAYY2pnZnF0bG52AZslQsUdAZslQoRQAAAAAQ"
-  },
-  "snapchat/spotlight-comments": {
-    "url": "https://www.snapchat.com/@queenhaley_13/spotlight/W7_EDlXWTBiXAEEniNoMPwAAYY2pnZnF0bG52AZslQsUdAZslQoRQAAAAAQ"
+  "truth-social/user-posts": {
+    "username": "realDonaldTrump"
   },
   "twitch/profile": {
     "username": "ninja"
@@ -175,141 +377,42 @@
     "filter_by": "all",
     "sort_by": "time"
   },
-  "bluesky/profile": {
-    "username": "jay.bsky.team"
+  "x/mentions": {
+    "usernames": [
+      "@OpenAI"
+    ],
+    "results_limit": 20
   },
-  "bluesky/user-posts": {
-    "username": "jay.bsky.team"
+  "x/post-quotes": {
+    "urls": [
+      "https://x.com/X/status/2073395918011789670"
+    ],
+    "results_limit": 20
   },
-  "bluesky/post": {
-    "url": "https://bsky.app/profile/jay.bsky.team/post/3micofpyeys2g"
+  "x/post-replies": {
+    "urls": [
+      "https://x.com/X/status/2073395918011789670"
+    ],
+    "results_limit": 20
   },
-  "kwai/profile": {
-    "url": "https://www.kwai.com/@ShortShortz8"
+  "x/post-retweeters": {
+    "urls": [
+      "https://x.com/X/status/2073395918011789670"
+    ],
+    "results_limit": 100
   },
-  "kwai/user-posts": {
-    "url": "https://www.kwai.com/@ShortShortz8"
+  "x/posts": {
+    "urls": [
+      "https://x.com/X/status/2073395918011789670"
+    ]
   },
-  "kwai/post": {
-    "url": "https://www.kwai.com/@ShortShortz8/photo/5235021727595785285"
+  "x/search-users": {
+    "query": "OpenAI",
+    "results_limit": 20
   },
-  "truth-social/profile": {
-    "username": "realDonaldTrump"
-  },
-  "truth-social/user-posts": {
-    "username": "realDonaldTrump"
-  },
-  "truth-social/post": {
-    "url": "https://truthsocial.com/@realDonaldTrump/117091934703272898"
-  },
-  "google-maps/search": {
-    "query": "coffee",
-    "location": "New York, NY",
-    "country": "US",
-    "results_limit": 3
-  },
-  "google-maps/place-details": {
-    "urls": ["https://www.google.com/maps/place/Coffee%20Project%20New%20York%20%7C%20East%20Village/data=!4m7!3m6!1s0x89c2599b5a24d7fd:0x9e354f6cf514b9fc!8m2!3d40.7270884!4d-73.9893820!16s%2Fg%2F11c3svpqld!19sChIJ_dckWptZwokR_LkU9WxPNZ4?authuser=0&hl=en&rclk=1"]
-  },
-  "google-maps/reviews": {
-    "urls": ["https://www.google.com/maps/place/Coffee%20Project%20New%20York%20%7C%20East%20Village/data=!4m7!3m6!1s0x89c2599b5a24d7fd:0x9e354f6cf514b9fc!8m2!3d40.7270884!4d-73.9893820!16s%2Fg%2F11c3svpqld!19sChIJ_dckWptZwokR_LkU9WxPNZ4?authuser=0&hl=en&rclk=1"],
-    "days_limit": 3650,
-    "results_limit": 3
-  },
-  "amazon/product-search": {
-    "query": "wireless earbuds",
-    "domain": "https://www.amazon.com",
-    "results_limit": 3
-  },
-  "amazon/product-detail": {
-    "urls": ["https://www.amazon.com/dp/B0CHHSFMRL"]
-  },
-  "amazon/reviews": {
-    "urls": ["https://www.amazon.com/dp/B0CHHSFMRL"],
-    "results_limit": 3
-  },
-  "amazon/seller-info": {
-    "urls": ["https://www.amazon.com/sp?seller=A2L77EE7U53NWQ"]
-  },
-  "amazon/best-sellers": {
-    "urls": ["https://www.amazon.com/Best-Sellers-Books/zgbs/books"],
-    "results_limit": 3
-  },
-  "google-play/app-detail": {
-    "urls": ["https://play.google.com/store/apps/details?id=com.openai.chatgpt"]
-  },
-  "google-play/app-reviews": {
-    "urls": ["https://play.google.com/store/apps/details?id=com.openai.chatgpt"],
-    "country": "US",
-    "results_limit": 3
-  },
-  "google-play/app-rankings": {
-    "urls": ["https://play.google.com/store/apps/collection/topselling_free"],
-    "results_limit": 3
-  },
-  "apple-app-store/app-detail": {
-    "urls": ["https://apps.apple.com/us/app/chatgpt/id6448311069"]
-  },
-  "apple-app-store/app-reviews": {
-    "urls": ["https://apps.apple.com/us/app/chatgpt/id6448311069"],
-    "results_limit": 3
-  },
-  "apple-app-store/rankings": {
-    "urls": ["https://apps.apple.com/us/iphone/charts/6007"],
-    "results_limit": 3
-  },
-  "rednote/note-detail": {
-    "url": "https://www.xiaohongshu.com/explore/6a2f423d000000001003cb36?xsec_token=ABtexB6bX5HgLD42SFrK1scGUmSO8YV5_isaLrDy9sLxQ%3D"
-  },
-  "rednote/user-profile": {
-    "user_id": "65d8c7d40000000005033a6b"
-  },
-  "rednote/user-notes": {
-    "user_id": "65d8c7d40000000005033a6b"
-  },
-  "rednote/search-notes": {
-    "query": "旅行攻略",
-    "sort_by": "general",
-    "media_type": "all"
-  },
-  "rednote/search-users": {
-    "query": "摄影"
-  },
-  "rednote/note-comments": {
-    "url": "https://www.xiaohongshu.com/explore/6a6174d6000000001d02013b?xsec_token=AB4sNisHvFy2q4C5ujG23AV858osk5rYC63eCgf8YTVOI%3D&xsec_source=pc_feed"
-  },
-  "rednote/comment-replies": {
-    "url": "https://www.xiaohongshu.com/explore/6a6174d6000000001d02013b?xsec_token=AB4sNisHvFy2q4C5ujG23AV858osk5rYC63eCgf8YTVOI%3D&xsec_source=pc_feed",
-    "comment_id": "6a6327f6000000002b026c1d"
-  },
-  "rednote/home-recommendations": {
-    "category": "homefeed_recommend",
-    "media_type": "all",
-    "results_limit": 3
-  },
-  "douyin/video-detail": {
-    "url": "https://www.douyin.com/video/7448118827402972455"
-  },
-  "douyin/user-profile": {
-    "user_id": "MS4wLjABAAAAW9FWcqS7RdQAWPd2AA5fL_ilmqsIFUCQ_Iym6Yh9_cUa6ZRqVLjVQSUjlHrfXY1Y"
-  },
-  "douyin/user-videos": {
-    "user_id": "MS4wLjABAAAANXSltcLCzDGmdNFI2Q_QixVTr67NiYzjKOIP5s03CAE",
-    "results_limit": 3
-  },
-  "douyin/video-search": {
-    "query": "人工智能"
-  },
-  "douyin/video-comments": {
-    "url": "https://www.douyin.com/video/7448118827402972455",
-    "results_limit": 3
-  },
-  "douyin/live-room-detail": {
-    "room_id": "7462723839303093032"
-  },
-  "douyin/product-data": {
-    "room_id": "7356742011975715619",
-    "author_id": "2207432981615527",
-    "results_limit": 3
+  "youtube/comment-replies": {
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "comment_id": "Ugzge340dBgB75hWBm54AaABAg",
+    "results_limit": 20
   }
 }

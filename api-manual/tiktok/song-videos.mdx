@@ -1,0 +1,150 @@
+---
+title: "TikTok Song Videos"
+description: "Collect public TikTok videos that use a specific sound."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/song-videos"
+---
+
+# TikTok Song Videos
+
+Collect public TikTok videos that use a specific sound clip ID.
+
+```json
+{
+  "music_ids": [
+    "7439295283975702544"
+  ],
+  "results_limit": 20
+}
+```
+
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/tiktok/song-videos` |
+| Compact MCP | `socq_execute` with `endpoint: "tiktok/song-videos"` |
+| Typed MCP | `socq_tiktok_song_videos` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=tiktok_song_videos` |
+| CLI | `socq tiktok song-videos` |
+
+Use the JSON request body above as the nested `input` object for `socq_execute`, or pass the same fields directly to the typed tool. Typed tools also accept `_wait_seconds`, `_result_limit`, and `_idempotency_key`.
+
+<Info>
+  A successful submission returns a `task_id`. Continue with `socq_get_task` until the task succeeds, then read normalized records from `results.items`.
+</Info>
+
+See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
+{/* mcp-usage:end */}
+
+{/* result-schema:start */}
+## Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `text` | `string` | Yes | Video caption or description. |
+| `author` | `object` | Yes | Author or publisher of the content. |
+| `author.id` | `string` | Yes | Unique identifier of the author. |
+| `author.username` | `string` | Yes | Public username or handle of the account. |
+| `author.name` | `string` | Yes | Display name of the author. |
+| `author.url` | `string` | Yes | Public URL of the author when available. |
+| `author.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `author.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `author.is_private` | `boolean` | Yes | Whether the account is private. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.likes_count` | `integer` | Yes | Number of likes. |
+| `metrics.comments_count` | `integer` | Yes | Number of comments. |
+| `metrics.shares_count` | `integer` | Yes | Number of shares or reposts. |
+| `metrics.plays_count` | `integer` | Yes | Number of video playback starts reported by the platform. |
+| `metrics.views_count` | `integer` | Yes | Number of views reported by the platform. |
+| `media` | `array<object>` | Yes | Images, videos, or other media attached to the result. |
+| `media.type` | `string` | Yes | Media kind, such as `image` or `video`. |
+| `media.url` | `string` | Yes | URL of the media asset. |
+| `media.thumbnail_url` | `string` | Yes | URL of the media preview image. |
+| `media.width` | `integer` | Yes | Media width in pixels. |
+| `media.height` | `integer` | Yes | Media height in pixels. |
+| `media.duration_seconds` | `number` | Yes | Media duration in seconds. |
+| `hashtags` | `array<string>` | Yes | Hashtags associated with the content, without changing their source spelling. |
+| `mentions` | `array<string>` | Yes | Accounts mentioned in the content. |
+| `shortcode` | `string` | Yes | Platform shortcode used to identify the media item. |
+| `duration_seconds` | `number` | Yes | Duration in seconds. |
+| `audio` | `object` | Yes | Audio or music metadata associated with the video. |
+| `audio.id` | `string` | Yes | Identifier of the audio or music track. |
+| `audio.title` | `string` | Yes | Title of the audio or music track. |
+| `audio.artist` | `string` | Yes | Name of the audio artist or creator. |
+| `audio.url` | `string` | Yes | URL of the audio or music track when available. |
+{/* result-schema:end */}
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "tiktok/song-videos",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 1,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "reel-video",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7502954579814845726",
+          "platform": "tiktok",
+          "resource": "song-videos",
+          "type": "video",
+          "url": "https://www.tiktok.com/@sza/video/7502954579814845726",
+          "published_at": "2025-05-10T22:56:11Z",
+          "collected_at": "2026-09-12T07:00:00Z",
+          "text": "THANK YOU KENDRICK FOR COMING TO YESTERDAY’S @NotBeauty POP UP !!!! 🪲⛺️🫶🏾 @American Dream",
+          "author": {
+            "id": "7486547994222740523",
+            "username": "sza",
+            "name": "SZA",
+            "url": "https://www.tiktok.com/@sza",
+            "avatar_url": "https://p19-common-sign.tiktokcdn-us.com/tos-useast8-avt-0068-tx2/42b31651a14a0f2151814dcbace36525~tplv-tiktokx-cropcenter-q:100:100:q70.heic?dr=8835&refresh_token=8fcf5136&x-expires=1789279200&x-signature=hvjKERljlcZkD1mM%2F2XWtLC%2BKW0%3D&t=223449c4&ps=87d6e48a&shp=d05b14bd&shcp=f6441914&idc=useast5&sc=avatar&s=MUSIC_AWEME",
+            "is_verified": null,
+            "is_private": null
+          },
+          "metrics": {
+            "likes_count": 226391,
+            "comments_count": 1584,
+            "shares_count": 4532,
+            "plays_count": null,
+            "views_count": 2920118
+          },
+          "media": [
+            {
+              "type": "video",
+              "url": "https://v16m.tiktokcdn-us.com/9f417401665888ccdd208e86e8cd1601/6aa548e7/video/tos/useast8/tos-useast8-ve-0068c002-tx2/oMQEfFoC9BMtE9DZIfmQRVgAEO2y6H2gXwcARZ/?a=1233&bti=O3YpOjQ0Zik3OjlmOm0uMjM6ZDQ0MDo%3D&&bt=2142&ft=4KLxRMzm8Zmo06qIUa4jV5X0pSWrKsd.&mime_type=video_mp4&rc=Z2c3ZDU8ZDwzZ2U5NTY7Z0BpanB0cHU5cjt3MzMzaTczNEBgY2MzM142NTMxY2MzMC5eYSNya18tMmQ0YmNhLS1kMTJzcw%3D%3D&vvpl=1&l=20260912064255A22C68ECCD8A684AE831&btag=e000b8000",
+              "thumbnail_url": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/oMAj6PIBJAreJfqxIxMTsLAQGeA5LIAjQEAQ7g~tplv-tiktokx-cropcenter-q:300:400:q70.heic?dr=8596&refresh_token=5e9a49e8&x-expires=1789279200&x-signature=A9FaeqnlgQMuCR7bNWPqVihNAAE%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=f6441914&idc=useast5&biz_tag=tt_video&s=MUSIC_AWEME&sc=cover",
+              "width": 576,
+              "height": 1024,
+              "duration_seconds": 23.0
+            }
+          ],
+          "hashtags": [],
+          "mentions": [],
+          "shortcode": null,
+          "duration_seconds": 23.0,
+          "audio": null
+        }
+      ]
+    }
+  }
+}
+```

@@ -22,6 +22,9 @@ TikTok 端点使用与其他代理 API 相同的异步任务流。
 |关注列表 | `POST` | `/v1/tiktok/following-list` |
 |评论回复 | `POST` | `/v1/tiktok/comment-replies` |
 |用户视频 | `POST` | `/v1/tiktok/user-videos` |
+|搜索用户 | `POST` | `/v1/tiktok/search-users` |
+|原声 | `POST` | `/v1/tiktok/song` |
+|原声视频 | `POST` | `/v1/tiktok/song-videos` |
 
 提交请求，收到 `task_id`，然后轮询 `GET /v1/tasks/{task_id}`。成功的任务响应包括 `results` 下的规范化记录。
 

@@ -1,0 +1,118 @@
+---
+title: "TikTok 搜索用户"
+description: "按关键词搜索公开 TikTok 达人与账号。"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/search-users"
+---
+
+# TikTok 搜索用户
+
+按关键词搜索公开 TikTok 达人与账号，获取标准化用户档案与受众指标。
+
+```json
+{
+  "query": "taylor swift",
+  "results_limit": 20
+}
+```
+
+{/* mcp-usage:start */}
+## 通过 MCP 使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/tiktok/search-users` |
+| Compact MCP | `socq_execute`，并设置 `endpoint: "tiktok/search-users"` |
+| 类型化 MCP | `socq_tiktok_search_users` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=tiktok_search_users` |
+| CLI | `socq tiktok search-users` |
+
+使用 `socq_execute` 时，将上面的 JSON 请求体作为 `input` 对象传入；也可以将相同字段直接传给类型化 MCP 工具。类型化 MCP 工具还支持 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  提交成功后会返回 `task_id`。继续调用 `socq_get_task` 直到任务成功，然后从 `results.items` 读取标准化记录。
+</Info>
+
+完整的提交和轮询流程请参阅 [MCP 快速开始](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+{/* result-schema:start */}
+## 结果字段
+
+任务结果使用下方稳定的 SocQ 字段。系统会统一来源特有的字段名和格式，但不会推断或补充来源未提供的数据。如需缩小返回字段集合，MCP 查询使用 `fields`，Typed 工具使用 `_result_fields`，CLI 使用 `--result-fields`。声明字段的值为 `null` 时仍会保留。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `username` | `string` | 是 | 账号的公开用户名或账号标识。 |
+| `name` | `string` | 是 | 账号或主页的显示名称。 |
+| `text` | `string` | 是 | 账号或主页的简介。 |
+| `avatar_url` | `string` | 是 | 账号头像图片的地址。 |
+| `cover_url` | `string` | 是 | 封面图片的地址。 |
+| `website` | `string` | 是 | 账号、公司或广告主关联的网站。 |
+| `is_verified` | `boolean` | 是 | 账号是否已通过平台认证。 |
+| `is_private` | `boolean` | 是 | 账号是否为私密账号。 |
+| `location` | `object` | 是 | 结果关联的地理位置信息。 |
+| `location.name` | `string` | 是 | 便于阅读的地点名称。 |
+| `location.city` | `string` | 是 | 城市名称。 |
+| `location.region` | `string` | 是 | 地区、州或省份名称。 |
+| `location.country` | `string` | 是 | 国家或地区名称或代码。 |
+| `location.latitude` | `number` | 是 | 十进制度格式的纬度。 |
+| `location.longitude` | `number` | 是 | 十进制度格式的经度。 |
+| `metrics` | `object` | 是 | 结果项可获得的计数和度量数据。 |
+| `metrics.followers_count` | `integer` | 是 | 粉丝数量。 |
+| `metrics.following_count` | `integer` | 是 | 关注的账号数量。 |
+| `metrics.posts_count` | `integer` | 是 | 帖子数量，或与趋势关联的帖子数量。 |
+{/* result-schema:end */}
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "tiktok/search-users",
+    "result_count": 1,
+    "credits_amount": 0.6,
+    "results": {
+      "limit": 1,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "account",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "6881290705605477381",
+          "platform": "tiktok",
+          "resource": "search-users",
+          "type": "profile",
+          "url": "https://www.tiktok.com/@taylorswift",
+          "published_at": null,
+          "collected_at": "2026-09-12T07:00:00Z",
+          "username": "taylorswift",
+          "name": "Taylor Swift",
+          "text": "Taylor Swift",
+          "avatar_url": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-avt-0068-tx2/ad640d6d603aea26703929fce0d2a7e6~tplv-tiktokx-cropcenter-q:100:100:q70.heic?biz_tag=musically_user.user_cover&dr=8835&idc=useast5&ps=87d6e48a&refresh_token=48a93359&s=SEARCH&sc=avatar&shcp=c1333099&shp=30310797&t=223449c4&x-expires=1789279200&x-signature=XhKxXRxmzv2fhaHPYlssWsDV9fk%3D",
+          "cover_url": null,
+          "website": null,
+          "is_verified": true,
+          "is_private": false,
+          "location": null,
+          "metrics": {
+            "followers_count": 33398121,
+            "following_count": 0,
+            "posts_count": 83
+          }
+        }
+      ]
+    }
+  }
+}
+```

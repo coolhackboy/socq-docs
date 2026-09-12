@@ -235,7 +235,10 @@
                   "api-manual/tiktok/followers-list",
                   "api-manual/tiktok/following-list",
                   "api-manual/tiktok/comment-replies",
-                  "api-manual/tiktok/user-videos"
+                  "api-manual/tiktok/user-videos",
+                  "api-manual/tiktok/search-users",
+                  "api-manual/tiktok/song",
+                  "api-manual/tiktok/song-videos"
                 ]
               },
               {
@@ -273,7 +276,9 @@
                   "api-manual/x/post-replies",
                   "api-manual/x/post-quotes",
                   "api-manual/x/post-retweeters",
-                  "api-manual/x/trends"
+                  "api-manual/x/trends",
+                  "api-manual/x/mentions",
+                  "api-manual/x/search-users"
                 ]
               },
               {
@@ -311,7 +316,9 @@
                   "api-manual/reddit/posts",
                   "api-manual/reddit/comments",
                   "api-manual/reddit/subreddit-posts",
-                  "api-manual/reddit/search"
+                  "api-manual/reddit/search",
+                  "api-manual/reddit/subreddit-details",
+                  "api-manual/reddit/subreddit-search"
                 ]
               },
               {
@@ -646,7 +653,10 @@
                   "zh/api-manual/tiktok/followers-list",
                   "zh/api-manual/tiktok/following-list",
                   "zh/api-manual/tiktok/comment-replies",
-                  "zh/api-manual/tiktok/user-videos"
+                  "zh/api-manual/tiktok/user-videos",
+                  "zh/api-manual/tiktok/search-users",
+                  "zh/api-manual/tiktok/song",
+                  "zh/api-manual/tiktok/song-videos"
                 ]
               },
               {
@@ -684,7 +694,9 @@
                   "zh/api-manual/x/post-replies",
                   "zh/api-manual/x/post-quotes",
                   "zh/api-manual/x/post-retweeters",
-                  "zh/api-manual/x/trends"
+                  "zh/api-manual/x/trends",
+                  "zh/api-manual/x/mentions",
+                  "zh/api-manual/x/search-users"
                 ]
               },
               {
@@ -722,7 +734,9 @@
                   "zh/api-manual/reddit/posts",
                   "zh/api-manual/reddit/comments",
                   "zh/api-manual/reddit/subreddit-posts",
-                  "zh/api-manual/reddit/search"
+                  "zh/api-manual/reddit/search",
+                  "zh/api-manual/reddit/subreddit-details",
+                  "zh/api-manual/reddit/subreddit-search"
                 ]
               },
               {

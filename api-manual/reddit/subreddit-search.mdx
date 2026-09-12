@@ -1,0 +1,132 @@
+---
+title: "Reddit Subreddit Search"
+description: "Search public discussions within one specific subreddit."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/reddit/subreddit-search"
+---
+
+# Reddit Subreddit Search
+
+Search public discussions and posts within one specific subreddit by query, timeframe, and sort order.
+
+```json
+{
+  "query": "AI agents",
+  "urls": [
+    "https://www.reddit.com/r/technology/"
+  ],
+  "results_limit": 20,
+  "sort_by": "relevance",
+  "published_within": "all"
+}
+```
+
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/reddit/subreddit-search` |
+| Compact MCP | `socq_execute` with `endpoint: "reddit/subreddit-search"` |
+| Typed MCP | `socq_reddit_subreddit_search` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=reddit_subreddit_search` |
+| CLI | `socq reddit subreddit-search` |
+
+Use the JSON request body above as the nested `input` object for `socq_execute`, or pass the same fields directly to the typed tool. Typed tools also accept `_wait_seconds`, `_result_limit`, and `_idempotency_key`.
+
+<Info>
+  A successful submission returns a `task_id`. Continue with `socq_get_task` until the task succeeds, then read normalized records from `results.items`.
+</Info>
+
+See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
+{/* mcp-usage:end */}
+
+{/* result-schema:start */}
+## Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `text` | `string` | Yes | Post body, caption, or message. |
+| `author` | `object` | Yes | Author or publisher of the content. |
+| `author.id` | `string` | Yes | Unique identifier of the author. |
+| `author.username` | `string` | Yes | Public username or handle of the account. |
+| `author.name` | `string` | Yes | Display name of the author. |
+| `author.url` | `string` | Yes | Public URL of the author when available. |
+| `author.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `author.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `author.is_private` | `boolean` | Yes | Whether the account is private. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.likes_count` | `integer` | Yes | Number of likes. |
+| `metrics.comments_count` | `integer` | Yes | Number of comments. |
+| `metrics.shares_count` | `integer` | Yes | Number of shares or reposts. |
+| `metrics.views_count` | `integer` | Yes | Number of views reported by the platform. |
+| `media` | `array<object>` | Yes | Images, videos, or other media attached to the result. |
+| `media.type` | `string` | Yes | Media kind, such as `image` or `video`. |
+| `media.url` | `string` | Yes | URL of the media asset. |
+| `media.thumbnail_url` | `string` | Yes | URL of the media preview image. |
+| `media.width` | `integer` | Yes | Media width in pixels. |
+| `media.height` | `integer` | Yes | Media height in pixels. |
+| `media.duration_seconds` | `number` | Yes | Media duration in seconds. |
+| `hashtags` | `array<string>` | Yes | Hashtags associated with the content, without changing their source spelling. |
+| `mentions` | `array<string>` | Yes | Accounts mentioned in the content. |
+{/* result-schema:end */}
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "reddit/subreddit-search",
+    "result_count": 1,
+    "credits_amount": 0.6,
+    "results": {
+      "limit": 1,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "post",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "1wczhox",
+          "platform": "reddit",
+          "resource": "subreddit-search",
+          "type": "post",
+          "url": "https://www.reddit.com/r/technology/comments/1wczhox/anthropic_reveals_rogue_ai_agents_hate_captchas/",
+          "published_at": "2026-09-10T23:32:01Z",
+          "collected_at": "2026-09-12T07:00:00Z",
+          "text": "Anthropic reveals rogue AI agents hate CAPTCHAs, just like you",
+          "author": {
+            "id": "t2_6w1qkho3y",
+            "username": "TylerFortier_Photo",
+            "name": "TylerFortier_Photo",
+            "url": null,
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
+          },
+          "metrics": {
+            "likes_count": null,
+            "comments_count": 98,
+            "shares_count": null,
+            "views_count": null
+          },
+          "media": [],
+          "hashtags": null,
+          "mentions": null
+        }
+      ]
+    }
+  }
+}
+```

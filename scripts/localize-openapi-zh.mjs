@@ -30,6 +30,8 @@ const FIELD_DESCRIPTIONS = {
   max_price: "最高价格筛选条件。",
   media_type: "媒体类型筛选条件。",
   min_price: "最低价格筛选条件。",
+  music_id: "TikTok 原声 ID，来自音乐页面 URL 中的数字标识。",
+  music_ids: "TikTok 原声 ID 列表，来自音乐页面 URL 中的数字标识。",
   page_id: "公开主页的 ID。",
   published_within: "内容发布时间范围。",
   query: "搜索关键词。",

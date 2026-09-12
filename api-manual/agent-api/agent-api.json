@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-e5c51554619a",
+    "version": "v1-c801a6d1844b",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -11,6 +11,25 @@
     }
   ],
   "paths": {
+    "/v1/account": {
+      "get": {
+        "operationId": "getAgentAccount",
+        "summary": "Get the authenticated account and credit balance",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account summary"
+          }
+        }
+      }
+    },
     "/v1/amazon/best-sellers": {
       "post": {
         "operationId": "socq_amazon_best_sellers",
@@ -815,6 +834,17 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/v1/catalog": {
+      "get": {
+        "operationId": "getCapabilityCatalog",
+        "summary": "Get the machine-readable capability catalog",
+        "responses": {
+          "200": {
+            "description": "Capability catalog"
           }
         }
       }
@@ -6875,6 +6905,79 @@
         }
       }
     },
+    "/v1/reddit/subreddit-details": {
+      "post": {
+        "operationId": "socq_reddit_subreddit_details",
+        "summary": "Reddit Subreddit Details API",
+        "description": "Retrieve metadata for public subreddits by community URL, returning subscriber counts, weekly active users, rules, and community assets.",
+        "tags": [
+          "reddit"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/reddit/subreddit-posts": {
       "post": {
         "operationId": "socq_reddit_subreddit_posts",
@@ -6923,6 +7026,114 @@
                   }
                 },
                 "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/reddit/subreddit-search": {
+      "post": {
+        "operationId": "socq_reddit_subreddit_search",
+        "summary": "Reddit Subreddit Search API",
+        "description": "Search public discussions and posts within one specific subreddit by query, timeframe, and sort order.",
+        "tags": [
+          "reddit"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "published_within": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "all",
+                      "day",
+                      "hour",
+                      "month",
+                      "week",
+                      "year"
+                    ]
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "comments",
+                      "hot",
+                      "new",
+                      "relevance",
+                      "top"
+                    ]
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "query",
                   "urls"
                 ]
               }
@@ -8754,6 +8965,87 @@
         }
       }
     },
+    "/v1/tasks/{task_id}": {
+      "get": {
+        "operationId": "getAgentTask",
+        "summary": "Get task status and paginated results",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 50
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Up to 50 comma-separated fields or dot paths."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task detail"
+          }
+        }
+      }
+    },
+    "/v1/tasks/{task_id}/files": {
+      "get": {
+        "operationId": "getAgentTaskFiles",
+        "summary": "List task result files",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task files"
+          }
+        }
+      }
+    },
     "/v1/threads/posts": {
       "post": {
         "operationId": "socq_threads_posts",
@@ -10077,6 +10369,244 @@
         }
       }
     },
+    "/v1/tiktok/search-users": {
+      "post": {
+        "operationId": "socq_tiktok_search_users",
+        "summary": "TikTok Search Users API",
+        "description": "Search public TikTok creators and accounts by keyword, returning normalized identity, biography, account flags, and visible follower, following, and video counts.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/song": {
+      "post": {
+        "operationId": "socq_tiktok_song",
+        "summary": "TikTok Song API",
+        "description": "Collect detailed public TikTok sound and music metadata by clip ID or sound URL, returning author, album, duration, audio links, and video usage count.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/MusicItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "music_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "TikTok sound clip ID from a music URL."
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "music_id"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "url"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/song-videos": {
+      "post": {
+        "operationId": "socq_tiktok_song_videos",
+        "summary": "TikTok Song Videos API",
+        "description": "Collect public TikTok videos that use a specific sound, returning normalized video metadata, creator details, captions, media links, and engagement counters.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "music_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "TikTok sound clip IDs from music URLs."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  }
+                },
+                "required": [
+                  "music_ids"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tiktok/trending-feed": {
       "post": {
         "operationId": "socq_tiktok_trending_feed",
@@ -10899,6 +11429,94 @@
         }
       }
     },
+    "/v1/x/mentions": {
+      "post": {
+        "operationId": "socq_x_mentions",
+        "summary": "Twitter Mentions API",
+        "description": "Collect public tweets that mention a target user handle, with support for date range filtering and engagement metrics.",
+        "tags": [
+          "x"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "end_date": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 20,
+                    "multipleOf": 20
+                  },
+                  "start_date": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public account usernames."
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/x/post-quotes": {
       "post": {
         "operationId": "socq_x_post_quotes",
@@ -11322,6 +11940,82 @@
                   "sort_by": {
                     "type": "string",
                     "minLength": 1
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/search-users": {
+      "post": {
+        "operationId": "socq_x_search_users",
+        "summary": "Twitter User Search API",
+        "description": "Search public X user accounts by keyword, returning normalized identity, bio, verified status, and audience metrics.",
+        "tags": [
+          "x"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 20,
+                    "multipleOf": 20
                   }
                 },
                 "required": [
@@ -12437,117 +13131,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/v1/tasks/{task_id}": {
-      "get": {
-        "operationId": "getAgentTask",
-        "summary": "Get task status and paginated results",
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "task_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "default": 50
-            }
-          },
-          {
-            "name": "fields",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "description": "Up to 50 comma-separated fields or dot paths."
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Task detail"
-          }
-        }
-      }
-    },
-    "/v1/tasks/{task_id}/files": {
-      "get": {
-        "operationId": "getAgentTaskFiles",
-        "summary": "List task result files",
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "task_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Task files"
-          }
-        }
-      }
-    },
-    "/v1/catalog": {
-      "get": {
-        "operationId": "getCapabilityCatalog",
-        "summary": "Get the machine-readable capability catalog",
-        "responses": {
-          "200": {
-            "description": "Capability catalog"
-          }
-        }
-      }
-    },
-    "/v1/account": {
-      "get": {
-        "operationId": "getAgentAccount",
-        "summary": "Get the authenticated account and credit balance",
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Account summary"
           }
         }
       }
@@ -17753,6 +18336,216 @@
         "type": "object",
         "x-schema-id": "seller",
         "x-schema-version": "1.0"
+      },
+      "MusicItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name",
+            "description": "Title of the sound or song.",
+            "x-description-zh": "原声或歌曲标题。"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text",
+            "description": "Display title of the sound.",
+            "x-description-zh": "原声的显示标题。"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
+          },
+          "cover_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cover Url",
+            "description": "URL of the cover image.",
+            "x-description-zh": "封面图片的地址。"
+          },
+          "duration_seconds": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Duration Seconds",
+            "description": "Duration in seconds.",
+            "x-description-zh": "时长，单位为秒。"
+          },
+          "audio": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Audio"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Playable preview of the sound.",
+            "x-description-zh": "原声的可播放预览。"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MusicMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "name",
+          "text",
+          "author",
+          "cover_url",
+          "duration_seconds",
+          "audio",
+          "metrics"
+        ],
+        "title": "MusicItem",
+        "type": "object",
+        "x-schema-id": "music",
+        "x-schema-version": "1.0"
+      },
+      "MusicMetrics": {
+        "additionalProperties": false,
+        "properties": {
+          "videos_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Videos Count",
+            "description": "Number of videos that use this sound.",
+            "x-description-zh": "使用该原声的视频数量。"
+          }
+        },
+        "title": "MusicMetrics",
+        "type": "object",
+        "required": [
+          "videos_count"
+        ]
       }
     }
   }

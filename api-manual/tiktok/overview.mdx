@@ -22,6 +22,9 @@ TikTok endpoints use the same asynchronous task flow as the other Agent APIs.
 | Following List | `POST` | `/v1/tiktok/following-list` |
 | Comment Replies | `POST` | `/v1/tiktok/comment-replies` |
 | User Videos | `POST` | `/v1/tiktok/user-videos` |
+| Search Users | `POST` | `/v1/tiktok/search-users` |
+| Song | `POST` | `/v1/tiktok/song` |
+| Song Videos | `POST` | `/v1/tiktok/song-videos` |
 
 Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}`. Successful task responses include normalized records under `results`.
 

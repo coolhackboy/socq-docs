@@ -1,0 +1,118 @@
+---
+title: "TikTok Search Users"
+description: "Search public TikTok creators and accounts by keyword."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/search-users"
+---
+
+# TikTok Search Users
+
+Search public TikTok creators and accounts by keyword to collect normalized profile identity and metrics.
+
+```json
+{
+  "query": "taylor swift",
+  "results_limit": 20
+}
+```
+
+{/* mcp-usage:start */}
+## Use with MCP
+
+| Interface | Value |
+| --- | --- |
+| REST | `POST /v1/tiktok/search-users` |
+| Compact MCP | `socq_execute` with `endpoint: "tiktok/search-users"` |
+| Typed MCP | `socq_tiktok_search_users` |
+| Exact-tool URL | `https://api.socq.ai/mcp?tools=tiktok_search_users` |
+| CLI | `socq tiktok search-users` |
+
+Use the JSON request body above as the nested `input` object for `socq_execute`, or pass the same fields directly to the typed tool. Typed tools also accept `_wait_seconds`, `_result_limit`, and `_idempotency_key`.
+
+<Info>
+  A successful submission returns a `task_id`. Continue with `socq_get_task` until the task succeeds, then read normalized records from `results.items`.
+</Info>
+
+See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
+{/* mcp-usage:end */}
+
+{/* result-schema:start */}
+## Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `username` | `string` | Yes | Public username or handle of the account. |
+| `name` | `string` | Yes | Display name of the account or profile. |
+| `text` | `string` | Yes | Biography or description of the account or profile. |
+| `avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `cover_url` | `string` | Yes | URL of the cover image. |
+| `website` | `string` | Yes | Website associated with the account, company, or advertiser. |
+| `is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `is_private` | `boolean` | Yes | Whether the account is private. |
+| `location` | `object` | Yes | Geographic location associated with the result. |
+| `location.name` | `string` | Yes | Human-readable location name. |
+| `location.city` | `string` | Yes | City name. |
+| `location.region` | `string` | Yes | Region, state, or province name. |
+| `location.country` | `string` | Yes | Country or territory name or code. |
+| `location.latitude` | `number` | Yes | Latitude in decimal degrees. |
+| `location.longitude` | `number` | Yes | Longitude in decimal degrees. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.followers_count` | `integer` | Yes | Number of followers. |
+| `metrics.following_count` | `integer` | Yes | Number of accounts followed. |
+| `metrics.posts_count` | `integer` | Yes | Number of posts or posts associated with the trend. |
+{/* result-schema:end */}
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "tiktok/search-users",
+    "result_count": 1,
+    "credits_amount": 0.6,
+    "results": {
+      "limit": 1,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "account",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "6881290705605477381",
+          "platform": "tiktok",
+          "resource": "search-users",
+          "type": "profile",
+          "url": "https://www.tiktok.com/@taylorswift",
+          "published_at": null,
+          "collected_at": "2026-09-12T07:00:00Z",
+          "username": "taylorswift",
+          "name": "Taylor Swift",
+          "text": "Taylor Swift",
+          "avatar_url": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-avt-0068-tx2/ad640d6d603aea26703929fce0d2a7e6~tplv-tiktokx-cropcenter-q:100:100:q70.heic?biz_tag=musically_user.user_cover&dr=8835&idc=useast5&ps=87d6e48a&refresh_token=48a93359&s=SEARCH&sc=avatar&shcp=c1333099&shp=30310797&t=223449c4&x-expires=1789279200&x-signature=XhKxXRxmzv2fhaHPYlssWsDV9fk%3D",
+          "cover_url": null,
+          "website": null,
+          "is_verified": true,
+          "is_private": false,
+          "location": null,
+          "metrics": {
+            "followers_count": 33398121,
+            "following_count": 0,
+            "posts_count": 83
+          }
+        }
+      ]
+    }
+  }
+}
+```

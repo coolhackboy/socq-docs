@@ -1,0 +1,150 @@
+---
+title: "TikTok 同款视频"
+description: "采集使用指定原声的公开 TikTok 视频。"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/song-videos"
+---
+
+# TikTok 同款视频
+
+采集使用指定原声 clip ID 的公开 TikTok 视频。
+
+```json
+{
+  "music_ids": [
+    "7439295283975702544"
+  ],
+  "results_limit": 20
+}
+```
+
+{/* mcp-usage:start */}
+## 通过 MCP 使用
+
+| 接口 | 值 |
+| --- | --- |
+| REST | `POST /v1/tiktok/song-videos` |
+| Compact MCP | `socq_execute`，并设置 `endpoint: "tiktok/song-videos"` |
+| 类型化 MCP | `socq_tiktok_song_videos` |
+| 精确工具 URL | `https://api.socq.ai/mcp?tools=tiktok_song_videos` |
+| CLI | `socq tiktok song-videos` |
+
+使用 `socq_execute` 时，将上面的 JSON 请求体作为 `input` 对象传入；也可以将相同字段直接传给类型化 MCP 工具。类型化 MCP 工具还支持 `_wait_seconds`、`_result_limit` 和 `_idempotency_key`。
+
+<Info>
+  提交成功后会返回 `task_id`。继续调用 `socq_get_task` 直到任务成功，然后从 `results.items` 读取标准化记录。
+</Info>
+
+完整的提交和轮询流程请参阅 [MCP 快速开始](/zh/integrations/mcp)。
+{/* mcp-usage:end */}
+
+{/* result-schema:start */}
+## 结果字段
+
+任务结果使用下方稳定的 SocQ 字段。系统会统一来源特有的字段名和格式，但不会推断或补充来源未提供的数据。如需缩小返回字段集合，MCP 查询使用 `fields`，Typed 工具使用 `_result_fields`，CLI 使用 `--result-fields`。声明字段的值为 `null` 时仍会保留。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `text` | `string` | 是 | 视频的说明文字或描述。 |
+| `author` | `object` | 是 | 内容的作者或发布者。 |
+| `author.id` | `string` | 是 | 作者的唯一标识。 |
+| `author.username` | `string` | 是 | 账号的公开用户名或账号标识。 |
+| `author.name` | `string` | 是 | 作者的显示名称。 |
+| `author.url` | `string` | 是 | 作者的公开访问地址（如可获得）。 |
+| `author.avatar_url` | `string` | 是 | 账号头像图片的地址。 |
+| `author.is_verified` | `boolean` | 是 | 账号是否已通过平台认证。 |
+| `author.is_private` | `boolean` | 是 | 账号是否为私密账号。 |
+| `metrics` | `object` | 是 | 结果项可获得的计数和度量数据。 |
+| `metrics.likes_count` | `integer` | 是 | 点赞数量。 |
+| `metrics.comments_count` | `integer` | 是 | 评论数量。 |
+| `metrics.shares_count` | `integer` | 是 | 分享或转发数量。 |
+| `metrics.plays_count` | `integer` | 是 | 平台报告的视频播放次数。 |
+| `metrics.views_count` | `integer` | 是 | 平台报告的观看数量。 |
+| `media` | `array<object>` | 是 | 结果附带的图片、视频或其他媒体。 |
+| `media.type` | `string` | 是 | 媒体类型，例如 `image` 或 `video`。 |
+| `media.url` | `string` | 是 | 媒体文件的地址。 |
+| `media.thumbnail_url` | `string` | 是 | 媒体预览图的地址。 |
+| `media.width` | `integer` | 是 | 媒体宽度，单位为像素。 |
+| `media.height` | `integer` | 是 | 媒体高度，单位为像素。 |
+| `media.duration_seconds` | `number` | 是 | 媒体时长，单位为秒。 |
+| `hashtags` | `array<string>` | 是 | 内容关联的话题标签，保留源数据中的拼写。 |
+| `mentions` | `array<string>` | 是 | 内容中提及的账号。 |
+| `shortcode` | `string` | 是 | 平台用于标识媒体内容的短代码。 |
+| `duration_seconds` | `number` | 是 | 时长，单位为秒。 |
+| `audio` | `object` | 是 | 视频关联的音频或音乐信息。 |
+| `audio.id` | `string` | 是 | 音频或音乐曲目的标识。 |
+| `audio.title` | `string` | 是 | 音频或音乐曲目的标题。 |
+| `audio.artist` | `string` | 是 | 音频艺术家或创作者名称。 |
+| `audio.url` | `string` | 是 | 音频或音乐曲目的地址（如可获得）。 |
+{/* result-schema:end */}
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "A1B2C3D4E5F6G7H8",
+    "status": "succeeded",
+    "public_id": "tiktok/song-videos",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 1,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "reel-video",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7502954579814845726",
+          "platform": "tiktok",
+          "resource": "song-videos",
+          "type": "video",
+          "url": "https://www.tiktok.com/@sza/video/7502954579814845726",
+          "published_at": "2025-05-10T22:56:11Z",
+          "collected_at": "2026-09-12T07:00:00Z",
+          "text": "THANK YOU KENDRICK FOR COMING TO YESTERDAY’S @NotBeauty POP UP !!!! 🪲⛺️🫶🏾 @American Dream",
+          "author": {
+            "id": "7486547994222740523",
+            "username": "sza",
+            "name": "SZA",
+            "url": "https://www.tiktok.com/@sza",
+            "avatar_url": "https://p19-common-sign.tiktokcdn-us.com/tos-useast8-avt-0068-tx2/42b31651a14a0f2151814dcbace36525~tplv-tiktokx-cropcenter-q:100:100:q70.heic?dr=8835&refresh_token=8fcf5136&x-expires=1789279200&x-signature=hvjKERljlcZkD1mM%2F2XWtLC%2BKW0%3D&t=223449c4&ps=87d6e48a&shp=d05b14bd&shcp=f6441914&idc=useast5&sc=avatar&s=MUSIC_AWEME",
+            "is_verified": null,
+            "is_private": null
+          },
+          "metrics": {
+            "likes_count": 226391,
+            "comments_count": 1584,
+            "shares_count": 4532,
+            "plays_count": null,
+            "views_count": 2920118
+          },
+          "media": [
+            {
+              "type": "video",
+              "url": "https://v16m.tiktokcdn-us.com/9f417401665888ccdd208e86e8cd1601/6aa548e7/video/tos/useast8/tos-useast8-ve-0068c002-tx2/oMQEfFoC9BMtE9DZIfmQRVgAEO2y6H2gXwcARZ/?a=1233&bti=O3YpOjQ0Zik3OjlmOm0uMjM6ZDQ0MDo%3D&&bt=2142&ft=4KLxRMzm8Zmo06qIUa4jV5X0pSWrKsd.&mime_type=video_mp4&rc=Z2c3ZDU8ZDwzZ2U5NTY7Z0BpanB0cHU5cjt3MzMzaTczNEBgY2MzM142NTMxY2MzMC5eYSNya18tMmQ0YmNhLS1kMTJzcw%3D%3D&vvpl=1&l=20260912064255A22C68ECCD8A684AE831&btag=e000b8000",
+              "thumbnail_url": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/oMAj6PIBJAreJfqxIxMTsLAQGeA5LIAjQEAQ7g~tplv-tiktokx-cropcenter-q:300:400:q70.heic?dr=8596&refresh_token=5e9a49e8&x-expires=1789279200&x-signature=A9FaeqnlgQMuCR7bNWPqVihNAAE%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=f6441914&idc=useast5&biz_tag=tt_video&s=MUSIC_AWEME&sc=cover",
+              "width": 576,
+              "height": 1024,
+              "duration_seconds": 23.0
+            }
+          ],
+          "hashtags": [],
+          "mentions": [],
+          "shortcode": null,
+          "duration_seconds": 23.0,
+          "audio": null
+        }
+      ]
+    }
+  }
+}
+```
