@@ -389,3 +389,27 @@ Fetch normalized live room products data from Douyin.
 - MCP: socq_douyin_product_data
 - CLI: socq douyin product-data
 <!-- platform-apis:end -->
+
+<!-- input-contracts:start -->
+## Input requirements
+
+- `facebook/pages`: Provide public Facebook page/profile URLs in urls. Keyword search, username-only input, and individual post/reel URLs are not supported. Legacy query and usernames fields are ignored when valid urls are supplied.
+- `facebook/posts`: Provide public Facebook page/profile URLs in urls. Keyword search, username-only input, and individual post/reel URLs are not supported. Legacy query and usernames fields are ignored when valid urls are supplied.
+- `facebook/reels`: Provide Facebook page/profile URLs to collect their reels. A single /reel/... video URL is not a profile URL.
+- `instagram/followers-count`: Provide usernames or public Instagram profile URLs. query is ignored and cannot be used as the only input.
+- `instagram/reels`: Provide usernames or public Instagram profile URLs. query is ignored and cannot be used as the only input.
+- `instagram/search`: query is required and accepts keywords, not task instructions. Separate multiple terms with commas; punctuation such as @, #, quotes, periods, slashes and hyphens is unsupported. results_limit is 1 to 250. urls and usernames are deprecated and ignored.
+- `seo/keyword-difficulty`: Choose a supported country and a language available in that country. The defaults are United States (2840) and English (en). Country code 2156 is unavailable here. Locale support differs from Keyword Search Volume and live SERP.
+- `seo/keyword-overview`: Choose a supported country and a language available in that country. The defaults are United States (2840) and English (en). Country code 2156 is unavailable here. Locale support differs from Keyword Search Volume and live SERP.
+- `seo/keyword-search-volume`: Use language values supported by Keyword Search Volume: Chinese uses zh_CN or zh_TW, not zh. Locale support differs between SEO endpoints.
+- `seo/keyword-suggestions`: Choose a supported country and a language available in that country. The defaults are United States (2840) and English (en). Country code 2156 is unavailable here. Locale support differs from Keyword Search Volume and live SERP.
+- `seo/keywords-for-site`: Choose a supported country and a language available in that country. The defaults are United States (2840) and English (en). Country code 2156 is unavailable here. Locale support differs from Keyword Search Volume and live SERP.
+- `seo/ranked-keywords`: Choose a supported country and a language available in that country. The defaults are United States (2840) and English (en). Country code 2156 is unavailable here. Locale support differs from Keyword Search Volume and live SERP.
+- `seo/related-keywords`: Choose a supported country and a language available in that country. The defaults are United States (2840) and English (en). Country code 2156 is unavailable here. Locale support differs from Keyword Search Volume and live SERP.
+- `seo/relevant-pages`: Choose a supported country and a language available in that country. The defaults are United States (2840) and English (en). Country code 2156 is unavailable here. Locale support differs from Keyword Search Volume and live SERP.
+- `seo/search-intent`: Use the language codes declared for this endpoint. Locale support differs from Keyword Search Volume and live SERP.
+- `tiktok-shop/product`: This endpoint currently supports US only. Omit region or set it to US; other regions are rejected before task creation.
+- `tiktok-shop/user-showcase`: This endpoint currently supports US only. Omit region or set it to US; other regions are rejected before task creation. results_limit must be 20 to 2000.
+
+Explicit no-posts responses from instagram/hashtag-posts and linkedin/search-posts complete with empty results; other failures are preserved.
+<!-- input-contracts:end -->

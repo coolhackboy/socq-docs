@@ -10,6 +10,11 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/hashtag-posts"
 {"hashtags": ["#travel"], "results_limit": 20, "published_within": "week", "media_type": "all"}
 ```
 
+{/* input-contract:start */}
+Search hashtags, not account usernames. An explicit no-posts response completes successfully with an empty results.items list. Other access or service errors remain failures. Empty collections follow the normal empty-result billing policy.
+{/* input-contract:end */}
+
+
 ## Use with MCP
 
 | Interface | Value |

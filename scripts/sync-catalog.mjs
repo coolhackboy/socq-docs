@@ -1,10 +1,20 @@
-import {writeFile} from "node:fs/promises";
+import {readFile, writeFile} from "node:fs/promises";
 import {dirname, join} from "node:path";
 import {fileURLToPath} from "node:url";
 import {buildZhOpenApi} from "./localize-openapi-zh.mjs";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const baseUrl = (process.env.SOCQ_BASE_URL ?? "https://api.socq.ai").replace(/\/$/, "");
+const option = (name) => {
+  const index = process.argv.indexOf(`--${name}`);
+  if (index < 0) return undefined;
+  const value = process.argv[index + 1];
+  if (!value || value.startsWith("--")) throw new Error(`Missing value for --${name}`);
+  return value;
+};
+const catalogFile = option("catalog-file");
+const openapiFile = option("openapi-file");
+if (Boolean(catalogFile) !== Boolean(openapiFile)) throw new Error("--catalog-file and --openapi-file must be provided together");
 
 const BLUESKY_INPUT_OVERRIDES = {
   "bluesky/post": {
@@ -149,14 +159,26 @@ async function fetchCatalog() {
   return {schemaVersion, platforms, endpoints, pageCount};
 }
 
-const {schemaVersion, platforms, endpoints, pageCount} = await fetchCatalog();
+async function readCatalogSnapshot(path) {
+  const source = JSON.parse(await readFile(path, "utf8"));
+  const data = source.data ?? source;
+  const page = data.endpoints;
+  if (!Array.isArray(page) && page?.has_more) throw new Error("Catalog snapshot is incomplete");
+  const items = Array.isArray(page) ? page : page?.items;
+  if (!Array.isArray(items) || !items.length) throw new Error("Catalog snapshot has no endpoints");
+  if (new Set(items.map((item) => item.public_id)).size !== items.length) throw new Error("Catalog snapshot contains duplicate endpoints");
+  return {schemaVersion: data.schema_version, platforms: data.platforms ?? [], endpoints: items.map(buildPublicEndpoint), pageCount: 1};
+}
+
+const {schemaVersion, platforms, endpoints, pageCount} = catalogFile ? await readCatalogSnapshot(catalogFile) : await fetchCatalog();
 
 const catalog = {
   schema_version: schemaVersion,
   platforms,
   endpoints,
 };
-const openapi = buildPublicOpenApi(await fetchJson("/v1/catalog/openapi.json"));
+const openapi = buildPublicOpenApi(openapiFile ? JSON.parse(await readFile(openapiFile, "utf8")) : await fetchJson("/v1/catalog/openapi.json"));
+if (openapi.info?.version !== schemaVersion) throw new Error("Catalog and OpenAPI snapshot versions differ");
 const zhOpenapi = await buildZhOpenApi(openapi, root);
 
 await Promise.all([
@@ -166,7 +188,7 @@ await Promise.all([
   writeJson(join(root, "zh", "api-manual", "agent-api", "agent-api.json"), zhOpenapi),
 ]);
 process.stdout.write(
-  `Synchronized ${endpoints.length} endpoints across ${pageCount} page(s) from ${baseUrl} (${catalog.schema_version}).\n`
+  `Synchronized ${endpoints.length} endpoints across ${pageCount} page(s) from ${catalogFile ?? baseUrl} (${catalog.schema_version}).\n`
 );
 
 async function writeJson(path, value) {

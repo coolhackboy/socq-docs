@@ -15,6 +15,11 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/seo/ranked-keywords"
 }
 ```
 
+{/* input-contract:start */}
+请选用本接口支持的国家及该国家可用的语言。默认值为美国（2840）和英语（en）；若该国家不支持英语，必须明确指定支持的语言。此接口不支持 location_code=2156。地区和语言支持范围与搜索量、实时 SERP 不同。
+{/* input-contract:end */}
+
+
 Each item is one ranked keyword record with keyword metrics and the matching search-result position.
 
 

@@ -4,6 +4,7 @@ import {fileURLToPath} from "node:url";
 
 const scriptPath = fileURLToPath(import.meta.url);
 const defaultRoot = dirname(dirname(scriptPath));
+const CONTRACT_NOTES = JSON.parse(await readFile(join(defaultRoot, "scripts", "input-contract-notes-zh.json"), "utf8"));
 
 const FIELD_DESCRIPTIONS = {
   ad_type: "广告类型筛选条件。",
@@ -160,11 +161,15 @@ function frontmatterValue(content, key) {
 
 function localizeInputSchema(schema, publicId) {
   if (!schema?.properties) return;
+  if (schema.description && CONTRACT_NOTES[publicId]) schema.description = CONTRACT_NOTES[publicId];
   for (const [name, property] of Object.entries(schema.properties)) {
     const constraints = [];
     if (property.minItems != null) constraints.push(`至少提供 ${property.minItems} 项`);
     if (property.maxItems != null) constraints.push(`最多提供 ${property.maxItems} 项`);
     const description =
+      (schema.description && property.deprecated ? "已弃用且会被忽略，不能替代此接口的必填输入；请参阅上方入参说明。" : undefined) ??
+      (schema.description && publicId === "instagram/search" && name === "query" ? CONTRACT_NOTES[publicId] : undefined) ??
+      (schema.description && publicId.startsWith("tiktok-shop/") && name === "region" ? "当前仅支持 US，默认 US；其他地区会在创建任务前被拒绝。" : undefined) ??
       INPUT_DESCRIPTION_OVERRIDES[`${publicId}.${name}`] ??
       FIELD_DESCRIPTIONS[name] ??
       property.description ??
@@ -175,8 +180,10 @@ function localizeInputSchema(schema, publicId) {
 
     // The localized reference is display-only. Keep constraints in Chinese prose
     // because the renderer does not localize its minItems/maxItems labels.
-    delete property.minItems;
-    delete property.maxItems;
+    if (!schema.description) {
+      delete property.minItems;
+      delete property.maxItems;
+    }
   }
 }
 

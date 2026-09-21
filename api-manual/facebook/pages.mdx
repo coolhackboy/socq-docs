@@ -18,9 +18,16 @@ POST https://api.socq.ai/v1/facebook/pages
 
 ```json
 {
-  "urls": ["https://www.facebook.com/facebook"]
+  "urls": [
+    "https://www.facebook.com/nasa"
+  ],
+  "results_limit": 20
 }
 ```
+
+{/* input-contract:start */}
+Provide public Facebook page/profile URLs in urls. Keyword search, username-only input, and individual post/reel URLs are not supported. Legacy query and usernames fields are ignored when valid urls are supplied.
+{/* input-contract:end */}
 
 {/* mcp-usage:start */}
 ## Use with MCP

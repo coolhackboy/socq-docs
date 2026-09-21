@@ -16,6 +16,10 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok-shop/product"
 }
 ```
 
+{/* input-contract:start */}
+本接口当前仅支持 US 地区。region 可省略或设为 US；其他地区会在创建任务前被拒绝，提示当前地区不可用。系统不会自动把目标地区改成 US。
+{/* input-contract:end */}
+
 {/* mcp-usage:start */}
 ## 与 MCP 一起使用
 

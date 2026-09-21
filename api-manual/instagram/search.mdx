@@ -23,6 +23,10 @@ POST https://api.socq.ai/v1/instagram/search
 }
 ```
 
+{/* input-contract:start */}
+query is required and accepts keywords, not task instructions. Separate multiple terms with commas; punctuation such as @, #, quotes, periods, slashes and hyphens is unsupported. results_limit is 1 to 250. urls and usernames are deprecated and ignored.
+{/* input-contract:end */}
+
 {/* mcp-usage:start */}
 ## Use with MCP
 

@@ -14,6 +14,11 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/linkedin/search-posts"
 }
 ```
 
+{/* input-contract:start */}
+An explicit no-posts response completes successfully with an empty results.items list. Other access or service errors remain failures. Empty collections follow the normal empty-result billing policy.
+{/* input-contract:end */}
+
+
 `results_limit` must be a multiple of the 10-record page size.
 
 

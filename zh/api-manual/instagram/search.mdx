@@ -23,6 +23,10 @@ POST https://api.socq.ai/v1/instagram/search
 }
 ```
 
+{/* input-contract:start */}
+query 必填，请传搜索关键词，不要传自然语言任务说明。多个词组用英文逗号分隔；不支持 @、#、引号、句点、斜杠、连字符等标点。results_limit 范围为 1–250。urls 和 usernames 已弃用且会被忽略。
+{/* input-contract:end */}
+
 {/* mcp-usage:start */}
 ## 与 MCP 一起使用
 

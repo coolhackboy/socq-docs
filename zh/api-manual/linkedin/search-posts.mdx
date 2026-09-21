@@ -14,6 +14,11 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/search-posts
 }
 ```
 
+{/* input-contract:start */}
+明确返回没有帖子时，任务会成功完成，results.items 为空数组；访问权限或服务异常仍返回失败。空结果按现有空结果计费规则结算。
+{/* input-contract:end */}
+
+
 `results_limit` 必须是每页 10 条的整数倍。
 
 

@@ -18,10 +18,16 @@ POST https://api.socq.ai/v1/facebook/posts
 
 ```json
 {
-  "urls": ["https://www.facebook.com/facebook/posts/POST_ID"],
-  "results_limit": 10
+  "urls": [
+    "https://www.facebook.com/nasa"
+  ],
+  "results_limit": 20
 }
 ```
+
+{/* input-contract:start */}
+请在 urls 中提供公开的 Facebook Page 主页链接，以采集主页下的帖子。本接口不支持关键词搜索或单条帖子、视频链接；仅传 query 或 usernames 会在创建任务前返回 422。已同时提供有效 urls 时，这两个旧字段会被忽略。个人账号的帖子不保证可采集。
+{/* input-contract:end */}
 
 {/* mcp-usage:start */}
 ## 与 MCP 一起使用

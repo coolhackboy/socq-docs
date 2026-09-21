@@ -10,6 +10,11 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/instagram/hashtag-pos
 {"hashtags": ["#travel"], "results_limit": 20, "published_within": "week", "media_type": "all"}
 ```
 
+{/* input-contract:start */}
+本接口按话题标签搜索，不是按账号查询。明确返回没有帖子时，任务会成功完成，results.items 为空数组；访问权限或服务异常仍返回失败。空结果按现有空结果计费规则结算。
+{/* input-contract:end */}
+
+
 ## 与 MCP 一起使用
 
 | 接口 | 值 |
