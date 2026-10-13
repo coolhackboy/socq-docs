@@ -10,12 +10,37 @@ const zhOpenapi = JSON.parse(
   await readFile(join(root, "zh", "api-manual", "agent-api", "agent-api.json"), "utf8")
 );
 const docsConfig = JSON.parse(await readFile(join(root, "docs.json"), "utf8"));
+const contractNotesZh = JSON.parse(await readFile(join(root, "scripts", "input-contract-notes-zh.json"), "utf8"));
 const ids = catalog.endpoints.map((item) => item.public_id).sort();
 const llmsIds = llms.endpoints.map((item) => item.public_id).sort();
 const openapiIds = Object.keys(openapi.paths)
   .filter((path) => /^\/v1\/[^/]+\/[^/{]+$/.test(path))
   .map((path) => path.slice(4))
   .sort();
+
+// Translations may change prose, but must preserve executable input constraints.
+function inputConstraints(value) {
+  if (Array.isArray(value)) return value.map(inputConstraints);
+  if (!value || typeof value !== "object") return value;
+  return Object.fromEntries(Object.keys(value).sort()
+    .filter((key) => !["description", "title", "example", "examples"].includes(key))
+    .map((key) => [key, inputConstraints(value[key])]));
+}
+
+for (const endpoint of catalog.endpoints.filter((item) => item.input_schema?.description)) {
+  const publicId = endpoint.public_id;
+  const expected = JSON.stringify(inputConstraints(endpoint.input_schema));
+  const schemas = {
+    llms: llms.endpoints.find((item) => item.public_id === publicId)?.input_schema,
+    en: openapi.paths[`/v1/${publicId}`]?.post?.requestBody?.content?.["application/json"]?.schema,
+    zh: zhOpenapi.paths[`/v1/${publicId}`]?.post?.requestBody?.content?.["application/json"]?.schema,
+  };
+  for (const [locale, schema] of Object.entries(schemas)) {
+    if (JSON.stringify(inputConstraints(schema)) !== expected) {
+      throw new Error(`${locale}: ${publicId} input constraints differ from the catalog`);
+    }
+  }
+}
 
 function validateCompletedTaskResponse(source, publicId, locale) {
   const heading = locale === "zh" ? "任务完成响应" : "Completed Task Response";
@@ -251,6 +276,11 @@ for (const language of docsConfig.navigation.languages) {
 for (const publicId of ids) {
   const enSource = await readFile(join(root, "api-manual", `${publicId}.mdx`), "utf8");
   const zhSource = await readFile(join(root, "zh", "api-manual", `${publicId}.mdx`), "utf8");
+  if (contractNotesZh[publicId]) {
+    if (!enSource.includes("{/* input-contract:start */}") || !zhSource.includes(contractNotesZh[publicId])) {
+      throw new Error(`${publicId} is missing its input/result contract notes`);
+    }
+  }
   if (/scrape\s*creators|bright\s*data|tikhub/i.test(`${enSource}\n${zhSource}`)) {
     throw new Error(`${publicId} public documentation contains a provider name`);
   }
