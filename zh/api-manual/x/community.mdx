@@ -1,0 +1,119 @@
+---
+title: "X 社区详情"
+description: "通过 urls 提供公开 X 社区链接，路径格式为 /i/communities/{数字ID}。"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/x/community"
+---
+
+# X 社区详情
+
+接口返回异步任务，完成后读取标准结果。
+
+```json
+{
+  "urls": [
+    "https://x.com/i/communities/1493446837214187523"
+  ]
+}
+```
+
+{/* input-contract:start */}
+通过 urls 提供公开 X 社区链接，路径格式为 /i/communities/{数字ID}。
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## 标准结果字段
+
+任务结果使用下方稳定的 SocQ 字段。系统会统一来源特有的字段名和格式，但不会推断或补充来源未提供的数据。如需缩小返回字段集合，MCP 查询使用 `fields`，Typed 工具使用 `_result_fields`，CLI 使用 `--result-fields`。声明字段的值为 `null` 时仍会保留。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `name` | `string` | 是 | 结果项的显示名称。 |
+| `text` | `string` | 是 | 结果项的主要文本内容。 |
+| `cover_url` | `string` | 是 | 封面图片的地址。 |
+| `author` | `object` | 是 | 内容的作者或发布者。 |
+| `author.id` | `string` | 是 | 作者的唯一标识。 |
+| `author.username` | `string` | 是 | 账号的公开用户名或账号标识。 |
+| `author.name` | `string` | 是 | 作者的显示名称。 |
+| `author.url` | `string` | 是 | 作者的公开访问地址（如可获得）。 |
+| `author.avatar_url` | `string` | 是 | 账号头像图片的地址。 |
+| `author.is_verified` | `boolean` | 是 | 账号是否已通过平台认证。 |
+| `author.is_private` | `boolean` | 是 | 账号是否为私密账号。 |
+| `metrics` | `object` | 是 | 结果项可获得的计数和度量数据。 |
+| `metrics.members_count` | `integer` | 是 | 社区成员数量。 |
+| `metrics.moderators_count` | `integer` | 是 | 社区管理员数量。 |
+| `rules` | `array<object>` | 是 | 社区公开规则。 |
+| `rules.id` | `string` | 是 | 所引用对象的唯一标识。 |
+| `rules.name` | `string` | 是 | 所引用对象的显示名称。 |
+| `rules.description` | `string` | 是 | 社区规则的说明。 |
+| `join_policy` | `string` | 是 | 加入社区的策略。 |
+| `invites_policy` | `string` | 是 | 邀请成员加入社区的策略。 |
+| `is_nsfw` | `boolean` | 是 | 社区是否标记为敏感内容。 |
+{/* result-schema:end */}
+
+以下示例展示任务完成后的响应格式，具体数据以实际查询结果为准。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-x-community",
+    "status": "succeeded",
+    "public_id": "x/community",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "community",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "1493446837214187523",
+          "platform": "x",
+          "resource": "community",
+          "type": "community",
+          "url": "https://x.com/i/communities/1493446837214187523",
+          "published_at": "2026-01-01T00:00:00Z",
+          "collected_at": "2026-10-13T00:00:00Z",
+          "name": "Public Technology",
+          "text": "Discuss public technology updates.",
+          "cover_url": "https://example.com/banner.jpg",
+          "author": {
+            "id": "1",
+            "username": "creator",
+            "name": "Creator",
+            "url": null,
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
+          },
+          "metrics": {
+            "members_count": 25,
+            "moderators_count": 0
+          },
+          "rules": [
+            {
+              "id": "1",
+              "name": "Stay on topic",
+              "description": "Discuss technology."
+            }
+          ],
+          "join_policy": "Open",
+          "invites_policy": "MemberInvitesAllowed",
+          "is_nsfw": false
+        }
+      ]
+    }
+  }
+}
+```

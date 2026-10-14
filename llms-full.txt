@@ -413,3 +413,104 @@ Fetch normalized live room products data from Douyin.
 
 Explicit no-posts responses from instagram/hashtag-posts and linkedin/search-posts complete with empty results; other failures are preserved.
 <!-- input-contracts:end -->
+
+# Discovery, community and ad APIs
+
+## TikTok Popular Creators
+
+Discover popular public TikTok creators with audience and follower filters.
+
+- REST: POST /v1/tiktok/popular-creators
+- MCP: socq_tiktok_popular_creators
+- CLI: socq tiktok popular-creators
+- Billing: Per returned result
+
+Optional creator filters; results_limit defaults to 20 and accepts integers from 1 to 2000.
+
+## TikTok Popular Songs
+
+Discover popular or surging TikTok songs and their sound clip IDs.
+
+- REST: POST /v1/tiktok/popular-songs
+- MCP: socq_tiktok_popular_songs
+- CLI: socq tiktok popular-songs
+- Billing: Per returned result
+
+Optional song filters; results_limit defaults to 20. time_period accepts the ranking options 7, 30 and 130. Boolean filters must be JSON booleans.
+
+## TikTok Top Search
+
+Search public TikTok videos and photo carousels.
+
+- REST: POST /v1/tiktok/top-search
+- MCP: socq_tiktok_top_search
+- CLI: socq tiktok top-search
+- Billing: Per returned result
+
+query is required. results_limit defaults to 100. Results can contain videos and photo carousels; region changes content availability and does not guarantee geographic filtering.
+
+## TikTok User Live
+
+Check public TikTok accounts for live streaming status, including offline results.
+
+- REST: POST /v1/tiktok/user-live
+- MCP: socq_tiktok_user_live
+- CLI: socq tiktok user-live
+- Billing: Per returned result
+
+Provide a non-empty usernames array. Each successful lookup returns one billable status, including is_live=false for offline accounts.
+
+## Reddit AD Library Search
+
+Search public Reddit ad inspiration with creative, industry and objective filters; up to 30 ads.
+
+- REST: POST /v1/reddit-ad-library/search
+- MCP: socq_reddit_ad_library_search
+- CLI: socq reddit-ad-library search
+- Billing: Per returned result
+
+query is required. results_limit defaults to 30 and accepts integers from 1 to 30. Search returns at most 30 ads; additional collection pages are unavailable.
+
+## Reddit AD Library Ad
+
+Get a public Reddit ad creative by its ad identifier.
+
+- REST: POST /v1/reddit-ad-library/ad
+- MCP: socq_reddit_ad_library_ad
+- CLI: socq reddit-ad-library ad
+- Billing: Per returned result
+
+Provide ad_id from Reddit AD Library Search.
+
+## X Community
+
+Get public X community metadata, member counts, rules and membership policies.
+
+- REST: POST /v1/x/community
+- MCP: socq_x_community
+- CLI: socq x community
+- Billing: Per returned result
+
+Provide public X community URLs in urls, using /i/communities/{numeric_id}.
+
+## X Community Posts
+
+Collect public posts from X communities in creation-time order.
+
+- REST: POST /v1/x/community-posts
+- MCP: socq_x_community_posts
+- CLI: socq x community-posts
+- Billing: Per returned result
+
+Provide public X community URLs in urls. results_limit applies to each URL, defaults to 100, and must be a multiple of 20 between 20 and 2000.
+
+## X Thread Context
+
+Collect the target X post, its ancestors and replies while preserving thread relationships.
+
+- REST: POST /v1/x/thread-context
+- MCP: socq_x_thread_context
+- CLI: socq x thread-context
+- Billing: Per returned result
+
+Provide X post URLs in urls. results_limit applies to each URL, defaults to 100, and accepts integers from 1 to 2000. Results retain the target post and its thread relationships.

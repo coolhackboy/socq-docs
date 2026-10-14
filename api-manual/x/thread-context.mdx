@@ -1,0 +1,119 @@
+---
+title: "X Thread Context"
+description: "Collect the target X post, its ancestors and replies while preserving thread relationships."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/x/thread-context"
+---
+
+# X Thread Context
+
+Submit an asynchronous task, then read its standard results.
+
+```json
+{
+  "urls": [
+    "https://x.com/OpenAI/status/1890818505164038356"
+  ],
+  "results_limit": 20
+}
+```
+
+{/* input-contract:start */}
+Provide X post URLs in urls. results_limit applies to each URL, defaults to 100, and accepts integers from 1 to 2000. Results retain the target post and its thread relationships.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `text` | `string` | Yes | Primary text associated with the result item. |
+| `author` | `object` | Yes | Author or publisher of the content. |
+| `author.id` | `string` | Yes | Unique identifier of the author. |
+| `author.username` | `string` | Yes | Public username or handle of the account. |
+| `author.name` | `string` | Yes | Display name of the author. |
+| `author.url` | `string` | Yes | Public URL of the author when available. |
+| `author.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `author.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `author.is_private` | `boolean` | Yes | Whether the account is private. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.likes_count` | `integer` | Yes | Number of likes. |
+| `metrics.comments_count` | `integer` | Yes | Number of comments. |
+| `metrics.shares_count` | `integer` | Yes | Number of shares or reposts. |
+| `metrics.views_count` | `integer` | Yes | Number of views reported by the platform. |
+| `media` | `array<object>` | Yes | Images, videos, or other media attached to the result. |
+| `media.type` | `string` | Yes | Media kind, such as `image` or `video`. |
+| `media.url` | `string` | Yes | URL of the media asset. |
+| `media.thumbnail_url` | `string` | Yes | URL of the media preview image. |
+| `media.width` | `integer` | Yes | Media width in pixels. |
+| `media.height` | `integer` | Yes | Media height in pixels. |
+| `media.duration_seconds` | `number` | Yes | Media duration in seconds. |
+| `hashtags` | `array<string>` | Yes | Hashtags associated with the content, without changing their source spelling. |
+| `mentions` | `array<string>` | Yes | Accounts mentioned in the content. |
+| `conversation_id` | `string` | Yes | Identifier of the conversation containing this post. |
+| `in_reply_to_id` | `string` | Yes | Identifier of the post this item directly replies to. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-x-thread-context",
+    "status": "succeeded",
+    "public_id": "x/thread-context",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "thread-post",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "1890818505164038356",
+          "platform": "x",
+          "resource": "thread-context",
+          "type": "post",
+          "url": "https://x.com/OpenAI/status/1890818505164038356",
+          "published_at": "2026-01-01T00:00:00Z",
+          "collected_at": "2026-10-13T00:00:00Z",
+          "text": "Public thread context",
+          "author": {
+            "id": "1",
+            "username": "OpenAI",
+            "name": "OpenAI",
+            "url": null,
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
+          },
+          "metrics": {
+            "likes_count": 0,
+            "comments_count": 2,
+            "shares_count": null,
+            "views_count": null
+          },
+          "media": [],
+          "hashtags": [],
+          "mentions": [],
+          "conversation_id": "1890818505164038350",
+          "in_reply_to_id": "1890818505164038350"
+        }
+      ]
+    }
+  }
+}
+```

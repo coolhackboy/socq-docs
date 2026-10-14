@@ -8,7 +8,7 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-maps/place-detail
 
 Fetch normalized places data from Google Maps.
 
-Each non-empty submitted URL reserves `0.15` credits. The task settles at `0.15` credits per successfully returned standard result, and unused reserved credits are refunded.
+Credits are reserved for each non-empty submitted URL. The task is billed by successfully returned results, and unused reserved credits are refunded.
 
 ## Request Body
 

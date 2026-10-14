@@ -29,3 +29,7 @@ TikTok endpoints use the same asynchronous task flow as the other Agent APIs.
 Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}`. Successful task responses include normalized records under `results`.
 
 For endpoints that accept multiple video URLs or hashtags, `results_limit` applies to each input item.
+| TikTok Popular Creators | `POST` | `/v1/tiktok/popular-creators` |
+| TikTok Popular Songs | `POST` | `/v1/tiktok/popular-songs` |
+| TikTok Top Search | `POST` | `/v1/tiktok/top-search` |
+| TikTok User Live | `POST` | `/v1/tiktok/user-live` |

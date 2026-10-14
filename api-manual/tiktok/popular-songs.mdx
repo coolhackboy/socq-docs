@@ -1,0 +1,112 @@
+---
+title: "TikTok Popular Songs"
+description: "Discover popular or surging TikTok songs and their sound clip IDs."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/popular-songs"
+---
+
+# TikTok Popular Songs
+
+Submit an asynchronous task, then read its standard results.
+
+```json
+{
+  "country": "US",
+  "time_period": 7,
+  "rank_type": "popular",
+  "results_limit": 20
+}
+```
+
+{/* input-contract:start */}
+Optional song filters; results_limit defaults to 20. time_period accepts the ranking options 7, 30 and 130. Boolean filters must be JSON booleans.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `name` | `string` | Yes | Title of the sound or song. |
+| `text` | `string` | Yes | Display title of the sound. |
+| `author` | `object` | Yes | Author or publisher of the content. |
+| `author.id` | `string` | Yes | Unique identifier of the author. |
+| `author.username` | `string` | Yes | Public username or handle of the account. |
+| `author.name` | `string` | Yes | Display name of the author. |
+| `author.url` | `string` | Yes | Public URL of the author when available. |
+| `author.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `author.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `author.is_private` | `boolean` | Yes | Whether the account is private. |
+| `cover_url` | `string` | Yes | URL of the cover image. |
+| `duration_seconds` | `number` | Yes | Duration in seconds. |
+| `audio` | `object` | Yes | Playable preview of the sound. |
+| `audio.id` | `string` | Yes | Identifier of the audio or music track. |
+| `audio.title` | `string` | Yes | Title of the audio or music track. |
+| `audio.artist` | `string` | Yes | Name of the audio artist or creator. |
+| `audio.url` | `string` | Yes | URL of the audio or music track when available. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.videos_count` | `integer` | Yes | Number of videos that use this sound. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-popular-songs",
+    "status": "succeeded",
+    "public_id": "tiktok/popular-songs",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "music",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7439295283975702544",
+          "platform": "tiktok",
+          "resource": "popular-songs",
+          "type": "music",
+          "url": "https://www.tiktok.com/music/luther-7439295283975702544",
+          "published_at": null,
+          "collected_at": "2026-10-13T00:00:00Z",
+          "name": "luther",
+          "text": "luther",
+          "author": {
+            "id": null,
+            "username": null,
+            "name": "Kendrick Lamar & SZA",
+            "url": null,
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
+          },
+          "cover_url": "https://example.com/cover.jpg",
+          "duration_seconds": 59,
+          "audio": {
+            "id": "7439295283975702544",
+            "title": "luther",
+            "artist": "Kendrick Lamar & SZA",
+            "url": null
+          },
+          "metrics": null
+        }
+      ]
+    }
+  }
+}
+```

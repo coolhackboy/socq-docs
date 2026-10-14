@@ -24,3 +24,6 @@ X 端点使用与其他代理 API 相同的异步任务流。
 |用户搜索 | `POST` | `/v1/x/search-users` |
 
 提交请求，收到 `task_id`，然后轮询 `GET /v1/tasks/{task_id}`。成功的任务包括 `results` 下的规范化记录。
+| X 社区详情 | `POST` | `/v1/x/community` |
+| X 社区帖子 | `POST` | `/v1/x/community-posts` |
+| X 线程上下文 | `POST` | `/v1/x/thread-context` |

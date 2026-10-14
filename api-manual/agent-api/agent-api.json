@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-2241a0f7d63f",
+    "version": "v1-0a761bf42900",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -11,25 +11,6 @@
     }
   ],
   "paths": {
-    "/v1/account": {
-      "get": {
-        "operationId": "getAgentAccount",
-        "summary": "Get the authenticated account and credit balance",
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Account summary"
-          }
-        }
-      }
-    },
     "/v1/amazon/best-sellers": {
       "post": {
         "operationId": "socq_amazon_best_sellers",
@@ -834,17 +815,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/v1/catalog": {
-      "get": {
-        "operationId": "getCapabilityCatalog",
-        "summary": "Get the machine-readable capability catalog",
-        "responses": {
-          "200": {
-            "description": "Capability catalog"
           }
         }
       }
@@ -2551,11 +2521,6 @@
                   "urls"
                 ],
                 "description": "Provide public Facebook page/profile URLs in urls. Keyword search, username-only input, and individual post/reel URLs are not supported. Legacy query and usernames fields are ignored when valid urls are supplied."
-              },
-              "example": {
-                "urls": [
-                  "https://www.facebook.com/nasa"
-                ]
               }
             }
           }
@@ -2651,11 +2616,6 @@
                   "urls"
                 ],
                 "description": "Provide public Facebook page/profile URLs in urls. Keyword search, username-only input, and individual post/reel URLs are not supported. Legacy query and usernames fields are ignored when valid urls are supplied."
-              },
-              "example": {
-                "urls": [
-                  "https://www.facebook.com/nasa"
-                ]
               }
             }
           }
@@ -2967,12 +2927,6 @@
                   "urls"
                 ],
                 "description": "Provide Facebook page/profile URLs to collect their reels. A single /reel/... video URL is not a profile URL."
-              },
-              "example": {
-                "urls": [
-                  "https://www.facebook.com/NASA"
-                ],
-                "results_limit": 20
               }
             }
           }
@@ -4007,11 +3961,6 @@
                     ]
                   }
                 ]
-              },
-              "example": {
-                "usernames": [
-                  "instagram"
-                ]
               }
             }
           }
@@ -4665,11 +4614,6 @@
                     ]
                   }
                 ]
-              },
-              "example": {
-                "usernames": [
-                  "instagram"
-                ]
               }
             }
           }
@@ -4845,9 +4789,6 @@
                   "query"
                 ],
                 "description": "query is required and accepts keywords, not task instructions. Separate multiple terms with commas; punctuation such as @, #, quotes, periods, slashes and hyphens is unsupported. results_limit is 1 to 250. urls and usernames are deprecated and ignored."
-              },
-              "example": {
-                "query": "travel photography"
               }
             }
           }
@@ -6682,6 +6623,214 @@
         }
       }
     },
+    "/v1/reddit-ad-library/ad": {
+      "post": {
+        "operationId": "socq_reddit_ad_library_ad",
+        "summary": "Reddit AD Library Ad API",
+        "description": "Get a public Reddit ad creative by its ad identifier.",
+        "tags": [
+          "reddit-ad-library"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "ad_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Reddit ad identifier returned by ad search.",
+                    "pattern": "^[A-Za-z0-9_-]{1,256}$",
+                    "maxLength": 256
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "required": [
+                  "ad_id"
+                ],
+                "description": "Provide ad_id from Reddit AD Library Search."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/reddit-ad-library/search": {
+      "post": {
+        "operationId": "socq_reddit_ad_library_search",
+        "summary": "Reddit AD Library Search API",
+        "description": "Search public Reddit ad inspiration with creative, industry and objective filters; up to 30 ads.",
+        "tags": [
+          "reddit-ad-library"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "budget": {
+                    "type": "string",
+                    "description": "Ad budget category filter.",
+                    "enum": [
+                      "high",
+                      "low",
+                      "medium"
+                    ]
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "format": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "carousel",
+                      "free_form",
+                      "image",
+                      "video"
+                    ]
+                  },
+                  "industry": {
+                    "type": "string",
+                    "description": "Advertiser industry filter.",
+                    "enum": [
+                      "auto",
+                      "consumer_packaged_goods",
+                      "education",
+                      "employment",
+                      "entertainment",
+                      "financial_services",
+                      "gambling_and_fantasy_sports",
+                      "gaming",
+                      "health_and_beauty",
+                      "other",
+                      "politics_and_government",
+                      "real_estate",
+                      "retail_and_ecommerce",
+                      "tech_b2b",
+                      "tech_b2c",
+                      "travel"
+                    ]
+                  },
+                  "objective": {
+                    "type": "string",
+                    "description": "Ad campaign objective filter.",
+                    "enum": [
+                      "app_installs",
+                      "clicks",
+                      "conversions",
+                      "impressions",
+                      "video_viewable_impressions"
+                    ]
+                  },
+                  "placement": {
+                    "type": "string",
+                    "description": "Ad placement filter.",
+                    "enum": [
+                      "comments_page",
+                      "feed"
+                    ]
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 30,
+                    "default": 30
+                  }
+                },
+                "required": [
+                  "query"
+                ],
+                "description": "query is required. results_limit defaults to 30 and accepts integers from 1 to 30. Search returns at most 30 ads; additional collection pages are unavailable."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/reddit/comments": {
       "post": {
         "operationId": "socq_reddit_comments",
@@ -8236,13 +8385,6 @@
                   "keywords"
                 ],
                 "description": "Choose a supported country and a language available in that country. The defaults are United States (2840) and English (en). Country code 2156 is unavailable here. Locale support differs from Keyword Search Volume and live SERP."
-              },
-              "example": {
-                "keywords": [
-                  "keyword research"
-                ],
-                "location_code": 2840,
-                "language_code": "en"
               }
             }
           }
@@ -8635,13 +8777,6 @@
                   "keywords"
                 ],
                 "description": "Choose a supported country and a language available in that country. The defaults are United States (2840) and English (en). Country code 2156 is unavailable here. Locale support differs from Keyword Search Volume and live SERP."
-              },
-              "example": {
-                "keywords": [
-                  "keyword research"
-                ],
-                "location_code": 2840,
-                "language_code": "en"
               }
             }
           }
@@ -8840,13 +8975,6 @@
                   "keywords"
                 ],
                 "description": "Use language values supported by Keyword Search Volume: Chinese uses zh_CN or zh_TW, not zh. Locale support differs between SEO endpoints."
-              },
-              "example": {
-                "keywords": [
-                  "keyword research"
-                ],
-                "location_code": 2840,
-                "language_code": "en"
               }
             }
           }
@@ -9238,12 +9366,6 @@
                   "query"
                 ],
                 "description": "Choose a supported country and a language available in that country. The defaults are United States (2840) and English (en). Country code 2156 is unavailable here. Locale support differs from Keyword Search Volume and live SERP."
-              },
-              "example": {
-                "query": "keyword research",
-                "location_code": 2840,
-                "language_code": "en",
-                "results_limit": 100
               }
             }
           }
@@ -9631,12 +9753,6 @@
                   "target"
                 ],
                 "description": "Choose a supported country and a language available in that country. The defaults are United States (2840) and English (en). Country code 2156 is unavailable here. Locale support differs from Keyword Search Volume and live SERP."
-              },
-              "example": {
-                "target": "example.com",
-                "location_code": 2840,
-                "language_code": "en",
-                "results_limit": 100
               }
             }
           }
@@ -10028,12 +10144,6 @@
                   "target"
                 ],
                 "description": "Choose a supported country and a language available in that country. The defaults are United States (2840) and English (en). Country code 2156 is unavailable here. Locale support differs from Keyword Search Volume and live SERP."
-              },
-              "example": {
-                "target": "example.com",
-                "location_code": 2840,
-                "language_code": "en",
-                "results_limit": 100
               }
             }
           }
@@ -10430,12 +10540,6 @@
                   "query"
                 ],
                 "description": "Choose a supported country and a language available in that country. The defaults are United States (2840) and English (en). Country code 2156 is unavailable here. Locale support differs from Keyword Search Volume and live SERP."
-              },
-              "example": {
-                "query": "keyword research",
-                "location_code": 2840,
-                "language_code": "en",
-                "results_limit": 100
               }
             }
           }
@@ -10827,12 +10931,6 @@
                   "target"
                 ],
                 "description": "Choose a supported country and a language available in that country. The defaults are United States (2840) and English (en). Country code 2156 is unavailable here. Locale support differs from Keyword Search Volume and live SERP."
-              },
-              "example": {
-                "target": "example.com",
-                "location_code": 2840,
-                "language_code": "en",
-                "results_limit": 100
               }
             }
           }
@@ -11032,12 +11130,6 @@
                   "keywords"
                 ],
                 "description": "Use the language codes declared for this endpoint. Locale support differs from Keyword Search Volume and live SERP."
-              },
-              "example": {
-                "keywords": [
-                  "keyword research"
-                ],
-                "language_code": "en"
               }
             }
           }
@@ -11257,87 +11349,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/v1/tasks/{task_id}": {
-      "get": {
-        "operationId": "getAgentTask",
-        "summary": "Get task status and paginated results",
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "task_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "default": 50
-            }
-          },
-          {
-            "name": "fields",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "description": "Up to 50 comma-separated fields or dot paths."
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Task detail"
-          }
-        }
-      }
-    },
-    "/v1/tasks/{task_id}/files": {
-      "get": {
-        "operationId": "getAgentTaskFiles",
-        "summary": "List task result files",
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "task_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Task files"
           }
         }
       }
@@ -11738,9 +11749,6 @@
                   "url"
                 ],
                 "description": "This endpoint currently supports US only. Omit region or set it to US; other regions are rejected before task creation."
-              },
-              "example": {
-                "url": "https://www.tiktok.com/shop/pdp/example-product/1234567890123456789"
               }
             }
           }
@@ -12047,9 +12055,6 @@
                   "username"
                 ],
                 "description": "This endpoint currently supports US only. Omit region or set it to US; other regions are rejected before task creation. results_limit must be 20 to 2000."
-              },
-              "example": {
-                "username": "example_creator"
               }
             }
           }
@@ -12536,6 +12541,325 @@
         }
       }
     },
+    "/v1/tiktok/popular-creators": {
+      "post": {
+        "operationId": "socq_tiktok_popular_creators",
+        "summary": "TikTok Popular Creators API",
+        "description": "Discover popular public TikTok creators with audience and follower filters.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "audience_country": {
+                    "type": "string",
+                    "description": "Two-letter audience country code.",
+                    "enum": [
+                      "AE",
+                      "AU",
+                      "BR",
+                      "CA",
+                      "DE",
+                      "EG",
+                      "ES",
+                      "FR",
+                      "GB",
+                      "ID",
+                      "IL",
+                      "IT",
+                      "JP",
+                      "KR",
+                      "MY",
+                      "PH",
+                      "RU",
+                      "SA",
+                      "SG",
+                      "TH",
+                      "TR",
+                      "TW",
+                      "US",
+                      "VN"
+                    ]
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "creator_country": {
+                    "type": "string",
+                    "description": "Two-letter creator country code.",
+                    "enum": [
+                      "AE",
+                      "AU",
+                      "BR",
+                      "CA",
+                      "DE",
+                      "EG",
+                      "ES",
+                      "FR",
+                      "GB",
+                      "ID",
+                      "IL",
+                      "IT",
+                      "JP",
+                      "KR",
+                      "MY",
+                      "PH",
+                      "RU",
+                      "SA",
+                      "SG",
+                      "TH",
+                      "TR",
+                      "TW",
+                      "US",
+                      "VN"
+                    ]
+                  },
+                  "follower_range": {
+                    "type": "string",
+                    "description": "Creator follower-count range.",
+                    "enum": [
+                      "100K-1M",
+                      "10K-100K",
+                      "10M+",
+                      "1M-10M"
+                    ]
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 20
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "avg_views",
+                      "engagement",
+                      "follower"
+                    ]
+                  }
+                },
+                "required": [],
+                "description": "Optional creator filters; results_limit defaults to 20 and accepts integers from 1 to 2000."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/popular-songs": {
+      "post": {
+        "operationId": "socq_tiktok_popular_songs",
+        "summary": "TikTok Popular Songs API",
+        "description": "Discover popular or surging TikTok songs and their sound clip IDs.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/MusicItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "commercial_music": {
+                    "type": "boolean",
+                    "description": "Only songs approved for business use."
+                  },
+                  "country": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "AE",
+                      "AR",
+                      "AT",
+                      "AU",
+                      "BD",
+                      "BE",
+                      "BG",
+                      "BH",
+                      "BR",
+                      "BY",
+                      "CA",
+                      "CH",
+                      "CL",
+                      "CO",
+                      "CZ",
+                      "DE",
+                      "DK",
+                      "EE",
+                      "EG",
+                      "ES",
+                      "FI",
+                      "FR",
+                      "GB",
+                      "GR",
+                      "HR",
+                      "HU",
+                      "ID",
+                      "IE",
+                      "IL",
+                      "IQ",
+                      "IS",
+                      "IT",
+                      "JO",
+                      "JP",
+                      "KH",
+                      "KR",
+                      "KW",
+                      "KZ",
+                      "LB",
+                      "LT",
+                      "LU",
+                      "LV",
+                      "MA",
+                      "MM",
+                      "MO",
+                      "MX",
+                      "MY",
+                      "NG",
+                      "NL",
+                      "NO",
+                      "NZ",
+                      "OM",
+                      "PE",
+                      "PH",
+                      "PK",
+                      "PL",
+                      "PT",
+                      "QA",
+                      "RO",
+                      "SA",
+                      "SE",
+                      "SG",
+                      "SK",
+                      "TH",
+                      "TR",
+                      "TW",
+                      "UA",
+                      "US",
+                      "UZ",
+                      "VN",
+                      "ZA"
+                    ]
+                  },
+                  "new_on_board": {
+                    "type": "boolean",
+                    "description": "Only songs newly added to the top 100."
+                  },
+                  "rank_type": {
+                    "type": "string",
+                    "description": "Popular or surging song ranking.",
+                    "enum": [
+                      "popular",
+                      "surging"
+                    ]
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 20
+                  },
+                  "time_period": {
+                    "type": "integer",
+                    "enum": [
+                      7,
+                      30,
+                      130
+                    ],
+                    "description": "Song ranking period option."
+                  }
+                },
+                "required": [],
+                "description": "Optional song filters; results_limit defaults to 20. time_period accepts the ranking options 7, 30 and 130. Boolean filters must be JSON booleans."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tiktok/profiles": {
       "post": {
         "operationId": "socq_tiktok_profiles",
@@ -12921,6 +13245,107 @@
         }
       }
     },
+    "/v1/tiktok/top-search": {
+      "post": {
+        "operationId": "socq_tiktok_top_search",
+        "summary": "TikTok Top Search API",
+        "description": "Search public TikTok videos and photo carousels.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "published_within": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "day",
+                      "month",
+                      "six_months",
+                      "three_months",
+                      "week"
+                    ]
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Search query."
+                  },
+                  "region": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^[A-Za-z]{2}$"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "date",
+                      "likes",
+                      "relevance"
+                    ]
+                  }
+                },
+                "required": [
+                  "query"
+                ],
+                "description": "query is required. results_limit defaults to 100. Results can contain videos and photo carousels; region changes content availability and does not guarantee geographic filtering."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tiktok/trending-feed": {
       "post": {
         "operationId": "socq_tiktok_trending_feed",
@@ -12962,6 +13387,80 @@
                 "required": [
                   "region"
                 ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/user-live": {
+      "post": {
+        "operationId": "socq_tiktok_user_live",
+        "summary": "TikTok User Live API",
+        "description": "Check public TikTok accounts for live streaming status, including offline results.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/LiveStatusItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public account usernames."
+                  }
+                },
+                "required": [
+                  "usernames"
+                ],
+                "description": "Provide a non-empty usernames array. Each successful lookup returns one billable status, including is_live=false for offline accounts."
               }
             }
           }
@@ -13555,6 +14054,161 @@
                 "required": [
                   "username"
                 ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/community": {
+      "post": {
+        "operationId": "socq_x_community",
+        "summary": "X Community API",
+        "description": "Get public X community metadata, member counts, rules and membership policies.",
+        "tags": [
+          "x"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommunityItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ],
+                "description": "Provide public X community URLs in urls, using /i/communities/{numeric_id}."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/community-posts": {
+      "post": {
+        "operationId": "socq_x_community_posts",
+        "summary": "X Community Posts API",
+        "description": "Collect public posts from X communities in creation-time order.",
+        "tags": [
+          "x"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "multipleOf": 20
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ],
+                "description": "Provide public X community URLs in urls. results_limit applies to each URL, defaults to 100, and must be a multiple of 20 between 20 and 2000."
               }
             }
           }
@@ -14335,6 +14989,86 @@
                 "required": [
                   "query"
                 ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/thread-context": {
+      "post": {
+        "operationId": "socq_x_thread_context",
+        "summary": "X Thread Context API",
+        "description": "Collect the target X post, its ancestors and replies while preserving thread relationships.",
+        "tags": [
+          "x"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ThreadPostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public profile or content URLs."
+                  }
+                },
+                "required": [
+                  "urls"
+                ],
+                "description": "Provide X post URLs in urls. results_limit applies to each URL, defaults to 100, and accepts integers from 1 to 2000. Results retain the target post and its thread relationships."
               }
             }
           }
@@ -15445,6 +16179,117 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/v1/tasks/{task_id}": {
+      "get": {
+        "operationId": "getAgentTask",
+        "summary": "Get task status and paginated results",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 50
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Up to 50 comma-separated fields or dot paths."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task detail"
+          }
+        }
+      }
+    },
+    "/v1/tasks/{task_id}/files": {
+      "get": {
+        "operationId": "getAgentTaskFiles",
+        "summary": "List task result files",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task files"
+          }
+        }
+      }
+    },
+    "/v1/catalog": {
+      "get": {
+        "operationId": "getCapabilityCatalog",
+        "summary": "Get the machine-readable capability catalog",
+        "responses": {
+          "200": {
+            "description": "Capability catalog"
+          }
+        }
+      }
+    },
+    "/v1/account": {
+      "get": {
+        "operationId": "getAgentAccount",
+        "summary": "Get the authenticated account and credit balance",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account summary"
           }
         }
       }
@@ -17776,6 +18621,697 @@
           "viewers_count",
           "likes_count"
         ]
+      },
+      "LiveStatusItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Title",
+            "description": "Title of the result item.",
+            "x-description-zh": "结果项的标题。"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Status",
+            "description": "Current status reported for the live room.",
+            "x-description-zh": "直播间当前状态。"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LiveMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
+          },
+          "is_live": {
+            "title": "Is Live",
+            "type": "boolean",
+            "description": "Whether this account is currently live streaming.",
+            "x-description-zh": "账号当前是否正在直播。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "title",
+          "author",
+          "status",
+          "metrics",
+          "media",
+          "is_live"
+        ],
+        "title": "LiveStatusItem",
+        "type": "object",
+        "x-schema-id": "live-status",
+        "x-schema-version": "1.0"
+      },
+      "CommunityItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name",
+            "description": "Display name of the result item.",
+            "x-description-zh": "结果项的显示名称。"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text",
+            "description": "Primary text associated with the result item.",
+            "x-description-zh": "结果项的主要文本内容。"
+          },
+          "cover_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cover Url",
+            "description": "URL of the cover image.",
+            "x-description-zh": "封面图片的地址。"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CommunityMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
+          },
+          "rules": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/CommunityRule"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rules",
+            "description": "Public community rules.",
+            "x-description-zh": "社区公开规则。"
+          },
+          "join_policy": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Join Policy",
+            "description": "Policy for joining this community.",
+            "x-description-zh": "加入社区的策略。"
+          },
+          "invites_policy": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Invites Policy",
+            "description": "Policy for inviting members to this community.",
+            "x-description-zh": "邀请成员加入社区的策略。"
+          },
+          "is_nsfw": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Is Nsfw",
+            "description": "Whether the community is marked as sensitive content.",
+            "x-description-zh": "社区是否标记为敏感内容。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "name",
+          "text",
+          "cover_url",
+          "author",
+          "metrics",
+          "rules",
+          "join_policy",
+          "invites_policy",
+          "is_nsfw"
+        ],
+        "title": "CommunityItem",
+        "type": "object",
+        "x-schema-id": "community",
+        "x-schema-version": "1.0"
+      },
+      "CommunityMetrics": {
+        "additionalProperties": false,
+        "properties": {
+          "members_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Members Count",
+            "description": "Number of community members.",
+            "x-description-zh": "社区成员数量。"
+          },
+          "moderators_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Moderators Count",
+            "description": "Number of community moderators.",
+            "x-description-zh": "社区管理员数量。"
+          }
+        },
+        "title": "CommunityMetrics",
+        "type": "object",
+        "required": [
+          "members_count",
+          "moderators_count"
+        ]
+      },
+      "CommunityRule": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier of the referenced object.",
+            "x-description-zh": "所引用对象的唯一标识。"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name",
+            "description": "Display name of the referenced object.",
+            "x-description-zh": "所引用对象的显示名称。"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Description",
+            "description": "Description of the community rule.",
+            "x-description-zh": "社区规则的说明。"
+          }
+        },
+        "title": "CommunityRule",
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "description"
+        ]
+      },
+      "ThreadPostItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text",
+            "description": "Primary text associated with the result item.",
+            "x-description-zh": "结果项的主要文本内容。"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Metrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
+          },
+          "hashtags": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Hashtags",
+            "description": "Hashtags associated with the content, without changing their source spelling.",
+            "x-description-zh": "内容关联的话题标签，保留源数据中的拼写。"
+          },
+          "mentions": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Mentions",
+            "description": "Accounts mentioned in the content.",
+            "x-description-zh": "内容中提及的账号。"
+          },
+          "conversation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Conversation Id",
+            "description": "Identifier of the conversation containing this post.",
+            "x-description-zh": "帖子所属会话的标识。"
+          },
+          "in_reply_to_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "In Reply To Id",
+            "description": "Identifier of the post this item directly replies to.",
+            "x-description-zh": "当前帖子直接回复的帖子标识。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "text",
+          "author",
+          "metrics",
+          "media",
+          "hashtags",
+          "mentions",
+          "conversation_id",
+          "in_reply_to_id"
+        ],
+        "title": "ThreadPostItem",
+        "type": "object",
+        "x-schema-id": "thread-post",
+        "x-schema-version": "1.0"
       },
       "CompanyItem": {
         "additionalProperties": false,

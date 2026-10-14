@@ -1,0 +1,119 @@
+---
+title: "TikTok 用户直播状态"
+description: "提供非空 usernames 数组。每个成功查询返回一条计费状态结果，未开播账号也会返回 is_live=false。"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/user-live"
+---
+
+# TikTok 用户直播状态
+
+接口返回异步任务，完成后读取标准结果。
+
+```json
+{
+  "usernames": [
+    "thejustalex"
+  ]
+}
+```
+
+{/* input-contract:start */}
+提供非空 usernames 数组。每个成功查询返回一条计费状态结果，未开播账号也会返回 is_live=false。
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## 标准结果字段
+
+任务结果使用下方稳定的 SocQ 字段。系统会统一来源特有的字段名和格式，但不会推断或补充来源未提供的数据。如需缩小返回字段集合，MCP 查询使用 `fields`，Typed 工具使用 `_result_fields`，CLI 使用 `--result-fields`。声明字段的值为 `null` 时仍会保留。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `title` | `string` | 是 | 结果项的标题。 |
+| `author` | `object` | 是 | 内容的作者或发布者。 |
+| `author.id` | `string` | 是 | 作者的唯一标识。 |
+| `author.username` | `string` | 是 | 账号的公开用户名或账号标识。 |
+| `author.name` | `string` | 是 | 作者的显示名称。 |
+| `author.url` | `string` | 是 | 作者的公开访问地址（如可获得）。 |
+| `author.avatar_url` | `string` | 是 | 账号头像图片的地址。 |
+| `author.is_verified` | `boolean` | 是 | 账号是否已通过平台认证。 |
+| `author.is_private` | `boolean` | 是 | 账号是否为私密账号。 |
+| `status` | `string` | 是 | 直播间当前状态。 |
+| `metrics` | `object` | 是 | 结果项可获得的计数和度量数据。 |
+| `metrics.viewers_count` | `integer` | 是 | 直播间观众数量。 |
+| `metrics.likes_count` | `integer` | 是 | 点赞数量。 |
+| `media` | `array<object>` | 是 | 结果附带的图片、视频或其他媒体。 |
+| `media.type` | `string` | 是 | 媒体类型，例如 `image` 或 `video`。 |
+| `media.url` | `string` | 是 | 媒体文件的地址。 |
+| `media.thumbnail_url` | `string` | 是 | 媒体预览图的地址。 |
+| `media.width` | `integer` | 是 | 媒体宽度，单位为像素。 |
+| `media.height` | `integer` | 是 | 媒体高度，单位为像素。 |
+| `media.duration_seconds` | `number` | 是 | 媒体时长，单位为秒。 |
+| `is_live` | `boolean` | 否 | 账号当前是否正在直播。 |
+{/* result-schema:end */}
+
+以下示例展示任务完成后的响应格式，具体数据以实际查询结果为准。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-user-live",
+    "status": "succeeded",
+    "public_id": "tiktok/user-live",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "live-status",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7523685855395842871",
+          "platform": "tiktok",
+          "resource": "user-live",
+          "type": "live_status",
+          "url": "https://www.tiktok.com/@thejustalex/live",
+          "published_at": "2025-07-05T19:45:08Z",
+          "collected_at": "2026-10-13T00:00:00Z",
+          "title": "Live stream",
+          "author": {
+            "id": "6742945285876515845",
+            "username": "thejustalex",
+            "name": "JustAlex",
+            "url": null,
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
+          },
+          "status": "live",
+          "metrics": {
+            "viewers_count": 0,
+            "likes_count": null
+          },
+          "media": [
+            {
+              "type": "image",
+              "url": "https://example.com/cover.jpg",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ],
+          "is_live": true
+        }
+      ]
+    }
+  }
+}
+```

@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API 中文版",
-    "version": "v1-2241a0f7d63f",
+    "version": "v1-0a761bf42900",
     "description": "根据 SocQ 能力目录生成的异步社交数据 API。"
   },
   "servers": [
@@ -11,25 +11,6 @@
     }
   ],
   "paths": {
-    "/v1/account": {
-      "get": {
-        "operationId": "getAgentAccount",
-        "summary": "获取当前账号和积分余额",
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "账号摘要"
-          }
-        }
-      }
-    },
     "/v1/amazon/best-sellers": {
       "post": {
         "operationId": "socq_amazon_best_sellers",
@@ -833,17 +814,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/v1/catalog": {
-      "get": {
-        "operationId": "getCapabilityCatalog",
-        "summary": "获取机器可读的能力目录",
-        "responses": {
-          "200": {
-            "description": "能力目录"
           }
         }
       }
@@ -2587,11 +2557,6 @@
                   "urls"
                 ],
                 "description": "请在 urls 中提供公开的 Facebook 主页链接。仅传 query 或 usernames 不受支持；已同时提供有效 urls 时，旧的 query、usernames 字段会被忽略。不要传入单条帖子或视频链接。"
-              },
-              "example": {
-                "urls": [
-                  "https://www.facebook.com/nasa"
-                ]
               }
             }
           }
@@ -2689,11 +2654,6 @@
                   "urls"
                 ],
                 "description": "请在 urls 中提供公开的 Facebook Page 主页链接，以采集主页下的帖子。本接口不支持关键词搜索或单条帖子、视频链接；仅传 query 或 usernames 会在创建任务前返回 422。已同时提供有效 urls 时，这两个旧字段会被忽略。个人账号的帖子不保证可采集。"
-              },
-              "example": {
-                "urls": [
-                  "https://www.facebook.com/nasa"
-                ]
               }
             }
           }
@@ -3009,12 +2969,6 @@
                   "urls"
                 ],
                 "description": "请提供 Facebook 主页链接，以采集该主页的 Reels 列表。单条 /reel/... 视频链接不是主页链接，会在创建任务前被拒绝。"
-              },
-              "example": {
-                "urls": [
-                  "https://www.facebook.com/NASA"
-                ],
-                "results_limit": 20
               }
             }
           }
@@ -4067,11 +4021,6 @@
                     ]
                   }
                 ]
-              },
-              "example": {
-                "usernames": [
-                  "instagram"
-                ]
               }
             }
           }
@@ -4727,11 +4676,6 @@
                     ]
                   }
                 ]
-              },
-              "example": {
-                "usernames": [
-                  "instagram"
-                ]
               }
             }
           }
@@ -4912,9 +4856,6 @@
                   "query"
                 ],
                 "description": "query 必填，请传搜索关键词，不要传自然语言任务说明。多个词组用英文逗号分隔；不支持 @、#、引号、句点、斜杠、连字符等标点。results_limit 范围为 1–250。urls 和 usernames 已弃用且会被忽略。"
-              },
-              "example": {
-                "query": "travel photography"
               }
             }
           }
@@ -6768,6 +6709,218 @@
         }
       }
     },
+    "/v1/reddit-ad-library/ad": {
+      "post": {
+        "operationId": "socq_reddit_ad_library_ad",
+        "summary": "Reddit 广告详情",
+        "description": "提供 Reddit AD Library Search 返回的 ad_id。",
+        "tags": [
+          "reddit-ad-library"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "ad_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "广告搜索结果返回的 Reddit 广告 ID。",
+                    "pattern": "^[A-Za-z0-9_-]{1,256}$",
+                    "maxLength": 256
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  }
+                },
+                "required": [
+                  "ad_id"
+                ],
+                "description": "提供 Reddit AD Library Search 返回的 ad_id。"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/reddit-ad-library/search": {
+      "post": {
+        "operationId": "socq_reddit_ad_library_search",
+        "summary": "Reddit 广告资料库搜索",
+        "description": "query 必填；results_limit 默认 30，允许 1–30 的整数。搜索最多返回 30 条广告，不支持额外采集分页。",
+        "tags": [
+          "reddit-ad-library"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "budget": {
+                    "type": "string",
+                    "description": "广告预算类别。",
+                    "enum": [
+                      "high",
+                      "low",
+                      "medium"
+                    ]
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "format": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "carousel",
+                      "free_form",
+                      "image",
+                      "video"
+                    ],
+                    "description": "请求参数。"
+                  },
+                  "industry": {
+                    "type": "string",
+                    "description": "广告主所属行业。",
+                    "enum": [
+                      "auto",
+                      "consumer_packaged_goods",
+                      "education",
+                      "employment",
+                      "entertainment",
+                      "financial_services",
+                      "gambling_and_fantasy_sports",
+                      "gaming",
+                      "health_and_beauty",
+                      "other",
+                      "politics_and_government",
+                      "real_estate",
+                      "retail_and_ecommerce",
+                      "tech_b2b",
+                      "tech_b2c",
+                      "travel"
+                    ]
+                  },
+                  "objective": {
+                    "type": "string",
+                    "description": "广告活动目标。",
+                    "enum": [
+                      "app_installs",
+                      "clicks",
+                      "conversions",
+                      "impressions",
+                      "video_viewable_impressions"
+                    ]
+                  },
+                  "placement": {
+                    "type": "string",
+                    "description": "广告展示位置。",
+                    "enum": [
+                      "comments_page",
+                      "feed"
+                    ]
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 30,
+                    "default": 30,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "query"
+                ],
+                "description": "query 必填；results_limit 默认 30，允许 1–30 的整数。搜索最多返回 30 条广告，不支持额外采集分页。"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/reddit/comments": {
       "post": {
         "operationId": "socq_reddit_comments",
@@ -8339,13 +8492,6 @@
                   "keywords"
                 ],
                 "description": "请选用本接口支持的国家及该国家可用的语言。默认值为美国（2840）和英语（en）；若该国家不支持英语，必须明确指定支持的语言。此接口不支持 location_code=2156。地区和语言支持范围与搜索量、实时 SERP 不同。"
-              },
-              "example": {
-                "keywords": [
-                  "keyword research"
-                ],
-                "location_code": 2840,
-                "language_code": "en"
               }
             }
           }
@@ -8740,13 +8886,6 @@
                   "keywords"
                 ],
                 "description": "请选用本接口支持的国家及该国家可用的语言。默认值为美国（2840）和英语（en）；若该国家不支持英语，必须明确指定支持的语言。此接口不支持 location_code=2156。地区和语言支持范围与搜索量、实时 SERP 不同。"
-              },
-              "example": {
-                "keywords": [
-                  "keyword research"
-                ],
-                "location_code": 2840,
-                "language_code": "en"
               }
             }
           }
@@ -8947,13 +9086,6 @@
                   "keywords"
                 ],
                 "description": "请使用本接口支持的语言代码：简体中文为 zh_CN，繁体中文为 zh_TW，不支持 zh。不同 SEO 接口的地区和语言支持范围不同，请以各接口的参数定义为准。"
-              },
-              "example": {
-                "keywords": [
-                  "keyword research"
-                ],
-                "location_code": 2840,
-                "language_code": "en"
               }
             }
           }
@@ -9348,12 +9480,6 @@
                   "query"
                 ],
                 "description": "请选用本接口支持的国家及该国家可用的语言。默认值为美国（2840）和英语（en）；若该国家不支持英语，必须明确指定支持的语言。此接口不支持 location_code=2156。地区和语言支持范围与搜索量、实时 SERP 不同。"
-              },
-              "example": {
-                "query": "keyword research",
-                "location_code": 2840,
-                "language_code": "en",
-                "results_limit": 100
               }
             }
           }
@@ -9743,12 +9869,6 @@
                   "target"
                 ],
                 "description": "请选用本接口支持的国家及该国家可用的语言。默认值为美国（2840）和英语（en）；若该国家不支持英语，必须明确指定支持的语言。此接口不支持 location_code=2156。地区和语言支持范围与搜索量、实时 SERP 不同。"
-              },
-              "example": {
-                "target": "example.com",
-                "location_code": 2840,
-                "language_code": "en",
-                "results_limit": 100
               }
             }
           }
@@ -10143,12 +10263,6 @@
                   "target"
                 ],
                 "description": "请选用本接口支持的国家及该国家可用的语言。默认值为美国（2840）和英语（en）；若该国家不支持英语，必须明确指定支持的语言。此接口不支持 location_code=2156。地区和语言支持范围与搜索量、实时 SERP 不同。"
-              },
-              "example": {
-                "target": "example.com",
-                "location_code": 2840,
-                "language_code": "en",
-                "results_limit": 100
               }
             }
           }
@@ -10549,12 +10663,6 @@
                   "query"
                 ],
                 "description": "请选用本接口支持的国家及该国家可用的语言。默认值为美国（2840）和英语（en）；若该国家不支持英语，必须明确指定支持的语言。此接口不支持 location_code=2156。地区和语言支持范围与搜索量、实时 SERP 不同。"
-              },
-              "example": {
-                "query": "keyword research",
-                "location_code": 2840,
-                "language_code": "en",
-                "results_limit": 100
               }
             }
           }
@@ -10949,12 +11057,6 @@
                   "target"
                 ],
                 "description": "请选用本接口支持的国家及该国家可用的语言。默认值为美国（2840）和英语（en）；若该国家不支持英语，必须明确指定支持的语言。此接口不支持 location_code=2156。地区和语言支持范围与搜索量、实时 SERP 不同。"
-              },
-              "example": {
-                "target": "example.com",
-                "location_code": 2840,
-                "language_code": "en",
-                "results_limit": 100
               }
             }
           }
@@ -11156,12 +11258,6 @@
                   "keywords"
                 ],
                 "description": "请使用本接口参数定义列出的语言代码。不同 SEO 接口的语言支持范围不同，不能直接沿用搜索量或实时 SERP 的语言代码。"
-              },
-              "example": {
-                "keywords": [
-                  "keyword research"
-                ],
-                "language_code": "en"
               }
             }
           }
@@ -11381,91 +11477,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/v1/tasks/{task_id}": {
-      "get": {
-        "operationId": "getAgentTask",
-        "summary": "获取任务状态和分页结果",
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "task_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "任务 ID。"
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "description": "分页游标。"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "default": 50
-            },
-            "description": "本次返回的最大记录数。"
-          },
-          {
-            "name": "fields",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "description": "最多 50 个逗号分隔字段或点路径。"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "任务详情"
-          }
-        }
-      }
-    },
-    "/v1/tasks/{task_id}/files": {
-      "get": {
-        "operationId": "getAgentTaskFiles",
-        "summary": "获取任务结果文件列表",
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "task_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "任务 ID。"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "任务文件列表"
           }
         }
       }
@@ -11865,9 +11876,6 @@
                   "url"
                 ],
                 "description": "本接口当前仅支持 US 地区。region 可省略或设为 US；其他地区会在创建任务前被拒绝，提示当前地区不可用。系统不会自动把目标地区改成 US。"
-              },
-              "example": {
-                "url": "https://www.tiktok.com/shop/pdp/example-product/1234567890123456789"
               }
             }
           }
@@ -12182,9 +12190,6 @@
                   "username"
                 ],
                 "description": "本接口当前仅支持 US 地区。region 可省略或设为 US；其他地区会在创建任务前被拒绝。results_limit 范围为 20–2000。系统不会自动改变目标地区。"
-              },
-              "example": {
-                "username": "example_creator"
               }
             }
           }
@@ -12675,6 +12680,331 @@
         }
       }
     },
+    "/v1/tiktok/popular-creators": {
+      "post": {
+        "operationId": "socq_tiktok_popular_creators",
+        "summary": "TikTok 热门创作者",
+        "description": "创作者筛选条件均可选；results_limit 默认 20，允许 1–2000 的整数。",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "audience_country": {
+                    "type": "string",
+                    "description": "创作者受众所在国家或地区的两位代码。",
+                    "enum": [
+                      "AE",
+                      "AU",
+                      "BR",
+                      "CA",
+                      "DE",
+                      "EG",
+                      "ES",
+                      "FR",
+                      "GB",
+                      "ID",
+                      "IL",
+                      "IT",
+                      "JP",
+                      "KR",
+                      "MY",
+                      "PH",
+                      "RU",
+                      "SA",
+                      "SG",
+                      "TH",
+                      "TR",
+                      "TW",
+                      "US",
+                      "VN"
+                    ]
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "creator_country": {
+                    "type": "string",
+                    "description": "创作者所在国家或地区的两位代码。",
+                    "enum": [
+                      "AE",
+                      "AU",
+                      "BR",
+                      "CA",
+                      "DE",
+                      "EG",
+                      "ES",
+                      "FR",
+                      "GB",
+                      "ID",
+                      "IL",
+                      "IT",
+                      "JP",
+                      "KR",
+                      "MY",
+                      "PH",
+                      "RU",
+                      "SA",
+                      "SG",
+                      "TH",
+                      "TR",
+                      "TW",
+                      "US",
+                      "VN"
+                    ]
+                  },
+                  "follower_range": {
+                    "type": "string",
+                    "description": "创作者粉丝数量区间。",
+                    "enum": [
+                      "100K-1M",
+                      "10K-100K",
+                      "10M+",
+                      "1M-10M"
+                    ]
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 20,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "avg_views",
+                      "engagement",
+                      "follower"
+                    ],
+                    "description": "结果排序方式。"
+                  }
+                },
+                "required": [],
+                "description": "创作者筛选条件均可选；results_limit 默认 20，允许 1–2000 的整数。"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/popular-songs": {
+      "post": {
+        "operationId": "socq_tiktok_popular_songs",
+        "summary": "TikTok 热门歌曲",
+        "description": "歌曲筛选条件均可选；results_limit 默认 20。time_period 接受榜单周期选项 7、30、130；布尔筛选条件必须使用 JSON 布尔值。",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/MusicItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "commercial_music": {
+                    "type": "boolean",
+                    "description": "是否仅返回允许商业使用的歌曲。"
+                  },
+                  "country": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "AE",
+                      "AR",
+                      "AT",
+                      "AU",
+                      "BD",
+                      "BE",
+                      "BG",
+                      "BH",
+                      "BR",
+                      "BY",
+                      "CA",
+                      "CH",
+                      "CL",
+                      "CO",
+                      "CZ",
+                      "DE",
+                      "DK",
+                      "EE",
+                      "EG",
+                      "ES",
+                      "FI",
+                      "FR",
+                      "GB",
+                      "GR",
+                      "HR",
+                      "HU",
+                      "ID",
+                      "IE",
+                      "IL",
+                      "IQ",
+                      "IS",
+                      "IT",
+                      "JO",
+                      "JP",
+                      "KH",
+                      "KR",
+                      "KW",
+                      "KZ",
+                      "LB",
+                      "LT",
+                      "LU",
+                      "LV",
+                      "MA",
+                      "MM",
+                      "MO",
+                      "MX",
+                      "MY",
+                      "NG",
+                      "NL",
+                      "NO",
+                      "NZ",
+                      "OM",
+                      "PE",
+                      "PH",
+                      "PK",
+                      "PL",
+                      "PT",
+                      "QA",
+                      "RO",
+                      "SA",
+                      "SE",
+                      "SG",
+                      "SK",
+                      "TH",
+                      "TR",
+                      "TW",
+                      "UA",
+                      "US",
+                      "UZ",
+                      "VN",
+                      "ZA"
+                    ],
+                    "description": "国家或地区筛选条件。"
+                  },
+                  "new_on_board": {
+                    "type": "boolean",
+                    "description": "是否仅返回新进入前 100 名的歌曲。"
+                  },
+                  "rank_type": {
+                    "type": "string",
+                    "description": "歌曲榜单类型：热门或上升。",
+                    "enum": [
+                      "popular",
+                      "surging"
+                    ]
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 20,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "time_period": {
+                    "type": "integer",
+                    "enum": [
+                      7,
+                      30,
+                      130
+                    ],
+                    "description": "歌曲榜单周期选项。"
+                  }
+                },
+                "required": [],
+                "description": "歌曲筛选条件均可选；results_limit 默认 20。time_period 接受榜单周期选项 7、30、130；布尔筛选条件必须使用 JSON 布尔值。"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tiktok/profiles": {
       "post": {
         "operationId": "socq_tiktok_profiles",
@@ -13066,6 +13396,112 @@
         }
       }
     },
+    "/v1/tiktok/top-search": {
+      "post": {
+        "operationId": "socq_tiktok_top_search",
+        "summary": "TikTok 综合搜索",
+        "description": "query 必填，results_limit 默认 100。结果包含视频和图片轮播；region 影响内容可见性，不保证按发布地区筛选。",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "published_within": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "day",
+                      "month",
+                      "six_months",
+                      "three_months",
+                      "week"
+                    ],
+                    "description": "内容发布时间范围。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "搜索关键词。"
+                  },
+                  "region": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^[A-Za-z]{2}$",
+                    "description": "地区代码。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "date",
+                      "likes",
+                      "relevance"
+                    ],
+                    "description": "结果排序方式。"
+                  }
+                },
+                "required": [
+                  "query"
+                ],
+                "description": "query 必填，results_limit 默认 100。结果包含视频和图片轮播；region 影响内容可见性，不保证按发布地区筛选。"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tiktok/trending-feed": {
       "post": {
         "operationId": "socq_tiktok_trending_feed",
@@ -13109,6 +13545,81 @@
                 "required": [
                   "region"
                 ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/user-live": {
+      "post": {
+        "operationId": "socq_tiktok_user_live",
+        "summary": "TikTok 用户直播状态",
+        "description": "提供非空 usernames 数组。每个成功查询返回一条计费状态结果，未开播账号也会返回 is_live=false。",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/LiveStatusItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "公开账号用户名列表。每个用户名分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "usernames"
+                ],
+                "description": "提供非空 usernames 数组。每个成功查询返回一条计费状态结果，未开播账号也会返回 is_live=false。"
               }
             }
           }
@@ -13707,6 +14218,164 @@
                 "required": [
                   "username"
                 ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/community": {
+      "post": {
+        "operationId": "socq_x_community",
+        "summary": "X 社区详情",
+        "description": "通过 urls 提供公开 X 社区链接，路径格式为 /i/communities/{数字ID}。",
+        "tags": [
+          "x"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommunityItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ],
+                "description": "通过 urls 提供公开 X 社区链接，路径格式为 /i/communities/{数字ID}。"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/community-posts": {
+      "post": {
+        "operationId": "socq_x_community_posts",
+        "summary": "X 社区帖子",
+        "description": "通过 urls 提供公开 X 社区链接。results_limit 分别应用于每个 URL，默认 100，须为 20–2000 范围内 20 的倍数。",
+        "tags": [
+          "x"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 20,
+                    "maximum": 2000,
+                    "default": 100,
+                    "multipleOf": 20,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ],
+                "description": "通过 urls 提供公开 X 社区链接。results_limit 分别应用于每个 URL，默认 100，须为 20–2000 范围内 20 的倍数。"
               }
             }
           }
@@ -14498,6 +15167,88 @@
                 "required": [
                   "query"
                 ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/x/thread-context": {
+      "post": {
+        "operationId": "socq_x_thread_context",
+        "summary": "X 线程上下文",
+        "description": "通过 urls 提供 X 帖子链接。results_limit 分别应用于每个 URL，默认 100，允许 1–2000 的整数。结果保留目标帖子及其线程关系。",
+        "tags": [
+          "x"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ThreadPostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "公开内容、主页或商品 URL 列表。每个 URL 分别应用结果数量上限，至少提供 1 项。"
+                  }
+                },
+                "required": [
+                  "urls"
+                ],
+                "description": "通过 urls 提供 X 帖子链接。results_limit 分别应用于每个 URL，默认 100，允许 1–2000 的整数。结果保留目标帖子及其线程关系。"
               }
             }
           }
@@ -15619,6 +16370,121 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/v1/tasks/{task_id}": {
+      "get": {
+        "operationId": "getAgentTask",
+        "summary": "获取任务状态和分页结果",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "任务 ID。"
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "分页游标。"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 50
+            },
+            "description": "本次返回的最大记录数。"
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "最多 50 个逗号分隔字段或点路径。"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "任务详情"
+          }
+        }
+      }
+    },
+    "/v1/tasks/{task_id}/files": {
+      "get": {
+        "operationId": "getAgentTaskFiles",
+        "summary": "获取任务结果文件列表",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "任务 ID。"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "任务文件列表"
+          }
+        }
+      }
+    },
+    "/v1/catalog": {
+      "get": {
+        "operationId": "getCapabilityCatalog",
+        "summary": "获取机器可读的能力目录",
+        "responses": {
+          "200": {
+            "description": "能力目录"
+          }
+        }
+      }
+    },
+    "/v1/account": {
+      "get": {
+        "operationId": "getAgentAccount",
+        "summary": "获取当前账号和积分余额",
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "账号摘要"
           }
         }
       }
@@ -17956,6 +18822,697 @@
           "viewers_count",
           "likes_count"
         ]
+      },
+      "LiveStatusItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Title",
+            "description": "Title of the result item.",
+            "x-description-zh": "结果项的标题。"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Status",
+            "description": "Current status reported for the live room.",
+            "x-description-zh": "直播间当前状态。"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LiveMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
+          },
+          "is_live": {
+            "title": "Is Live",
+            "type": "boolean",
+            "description": "Whether this account is currently live streaming.",
+            "x-description-zh": "账号当前是否正在直播。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "title",
+          "author",
+          "status",
+          "metrics",
+          "media",
+          "is_live"
+        ],
+        "title": "LiveStatusItem",
+        "type": "object",
+        "x-schema-id": "live-status",
+        "x-schema-version": "1.0"
+      },
+      "CommunityItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name",
+            "description": "Display name of the result item.",
+            "x-description-zh": "结果项的显示名称。"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text",
+            "description": "Primary text associated with the result item.",
+            "x-description-zh": "结果项的主要文本内容。"
+          },
+          "cover_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cover Url",
+            "description": "URL of the cover image.",
+            "x-description-zh": "封面图片的地址。"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CommunityMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
+          },
+          "rules": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/CommunityRule"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rules",
+            "description": "Public community rules.",
+            "x-description-zh": "社区公开规则。"
+          },
+          "join_policy": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Join Policy",
+            "description": "Policy for joining this community.",
+            "x-description-zh": "加入社区的策略。"
+          },
+          "invites_policy": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Invites Policy",
+            "description": "Policy for inviting members to this community.",
+            "x-description-zh": "邀请成员加入社区的策略。"
+          },
+          "is_nsfw": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Is Nsfw",
+            "description": "Whether the community is marked as sensitive content.",
+            "x-description-zh": "社区是否标记为敏感内容。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "name",
+          "text",
+          "cover_url",
+          "author",
+          "metrics",
+          "rules",
+          "join_policy",
+          "invites_policy",
+          "is_nsfw"
+        ],
+        "title": "CommunityItem",
+        "type": "object",
+        "x-schema-id": "community",
+        "x-schema-version": "1.0"
+      },
+      "CommunityMetrics": {
+        "additionalProperties": false,
+        "properties": {
+          "members_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Members Count",
+            "description": "Number of community members.",
+            "x-description-zh": "社区成员数量。"
+          },
+          "moderators_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Moderators Count",
+            "description": "Number of community moderators.",
+            "x-description-zh": "社区管理员数量。"
+          }
+        },
+        "title": "CommunityMetrics",
+        "type": "object",
+        "required": [
+          "members_count",
+          "moderators_count"
+        ]
+      },
+      "CommunityRule": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier of the referenced object.",
+            "x-description-zh": "所引用对象的唯一标识。"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name",
+            "description": "Display name of the referenced object.",
+            "x-description-zh": "所引用对象的显示名称。"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Description",
+            "description": "Description of the community rule.",
+            "x-description-zh": "社区规则的说明。"
+          }
+        },
+        "title": "CommunityRule",
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "description"
+        ]
+      },
+      "ThreadPostItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text",
+            "description": "Primary text associated with the result item.",
+            "x-description-zh": "结果项的主要文本内容。"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Metrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
+          },
+          "hashtags": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Hashtags",
+            "description": "Hashtags associated with the content, without changing their source spelling.",
+            "x-description-zh": "内容关联的话题标签，保留源数据中的拼写。"
+          },
+          "mentions": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Mentions",
+            "description": "Accounts mentioned in the content.",
+            "x-description-zh": "内容中提及的账号。"
+          },
+          "conversation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Conversation Id",
+            "description": "Identifier of the conversation containing this post.",
+            "x-description-zh": "帖子所属会话的标识。"
+          },
+          "in_reply_to_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "In Reply To Id",
+            "description": "Identifier of the post this item directly replies to.",
+            "x-description-zh": "当前帖子直接回复的帖子标识。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "text",
+          "author",
+          "metrics",
+          "media",
+          "hashtags",
+          "mentions",
+          "conversation_id",
+          "in_reply_to_id"
+        ],
+        "title": "ThreadPostItem",
+        "type": "object",
+        "x-schema-id": "thread-post",
+        "x-schema-version": "1.0"
       },
       "CompanyItem": {
         "additionalProperties": false,

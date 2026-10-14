@@ -1,0 +1,135 @@
+---
+title: "TikTok Top Search"
+description: "Search public TikTok videos and photo carousels."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/top-search"
+---
+
+# TikTok Top Search
+
+Submit an asynchronous task, then read its standard results.
+
+```json
+{
+  "query": "coffee",
+  "sort_by": "relevance",
+  "results_limit": 20
+}
+```
+
+{/* input-contract:start */}
+query is required. results_limit defaults to 100. Results can contain videos and photo carousels; region changes content availability and does not guarantee geographic filtering.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `text` | `string` | Yes | Video caption or description. |
+| `author` | `object` | Yes | Author or publisher of the content. |
+| `author.id` | `string` | Yes | Unique identifier of the author. |
+| `author.username` | `string` | Yes | Public username or handle of the account. |
+| `author.name` | `string` | Yes | Display name of the author. |
+| `author.url` | `string` | Yes | Public URL of the author when available. |
+| `author.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `author.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `author.is_private` | `boolean` | Yes | Whether the account is private. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.likes_count` | `integer` | Yes | Number of likes. |
+| `metrics.comments_count` | `integer` | Yes | Number of comments. |
+| `metrics.shares_count` | `integer` | Yes | Number of shares or reposts. |
+| `metrics.plays_count` | `integer` | Yes | Number of video playback starts reported by the platform. |
+| `metrics.views_count` | `integer` | Yes | Number of views reported by the platform. |
+| `media` | `array<object>` | Yes | Images, videos, or other media attached to the result. |
+| `media.type` | `string` | Yes | Media kind, such as `image` or `video`. |
+| `media.url` | `string` | Yes | URL of the media asset. |
+| `media.thumbnail_url` | `string` | Yes | URL of the media preview image. |
+| `media.width` | `integer` | Yes | Media width in pixels. |
+| `media.height` | `integer` | Yes | Media height in pixels. |
+| `media.duration_seconds` | `number` | Yes | Media duration in seconds. |
+| `hashtags` | `array<string>` | Yes | Hashtags associated with the content, without changing their source spelling. |
+| `mentions` | `array<string>` | Yes | Accounts mentioned in the content. |
+| `shortcode` | `string` | Yes | Platform shortcode used to identify the media item. |
+| `duration_seconds` | `number` | Yes | Duration in seconds. |
+| `audio` | `object` | Yes | Audio or music metadata associated with the video. |
+| `audio.id` | `string` | Yes | Identifier of the audio or music track. |
+| `audio.title` | `string` | Yes | Title of the audio or music track. |
+| `audio.artist` | `string` | Yes | Name of the audio artist or creator. |
+| `audio.url` | `string` | Yes | URL of the audio or music track when available. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-top-search",
+    "status": "succeeded",
+    "public_id": "tiktok/top-search",
+    "result_count": 1,
+    "credits_amount": 0.7,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "reel-video",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7620673421353012494",
+          "platform": "tiktok",
+          "resource": "top-search",
+          "type": "photo_carousel",
+          "url": "https://www.tiktok.com/@creator/photo/7620673421353012494",
+          "published_at": "2026-03-24T04:25:45Z",
+          "collected_at": "2026-10-13T00:00:00Z",
+          "text": "Coffee moments",
+          "author": {
+            "id": "1",
+            "username": "creator",
+            "name": "Creator",
+            "url": "https://www.tiktok.com/@creator",
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
+          },
+          "metrics": {
+            "likes_count": 2,
+            "comments_count": 0,
+            "shares_count": null,
+            "plays_count": null,
+            "views_count": 0
+          },
+          "media": [
+            {
+              "type": "image",
+              "url": "https://example.com/photo.jpg",
+              "thumbnail_url": null,
+              "width": 640,
+              "height": 814,
+              "duration_seconds": null
+            }
+          ],
+          "hashtags": [],
+          "mentions": [],
+          "shortcode": null,
+          "duration_seconds": null,
+          "audio": null
+        }
+      ]
+    }
+  }
+}
+```

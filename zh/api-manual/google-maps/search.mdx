@@ -8,7 +8,7 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/google-maps/search"
 
 获取 Google 地图 的标准化公开 Search 数据。
 
-成功返回的每条标准结果扣除 `0.15` 积分。列表接口按 `results_limit` 预扣并按实际结果结算。
+按成功返回的结果数量计费。列表接口按 `results_limit` 预扣，并按实际结果数量结算。
 
 ## 请求体
 

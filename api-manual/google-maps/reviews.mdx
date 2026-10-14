@@ -8,7 +8,7 @@ openapi: "/api-manual/agent-api/agent-api.json POST /v1/google-maps/reviews"
 
 Fetch normalized reviews data from Google Maps.
 
-Each successfully returned standard result costs `0.15` credits. List endpoints reserve by `results_limit` and settle against the actual result count.
+Billing is based on successfully returned results. List endpoints reserve credits based on `results_limit` and settle against the actual result count.
 
 ## Request Body
 

@@ -1,0 +1,119 @@
+---
+title: "X Community"
+description: "Get public X community metadata, member counts, rules and membership policies."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/x/community"
+---
+
+# X Community
+
+Submit an asynchronous task, then read its standard results.
+
+```json
+{
+  "urls": [
+    "https://x.com/i/communities/1493446837214187523"
+  ]
+}
+```
+
+{/* input-contract:start */}
+Provide public X community URLs in urls, using /i/communities/{numeric_id}.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `name` | `string` | Yes | Display name of the result item. |
+| `text` | `string` | Yes | Primary text associated with the result item. |
+| `cover_url` | `string` | Yes | URL of the cover image. |
+| `author` | `object` | Yes | Author or publisher of the content. |
+| `author.id` | `string` | Yes | Unique identifier of the author. |
+| `author.username` | `string` | Yes | Public username or handle of the account. |
+| `author.name` | `string` | Yes | Display name of the author. |
+| `author.url` | `string` | Yes | Public URL of the author when available. |
+| `author.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `author.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `author.is_private` | `boolean` | Yes | Whether the account is private. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.members_count` | `integer` | Yes | Number of community members. |
+| `metrics.moderators_count` | `integer` | Yes | Number of community moderators. |
+| `rules` | `array<object>` | Yes | Public community rules. |
+| `rules.id` | `string` | Yes | Unique identifier of the referenced object. |
+| `rules.name` | `string` | Yes | Display name of the referenced object. |
+| `rules.description` | `string` | Yes | Description of the community rule. |
+| `join_policy` | `string` | Yes | Policy for joining this community. |
+| `invites_policy` | `string` | Yes | Policy for inviting members to this community. |
+| `is_nsfw` | `boolean` | Yes | Whether the community is marked as sensitive content. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-x-community",
+    "status": "succeeded",
+    "public_id": "x/community",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "community",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "1493446837214187523",
+          "platform": "x",
+          "resource": "community",
+          "type": "community",
+          "url": "https://x.com/i/communities/1493446837214187523",
+          "published_at": "2026-01-01T00:00:00Z",
+          "collected_at": "2026-10-13T00:00:00Z",
+          "name": "Public Technology",
+          "text": "Discuss public technology updates.",
+          "cover_url": "https://example.com/banner.jpg",
+          "author": {
+            "id": "1",
+            "username": "creator",
+            "name": "Creator",
+            "url": null,
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
+          },
+          "metrics": {
+            "members_count": 25,
+            "moderators_count": 0
+          },
+          "rules": [
+            {
+              "id": "1",
+              "name": "Stay on topic",
+              "description": "Discuss technology."
+            }
+          ],
+          "join_policy": "Open",
+          "invites_policy": "MemberInvitesAllowed",
+          "is_nsfw": false
+        }
+      ]
+    }
+  }
+}
+```

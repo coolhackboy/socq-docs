@@ -1,0 +1,119 @@
+---
+title: "TikTok User Live"
+description: "Check public TikTok accounts for live streaming status, including offline results."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/user-live"
+---
+
+# TikTok User Live
+
+Submit an asynchronous task, then read its standard results.
+
+```json
+{
+  "usernames": [
+    "thejustalex"
+  ]
+}
+```
+
+{/* input-contract:start */}
+Provide a non-empty usernames array. Each successful lookup returns one billable status, including is_live=false for offline accounts.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `title` | `string` | Yes | Title of the result item. |
+| `author` | `object` | Yes | Author or publisher of the content. |
+| `author.id` | `string` | Yes | Unique identifier of the author. |
+| `author.username` | `string` | Yes | Public username or handle of the account. |
+| `author.name` | `string` | Yes | Display name of the author. |
+| `author.url` | `string` | Yes | Public URL of the author when available. |
+| `author.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `author.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `author.is_private` | `boolean` | Yes | Whether the account is private. |
+| `status` | `string` | Yes | Current status reported for the live room. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.viewers_count` | `integer` | Yes | Number of viewers in the live room. |
+| `metrics.likes_count` | `integer` | Yes | Number of likes. |
+| `media` | `array<object>` | Yes | Images, videos, or other media attached to the result. |
+| `media.type` | `string` | Yes | Media kind, such as `image` or `video`. |
+| `media.url` | `string` | Yes | URL of the media asset. |
+| `media.thumbnail_url` | `string` | Yes | URL of the media preview image. |
+| `media.width` | `integer` | Yes | Media width in pixels. |
+| `media.height` | `integer` | Yes | Media height in pixels. |
+| `media.duration_seconds` | `number` | Yes | Media duration in seconds. |
+| `is_live` | `boolean` | No | Whether this account is currently live streaming. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-user-live",
+    "status": "succeeded",
+    "public_id": "tiktok/user-live",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "live-status",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7523685855395842871",
+          "platform": "tiktok",
+          "resource": "user-live",
+          "type": "live_status",
+          "url": "https://www.tiktok.com/@thejustalex/live",
+          "published_at": "2025-07-05T19:45:08Z",
+          "collected_at": "2026-10-13T00:00:00Z",
+          "title": "Live stream",
+          "author": {
+            "id": "6742945285876515845",
+            "username": "thejustalex",
+            "name": "JustAlex",
+            "url": null,
+            "avatar_url": null,
+            "is_verified": null,
+            "is_private": null
+          },
+          "status": "live",
+          "metrics": {
+            "viewers_count": 0,
+            "likes_count": null
+          },
+          "media": [
+            {
+              "type": "image",
+              "url": "https://example.com/cover.jpg",
+              "thumbnail_url": null,
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ],
+          "is_live": true
+        }
+      ]
+    }
+  }
+}
+```

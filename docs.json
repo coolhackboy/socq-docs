@@ -58,6 +58,7 @@
       },
       {
         "type": "discord",
+        "label": "Discord",
         "href": "https://discord.gg/WrKvyNCvbR"
       }
     ],
@@ -112,6 +113,7 @@
             },
             {
               "type": "discord",
+              "label": "Discord",
               "href": "https://discord.gg/WrKvyNCvbR"
             }
           ],
@@ -175,7 +177,11 @@
                   "api-manual/tiktok/user-videos",
                   "api-manual/tiktok/search-users",
                   "api-manual/tiktok/song",
-                  "api-manual/tiktok/song-videos"
+                  "api-manual/tiktok/song-videos",
+                  "api-manual/tiktok/popular-creators",
+                  "api-manual/tiktok/popular-songs",
+                  "api-manual/tiktok/top-search",
+                  "api-manual/tiktok/user-live"
                 ]
               },
               {
@@ -290,7 +296,10 @@
                   "api-manual/x/post-retweeters",
                   "api-manual/x/trends",
                   "api-manual/x/mentions",
-                  "api-manual/x/search-users"
+                  "api-manual/x/search-users",
+                  "api-manual/x/community",
+                  "api-manual/x/community-posts",
+                  "api-manual/x/thread-context"
                 ]
               },
               {
@@ -331,6 +340,15 @@
                   "api-manual/reddit/search",
                   "api-manual/reddit/subreddit-details",
                   "api-manual/reddit/subreddit-search"
+                ]
+              },
+              {
+                "group": "Reddit AD Library",
+                "icon": "https://cdn.simpleicons.org/reddit",
+                "pages": [
+                  "api-manual/reddit-ad-library/overview",
+                  "api-manual/reddit-ad-library/search",
+                  "api-manual/reddit-ad-library/ad"
                 ]
               },
               {
@@ -534,6 +552,7 @@
             },
             {
               "type": "discord",
+              "label": "Discord",
               "href": "https://discord.gg/WrKvyNCvbR"
             }
           ],
@@ -597,7 +616,11 @@
                   "zh/api-manual/tiktok/user-videos",
                   "zh/api-manual/tiktok/search-users",
                   "zh/api-manual/tiktok/song",
-                  "zh/api-manual/tiktok/song-videos"
+                  "zh/api-manual/tiktok/song-videos",
+                  "zh/api-manual/tiktok/popular-creators",
+                  "zh/api-manual/tiktok/popular-songs",
+                  "zh/api-manual/tiktok/top-search",
+                  "zh/api-manual/tiktok/user-live"
                 ]
               },
               {
@@ -712,7 +735,10 @@
                   "zh/api-manual/x/post-retweeters",
                   "zh/api-manual/x/trends",
                   "zh/api-manual/x/mentions",
-                  "zh/api-manual/x/search-users"
+                  "zh/api-manual/x/search-users",
+                  "zh/api-manual/x/community",
+                  "zh/api-manual/x/community-posts",
+                  "zh/api-manual/x/thread-context"
                 ]
               },
               {
@@ -753,6 +779,15 @@
                   "zh/api-manual/reddit/search",
                   "zh/api-manual/reddit/subreddit-details",
                   "zh/api-manual/reddit/subreddit-search"
+                ]
+              },
+              {
+                "group": "Reddit 广告资料库",
+                "icon": "https://cdn.simpleicons.org/reddit",
+                "pages": [
+                  "zh/api-manual/reddit-ad-library/overview",
+                  "zh/api-manual/reddit-ad-library/search",
+                  "zh/api-manual/reddit-ad-library/ad"
                 ]
               },
               {

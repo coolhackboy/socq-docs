@@ -24,3 +24,6 @@ X endpoints use the same asynchronous task flow as the other Agent APIs.
 | User Search | `POST` | `/v1/x/search-users` |
 
 Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}`. Successful tasks include normalized records under `results`.
+| X Community | `POST` | `/v1/x/community` |
+| X Community Posts | `POST` | `/v1/x/community-posts` |
+| X Thread Context | `POST` | `/v1/x/thread-context` |

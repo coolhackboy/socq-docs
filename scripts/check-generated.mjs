@@ -241,8 +241,8 @@ for (const language of docsConfig.navigation.languages) {
   const apiGroups = language.tabs[0].groups.filter((group) =>
     group.pages?.[0]?.endsWith("/overview") && !group.pages[0].includes("agent-api")
   );
-  if (apiGroups.length !== 27) {
-    throw new Error(`${language.language}: expected 27 API overview groups, found ${apiGroups.length}`);
+  if (apiGroups.length !== catalog.platforms.length) {
+    throw new Error(`${language.language}: expected ${catalog.platforms.length} API overview groups, found ${apiGroups.length}`);
   }
   for (const group of apiGroups) {
     if (group.root) throw new Error(`${language.language}: ${group.group} must expose Overview as a page`);
@@ -281,7 +281,7 @@ for (const publicId of ids) {
       throw new Error(`${publicId} is missing its input/result contract notes`);
     }
   }
-  if (/scrape\s*creators|bright\s*data|tikhub/i.test(`${enSource}\n${zhSource}`)) {
+  if (/scrape\s*creators|twitterapi(?:\.io)?|bright\s*data|tikhub/i.test(`${enSource}\n${zhSource}`)) {
     throw new Error(`${publicId} public documentation contains a provider name`);
   }
   const enResponse = validateCompletedTaskResponse(enSource, publicId, "en");
