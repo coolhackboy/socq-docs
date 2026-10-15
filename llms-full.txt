@@ -414,29 +414,18 @@ Fetch normalized live room products data from Douyin.
 Explicit no-posts responses from instagram/hashtag-posts and linkedin/search-posts complete with empty results; other failures are preserved.
 <!-- input-contracts:end -->
 
-# Discovery, community and ad APIs
-
-## TikTok Popular Creators
-
-Discover popular public TikTok creators with audience and follower filters.
-
-- REST: POST /v1/tiktok/popular-creators
-- MCP: socq_tiktok_popular_creators
-- CLI: socq tiktok popular-creators
-- Billing: Per returned result
-
-Optional creator filters; results_limit defaults to 20 and accepts integers from 1 to 2000.
+# Song charts, discovery and community APIs
 
 ## TikTok Popular Songs
 
-Discover popular or surging TikTok songs and their sound clip IDs.
+Get songs from the TikTok app Top 50 or Viral 50 chart.
 
 - REST: POST /v1/tiktok/popular-songs
 - MCP: socq_tiktok_popular_songs
 - CLI: socq tiktok popular-songs
 - Billing: Per returned result
 
-Optional song filters; results_limit defaults to 20. time_period accepts the ranking options 7, 30 and 130. Boolean filters must be JSON booleans.
+Get the TikTok app Top 50 or Viral 50 songs chart. chart_type defaults to top; choose viral for Viral 50. results_limit defaults to 20 and accepts integers from 1 to 50. Optionally provide callback_url to receive a task completion notification.
 
 ## TikTok Top Search
 
@@ -459,28 +448,6 @@ Check public TikTok accounts for live streaming status, including offline result
 - Billing: Per returned result
 
 Provide a non-empty usernames array. Each successful lookup returns one billable status, including is_live=false for offline accounts.
-
-## Reddit AD Library Search
-
-Search public Reddit ad inspiration with creative, industry and objective filters; up to 30 ads.
-
-- REST: POST /v1/reddit-ad-library/search
-- MCP: socq_reddit_ad_library_search
-- CLI: socq reddit-ad-library search
-- Billing: Per returned result
-
-query is required. results_limit defaults to 30 and accepts integers from 1 to 30. Search returns at most 30 ads; additional collection pages are unavailable.
-
-## Reddit AD Library Ad
-
-Get a public Reddit ad creative by its ad identifier.
-
-- REST: POST /v1/reddit-ad-library/ad
-- MCP: socq_reddit_ad_library_ad
-- CLI: socq reddit-ad-library ad
-- Billing: Per returned result
-
-Provide ad_id from Reddit AD Library Search.
 
 ## X Community
 

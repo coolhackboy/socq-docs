@@ -18,12 +18,9 @@
   "seo/relevant-pages": "请选用本接口支持的国家及该国家可用的语言。默认值为美国（2840）和英语（en）；若该国家不支持英语，必须明确指定支持的语言。此接口不支持 location_code=2156。地区和语言支持范围与搜索量、实时 SERP 不同。",
   "instagram/hashtag-posts": "本接口按话题标签搜索，不是按账号查询。明确返回没有帖子时，任务会成功完成，results.items 为空数组；访问权限或服务异常仍返回失败。空结果按现有空结果计费规则结算。",
   "linkedin/search-posts": "明确返回没有帖子时，任务会成功完成，results.items 为空数组；访问权限或服务异常仍返回失败。空结果按现有空结果计费规则结算。",
-  "tiktok/popular-creators": "创作者筛选条件均可选；results_limit 默认 20，允许 1–2000 的整数。",
-  "tiktok/popular-songs": "歌曲筛选条件均可选；results_limit 默认 20。time_period 接受榜单周期选项 7、30、130；布尔筛选条件必须使用 JSON 布尔值。",
+  "tiktok/popular-songs": "获取 TikTok 应用的 Top 50 或 Viral 50 歌曲榜单。chart_type 默认为 top，选择 viral 获取 Viral 50；results_limit 默认 20，允许 1–50 的整数。可选 callback_url 用于接收任务完成通知。",
   "tiktok/top-search": "query 必填，results_limit 默认 100。结果包含视频和图片轮播；region 影响内容可见性，不保证按发布地区筛选。",
   "tiktok/user-live": "提供非空 usernames 数组。每个成功查询返回一条计费状态结果，未开播账号也会返回 is_live=false。",
-  "reddit-ad-library/search": "query 必填；results_limit 默认 30，允许 1–30 的整数。搜索最多返回 30 条广告，不支持额外采集分页。",
-  "reddit-ad-library/ad": "提供 Reddit AD Library Search 返回的 ad_id。",
   "x/community": "通过 urls 提供公开 X 社区链接，路径格式为 /i/communities/{数字ID}。",
   "x/community-posts": "通过 urls 提供公开 X 社区链接。results_limit 分别应用于每个 URL，默认 100，须为 20–2000 范围内 20 的倍数。",
   "x/thread-context": "通过 urls 提供 X 帖子链接。results_limit 分别应用于每个 URL，默认 100，允许 1–2000 的整数。结果保留目标帖子及其线程关系。"

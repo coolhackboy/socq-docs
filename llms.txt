@@ -36,15 +36,11 @@ Authentication uses `Authorization: Bearer SOCQ_API_KEY`. Collection endpoints r
 - https://docs.socq.ai/api-manual/douyin/overview
 <!-- platform-apis:end -->
 
-## Discovery, community and ad APIs
+## Song charts, discovery and community APIs
 
-- https://docs.socq.ai/api-manual/reddit-ad-library/overview
-- https://docs.socq.ai/api-manual/tiktok/popular-creators
 - https://docs.socq.ai/api-manual/tiktok/popular-songs
 - https://docs.socq.ai/api-manual/tiktok/top-search
 - https://docs.socq.ai/api-manual/tiktok/user-live
-- https://docs.socq.ai/api-manual/reddit-ad-library/search
-- https://docs.socq.ai/api-manual/reddit-ad-library/ad
 - https://docs.socq.ai/api-manual/x/community
 - https://docs.socq.ai/api-manual/x/community-posts
 - https://docs.socq.ai/api-manual/x/thread-context

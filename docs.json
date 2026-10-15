@@ -178,7 +178,6 @@
                   "api-manual/tiktok/search-users",
                   "api-manual/tiktok/song",
                   "api-manual/tiktok/song-videos",
-                  "api-manual/tiktok/popular-creators",
                   "api-manual/tiktok/popular-songs",
                   "api-manual/tiktok/top-search",
                   "api-manual/tiktok/user-live"
@@ -340,15 +339,6 @@
                   "api-manual/reddit/search",
                   "api-manual/reddit/subreddit-details",
                   "api-manual/reddit/subreddit-search"
-                ]
-              },
-              {
-                "group": "Reddit AD Library",
-                "icon": "https://cdn.simpleicons.org/reddit",
-                "pages": [
-                  "api-manual/reddit-ad-library/overview",
-                  "api-manual/reddit-ad-library/search",
-                  "api-manual/reddit-ad-library/ad"
                 ]
               },
               {
@@ -617,7 +607,6 @@
                   "zh/api-manual/tiktok/search-users",
                   "zh/api-manual/tiktok/song",
                   "zh/api-manual/tiktok/song-videos",
-                  "zh/api-manual/tiktok/popular-creators",
                   "zh/api-manual/tiktok/popular-songs",
                   "zh/api-manual/tiktok/top-search",
                   "zh/api-manual/tiktok/user-live"
@@ -779,15 +768,6 @@
                   "zh/api-manual/reddit/search",
                   "zh/api-manual/reddit/subreddit-details",
                   "zh/api-manual/reddit/subreddit-search"
-                ]
-              },
-              {
-                "group": "Reddit 广告资料库",
-                "icon": "https://cdn.simpleicons.org/reddit",
-                "pages": [
-                  "zh/api-manual/reddit-ad-library/overview",
-                  "zh/api-manual/reddit-ad-library/search",
-                  "zh/api-manual/reddit-ad-library/ad"
                 ]
               },
               {

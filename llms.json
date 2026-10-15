@@ -1,5 +1,5 @@
 {
-  "schema_version": "v1-0a761bf42900",
+  "schema_version": "v1-050b21a3b206",
   "platforms": [
     {
       "platform": "amazon",
@@ -205,15 +205,6 @@
       ]
     },
     {
-      "platform": "reddit-ad-library",
-      "title": "Reddit AD Library",
-      "endpoint_count": 2,
-      "tools": [
-        "socq_reddit_ad_library_ad",
-        "socq_reddit_ad_library_search"
-      ]
-    },
-    {
       "platform": "rednote",
       "title": "Rednote",
       "endpoint_count": 8,
@@ -268,7 +259,7 @@
     {
       "platform": "tiktok",
       "title": "TikTok",
-      "endpoint_count": 19,
+      "endpoint_count": 18,
       "tools": [
         "socq_tiktok_comment_replies",
         "socq_tiktok_comments",
@@ -276,7 +267,6 @@
         "socq_tiktok_following_list",
         "socq_tiktok_hashtags",
         "socq_tiktok_live_room_info",
-        "socq_tiktok_popular_creators",
         "socq_tiktok_popular_songs",
         "socq_tiktok_profiles",
         "socq_tiktok_search",
@@ -325,8 +315,9 @@
     {
       "platform": "twitch",
       "title": "Twitch",
-      "endpoint_count": 2,
+      "endpoint_count": 3,
       "tools": [
+        "socq_twitch_clip",
         "socq_twitch_profile",
         "socq_twitch_user_videos"
       ]
@@ -46221,1117 +46212,6 @@
       "docs_url": "https://docs.socq.ai/api-manual/pinterest/user-pins"
     },
     {
-      "public_id": "reddit-ad-library/ad",
-      "platform": "reddit-ad-library",
-      "resource": "ad",
-      "tool_name": "socq_reddit_ad_library_ad",
-      "title": "Reddit AD Library Ad API",
-      "description": "Get a public Reddit ad creative by its ad identifier.",
-      "input_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "ad_id": {
-            "type": "string",
-            "minLength": 1,
-            "description": "Reddit ad identifier returned by ad search.",
-            "pattern": "^[A-Za-z0-9_-]{1,256}$",
-            "maxLength": 256
-          },
-          "callback_url": {
-            "type": "string",
-            "format": "uri"
-          }
-        },
-        "required": [
-          "ad_id"
-        ],
-        "description": "Provide ad_id from Reddit AD Library Search."
-      },
-      "output_schema": {
-        "type": "object",
-        "properties": {
-          "task_id": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "results": {
-            "type": "object",
-            "properties": {
-              "schema_id": {
-                "type": "string",
-                "const": "ad"
-              },
-              "schema_version": {
-                "type": "string",
-                "const": "1.0"
-              },
-              "items": {
-                "type": "array",
-                "items": {
-                  "$defs": {
-                    "CompanyRef": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Id",
-                          "description": "Unique identifier of the advertiser.",
-                          "x-description-zh": "广告主的唯一标识。"
-                        },
-                        "name": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Name",
-                          "description": "Display name of the advertiser.",
-                          "x-description-zh": "广告主的显示名称。"
-                        },
-                        "url": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Url",
-                          "description": "Public URL of the advertiser when available.",
-                          "x-description-zh": "广告主的公开访问地址（如可获得）。"
-                        },
-                        "logo_url": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Logo Url",
-                          "description": "URL of the company or advertiser logo.",
-                          "x-description-zh": "公司或广告主徽标的地址。"
-                        }
-                      },
-                      "title": "CompanyRef",
-                      "type": "object",
-                      "required": [
-                        "id",
-                        "name",
-                        "url",
-                        "logo_url"
-                      ]
-                    },
-                    "Media": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "type": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Type",
-                          "description": "Media kind, such as `image` or `video`.",
-                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
-                        },
-                        "url": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Url",
-                          "description": "URL of the media asset.",
-                          "x-description-zh": "媒体文件的地址。"
-                        },
-                        "thumbnail_url": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Thumbnail Url",
-                          "description": "URL of the media preview image.",
-                          "x-description-zh": "媒体预览图的地址。"
-                        },
-                        "width": {
-                          "anyOf": [
-                            {
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Width",
-                          "description": "Media width in pixels.",
-                          "x-description-zh": "媒体宽度，单位为像素。"
-                        },
-                        "height": {
-                          "anyOf": [
-                            {
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Height",
-                          "description": "Media height in pixels.",
-                          "x-description-zh": "媒体高度，单位为像素。"
-                        },
-                        "duration_seconds": {
-                          "anyOf": [
-                            {
-                              "type": "number"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Duration Seconds",
-                          "description": "Media duration in seconds.",
-                          "x-description-zh": "媒体时长，单位为秒。"
-                        }
-                      },
-                      "title": "Media",
-                      "type": "object",
-                      "required": [
-                        "type",
-                        "url",
-                        "thumbnail_url",
-                        "width",
-                        "height",
-                        "duration_seconds"
-                      ]
-                    }
-                  },
-                  "additionalProperties": false,
-                  "properties": {
-                    "id": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Id",
-                      "description": "Unique identifier for this result item.",
-                      "x-description-zh": "当前结果项的唯一标识。"
-                    },
-                    "platform": {
-                      "title": "Platform",
-                      "type": "string",
-                      "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
-                      "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
-                    },
-                    "resource": {
-                      "title": "Resource",
-                      "type": "string",
-                      "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
-                      "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
-                    },
-                    "type": {
-                      "title": "Type",
-                      "type": "string",
-                      "description": "Category of the result item, such as `video`, `post`, or `comment`.",
-                      "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
-                    },
-                    "url": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Url",
-                      "description": "Public URL of the result item when available.",
-                      "x-description-zh": "结果项的公开访问地址（如可获得）。"
-                    },
-                    "published_at": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Published At",
-                      "description": "Time the source item was published, in ISO 8601 format when available.",
-                      "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
-                    },
-                    "collected_at": {
-                      "title": "Collected At",
-                      "type": "string",
-                      "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
-                      "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
-                    },
-                    "text": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Text",
-                      "description": "Advertising copy or creative text.",
-                      "x-description-zh": "广告文案或创意文本。"
-                    },
-                    "advertiser": {
-                      "anyOf": [
-                        {
-                          "$ref": "#/$defs/CompanyRef"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "description": "Advertiser responsible for the ad.",
-                      "x-description-zh": "广告的投放主体。"
-                    },
-                    "start_date": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Start Date",
-                      "description": "Date the ad started running when available.",
-                      "x-description-zh": "广告开始投放的日期（如可获得）。"
-                    },
-                    "end_date": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "End Date",
-                      "description": "Date the ad stopped running when available.",
-                      "x-description-zh": "广告结束投放的日期（如可获得）。"
-                    },
-                    "countries": {
-                      "anyOf": [
-                        {
-                          "items": {
-                            "type": "string"
-                          },
-                          "type": "array"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Countries",
-                      "description": "Countries or regions where the ad was delivered.",
-                      "x-description-zh": "广告投放的国家或地区。"
-                    },
-                    "platforms": {
-                      "anyOf": [
-                        {
-                          "items": {
-                            "type": "string"
-                          },
-                          "type": "array"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Platforms",
-                      "description": "Placements or platforms where the ad was delivered.",
-                      "x-description-zh": "广告投放的平台或版位。"
-                    },
-                    "format": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Format",
-                      "description": "Advertising creative format, such as image or video.",
-                      "x-description-zh": "广告创意格式，例如图片或视频。"
-                    },
-                    "landing_page_url": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Landing Page Url",
-                      "description": "Destination URL opened from the ad.",
-                      "x-description-zh": "点击广告后打开的落地页地址。"
-                    },
-                    "impressions": {
-                      "anyOf": [
-                        {
-                          "type": "integer"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Impressions",
-                      "description": "Number of ad impressions when reported.",
-                      "x-description-zh": "广告展示次数（如有报告）。"
-                    },
-                    "media": {
-                      "anyOf": [
-                        {
-                          "items": {
-                            "$ref": "#/$defs/Media"
-                          },
-                          "type": "array"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Media",
-                      "description": "Images, videos, or other media attached to the result.",
-                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "platform",
-                    "resource",
-                    "type",
-                    "url",
-                    "published_at",
-                    "collected_at",
-                    "text",
-                    "advertiser",
-                    "start_date",
-                    "end_date",
-                    "countries",
-                    "platforms",
-                    "format",
-                    "landing_page_url",
-                    "impressions",
-                    "media"
-                  ],
-                  "title": "AdItem",
-                  "type": "object",
-                  "$id": "ad",
-                  "x-schema-version": "1.0"
-                }
-              },
-              "next_cursor": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "has_more": {
-                "type": "boolean"
-              }
-            },
-            "required": [
-              "schema_id",
-              "schema_version",
-              "items",
-              "next_cursor",
-              "has_more"
-            ]
-          }
-        },
-        "required": [
-          "task_id",
-          "status"
-        ]
-      },
-      "output_schema_id": "ad",
-      "output_schema_version": "1.0",
-      "billing": {
-        "mode": "base_plus_result",
-        "credits": null,
-        "base_credits": 0,
-        "unit": "result",
-        "unit_size": 1,
-        "unit_credits": 0.6,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "result_unit_credits": 0.6,
-          "estimate_result_count": 1,
-          "empty_result_policy": "base_only",
-          "allow_overage": 1
-        },
-        "dynamic": true
-      },
-      "examples": [
-        {
-          "ad_id": "79e005f1e09ec72245e904d87d2a0869"
-        }
-      ],
-      "tags": [
-        "reddit-ad-library",
-        "ad"
-      ],
-      "execution_mode": "async",
-      "supports_pagination": true,
-      "supports_files": true,
-      "supports_callback": true,
-      "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/reddit-ad-library/ad"
-    },
-    {
-      "public_id": "reddit-ad-library/search",
-      "platform": "reddit-ad-library",
-      "resource": "search",
-      "tool_name": "socq_reddit_ad_library_search",
-      "title": "Reddit AD Library Search API",
-      "description": "Search public Reddit ad inspiration with creative, industry and objective filters; up to 30 ads.",
-      "input_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "budget": {
-            "type": "string",
-            "description": "Ad budget category filter.",
-            "enum": [
-              "high",
-              "low",
-              "medium"
-            ]
-          },
-          "callback_url": {
-            "type": "string",
-            "format": "uri"
-          },
-          "format": {
-            "type": "string",
-            "minLength": 1,
-            "enum": [
-              "carousel",
-              "free_form",
-              "image",
-              "video"
-            ]
-          },
-          "industry": {
-            "type": "string",
-            "description": "Advertiser industry filter.",
-            "enum": [
-              "auto",
-              "consumer_packaged_goods",
-              "education",
-              "employment",
-              "entertainment",
-              "financial_services",
-              "gambling_and_fantasy_sports",
-              "gaming",
-              "health_and_beauty",
-              "other",
-              "politics_and_government",
-              "real_estate",
-              "retail_and_ecommerce",
-              "tech_b2b",
-              "tech_b2c",
-              "travel"
-            ]
-          },
-          "objective": {
-            "type": "string",
-            "description": "Ad campaign objective filter.",
-            "enum": [
-              "app_installs",
-              "clicks",
-              "conversions",
-              "impressions",
-              "video_viewable_impressions"
-            ]
-          },
-          "placement": {
-            "type": "string",
-            "description": "Ad placement filter.",
-            "enum": [
-              "comments_page",
-              "feed"
-            ]
-          },
-          "query": {
-            "type": "string",
-            "minLength": 1,
-            "description": "Search query."
-          },
-          "results_limit": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 30,
-            "default": 30
-          }
-        },
-        "required": [
-          "query"
-        ],
-        "description": "query is required. results_limit defaults to 30 and accepts integers from 1 to 30. Search returns at most 30 ads; additional collection pages are unavailable."
-      },
-      "output_schema": {
-        "type": "object",
-        "properties": {
-          "task_id": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "results": {
-            "type": "object",
-            "properties": {
-              "schema_id": {
-                "type": "string",
-                "const": "ad"
-              },
-              "schema_version": {
-                "type": "string",
-                "const": "1.0"
-              },
-              "items": {
-                "type": "array",
-                "items": {
-                  "$defs": {
-                    "CompanyRef": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Id",
-                          "description": "Unique identifier of the advertiser.",
-                          "x-description-zh": "广告主的唯一标识。"
-                        },
-                        "name": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Name",
-                          "description": "Display name of the advertiser.",
-                          "x-description-zh": "广告主的显示名称。"
-                        },
-                        "url": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Url",
-                          "description": "Public URL of the advertiser when available.",
-                          "x-description-zh": "广告主的公开访问地址（如可获得）。"
-                        },
-                        "logo_url": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Logo Url",
-                          "description": "URL of the company or advertiser logo.",
-                          "x-description-zh": "公司或广告主徽标的地址。"
-                        }
-                      },
-                      "title": "CompanyRef",
-                      "type": "object",
-                      "required": [
-                        "id",
-                        "name",
-                        "url",
-                        "logo_url"
-                      ]
-                    },
-                    "Media": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "type": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Type",
-                          "description": "Media kind, such as `image` or `video`.",
-                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
-                        },
-                        "url": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Url",
-                          "description": "URL of the media asset.",
-                          "x-description-zh": "媒体文件的地址。"
-                        },
-                        "thumbnail_url": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Thumbnail Url",
-                          "description": "URL of the media preview image.",
-                          "x-description-zh": "媒体预览图的地址。"
-                        },
-                        "width": {
-                          "anyOf": [
-                            {
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Width",
-                          "description": "Media width in pixels.",
-                          "x-description-zh": "媒体宽度，单位为像素。"
-                        },
-                        "height": {
-                          "anyOf": [
-                            {
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Height",
-                          "description": "Media height in pixels.",
-                          "x-description-zh": "媒体高度，单位为像素。"
-                        },
-                        "duration_seconds": {
-                          "anyOf": [
-                            {
-                              "type": "number"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Duration Seconds",
-                          "description": "Media duration in seconds.",
-                          "x-description-zh": "媒体时长，单位为秒。"
-                        }
-                      },
-                      "title": "Media",
-                      "type": "object",
-                      "required": [
-                        "type",
-                        "url",
-                        "thumbnail_url",
-                        "width",
-                        "height",
-                        "duration_seconds"
-                      ]
-                    }
-                  },
-                  "additionalProperties": false,
-                  "properties": {
-                    "id": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Id",
-                      "description": "Unique identifier for this result item.",
-                      "x-description-zh": "当前结果项的唯一标识。"
-                    },
-                    "platform": {
-                      "title": "Platform",
-                      "type": "string",
-                      "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
-                      "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
-                    },
-                    "resource": {
-                      "title": "Resource",
-                      "type": "string",
-                      "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
-                      "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
-                    },
-                    "type": {
-                      "title": "Type",
-                      "type": "string",
-                      "description": "Category of the result item, such as `video`, `post`, or `comment`.",
-                      "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
-                    },
-                    "url": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Url",
-                      "description": "Public URL of the result item when available.",
-                      "x-description-zh": "结果项的公开访问地址（如可获得）。"
-                    },
-                    "published_at": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Published At",
-                      "description": "Time the source item was published, in ISO 8601 format when available.",
-                      "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
-                    },
-                    "collected_at": {
-                      "title": "Collected At",
-                      "type": "string",
-                      "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
-                      "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
-                    },
-                    "text": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Text",
-                      "description": "Advertising copy or creative text.",
-                      "x-description-zh": "广告文案或创意文本。"
-                    },
-                    "advertiser": {
-                      "anyOf": [
-                        {
-                          "$ref": "#/$defs/CompanyRef"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "description": "Advertiser responsible for the ad.",
-                      "x-description-zh": "广告的投放主体。"
-                    },
-                    "start_date": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Start Date",
-                      "description": "Date the ad started running when available.",
-                      "x-description-zh": "广告开始投放的日期（如可获得）。"
-                    },
-                    "end_date": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "End Date",
-                      "description": "Date the ad stopped running when available.",
-                      "x-description-zh": "广告结束投放的日期（如可获得）。"
-                    },
-                    "countries": {
-                      "anyOf": [
-                        {
-                          "items": {
-                            "type": "string"
-                          },
-                          "type": "array"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Countries",
-                      "description": "Countries or regions where the ad was delivered.",
-                      "x-description-zh": "广告投放的国家或地区。"
-                    },
-                    "platforms": {
-                      "anyOf": [
-                        {
-                          "items": {
-                            "type": "string"
-                          },
-                          "type": "array"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Platforms",
-                      "description": "Placements or platforms where the ad was delivered.",
-                      "x-description-zh": "广告投放的平台或版位。"
-                    },
-                    "format": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Format",
-                      "description": "Advertising creative format, such as image or video.",
-                      "x-description-zh": "广告创意格式，例如图片或视频。"
-                    },
-                    "landing_page_url": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Landing Page Url",
-                      "description": "Destination URL opened from the ad.",
-                      "x-description-zh": "点击广告后打开的落地页地址。"
-                    },
-                    "impressions": {
-                      "anyOf": [
-                        {
-                          "type": "integer"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Impressions",
-                      "description": "Number of ad impressions when reported.",
-                      "x-description-zh": "广告展示次数（如有报告）。"
-                    },
-                    "media": {
-                      "anyOf": [
-                        {
-                          "items": {
-                            "$ref": "#/$defs/Media"
-                          },
-                          "type": "array"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Media",
-                      "description": "Images, videos, or other media attached to the result.",
-                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "platform",
-                    "resource",
-                    "type",
-                    "url",
-                    "published_at",
-                    "collected_at",
-                    "text",
-                    "advertiser",
-                    "start_date",
-                    "end_date",
-                    "countries",
-                    "platforms",
-                    "format",
-                    "landing_page_url",
-                    "impressions",
-                    "media"
-                  ],
-                  "title": "AdItem",
-                  "type": "object",
-                  "$id": "ad",
-                  "x-schema-version": "1.0"
-                }
-              },
-              "next_cursor": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "has_more": {
-                "type": "boolean"
-              }
-            },
-            "required": [
-              "schema_id",
-              "schema_version",
-              "items",
-              "next_cursor",
-              "has_more"
-            ]
-          }
-        },
-        "required": [
-          "task_id",
-          "status"
-        ]
-      },
-      "output_schema_id": "ad",
-      "output_schema_version": "1.0",
-      "billing": {
-        "mode": "base_plus_result",
-        "credits": null,
-        "base_credits": 0,
-        "unit": "result",
-        "unit_size": 1,
-        "unit_credits": 0.5,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 30,
-          "empty_result_policy": "base_only",
-          "allow_overage": 1
-        },
-        "dynamic": true
-      },
-      "examples": [
-        {
-          "query": "software",
-          "results_limit": 30
-        }
-      ],
-      "tags": [
-        "reddit-ad-library",
-        "search"
-      ],
-      "execution_mode": "async",
-      "supports_pagination": true,
-      "supports_files": true,
-      "supports_callback": true,
-      "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/reddit-ad-library/search"
-    },
-    {
       "public_id": "reddit/comments",
       "platform": "reddit",
       "resource": "comments",
@@ -49030,7 +47910,7 @@
       "resource": "subreddit-details",
       "tool_name": "socq_reddit_subreddit_details",
       "title": "Reddit Subreddit Details API",
-      "description": "Retrieve metadata for public subreddits by community URL, returning subscriber counts, weekly active users, rules, and community assets.",
+      "description": "Collect public Reddit community metadata.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -49499,6 +48379,7 @@
         "unit_credits": 0.5,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
           "empty_result_policy": "base_only",
           "result_unit_credits": 0.5,
@@ -50115,7 +48996,7 @@
       "resource": "subreddit-search",
       "tool_name": "socq_reddit_subreddit_search",
       "title": "Reddit Subreddit Search API",
-      "description": "Search public discussions and posts within one specific subreddit by query, timeframe, and sort order.",
+      "description": "Search public posts inside one Reddit community.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -50697,6 +49578,7 @@
         "unit_credits": 0.6,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
           "empty_result_policy": "base_only",
           "result_unit_credits": 0.6,
@@ -50711,9 +49593,7 @@
           "urls": [
             "https://www.reddit.com/r/technology/"
           ],
-          "results_limit": 20,
-          "sort_by": "relevance",
-          "published_within": "all"
+          "results_limit": 20
         }
       ],
       "tags": [
@@ -70626,588 +69506,12 @@
       "docs_url": "https://docs.socq.ai/api-manual/tiktok/live-room-info"
     },
     {
-      "public_id": "tiktok/popular-creators",
-      "platform": "tiktok",
-      "resource": "popular-creators",
-      "tool_name": "socq_tiktok_popular_creators",
-      "title": "TikTok Popular Creators API",
-      "description": "Discover popular public TikTok creators with audience and follower filters.",
-      "input_schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "audience_country": {
-            "type": "string",
-            "description": "Two-letter audience country code.",
-            "enum": [
-              "AE",
-              "AU",
-              "BR",
-              "CA",
-              "DE",
-              "EG",
-              "ES",
-              "FR",
-              "GB",
-              "ID",
-              "IL",
-              "IT",
-              "JP",
-              "KR",
-              "MY",
-              "PH",
-              "RU",
-              "SA",
-              "SG",
-              "TH",
-              "TR",
-              "TW",
-              "US",
-              "VN"
-            ]
-          },
-          "callback_url": {
-            "type": "string",
-            "format": "uri"
-          },
-          "creator_country": {
-            "type": "string",
-            "description": "Two-letter creator country code.",
-            "enum": [
-              "AE",
-              "AU",
-              "BR",
-              "CA",
-              "DE",
-              "EG",
-              "ES",
-              "FR",
-              "GB",
-              "ID",
-              "IL",
-              "IT",
-              "JP",
-              "KR",
-              "MY",
-              "PH",
-              "RU",
-              "SA",
-              "SG",
-              "TH",
-              "TR",
-              "TW",
-              "US",
-              "VN"
-            ]
-          },
-          "follower_range": {
-            "type": "string",
-            "description": "Creator follower-count range.",
-            "enum": [
-              "100K-1M",
-              "10K-100K",
-              "10M+",
-              "1M-10M"
-            ]
-          },
-          "results_limit": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 2000,
-            "default": 20
-          },
-          "sort_by": {
-            "type": "string",
-            "minLength": 1,
-            "enum": [
-              "avg_views",
-              "engagement",
-              "follower"
-            ]
-          }
-        },
-        "required": [],
-        "description": "Optional creator filters; results_limit defaults to 20 and accepts integers from 1 to 2000."
-      },
-      "output_schema": {
-        "type": "object",
-        "properties": {
-          "task_id": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "results": {
-            "type": "object",
-            "properties": {
-              "schema_id": {
-                "type": "string",
-                "const": "account"
-              },
-              "schema_version": {
-                "type": "string",
-                "const": "1.0"
-              },
-              "items": {
-                "type": "array",
-                "items": {
-                  "$defs": {
-                    "AccountMetrics": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "followers_count": {
-                          "anyOf": [
-                            {
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Followers Count",
-                          "description": "Number of followers.",
-                          "x-description-zh": "粉丝数量。"
-                        },
-                        "following_count": {
-                          "anyOf": [
-                            {
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Following Count",
-                          "description": "Number of accounts followed.",
-                          "x-description-zh": "关注的账号数量。"
-                        },
-                        "posts_count": {
-                          "anyOf": [
-                            {
-                              "type": "integer"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Posts Count",
-                          "description": "Number of posts or posts associated with the trend.",
-                          "x-description-zh": "帖子数量，或与趋势关联的帖子数量。"
-                        }
-                      },
-                      "title": "AccountMetrics",
-                      "type": "object",
-                      "required": [
-                        "followers_count",
-                        "following_count",
-                        "posts_count"
-                      ]
-                    },
-                    "Location": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "name": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Name",
-                          "description": "Human-readable location name.",
-                          "x-description-zh": "便于阅读的地点名称。"
-                        },
-                        "city": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "City",
-                          "description": "City name.",
-                          "x-description-zh": "城市名称。"
-                        },
-                        "region": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Region",
-                          "description": "Region, state, or province name.",
-                          "x-description-zh": "地区、州或省份名称。"
-                        },
-                        "country": {
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Country",
-                          "description": "Country or territory name or code.",
-                          "x-description-zh": "国家或地区名称或代码。"
-                        },
-                        "latitude": {
-                          "anyOf": [
-                            {
-                              "type": "number"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Latitude",
-                          "description": "Latitude in decimal degrees.",
-                          "x-description-zh": "十进制度格式的纬度。"
-                        },
-                        "longitude": {
-                          "anyOf": [
-                            {
-                              "type": "number"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ],
-                          "default": null,
-                          "title": "Longitude",
-                          "description": "Longitude in decimal degrees.",
-                          "x-description-zh": "十进制度格式的经度。"
-                        }
-                      },
-                      "title": "Location",
-                      "type": "object",
-                      "required": [
-                        "name",
-                        "city",
-                        "region",
-                        "country",
-                        "latitude",
-                        "longitude"
-                      ]
-                    }
-                  },
-                  "additionalProperties": false,
-                  "properties": {
-                    "id": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Id",
-                      "description": "Unique identifier for this result item.",
-                      "x-description-zh": "当前结果项的唯一标识。"
-                    },
-                    "platform": {
-                      "title": "Platform",
-                      "type": "string",
-                      "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
-                      "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
-                    },
-                    "resource": {
-                      "title": "Resource",
-                      "type": "string",
-                      "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
-                      "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
-                    },
-                    "type": {
-                      "title": "Type",
-                      "type": "string",
-                      "description": "Category of the result item, such as `video`, `post`, or `comment`.",
-                      "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
-                    },
-                    "url": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Url",
-                      "description": "Public URL of the result item when available.",
-                      "x-description-zh": "结果项的公开访问地址（如可获得）。"
-                    },
-                    "published_at": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Published At",
-                      "description": "Time the source item was published, in ISO 8601 format when available.",
-                      "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
-                    },
-                    "collected_at": {
-                      "title": "Collected At",
-                      "type": "string",
-                      "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
-                      "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
-                    },
-                    "username": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Username",
-                      "description": "Public username or handle of the account.",
-                      "x-description-zh": "账号的公开用户名或账号标识。"
-                    },
-                    "name": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Name",
-                      "description": "Display name of the account or profile.",
-                      "x-description-zh": "账号或主页的显示名称。"
-                    },
-                    "text": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Text",
-                      "description": "Biography or description of the account or profile.",
-                      "x-description-zh": "账号或主页的简介。"
-                    },
-                    "avatar_url": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Avatar Url",
-                      "description": "URL of the account avatar image.",
-                      "x-description-zh": "账号头像图片的地址。"
-                    },
-                    "cover_url": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Cover Url",
-                      "description": "URL of the cover image.",
-                      "x-description-zh": "封面图片的地址。"
-                    },
-                    "website": {
-                      "anyOf": [
-                        {
-                          "type": "string"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Website",
-                      "description": "Website associated with the account, company, or advertiser.",
-                      "x-description-zh": "账号、公司或广告主关联的网站。"
-                    },
-                    "is_verified": {
-                      "anyOf": [
-                        {
-                          "type": "boolean"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Is Verified",
-                      "description": "Whether the account is verified on the platform.",
-                      "x-description-zh": "账号是否已通过平台认证。"
-                    },
-                    "is_private": {
-                      "anyOf": [
-                        {
-                          "type": "boolean"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "title": "Is Private",
-                      "description": "Whether the account is private.",
-                      "x-description-zh": "账号是否为私密账号。"
-                    },
-                    "location": {
-                      "anyOf": [
-                        {
-                          "$ref": "#/$defs/Location"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "description": "Geographic location associated with the result.",
-                      "x-description-zh": "结果关联的地理位置信息。"
-                    },
-                    "metrics": {
-                      "anyOf": [
-                        {
-                          "$ref": "#/$defs/AccountMetrics"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ],
-                      "default": null,
-                      "description": "Counters and measurements available for the result item.",
-                      "x-description-zh": "结果项可获得的计数和度量数据。"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "platform",
-                    "resource",
-                    "type",
-                    "url",
-                    "published_at",
-                    "collected_at",
-                    "username",
-                    "name",
-                    "text",
-                    "avatar_url",
-                    "cover_url",
-                    "website",
-                    "is_verified",
-                    "is_private",
-                    "location",
-                    "metrics"
-                  ],
-                  "title": "AccountItem",
-                  "type": "object",
-                  "$id": "account",
-                  "x-schema-version": "1.0"
-                }
-              },
-              "next_cursor": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "has_more": {
-                "type": "boolean"
-              }
-            },
-            "required": [
-              "schema_id",
-              "schema_version",
-              "items",
-              "next_cursor",
-              "has_more"
-            ]
-          }
-        },
-        "required": [
-          "task_id",
-          "status"
-        ]
-      },
-      "output_schema_id": "account",
-      "output_schema_version": "1.0",
-      "billing": {
-        "mode": "base_plus_result",
-        "credits": null,
-        "base_credits": 0,
-        "unit": "result",
-        "unit_size": 1,
-        "unit_credits": 0.6,
-        "config": {
-          "mode": "base_plus_result",
-          "result_unit_size": 1,
-          "result_unit_credits": 0.6,
-          "estimate_result_count": 20,
-          "empty_result_policy": "base_only",
-          "allow_overage": 1
-        },
-        "dynamic": true
-      },
-      "examples": [
-        {
-          "sort_by": "engagement",
-          "creator_country": "US",
-          "results_limit": 20
-        }
-      ],
-      "tags": [
-        "tiktok",
-        "popular-creators"
-      ],
-      "execution_mode": "async",
-      "supports_pagination": true,
-      "supports_files": true,
-      "supports_callback": true,
-      "status": "stable",
-      "docs_url": "https://docs.socq.ai/api-manual/tiktok/popular-creators"
-    },
-    {
       "public_id": "tiktok/popular-songs",
       "platform": "tiktok",
       "resource": "popular-songs",
       "tool_name": "socq_tiktok_popular_songs",
       "title": "TikTok Popular Songs API",
-      "description": "Discover popular or surging TikTok songs and their sound clip IDs.",
+      "description": "Get the TikTok App Top 50 or Viral 50 music chart. Choose chart_type top or viral. results_limit defaults to 20, maximum 50.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -71217,117 +69521,24 @@
             "type": "string",
             "format": "uri"
           },
-          "commercial_music": {
-            "type": "boolean",
-            "description": "Only songs approved for business use."
-          },
-          "country": {
+          "chart_type": {
             "type": "string",
-            "minLength": 1,
+            "description": "TikTok App music chart: top for Top 50, viral for Viral 50.",
             "enum": [
-              "AE",
-              "AR",
-              "AT",
-              "AU",
-              "BD",
-              "BE",
-              "BG",
-              "BH",
-              "BR",
-              "BY",
-              "CA",
-              "CH",
-              "CL",
-              "CO",
-              "CZ",
-              "DE",
-              "DK",
-              "EE",
-              "EG",
-              "ES",
-              "FI",
-              "FR",
-              "GB",
-              "GR",
-              "HR",
-              "HU",
-              "ID",
-              "IE",
-              "IL",
-              "IQ",
-              "IS",
-              "IT",
-              "JO",
-              "JP",
-              "KH",
-              "KR",
-              "KW",
-              "KZ",
-              "LB",
-              "LT",
-              "LU",
-              "LV",
-              "MA",
-              "MM",
-              "MO",
-              "MX",
-              "MY",
-              "NG",
-              "NL",
-              "NO",
-              "NZ",
-              "OM",
-              "PE",
-              "PH",
-              "PK",
-              "PL",
-              "PT",
-              "QA",
-              "RO",
-              "SA",
-              "SE",
-              "SG",
-              "SK",
-              "TH",
-              "TR",
-              "TW",
-              "UA",
-              "US",
-              "UZ",
-              "VN",
-              "ZA"
-            ]
-          },
-          "new_on_board": {
-            "type": "boolean",
-            "description": "Only songs newly added to the top 100."
-          },
-          "rank_type": {
-            "type": "string",
-            "description": "Popular or surging song ranking.",
-            "enum": [
-              "popular",
-              "surging"
-            ]
+              "top",
+              "viral"
+            ],
+            "default": "top"
           },
           "results_limit": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 2000,
+            "maximum": 50,
             "default": 20
-          },
-          "time_period": {
-            "type": "integer",
-            "enum": [
-              7,
-              30,
-              130
-            ],
-            "description": "Song ranking period option."
           }
         },
         "required": [],
-        "description": "Optional song filters; results_limit defaults to 20. time_period accepts the ranking options 7, 30 and 130. Boolean filters must be JSON booleans."
+        "description": "Choose the TikTok App Top 50 (top, default) or Viral 50 (viral) music chart. results_limit defaults to 20 and accepts integers from 1 to 50."
       },
       "output_schema": {
         "type": "object",
@@ -71782,19 +69993,21 @@
         "unit_credits": 0.5,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 20,
           "empty_result_policy": "base_only",
-          "allow_overage": 1
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 20
         },
         "dynamic": true
       },
       "examples": [
         {
-          "country": "US",
-          "time_period": 7,
-          "rank_type": "popular",
+          "chart_type": "top",
+          "results_limit": 20
+        },
+        {
+          "chart_type": "viral",
           "results_limit": 20
         }
       ],
@@ -73022,7 +71235,7 @@
       "resource": "search-users",
       "tool_name": "socq_tiktok_search_users",
       "title": "TikTok Search Users API",
-      "description": "Search public TikTok creators and accounts by keyword, returning normalized identity, biography, account flags, and visible follower, following, and video counts.",
+      "description": "Search public TikTok accounts by keyword.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -73493,6 +71706,7 @@
         "unit_credits": 0.6,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
           "empty_result_policy": "base_only",
           "result_unit_credits": 0.6,
@@ -73523,7 +71737,7 @@
       "resource": "song",
       "tool_name": "socq_tiktok_song",
       "title": "TikTok Song API",
-      "description": "Collect detailed public TikTok sound and music metadata by clip ID or sound URL, returning author, album, duration, audio links, and video usage count.",
+      "description": "Collect public TikTok sound or song details.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -74040,7 +72254,7 @@
       "resource": "song-videos",
       "tool_name": "socq_tiktok_song_videos",
       "title": "TikTok Song Videos API",
-      "description": "Collect public TikTok videos that use a specific sound, returning normalized video metadata, creator details, captions, media links, and engagement counters.",
+      "description": "Collect public TikTok videos that use a sound.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -74721,6 +72935,7 @@
         "unit_credits": 0.5,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
           "empty_result_policy": "base_only",
           "result_unit_credits": 0.5,
@@ -75457,11 +73672,11 @@
         "unit_credits": 0.7,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
-          "result_unit_credits": 0.7,
-          "estimate_result_count": 100,
           "empty_result_policy": "base_only",
-          "allow_overage": 1
+          "result_unit_credits": 0.7,
+          "estimate_result_count": 100
         },
         "dynamic": true
       },
@@ -76694,11 +74909,11 @@
         "unit_credits": 0.5,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
-          "result_unit_credits": 0.5,
-          "estimate_input_field": "usernames",
           "empty_result_policy": "base_only",
-          "allow_overage": 1
+          "result_unit_credits": 0.5,
+          "estimate_input_field": "usernames"
         },
         "dynamic": true
       },
@@ -80037,6 +78252,698 @@
       "docs_url": "https://docs.socq.ai/api-manual/truth-social/user-posts"
     },
     {
+      "public_id": "twitch/clip",
+      "platform": "twitch",
+      "resource": "clip",
+      "tool_name": "socq_twitch_clip",
+      "title": "Twitch Clip API",
+      "description": "Collect a public Twitch clip.",
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public content or product URL."
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "results": {
+            "type": "object",
+            "properties": {
+              "schema_id": {
+                "type": "string",
+                "const": "reel-video"
+              },
+              "schema_version": {
+                "type": "string",
+                "const": "1.0"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "$defs": {
+                    "ActorRef": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Id",
+                          "description": "Unique identifier of the author.",
+                          "x-description-zh": "作者的唯一标识。"
+                        },
+                        "username": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Username",
+                          "description": "Public username or handle of the account.",
+                          "x-description-zh": "账号的公开用户名或账号标识。"
+                        },
+                        "name": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Name",
+                          "description": "Display name of the author.",
+                          "x-description-zh": "作者的显示名称。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "Public URL of the author when available.",
+                          "x-description-zh": "作者的公开访问地址（如可获得）。"
+                        },
+                        "avatar_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Avatar Url",
+                          "description": "URL of the account avatar image.",
+                          "x-description-zh": "账号头像图片的地址。"
+                        },
+                        "is_verified": {
+                          "anyOf": [
+                            {
+                              "type": "boolean"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Is Verified",
+                          "description": "Whether the account is verified on the platform.",
+                          "x-description-zh": "账号是否已通过平台认证。"
+                        },
+                        "is_private": {
+                          "anyOf": [
+                            {
+                              "type": "boolean"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Is Private",
+                          "description": "Whether the account is private.",
+                          "x-description-zh": "账号是否为私密账号。"
+                        }
+                      },
+                      "title": "ActorRef",
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "username",
+                        "name",
+                        "url",
+                        "avatar_url",
+                        "is_verified",
+                        "is_private"
+                      ]
+                    },
+                    "Audio": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Id",
+                          "description": "Identifier of the audio or music track.",
+                          "x-description-zh": "音频或音乐曲目的标识。"
+                        },
+                        "title": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Title",
+                          "description": "Title of the audio or music track.",
+                          "x-description-zh": "音频或音乐曲目的标题。"
+                        },
+                        "artist": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Artist",
+                          "description": "Name of the audio artist or creator.",
+                          "x-description-zh": "音频艺术家或创作者名称。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the audio or music track when available.",
+                          "x-description-zh": "音频或音乐曲目的地址（如可获得）。"
+                        }
+                      },
+                      "title": "Audio",
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "title",
+                        "artist",
+                        "url"
+                      ]
+                    },
+                    "Media": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Type",
+                          "description": "Media kind, such as `image` or `video`.",
+                          "x-description-zh": "媒体类型，例如 `image` 或 `video`。"
+                        },
+                        "url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Url",
+                          "description": "URL of the media asset.",
+                          "x-description-zh": "媒体文件的地址。"
+                        },
+                        "thumbnail_url": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Thumbnail Url",
+                          "description": "URL of the media preview image.",
+                          "x-description-zh": "媒体预览图的地址。"
+                        },
+                        "width": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Width",
+                          "description": "Media width in pixels.",
+                          "x-description-zh": "媒体宽度，单位为像素。"
+                        },
+                        "height": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Height",
+                          "description": "Media height in pixels.",
+                          "x-description-zh": "媒体高度，单位为像素。"
+                        },
+                        "duration_seconds": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Duration Seconds",
+                          "description": "Media duration in seconds.",
+                          "x-description-zh": "媒体时长，单位为秒。"
+                        }
+                      },
+                      "title": "Media",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "url",
+                        "thumbnail_url",
+                        "width",
+                        "height",
+                        "duration_seconds"
+                      ]
+                    },
+                    "ReelMetrics": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "likes_count": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Likes Count",
+                          "description": "Number of likes.",
+                          "x-description-zh": "点赞数量。"
+                        },
+                        "comments_count": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Comments Count",
+                          "description": "Number of comments.",
+                          "x-description-zh": "评论数量。"
+                        },
+                        "shares_count": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Shares Count",
+                          "description": "Number of shares or reposts.",
+                          "x-description-zh": "分享或转发数量。"
+                        },
+                        "plays_count": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Plays Count",
+                          "description": "Number of video playback starts reported by the platform.",
+                          "x-description-zh": "平台报告的视频播放次数。"
+                        },
+                        "views_count": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Views Count",
+                          "description": "Number of views reported by the platform.",
+                          "x-description-zh": "平台报告的观看数量。"
+                        }
+                      },
+                      "title": "ReelMetrics",
+                      "type": "object",
+                      "required": [
+                        "likes_count",
+                        "comments_count",
+                        "shares_count",
+                        "plays_count",
+                        "views_count"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Id",
+                      "description": "Unique identifier for this result item.",
+                      "x-description-zh": "当前结果项的唯一标识。"
+                    },
+                    "platform": {
+                      "title": "Platform",
+                      "type": "string",
+                      "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+                      "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+                    },
+                    "resource": {
+                      "title": "Resource",
+                      "type": "string",
+                      "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+                      "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+                    },
+                    "type": {
+                      "title": "Type",
+                      "type": "string",
+                      "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+                      "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+                    },
+                    "url": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Url",
+                      "description": "Public URL of the result item when available.",
+                      "x-description-zh": "结果项的公开访问地址（如可获得）。"
+                    },
+                    "published_at": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Published At",
+                      "description": "Time the source item was published, in ISO 8601 format when available.",
+                      "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+                    },
+                    "collected_at": {
+                      "title": "Collected At",
+                      "type": "string",
+                      "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+                      "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+                    },
+                    "text": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Text",
+                      "description": "Video caption or description.",
+                      "x-description-zh": "视频的说明文字或描述。"
+                    },
+                    "author": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/$defs/ActorRef"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "description": "Author or publisher of the content.",
+                      "x-description-zh": "内容的作者或发布者。"
+                    },
+                    "metrics": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/$defs/ReelMetrics"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "description": "Counters and measurements available for the result item.",
+                      "x-description-zh": "结果项可获得的计数和度量数据。"
+                    },
+                    "media": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "$ref": "#/$defs/Media"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Media",
+                      "description": "Images, videos, or other media attached to the result.",
+                      "x-description-zh": "结果附带的图片、视频或其他媒体。"
+                    },
+                    "hashtags": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Hashtags",
+                      "description": "Hashtags associated with the content, without changing their source spelling.",
+                      "x-description-zh": "内容关联的话题标签，保留源数据中的拼写。"
+                    },
+                    "mentions": {
+                      "anyOf": [
+                        {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Mentions",
+                      "description": "Accounts mentioned in the content.",
+                      "x-description-zh": "内容中提及的账号。"
+                    },
+                    "shortcode": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Shortcode",
+                      "description": "Platform shortcode used to identify the media item.",
+                      "x-description-zh": "平台用于标识媒体内容的短代码。"
+                    },
+                    "duration_seconds": {
+                      "anyOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "title": "Duration Seconds",
+                      "description": "Duration in seconds.",
+                      "x-description-zh": "时长，单位为秒。"
+                    },
+                    "audio": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/$defs/Audio"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "default": null,
+                      "description": "Audio or music metadata associated with the video.",
+                      "x-description-zh": "视频关联的音频或音乐信息。"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "platform",
+                    "resource",
+                    "type",
+                    "url",
+                    "published_at",
+                    "collected_at",
+                    "text",
+                    "author",
+                    "metrics",
+                    "media",
+                    "hashtags",
+                    "mentions",
+                    "shortcode",
+                    "duration_seconds",
+                    "audio"
+                  ],
+                  "title": "ReelVideoItem",
+                  "type": "object",
+                  "$id": "reel-video",
+                  "x-schema-version": "1.0"
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "schema_id",
+              "schema_version",
+              "items",
+              "next_cursor",
+              "has_more"
+            ]
+          }
+        },
+        "required": [
+          "task_id",
+          "status"
+        ]
+      },
+      "output_schema_id": "reel-video",
+      "output_schema_version": "1.0",
+      "billing": {
+        "mode": "fixed",
+        "credits": 0.19,
+        "base_credits": 0.19,
+        "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
+        "config": {
+          "mode": "fixed"
+        },
+        "dynamic": false
+      },
+      "examples": [
+        {
+          "url": "https://clips.twitch.tv/CorrectBlushingCormorantPanicVis-tJuGowksdDy5wuEs"
+        }
+      ],
+      "tags": [
+        "twitch",
+        "clip"
+      ],
+      "execution_mode": "async",
+      "supports_pagination": true,
+      "supports_files": true,
+      "supports_callback": false,
+      "status": "disabled",
+      "docs_url": "https://docs.socq.ai/api-manual/twitch/clip"
+    },
+    {
       "public_id": "twitch/profile",
       "platform": "twitch",
       "resource": "profile",
@@ -81755,11 +80662,11 @@
         "unit_credits": 0.5,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
-          "result_unit_credits": 0.5,
-          "estimate_input_field": "urls",
           "empty_result_policy": "base_only",
-          "allow_overage": 1
+          "result_unit_credits": 0.5,
+          "estimate_input_field": "urls"
         },
         "dynamic": true
       },
@@ -82342,12 +81249,12 @@
         "unit_credits": 0.7,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
+          "empty_result_policy": "base_only",
           "result_unit_credits": 0.7,
           "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls",
-          "empty_result_policy": "base_only",
-          "allow_overage": 1
+          "estimate_result_count_per_input_field": "urls"
         },
         "dynamic": true
       },
@@ -83107,8 +82014,8 @@
       "platform": "x",
       "resource": "mentions",
       "tool_name": "socq_x_mentions",
-      "title": "Twitter Mentions API",
-      "description": "Collect public tweets that mention a target user handle, with support for date range filtering and engagement metrics.",
+      "title": "X Mentions API",
+      "description": "Collect public posts that mention an X account.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -83670,6 +82577,7 @@
         "unit_credits": 0.7,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
           "empty_result_policy": "base_only",
           "result_unit_credits": 0.7,
@@ -86862,8 +85770,8 @@
       "platform": "x",
       "resource": "search-users",
       "tool_name": "socq_x_search_users",
-      "title": "Twitter User Search API",
-      "description": "Search public X user accounts by keyword, returning normalized identity, bio, verified status, and audience metrics.",
+      "title": "X Search Users API",
+      "description": "Search public X accounts by keyword.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -87335,6 +86243,7 @@
         "unit_credits": 0.6,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
           "empty_result_policy": "base_only",
           "result_unit_credits": 0.6,
@@ -87949,12 +86858,12 @@
         "unit_credits": 0.5,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
+          "empty_result_policy": "base_only",
           "result_unit_credits": 0.5,
           "estimate_result_count": 100,
-          "estimate_result_count_per_input_field": "urls",
-          "empty_result_policy": "base_only",
-          "allow_overage": 1
+          "estimate_result_count_per_input_field": "urls"
         },
         "dynamic": true
       },

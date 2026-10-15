@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-0a761bf42900",
+    "version": "v1-050b21a3b206",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -6623,214 +6623,6 @@
         }
       }
     },
-    "/v1/reddit-ad-library/ad": {
-      "post": {
-        "operationId": "socq_reddit_ad_library_ad",
-        "summary": "Reddit AD Library Ad API",
-        "description": "Get a public Reddit ad creative by its ad identifier.",
-        "tags": [
-          "reddit-ad-library"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/AdItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "ad_id": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Reddit ad identifier returned by ad search.",
-                    "pattern": "^[A-Za-z0-9_-]{1,256}$",
-                    "maxLength": 256
-                  },
-                  "callback_url": {
-                    "type": "string",
-                    "format": "uri"
-                  }
-                },
-                "required": [
-                  "ad_id"
-                ],
-                "description": "Provide ad_id from Reddit AD Library Search."
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Task accepted",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/reddit-ad-library/search": {
-      "post": {
-        "operationId": "socq_reddit_ad_library_search",
-        "summary": "Reddit AD Library Search API",
-        "description": "Search public Reddit ad inspiration with creative, industry and objective filters; up to 30 ads.",
-        "tags": [
-          "reddit-ad-library"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/AdItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "budget": {
-                    "type": "string",
-                    "description": "Ad budget category filter.",
-                    "enum": [
-                      "high",
-                      "low",
-                      "medium"
-                    ]
-                  },
-                  "callback_url": {
-                    "type": "string",
-                    "format": "uri"
-                  },
-                  "format": {
-                    "type": "string",
-                    "minLength": 1,
-                    "enum": [
-                      "carousel",
-                      "free_form",
-                      "image",
-                      "video"
-                    ]
-                  },
-                  "industry": {
-                    "type": "string",
-                    "description": "Advertiser industry filter.",
-                    "enum": [
-                      "auto",
-                      "consumer_packaged_goods",
-                      "education",
-                      "employment",
-                      "entertainment",
-                      "financial_services",
-                      "gambling_and_fantasy_sports",
-                      "gaming",
-                      "health_and_beauty",
-                      "other",
-                      "politics_and_government",
-                      "real_estate",
-                      "retail_and_ecommerce",
-                      "tech_b2b",
-                      "tech_b2c",
-                      "travel"
-                    ]
-                  },
-                  "objective": {
-                    "type": "string",
-                    "description": "Ad campaign objective filter.",
-                    "enum": [
-                      "app_installs",
-                      "clicks",
-                      "conversions",
-                      "impressions",
-                      "video_viewable_impressions"
-                    ]
-                  },
-                  "placement": {
-                    "type": "string",
-                    "description": "Ad placement filter.",
-                    "enum": [
-                      "comments_page",
-                      "feed"
-                    ]
-                  },
-                  "query": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Search query."
-                  },
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 30,
-                    "default": 30
-                  }
-                },
-                "required": [
-                  "query"
-                ],
-                "description": "query is required. results_limit defaults to 30 and accepts integers from 1 to 30. Search returns at most 30 ads; additional collection pages are unavailable."
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Task accepted",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/reddit/comments": {
       "post": {
         "operationId": "socq_reddit_comments",
@@ -7047,7 +6839,7 @@
       "post": {
         "operationId": "socq_reddit_subreddit_details",
         "summary": "Reddit Subreddit Details API",
-        "description": "Retrieve metadata for public subreddits by community URL, returning subscriber counts, weekly active users, rules, and community assets.",
+        "description": "Collect public Reddit community metadata.",
         "tags": [
           "reddit"
         ],
@@ -7198,7 +6990,7 @@
       "post": {
         "operationId": "socq_reddit_subreddit_search",
         "summary": "Reddit Subreddit Search API",
-        "description": "Search public discussions and posts within one specific subreddit by query, timeframe, and sort order.",
+        "description": "Search public posts inside one Reddit community.",
         "tags": [
           "reddit"
         ],
@@ -12541,159 +12333,11 @@
         }
       }
     },
-    "/v1/tiktok/popular-creators": {
-      "post": {
-        "operationId": "socq_tiktok_popular_creators",
-        "summary": "TikTok Popular Creators API",
-        "description": "Discover popular public TikTok creators with audience and follower filters.",
-        "tags": [
-          "tiktok"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/AccountItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "audience_country": {
-                    "type": "string",
-                    "description": "Two-letter audience country code.",
-                    "enum": [
-                      "AE",
-                      "AU",
-                      "BR",
-                      "CA",
-                      "DE",
-                      "EG",
-                      "ES",
-                      "FR",
-                      "GB",
-                      "ID",
-                      "IL",
-                      "IT",
-                      "JP",
-                      "KR",
-                      "MY",
-                      "PH",
-                      "RU",
-                      "SA",
-                      "SG",
-                      "TH",
-                      "TR",
-                      "TW",
-                      "US",
-                      "VN"
-                    ]
-                  },
-                  "callback_url": {
-                    "type": "string",
-                    "format": "uri"
-                  },
-                  "creator_country": {
-                    "type": "string",
-                    "description": "Two-letter creator country code.",
-                    "enum": [
-                      "AE",
-                      "AU",
-                      "BR",
-                      "CA",
-                      "DE",
-                      "EG",
-                      "ES",
-                      "FR",
-                      "GB",
-                      "ID",
-                      "IL",
-                      "IT",
-                      "JP",
-                      "KR",
-                      "MY",
-                      "PH",
-                      "RU",
-                      "SA",
-                      "SG",
-                      "TH",
-                      "TR",
-                      "TW",
-                      "US",
-                      "VN"
-                    ]
-                  },
-                  "follower_range": {
-                    "type": "string",
-                    "description": "Creator follower-count range.",
-                    "enum": [
-                      "100K-1M",
-                      "10K-100K",
-                      "10M+",
-                      "1M-10M"
-                    ]
-                  },
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 2000,
-                    "default": 20
-                  },
-                  "sort_by": {
-                    "type": "string",
-                    "minLength": 1,
-                    "enum": [
-                      "avg_views",
-                      "engagement",
-                      "follower"
-                    ]
-                  }
-                },
-                "required": [],
-                "description": "Optional creator filters; results_limit defaults to 20 and accepts integers from 1 to 2000."
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Task accepted",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/tiktok/popular-songs": {
       "post": {
         "operationId": "socq_tiktok_popular_songs",
         "summary": "TikTok Popular Songs API",
-        "description": "Discover popular or surging TikTok songs and their sound clip IDs.",
+        "description": "Get the TikTok App Top 50 or Viral 50 music chart. Choose chart_type top or viral. results_limit defaults to 20, maximum 50.",
         "tags": [
           "tiktok"
         ],
@@ -12721,117 +12365,24 @@
                     "type": "string",
                     "format": "uri"
                   },
-                  "commercial_music": {
-                    "type": "boolean",
-                    "description": "Only songs approved for business use."
-                  },
-                  "country": {
+                  "chart_type": {
                     "type": "string",
-                    "minLength": 1,
+                    "description": "TikTok App music chart: top for Top 50, viral for Viral 50.",
                     "enum": [
-                      "AE",
-                      "AR",
-                      "AT",
-                      "AU",
-                      "BD",
-                      "BE",
-                      "BG",
-                      "BH",
-                      "BR",
-                      "BY",
-                      "CA",
-                      "CH",
-                      "CL",
-                      "CO",
-                      "CZ",
-                      "DE",
-                      "DK",
-                      "EE",
-                      "EG",
-                      "ES",
-                      "FI",
-                      "FR",
-                      "GB",
-                      "GR",
-                      "HR",
-                      "HU",
-                      "ID",
-                      "IE",
-                      "IL",
-                      "IQ",
-                      "IS",
-                      "IT",
-                      "JO",
-                      "JP",
-                      "KH",
-                      "KR",
-                      "KW",
-                      "KZ",
-                      "LB",
-                      "LT",
-                      "LU",
-                      "LV",
-                      "MA",
-                      "MM",
-                      "MO",
-                      "MX",
-                      "MY",
-                      "NG",
-                      "NL",
-                      "NO",
-                      "NZ",
-                      "OM",
-                      "PE",
-                      "PH",
-                      "PK",
-                      "PL",
-                      "PT",
-                      "QA",
-                      "RO",
-                      "SA",
-                      "SE",
-                      "SG",
-                      "SK",
-                      "TH",
-                      "TR",
-                      "TW",
-                      "UA",
-                      "US",
-                      "UZ",
-                      "VN",
-                      "ZA"
-                    ]
-                  },
-                  "new_on_board": {
-                    "type": "boolean",
-                    "description": "Only songs newly added to the top 100."
-                  },
-                  "rank_type": {
-                    "type": "string",
-                    "description": "Popular or surging song ranking.",
-                    "enum": [
-                      "popular",
-                      "surging"
-                    ]
+                      "top",
+                      "viral"
+                    ],
+                    "default": "top"
                   },
                   "results_limit": {
                     "type": "integer",
                     "minimum": 1,
-                    "maximum": 2000,
+                    "maximum": 50,
                     "default": 20
-                  },
-                  "time_period": {
-                    "type": "integer",
-                    "enum": [
-                      7,
-                      30,
-                      130
-                    ],
-                    "description": "Song ranking period option."
                   }
                 },
                 "required": [],
-                "description": "Optional song filters; results_limit defaults to 20. time_period accepts the ranking options 7, 30 and 130. Boolean filters must be JSON booleans."
+                "description": "Choose the TikTok App Top 50 (top, default) or Viral 50 (viral) music chart. results_limit defaults to 20 and accepts integers from 1 to 50."
               }
             }
           }
@@ -13011,7 +12562,7 @@
       "post": {
         "operationId": "socq_tiktok_search_users",
         "summary": "TikTok Search Users API",
-        "description": "Search public TikTok creators and accounts by keyword, returning normalized identity, biography, account flags, and visible follower, following, and video counts.",
+        "description": "Search public TikTok accounts by keyword.",
         "tags": [
           "tiktok"
         ],
@@ -13086,7 +12637,7 @@
       "post": {
         "operationId": "socq_tiktok_song",
         "summary": "TikTok Song API",
-        "description": "Collect detailed public TikTok sound and music metadata by clip ID or sound URL, returning author, album, duration, audio links, and video usage count.",
+        "description": "Collect public TikTok sound or song details.",
         "tags": [
           "tiktok"
         ],
@@ -13170,7 +12721,7 @@
       "post": {
         "operationId": "socq_tiktok_song_videos",
         "summary": "TikTok Song Videos API",
-        "description": "Collect public TikTok videos that use a specific sound, returning normalized video metadata, creator details, captions, media links, and engagement counters.",
+        "description": "Collect public TikTok videos that use a sound.",
         "tags": [
           "tiktok"
         ],
@@ -13931,6 +13482,71 @@
         }
       }
     },
+    "/v1/twitch/clip": {
+      "post": {
+        "operationId": "socq_twitch_clip",
+        "summary": "Twitch Clip API",
+        "description": "Collect a public Twitch clip.",
+        "tags": [
+          "twitch"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A public content or product URL."
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/twitch/profile": {
       "post": {
         "operationId": "socq_twitch_profile",
@@ -14400,8 +14016,8 @@
     "/v1/x/mentions": {
       "post": {
         "operationId": "socq_x_mentions",
-        "summary": "Twitter Mentions API",
-        "description": "Collect public tweets that mention a target user handle, with support for date range filtering and engagement metrics.",
+        "summary": "X Mentions API",
+        "description": "Collect public posts that mention an X account.",
         "tags": [
           "x"
         ],
@@ -14944,8 +14560,8 @@
     "/v1/x/search-users": {
       "post": {
         "operationId": "socq_x_search_users",
-        "summary": "Twitter User Search API",
-        "description": "Search public X user accounts by keyword, returning normalized identity, bio, verified status, and audience metrics.",
+        "summary": "X Search Users API",
+        "description": "Search public X accounts by keyword.",
         "tags": [
           "x"
         ],

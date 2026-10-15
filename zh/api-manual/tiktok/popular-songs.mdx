@@ -1,24 +1,22 @@
 ---
 title: "TikTok 热门歌曲"
-description: "歌曲筛选条件均可选；results_limit 默认 20。time_period 接受榜单周期选项 7、30、130；布尔筛选条件必须使用 JSON 布尔值。"
+description: "获取 TikTok 应用 Top 50 或 Viral 50 歌曲榜单。"
 openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/popular-songs"
 ---
 
 # TikTok 热门歌曲
 
-接口返回异步任务，完成后读取标准结果。
+选择 TikTok 应用的 Top 50 或 Viral 50 歌曲榜单。接口返回异步任务，完成后读取标准结果。
 
 ```json
 {
-  "country": "US",
-  "time_period": 7,
-  "rank_type": "popular",
+  "chart_type": "top",
   "results_limit": 20
 }
 ```
 
 {/* input-contract:start */}
-歌曲筛选条件均可选；results_limit 默认 20。time_period 接受榜单周期选项 7、30、130；布尔筛选条件必须使用 JSON 布尔值。
+获取 TikTok 应用的 Top 50 或 Viral 50 歌曲榜单。chart_type 默认为 top，选择 viral 获取 Viral 50；results_limit 默认 20，允许 1–50 的整数。可选 callback_url 用于接收任务完成通知。
 {/* input-contract:end */}
 
 {/* result-schema:start */}
@@ -77,33 +75,35 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/popular-songs"
       "schema_version": "1.0",
       "items": [
         {
-          "id": "7439295283975702544",
+          "id": "6711980022204205826",
           "platform": "tiktok",
           "resource": "popular-songs",
           "type": "music",
-          "url": "https://www.tiktok.com/music/luther-7439295283975702544",
+          "url": "https://www.tiktok.com/music/we-fell-in-love-in-october-6711980022204205826",
           "published_at": null,
-          "collected_at": "2026-10-13T00:00:00Z",
-          "name": "luther",
-          "text": "luther",
+          "collected_at": "2026-10-15T00:00:00Z",
+          "name": "we fell in love in october",
+          "text": "we fell in love in october",
           "author": {
             "id": null,
             "username": null,
-            "name": "Kendrick Lamar & SZA",
+            "name": "girl in red",
             "url": null,
             "avatar_url": null,
             "is_verified": null,
             "is_private": null
           },
           "cover_url": "https://example.com/cover.jpg",
-          "duration_seconds": 59,
+          "duration_seconds": 42,
           "audio": {
-            "id": "7439295283975702544",
-            "title": "luther",
-            "artist": "Kendrick Lamar & SZA",
+            "id": "6711980022204205826",
+            "title": "we fell in love in october",
+            "artist": "girl in red",
             "url": null
           },
-          "metrics": null
+          "metrics": {
+            "videos_count": 2025235
+          }
         }
       ]
     }

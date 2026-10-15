@@ -1,24 +1,22 @@
 ---
 title: "TikTok Popular Songs"
-description: "Discover popular or surging TikTok songs and their sound clip IDs."
+description: "Get songs from the TikTok app Top 50 or Viral 50 chart."
 openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/popular-songs"
 ---
 
 # TikTok Popular Songs
 
-Submit an asynchronous task, then read its standard results.
+Choose the TikTok app Top 50 or Viral 50 songs chart. Submit an asynchronous task, then read its standard results.
 
 ```json
 {
-  "country": "US",
-  "time_period": 7,
-  "rank_type": "popular",
+  "chart_type": "top",
   "results_limit": 20
 }
 ```
 
 {/* input-contract:start */}
-Optional song filters; results_limit defaults to 20. time_period accepts the ranking options 7, 30 and 130. Boolean filters must be JSON booleans.
+Get the TikTok app Top 50 or Viral 50 songs chart. chart_type defaults to top; choose viral for Viral 50. results_limit defaults to 20 and accepts integers from 1 to 50. Optionally provide callback_url to receive a task completion notification.
 {/* input-contract:end */}
 
 {/* result-schema:start */}
@@ -77,33 +75,35 @@ The following example shows the response format for a completed task. Actual dat
       "schema_version": "1.0",
       "items": [
         {
-          "id": "7439295283975702544",
+          "id": "6711980022204205826",
           "platform": "tiktok",
           "resource": "popular-songs",
           "type": "music",
-          "url": "https://www.tiktok.com/music/luther-7439295283975702544",
+          "url": "https://www.tiktok.com/music/we-fell-in-love-in-october-6711980022204205826",
           "published_at": null,
-          "collected_at": "2026-10-13T00:00:00Z",
-          "name": "luther",
-          "text": "luther",
+          "collected_at": "2026-10-15T00:00:00Z",
+          "name": "we fell in love in october",
+          "text": "we fell in love in october",
           "author": {
             "id": null,
             "username": null,
-            "name": "Kendrick Lamar & SZA",
+            "name": "girl in red",
             "url": null,
             "avatar_url": null,
             "is_verified": null,
             "is_private": null
           },
           "cover_url": "https://example.com/cover.jpg",
-          "duration_seconds": 59,
+          "duration_seconds": 42,
           "audio": {
-            "id": "7439295283975702544",
-            "title": "luther",
-            "artist": "Kendrick Lamar & SZA",
+            "id": "6711980022204205826",
+            "title": "we fell in love in october",
+            "artist": "girl in red",
             "url": null
           },
-          "metrics": null
+          "metrics": {
+            "videos_count": 2025235
+          }
         }
       ]
     }

@@ -7,18 +7,8 @@ const defaultRoot = dirname(dirname(scriptPath));
 const CONTRACT_NOTES = JSON.parse(await readFile(join(defaultRoot, "scripts", "input-contract-notes-zh.json"), "utf8"));
 
 const FIELD_DESCRIPTIONS = {
-  ad_id: "广告搜索结果返回的 Reddit 广告 ID。",
-  follower_range: "创作者粉丝数量区间。",
-  creator_country: "创作者所在国家或地区的两位代码。",
-  audience_country: "创作者受众所在国家或地区的两位代码。",
-  time_period: "歌曲榜单周期选项。",
-  rank_type: "歌曲榜单类型：热门或上升。",
-  new_on_board: "是否仅返回新进入前 100 名的歌曲。",
-  commercial_music: "是否仅返回允许商业使用的歌曲。",
+  chart_type: "歌曲榜单类型：top 为 Top 50，viral 为 Viral 50；默认 top。",
   industry: "广告主所属行业。",
-  budget: "广告预算类别。",
-  placement: "广告展示位置。",
-  objective: "广告活动目标。",
   ad_type: "广告类型筛选条件。",
   audio_ids: "公开的 Instagram 音频 ID。每个 ID 分别应用结果数量上限。",
   availability: "商品可用状态筛选条件。",

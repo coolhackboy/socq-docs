@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API 中文版",
-    "version": "v1-0a761bf42900",
+    "version": "v1-050b21a3b206",
     "description": "根据 SocQ 能力目录生成的异步社交数据 API。"
   },
   "servers": [
@@ -6709,218 +6709,6 @@
         }
       }
     },
-    "/v1/reddit-ad-library/ad": {
-      "post": {
-        "operationId": "socq_reddit_ad_library_ad",
-        "summary": "Reddit 广告详情",
-        "description": "提供 Reddit AD Library Search 返回的 ad_id。",
-        "tags": [
-          "reddit-ad-library"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/AdItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "ad_id": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "广告搜索结果返回的 Reddit 广告 ID。",
-                    "pattern": "^[A-Za-z0-9_-]{1,256}$",
-                    "maxLength": 256
-                  },
-                  "callback_url": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "可选的任务完成回调 URL。"
-                  }
-                },
-                "required": [
-                  "ad_id"
-                ],
-                "description": "提供 Reddit AD Library Search 返回的 ad_id。"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "任务已受理",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/reddit-ad-library/search": {
-      "post": {
-        "operationId": "socq_reddit_ad_library_search",
-        "summary": "Reddit 广告资料库搜索",
-        "description": "query 必填；results_limit 默认 30，允许 1–30 的整数。搜索最多返回 30 条广告，不支持额外采集分页。",
-        "tags": [
-          "reddit-ad-library"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/AdItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "budget": {
-                    "type": "string",
-                    "description": "广告预算类别。",
-                    "enum": [
-                      "high",
-                      "low",
-                      "medium"
-                    ]
-                  },
-                  "callback_url": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "可选的任务完成回调 URL。"
-                  },
-                  "format": {
-                    "type": "string",
-                    "minLength": 1,
-                    "enum": [
-                      "carousel",
-                      "free_form",
-                      "image",
-                      "video"
-                    ],
-                    "description": "请求参数。"
-                  },
-                  "industry": {
-                    "type": "string",
-                    "description": "广告主所属行业。",
-                    "enum": [
-                      "auto",
-                      "consumer_packaged_goods",
-                      "education",
-                      "employment",
-                      "entertainment",
-                      "financial_services",
-                      "gambling_and_fantasy_sports",
-                      "gaming",
-                      "health_and_beauty",
-                      "other",
-                      "politics_and_government",
-                      "real_estate",
-                      "retail_and_ecommerce",
-                      "tech_b2b",
-                      "tech_b2c",
-                      "travel"
-                    ]
-                  },
-                  "objective": {
-                    "type": "string",
-                    "description": "广告活动目标。",
-                    "enum": [
-                      "app_installs",
-                      "clicks",
-                      "conversions",
-                      "impressions",
-                      "video_viewable_impressions"
-                    ]
-                  },
-                  "placement": {
-                    "type": "string",
-                    "description": "广告展示位置。",
-                    "enum": [
-                      "comments_page",
-                      "feed"
-                    ]
-                  },
-                  "query": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "搜索关键词。"
-                  },
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 30,
-                    "default": 30,
-                    "description": "最多保存的结果数，实际结果可能少于该值。"
-                  }
-                },
-                "required": [
-                  "query"
-                ],
-                "description": "query 必填；results_limit 默认 30，允许 1–30 的整数。搜索最多返回 30 条广告，不支持额外采集分页。"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "任务已受理",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/reddit/comments": {
       "post": {
         "operationId": "socq_reddit_comments",
@@ -12680,162 +12468,11 @@
         }
       }
     },
-    "/v1/tiktok/popular-creators": {
-      "post": {
-        "operationId": "socq_tiktok_popular_creators",
-        "summary": "TikTok 热门创作者",
-        "description": "创作者筛选条件均可选；results_limit 默认 20，允许 1–2000 的整数。",
-        "tags": [
-          "tiktok"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/AccountItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "audience_country": {
-                    "type": "string",
-                    "description": "创作者受众所在国家或地区的两位代码。",
-                    "enum": [
-                      "AE",
-                      "AU",
-                      "BR",
-                      "CA",
-                      "DE",
-                      "EG",
-                      "ES",
-                      "FR",
-                      "GB",
-                      "ID",
-                      "IL",
-                      "IT",
-                      "JP",
-                      "KR",
-                      "MY",
-                      "PH",
-                      "RU",
-                      "SA",
-                      "SG",
-                      "TH",
-                      "TR",
-                      "TW",
-                      "US",
-                      "VN"
-                    ]
-                  },
-                  "callback_url": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "可选的任务完成回调 URL。"
-                  },
-                  "creator_country": {
-                    "type": "string",
-                    "description": "创作者所在国家或地区的两位代码。",
-                    "enum": [
-                      "AE",
-                      "AU",
-                      "BR",
-                      "CA",
-                      "DE",
-                      "EG",
-                      "ES",
-                      "FR",
-                      "GB",
-                      "ID",
-                      "IL",
-                      "IT",
-                      "JP",
-                      "KR",
-                      "MY",
-                      "PH",
-                      "RU",
-                      "SA",
-                      "SG",
-                      "TH",
-                      "TR",
-                      "TW",
-                      "US",
-                      "VN"
-                    ]
-                  },
-                  "follower_range": {
-                    "type": "string",
-                    "description": "创作者粉丝数量区间。",
-                    "enum": [
-                      "100K-1M",
-                      "10K-100K",
-                      "10M+",
-                      "1M-10M"
-                    ]
-                  },
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 2000,
-                    "default": 20,
-                    "description": "最多保存的结果数，实际结果可能少于该值。"
-                  },
-                  "sort_by": {
-                    "type": "string",
-                    "minLength": 1,
-                    "enum": [
-                      "avg_views",
-                      "engagement",
-                      "follower"
-                    ],
-                    "description": "结果排序方式。"
-                  }
-                },
-                "required": [],
-                "description": "创作者筛选条件均可选；results_limit 默认 20，允许 1–2000 的整数。"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "任务已受理",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/tiktok/popular-songs": {
       "post": {
         "operationId": "socq_tiktok_popular_songs",
         "summary": "TikTok 热门歌曲",
-        "description": "歌曲筛选条件均可选；results_limit 默认 20。time_period 接受榜单周期选项 7、30、130；布尔筛选条件必须使用 JSON 布尔值。",
+        "description": "获取 TikTok 应用 Top 50 或 Viral 50 歌曲榜单。",
         "tags": [
           "tiktok"
         ],
@@ -12864,119 +12501,25 @@
                     "format": "uri",
                     "description": "可选的任务完成回调 URL。"
                   },
-                  "commercial_music": {
-                    "type": "boolean",
-                    "description": "是否仅返回允许商业使用的歌曲。"
-                  },
-                  "country": {
+                  "chart_type": {
                     "type": "string",
-                    "minLength": 1,
+                    "description": "歌曲榜单类型：top 为 Top 50，viral 为 Viral 50；默认 top。",
                     "enum": [
-                      "AE",
-                      "AR",
-                      "AT",
-                      "AU",
-                      "BD",
-                      "BE",
-                      "BG",
-                      "BH",
-                      "BR",
-                      "BY",
-                      "CA",
-                      "CH",
-                      "CL",
-                      "CO",
-                      "CZ",
-                      "DE",
-                      "DK",
-                      "EE",
-                      "EG",
-                      "ES",
-                      "FI",
-                      "FR",
-                      "GB",
-                      "GR",
-                      "HR",
-                      "HU",
-                      "ID",
-                      "IE",
-                      "IL",
-                      "IQ",
-                      "IS",
-                      "IT",
-                      "JO",
-                      "JP",
-                      "KH",
-                      "KR",
-                      "KW",
-                      "KZ",
-                      "LB",
-                      "LT",
-                      "LU",
-                      "LV",
-                      "MA",
-                      "MM",
-                      "MO",
-                      "MX",
-                      "MY",
-                      "NG",
-                      "NL",
-                      "NO",
-                      "NZ",
-                      "OM",
-                      "PE",
-                      "PH",
-                      "PK",
-                      "PL",
-                      "PT",
-                      "QA",
-                      "RO",
-                      "SA",
-                      "SE",
-                      "SG",
-                      "SK",
-                      "TH",
-                      "TR",
-                      "TW",
-                      "UA",
-                      "US",
-                      "UZ",
-                      "VN",
-                      "ZA"
+                      "top",
+                      "viral"
                     ],
-                    "description": "国家或地区筛选条件。"
-                  },
-                  "new_on_board": {
-                    "type": "boolean",
-                    "description": "是否仅返回新进入前 100 名的歌曲。"
-                  },
-                  "rank_type": {
-                    "type": "string",
-                    "description": "歌曲榜单类型：热门或上升。",
-                    "enum": [
-                      "popular",
-                      "surging"
-                    ]
+                    "default": "top"
                   },
                   "results_limit": {
                     "type": "integer",
                     "minimum": 1,
-                    "maximum": 2000,
+                    "maximum": 50,
                     "default": 20,
                     "description": "最多保存的结果数，实际结果可能少于该值。"
-                  },
-                  "time_period": {
-                    "type": "integer",
-                    "enum": [
-                      7,
-                      30,
-                      130
-                    ],
-                    "description": "歌曲榜单周期选项。"
                   }
                 },
                 "required": [],
-                "description": "歌曲筛选条件均可选；results_limit 默认 20。time_period 接受榜单周期选项 7、30、130；布尔筛选条件必须使用 JSON 布尔值。"
+                "description": "获取 TikTok 应用的 Top 50 或 Viral 50 歌曲榜单。chart_type 默认为 top，选择 viral 获取 Viral 50；results_limit 默认 20，允许 1–50 的整数。可选 callback_url 用于接收任务完成通知。"
               }
             }
           }
@@ -14064,6 +13607,71 @@
                       "username"
                     ]
                   }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/twitch/clip": {
+      "post": {
+        "operationId": "socq_twitch_clip",
+        "summary": "Twitch Clips",
+        "description": "获取 Twitch 的标准化公开 Clips 数据。",
+        "tags": [
+          "twitch"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开内容、主页或商品 URL。"
+                  }
+                },
+                "required": [
+                  "url"
                 ]
               }
             }

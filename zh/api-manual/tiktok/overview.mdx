@@ -25,11 +25,10 @@ TikTok 端点使用与其他代理 API 相同的异步任务流。
 |搜索用户 | `POST` | `/v1/tiktok/search-users` |
 |原声 | `POST` | `/v1/tiktok/song` |
 |原声视频 | `POST` | `/v1/tiktok/song-videos` |
+| TikTok 热门歌曲 | `POST` | `/v1/tiktok/popular-songs` |
+| TikTok 综合搜索 | `POST` | `/v1/tiktok/top-search` |
+| TikTok 用户直播状态 | `POST` | `/v1/tiktok/user-live` |
 
 提交请求，收到 `task_id`，然后轮询 `GET /v1/tasks/{task_id}`。成功的任务响应包括 `results` 下的规范化记录。
 
 对于接受多个视频 URL 或主题标签的端点，`results_limit` 适用于每个输入项。
-| TikTok 热门创作者 | `POST` | `/v1/tiktok/popular-creators` |
-| TikTok 热门歌曲 | `POST` | `/v1/tiktok/popular-songs` |
-| TikTok 综合搜索 | `POST` | `/v1/tiktok/top-search` |
-| TikTok 用户直播状态 | `POST` | `/v1/tiktok/user-live` |
