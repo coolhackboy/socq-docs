@@ -563,9 +563,16 @@
                 "pages": [
                   "integrations/overview",
                   "integrations/authentication",
+                  "integrations/tasks-results",
+                  "integrations/skill",
+                  "integrations/cli"
+                ]
+              },
+              {
+                "group": "MCP",
+                "pages": [
                   "integrations/mcp",
-                  "integrations/cli",
-                  "integrations/skill"
+                  "integrations/mcp-filtering"
                 ]
               },
               {
@@ -575,6 +582,12 @@
                   "integrations/cursor",
                   "integrations/codex",
                   "integrations/vscode"
+                ]
+              },
+              {
+                "group": "Help",
+                "pages": [
+                  "integrations/troubleshooting"
                 ]
               }
             ]
@@ -1049,9 +1062,16 @@
                 "pages": [
                   "zh/integrations/overview",
                   "zh/integrations/authentication",
+                  "zh/integrations/tasks-results",
+                  "zh/integrations/skill",
+                  "zh/integrations/cli"
+                ]
+              },
+              {
+                "group": "MCP",
+                "pages": [
                   "zh/integrations/mcp",
-                  "zh/integrations/cli",
-                  "zh/integrations/skill"
+                  "zh/integrations/mcp-filtering"
                 ]
               },
               {
@@ -1061,6 +1081,12 @@
                   "zh/integrations/cursor",
                   "zh/integrations/codex",
                   "zh/integrations/vscode"
+                ]
+              },
+              {
+                "group": "帮助",
+                "pages": [
+                  "zh/integrations/troubleshooting"
                 ]
               }
             ]
