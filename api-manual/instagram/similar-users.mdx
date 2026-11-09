@@ -1,10 +1,10 @@
 ---
-title: "Instagram Similar Users"
+title: "Instagram Similar Accounts"
 description: "Collect accounts Instagram suggests as similar to a public account."
 openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/similar-users"
 ---
 
-# Instagram Similar Users
+# Instagram Similar Accounts
 
 Look up the accounts Instagram suggests as similar to a public account, with usernames, display names, avatars and verification status. Submit an asynchronous task, then read its standard results.
 
@@ -16,7 +16,7 @@ Look up the accounts Instagram suggests as similar to a public account, with use
 ```
 
 {/* input-contract:start */}
-username is required. Returns accounts Instagram suggests as similar to it. results_limit defaults to 50 and accepts 1 to 100.
+Provide a public Instagram username. Returns the accounts Instagram suggests as similar to it; results_limit sets how many to return (default 50, up to 100).
 {/* input-contract:end */}
 
 {/* result-schema:start */}

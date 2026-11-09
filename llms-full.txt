@@ -493,9 +493,9 @@ Collect the stories a public Instagram account has live now.
 - CLI: socq instagram stories
 - Billing: Per returned result
 
-username is required. Returns the stories the public account has live now; stories expire 24 hours after posting, so an account with no active story returns an empty result.
+Provide a public Instagram username. Returns the stories the account currently has live; each story stays available for 24 hours after posting.
 
-## Instagram Similar Users
+## Instagram Similar Accounts
 
 Collect accounts Instagram suggests as similar to a public account.
 
@@ -504,7 +504,7 @@ Collect accounts Instagram suggests as similar to a public account.
 - CLI: socq instagram similar-users
 - Billing: Per returned result
 
-username is required. Returns accounts Instagram suggests as similar to it. results_limit defaults to 50 and accepts 1 to 100.
+Provide a public Instagram username. Returns the accounts Instagram suggests as similar to it; results_limit sets how many to return (default 50, up to 100).
 
 ## Instagram Comment Replies
 
@@ -515,7 +515,7 @@ Collect replies to a public Instagram comment.
 - CLI: socq instagram comment-replies
 - Billing: Per returned result
 
-url and comment_id are required. url is the post, reel or IGTV link that contains the parent comment. results_limit defaults to 100 and accepts 1 to 1000.
+Provide the post, reel or IGTV url and the comment_id of the comment whose replies you want; results_limit sets how many replies to return (default 100, up to 1000).
 
 ## Instagram Post Likers
 
@@ -526,7 +526,7 @@ Collect public accounts from an Instagram post likers list.
 - CLI: socq instagram post-likers
 - Billing: Per returned result
 
-url is required. Returns public accounts in the post's visible likers list, which Instagram caps well below the total like count. results_limit defaults to 100 and accepts 1 to 1000.
+Provide a public post, reel or IGTV url. Returns the accounts shown in the post's likers list; results_limit sets how many to return (default 100, up to 1000).
 
 ## Instagram Location Search
 
@@ -536,7 +536,7 @@ Search Instagram locations by name or coordinates.
 - MCP: socq_instagram_location_search
 - CLI: socq instagram location-search
 
-Provide either query, or latitude and longitude together. Coordinate search returns places near the point.
+Search by place name with query, or by a point on the map with latitude and longitude. Coordinate search returns the places around that point.
 
 ## Instagram Location Info
 
@@ -546,7 +546,7 @@ Collect details of a public Instagram location.
 - MCP: socq_instagram_location_info
 - CLI: socq instagram location-info
 
-Provide either location_id or a location page url, not both.
+Identify the location with either location_id or its location page url.
 
 ## Instagram Location Posts
 
@@ -557,9 +557,9 @@ Collect public posts tagged at an Instagram location.
 - CLI: socq instagram location-posts
 - Billing: Per returned result
 
-Provide either location_id or a location page url, not both. sort_by is top (default, a single page of top posts) or recent (newest first, paginated). results_limit defaults to 20 and accepts 1 to 100.
+Identify the location with either location_id or its location page url. Set sort_by to top (default) for the location's top posts or recent for the newest posts; results_limit sets how many posts to return (default 20, up to 100).
 
-## Instagram Search Hashtags
+## Instagram Hashtag Search
 
 Search Instagram hashtags by keyword.
 
@@ -568,4 +568,4 @@ Search Instagram hashtags by keyword.
 - CLI: socq instagram search-hashtags
 - Billing: Per returned result
 
-query is required, with or without a leading #. results_limit defaults to 50 and accepts 1 to 100.
+Provide one keyword in query; a leading # is optional. results_limit sets how many hashtags to return (default 50, up to 100).

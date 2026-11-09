@@ -15,7 +15,7 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/instagram/stories"
 ```
 
 {/* input-contract:start */}
-username 为必填项。返回该公开账号当前在线的快拍；快拍发布 24 小时后过期，账号此时没有在线快拍时返回空结果。
+提供一个公开 Instagram username，返回该账号当前在线的快拍；每条快拍在发布后 24 小时内可获取。
 {/* input-contract:end */}
 
 {/* result-schema:start */}

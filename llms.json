@@ -1,5 +1,5 @@
 {
-  "schema_version": "v1-1d41ea645cc1",
+  "schema_version": "v1-4305f117db13",
   "platforms": [
     {
       "platform": "amazon",
@@ -26730,7 +26730,7 @@
           "comment_id",
           "url"
         ],
-        "description": "url and comment_id are required. url is the post, reel or IGTV link that contains the parent comment. results_limit defaults to 100 and accepts 1 to 1000."
+        "description": "Provide the post, reel or IGTV url and the comment_id of the comment whose replies you want; results_limit sets how many replies to return (default 100, up to 1000)."
       },
       "output_schema": {
         "type": "object",
@@ -30149,7 +30149,7 @@
           }
         },
         "required": [],
-        "description": "Provide either location_id or a location page url, not both.",
+        "description": "Identify the location with either location_id or its location page url.",
         "anyOf": [
           {
             "required": [
@@ -30615,7 +30615,7 @@
           }
         },
         "required": [],
-        "description": "Provide either location_id or a location page url, not both. sort_by is top (default, a single page of top posts) or recent (newest first, paginated). results_limit defaults to 20 and accepts 1 to 100.",
+        "description": "Identify the location with either location_id or its location page url. Set sort_by to top (default) for the location's top posts or recent for the newest posts; results_limit sets how many posts to return (default 20, up to 100).",
         "anyOf": [
           {
             "required": [
@@ -31227,7 +31227,7 @@
           }
         },
         "required": [],
-        "description": "Provide either query, or latitude and longitude together. Coordinate search returns places near the point.",
+        "description": "Search by place name with query, or by a point on the map with latitude and longitude. Coordinate search returns the places around that point.",
         "anyOf": [
           {
             "required": [
@@ -32251,7 +32251,7 @@
         "required": [
           "url"
         ],
-        "description": "url is required. Returns public accounts in the post's visible likers list, which Instagram caps well below the total like count. results_limit defaults to 100 and accepts 1 to 1000."
+        "description": "Provide a public post, reel or IGTV url. Returns the accounts shown in the post's likers list; results_limit sets how many to return (default 100, up to 1000)."
       },
       "output_schema": {
         "type": "object",
@@ -35659,7 +35659,7 @@
       "platform": "instagram",
       "resource": "search-hashtags",
       "tool_name": "socq_instagram_search_hashtags",
-      "title": "Instagram Search Hashtags API",
+      "title": "Instagram Hashtag Search API",
       "description": "Search Instagram hashtags by keyword.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -35686,7 +35686,7 @@
         "required": [
           "query"
         ],
-        "description": "query is required, with or without a leading #. results_limit defaults to 50 and accepts 1 to 100."
+        "description": "Provide one keyword in query; a leading # is optional. results_limit sets how many hashtags to return (default 50, up to 100)."
       },
       "output_schema": {
         "type": "object",
@@ -35960,7 +35960,7 @@
       "platform": "instagram",
       "resource": "similar-users",
       "tool_name": "socq_instagram_similar_users",
-      "title": "Instagram Similar Users API",
+      "title": "Instagram Similar Accounts API",
       "description": "Collect accounts Instagram suggests as similar to a public account.",
       "input_schema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -35987,7 +35987,7 @@
         "required": [
           "username"
         ],
-        "description": "username is required. Returns accounts Instagram suggests as similar to it. results_limit defaults to 50 and accepts 1 to 100."
+        "description": "Provide a public Instagram username. Returns the accounts Instagram suggests as similar to it; results_limit sets how many to return (default 50, up to 100)."
       },
       "output_schema": {
         "type": "object",
@@ -36485,7 +36485,7 @@
         "required": [
           "username"
         ],
-        "description": "username is required. Returns the stories the public account has live now; stories expire 24 hours after posting, so an account with no active story returns an empty result."
+        "description": "Provide a public Instagram username. Returns the stories the account currently has live; each story stays available for 24 hours after posting."
       },
       "output_schema": {
         "type": "object",

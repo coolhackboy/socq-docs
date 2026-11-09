@@ -16,7 +16,7 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/instagram/post-likers
 ```
 
 {/* input-contract:start */}
-url 为必填项。返回该帖子可见点赞列表中的公开账号，Instagram 展示的点赞列表远少于总点赞数。results_limit 默认 100，允许 1–1000。
+提供公开帖子、Reel 或 IGTV 的 url，返回该帖子点赞列表中展示的账号；results_limit 设置返回数量（默认 100，最多 1000）。
 {/* input-contract:end */}
 
 {/* result-schema:start */}

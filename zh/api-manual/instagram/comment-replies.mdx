@@ -17,7 +17,7 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/instagram/comment-rep
 ```
 
 {/* input-contract:start */}
-url 和 comment_id 为必填项，url 为父评论所在帖子、Reel 或 IGTV 的链接。results_limit 默认 100，允许 1–1000。
+提供帖子、Reel 或 IGTV 的 url，以及要获取回复的那条评论的 comment_id；results_limit 设置返回的回复数量（默认 100，最多 1000）。
 {/* input-contract:end */}
 
 {/* result-schema:start */}

@@ -16,7 +16,7 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/instagram/similar-use
 ```
 
 {/* input-contract:start */}
-username 为必填项，返回 Instagram 为该账号推荐的相似账号。results_limit 默认 50，允许 1–100。
+提供一个公开 Instagram username，返回 Instagram 为它推荐的相似账号；results_limit 设置返回数量（默认 50，最多 100）。
 {/* input-contract:end */}
 
 {/* result-schema:start */}

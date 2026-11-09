@@ -1,10 +1,10 @@
 ---
-title: "Instagram Search Hashtags"
+title: "Instagram Hashtag Search"
 description: "Search Instagram hashtags by keyword."
 openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/search-hashtags"
 ---
 
-# Instagram Search Hashtags
+# Instagram Hashtag Search
 
 Search Instagram hashtags by keyword and get the matching hashtag names, IDs and post counts. Submit an asynchronous task, then read its standard results.
 
@@ -16,7 +16,7 @@ Search Instagram hashtags by keyword and get the matching hashtag names, IDs and
 ```
 
 {/* input-contract:start */}
-query is required, with or without a leading #. results_limit defaults to 50 and accepts 1 to 100.
+Provide one keyword in query; a leading # is optional. results_limit sets how many hashtags to return (default 50, up to 100).
 {/* input-contract:end */}
 
 {/* result-schema:start */}

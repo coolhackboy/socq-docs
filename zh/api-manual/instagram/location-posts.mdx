@@ -17,7 +17,7 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/instagram/location-po
 ```
 
 {/* input-contract:start */}
-location_id 和地点页面 url 二选一，不能同时提供。sort_by 可选 top（默认，返回一页热门帖子）或 recent（按时间从新到旧，可翻页）。results_limit 默认 20，允许 1–100。
+用 location_id 或地点页面 url 指定地点，任选其一即可。sort_by 设为 top（默认）获取地点的热门帖子，设为 recent 获取最新帖子；results_limit 设置返回的帖子数量（默认 20，最多 100）。
 {/* input-contract:end */}
 
 {/* result-schema:start */}

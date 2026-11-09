@@ -16,7 +16,7 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/instagram/search-hash
 ```
 
 {/* input-contract:start */}
-query 为必填项，可带或不带开头的 #。results_limit 默认 50，允许 1–100。
+在 query 中提供一个关键词，开头的 # 可带可不带；results_limit 设置返回的标签数量（默认 50，最多 100）。
 {/* input-contract:end */}
 
 {/* result-schema:start */}

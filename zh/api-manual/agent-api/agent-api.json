@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API 中文版",
-    "version": "v1-1d41ea645cc1",
+    "version": "v1-4305f117db13",
     "description": "根据 SocQ 能力目录生成的异步社交数据 API。"
   },
   "servers": [
@@ -3926,7 +3926,7 @@
                   "comment_id",
                   "url"
                 ],
-                "description": "url 和 comment_id 为必填项，url 为父评论所在帖子、Reel 或 IGTV 的链接。results_limit 默认 100，允许 1–1000。"
+                "description": "提供帖子、Reel 或 IGTV 的 url，以及要获取回复的那条评论的 comment_id；results_limit 设置返回的回复数量（默认 100，最多 1000）。"
               }
             }
           }
@@ -4484,7 +4484,7 @@
                   }
                 },
                 "required": [],
-                "description": "location_id 和地点页面 url 二选一，不能同时提供。",
+                "description": "用 location_id 或地点页面 url 指定地点，任选其一即可。",
                 "anyOf": [
                   {
                     "required": [
@@ -4597,7 +4597,7 @@
                   }
                 },
                 "required": [],
-                "description": "location_id 和地点页面 url 二选一，不能同时提供。sort_by 可选 top（默认，返回一页热门帖子）或 recent（按时间从新到旧，可翻页）。results_limit 默认 20，允许 1–100。",
+                "description": "用 location_id 或地点页面 url 指定地点，任选其一即可。sort_by 设为 top（默认）获取地点的热门帖子，设为 recent 获取最新帖子；results_limit 设置返回的帖子数量（默认 20，最多 100）。",
                 "anyOf": [
                   {
                     "required": [
@@ -4701,7 +4701,7 @@
                   }
                 },
                 "required": [],
-                "description": "提供 query，或同时提供 latitude 和 longitude，两种方式只能选一种。按经纬度搜索时返回该坐标附近的地点。",
+                "description": "用 query 按地点名称搜索，或用 latitude 和 longitude 按地图上的坐标搜索；按坐标搜索时返回该坐标周边的地点。",
                 "anyOf": [
                   {
                     "required": [
@@ -4865,7 +4865,7 @@
                 "required": [
                   "url"
                 ],
-                "description": "url 为必填项。返回该帖子可见点赞列表中的公开账号，Instagram 展示的点赞列表远少于总点赞数。results_limit 默认 100，允许 1–1000。"
+                "description": "提供公开帖子、Reel 或 IGTV 的 url，返回该帖子点赞列表中展示的账号；results_limit 设置返回数量（默认 100，最多 1000）。"
               }
             }
           }
@@ -5401,7 +5401,7 @@
                 "required": [
                   "query"
                 ],
-                "description": "query 为必填项，可带或不带开头的 #。results_limit 默认 50，允许 1–100。"
+                "description": "在 query 中提供一个关键词，开头的 # 可带可不带；results_limit 设置返回的标签数量（默认 50，最多 100）。"
               }
             }
           }
@@ -5480,7 +5480,7 @@
                 "required": [
                   "username"
                 ],
-                "description": "username 为必填项，返回 Instagram 为该账号推荐的相似账号。results_limit 默认 50，允许 1–100。"
+                "description": "提供一个公开 Instagram username，返回 Instagram 为它推荐的相似账号；results_limit 设置返回数量（默认 50，最多 100）。"
               }
             }
           }
@@ -5552,7 +5552,7 @@
                 "required": [
                   "username"
                 ],
-                "description": "username 为必填项。返回该公开账号当前在线的快拍；快拍发布 24 小时后过期，账号此时没有在线快拍时返回空结果。"
+                "description": "提供一个公开 Instagram username，返回该账号当前在线的快拍；每条快拍在发布后 24 小时内可获取。"
               }
             }
           }
