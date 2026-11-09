@@ -155,7 +155,15 @@
                   "api-manual/instagram/post-info",
                   "api-manual/instagram/trending-reels",
                   "api-manual/instagram/story-highlights",
-                  "api-manual/instagram/highlight-items"
+                  "api-manual/instagram/highlight-items",
+                  "api-manual/instagram/stories",
+                  "api-manual/instagram/similar-users",
+                  "api-manual/instagram/comment-replies",
+                  "api-manual/instagram/post-likers",
+                  "api-manual/instagram/location-search",
+                  "api-manual/instagram/location-info",
+                  "api-manual/instagram/location-posts",
+                  "api-manual/instagram/search-hashtags"
                 ]
               },
               {
@@ -584,7 +592,15 @@
                   "zh/api-manual/instagram/post-info",
                   "zh/api-manual/instagram/trending-reels",
                   "zh/api-manual/instagram/story-highlights",
-                  "zh/api-manual/instagram/highlight-items"
+                  "zh/api-manual/instagram/highlight-items",
+                  "zh/api-manual/instagram/stories",
+                  "zh/api-manual/instagram/similar-users",
+                  "zh/api-manual/instagram/comment-replies",
+                  "zh/api-manual/instagram/post-likers",
+                  "zh/api-manual/instagram/location-search",
+                  "zh/api-manual/instagram/location-info",
+                  "zh/api-manual/instagram/location-posts",
+                  "zh/api-manual/instagram/search-hashtags"
                 ]
               },
               {

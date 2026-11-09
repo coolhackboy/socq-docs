@@ -1,0 +1,99 @@
+---
+title: "Instagram Post Likers"
+description: "Collect public accounts from an Instagram post likers list."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/post-likers"
+---
+
+# Instagram Post Likers
+
+Collect the accounts shown in the likers list of a public Instagram post, with usernames, display names, avatars and verification status. Submit an asynchronous task, then read its standard results.
+
+```json
+{
+  "url": "https://www.instagram.com/p/DRhvwVLAHAG/",
+  "results_limit": 100
+}
+```
+
+{/* input-contract:start */}
+url is required. Returns public accounts in the post's visible likers list, which Instagram caps well below the total like count. results_limit defaults to 100 and accepts 1 to 1000.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `actor` | `object` | Yes | Account at the primary side of the relationship. |
+| `actor.id` | `string` | Yes | Unique identifier of the related account. |
+| `actor.username` | `string` | Yes | Public username or handle of the account. |
+| `actor.name` | `string` | Yes | Display name of the related account. |
+| `actor.url` | `string` | Yes | Public URL of the related account when available. |
+| `actor.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `actor.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `actor.is_private` | `boolean` | Yes | Whether the account is private. |
+| `related_actor` | `object` | Yes | Account related to the primary account. |
+| `related_actor.id` | `string` | Yes | Unique identifier of the related account. |
+| `related_actor.username` | `string` | Yes | Public username or handle of the account. |
+| `related_actor.name` | `string` | Yes | Display name of the related account. |
+| `related_actor.url` | `string` | Yes | Public URL of the related account when available. |
+| `related_actor.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `related_actor.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `related_actor.is_private` | `boolean` | Yes | Whether the account is private. |
+| `relationship` | `string` | Yes | Relationship represented by the item, such as `follower`, `following`, or `retweeter`. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-instagram-post-likers",
+    "status": "succeeded",
+    "public_id": "instagram/post-likers",
+    "result_count": 1,
+    "credits_amount": 0.3,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "relationship",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "75500000001",
+          "platform": "instagram",
+          "resource": "post-likers",
+          "type": "profile",
+          "url": "https://www.instagram.com/example_user/",
+          "published_at": null,
+          "collected_at": "2026-11-09T06:37:43Z",
+          "actor": null,
+          "related_actor": {
+            "id": "75500000001",
+            "username": "example_user",
+            "name": "Example User",
+            "url": "https://www.instagram.com/example_user/",
+            "avatar_url": "https://example.com/avatar.jpg",
+            "is_verified": false,
+            "is_private": false
+          },
+          "relationship": "liker"
+        }
+      ]
+    }
+  }
+}
+```

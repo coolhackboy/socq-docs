@@ -23,5 +23,13 @@
   "tiktok/user-live": "提供非空 usernames 数组。每个成功查询返回一条计费状态结果，未开播账号也会返回 is_live=false。",
   "x/community": "通过 urls 提供公开 X 社区链接，路径格式为 /i/communities/{数字ID}。",
   "x/community-posts": "通过 urls 提供公开 X 社区链接。results_limit 分别应用于每个 URL，默认 100，须为 20–2000 范围内 20 的倍数。",
-  "x/thread-context": "通过 urls 提供 X 帖子链接。results_limit 分别应用于每个 URL，默认 100，允许 1–2000 的整数。结果保留目标帖子及其线程关系。"
+  "x/thread-context": "通过 urls 提供 X 帖子链接。results_limit 分别应用于每个 URL，默认 100，允许 1–2000 的整数。结果保留目标帖子及其线程关系。",
+  "instagram/stories": "username 为必填项。返回该公开账号当前在线的快拍；快拍发布 24 小时后过期，账号此时没有在线快拍时返回空结果。",
+  "instagram/similar-users": "username 为必填项，返回 Instagram 为该账号推荐的相似账号。results_limit 默认 50，允许 1–100。",
+  "instagram/comment-replies": "url 和 comment_id 为必填项，url 为父评论所在帖子、Reel 或 IGTV 的链接。results_limit 默认 100，允许 1–1000。",
+  "instagram/post-likers": "url 为必填项。返回该帖子可见点赞列表中的公开账号，Instagram 展示的点赞列表远少于总点赞数。results_limit 默认 100，允许 1–1000。",
+  "instagram/location-info": "location_id 和地点页面 url 二选一，不能同时提供。",
+  "instagram/location-posts": "location_id 和地点页面 url 二选一，不能同时提供。sort_by 可选 top（默认，返回一页热门帖子）或 recent（按时间从新到旧，可翻页）。results_limit 默认 20，允许 1–100。",
+  "instagram/location-search": "提供 query，或同时提供 latitude 和 longitude，两种方式只能选一种。按经纬度搜索时返回该坐标附近的地点。",
+  "instagram/search-hashtags": "query 为必填项，可带或不带开头的 #。results_limit 默认 50，允许 1–100。"
 }

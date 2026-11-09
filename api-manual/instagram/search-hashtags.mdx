@@ -1,0 +1,84 @@
+---
+title: "Instagram Search Hashtags"
+description: "Search Instagram hashtags by keyword."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/search-hashtags"
+---
+
+# Instagram Search Hashtags
+
+Search Instagram hashtags by keyword and get the matching hashtag names, IDs and post counts. Submit an asynchronous task, then read its standard results.
+
+```json
+{
+  "query": "travel",
+  "results_limit": 50
+}
+```
+
+{/* input-contract:start */}
+query is required, with or without a leading #. results_limit defaults to 50 and accepts 1 to 100.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `name` | `string` | Yes | Hashtag or trend name. |
+| `rank` | `integer` | Yes | Position of the trend in the source ranking. |
+| `region` | `string` | Yes | Region, state, or province name. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.posts_count` | `integer` | Yes | Number of posts or posts associated with the trend. |
+| `metrics.views_count` | `integer` | Yes | Number of views reported by the platform. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-instagram-search-hashtags",
+    "status": "succeeded",
+    "public_id": "instagram/search-hashtags",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "hashtag-trend",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "17843819167049166",
+          "platform": "instagram",
+          "resource": "search-hashtags",
+          "type": "hashtag",
+          "url": "https://www.instagram.com/explore/tags/travel/",
+          "published_at": null,
+          "collected_at": "2026-11-09T06:37:43Z",
+          "name": "travel",
+          "rank": null,
+          "region": null,
+          "metrics": {
+            "posts_count": 798706864,
+            "views_count": null
+          }
+        }
+      ]
+    }
+  }
+}
+```

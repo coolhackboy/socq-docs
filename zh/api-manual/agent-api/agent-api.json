@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API 中文版",
-    "version": "v1-050b21a3b206",
+    "version": "v1-1d41ea645cc1",
     "description": "根据 SocQ 能力目录生成的异步社交数据 API。"
   },
   "servers": [
@@ -3870,6 +3870,91 @@
         }
       }
     },
+    "/v1/instagram/comment-replies": {
+      "post": {
+        "operationId": "socq_instagram_comment_replies",
+        "summary": "Instagram 评论回复",
+        "description": "采集公开 Instagram 评论下的回复。",
+        "tags": [
+          "instagram"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "comment_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "父评论的数字 ID，例如 Instagram 评论接口返回的 id。",
+                    "pattern": "^[0-9]{5,32}$"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "父评论所在的公开 Instagram 帖子、Reel 或 IGTV 链接。"
+                  }
+                },
+                "required": [
+                  "comment_id",
+                  "url"
+                ],
+                "description": "url 和 comment_id 为必填项，url 为父评论所在帖子、Reel 或 IGTV 的链接。results_limit 默认 100，允许 1–1000。"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/instagram/comments": {
       "post": {
         "operationId": "socq_instagram_comments",
@@ -4354,6 +4439,310 @@
         }
       }
     },
+    "/v1/instagram/location-info": {
+      "post": {
+        "operationId": "socq_instagram_location_info",
+        "summary": "Instagram 地点详情",
+        "description": "采集公开 Instagram 地点的详细信息。",
+        "tags": [
+          "instagram"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PlaceItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "location_id": {
+                    "type": "string",
+                    "pattern": "^[0-9]{1,32}$",
+                    "description": "Instagram 地点的数字 ID，可通过 Instagram 地点搜索获取。"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Instagram 地点页面 URL，例如 https://www.instagram.com/explore/locations/212988663/。"
+                  }
+                },
+                "required": [],
+                "description": "location_id 和地点页面 url 二选一，不能同时提供。",
+                "anyOf": [
+                  {
+                    "required": [
+                      "location_id"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "url"
+                    ]
+                  }
+                ],
+                "allOf": [
+                  {
+                    "not": {
+                      "required": [
+                        "location_id",
+                        "url"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/location-posts": {
+      "post": {
+        "operationId": "socq_instagram_location_posts",
+        "summary": "Instagram 地点帖子",
+        "description": "采集在 Instagram 地点标记的公开帖子。",
+        "tags": [
+          "instagram"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "location_id": {
+                    "type": "string",
+                    "pattern": "^[0-9]{1,32}$",
+                    "description": "Instagram 地点的数字 ID，可通过 Instagram 地点搜索获取。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "default": 20,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "recent",
+                      "top"
+                    ],
+                    "default": "top",
+                    "description": "排序方式：top 为热门帖子（默认，只返回一页），recent 为按时间从新到旧。"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Instagram 地点页面 URL，例如 https://www.instagram.com/explore/locations/212988663/。"
+                  }
+                },
+                "required": [],
+                "description": "location_id 和地点页面 url 二选一，不能同时提供。sort_by 可选 top（默认，返回一页热门帖子）或 recent（按时间从新到旧，可翻页）。results_limit 默认 20，允许 1–100。",
+                "anyOf": [
+                  {
+                    "required": [
+                      "location_id"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "url"
+                    ]
+                  }
+                ],
+                "allOf": [
+                  {
+                    "not": {
+                      "required": [
+                        "location_id",
+                        "url"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/location-search": {
+      "post": {
+        "operationId": "socq_instagram_location_search",
+        "summary": "Instagram 地点搜索",
+        "description": "按名称或经纬度搜索 Instagram 地点。",
+        "tags": [
+          "instagram"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PlaceItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "latitude": {
+                    "type": "number",
+                    "minimum": -90,
+                    "maximum": 90,
+                    "description": "搜索中心点纬度，范围为 -90 到 90。"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "minimum": -180,
+                    "maximum": 180,
+                    "description": "搜索中心点经度，范围为 -180 到 180。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "要搜索的地点名称、地标或城市。",
+                    "maxLength": 100
+                  }
+                },
+                "required": [],
+                "description": "提供 query，或同时提供 latitude 和 longitude，两种方式只能选一种。按经纬度搜索时返回该坐标附近的地点。",
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "latitude",
+                      "longitude"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/instagram/post-info": {
       "post": {
         "operationId": "socq_instagram_post_info",
@@ -4399,6 +4788,84 @@
                 "required": [
                   "urls"
                 ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/post-likers": {
+      "post": {
+        "operationId": "socq_instagram_post_likers",
+        "summary": "Instagram 帖子点赞用户",
+        "description": "采集公开 Instagram 帖子点赞列表中的账号。",
+        "tags": [
+          "instagram"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/RelationshipItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 100,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开 Instagram 帖子、Reel 或 IGTV 链接。"
+                  }
+                },
+                "required": [
+                  "url"
+                ],
+                "description": "url 为必填项。返回该帖子可见点赞列表中的公开账号，Instagram 展示的点赞列表远少于总点赞数。results_limit 默认 100，允许 1–1000。"
               }
             }
           }
@@ -4856,6 +5323,236 @@
                   "query"
                 ],
                 "description": "query 必填，请传搜索关键词，不要传自然语言任务说明。多个词组用英文逗号分隔；不支持 @、#、引号、句点、斜杠、连字符等标点。results_limit 范围为 1–250。urls 和 usernames 已弃用且会被忽略。"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/search-hashtags": {
+      "post": {
+        "operationId": "socq_instagram_search_hashtags",
+        "summary": "Instagram 话题标签搜索",
+        "description": "按关键词搜索 Instagram 话题标签。",
+        "tags": [
+          "instagram"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/HashtagTrendItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "用于匹配话题标签名称的关键词，可带或不带开头的 #。",
+                    "maxLength": 100
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "default": 50,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  }
+                },
+                "required": [
+                  "query"
+                ],
+                "description": "query 为必填项，可带或不带开头的 #。results_limit 默认 50，允许 1–100。"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/similar-users": {
+      "post": {
+        "operationId": "socq_instagram_similar_users",
+        "summary": "Instagram 相似账号",
+        "description": "采集 Instagram 为公开账号推荐的相似账号。",
+        "tags": [
+          "instagram"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "default": 50,
+                    "description": "最多保存的结果数，实际结果可能少于该值。"
+                  },
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开 Instagram 账号用户名，可带开头的 @。",
+                    "pattern": "^@?[A-Za-z0-9._]{1,30}$"
+                  }
+                },
+                "required": [
+                  "username"
+                ],
+                "description": "username 为必填项，返回 Instagram 为该账号推荐的相似账号。results_limit 默认 50，允许 1–100。"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "任务已受理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/instagram/stories": {
+      "post": {
+        "operationId": "socq_instagram_stories",
+        "summary": "Instagram 快拍",
+        "description": "采集公开 Instagram 账号当前在线的快拍。",
+        "tags": [
+          "instagram"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/HighlightItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "可选的任务完成回调 URL。"
+                  },
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "公开 Instagram 账号用户名，可带开头的 @。",
+                    "pattern": "^@?[A-Za-z0-9._]{1,30}$"
+                  }
+                },
+                "required": [
+                  "username"
+                ],
+                "description": "username 为必填项。返回该公开账号当前在线的快拍；快拍发布 24 小时后过期，账号此时没有在线快拍时返回空结果。"
               }
             }
           }

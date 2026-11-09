@@ -44,3 +44,14 @@ Authentication uses `Authorization: Bearer SOCQ_API_KEY`. Collection endpoints r
 - https://docs.socq.ai/api-manual/x/community
 - https://docs.socq.ai/api-manual/x/community-posts
 - https://docs.socq.ai/api-manual/x/thread-context
+
+## Instagram stories, engagement and location APIs
+
+- https://docs.socq.ai/api-manual/instagram/stories
+- https://docs.socq.ai/api-manual/instagram/similar-users
+- https://docs.socq.ai/api-manual/instagram/comment-replies
+- https://docs.socq.ai/api-manual/instagram/post-likers
+- https://docs.socq.ai/api-manual/instagram/location-search
+- https://docs.socq.ai/api-manual/instagram/location-info
+- https://docs.socq.ai/api-manual/instagram/location-posts
+- https://docs.socq.ai/api-manual/instagram/search-hashtags

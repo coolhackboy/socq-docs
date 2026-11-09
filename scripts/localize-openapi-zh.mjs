@@ -27,6 +27,7 @@ const FIELD_DESCRIPTIONS = {
   has_captions: "是否仅返回带字幕的内容。",
   hashtags: "话题标签，可带或不带 # 前缀。",
   highlight_ids: "公开的 Instagram 精选内容 ID。",
+  location_id: "Instagram 地点的数字 ID，可通过 Instagram 地点搜索获取。",
   language: "语言代码或语言筛选条件。",
   latitude: "搜索中心点纬度，范围为 -90 到 90。",
   longitude: "搜索中心点经度，范围为 -180 到 180。",
@@ -108,6 +109,16 @@ const INPUT_DESCRIPTION_OVERRIDES = {
     "非空地址列表，解析后的主机名必须为 google.com、goo.gl 或两者的子域名；包含 authority 和 hostname 时可使用任意 scheme，同时支持协议相对地址，且不要求特定路径。",
   "google-maps/reviews.urls":
     "非空地址列表，解析后的主机名必须为 google.com、goo.gl 或两者的子域名；包含 authority 和 hostname 时可使用任意 scheme，同时支持协议相对地址，且不要求特定路径。",
+  "instagram/stories.username": "公开 Instagram 账号用户名，可带开头的 @。",
+  "instagram/similar-users.username": "公开 Instagram 账号用户名，可带开头的 @。",
+  "instagram/comment-replies.url": "父评论所在的公开 Instagram 帖子、Reel 或 IGTV 链接。",
+  "instagram/comment-replies.comment_id": "父评论的数字 ID，例如 Instagram 评论接口返回的 id。",
+  "instagram/post-likers.url": "公开 Instagram 帖子、Reel 或 IGTV 链接。",
+  "instagram/location-info.url": "Instagram 地点页面 URL，例如 https://www.instagram.com/explore/locations/212988663/。",
+  "instagram/location-posts.url": "Instagram 地点页面 URL，例如 https://www.instagram.com/explore/locations/212988663/。",
+  "instagram/location-posts.sort_by": "排序方式：top 为热门帖子（默认，只返回一页），recent 为按时间从新到旧。",
+  "instagram/location-search.query": "要搜索的地点名称、地标或城市。",
+  "instagram/search-hashtags.query": "用于匹配话题标签名称的关键词，可带或不带开头的 #。",
 };
 
 export async function buildZhOpenApi(openapi, root = defaultRoot) {

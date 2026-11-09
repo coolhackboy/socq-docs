@@ -1,0 +1,123 @@
+---
+title: "Instagram Location Posts"
+description: "Collect public posts tagged at an Instagram location."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/instagram/location-posts"
+---
+
+# Instagram Location Posts
+
+Collect public posts tagged at an Instagram location, either the top posts or the newest ones, with captions, authors, like and comment counts and media. Submit an asynchronous task, then read its standard results.
+
+```json
+{
+  "location_id": "384695225271379",
+  "sort_by": "top",
+  "results_limit": 20
+}
+```
+
+{/* input-contract:start */}
+Provide either location_id or a location page url, not both. sort_by is top (default, a single page of top posts) or recent (newest first, paginated). results_limit defaults to 20 and accepts 1 to 100.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `text` | `string` | Yes | Post body, caption, or message. |
+| `author` | `object` | Yes | Author or publisher of the content. |
+| `author.id` | `string` | Yes | Unique identifier of the author. |
+| `author.username` | `string` | Yes | Public username or handle of the account. |
+| `author.name` | `string` | Yes | Display name of the author. |
+| `author.url` | `string` | Yes | Public URL of the author when available. |
+| `author.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `author.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `author.is_private` | `boolean` | Yes | Whether the account is private. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.likes_count` | `integer` | Yes | Number of likes. |
+| `metrics.comments_count` | `integer` | Yes | Number of comments. |
+| `metrics.shares_count` | `integer` | Yes | Number of shares or reposts. |
+| `metrics.views_count` | `integer` | Yes | Number of views reported by the platform. |
+| `media` | `array<object>` | Yes | Images, videos, or other media attached to the result. |
+| `media.type` | `string` | Yes | Media kind, such as `image` or `video`. |
+| `media.url` | `string` | Yes | URL of the media asset. |
+| `media.thumbnail_url` | `string` | Yes | URL of the media preview image. |
+| `media.width` | `integer` | Yes | Media width in pixels. |
+| `media.height` | `integer` | Yes | Media height in pixels. |
+| `media.duration_seconds` | `number` | Yes | Media duration in seconds. |
+| `hashtags` | `array<string>` | Yes | Hashtags associated with the content, without changing their source spelling. |
+| `mentions` | `array<string>` | Yes | Accounts mentioned in the content. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-instagram-location-posts",
+    "status": "succeeded",
+    "public_id": "instagram/location-posts",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "post",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "4026000000000000001",
+          "platform": "instagram",
+          "resource": "location-posts",
+          "type": "post",
+          "url": "https://www.instagram.com/p/EXAMPLE0001/",
+          "published_at": "2026-11-08T22:36:13Z",
+          "collected_at": "2026-11-09T06:37:43Z",
+          "text": "Evening lights in Times Square.",
+          "author": {
+            "id": "75500000001",
+            "username": "example_user",
+            "name": "Example User",
+            "url": "https://www.instagram.com/example_user/",
+            "avatar_url": "https://example.com/avatar.jpg",
+            "is_verified": false,
+            "is_private": false
+          },
+          "metrics": {
+            "likes_count": 219,
+            "comments_count": 7,
+            "shares_count": null,
+            "views_count": null
+          },
+          "media": [
+            {
+              "type": "video",
+              "url": "https://example.com/post.mp4",
+              "thumbnail_url": "https://example.com/post.jpg",
+              "width": 1080,
+              "height": 1920,
+              "duration_seconds": null
+            }
+          ],
+          "hashtags": null,
+          "mentions": null
+        }
+      ]
+    }
+  }
+}
+```
