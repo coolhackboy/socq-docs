@@ -1,25 +1,24 @@
 ﻿---
-title: "SEO APIs"
+title: "SEO API"
 sidebarTitle: "概览"
-description: "Keyword research, search intent, rankings, and organic search results."
+description: "关键词研究、搜索意图、排名和自然搜索结果。"
 ---
 
-# SEO APIs
+# SEO API
 
-Use a stable, provider-independent interface for keyword and search analytics. Every operation is asynchronous: submit a task, poll its status, and read normalized records from `results.items`.
+通过统一、与数据供应商无关的接口获取关键词与搜索分析数据。所有操作都是异步的：提交任务、轮询任务状态，然后从 `results.items` 读取标准化记录。
 
-| Capability | Endpoint | 计费单位 |
+| 能力 | 端点 | 计费单位 |
 | --- | --- | --- |
-| Keyword search volume | `seo/keyword-search-volume` | 按请求次数计费 |
-| Keyword suggestions | `seo/keyword-suggestions` | 按返回关键词数计费 |
-| Related keywords | `seo/related-keywords` | 按返回关键词数计费 |
-| Keyword overview | `seo/keyword-overview` | 按输入关键词数计费 |
-| Keyword difficulty | `seo/keyword-difficulty` | 按输入关键词数计费 |
-| Search intent | `seo/search-intent` | 按输入关键词数计费 |
-| Google organic SERP | `seo/google-organic-serp` | 按返回结果数计费 |
-| Ranked keywords | `seo/ranked-keywords` | 按返回关键词数计费 |
-| Keywords for site | `seo/keywords-for-site` | 按返回关键词数计费 |
-| Relevant pages | `seo/relevant-pages` | 按返回页面数计费 |
+| 关键词搜索量 | `seo/keyword-search-volume` | 按请求次数计费 |
+| 关键词建议 | `seo/keyword-suggestions` | 按返回关键词数计费 |
+| 相关关键词 | `seo/related-keywords` | 按返回关键词数计费 |
+| 关键词概览 | `seo/keyword-overview` | 按输入关键词数计费 |
+| 关键词难度 | `seo/keyword-difficulty` | 按输入关键词数计费 |
+| 搜索意图 | `seo/search-intent` | 按输入关键词数计费 |
+| Google 自然搜索结果（SERP） | `seo/google-organic-serp` | 按返回结果数计费 |
+| 已排名关键词 | `seo/ranked-keywords` | 按返回关键词数计费 |
+| 网站关键词 | `seo/keywords-for-site` | 按返回关键词数计费 |
+| 相关页面 | `seo/relevant-pages` | 按返回页面数计费 |
 
-For market-specific results, pass `location_code` or `location_name` plus `language_code`. Database-backed endpoints default to United States and English when these fields are omitted.
-
+如需特定市场的结果，请传入 `location_code` 或 `location_name`，并同时传入 `language_code`。未传这些字段时，基于数据库的端点默认使用美国和英语。
