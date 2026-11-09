@@ -25,7 +25,7 @@ const codeBlocks = (content) => [...normalizeNewlines(content).matchAll(/```([^\
   .filter((match) => match[1].trim().toLowerCase() !== "text")
   .map((match) => match[0]);
 const componentTags = (content) => [...content.matchAll(/<\/?[A-Z][^>]*>/g)].map((match) =>
-  match[0].replace(/title="[^"]*"/g, 'title=""')
+  match[0].replace(/title="[^"]*"/g, 'title=""').replace(/href="\/zh\//g, 'href="/')
 );
 
 const sourcePaths = (await listMdx(root)).sort();
@@ -71,6 +71,9 @@ for (const sourcePath of sourcePaths) {
   for (const match of translated.matchAll(/\]\(\/(?!zh\/|assets\/|fonts\/)([^)#?]+)(?:#[^)]*)?\)/g)) {
     const target = `${match[1]}.mdx`;
     if (sourceNames.includes(target)) errors.push(`English internal link in zh/${name}: /${match[1]}`);
+  }
+  for (const match of translated.matchAll(/href="\/(?!zh\/|assets\/)([^"#?]+)(?:#[^"]*)?"/g)) {
+    if (sourceNames.includes(`${match[1]}.mdx`)) errors.push(`English internal link in zh/${name}: /${match[1]}`);
   }
 }
 

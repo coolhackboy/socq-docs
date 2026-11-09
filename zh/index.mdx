@@ -4,9 +4,58 @@ description: "开始集成 SocQ 社交数据 API。"
 icon: "rocket"
 ---
 
-# SocQ 文档
+# 使用 SocQ 构建
 
-SocQ 提供跨 Instagram、Facebook、YouTube、TikTok、X、LinkedIn、Reddit、Pinterest、 Threads，以及商业或广告研究产品。
+SocQ 提供异步 API，覆盖 Instagram、TikTok、YouTube、Facebook、X、LinkedIn、Reddit、Pinterest、Threads 等平台的公开数据，以及电商和广告研究类产品，全部只需**一个 API Key**。
+
+<CardGroup cols={2}>
+  <Card title="获取 API Key" icon="key" href="https://socq.ai/dashboard/api-key">
+    在 SocQ 控制台创建 API Key。
+  </Card>
+  <Card title="发出第一个请求" icon="play" href="/zh/api-manual/tiktok/videos">
+    在交互式 Playground 中试用一个端点。
+  </Card>
+  <Card title="在 AI Agent 中使用" icon="robot" href="/zh/integrations/overview">
+    通过 MCP、CLI 或 Agent Skill 连接 Claude、Cursor、Codex 或 VS Code。
+  </Card>
+  <Card title="浏览全部 API" icon="grid-2" href="https://socq.ai/apis">
+    在 socq.ai 上对比平台和端点。
+  </Card>
+</CardGroup>
+
+## 平台
+
+每个平台标签页都列出了它的端点、输入参数和结果字段：
+
+<CardGroup cols={3}>
+  <Card title="Instagram" icon="https://cdn.simpleicons.org/instagram" href="/zh/api-manual/instagram/overview">
+    个人资料、帖子、Reels、评论和关注关系。
+  </Card>
+  <Card title="TikTok" icon="https://cdn.simpleicons.org/tiktok" href="/zh/api-manual/tiktok/overview">
+    TikTok、TikTok Shop、TikTok 广告资料库和抖音。
+  </Card>
+  <Card title="YouTube" icon="https://cdn.simpleicons.org/youtube" href="/zh/api-manual/youtube/overview">
+    频道、视频、Shorts、评论和视频字幕。
+  </Card>
+  <Card title="Facebook" icon="https://cdn.simpleicons.org/facebook" href="/zh/api-manual/facebook/overview">
+    公共主页、帖子、Marketplace 和 Ad Library。
+  </Card>
+  <Card title="X" icon="https://cdn.simpleicons.org/x" href="/zh/api-manual/x/overview">
+    个人资料、帖子、回复、搜索和趋势。
+  </Card>
+  <Card title="LinkedIn" icon="https://api.iconify.design/simple-icons/linkedin.svg?color=%230A66C2" href="/zh/api-manual/linkedin/overview">
+    个人资料、公司、帖子、职位和广告资料库。
+  </Card>
+  <Card title="更多社媒" icon="users" href="/zh/api-manual/collections/more-social">
+    Reddit、Pinterest、Threads、Bluesky、Snapchat、Twitch、小红书、Kwai 和 Truth Social。
+  </Card>
+  <Card title="市场数据" icon="chart-line" href="/zh/api-manual/collections/market-data">
+    Google 广告资料库、Google 地图、Google Play、Amazon 和 Apple App Store。
+  </Card>
+  <Card title="SEO" icon="magnifying-glass" href="/zh/api-manual/seo/overview">
+    关键词研究、搜索意图、排名和自然搜索结果。
+  </Card>
+</CardGroup>
 
 ## 基础 URL
 
@@ -42,17 +91,38 @@ Content-Type: application/json
 
 ## 状态值
 
-|状态 |描述 |
+| 状态 | 描述 |
 | --- | --- |
-| `queued` |任务已被接受并正在等待运行 |
-| `running` |任务正在处理 |
-| `succeeded` |任务顺利完成 |
-| `failed` |任务失败；参见 `error_message` |
+| `queued` | 任务已被接受并正在等待运行 |
+| `running` | 任务正在处理 |
+| `succeeded` | 任务顺利完成 |
+| `failed` | 任务失败；参见 `error_message` |
 
 <Info>
   数据采集任务是异步的。成功提交响应意味着任务已创建，而不是最终数据已准备好。
 </Info>
 
-## Agent 集成
+## 选择集成方式
 
-当 AI 工作流需要发现和调用 SocQ API 时，请使用托管 MCP 服务器、npm CLI 或 Agent Skill。从[集成概述](/zh/integrations/overview) 开始。
+<CardGroup cols={2}>
+  <Card title="REST API" icon="code" href="/zh/api-manual/agent-api/overview">
+    用任意语言通过 HTTP 调用 SocQ。
+  </Card>
+  <Card title="SocQ CLI" icon="terminal" href="/zh/integrations/cli">
+    在终端中运行采集任务并导出数据。
+  </Card>
+  <Card title="MCP" icon="plug" href="/zh/integrations/mcp">
+    让 AI 客户端发现端点并运行任务。
+  </Card>
+  <Card title="Agent Skill" icon="wand-magic-sparkles" href="/zh/integrations/skill">
+    教会 Agent 选择端点和执行研究工作流。
+  </Card>
+</CardGroup>
+
+所有集成方式见[集成概述](/zh/integrations/overview)。
+
+## 支持
+
+<Card title="Discord" icon="discord" href="https://discord.gg/WrKvyNCvbR">
+  提问并获得 SocQ 团队的帮助。
+</Card>
