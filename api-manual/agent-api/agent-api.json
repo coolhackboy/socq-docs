@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-050b21a3b206",
+    "version": "v1-9a87cca161f6",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -13453,71 +13453,6 @@
                       "username"
                     ]
                   }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Task accepted",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Input validation failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/twitch/clip": {
-      "post": {
-        "operationId": "socq_twitch_clip",
-        "summary": "Twitch Clip API",
-        "description": "Collect a public Twitch clip.",
-        "tags": [
-          "twitch"
-        ],
-        "x-standard-result-item-schema": {
-          "$ref": "#/components/schemas/ReelVideoItem"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "url": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "A public content or product URL."
-                  }
-                },
-                "required": [
-                  "url"
                 ]
               }
             }
