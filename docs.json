@@ -82,6 +82,14 @@
     {
       "source": "/integrations/claude-code",
       "destination": "/integrations/claude-desktop"
+    },
+    {
+      "source": "/api-manual/twitch/clip",
+      "destination": "/api-manual/twitch/overview"
+    },
+    {
+      "source": "/zh/api-manual/twitch/clip",
+      "destination": "/zh/api-manual/twitch/overview"
     }
   ],
   "navigation": {
