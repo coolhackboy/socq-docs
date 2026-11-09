@@ -1,0 +1,45 @@
+---
+title: "更多社媒平台"
+description: "Reddit、Pinterest、Threads、Bluesky、Snapchat、Twitch、小红书、Kwai 和 Truth Social 的公开数据 API。"
+icon: "users"
+---
+
+这些平台与 SocQ 其他 API 使用相同的异步任务流程。选择一个平台，查看它的端点、输入参数和结果字段。
+
+## 平台
+
+<CardGroup cols={3}>
+  <Card title="Reddit" icon="https://cdn.simpleicons.org/reddit" href="/zh/api-manual/reddit/overview">
+    采集并发现公共 Reddit 帖子和评论。
+  </Card>
+  <Card title="Pinterest" icon="https://cdn.simpleicons.org/pinterest" href="/zh/api-manual/pinterest/overview">
+    采集公共 Pinterest 个人资料和Pin。
+  </Card>
+  <Card title="Threads" icon="https://cdn.simpleicons.org/threads" href="/zh/api-manual/threads/overview">
+    采集公共 Threads 个人资料和帖子。
+  </Card>
+  <Card title="Bluesky" icon="https://cdn.simpleicons.org/bluesky" href="/zh/api-manual/bluesky/overview">
+    使用 SocQ 获取 Bluesky 的标准化公开数据。
+  </Card>
+  <Card title="Snapchat" icon="https://cdn.simpleicons.org/snapchat" href="/zh/api-manual/snapchat/overview">
+    使用 SocQ 获取 Snapchat 的标准化公开数据。
+  </Card>
+  <Card title="Twitch" icon="https://cdn.simpleicons.org/twitch" href="/zh/api-manual/twitch/overview">
+    使用 SocQ 获取 Twitch 的标准化公开数据。
+  </Card>
+  <Card title="小红书（Rednote）" icon="https://cdn.simpleicons.org/xiaohongshu" href="/zh/api-manual/rednote/overview">
+    使用 SocQ 获取 小红书（Rednote） 的标准化公开数据。
+  </Card>
+  <Card title="Kwai" icon="https://cdn.simpleicons.org/kuaishou" href="/zh/api-manual/kwai/overview">
+    使用 SocQ 获取 Kwai 的标准化公开数据。
+  </Card>
+  <Card title="Truth Social" icon="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/a5/7f/03/a57f03b3-2102-7051-4da5-b420353d8e04/Placeholder.mill/128x128bb.jpg" href="/zh/api-manual/truth-social/overview">
+    使用 SocQ 获取 Truth Social 的标准化公开数据。
+  </Card>
+</CardGroup>
+
+## 工作流程
+
+1. 向平台端点提交任务，例如 `POST /v1/reddit/posts`。响应会立即返回 `task_id`。
+2. 使用 `task_id` 轮询[任务状态](/zh/api-manual/agent-api/status)，或传入 `callback_url` 接收[回调](/zh/api-manual/agent-api/callbacks)。
+3. 任务成功后从 `results` 读取标准化记录，或通过[任务文件](/zh/api-manual/agent-api/files)下载原始 JSONL。

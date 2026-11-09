@@ -20,22 +20,7 @@
     "default": "system"
   },
   "fonts": {
-    "family": "Geist",
-    "source": "/fonts/GeistVF.woff",
-    "format": "woff",
-    "weight": 400,
-    "heading": {
-      "family": "Geist",
-      "source": "/fonts/GeistVF.woff",
-      "format": "woff",
-      "weight": 650
-    },
-    "body": {
-      "family": "Geist",
-      "source": "/fonts/GeistVF.woff",
-      "format": "woff",
-      "weight": 400
-    }
+    "family": "Geist"
   },
   "icons": {
     "library": "fontawesome"
@@ -47,8 +32,7 @@
     }
   },
   "styling": {
-    "eyebrows": "breadcrumbs",
-    "codeblocks": "system"
+    "codeblocks": "dark"
   },
   "navbar": {
     "links": [
@@ -98,6 +82,14 @@
     {
       "source": "/integrations/claude-code",
       "destination": "/integrations/claude-desktop"
+    },
+    {
+      "source": "/api-manual/twitch/clip",
+      "destination": "/api-manual/twitch/overview"
+    },
+    {
+      "source": "/zh/api-manual/twitch/clip",
+      "destination": "/zh/api-manual/twitch/overview"
     }
   ],
   "navigation": {
@@ -125,7 +117,7 @@
         },
         "tabs": [
           {
-            "tab": "API",
+            "tab": "Platform",
             "groups": [
               {
                 "group": "Overview",
@@ -134,6 +126,21 @@
                   "api-manual/agent-api/overview"
                 ]
               },
+              {
+                "group": "Common",
+                "pages": [
+                  "api-manual/agent-api/authentication",
+                  "api-manual/agent-api/callbacks",
+                  "api-manual/agent-api/status",
+                  "api-manual/agent-api/files",
+                  "api-manual/agent-api/errors"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Instagram",
+            "groups": [
               {
                 "group": "Instagram",
                 "icon": "https://cdn.simpleicons.org/instagram",
@@ -165,7 +172,12 @@
                   "api-manual/instagram/location-posts",
                   "api-manual/instagram/search-hashtags"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "TikTok",
+            "groups": [
               {
                 "group": "TikTok",
                 "icon": "https://cdn.simpleicons.org/tiktok",
@@ -225,7 +237,12 @@
                   "api-manual/douyin/live-room-detail",
                   "api-manual/douyin/product-data"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "YouTube",
+            "groups": [
               {
                 "group": "YouTube",
                 "icon": "https://cdn.simpleicons.org/youtube",
@@ -244,7 +261,12 @@
                   "api-manual/youtube/hashtag-search",
                   "api-manual/youtube/channel-live-videos"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "Facebook",
+            "groups": [
               {
                 "group": "Facebook",
                 "icon": "https://cdn.simpleicons.org/facebook",
@@ -286,7 +308,12 @@
                   "api-manual/facebook-ad-library/company-ads",
                   "api-manual/facebook-ad-library/ad"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "X",
+            "groups": [
               {
                 "group": "X",
                 "icon": "https://cdn.simpleicons.org/x",
@@ -308,7 +335,12 @@
                   "api-manual/x/community-posts",
                   "api-manual/x/thread-context"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "LinkedIn",
+            "groups": [
               {
                 "group": "LinkedIn",
                 "icon": "https://api.iconify.design/simple-icons/linkedin.svg?color=%230A66C2",
@@ -335,157 +367,184 @@
                   "api-manual/linkedin-ad-library/search",
                   "api-manual/linkedin-ad-library/ad"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "More Social",
+            "groups": [
               {
-                "group": "Reddit",
-                "icon": "https://cdn.simpleicons.org/reddit",
+                "group": "More Social",
                 "pages": [
-                  "api-manual/reddit/overview",
-                  "api-manual/reddit/posts",
-                  "api-manual/reddit/comments",
-                  "api-manual/reddit/subreddit-posts",
-                  "api-manual/reddit/search",
-                  "api-manual/reddit/subreddit-details",
-                  "api-manual/reddit/subreddit-search"
+                  "api-manual/collections/more-social",
+                  {
+                    "group": "Reddit",
+                    "icon": "https://cdn.simpleicons.org/reddit",
+                    "pages": [
+                      "api-manual/reddit/overview",
+                      "api-manual/reddit/posts",
+                      "api-manual/reddit/comments",
+                      "api-manual/reddit/subreddit-posts",
+                      "api-manual/reddit/search",
+                      "api-manual/reddit/subreddit-details",
+                      "api-manual/reddit/subreddit-search"
+                    ]
+                  },
+                  {
+                    "group": "Pinterest",
+                    "icon": "https://cdn.simpleicons.org/pinterest",
+                    "pages": [
+                      "api-manual/pinterest/overview",
+                      "api-manual/pinterest/profiles",
+                      "api-manual/pinterest/pins",
+                      "api-manual/pinterest/user-pins",
+                      "api-manual/pinterest/search"
+                    ]
+                  },
+                  {
+                    "group": "Threads",
+                    "icon": "https://cdn.simpleicons.org/threads",
+                    "pages": [
+                      "api-manual/threads/overview",
+                      "api-manual/threads/profiles",
+                      "api-manual/threads/posts",
+                      "api-manual/threads/user-posts"
+                    ]
+                  },
+                  {
+                    "group": "Bluesky",
+                    "icon": "https://cdn.simpleicons.org/bluesky",
+                    "pages": [
+                      "api-manual/bluesky/overview",
+                      "api-manual/bluesky/profile",
+                      "api-manual/bluesky/user-posts",
+                      "api-manual/bluesky/post"
+                    ]
+                  },
+                  {
+                    "group": "Snapchat",
+                    "icon": "https://cdn.simpleicons.org/snapchat",
+                    "pages": [
+                      "api-manual/snapchat/overview",
+                      "api-manual/snapchat/profile",
+                      "api-manual/snapchat/spotlight",
+                      "api-manual/snapchat/spotlight-comments"
+                    ]
+                  },
+                  {
+                    "group": "Twitch",
+                    "icon": "https://cdn.simpleicons.org/twitch",
+                    "pages": [
+                      "api-manual/twitch/overview",
+                      "api-manual/twitch/profile",
+                      "api-manual/twitch/user-videos"
+                    ]
+                  },
+                  {
+                    "group": "Rednote",
+                    "icon": "https://cdn.simpleicons.org/xiaohongshu",
+                    "pages": [
+                      "api-manual/rednote/overview",
+                      "api-manual/rednote/note-detail",
+                      "api-manual/rednote/user-profile",
+                      "api-manual/rednote/user-notes",
+                      "api-manual/rednote/search-notes",
+                      "api-manual/rednote/search-users",
+                      "api-manual/rednote/note-comments",
+                      "api-manual/rednote/comment-replies",
+                      "api-manual/rednote/home-recommendations"
+                    ]
+                  },
+                  {
+                    "group": "Kwai",
+                    "icon": "https://cdn.simpleicons.org/kuaishou",
+                    "pages": [
+                      "api-manual/kwai/overview",
+                      "api-manual/kwai/profile",
+                      "api-manual/kwai/user-posts",
+                      "api-manual/kwai/post"
+                    ]
+                  },
+                  {
+                    "group": "Truth Social",
+                    "icon": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/a5/7f/03/a57f03b3-2102-7051-4da5-b420353d8e04/Placeholder.mill/128x128bb.jpg",
+                    "pages": [
+                      "api-manual/truth-social/overview",
+                      "api-manual/truth-social/profile",
+                      "api-manual/truth-social/user-posts",
+                      "api-manual/truth-social/post"
+                    ]
+                  }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "Market Data",
+            "groups": [
               {
-                "group": "Pinterest",
-                "icon": "https://cdn.simpleicons.org/pinterest",
+                "group": "Market Data",
                 "pages": [
-                  "api-manual/pinterest/overview",
-                  "api-manual/pinterest/profiles",
-                  "api-manual/pinterest/pins",
-                  "api-manual/pinterest/user-pins",
-                  "api-manual/pinterest/search"
+                  "api-manual/collections/market-data",
+                  {
+                    "group": "Google Ad Library",
+                    "icon": "https://cdn.simpleicons.org/google",
+                    "pages": [
+                      "api-manual/google-ad-library/overview",
+                      "api-manual/google-ad-library/advertiser-search",
+                      "api-manual/google-ad-library/company-ads",
+                      "api-manual/google-ad-library/ad"
+                    ]
+                  },
+                  {
+                    "group": "Google Maps",
+                    "icon": "https://cdn.simpleicons.org/googlemaps",
+                    "pages": [
+                      "api-manual/google-maps/overview",
+                      "api-manual/google-maps/search",
+                      "api-manual/google-maps/place-details",
+                      "api-manual/google-maps/reviews"
+                    ]
+                  },
+                  {
+                    "group": "Google Play",
+                    "icon": "https://cdn.simpleicons.org/googleplay",
+                    "pages": [
+                      "api-manual/google-play/overview",
+                      "api-manual/google-play/app-detail",
+                      "api-manual/google-play/app-reviews",
+                      "api-manual/google-play/app-rankings"
+                    ]
+                  },
+                  {
+                    "group": "Amazon",
+                    "icon": "https://api.iconify.design/simple-icons/amazon.svg?color=%23FF9900",
+                    "pages": [
+                      "api-manual/amazon/overview",
+                      "api-manual/amazon/product-search",
+                      "api-manual/amazon/product-detail",
+                      "api-manual/amazon/reviews",
+                      "api-manual/amazon/seller-info",
+                      "api-manual/amazon/best-sellers"
+                    ]
+                  },
+                  {
+                    "group": "Apple App Store",
+                    "icon": "https://cdn.simpleicons.org/appstore",
+                    "pages": [
+                      "api-manual/apple-app-store/overview",
+                      "api-manual/apple-app-store/app-detail",
+                      "api-manual/apple-app-store/app-reviews",
+                      "api-manual/apple-app-store/rankings"
+                    ]
+                  }
                 ]
-              },
-              {
-                "group": "Threads",
-                "icon": "https://cdn.simpleicons.org/threads",
-                "pages": [
-                  "api-manual/threads/overview",
-                  "api-manual/threads/profiles",
-                  "api-manual/threads/posts",
-                  "api-manual/threads/user-posts"
-                ]
-              },
-              {
-                "group": "Bluesky",
-                "icon": "https://cdn.simpleicons.org/bluesky",
-                "pages": [
-                  "api-manual/bluesky/overview",
-                  "api-manual/bluesky/profile",
-                  "api-manual/bluesky/user-posts",
-                  "api-manual/bluesky/post"
-                ]
-              },
-              {
-                "group": "Snapchat",
-                "icon": "https://cdn.simpleicons.org/snapchat",
-                "pages": [
-                  "api-manual/snapchat/overview",
-                  "api-manual/snapchat/profile",
-                  "api-manual/snapchat/spotlight",
-                  "api-manual/snapchat/spotlight-comments"
-                ]
-              },
-              {
-                "group": "Twitch",
-                "icon": "https://cdn.simpleicons.org/twitch",
-                "pages": [
-                  "api-manual/twitch/overview",
-                  "api-manual/twitch/profile",
-                  "api-manual/twitch/user-videos"
-                ]
-              },
-              {
-                "group": "Rednote",
-                "icon": "https://cdn.simpleicons.org/xiaohongshu",
-                "pages": [
-                  "api-manual/rednote/overview",
-                  "api-manual/rednote/note-detail",
-                  "api-manual/rednote/user-profile",
-                  "api-manual/rednote/user-notes",
-                  "api-manual/rednote/search-notes",
-                  "api-manual/rednote/search-users",
-                  "api-manual/rednote/note-comments",
-                  "api-manual/rednote/comment-replies",
-                  "api-manual/rednote/home-recommendations"
-                ]
-              },
-              {
-                "group": "Kwai",
-                "icon": "https://cdn.simpleicons.org/kuaishou",
-                "pages": [
-                  "api-manual/kwai/overview",
-                  "api-manual/kwai/profile",
-                  "api-manual/kwai/user-posts",
-                  "api-manual/kwai/post"
-                ]
-              },
-              {
-                "group": "Truth Social",
-                "icon": "https://static-assets-1.truthsocial.com/tmtg%3Aprime-ts-assets/site_uploads/files/000/000/035/original/Truth_Social_Profile_Icon.png",
-                "pages": [
-                  "api-manual/truth-social/overview",
-                  "api-manual/truth-social/profile",
-                  "api-manual/truth-social/user-posts",
-                  "api-manual/truth-social/post"
-                ]
-              },
-              {
-                "group": "Google Ad Library",
-                "icon": "https://cdn.simpleicons.org/google",
-                "pages": [
-                  "api-manual/google-ad-library/overview",
-                  "api-manual/google-ad-library/advertiser-search",
-                  "api-manual/google-ad-library/company-ads",
-                  "api-manual/google-ad-library/ad"
-                ]
-              },
-              {
-                "group": "Google Maps",
-                "icon": "https://cdn.simpleicons.org/googlemaps",
-                "pages": [
-                  "api-manual/google-maps/overview",
-                  "api-manual/google-maps/search",
-                  "api-manual/google-maps/place-details",
-                  "api-manual/google-maps/reviews"
-                ]
-              },
-              {
-                "group": "Google Play",
-                "icon": "https://cdn.simpleicons.org/googleplay",
-                "pages": [
-                  "api-manual/google-play/overview",
-                  "api-manual/google-play/app-detail",
-                  "api-manual/google-play/app-reviews",
-                  "api-manual/google-play/app-rankings"
-                ]
-              },
-              {
-                "group": "Amazon",
-                "icon": "https://api.iconify.design/simple-icons/amazon.svg?color=%23FF9900",
-                "pages": [
-                  "api-manual/amazon/overview",
-                  "api-manual/amazon/product-search",
-                  "api-manual/amazon/product-detail",
-                  "api-manual/amazon/reviews",
-                  "api-manual/amazon/seller-info",
-                  "api-manual/amazon/best-sellers"
-                ]
-              },
-              {
-                "group": "Apple App Store",
-                "icon": "https://cdn.simpleicons.org/appstore",
-                "pages": [
-                  "api-manual/apple-app-store/overview",
-                  "api-manual/apple-app-store/app-detail",
-                  "api-manual/apple-app-store/app-reviews",
-                  "api-manual/apple-app-store/rankings"
-                ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "SEO",
+            "groups": [
               {
                 "group": "SEO",
                 "pages": [
@@ -501,30 +560,27 @@
                   "api-manual/seo/keywords-for-site",
                   "api-manual/seo/relevant-pages"
                 ]
-              },
-              {
-                "group": "Common",
-                "pages": [
-                  "api-manual/agent-api/authentication",
-                  "api-manual/agent-api/callbacks",
-                  "api-manual/agent-api/status",
-                  "api-manual/agent-api/files",
-                  "api-manual/agent-api/errors"
-                ]
               }
             ]
           },
           {
-            "tab": "Integrations",
+            "tab": "AI Agents",
             "groups": [
               {
                 "group": "Get started",
                 "pages": [
                   "integrations/overview",
                   "integrations/authentication",
+                  "integrations/tasks-results",
+                  "integrations/skill",
+                  "integrations/cli"
+                ]
+              },
+              {
+                "group": "MCP",
+                "pages": [
                   "integrations/mcp",
-                  "integrations/cli",
-                  "integrations/skill"
+                  "integrations/mcp-filtering"
                 ]
               },
               {
@@ -534,6 +590,12 @@
                   "integrations/cursor",
                   "integrations/codex",
                   "integrations/vscode"
+                ]
+              },
+              {
+                "group": "Help",
+                "pages": [
+                  "integrations/troubleshooting"
                 ]
               }
             ]
@@ -562,7 +624,7 @@
         },
         "tabs": [
           {
-            "tab": "API",
+            "tab": "平台",
             "groups": [
               {
                 "group": "概览",
@@ -571,6 +633,21 @@
                   "zh/api-manual/agent-api/overview"
                 ]
               },
+              {
+                "group": "通用",
+                "pages": [
+                  "zh/api-manual/agent-api/authentication",
+                  "zh/api-manual/agent-api/callbacks",
+                  "zh/api-manual/agent-api/status",
+                  "zh/api-manual/agent-api/files",
+                  "zh/api-manual/agent-api/errors"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Instagram",
+            "groups": [
               {
                 "group": "Instagram",
                 "icon": "https://cdn.simpleicons.org/instagram",
@@ -602,7 +679,12 @@
                   "zh/api-manual/instagram/location-posts",
                   "zh/api-manual/instagram/search-hashtags"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "TikTok",
+            "groups": [
               {
                 "group": "TikTok",
                 "icon": "https://cdn.simpleicons.org/tiktok",
@@ -662,7 +744,12 @@
                   "zh/api-manual/douyin/live-room-detail",
                   "zh/api-manual/douyin/product-data"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "YouTube",
+            "groups": [
               {
                 "group": "YouTube",
                 "icon": "https://cdn.simpleicons.org/youtube",
@@ -681,7 +768,12 @@
                   "zh/api-manual/youtube/hashtag-search",
                   "zh/api-manual/youtube/channel-live-videos"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "Facebook",
+            "groups": [
               {
                 "group": "Facebook",
                 "icon": "https://cdn.simpleicons.org/facebook",
@@ -723,7 +815,12 @@
                   "zh/api-manual/facebook-ad-library/company-ads",
                   "zh/api-manual/facebook-ad-library/ad"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "X",
+            "groups": [
               {
                 "group": "X",
                 "icon": "https://cdn.simpleicons.org/x",
@@ -745,7 +842,12 @@
                   "zh/api-manual/x/community-posts",
                   "zh/api-manual/x/thread-context"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "LinkedIn",
+            "groups": [
               {
                 "group": "LinkedIn",
                 "icon": "https://api.iconify.design/simple-icons/linkedin.svg?color=%230A66C2",
@@ -772,157 +874,184 @@
                   "zh/api-manual/linkedin-ad-library/search",
                   "zh/api-manual/linkedin-ad-library/ad"
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "更多社媒",
+            "groups": [
               {
-                "group": "Reddit",
-                "icon": "https://cdn.simpleicons.org/reddit",
+                "group": "更多社媒",
                 "pages": [
-                  "zh/api-manual/reddit/overview",
-                  "zh/api-manual/reddit/posts",
-                  "zh/api-manual/reddit/comments",
-                  "zh/api-manual/reddit/subreddit-posts",
-                  "zh/api-manual/reddit/search",
-                  "zh/api-manual/reddit/subreddit-details",
-                  "zh/api-manual/reddit/subreddit-search"
+                  "zh/api-manual/collections/more-social",
+                  {
+                    "group": "Reddit",
+                    "icon": "https://cdn.simpleicons.org/reddit",
+                    "pages": [
+                      "zh/api-manual/reddit/overview",
+                      "zh/api-manual/reddit/posts",
+                      "zh/api-manual/reddit/comments",
+                      "zh/api-manual/reddit/subreddit-posts",
+                      "zh/api-manual/reddit/search",
+                      "zh/api-manual/reddit/subreddit-details",
+                      "zh/api-manual/reddit/subreddit-search"
+                    ]
+                  },
+                  {
+                    "group": "Pinterest",
+                    "icon": "https://cdn.simpleicons.org/pinterest",
+                    "pages": [
+                      "zh/api-manual/pinterest/overview",
+                      "zh/api-manual/pinterest/profiles",
+                      "zh/api-manual/pinterest/pins",
+                      "zh/api-manual/pinterest/user-pins",
+                      "zh/api-manual/pinterest/search"
+                    ]
+                  },
+                  {
+                    "group": "Threads",
+                    "icon": "https://cdn.simpleicons.org/threads",
+                    "pages": [
+                      "zh/api-manual/threads/overview",
+                      "zh/api-manual/threads/profiles",
+                      "zh/api-manual/threads/posts",
+                      "zh/api-manual/threads/user-posts"
+                    ]
+                  },
+                  {
+                    "group": "Bluesky",
+                    "icon": "https://cdn.simpleicons.org/bluesky",
+                    "pages": [
+                      "zh/api-manual/bluesky/overview",
+                      "zh/api-manual/bluesky/profile",
+                      "zh/api-manual/bluesky/user-posts",
+                      "zh/api-manual/bluesky/post"
+                    ]
+                  },
+                  {
+                    "group": "Snapchat",
+                    "icon": "https://cdn.simpleicons.org/snapchat",
+                    "pages": [
+                      "zh/api-manual/snapchat/overview",
+                      "zh/api-manual/snapchat/profile",
+                      "zh/api-manual/snapchat/spotlight",
+                      "zh/api-manual/snapchat/spotlight-comments"
+                    ]
+                  },
+                  {
+                    "group": "Twitch",
+                    "icon": "https://cdn.simpleicons.org/twitch",
+                    "pages": [
+                      "zh/api-manual/twitch/overview",
+                      "zh/api-manual/twitch/profile",
+                      "zh/api-manual/twitch/user-videos"
+                    ]
+                  },
+                  {
+                    "group": "小红书（Rednote）",
+                    "icon": "https://cdn.simpleicons.org/xiaohongshu",
+                    "pages": [
+                      "zh/api-manual/rednote/overview",
+                      "zh/api-manual/rednote/note-detail",
+                      "zh/api-manual/rednote/user-profile",
+                      "zh/api-manual/rednote/user-notes",
+                      "zh/api-manual/rednote/search-notes",
+                      "zh/api-manual/rednote/search-users",
+                      "zh/api-manual/rednote/note-comments",
+                      "zh/api-manual/rednote/comment-replies",
+                      "zh/api-manual/rednote/home-recommendations"
+                    ]
+                  },
+                  {
+                    "group": "Kwai",
+                    "icon": "https://cdn.simpleicons.org/kuaishou",
+                    "pages": [
+                      "zh/api-manual/kwai/overview",
+                      "zh/api-manual/kwai/profile",
+                      "zh/api-manual/kwai/user-posts",
+                      "zh/api-manual/kwai/post"
+                    ]
+                  },
+                  {
+                    "group": "Truth Social",
+                    "icon": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/a5/7f/03/a57f03b3-2102-7051-4da5-b420353d8e04/Placeholder.mill/128x128bb.jpg",
+                    "pages": [
+                      "zh/api-manual/truth-social/overview",
+                      "zh/api-manual/truth-social/profile",
+                      "zh/api-manual/truth-social/user-posts",
+                      "zh/api-manual/truth-social/post"
+                    ]
+                  }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "市场数据",
+            "groups": [
               {
-                "group": "Pinterest",
-                "icon": "https://cdn.simpleicons.org/pinterest",
+                "group": "市场数据",
                 "pages": [
-                  "zh/api-manual/pinterest/overview",
-                  "zh/api-manual/pinterest/profiles",
-                  "zh/api-manual/pinterest/pins",
-                  "zh/api-manual/pinterest/user-pins",
-                  "zh/api-manual/pinterest/search"
+                  "zh/api-manual/collections/market-data",
+                  {
+                    "group": "Google 广告资料库",
+                    "icon": "https://cdn.simpleicons.org/google",
+                    "pages": [
+                      "zh/api-manual/google-ad-library/overview",
+                      "zh/api-manual/google-ad-library/advertiser-search",
+                      "zh/api-manual/google-ad-library/company-ads",
+                      "zh/api-manual/google-ad-library/ad"
+                    ]
+                  },
+                  {
+                    "group": "Google 地图",
+                    "icon": "https://cdn.simpleicons.org/googlemaps",
+                    "pages": [
+                      "zh/api-manual/google-maps/overview",
+                      "zh/api-manual/google-maps/search",
+                      "zh/api-manual/google-maps/place-details",
+                      "zh/api-manual/google-maps/reviews"
+                    ]
+                  },
+                  {
+                    "group": "Google Play",
+                    "icon": "https://cdn.simpleicons.org/googleplay",
+                    "pages": [
+                      "zh/api-manual/google-play/overview",
+                      "zh/api-manual/google-play/app-detail",
+                      "zh/api-manual/google-play/app-reviews",
+                      "zh/api-manual/google-play/app-rankings"
+                    ]
+                  },
+                  {
+                    "group": "Amazon",
+                    "icon": "https://api.iconify.design/simple-icons/amazon.svg?color=%23FF9900",
+                    "pages": [
+                      "zh/api-manual/amazon/overview",
+                      "zh/api-manual/amazon/product-search",
+                      "zh/api-manual/amazon/product-detail",
+                      "zh/api-manual/amazon/reviews",
+                      "zh/api-manual/amazon/seller-info",
+                      "zh/api-manual/amazon/best-sellers"
+                    ]
+                  },
+                  {
+                    "group": "Apple App Store",
+                    "icon": "https://cdn.simpleicons.org/appstore",
+                    "pages": [
+                      "zh/api-manual/apple-app-store/overview",
+                      "zh/api-manual/apple-app-store/app-detail",
+                      "zh/api-manual/apple-app-store/app-reviews",
+                      "zh/api-manual/apple-app-store/rankings"
+                    ]
+                  }
                 ]
-              },
-              {
-                "group": "Threads",
-                "icon": "https://cdn.simpleicons.org/threads",
-                "pages": [
-                  "zh/api-manual/threads/overview",
-                  "zh/api-manual/threads/profiles",
-                  "zh/api-manual/threads/posts",
-                  "zh/api-manual/threads/user-posts"
-                ]
-              },
-              {
-                "group": "Bluesky",
-                "icon": "https://cdn.simpleicons.org/bluesky",
-                "pages": [
-                  "zh/api-manual/bluesky/overview",
-                  "zh/api-manual/bluesky/profile",
-                  "zh/api-manual/bluesky/user-posts",
-                  "zh/api-manual/bluesky/post"
-                ]
-              },
-              {
-                "group": "Snapchat",
-                "icon": "https://cdn.simpleicons.org/snapchat",
-                "pages": [
-                  "zh/api-manual/snapchat/overview",
-                  "zh/api-manual/snapchat/profile",
-                  "zh/api-manual/snapchat/spotlight",
-                  "zh/api-manual/snapchat/spotlight-comments"
-                ]
-              },
-              {
-                "group": "Twitch",
-                "icon": "https://cdn.simpleicons.org/twitch",
-                "pages": [
-                  "zh/api-manual/twitch/overview",
-                  "zh/api-manual/twitch/profile",
-                  "zh/api-manual/twitch/user-videos"
-                ]
-              },
-              {
-                "group": "小红书（Rednote）",
-                "icon": "https://cdn.simpleicons.org/xiaohongshu",
-                "pages": [
-                  "zh/api-manual/rednote/overview",
-                  "zh/api-manual/rednote/note-detail",
-                  "zh/api-manual/rednote/user-profile",
-                  "zh/api-manual/rednote/user-notes",
-                  "zh/api-manual/rednote/search-notes",
-                  "zh/api-manual/rednote/search-users",
-                  "zh/api-manual/rednote/note-comments",
-                  "zh/api-manual/rednote/comment-replies",
-                  "zh/api-manual/rednote/home-recommendations"
-                ]
-              },
-              {
-                "group": "Kwai",
-                "icon": "https://cdn.simpleicons.org/kuaishou",
-                "pages": [
-                  "zh/api-manual/kwai/overview",
-                  "zh/api-manual/kwai/profile",
-                  "zh/api-manual/kwai/user-posts",
-                  "zh/api-manual/kwai/post"
-                ]
-              },
-              {
-                "group": "Truth Social",
-                "icon": "https://static-assets-1.truthsocial.com/tmtg%3Aprime-ts-assets/site_uploads/files/000/000/035/original/Truth_Social_Profile_Icon.png",
-                "pages": [
-                  "zh/api-manual/truth-social/overview",
-                  "zh/api-manual/truth-social/profile",
-                  "zh/api-manual/truth-social/user-posts",
-                  "zh/api-manual/truth-social/post"
-                ]
-              },
-              {
-                "group": "Google 广告资料库",
-                "icon": "https://cdn.simpleicons.org/google",
-                "pages": [
-                  "zh/api-manual/google-ad-library/overview",
-                  "zh/api-manual/google-ad-library/advertiser-search",
-                  "zh/api-manual/google-ad-library/company-ads",
-                  "zh/api-manual/google-ad-library/ad"
-                ]
-              },
-              {
-                "group": "Google 地图",
-                "icon": "https://cdn.simpleicons.org/googlemaps",
-                "pages": [
-                  "zh/api-manual/google-maps/overview",
-                  "zh/api-manual/google-maps/search",
-                  "zh/api-manual/google-maps/place-details",
-                  "zh/api-manual/google-maps/reviews"
-                ]
-              },
-              {
-                "group": "Google Play",
-                "icon": "https://cdn.simpleicons.org/googleplay",
-                "pages": [
-                  "zh/api-manual/google-play/overview",
-                  "zh/api-manual/google-play/app-detail",
-                  "zh/api-manual/google-play/app-reviews",
-                  "zh/api-manual/google-play/app-rankings"
-                ]
-              },
-              {
-                "group": "Amazon",
-                "icon": "https://api.iconify.design/simple-icons/amazon.svg?color=%23FF9900",
-                "pages": [
-                  "zh/api-manual/amazon/overview",
-                  "zh/api-manual/amazon/product-search",
-                  "zh/api-manual/amazon/product-detail",
-                  "zh/api-manual/amazon/reviews",
-                  "zh/api-manual/amazon/seller-info",
-                  "zh/api-manual/amazon/best-sellers"
-                ]
-              },
-              {
-                "group": "Apple App Store",
-                "icon": "https://cdn.simpleicons.org/appstore",
-                "pages": [
-                  "zh/api-manual/apple-app-store/overview",
-                  "zh/api-manual/apple-app-store/app-detail",
-                  "zh/api-manual/apple-app-store/app-reviews",
-                  "zh/api-manual/apple-app-store/rankings"
-                ]
-              },
+              }
+            ]
+          },
+          {
+            "tab": "SEO",
+            "groups": [
               {
                 "group": "SEO",
                 "pages": [
@@ -938,30 +1067,27 @@
                   "zh/api-manual/seo/keywords-for-site",
                   "zh/api-manual/seo/relevant-pages"
                 ]
-              },
-              {
-                "group": "通用",
-                "pages": [
-                  "zh/api-manual/agent-api/authentication",
-                  "zh/api-manual/agent-api/callbacks",
-                  "zh/api-manual/agent-api/status",
-                  "zh/api-manual/agent-api/files",
-                  "zh/api-manual/agent-api/errors"
-                ]
               }
             ]
           },
           {
-            "tab": "集成",
+            "tab": "AI Agent",
             "groups": [
               {
                 "group": "快速开始",
                 "pages": [
                   "zh/integrations/overview",
                   "zh/integrations/authentication",
+                  "zh/integrations/tasks-results",
+                  "zh/integrations/skill",
+                  "zh/integrations/cli"
+                ]
+              },
+              {
+                "group": "MCP",
+                "pages": [
                   "zh/integrations/mcp",
-                  "zh/integrations/cli",
-                  "zh/integrations/skill"
+                  "zh/integrations/mcp-filtering"
                 ]
               },
               {
@@ -972,11 +1098,29 @@
                   "zh/integrations/codex",
                   "zh/integrations/vscode"
                 ]
+              },
+              {
+                "group": "帮助",
+                "pages": [
+                  "zh/integrations/troubleshooting"
+                ]
               }
             ]
           }
         ]
       }
+    ]
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
     ]
   }
 }

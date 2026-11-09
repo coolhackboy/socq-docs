@@ -1,0 +1,33 @@
+---
+title: "市场数据"
+description: "来自 Google、Amazon 和 Apple 的公开广告资料库、本地商户、应用商店与电商数据。"
+icon: "chart-line"
+---
+
+使用与 SocQ 其他 API 相同的异步任务流程研究广告主、本地商户、应用和商品。选择一个数据源，查看它的端点、输入参数和结果字段。
+
+## 数据源
+
+<CardGroup cols={3}>
+  <Card title="Google 广告资料库" icon="https://cdn.simpleicons.org/google" href="/zh/api-manual/google-ad-library/overview">
+    查询公开的 Google 广告情报数据。
+  </Card>
+  <Card title="Google 地图" icon="https://cdn.simpleicons.org/googlemaps" href="/zh/api-manual/google-maps/overview">
+    使用 SocQ 获取 Google 地图 的标准化公开数据。
+  </Card>
+  <Card title="Google Play" icon="https://cdn.simpleicons.org/googleplay" href="/zh/api-manual/google-play/overview">
+    使用 SocQ 获取 Google Play 的标准化公开数据。
+  </Card>
+  <Card title="Amazon" icon="https://api.iconify.design/simple-icons/amazon.svg?color=%23FF9900" href="/zh/api-manual/amazon/overview">
+    使用 SocQ 获取 Amazon 的标准化公开数据。
+  </Card>
+  <Card title="Apple App Store" icon="https://cdn.simpleicons.org/appstore" href="/zh/api-manual/apple-app-store/overview">
+    使用 SocQ 获取 Apple App Store 的标准化公开数据。
+  </Card>
+</CardGroup>
+
+## 工作流程
+
+1. 向平台端点提交任务，例如 `POST /v1/amazon/product-search`。响应会立即返回 `task_id`。
+2. 使用 `task_id` 轮询[任务状态](/zh/api-manual/agent-api/status)，或传入 `callback_url` 接收[回调](/zh/api-manual/agent-api/callbacks)。
+3. 任务成功后从 `results` 读取标准化记录，或通过[任务文件](/zh/api-manual/agent-api/files)下载原始 JSONL。
