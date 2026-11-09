@@ -4,9 +4,58 @@ description: "Start integrating SocQ social data APIs."
 icon: "rocket"
 ---
 
-# SocQ Documentation
+# Build with SocQ
 
-SocQ provides asynchronous APIs for public data across Instagram, Facebook, YouTube, TikTok, X, LinkedIn, Reddit, Pinterest, Threads, and commerce or ad-research products.
+SocQ provides asynchronous APIs for public data across Instagram, TikTok, YouTube, Facebook, X, LinkedIn, Reddit, Pinterest, Threads, and commerce or ad-research products, all behind **one API key**.
+
+<CardGroup cols={2}>
+  <Card title="Get an API key" icon="key" href="https://socq.ai/dashboard/api-key">
+    Create a key in the SocQ dashboard.
+  </Card>
+  <Card title="Make your first request" icon="play" href="/api-manual/tiktok/videos">
+    Try an endpoint in the interactive playground.
+  </Card>
+  <Card title="Use it from an AI agent" icon="robot" href="/integrations/overview">
+    Connect Claude, Cursor, Codex, or VS Code through MCP, CLI, or an Agent Skill.
+  </Card>
+  <Card title="Browse all APIs" icon="grid-2" href="https://socq.ai/apis">
+    Compare platforms and endpoints on socq.ai.
+  </Card>
+</CardGroup>
+
+## Platforms
+
+Each platform tab lists its endpoints, inputs, and result fields:
+
+<CardGroup cols={3}>
+  <Card title="Instagram" icon="https://cdn.simpleicons.org/instagram" href="/api-manual/instagram/overview">
+    Profiles, posts, Reels, comments, and relationships.
+  </Card>
+  <Card title="TikTok" icon="https://cdn.simpleicons.org/tiktok" href="/api-manual/tiktok/overview">
+    TikTok, TikTok Shop, TikTok Ad Library, and Douyin.
+  </Card>
+  <Card title="YouTube" icon="https://cdn.simpleicons.org/youtube" href="/api-manual/youtube/overview">
+    Channels, videos, Shorts, comments, and transcripts.
+  </Card>
+  <Card title="Facebook" icon="https://cdn.simpleicons.org/facebook" href="/api-manual/facebook/overview">
+    Pages, posts, Marketplace, and Ad Library.
+  </Card>
+  <Card title="X" icon="https://cdn.simpleicons.org/x" href="/api-manual/x/overview">
+    Profiles, posts, replies, search, and trends.
+  </Card>
+  <Card title="LinkedIn" icon="https://api.iconify.design/simple-icons/linkedin.svg?color=%230A66C2" href="/api-manual/linkedin/overview">
+    Profiles, companies, posts, jobs, and Ad Library.
+  </Card>
+  <Card title="More Social" icon="users" href="/api-manual/collections/more-social">
+    Reddit, Pinterest, Threads, Bluesky, Snapchat, Twitch, Rednote, Kwai, and Truth Social.
+  </Card>
+  <Card title="Market Data" icon="chart-line" href="/api-manual/collections/market-data">
+    Google Ad Library, Google Maps, Google Play, Amazon, and Apple App Store.
+  </Card>
+  <Card title="SEO" icon="magnifying-glass" href="/api-manual/seo/overview">
+    Keyword research, search intent, rankings, and organic results.
+  </Card>
+</CardGroup>
 
 ## Base URL
 
@@ -53,6 +102,27 @@ Content-Type: application/json
   Data collection tasks are asynchronous. A successful submit response means the task was created, not that the final data is ready.
 </Info>
 
-## Agent Integrations
+## Choose how to integrate
 
-Use the hosted MCP server, npm CLI, or Agent Skill when an AI workflow needs to discover and call SocQ APIs. Start with the [integrations overview](/integrations/overview).
+<CardGroup cols={2}>
+  <Card title="REST API" icon="code" href="/api-manual/agent-api/overview">
+    Call SocQ from any language over HTTP.
+  </Card>
+  <Card title="SocQ CLI" icon="terminal" href="/integrations/cli">
+    Run collections and export data from a terminal.
+  </Card>
+  <Card title="MCP" icon="plug" href="/integrations/mcp">
+    Let an AI client discover endpoints and run tasks.
+  </Card>
+  <Card title="Agent Skill" icon="wand-magic-sparkles" href="/integrations/skill">
+    Teach an agent endpoint selection and research workflows.
+  </Card>
+</CardGroup>
+
+See the [integrations overview](/integrations/overview) for all options.
+
+## Support
+
+<Card title="Discord" icon="discord" href="https://discord.gg/WrKvyNCvbR">
+  Ask questions and get help from the SocQ team.
+</Card>

@@ -237,9 +237,30 @@ validateInstagramPostsInputSchema(instagramPostsLlmsSchema, "llms");
 validateInstagramPostsInputSchema(instagramPostsOpenApiSchema, "en");
 validateInstagramPostsInputSchema(instagramPostsZhOpenApiSchema, "zh");
 
+// Platforms are spread across top navigation tabs, and grouped tabs nest platforms
+// one level deeper, so collect platform groups from every tab and nesting level.
+function collectGroups(items) {
+  return items.flatMap((item) => (typeof item === "object" && item?.pages)
+    ? [item, ...collectGroups(item.pages)]
+    : []);
+}
+
+// Chinese navigation must mirror English: same tabs, groups, and pages in the same order.
+const navShape = (language) => JSON.stringify(language.tabs.map((tab) => (tab.groups ?? []).map(function shape(group) {
+  return group.pages.map((page) => typeof page === "string" ? page.replace(/^zh\//, "") : shape(page));
+})));
+const [enNav, ...otherNavs] = docsConfig.navigation.languages;
+for (const language of otherNavs) {
+  if (navShape(language) !== navShape(enNav)) {
+    throw new Error(`${language.language}: navigation does not mirror ${enNav.language}`);
+  }
+}
+
 for (const language of docsConfig.navigation.languages) {
-  const apiGroups = language.tabs[0].groups.filter((group) =>
-    group.pages?.[0]?.endsWith("/overview") && !group.pages[0].includes("agent-api")
+  const apiGroups = language.tabs.flatMap((tab) => collectGroups(tab.groups ?? [])).filter((group) =>
+    typeof group.pages?.[0] === "string" &&
+    /(^|\/)api-manual\/[^/]+\/overview$/.test(group.pages[0]) &&
+    !group.pages[0].includes("agent-api")
   );
   if (apiGroups.length !== catalog.platforms.length) {
     throw new Error(`${language.language}: expected ${catalog.platforms.length} API overview groups, found ${apiGroups.length}`);

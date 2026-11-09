@@ -1,0 +1,33 @@
+---
+title: "Market Data"
+description: "Public ad library, local business, app store, and e-commerce data from Google, Amazon, and Apple."
+icon: "chart-line"
+---
+
+Research advertisers, local businesses, apps, and products with the same asynchronous task flow as every other SocQ API. Pick a source to see its endpoints, inputs, and result fields.
+
+## Sources
+
+<CardGroup cols={3}>
+  <Card title="Google Ad Library" icon="https://cdn.simpleicons.org/google" href="/api-manual/google-ad-library/overview">
+    Public advertising intelligence APIs.
+  </Card>
+  <Card title="Google Maps" icon="https://cdn.simpleicons.org/googlemaps" href="/api-manual/google-maps/overview">
+    Use SocQ to collect normalized public data from Google Maps.
+  </Card>
+  <Card title="Google Play" icon="https://cdn.simpleicons.org/googleplay" href="/api-manual/google-play/overview">
+    Use SocQ to collect normalized public data from Google Play.
+  </Card>
+  <Card title="Amazon" icon="https://api.iconify.design/simple-icons/amazon.svg?color=%23FF9900" href="/api-manual/amazon/overview">
+    Use SocQ to collect normalized public data from Amazon.
+  </Card>
+  <Card title="Apple App Store" icon="https://cdn.simpleicons.org/appstore" href="/api-manual/apple-app-store/overview">
+    Use SocQ to collect normalized public data from Apple App Store.
+  </Card>
+</CardGroup>
+
+## Workflow
+
+1. Submit a task to the platform endpoint, for example `POST /v1/amazon/product-search`. The response returns a `task_id` right away.
+2. Poll [Task Status](/api-manual/agent-api/status) with the `task_id`, or pass `callback_url` to receive a [callback](/api-manual/agent-api/callbacks).
+3. Read normalized records under `results` when the task succeeds, or download raw JSONL from [Task Files](/api-manual/agent-api/files).

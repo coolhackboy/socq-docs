@@ -1,0 +1,45 @@
+---
+title: "More Social Platforms"
+description: "Public data APIs for Reddit, Pinterest, Threads, Bluesky, Snapchat, Twitch, Rednote, Kwai, and Truth Social."
+icon: "users"
+---
+
+These platforms use the same asynchronous task flow as every other SocQ API. Pick a platform to see its endpoints, inputs, and result fields.
+
+## Platforms
+
+<CardGroup cols={3}>
+  <Card title="Reddit" icon="https://cdn.simpleicons.org/reddit" href="/api-manual/reddit/overview">
+    Collect and discover public Reddit posts and comments.
+  </Card>
+  <Card title="Pinterest" icon="https://cdn.simpleicons.org/pinterest" href="/api-manual/pinterest/overview">
+    Collect public Pinterest profiles and pins.
+  </Card>
+  <Card title="Threads" icon="https://cdn.simpleicons.org/threads" href="/api-manual/threads/overview">
+    Collect public Threads profiles and posts.
+  </Card>
+  <Card title="Bluesky" icon="https://cdn.simpleicons.org/bluesky" href="/api-manual/bluesky/overview">
+    Use SocQ to collect normalized public data from Bluesky.
+  </Card>
+  <Card title="Snapchat" icon="https://cdn.simpleicons.org/snapchat" href="/api-manual/snapchat/overview">
+    Use SocQ to collect normalized public data from Snapchat.
+  </Card>
+  <Card title="Twitch" icon="https://cdn.simpleicons.org/twitch" href="/api-manual/twitch/overview">
+    Use SocQ to collect normalized public data from Twitch.
+  </Card>
+  <Card title="Rednote" icon="https://cdn.simpleicons.org/xiaohongshu" href="/api-manual/rednote/overview">
+    Use SocQ to collect normalized public data from Rednote.
+  </Card>
+  <Card title="Kwai" icon="https://cdn.simpleicons.org/kuaishou" href="/api-manual/kwai/overview">
+    Use SocQ to collect normalized public data from Kwai.
+  </Card>
+  <Card title="Truth Social" icon="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/a5/7f/03/a57f03b3-2102-7051-4da5-b420353d8e04/Placeholder.mill/128x128bb.jpg" href="/api-manual/truth-social/overview">
+    Use SocQ to collect normalized public data from Truth Social.
+  </Card>
+</CardGroup>
+
+## Workflow
+
+1. Submit a task to the platform endpoint, for example `POST /v1/reddit/posts`. The response returns a `task_id` right away.
+2. Poll [Task Status](/api-manual/agent-api/status) with the `task_id`, or pass `callback_url` to receive a [callback](/api-manual/agent-api/callbacks).
+3. Read normalized records under `results` when the task succeeds, or download raw JSONL from [Task Files](/api-manual/agent-api/files).
