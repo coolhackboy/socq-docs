@@ -32,7 +32,7 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/companies"
 有关完整的提交和轮询流程，请参阅[MCP 快速入门](/zh/integrations/mcp)。
 {/* mcp-usage:end */}
 
-结果使用 `platform="linkedin"`、`resource="companies"` 和 `type="company"`。行业、公司规模、总部、地点和专业在 `extra` 下返回。
+结果使用 `platform="linkedin"`、`resource="companies"` 和 `type="company"`。`industry` 是公司 LinkedIn 主页上显示的行业。`location` 表示公司总部：`city` 和 `region` 取自公司在 LinkedIn 上填写的总部，`country` 是总部所在国家的两位字母代码。公司没有填写地址时，`location` 为 `null`。`metrics.employees_count` 是 LinkedIn 上显示的公司员工数。公司主页没有发布时间，所以 `published_at` 始终为 `null`。
 
 
 
@@ -69,6 +69,7 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/companies"
 | `logo_url` | `string` | 是 | 公司或广告主徽标的地址。 |
 | `metrics` | `object` | 是 | 结果项可获得的计数和度量数据。 |
 | `metrics.followers_count` | `integer` | 是 | 粉丝数量。 |
+| `metrics.employees_count` | `integer` | 是 | 平台上列出的员工数量。 |
 | `metrics.reviews_count` | `integer` | 是 | 评价数量。 |
 | `metrics.rating` | `number` | 是 | 平台报告的评分值。 |
 {/* result-schema:end */}
@@ -102,11 +103,19 @@ openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/linkedin/companies"
           "name": "Example Company",
           "text": "Software company",
           "website": "https://example.com",
-          "industry": null,
-          "location": null,
+          "industry": "Software Development",
+          "location": {
+            "name": "San Francisco, California",
+            "city": "San Francisco",
+            "region": "California",
+            "country": "US",
+            "latitude": null,
+            "longitude": null
+          },
           "logo_url": null,
           "metrics": {
             "followers_count": 250000,
+            "employees_count": 1200,
             "reviews_count": null,
             "rating": null
           }

@@ -1,5 +1,5 @@
 {
-  "schema_version": "v1-49b371f0f690",
+  "schema_version": "v1-d3689ff2ec0b",
   "platforms": [
     {
       "platform": "amazon",
@@ -27218,11 +27218,11 @@
         "unit_credits": 0.3,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
-          "result_unit_credits": 0.3,
-          "estimate_result_count": 100,
           "empty_result_policy": "base_only",
-          "allow_overage": 1
+          "result_unit_credits": 0.3,
+          "estimate_result_count": 100
         },
         "dynamic": true
       },
@@ -31161,11 +31161,11 @@
         "unit_credits": 0.5,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 20,
           "empty_result_policy": "base_only",
-          "allow_overage": 1
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 20
         },
         "dynamic": true
       },
@@ -32553,11 +32553,11 @@
         "unit_credits": 0.3,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
-          "result_unit_credits": 0.3,
-          "estimate_result_count": 100,
           "empty_result_policy": "base_only",
-          "allow_overage": 1
+          "result_unit_credits": 0.3,
+          "estimate_result_count": 100
         },
         "dynamic": true
       },
@@ -35929,11 +35929,11 @@
         "unit_credits": 0.5,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 50,
           "empty_result_policy": "base_only",
-          "allow_overage": 1
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 50
         },
         "dynamic": true
       },
@@ -36433,11 +36433,11 @@
         "unit_credits": 0.5,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 50,
           "empty_result_policy": "base_only",
-          "allow_overage": 1
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 50
         },
         "dynamic": true
       },
@@ -36920,11 +36920,11 @@
         "unit_credits": 0.5,
         "config": {
           "mode": "base_plus_result",
+          "allow_overage": 1,
           "result_unit_size": 1,
-          "result_unit_credits": 0.5,
-          "estimate_result_count": 10,
           "empty_result_policy": "base_only",
-          "allow_overage": 1
+          "result_unit_credits": 0.5,
+          "estimate_result_count": 10
         },
         "dynamic": true
       },
@@ -41757,6 +41757,20 @@
                           "description": "Number of followers.",
                           "x-description-zh": "粉丝数量。"
                         },
+                        "employees_count": {
+                          "anyOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ],
+                          "default": null,
+                          "title": "Employees Count",
+                          "description": "Number of employees listed on the platform.",
+                          "x-description-zh": "平台上列出的员工数量。"
+                        },
                         "reviews_count": {
                           "anyOf": [
                             {
@@ -41790,6 +41804,7 @@
                       "type": "object",
                       "required": [
                         "followers_count",
+                        "employees_count",
                         "reviews_count",
                         "rating"
                       ]

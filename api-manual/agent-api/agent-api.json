@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-49b371f0f690",
+    "version": "v1-d3689ff2ec0b",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -19749,6 +19749,20 @@
             "description": "Number of followers.",
             "x-description-zh": "粉丝数量。"
           },
+          "employees_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Employees Count",
+            "description": "Number of employees listed on the platform.",
+            "x-description-zh": "平台上列出的员工数量。"
+          },
           "reviews_count": {
             "anyOf": [
               {
@@ -19782,6 +19796,7 @@
         "type": "object",
         "required": [
           "followers_count",
+          "employees_count",
           "reviews_count",
           "rating"
         ]
