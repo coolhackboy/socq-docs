@@ -1,0 +1,22 @@
+---
+title: "TikTok Creative Center"
+description: "Collect TikTok Creative Center rankings: top ads, trending hashtags, top videos and Creator Marketplace cards."
+sidebarTitle: "Overview"
+---
+
+# TikTok Creative Center API
+
+These endpoints read the rankings and research data TikTok publishes in Creative Center. They use the same asynchronous task flow as the other Agent APIs.
+
+| API | Method | Endpoint |
+| --- | --- | --- |
+| Top Ads | `POST` | `/v1/tiktok-creative-center/top-ads` |
+| Ad Analysis | `POST` | `/v1/tiktok-creative-center/ad-analysis` |
+| Trending Hashtags | `POST` | `/v1/tiktok-creative-center/trending-hashtags` |
+| Hashtag Insights | `POST` | `/v1/tiktok-creative-center/trending-hashtag-detail` |
+| Top Videos | `POST` | `/v1/tiktok-creative-center/top-videos` |
+| Creator Marketplace | `POST` | `/v1/tiktok-creative-center/creator-cards` |
+
+Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}`. Successful task responses include normalized records under `results`.
+
+Several endpoints chain together: an `id` from Top Ads feeds Ad Analysis, an `id` from Trending Hashtags feeds Trending Hashtag Detail, and a `creator_id` from Top Videos feeds Creator Cards.

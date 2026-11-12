@@ -55,3 +55,41 @@ Authentication uses `Authorization: Bearer SOCQ_API_KEY`. Collection endpoints r
 - https://docs.socq.ai/api-manual/instagram/location-info
 - https://docs.socq.ai/api-manual/instagram/location-posts
 - https://docs.socq.ai/api-manual/instagram/search-hashtags
+
+## YouTube trending, community, search and contact APIs
+
+- https://docs.socq.ai/api-manual/youtube/trending-shorts
+- https://docs.socq.ai/api-manual/youtube/community-post
+- https://docs.socq.ai/api-manual/youtube/community-post-comments
+- https://docs.socq.ai/api-manual/youtube/related-videos
+- https://docs.socq.ai/api-manual/youtube/search-channels
+- https://docs.socq.ai/api-manual/youtube/search-shorts
+- https://docs.socq.ai/api-manual/youtube/search-suggestions
+- https://docs.socq.ai/api-manual/youtube/channel-email
+
+## TikTok audience, discovery, LIVE and video analytics APIs
+
+- https://docs.socq.ai/api-manual/tiktok/user-audience
+- https://docs.socq.ai/api-manual/tiktok/similar-users
+- https://docs.socq.ai/api-manual/tiktok/user-reposts
+- https://docs.socq.ai/api-manual/tiktok/user-playlists
+- https://docs.socq.ai/api-manual/tiktok/hashtag-detail
+- https://docs.socq.ai/api-manual/tiktok/search-music
+- https://docs.socq.ai/api-manual/tiktok/search-live
+- https://docs.socq.ai/api-manual/tiktok/search-photos
+- https://docs.socq.ai/api-manual/tiktok/trending-keywords
+- https://docs.socq.ai/api-manual/tiktok/search-insights
+- https://docs.socq.ai/api-manual/tiktok/live-ranking
+- https://docs.socq.ai/api-manual/tiktok/live-products
+- https://docs.socq.ai/api-manual/tiktok/fake-views
+- https://docs.socq.ai/api-manual/tiktok/comment-keywords
+
+## TikTok Creative Center APIs
+
+- https://docs.socq.ai/api-manual/tiktok-creative-center/overview
+- https://docs.socq.ai/api-manual/tiktok-creative-center/top-ads
+- https://docs.socq.ai/api-manual/tiktok-creative-center/ad-analysis
+- https://docs.socq.ai/api-manual/tiktok-creative-center/trending-hashtags
+- https://docs.socq.ai/api-manual/tiktok-creative-center/trending-hashtag-detail
+- https://docs.socq.ai/api-manual/tiktok-creative-center/top-videos
+- https://docs.socq.ai/api-manual/tiktok-creative-center/creator-cards

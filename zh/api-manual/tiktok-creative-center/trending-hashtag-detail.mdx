@@ -1,0 +1,141 @@
+---
+title: "TikTok 创意中心话题洞察"
+description: "获取 TikTok 创意中心热门话题的热度曲线和热门地区。"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok-creative-center/trending-hashtag-detail"
+---
+
+# TikTok 创意中心话题洞察
+
+单独深挖一个趋势话题：发帖数和播放量、逐日热度曲线、按人口规模衡量最受欢迎的国家和地区，再加上一组示例视频。TikTok 创意中心热门话题结果里的 `id` 可以原样传进来。
+
+```json
+{
+  "hashtag_id": "7155204034885287979",
+  "country": "US",
+  "time_range": "7d"
+}
+```
+
+{/* input-contract:start */}
+hashtag_id 为必填项，取 TikTok 创意中心热门话题结果中的 id，并使用相同的 country。time_range（默认 7d）决定统计周期。返回一条结果，按次计费。
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## 标准结果字段
+
+任务结果使用下方稳定的 SocQ 字段。系统会统一来源特有的字段名和格式，但不会推断或补充来源未提供的数据。如需缩小返回字段集合，MCP 查询使用 `fields`，Typed 工具使用 `_result_fields`，CLI 使用 `--result-fields`。声明字段的值为 `null` 时仍会保留。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 话题 ID，可直接用于 Trending Hashtag Detail 接口。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `name` | `string` | 是 | 不带 # 前缀的话题名称。 |
+| `rank` | `integer` | 是 | 话题在趋势榜中的名次。 |
+| `region` | `string` | 是 | 榜单所覆盖的国家或地区代码。 |
+| `metrics` | `object` | 是 | 结果项可获得的计数和度量数据。 |
+| `metrics.posts_count` | `integer` | 是 | 帖子数量，或与趋势关联的帖子数量。 |
+| `metrics.views_count` | `integer` | 是 | 平台报告的观看数量。 |
+| `popularity_curve` | `array<object>` | 是 | 统计周期内话题每天的热度，范围 0 到 100。 |
+| `popularity_curve.date` | `string` | 是 | 数据点的日期，格式为 YYYY-MM-DD。 |
+| `popularity_curve.value` | `number` | 是 | 曲线上该点的数值。 |
+| `top_countries` | `array<object>` | 是 | 相对人口规模而言该话题最受欢迎的国家或地区，按分值从高到低排列。 |
+| `top_countries.country_code` | `string` | 是 | 两位字母的国家或地区代码。 |
+| `top_countries.score` | `number` | 是 | 该条目对应的分值。 |
+| `video_ids` | `array<string>` | 是 | 使用该话题的示例视频 ID。 |
+{/* result-schema:end */}
+
+以下示例展示任务完成后的响应格式，具体数据以实际查询结果为准。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-creative-center-trending-hashtag-detail",
+    "status": "succeeded",
+    "public_id": "tiktok-creative-center/trending-hashtag-detail",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "hashtag-insight",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7155204034885287979",
+          "platform": "tiktok-creative-center",
+          "resource": "trending-hashtag-detail",
+          "type": "hashtag_detail",
+          "url": "https://www.tiktok.com/tag/piratetoken",
+          "published_at": null,
+          "collected_at": "2026-11-10T09:00:00Z",
+          "name": "piratetoken",
+          "rank": null,
+          "region": "US",
+          "metrics": {
+            "posts_count": 33706,
+            "views_count": 265103331
+          },
+          "popularity_curve": [
+            {
+              "date": "2026-11-02",
+              "value": 0.0
+            },
+            {
+              "date": "2026-11-03",
+              "value": 41.7853
+            },
+            {
+              "date": "2026-11-04",
+              "value": 54.223
+            },
+            {
+              "date": "2026-11-05",
+              "value": 63.4335
+            },
+            {
+              "date": "2026-11-06",
+              "value": 67.9141
+            }
+          ],
+          "top_countries": [
+            {
+              "country_code": "US",
+              "score": 774.48
+            },
+            {
+              "country_code": "CA",
+              "score": 545.21
+            },
+            {
+              "country_code": "AU",
+              "score": 413.69
+            },
+            {
+              "country_code": "GB",
+              "score": 370.88
+            },
+            {
+              "country_code": "DE",
+              "score": 331.03
+            }
+          ],
+          "video_ids": [
+            "7704679142813371681",
+            "7704512845232262430",
+            "7703695788718771469"
+          ]
+        }
+      ]
+    }
+  }
+}
+```

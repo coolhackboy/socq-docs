@@ -1,0 +1,104 @@
+---
+title: "YouTube 频道搜索"
+description: "按关键词搜索 YouTube 频道。"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/youtube/search-channels"
+---
+
+# YouTube 频道搜索
+
+用关键词找 YouTube 频道，返回频道名称、订阅数、头像，以及 YouTube 在搜索结果里展示的简介片段。做达人挖掘时可以先在这里圈出候选频道，再用 YouTube 频道接口补全资料，或用 YouTube 频道视频接口拉取作品。
+
+```json
+{
+  "query": "home cooking",
+  "results_limit": 20
+}
+```
+
+{/* input-contract:start */}
+query 为必填项。results_limit 默认 20，允许 1–200。频道按 YouTube 自己的搜索排序返回。
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## 标准结果字段
+
+任务结果使用下方稳定的 SocQ 字段。系统会统一来源特有的字段名和格式，但不会推断或补充来源未提供的数据。如需缩小返回字段集合，MCP 查询使用 `fields`，Typed 工具使用 `_result_fields`，CLI 使用 `--result-fields`。声明字段的值为 `null` 时仍会保留。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `username` | `string` | 是 | 账号的公开用户名或账号标识。 |
+| `name` | `string` | 是 | 账号或主页的显示名称。 |
+| `text` | `string` | 是 | 账号或主页的简介。 |
+| `avatar_url` | `string` | 是 | 账号头像图片的地址。 |
+| `cover_url` | `string` | 是 | 封面图片的地址。 |
+| `website` | `string` | 是 | 账号、公司或广告主关联的网站。 |
+| `is_verified` | `boolean` | 是 | 账号是否已通过平台认证。 |
+| `is_private` | `boolean` | 是 | 账号是否为私密账号。 |
+| `location` | `object` | 是 | 结果关联的地理位置信息。 |
+| `location.name` | `string` | 是 | 便于阅读的地点名称。 |
+| `location.city` | `string` | 是 | 城市名称。 |
+| `location.region` | `string` | 是 | 地区、州或省份名称。 |
+| `location.country` | `string` | 是 | 国家或地区名称或代码。 |
+| `location.latitude` | `number` | 是 | 十进制度格式的纬度。 |
+| `location.longitude` | `number` | 是 | 十进制度格式的经度。 |
+| `metrics` | `object` | 是 | 结果项可获得的计数和度量数据。 |
+| `metrics.followers_count` | `integer` | 是 | 粉丝数量。 |
+| `metrics.following_count` | `integer` | 是 | 关注的账号数量。 |
+| `metrics.posts_count` | `integer` | 是 | 帖子数量，或与趋势关联的帖子数量。 |
+{/* result-schema:end */}
+
+以下示例展示任务完成后的响应格式，具体数据以实际查询结果为准。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-youtube-search-channels",
+    "status": "succeeded",
+    "public_id": "youtube/search-channels",
+    "result_count": 1,
+    "credits_amount": 0.6,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "account",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "UCLu1jSLRGzVgOsViFic42Gg",
+          "platform": "youtube",
+          "resource": "search-channels",
+          "type": "channel",
+          "url": "https://www.youtube.com/channel/UCLu1jSLRGzVgOsViFic42Gg",
+          "published_at": null,
+          "collected_at": "2026-11-09T11:13:36Z",
+          "username": null,
+          "name": "HomeCookingShow",
+          "text": "Simple Cooking with Everyday Ingredients Home Cooking Show brings to you a wide range of recipes with simple cooking ...",
+          "avatar_url": "https://example.com/channel-avatar.jpg",
+          "cover_url": null,
+          "website": null,
+          "is_verified": null,
+          "is_private": null,
+          "location": null,
+          "metrics": {
+            "followers_count": 3300000,
+            "following_count": null,
+            "posts_count": null
+          }
+        }
+      ]
+    }
+  }
+}
+```

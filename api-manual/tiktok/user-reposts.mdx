@@ -1,0 +1,144 @@
+---
+title: "TikTok Reposts"
+description: "Collect the videos a TikTok account has reposted."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/user-reposts"
+---
+
+# TikTok Reposts
+
+Reposts show what an account amplifies beyond its own uploads. This endpoint returns the videos a user has reposted, each with its original author, caption, view and like counts, hashtags and video file, so you can see which creators and topics an account chooses to pass on to its followers.
+
+```json
+{
+  "username": "mrbeast",
+  "results_limit": 20
+}
+```
+
+{/* input-contract:start */}
+username is required. Reposts come back newest first; results_limit defaults to 20 and accepts 1 to 500. An account with no reposts returns an empty result, which is not charged.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `text` | `string` | Yes | Video caption or description. |
+| `author` | `object` | Yes | Author or publisher of the content. |
+| `author.id` | `string` | Yes | Unique identifier of the author. |
+| `author.username` | `string` | Yes | Public username or handle of the account. |
+| `author.name` | `string` | Yes | Display name of the author. |
+| `author.url` | `string` | Yes | Public URL of the author when available. |
+| `author.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `author.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `author.is_private` | `boolean` | Yes | Whether the account is private. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.likes_count` | `integer` | Yes | Number of likes. |
+| `metrics.comments_count` | `integer` | Yes | Number of comments. |
+| `metrics.shares_count` | `integer` | Yes | Number of shares or reposts. |
+| `metrics.plays_count` | `integer` | Yes | Number of video playback starts reported by the platform. |
+| `metrics.views_count` | `integer` | Yes | Number of views reported by the platform. |
+| `media` | `array<object>` | Yes | Images, videos, or other media attached to the result. |
+| `media.type` | `string` | Yes | Media kind, such as `image` or `video`. |
+| `media.url` | `string` | Yes | URL of the media asset. |
+| `media.thumbnail_url` | `string` | Yes | URL of the media preview image. |
+| `media.width` | `integer` | Yes | Media width in pixels. |
+| `media.height` | `integer` | Yes | Media height in pixels. |
+| `media.duration_seconds` | `number` | Yes | Media duration in seconds. |
+| `hashtags` | `array<string>` | Yes | Hashtags associated with the content, without changing their source spelling. |
+| `mentions` | `array<string>` | Yes | Accounts mentioned in the content. |
+| `shortcode` | `string` | Yes | Platform shortcode used to identify the media item. |
+| `duration_seconds` | `number` | Yes | Duration in seconds. |
+| `audio` | `object` | Yes | Audio or music metadata associated with the video. |
+| `audio.id` | `string` | Yes | Identifier of the audio or music track. |
+| `audio.title` | `string` | Yes | Title of the audio or music track. |
+| `audio.artist` | `string` | Yes | Name of the audio artist or creator. |
+| `audio.url` | `string` | Yes | URL of the audio or music track when available. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-user-reposts",
+    "status": "succeeded",
+    "public_id": "tiktok/user-reposts",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "reel-video",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7693911917194169631",
+          "platform": "tiktok",
+          "resource": "user-reposts",
+          "type": "video",
+          "url": "https://www.tiktok.com/@ebisonr/video/7693911917194169631",
+          "published_at": "2026-10-07T13:08:17Z",
+          "collected_at": "2026-11-10T09:00:00Z",
+          "text": "“I just want to give you $50,000 for free because I like you.” The definition of MrBeast 😭✌️🥀 Watch the new season of SHARK TANK Wednesdays at 10/9c on ABC. Stream on Hulu. #ABCPartner #SharkTank #fyp #viral",
+          "author": {
+            "id": "7690853627765801998",
+            "username": "ebisonr",
+            "name": "Ebi",
+            "url": "https://www.tiktok.com/@ebisonr",
+            "avatar_url": "https://example.com/avatar.jpg",
+            "is_verified": false,
+            "is_private": false
+          },
+          "metrics": {
+            "likes_count": 352400,
+            "comments_count": 1699,
+            "shares_count": 14200,
+            "plays_count": 3300000,
+            "views_count": 3300000
+          },
+          "media": [
+            {
+              "type": "video",
+              "url": "https://example.com/video.mp4",
+              "thumbnail_url": "https://example.com/thumbnail.jpg",
+              "width": 720,
+              "height": 1280,
+              "duration_seconds": 32.0
+            }
+          ],
+          "hashtags": [
+            "abcpartner",
+            "sharktank",
+            "fyp",
+            "viral"
+          ],
+          "mentions": [],
+          "shortcode": null,
+          "duration_seconds": 32.0,
+          "audio": {
+            "id": "7532501149981755393",
+            "title": "DENTRO DA MINHA MENTE",
+            "artist": "Allba",
+            "url": "https://example.com/audio.mp3"
+          }
+        }
+      ]
+    }
+  }
+}
+```

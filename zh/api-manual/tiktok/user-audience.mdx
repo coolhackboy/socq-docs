@@ -1,0 +1,109 @@
+---
+title: "TikTok 粉丝地区分布"
+description: "获取 TikTok 账号粉丝所在的国家和地区。"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/user-audience"
+---
+
+# TikTok 粉丝地区分布
+
+看清一个 TikTok 创作者的粉丝都在哪里。结果列出粉丝样本覆盖的每个国家和地区，附带占比和对应的抽样人数，按占比从高到低排列。谈合作之前先跑一次，就能确认对方的受众是不是落在你要卖货的市场。
+
+```json
+{
+  "username": "khaby.lame"
+}
+```
+
+{/* input-contract:start */}
+username 为必填项。每个账号返回一条结果，列出粉丝所在的国家和地区及占比，按占比从高到低排列。每次请求按次计费。
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## 标准结果字段
+
+任务结果使用下方稳定的 SocQ 字段。系统会统一来源特有的字段名和格式，但不会推断或补充来源未提供的数据。如需缩小返回字段集合，MCP 查询使用 `fields`，Typed 工具使用 `_result_fields`，CLI 使用 `--result-fields`。声明字段的值为 `null` 时仍会保留。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `username` | `string` | 是 | 受众所属账号的用户名。 |
+| `audience_countries` | `array<object>` | 是 | 账号粉丝所在的国家或地区，按占比从高到低排列。 |
+| `audience_countries.country` | `string` | 是 | 国家或地区名称。 |
+| `audience_countries.country_code` | `string` | 是 | 两位字母的国家或地区代码。 |
+| `audience_countries.share` | `number` | 是 | 该国家或地区粉丝占全部粉丝的比例，取值 0 到 1。 |
+| `audience_countries.count` | `integer` | 是 | 该分组中抽样粉丝的数量。 |
+{/* result-schema:end */}
+
+以下示例展示任务完成后的响应格式，具体数据以实际查询结果为准。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-user-audience",
+    "status": "succeeded",
+    "public_id": "tiktok/user-audience",
+    "result_count": 1,
+    "credits_amount": 20.0,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "audience",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "khaby.lame",
+          "platform": "tiktok",
+          "resource": "user-audience",
+          "type": "audience",
+          "url": "https://www.tiktok.com/@khaby.lame",
+          "published_at": null,
+          "collected_at": "2026-11-10T09:00:00Z",
+          "username": "khaby.lame",
+          "audience_countries": [
+            {
+              "country": "Pakistan",
+              "country_code": "PK",
+              "share": 0.2109,
+              "count": 274
+            },
+            {
+              "country": "Bangladesh",
+              "country_code": "BD",
+              "share": 0.1116,
+              "count": 145
+            },
+            {
+              "country": "United States",
+              "country_code": "US",
+              "share": 0.097,
+              "count": 126
+            },
+            {
+              "country": "Philippines",
+              "country_code": "PH",
+              "share": 0.0439,
+              "count": 57
+            },
+            {
+              "country": "Indonesia",
+              "country_code": "ID",
+              "share": 0.0354,
+              "count": 46
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```

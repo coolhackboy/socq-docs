@@ -200,7 +200,21 @@
                   "api-manual/tiktok/song-videos",
                   "api-manual/tiktok/popular-songs",
                   "api-manual/tiktok/top-search",
-                  "api-manual/tiktok/user-live"
+                  "api-manual/tiktok/user-live",
+                  "api-manual/tiktok/user-audience",
+                  "api-manual/tiktok/similar-users",
+                  "api-manual/tiktok/user-reposts",
+                  "api-manual/tiktok/user-playlists",
+                  "api-manual/tiktok/hashtag-detail",
+                  "api-manual/tiktok/search-music",
+                  "api-manual/tiktok/search-live",
+                  "api-manual/tiktok/search-photos",
+                  "api-manual/tiktok/trending-keywords",
+                  "api-manual/tiktok/search-insights",
+                  "api-manual/tiktok/live-ranking",
+                  "api-manual/tiktok/live-products",
+                  "api-manual/tiktok/fake-views",
+                  "api-manual/tiktok/comment-keywords"
                 ]
               },
               {
@@ -222,6 +236,19 @@
                   "api-manual/tiktok-ad-library/overview",
                   "api-manual/tiktok-ad-library/search",
                   "api-manual/tiktok-ad-library/ad"
+                ]
+              },
+              {
+                "group": "TikTok Creative Center",
+                "icon": "https://cdn.simpleicons.org/tiktok",
+                "pages": [
+                  "api-manual/tiktok-creative-center/overview",
+                  "api-manual/tiktok-creative-center/top-ads",
+                  "api-manual/tiktok-creative-center/ad-analysis",
+                  "api-manual/tiktok-creative-center/trending-hashtags",
+                  "api-manual/tiktok-creative-center/trending-hashtag-detail",
+                  "api-manual/tiktok-creative-center/top-videos",
+                  "api-manual/tiktok-creative-center/creator-cards"
                 ]
               },
               {
@@ -259,7 +286,15 @@
                   "api-manual/youtube/comment-replies",
                   "api-manual/youtube/community-posts",
                   "api-manual/youtube/hashtag-search",
-                  "api-manual/youtube/channel-live-videos"
+                  "api-manual/youtube/channel-live-videos",
+                  "api-manual/youtube/trending-shorts",
+                  "api-manual/youtube/community-post",
+                  "api-manual/youtube/community-post-comments",
+                  "api-manual/youtube/related-videos",
+                  "api-manual/youtube/search-channels",
+                  "api-manual/youtube/search-shorts",
+                  "api-manual/youtube/search-suggestions",
+                  "api-manual/youtube/channel-email"
                 ]
               }
             ]
@@ -707,7 +742,21 @@
                   "zh/api-manual/tiktok/song-videos",
                   "zh/api-manual/tiktok/popular-songs",
                   "zh/api-manual/tiktok/top-search",
-                  "zh/api-manual/tiktok/user-live"
+                  "zh/api-manual/tiktok/user-live",
+                  "zh/api-manual/tiktok/user-audience",
+                  "zh/api-manual/tiktok/similar-users",
+                  "zh/api-manual/tiktok/user-reposts",
+                  "zh/api-manual/tiktok/user-playlists",
+                  "zh/api-manual/tiktok/hashtag-detail",
+                  "zh/api-manual/tiktok/search-music",
+                  "zh/api-manual/tiktok/search-live",
+                  "zh/api-manual/tiktok/search-photos",
+                  "zh/api-manual/tiktok/trending-keywords",
+                  "zh/api-manual/tiktok/search-insights",
+                  "zh/api-manual/tiktok/live-ranking",
+                  "zh/api-manual/tiktok/live-products",
+                  "zh/api-manual/tiktok/fake-views",
+                  "zh/api-manual/tiktok/comment-keywords"
                 ]
               },
               {
@@ -729,6 +778,19 @@
                   "zh/api-manual/tiktok-ad-library/overview",
                   "zh/api-manual/tiktok-ad-library/search",
                   "zh/api-manual/tiktok-ad-library/ad"
+                ]
+              },
+              {
+                "group": "TikTok 创意中心",
+                "icon": "https://cdn.simpleicons.org/tiktok",
+                "pages": [
+                  "zh/api-manual/tiktok-creative-center/overview",
+                  "zh/api-manual/tiktok-creative-center/top-ads",
+                  "zh/api-manual/tiktok-creative-center/ad-analysis",
+                  "zh/api-manual/tiktok-creative-center/trending-hashtags",
+                  "zh/api-manual/tiktok-creative-center/trending-hashtag-detail",
+                  "zh/api-manual/tiktok-creative-center/top-videos",
+                  "zh/api-manual/tiktok-creative-center/creator-cards"
                 ]
               },
               {
@@ -766,7 +828,15 @@
                   "zh/api-manual/youtube/comment-replies",
                   "zh/api-manual/youtube/community-posts",
                   "zh/api-manual/youtube/hashtag-search",
-                  "zh/api-manual/youtube/channel-live-videos"
+                  "zh/api-manual/youtube/channel-live-videos",
+                  "zh/api-manual/youtube/trending-shorts",
+                  "zh/api-manual/youtube/community-post",
+                  "zh/api-manual/youtube/community-post-comments",
+                  "zh/api-manual/youtube/related-videos",
+                  "zh/api-manual/youtube/search-channels",
+                  "zh/api-manual/youtube/search-shorts",
+                  "zh/api-manual/youtube/search-suggestions",
+                  "zh/api-manual/youtube/channel-email"
                 ]
               }
             ]

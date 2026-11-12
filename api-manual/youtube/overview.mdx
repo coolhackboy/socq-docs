@@ -1,6 +1,6 @@
 ---
 title: "YouTube"
-description: "Collect public YouTube channel, video, playlist, comment, Shorts, search, and transcript data."
+description: "Collect public YouTube channel, video, playlist, comment, Shorts, community post, search, and transcript data."
 sidebarTitle: "Overview"
 ---
 
@@ -22,6 +22,14 @@ YouTube endpoints use the same asynchronous task flow as the other Agent APIs.
 | Community Posts | `POST` | `/v1/youtube/community-posts` |
 | Hashtag Search | `POST` | `/v1/youtube/hashtag-search` |
 | Channel Live Videos | `POST` | `/v1/youtube/channel-live-videos` |
+| Trending Shorts | `POST` | `/v1/youtube/trending-shorts` |
+| Community Post | `POST` | `/v1/youtube/community-post` |
+| Community Post Comments | `POST` | `/v1/youtube/community-post-comments` |
+| Related Videos | `POST` | `/v1/youtube/related-videos` |
+| Channel Search | `POST` | `/v1/youtube/search-channels` |
+| Shorts Search | `POST` | `/v1/youtube/search-shorts` |
+| Search Suggestions | `POST` | `/v1/youtube/search-suggestions` |
+| Email Finder | `POST` | `/v1/youtube/channel-email` |
 
 Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}`. Successful task responses include normalized records under `results`.
 

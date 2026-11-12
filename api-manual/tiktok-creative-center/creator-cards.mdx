@@ -1,0 +1,213 @@
+---
+title: "TikTok Creative Center Creator Marketplace"
+description: "Collect TikTok Creator Marketplace cards with audience demographics and rates."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok-creative-center/creator-cards"
+---
+
+# TikTok Creative Center Creator Marketplace
+
+Pull the Creator Marketplace card for creators you are evaluating: the age, gender, country and device mix of their followers, median views, engagement rate, follower growth and the starting rate they list for a sponsored video. Send the `creator_id` values from TikTok Creative Center Top Videos, up to 20 at a time.
+
+```json
+{
+  "creator_ids": ["7011198409688219653", "7070293872819044358"]
+}
+```
+
+{/* input-contract:start */}
+creator_ids is required: 1 to 20 Creator Marketplace IDs, such as creator_id values from TikTok Creative Center Top Videos. Each creator with a card returns one result, billed per result.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | TikTok Creator Marketplace ID of the creator. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `username` | `string` | Yes | Public username or handle of the account. |
+| `name` | `string` | Yes | Display name of the result item. |
+| `text` | `string` | Yes | Bio of the creator. |
+| `avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `region` | `string` | Yes | Country or region code where the creator is based. |
+| `tiktok_user_id` | `string` | Yes | Numeric TikTok user ID of the creator. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.followers_count` | `integer` | Yes | Number of followers. |
+| `metrics.median_views` | `integer` | Yes | Median views of the creator's recent videos. |
+| `metrics.engagement_rate` | `number` | Yes | Engagements divided by views, as a fraction from 0 to 1. |
+| `metrics.followers_growth_rate` | `number` | Yes | Recent follower growth rate, as a fraction. |
+| `metrics.six_second_view_rate` | `number` | Yes | Share of views that lasted at least six seconds, from 0 to 1. |
+| `starting_price` | `object` | Yes | Starting rate the creator lists for a sponsored video. |
+| `starting_price.amount` | `number` | Yes | Numeric monetary amount. |
+| `starting_price.currency` | `string` | Yes | Currency code or symbol reported for the monetary value. |
+| `starting_price.formatted` | `string` | Yes | Human-readable price or salary text. |
+| `audience` | `object` | Yes | Follower demographics of the creator. |
+| `audience.ages` | `array<object>` | Yes | Share of followers by age range. |
+| `audience.ages.label` | `string` | Yes | Name of the group, such as an age range, gender or device brand. |
+| `audience.ages.share` | `number` | Yes | Share of the total, from 0 to 1. |
+| `audience.genders` | `array<object>` | Yes | Share of followers by gender. |
+| `audience.genders.label` | `string` | Yes | Name of the group, such as an age range, gender or device brand. |
+| `audience.genders.share` | `number` | Yes | Share of the total, from 0 to 1. |
+| `audience.countries` | `array<object>` | Yes | Countries or regions where the ad was delivered. |
+| `audience.countries.country` | `string` | Yes | Country or territory name or code. |
+| `audience.countries.country_code` | `string` | Yes | Two-letter country or region code. |
+| `audience.countries.share` | `number` | Yes | Share of followers in this country, from 0 to 1. |
+| `audience.countries.count` | `integer` | Yes | Number of sampled followers in this group. |
+| `audience.devices` | `array<object>` | Yes | Share of followers by phone brand. |
+| `audience.devices.label` | `string` | Yes | Name of the group, such as an age range, gender or device brand. |
+| `audience.devices.share` | `number` | Yes | Share of the total, from 0 to 1. |
+| `recent_video_ids` | `array<string>` | Yes | IDs of the creator's recent videos. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-creative-center-creator-cards",
+    "status": "succeeded",
+    "public_id": "tiktok-creative-center/creator-cards",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "creator-card",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7070293872819044358",
+          "platform": "tiktok-creative-center",
+          "resource": "creator-cards",
+          "type": "creator_card",
+          "url": "https://www.tiktok.com/@megannco",
+          "published_at": null,
+          "collected_at": "2026-11-10T09:00:00Z",
+          "username": "megannco",
+          "name": "Meg Ann Co.",
+          "text": "your favorite hand-drawn crewnecks &amp; tees\n🧸🤍🎨\nentrepreneur &amp; nurse\nShop Below ◡̈",
+          "avatar_url": "https://example.com/avatar.jpg",
+          "region": "US",
+          "tiktok_user_id": "6880574638150697990",
+          "metrics": {
+            "followers_count": 257952,
+            "median_views": 7639,
+            "engagement_rate": 0.0301,
+            "followers_growth_rate": 0.091,
+            "six_second_view_rate": 0.2819
+          },
+          "starting_price": {
+            "amount": 300.0,
+            "currency": "USD",
+            "formatted": null
+          },
+          "audience": {
+            "ages": [
+              {
+                "label": "25-34",
+                "share": 0.3839
+              },
+              {
+                "label": "35-44",
+                "share": 0.2793
+              },
+              {
+                "label": "45-54",
+                "share": 0.1451
+              },
+              {
+                "label": "18-24",
+                "share": 0.0833
+              },
+              {
+                "label": "55+",
+                "share": 0.0641
+              }
+            ],
+            "genders": [
+              {
+                "label": "Female",
+                "share": 0.822
+              },
+              {
+                "label": "Male",
+                "share": 0.178
+              }
+            ],
+            "countries": [
+              {
+                "country": null,
+                "country_code": "US",
+                "share": 0.7015,
+                "count": null
+              },
+              {
+                "country": null,
+                "country_code": "CA",
+                "share": 0.0479,
+                "count": null
+              },
+              {
+                "country": null,
+                "country_code": "GB",
+                "share": 0.0434,
+                "count": null
+              },
+              {
+                "country": null,
+                "country_code": "AU",
+                "share": 0.0212,
+                "count": null
+              },
+              {
+                "country": null,
+                "country_code": "ZA",
+                "share": 0.0154,
+                "count": null
+              }
+            ],
+            "devices": [
+              {
+                "label": "APPLE",
+                "share": 0.8115
+              },
+              {
+                "label": "SAMSUNG",
+                "share": 0.1156
+              },
+              {
+                "label": "MOTOROLA",
+                "share": 0.0141
+              },
+              {
+                "label": "GOOGLE",
+                "share": 0.012
+              },
+              {
+                "label": "XIAOMI",
+                "share": 0.0104
+              }
+            ]
+          },
+          "recent_video_ids": [
+            "7701029696183471391",
+            "7703412036629204255",
+            "7703648752845868318"
+          ]
+        }
+      ]
+    }
+  }
+}
+```

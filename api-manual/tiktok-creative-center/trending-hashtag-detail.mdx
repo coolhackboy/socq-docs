@@ -1,0 +1,141 @@
+---
+title: "TikTok Creative Center Hashtag Insights"
+description: "Collect the popularity curve and top countries of a trending TikTok hashtag."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok-creative-center/trending-hashtag-detail"
+---
+
+# TikTok Creative Center Hashtag Insights
+
+Dig into a single trending hashtag: its post and view totals, the daily popularity curve, the countries where it is most popular for their size and a set of example videos. The `id` from TikTok Creative Center Trending Hashtags plugs straight in.
+
+```json
+{
+  "hashtag_id": "7155204034885287979",
+  "country": "US",
+  "time_range": "7d"
+}
+```
+
+{/* input-contract:start */}
+hashtag_id is required; use the id of a TikTok Creative Center Trending Hashtags result together with the same country. time_range (default 7d) picks the period. Returns one result, billed once.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Hashtag ID, accepted by Trending Hashtag Detail. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `name` | `string` | Yes | Hashtag name without the # prefix. |
+| `rank` | `integer` | Yes | Position of the hashtag in the trending ranking. |
+| `region` | `string` | Yes | Country or region code the ranking covers. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.posts_count` | `integer` | Yes | Number of posts or posts associated with the trend. |
+| `metrics.views_count` | `integer` | Yes | Number of views reported by the platform. |
+| `popularity_curve` | `array<object>` | Yes | Daily popularity of the hashtag over the period, on a 0 to 100 scale. |
+| `popularity_curve.date` | `string` | Yes | Date of the data point, in YYYY-MM-DD format. |
+| `popularity_curve.value` | `number` | Yes | Value at this point of the curve. |
+| `top_countries` | `array<object>` | Yes | Countries where the hashtag is most popular relative to their size, highest score first. |
+| `top_countries.country_code` | `string` | Yes | Two-letter country or region code. |
+| `top_countries.score` | `number` | Yes | Score reported for the entry. |
+| `video_ids` | `array<string>` | Yes | IDs of example videos that use the hashtag. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-creative-center-trending-hashtag-detail",
+    "status": "succeeded",
+    "public_id": "tiktok-creative-center/trending-hashtag-detail",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "hashtag-insight",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7155204034885287979",
+          "platform": "tiktok-creative-center",
+          "resource": "trending-hashtag-detail",
+          "type": "hashtag_detail",
+          "url": "https://www.tiktok.com/tag/piratetoken",
+          "published_at": null,
+          "collected_at": "2026-11-10T09:00:00Z",
+          "name": "piratetoken",
+          "rank": null,
+          "region": "US",
+          "metrics": {
+            "posts_count": 33706,
+            "views_count": 265103331
+          },
+          "popularity_curve": [
+            {
+              "date": "2026-11-02",
+              "value": 0.0
+            },
+            {
+              "date": "2026-11-03",
+              "value": 41.7853
+            },
+            {
+              "date": "2026-11-04",
+              "value": 54.223
+            },
+            {
+              "date": "2026-11-05",
+              "value": 63.4335
+            },
+            {
+              "date": "2026-11-06",
+              "value": 67.9141
+            }
+          ],
+          "top_countries": [
+            {
+              "country_code": "US",
+              "score": 774.48
+            },
+            {
+              "country_code": "CA",
+              "score": 545.21
+            },
+            {
+              "country_code": "AU",
+              "score": 413.69
+            },
+            {
+              "country_code": "GB",
+              "score": 370.88
+            },
+            {
+              "country_code": "DE",
+              "score": 331.03
+            }
+          ],
+          "video_ids": [
+            "7704679142813371681",
+            "7704512845232262430",
+            "7703695788718771469"
+          ]
+        }
+      ]
+    }
+  }
+}
+```

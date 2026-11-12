@@ -1,0 +1,112 @@
+---
+title: "TikTok Creative Center Top Videos"
+description: "Collect the chart of top-performing TikTok videos in a country."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok-creative-center/top-videos"
+---
+
+# TikTok Creative Center Top Videos
+
+Pull TikTok's chart of top-performing videos for a country, ranked by views, engagement rate or six-second view rate. Each entry carries the caption, the creator, views in the chart period, lifetime views and engagement metrics. When a creator stands out, pass their `creator_id` to TikTok Creative Center Creator Marketplace for audience and rate details.
+
+```json
+{
+  "country": "US",
+  "period": "daily",
+  "results_limit": 20
+}
+```
+
+{/* input-contract:start */}
+All fields are optional. country defaults to US, period picks the daily (default), weekly or long_term chart, and sort_by ranks by views (default), engagement_rate or six_second_view_rate. The latest published chart is used. results_limit defaults to 20 and accepts 1 to 100.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `rank` | `integer` | Yes | Position of the video in the chart. |
+| `text` | `string` | Yes | Caption of the video. |
+| `author` | `object` | Yes | Author or publisher of the content. |
+| `author.id` | `string` | Yes | Unique identifier of the author. |
+| `author.username` | `string` | Yes | Public username or handle of the account. |
+| `author.name` | `string` | Yes | Display name of the author. |
+| `author.url` | `string` | Yes | Public URL of the author when available. |
+| `author.avatar_url` | `string` | Yes | URL of the account avatar image. |
+| `author.is_verified` | `boolean` | Yes | Whether the account is verified on the platform. |
+| `author.is_private` | `boolean` | Yes | Whether the account is private. |
+| `creator_id` | `string` | Yes | TikTok Creator Marketplace ID of the creator, accepted by Creator Cards. |
+| `region` | `string` | Yes | Country or region code of the chart. |
+| `cover_url` | `string` | Yes | URL of the cover image. |
+| `metrics` | `object` | Yes | Counters and measurements available for the result item. |
+| `metrics.views_count` | `integer` | Yes | Views in the chart period. |
+| `metrics.organic_views_count` | `integer` | Yes | Views from organic, non-paid distribution in the chart period. |
+| `metrics.lifetime_views_count` | `integer` | Yes | Total views since the video was published. |
+| `metrics.engagement_rate` | `number` | Yes | Engagements divided by views, as a fraction from 0 to 1. |
+| `metrics.six_second_view_rate` | `number` | Yes | Share of views that lasted at least six seconds, from 0 to 1. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-creative-center-top-videos",
+    "status": "succeeded",
+    "public_id": "tiktok-creative-center/top-videos",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "top-video",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7678479724896587038",
+          "platform": "tiktok-creative-center",
+          "resource": "top-videos",
+          "type": "video",
+          "url": "https://www.tiktok.com/@megannco/video/7678479724896587038",
+          "published_at": "2026-08-26T23:03:07Z",
+          "collected_at": "2026-11-10T09:00:00Z",
+          "rank": 1,
+          "text": "Five years ago, I started my small business with no idea what it would grow into. From working out of my parents’ spare room to now having my own commercial space, @Shopify has been there every step of the way! Having the freedom to build a storefront that actually feels like my brand, from the fonts to the colors and everything in between, has made such a difference. So grateful for how far my business has come & so excited to see where it goes next! #ad #shopifypartner",
+          "author": {
+            "id": "6880574638150697990",
+            "username": "megannco",
+            "name": "Meg Ann Co.",
+            "url": "https://www.tiktok.com/@megannco",
+            "avatar_url": "https://example.com/avatar.jpg",
+            "is_verified": null,
+            "is_private": null
+          },
+          "creator_id": "7070293872819044358",
+          "region": "US",
+          "cover_url": "https://example.com/cover.jpg",
+          "metrics": {
+            "views_count": 42477347,
+            "organic_views_count": 2445673,
+            "lifetime_views_count": 110068491,
+            "engagement_rate": 0.0012,
+            "six_second_view_rate": 0.0265
+          }
+        }
+      ]
+    }
+  }
+}
+```

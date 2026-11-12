@@ -32,7 +32,7 @@ Use the JSON request body above as the nested `input` object for `socq_execute`,
 See [MCP quickstart](/integrations/mcp) for the complete submission and polling flow.
 {/* mcp-usage:end */}
 
-Results use `platform="linkedin"`, `resource="companies"`, and `type="company"`. Industry, company size, headquarters, locations, and specialties are returned under `extra`.
+Results use `platform="linkedin"`, `resource="companies"`, and `type="company"`. `industry` is the industry shown on the company's LinkedIn page. `location` describes the headquarters: `city` and `region` come from the headquarters the company lists on LinkedIn, and `country` is the two-letter code of the headquarters country. `location` is `null` when the company lists no address. `metrics.employees_count` is the number of employees LinkedIn shows for the company. Company pages have no publish time, so `published_at` is always `null`.
 
 
 
@@ -69,6 +69,7 @@ Task results use the stable SocQ fields below. Source-specific field names and f
 | `logo_url` | `string` | Yes | URL of the company or advertiser logo. |
 | `metrics` | `object` | Yes | Counters and measurements available for the result item. |
 | `metrics.followers_count` | `integer` | Yes | Number of followers. |
+| `metrics.employees_count` | `integer` | Yes | Number of employees listed on the platform. |
 | `metrics.reviews_count` | `integer` | Yes | Number of reviews. |
 | `metrics.rating` | `number` | Yes | Rating value reported by the platform. |
 {/* result-schema:end */}
@@ -102,11 +103,19 @@ Task results use the stable SocQ fields below. Source-specific field names and f
           "name": "Example Company",
           "text": "Software company",
           "website": "https://example.com",
-          "industry": null,
-          "location": null,
+          "industry": "Software Development",
+          "location": {
+            "name": "San Francisco, California",
+            "city": "San Francisco",
+            "region": "California",
+            "country": "US",
+            "latitude": null,
+            "longitude": null
+          },
           "logo_url": null,
           "metrics": {
             "followers_count": 250000,
+            "employees_count": 1200,
             "reviews_count": null,
             "rating": null
           }

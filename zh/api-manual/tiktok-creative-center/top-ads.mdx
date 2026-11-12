@@ -1,0 +1,116 @@
+---
+title: "TikTok 创意中心热门广告"
+description: "获取 TikTok 创意中心的热门广告。"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok-creative-center/top-ads"
+---
+
+# TikTok 创意中心热门广告
+
+浏览 TikTok 创意中心里表现最好的广告。每条广告都附带文案、所属行业、投放目标、点击率、点赞数和完整视频，拿来做创意参考库正合适。加上 `query` 就能聚焦到某个品类或品牌。
+
+```json
+{
+  "query": "skincare",
+  "time_range": "30d",
+  "sort_by": "likes"
+}
+```
+
+{/* input-contract:start */}
+所有字段都可省略。query 按关键词筛选；time_range 可选 7d、30d（默认）或 180d；sort_by 可选 relevance（默认）或 likes。results_limit 默认 20，允许 1–300。
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## 标准结果字段
+
+任务结果使用下方稳定的 SocQ 字段。系统会统一来源特有的字段名和格式，但不会推断或补充来源未提供的数据。如需缩小返回字段集合，MCP 查询使用 `fields`，Typed 工具使用 `_result_fields`，CLI 使用 `--result-fields`。声明字段的值为 `null` 时仍会保留。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `text` | `string` | 是 | 广告的文案。 |
+| `advertiser` | `object` | 是 | 广告的投放主体。 |
+| `advertiser.id` | `string` | 是 | 广告主的唯一标识。 |
+| `advertiser.name` | `string` | 是 | 广告主的显示名称。 |
+| `advertiser.url` | `string` | 是 | 广告主的公开访问地址（如可获得）。 |
+| `advertiser.logo_url` | `string` | 是 | 公司或广告主徽标的地址。 |
+| `industry` | `string` | 是 | 广告所属行业分类。 |
+| `objective` | `string` | 是 | 广告的投放目标，例如商品销售或引流。 |
+| `ctr` | `number` | 是 | TikTok 创意中心报告的广告点击率。 |
+| `metrics` | `object` | 是 | 广告的公开互动数据。 |
+| `metrics.likes_count` | `integer` | 是 | 点赞数量。 |
+| `metrics.comments_count` | `integer` | 是 | 评论数量。 |
+| `metrics.shares_count` | `integer` | 是 | 分享或转发数量。 |
+| `metrics.views_count` | `integer` | 是 | 平台报告的观看数量。 |
+| `duration_seconds` | `number` | 是 | 时长，单位为秒。 |
+| `media` | `array<object>` | 是 | 结果附带的图片、视频或其他媒体。 |
+| `media.type` | `string` | 是 | 媒体类型，例如 `image` 或 `video`。 |
+| `media.url` | `string` | 是 | 媒体文件的地址。 |
+| `media.thumbnail_url` | `string` | 是 | 媒体预览图的地址。 |
+| `media.width` | `integer` | 是 | 媒体宽度，单位为像素。 |
+| `media.height` | `integer` | 是 | 媒体高度，单位为像素。 |
+| `media.duration_seconds` | `number` | 是 | 媒体时长，单位为秒。 |
+{/* result-schema:end */}
+
+以下示例展示任务完成后的响应格式，具体数据以实际查询结果为准。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-creative-center-top-ads",
+    "status": "succeeded",
+    "public_id": "tiktok-creative-center/top-ads",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "ad-creative",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7693724044912181249",
+          "platform": "tiktok-creative-center",
+          "resource": "top-ads",
+          "type": "ad",
+          "url": "https://ads.tiktok.com/business/creativecenter/topads/7693724044912181249/",
+          "published_at": null,
+          "collected_at": "2026-11-10T09:00:00Z",
+          "text": "Plum's Promise Outfit Preview. Coming to Global Where Winds Meet on October 11 #WhereWindsMeet #WWMCCPS12 #WWMFace",
+          "advertiser": null,
+          "industry": "label_22000000000",
+          "objective": "campaign_objective_video_view",
+          "ctr": 0.92,
+          "metrics": {
+            "likes_count": 4954,
+            "comments_count": null,
+            "shares_count": null,
+            "views_count": null
+          },
+          "duration_seconds": 110.8,
+          "media": [
+            {
+              "type": "video",
+              "url": "https://example.com/video.mp4",
+              "thumbnail_url": "https://example.com/thumbnail.jpg",
+              "width": 576,
+              "height": 1024,
+              "duration_seconds": 110.8
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```

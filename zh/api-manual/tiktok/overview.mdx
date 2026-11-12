@@ -1,6 +1,6 @@
 ---
 title: "TikTok"
-description: "采集公共 TikTok 个人资料、视频、视频字幕、直播室、趋势提要、评论、搜索和主题标签。"
+description: "采集公开的 TikTok 账号资料、粉丝分布、视频、转发、合集、视频字幕、直播间与直播商品、热搜、评论、搜索和话题标签。"
 sidebarTitle: "概览"
 ---
 
@@ -28,6 +28,20 @@ TikTok 端点使用与其他代理 API 相同的异步任务流。
 | TikTok 热门歌曲 | `POST` | `/v1/tiktok/popular-songs` |
 | TikTok 综合搜索 | `POST` | `/v1/tiktok/top-search` |
 | TikTok 用户直播状态 | `POST` | `/v1/tiktok/user-live` |
+| 粉丝地区分布 | `POST` | `/v1/tiktok/user-audience` |
+| 相似账号 | `POST` | `/v1/tiktok/similar-users` |
+| 转发视频 | `POST` | `/v1/tiktok/user-reposts` |
+| 合集列表 | `POST` | `/v1/tiktok/user-playlists` |
+| 话题播放量 | `POST` | `/v1/tiktok/hashtag-detail` |
+| 原声搜索 | `POST` | `/v1/tiktok/search-music` |
+| 直播搜索 | `POST` | `/v1/tiktok/search-live` |
+| 图文搜索 | `POST` | `/v1/tiktok/search-photos` |
+| 热门搜索 | `POST` | `/v1/tiktok/trending-keywords` |
+| 创作者搜索洞察 | `POST` | `/v1/tiktok/search-insights` |
+| 直播排行榜 | `POST` | `/v1/tiktok/live-ranking` |
+| 直播带货商品 | `POST` | `/v1/tiktok/live-products` |
+| 刷量检测 | `POST` | `/v1/tiktok/fake-views` |
+| 评论关键词 | `POST` | `/v1/tiktok/comment-keywords` |
 
 提交请求，收到 `task_id`，然后轮询 `GET /v1/tasks/{task_id}`。成功的任务响应包括 `results` 下的规范化记录。
 

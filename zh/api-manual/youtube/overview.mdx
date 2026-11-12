@@ -1,6 +1,6 @@
 ---
 title: "YouTube"
-description: "采集公共 YouTube 频道、视频、播放列表、评论、Shorts、搜索和视频字幕数据。"
+description: "采集公共 YouTube 频道、视频、播放列表、评论、Shorts、社区帖子、搜索和视频字幕数据。"
 sidebarTitle: "概览"
 ---
 
@@ -22,6 +22,14 @@ YouTube 端点使用与其他代理 API 相同的异步任务流。
 |社区帖子 | `POST` | `/v1/youtube/community-posts` |
 |话题标签搜索 | `POST` | `/v1/youtube/hashtag-search` |
 |频道直播视频 | `POST` | `/v1/youtube/channel-live-videos` |
+|热门 Shorts | `POST` | `/v1/youtube/trending-shorts` |
+|社区帖子详情 | `POST` | `/v1/youtube/community-post` |
+|社区帖子评论 | `POST` | `/v1/youtube/community-post-comments` |
+|相关视频 | `POST` | `/v1/youtube/related-videos` |
+|频道搜索 | `POST` | `/v1/youtube/search-channels` |
+|Shorts 搜索 | `POST` | `/v1/youtube/search-shorts` |
+|搜索联想词 | `POST` | `/v1/youtube/search-suggestions` |
+|频道邮箱查找 | `POST` | `/v1/youtube/channel-email` |
 
 提交请求，收到 `task_id`，然后轮询 `GET /v1/tasks/{task_id}`。成功的任务响应包括 `results` 下的规范化记录。
 

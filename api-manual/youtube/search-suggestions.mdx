@@ -1,0 +1,94 @@
+---
+title: "YouTube Search Suggestions"
+description: "Collect the autocomplete suggestions YouTube offers for a search."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/youtube/search-suggestions"
+---
+
+# YouTube Search Suggestions
+
+Send the start of a search and get back the completions YouTube's search box proposes, ranked the way viewers see them. Switch language and region to watch the same seed branch out differently in another market — useful for keyword research, video titles and tag ideas.
+
+```json
+{
+  "query": "iphone 17"
+}
+```
+
+{/* input-contract:start */}
+query is required. language (default en) and region (default US) choose the market the suggestions come from. Each request is billed once, whatever the number of suggestions.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `keyword` | `string` | Yes | Suggested search phrase. |
+| `query` | `string` | Yes | Search text the result was generated from. |
+| `rank` | `integer` | Yes | Position of the suggestion in the list, starting at 1. |
+| `language` | `string` | Yes | Language code the suggestions were requested in. |
+| `region` | `string` | Yes | Country code of the search market. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-youtube-search-suggestions",
+    "status": "succeeded",
+    "public_id": "youtube/search-suggestions",
+    "result_count": 2,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "search-suggestion",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "iphone 17 pro max",
+          "platform": "youtube",
+          "resource": "search-suggestions",
+          "type": "suggestion",
+          "url": "https://www.youtube.com/results?search_query=iphone+17+pro+max",
+          "published_at": null,
+          "collected_at": "2026-11-09T11:13:40Z",
+          "keyword": "iphone 17 pro max",
+          "query": "iphone 17",
+          "rank": 1,
+          "language": "en",
+          "region": "US"
+        },
+        {
+          "id": "iphone 17 review",
+          "platform": "youtube",
+          "resource": "search-suggestions",
+          "type": "suggestion",
+          "url": "https://www.youtube.com/results?search_query=iphone+17+review",
+          "published_at": null,
+          "collected_at": "2026-11-09T11:13:40Z",
+          "keyword": "iphone 17 review",
+          "query": "iphone 17",
+          "rank": 2,
+          "language": "en",
+          "region": "US"
+        }
+      ]
+    }
+  }
+}
+```

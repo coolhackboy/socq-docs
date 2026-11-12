@@ -1,0 +1,133 @@
+---
+title: "YouTube 热门 Shorts"
+description: "采集 YouTube 当前正在流行的 Shorts。"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/youtube/trending-shorts"
+---
+
+# YouTube 热门 Shorts
+
+获取 YouTube 此刻正在推热的 Shorts，每条附带标题、频道、播放量、点赞数、评论数、时长和发布时间。每次运行都会从热门池里重新抽一批，定时跑一天下来，就能看清哪些内容正在起量。
+
+```json
+{
+  "results_limit": 48
+}
+```
+
+{/* input-contract:start */}
+所有字段都可省略。results_limit 设置返回的 Shorts 数量（默认 48，最多 200）。每次运行抽取的是当时的热门内容，相隔几分钟的两次运行只会有少量重合。
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## 标准结果字段
+
+任务结果使用下方稳定的 SocQ 字段。系统会统一来源特有的字段名和格式，但不会推断或补充来源未提供的数据。如需缩小返回字段集合，MCP 查询使用 `fields`，Typed 工具使用 `_result_fields`，CLI 使用 `--result-fields`。声明字段的值为 `null` 时仍会保留。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `text` | `string` | 是 | 视频的说明文字或描述。 |
+| `author` | `object` | 是 | 内容的作者或发布者。 |
+| `author.id` | `string` | 是 | 作者的唯一标识。 |
+| `author.username` | `string` | 是 | 账号的公开用户名或账号标识。 |
+| `author.name` | `string` | 是 | 作者的显示名称。 |
+| `author.url` | `string` | 是 | 作者的公开访问地址（如可获得）。 |
+| `author.avatar_url` | `string` | 是 | 账号头像图片的地址。 |
+| `author.is_verified` | `boolean` | 是 | 账号是否已通过平台认证。 |
+| `author.is_private` | `boolean` | 是 | 账号是否为私密账号。 |
+| `metrics` | `object` | 是 | 结果项可获得的计数和度量数据。 |
+| `metrics.likes_count` | `integer` | 是 | 点赞数量。 |
+| `metrics.comments_count` | `integer` | 是 | 评论数量。 |
+| `metrics.shares_count` | `integer` | 是 | 分享或转发数量。 |
+| `metrics.plays_count` | `integer` | 是 | 平台报告的视频播放次数。 |
+| `metrics.views_count` | `integer` | 是 | 平台报告的观看数量。 |
+| `media` | `array<object>` | 是 | 结果附带的图片、视频或其他媒体。 |
+| `media.type` | `string` | 是 | 媒体类型，例如 `image` 或 `video`。 |
+| `media.url` | `string` | 是 | 媒体文件的地址。 |
+| `media.thumbnail_url` | `string` | 是 | 媒体预览图的地址。 |
+| `media.width` | `integer` | 是 | 媒体宽度，单位为像素。 |
+| `media.height` | `integer` | 是 | 媒体高度，单位为像素。 |
+| `media.duration_seconds` | `number` | 是 | 媒体时长，单位为秒。 |
+| `hashtags` | `array<string>` | 是 | 内容关联的话题标签，保留源数据中的拼写。 |
+| `mentions` | `array<string>` | 是 | 内容中提及的账号。 |
+| `shortcode` | `string` | 是 | 平台用于标识媒体内容的短代码。 |
+| `duration_seconds` | `number` | 是 | 时长，单位为秒。 |
+| `audio` | `object` | 是 | 视频关联的音频或音乐信息。 |
+| `audio.id` | `string` | 是 | 音频或音乐曲目的标识。 |
+| `audio.title` | `string` | 是 | 音频或音乐曲目的标题。 |
+| `audio.artist` | `string` | 是 | 音频艺术家或创作者名称。 |
+| `audio.url` | `string` | 是 | 音频或音乐曲目的地址（如可获得）。 |
+{/* result-schema:end */}
+
+以下示例展示任务完成后的响应格式，具体数据以实际查询结果为准。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-youtube-trending-shorts",
+    "status": "succeeded",
+    "public_id": "youtube/trending-shorts",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "reel-video",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "hRYWcfp6dsg",
+          "platform": "youtube",
+          "resource": "trending-shorts",
+          "type": "short",
+          "url": "https://www.youtube.com/watch?v=hRYWcfp6dsg",
+          "published_at": "2026-10-09T17:50:23Z",
+          "collected_at": "2026-11-09T11:13:27Z",
+          "text": "Why Old Soda Bottles Couldn't Stand Up",
+          "author": {
+            "id": "UCP8wHrwU79SSJUxu1PBmiNQ",
+            "username": "TrialAndEureka",
+            "name": "Trial & Eureka",
+            "url": "https://www.youtube.com/@TrialAndEureka",
+            "avatar_url": "https://example.com/channel-avatar.jpg",
+            "is_verified": null,
+            "is_private": null
+          },
+          "metrics": {
+            "likes_count": 493579,
+            "comments_count": 1400,
+            "shares_count": null,
+            "plays_count": null,
+            "views_count": 17487527
+          },
+          "media": [
+            {
+              "type": "image",
+              "url": "https://img.youtube.com/vi/hRYWcfp6dsg/maxresdefault.jpg",
+              "thumbnail_url": "https://img.youtube.com/vi/hRYWcfp6dsg/maxresdefault.jpg",
+              "width": null,
+              "height": null,
+              "duration_seconds": null
+            }
+          ],
+          "hashtags": [],
+          "mentions": null,
+          "shortcode": null,
+          "duration_seconds": 78,
+          "audio": null
+        }
+      ]
+    }
+  }
+}
+```

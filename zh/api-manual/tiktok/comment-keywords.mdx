@@ -1,0 +1,99 @@
+---
+title: "TikTok 评论关键词"
+description: "提取 TikTok 视频评论中出现最多的关键词。"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/comment-keywords"
+---
+
+# TikTok 评论关键词
+
+弄清楚一条视频的观众在反复聊什么。接口会挑出评论区里出现最多的关键词，并给每个词附上提到它的评论，评论再多也能一眼看清讨论的重点。
+
+```json
+{
+  "url": "https://www.tiktok.com/@tiktok/video/7460937381265411370"
+}
+```
+
+{/* input-contract:start */}
+url 为必填项。返回评论中出现最多的关键词并排名，每个关键词附带提到它的评论。每次请求按次计费。
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## 标准结果字段
+
+任务结果使用下方稳定的 SocQ 字段。系统会统一来源特有的字段名和格式，但不会推断或补充来源未提供的数据。如需缩小返回字段集合，MCP 查询使用 `fields`，Typed 工具使用 `_result_fields`，CLI 使用 `--result-fields`。声明字段的值为 `null` 时仍会保留。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `keyword` | `string` | 是 | 视频评论中反复出现的关键词。 |
+| `rank` | `integer` | 是 | 关键词的排序位置，越靠前越突出。 |
+| `post_id` | `string` | 是 | 评论所属视频的 ID。 |
+| `comments_count` | `integer` | 是 | 返回的评论中提到该关键词的条数。 |
+| `comments` | `array<object>` | 是 | 提到该关键词的评论。 |
+| `comments.id` | `string` | 是 | 所引用对象的唯一标识。 |
+| `comments.text` | `string` | 是 | 评论内容。 |
+| `comments.likes_count` | `integer` | 是 | 点赞数量。 |
+{/* result-schema:end */}
+
+以下示例展示任务完成后的响应格式，具体数据以实际查询结果为准。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-comment-keywords",
+    "status": "succeeded",
+    "public_id": "tiktok/comment-keywords",
+    "result_count": 1,
+    "credits_amount": 1.0,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "comment-keyword",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7460937381265411370:mr beast",
+          "platform": "tiktok",
+          "resource": "comment-keywords",
+          "type": "comment_keyword",
+          "url": "https://www.tiktok.com/@tiktok/video/7460937381265411370",
+          "published_at": null,
+          "collected_at": "2026-11-10T09:00:00Z",
+          "keyword": "mr beast",
+          "rank": 2,
+          "post_id": "7460937381265411370",
+          "comments_count": 3,
+          "comments": [
+            {
+              "id": "7460938292575421215",
+              "text": "Let mr beast buy it",
+              "likes_count": 4
+            },
+            {
+              "id": "7460938116934091553",
+              "text": "LET MR BEAST BUY TIKTOK",
+              "likes_count": 3
+            },
+            {
+              "id": "7460941138023727902",
+              "text": "why don’t you give the company to mr beast and be co ceo don’t have access to the security cause i don’t trust yall either",
+              "likes_count": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```

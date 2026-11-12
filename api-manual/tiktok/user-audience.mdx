@@ -1,0 +1,109 @@
+---
+title: "TikTok Audience Demographics"
+description: "Collect the countries a TikTok account's followers are located in."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/user-audience"
+---
+
+# TikTok Audience Demographics
+
+See where a TikTok creator's followers live. The result lists every country in the follower sample with its share of the audience and the number of sampled followers behind it, ordered from the largest market down. Run it before booking a collaboration to check that the creator's reach lands in the market you sell to.
+
+```json
+{
+  "username": "khaby.lame"
+}
+```
+
+{/* input-contract:start */}
+username is required. Returns one result for the account with its follower countries, largest share first. Each request is billed once.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `username` | `string` | Yes | Username of the account the audience belongs to. |
+| `audience_countries` | `array<object>` | Yes | Countries the account's followers are located in, largest share first. |
+| `audience_countries.country` | `string` | Yes | Country or region name. |
+| `audience_countries.country_code` | `string` | Yes | Two-letter country or region code. |
+| `audience_countries.share` | `number` | Yes | Share of the account's followers in this country, from 0 to 1. |
+| `audience_countries.count` | `integer` | Yes | Number of sampled followers in this group. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-user-audience",
+    "status": "succeeded",
+    "public_id": "tiktok/user-audience",
+    "result_count": 1,
+    "credits_amount": 20.0,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "audience",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "khaby.lame",
+          "platform": "tiktok",
+          "resource": "user-audience",
+          "type": "audience",
+          "url": "https://www.tiktok.com/@khaby.lame",
+          "published_at": null,
+          "collected_at": "2026-11-10T09:00:00Z",
+          "username": "khaby.lame",
+          "audience_countries": [
+            {
+              "country": "Pakistan",
+              "country_code": "PK",
+              "share": 0.2109,
+              "count": 274
+            },
+            {
+              "country": "Bangladesh",
+              "country_code": "BD",
+              "share": 0.1116,
+              "count": 145
+            },
+            {
+              "country": "United States",
+              "country_code": "US",
+              "share": 0.097,
+              "count": 126
+            },
+            {
+              "country": "Philippines",
+              "country_code": "PH",
+              "share": 0.0439,
+              "count": 57
+            },
+            {
+              "country": "Indonesia",
+              "country_code": "ID",
+              "share": 0.0354,
+              "count": 46
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```

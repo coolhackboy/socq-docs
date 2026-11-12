@@ -1,6 +1,6 @@
 ---
 title: "TikTok"
-description: "Collect public TikTok profiles, videos, transcripts, live rooms, trending feeds, comments, search, and hashtags."
+description: "Collect public TikTok profiles, audiences, videos, reposts, playlists, transcripts, LIVE streams and products, trending searches, comments, search, and hashtags."
 sidebarTitle: "Overview"
 ---
 
@@ -28,6 +28,20 @@ TikTok endpoints use the same asynchronous task flow as the other Agent APIs.
 | TikTok Popular Songs | `POST` | `/v1/tiktok/popular-songs` |
 | TikTok Top Search | `POST` | `/v1/tiktok/top-search` |
 | TikTok User Live | `POST` | `/v1/tiktok/user-live` |
+| Audience Demographics | `POST` | `/v1/tiktok/user-audience` |
+| Similar Accounts | `POST` | `/v1/tiktok/similar-users` |
+| Reposts | `POST` | `/v1/tiktok/user-reposts` |
+| Playlists | `POST` | `/v1/tiktok/user-playlists` |
+| Hashtag Views | `POST` | `/v1/tiktok/hashtag-detail` |
+| Sound Search | `POST` | `/v1/tiktok/search-music` |
+| Live Search | `POST` | `/v1/tiktok/search-live` |
+| Photo Search | `POST` | `/v1/tiktok/search-photos` |
+| Trending Searches | `POST` | `/v1/tiktok/trending-keywords` |
+| Creator Search Insights | `POST` | `/v1/tiktok/search-insights` |
+| Live Ranking | `POST` | `/v1/tiktok/live-ranking` |
+| Live Shopping | `POST` | `/v1/tiktok/live-products` |
+| Fake Views Checker | `POST` | `/v1/tiktok/fake-views` |
+| Comment Keywords | `POST` | `/v1/tiktok/comment-keywords` |
 
 Submit a request, receive a `task_id`, then poll `GET /v1/tasks/{task_id}`. Successful task responses include normalized records under `results`.
 

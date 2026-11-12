@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-49b371f0f690",
+    "version": "v1-1ec1c4dc8580",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -12175,6 +12175,519 @@
         }
       }
     },
+    "/v1/tiktok-creative-center/ad-analysis": {
+      "post": {
+        "operationId": "socq_tiktok_creative_center_ad_analysis",
+        "summary": "TikTok Creative Center Ad Analysis API",
+        "description": "Collect the details and second-by-second performance curves of a TikTok top ad.",
+        "tags": [
+          "tiktok-creative-center"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdAnalysisItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "ad_id": {
+                    "type": "string",
+                    "pattern": "^\\d{5,32}$",
+                    "description": "Ad ID from TikTok Creative Center Top Ads results."
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "required": [
+                  "ad_id"
+                ],
+                "description": "ad_id is required; use an id from TikTok Creative Center Top Ads results. Returns one analysis with the ad's details, how its impressions rank among comparable ads, and second-by-second click-through and retention curves."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok-creative-center/creator-cards": {
+      "post": {
+        "operationId": "socq_tiktok_creative_center_creator_cards",
+        "summary": "TikTok Creative Center Creator Marketplace API",
+        "description": "Collect TikTok Creator Marketplace cards with audience demographics and rates.",
+        "tags": [
+          "tiktok-creative-center"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CreatorCardItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "creator_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[0-9]{5,32}$"
+                    },
+                    "minItems": 1,
+                    "description": "Creator Marketplace IDs, such as creator_id values from TikTok Creative Center Top Videos results.",
+                    "maxItems": 20
+                  }
+                },
+                "required": [
+                  "creator_ids"
+                ],
+                "description": "creator_ids is required: 1 to 20 Creator Marketplace IDs, such as creator_id values from TikTok Creative Center Top Videos results. Returns one card per creator with audience demographics, performance benchmarks and rates."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok-creative-center/top-ads": {
+      "post": {
+        "operationId": "socq_tiktok_creative_center_top_ads",
+        "summary": "TikTok Creative Center Top Ads API",
+        "description": "Collect top-performing TikTok ads from TikTok Creative Center.",
+        "tags": [
+          "tiktok-creative-center"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AdCreativeItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Optional keyword to match against ad captions and brands."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 300,
+                    "default": 20
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "likes",
+                      "relevance"
+                    ],
+                    "default": "relevance",
+                    "description": "relevance for TikTok's own order, or likes for the most-liked ads first."
+                  },
+                  "time_range": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "180d",
+                      "30d",
+                      "7d"
+                    ],
+                    "default": "30d",
+                    "description": "Period the ads ran in: 7d, 30d or 180d."
+                  }
+                },
+                "required": [],
+                "description": "All fields are optional. Returns top-performing TikTok ads with their click-through rate, likes and video; query narrows them by keyword. results_limit defaults to 20 and accepts 1 to 300."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok-creative-center/top-videos": {
+      "post": {
+        "operationId": "socq_tiktok_creative_center_top_videos",
+        "summary": "TikTok Creative Center Top Videos API",
+        "description": "Collect the chart of top-performing TikTok videos in a country.",
+        "tags": [
+          "tiktok-creative-center"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/TopVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "country": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^[A-Za-z]{2}$",
+                    "default": "US",
+                    "description": "Two-letter country code of the market, such as US, GB or JP."
+                  },
+                  "period": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Chart to read: daily, weekly or long_term.",
+                    "enum": [
+                      "daily",
+                      "long_term",
+                      "weekly"
+                    ],
+                    "default": "daily"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "default": 20
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "engagement_rate",
+                      "six_second_view_rate",
+                      "views"
+                    ],
+                    "default": "views",
+                    "description": "Ranking metric: views, engagement_rate or six_second_view_rate."
+                  }
+                },
+                "required": [],
+                "description": "All fields are optional. Returns the latest published chart of top-performing TikTok videos in a country, with views, engagement rate and six-second view rate. results_limit defaults to 20 and accepts 1 to 100."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok-creative-center/trending-hashtag-detail": {
+      "post": {
+        "operationId": "socq_tiktok_creative_center_trending_hashtag_detail",
+        "summary": "TikTok Creative Center Hashtag Insights API",
+        "description": "Collect the popularity curve and top countries of a trending TikTok hashtag.",
+        "tags": [
+          "tiktok-creative-center"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/HashtagInsightItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "country": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^[A-Za-z]{2}$",
+                    "default": "US",
+                    "description": "Two-letter country code of the market, such as US, GB or JP."
+                  },
+                  "hashtag_id": {
+                    "type": "string",
+                    "pattern": "^\\d{5,32}$",
+                    "description": "Hashtag ID from TikTok Creative Center Trending Hashtags results."
+                  },
+                  "time_range": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "30d",
+                      "7d",
+                      "90d"
+                    ],
+                    "default": "7d",
+                    "description": "Period to analyze: 7d, 30d or 90d."
+                  }
+                },
+                "required": [
+                  "hashtag_id"
+                ],
+                "description": "hashtag_id is required; use an id from TikTok Creative Center Trending Hashtags results, with the same country. Returns one result with the hashtag's post and view counts, popularity curve, top countries and example videos."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok-creative-center/trending-hashtags": {
+      "post": {
+        "operationId": "socq_tiktok_creative_center_trending_hashtags",
+        "summary": "TikTok Creative Center Trending Hashtags API",
+        "description": "Collect the hashtags trending on TikTok in a country.",
+        "tags": [
+          "tiktok-creative-center"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/HashtagInsightItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "country": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^[A-Za-z]{2}$",
+                    "default": "US",
+                    "description": "Two-letter country code of the market, such as US, GB or JP."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "default": 20
+                  },
+                  "time_range": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "30d",
+                      "7d",
+                      "90d"
+                    ],
+                    "default": "7d",
+                    "description": "Period the ranking covers: 7d, 30d or 90d."
+                  }
+                },
+                "required": [],
+                "description": "All fields are optional. Returns the hashtags trending in a country, ranked, with post and view counts and a popularity curve. results_limit defaults to 20 and accepts 1 to 100."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tiktok-shop/product": {
       "post": {
         "operationId": "socq_tiktok_shop_product",
@@ -12556,6 +13069,76 @@
         }
       }
     },
+    "/v1/tiktok/comment-keywords": {
+      "post": {
+        "operationId": "socq_tiktok_comment_keywords",
+        "summary": "TikTok Comment Keywords API",
+        "description": "Collect the keywords that come up most in a TikTok video's comments.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentKeywordItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "TikTok video or photo post URL, such as https://www.tiktok.com/@user/video/1234567890123456789."
+                  }
+                },
+                "required": [
+                  "url"
+                ],
+                "description": "url is required. Returns the keywords that come up most in the video's comments, each with the comments that mention it."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tiktok/comment-replies": {
       "post": {
         "operationId": "socq_tiktok_comment_replies",
@@ -12683,6 +13266,89 @@
                 "required": [
                   "urls"
                 ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/fake-views": {
+      "post": {
+        "operationId": "socq_tiktok_fake_views",
+        "summary": "TikTok Fake Views Checker API",
+        "description": "Estimate how much of a TikTok video's view count is inauthentic.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/FakeViewCheckItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "category": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "education",
+                      "entertainment",
+                      "general",
+                      "product",
+                      "verified_large"
+                    ],
+                    "default": "general",
+                    "description": "Content type used to pick engagement benchmarks: general, entertainment, education, product or verified_large."
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "TikTok video or photo post URL, such as https://www.tiktok.com/@user/video/1234567890123456789."
+                  }
+                },
+                "required": [
+                  "url"
+                ],
+                "description": "url is required. Returns one analysis with a fake-view score, the estimated share of inauthentic views and the traffic tier the video reached."
               }
             }
           }
@@ -12869,6 +13535,81 @@
         }
       }
     },
+    "/v1/tiktok/hashtag-detail": {
+      "post": {
+        "operationId": "socq_tiktok_hashtag_detail",
+        "summary": "TikTok Hashtag Views API",
+        "description": "Collect the video and view counts of TikTok hashtags.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/HashtagTrendItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "hashtags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Hashtag names with or without the # prefix, up to 20 per request.",
+                    "maxItems": 20
+                  }
+                },
+                "required": [
+                  "hashtags"
+                ],
+                "description": "hashtags is required: 1 to 20 hashtag names. Returns one result per hashtag with its total video count and view count."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tiktok/hashtags": {
       "post": {
         "operationId": "socq_tiktok_hashtags",
@@ -12915,6 +13656,153 @@
                 "required": [
                   "hashtags"
                 ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/live-products": {
+      "post": {
+        "operationId": "socq_tiktok_live_products",
+        "summary": "TikTok Live Shopping API",
+        "description": "Collect the products in a TikTok LIVE stream's shopping bag.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ProductItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 500,
+                    "default": 100
+                  },
+                  "room_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Numeric ID of the LIVE room.",
+                    "pattern": "^\\d{10,32}$"
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Numeric TikTok user ID of the LIVE host.",
+                    "pattern": "^\\d{5,32}$"
+                  }
+                },
+                "required": [
+                  "room_id",
+                  "user_id"
+                ],
+                "description": "room_id and user_id are required; both come from TikTok Live Search results. Returns the products in the stream's shopping bag. results_limit defaults to 100 and accepts 1 to 500."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/live-ranking": {
+      "post": {
+        "operationId": "socq_tiktok_live_ranking",
+        "summary": "TikTok Live Ranking API",
+        "description": "Collect the TikTok LIVE daily creator ranking.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/LiveRankingItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "required": [],
+                "description": "Takes no input. Returns TikTok's LIVE daily creator ranking, up to the top 99 creators with their scores."
               }
             }
           }
@@ -13239,6 +14127,358 @@
         }
       }
     },
+    "/v1/tiktok/search-insights": {
+      "post": {
+        "operationId": "socq_tiktok_search_insights",
+        "summary": "TikTok Creator Search Insights API",
+        "description": "Collect popular TikTok searches with their popularity trend.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/SearchTrendItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "category": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "fashion",
+                      "food",
+                      "gaming",
+                      "science",
+                      "sports",
+                      "tourism"
+                    ],
+                    "description": "Limit the searches to one content category."
+                  },
+                  "filter_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "all",
+                      "content_gap"
+                    ],
+                    "default": "all",
+                    "description": "all for popular searches, or content_gap for searches that have few videos yet."
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "ar",
+                      "de",
+                      "en",
+                      "es",
+                      "fr",
+                      "id",
+                      "ja",
+                      "ko",
+                      "pt",
+                      "th",
+                      "tr",
+                      "vi"
+                    ],
+                    "default": "en",
+                    "description": "Language of the searches to return."
+                  }
+                },
+                "required": [],
+                "description": "All fields are optional. Returns 20 searches popular on TikTok, each with a popularity score, a seven-point trend and its video count; language, category and filter_by narrow them."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/search-live": {
+      "post": {
+        "operationId": "socq_tiktok_search_live",
+        "summary": "TikTok Live Search API",
+        "description": "Search TikTok LIVE streams broadcasting now by keyword.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/LiveRoomItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Keyword to find LIVE streams for."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 200,
+                    "default": 20
+                  }
+                },
+                "required": [
+                  "query"
+                ],
+                "description": "query is required. Returns LIVE streams that are broadcasting now and match it, with their current viewers. results_limit defaults to 20 and accepts 1 to 200."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/search-music": {
+      "post": {
+        "operationId": "socq_tiktok_search_music",
+        "summary": "TikTok Sound Search API",
+        "description": "Search TikTok sounds by keyword.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/MusicItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Song title, artist or sound name to search for."
+                  },
+                  "region": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^[A-Za-z]{2}$",
+                    "default": "US",
+                    "description": "Two-letter country code of the TikTok market to search."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 500,
+                    "default": 20
+                  },
+                  "sort_by": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "latest",
+                      "most_used",
+                      "relevance"
+                    ],
+                    "default": "relevance",
+                    "description": "Order of the results: relevance, most_used or latest."
+                  }
+                },
+                "required": [
+                  "query"
+                ],
+                "description": "query is required. Returns sounds matching it; sort_by orders them by relevance (default), most_used or latest. results_limit defaults to 20 and accepts 1 to 500."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/search-photos": {
+      "post": {
+        "operationId": "socq_tiktok_search_photos",
+        "summary": "TikTok Photo Search API",
+        "description": "Search TikTok photo carousel posts by keyword.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Keyword to find photo posts for."
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 500,
+                    "default": 20
+                  }
+                },
+                "required": [
+                  "query"
+                ],
+                "description": "query is required. Returns photo carousel posts matching it, with every image in the carousel. results_limit defaults to 20 and accepts 1 to 500."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tiktok/search-users": {
       "post": {
         "operationId": "socq_tiktok_search_users",
@@ -13286,6 +14526,83 @@
                 "required": [
                   "query"
                 ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/similar-users": {
+      "post": {
+        "operationId": "socq_tiktok_similar_users",
+        "summary": "TikTok Similar Accounts API",
+        "description": "Collect accounts TikTok recommends as similar to a TikTok account.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 300,
+                    "default": 30
+                  },
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "TikTok username, with or without the leading @.",
+                    "pattern": "^@?[A-Za-z0-9_.]{2,24}$"
+                  }
+                },
+                "required": [
+                  "username"
+                ],
+                "description": "username is required. Returns accounts TikTok recommends as similar to it. results_limit defaults to 30 and accepts 1 to 300."
               }
             }
           }
@@ -13647,6 +14964,140 @@
         }
       }
     },
+    "/v1/tiktok/trending-keywords": {
+      "post": {
+        "operationId": "socq_tiktok_trending_keywords",
+        "summary": "TikTok Trending Searches API",
+        "description": "Collect today's trending search keywords on TikTok.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/SearchTrendItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "required": [],
+                "description": "Takes no input. Returns today's trending search keywords on TikTok, in TikTok's order."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/user-audience": {
+      "post": {
+        "operationId": "socq_tiktok_user_audience",
+        "summary": "TikTok Audience Demographics API",
+        "description": "Collect the countries a TikTok account's followers are located in.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AudienceItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "TikTok username, with or without the leading @.",
+                    "pattern": "^@?[A-Za-z0-9_.]{2,24}$"
+                  }
+                },
+                "required": [
+                  "username"
+                ],
+                "description": "username is required. Returns one result with the countries the account's followers are located in, each with its share of the audience."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tiktok/user-live": {
       "post": {
         "operationId": "socq_tiktok_user_live",
@@ -13693,6 +15144,160 @@
                   "usernames"
                 ],
                 "description": "Provide a non-empty usernames array. Each successful lookup returns one billable status, including is_live=false for offline accounts."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/user-playlists": {
+      "post": {
+        "operationId": "socq_tiktok_user_playlists",
+        "summary": "TikTok Playlists API",
+        "description": "Collect the public playlists of a TikTok account.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PlaylistItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "default": 20
+                  },
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "TikTok username, with or without the leading @.",
+                    "pattern": "^@?[A-Za-z0-9_.]{2,24}$"
+                  }
+                },
+                "required": [
+                  "username"
+                ],
+                "description": "username is required. Returns the account's public playlists with their video counts. results_limit defaults to 20 and accepts 1 to 100."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tiktok/user-reposts": {
+      "post": {
+        "operationId": "socq_tiktok_user_reposts",
+        "summary": "TikTok Reposts API",
+        "description": "Collect the videos a TikTok account has reposted.",
+        "tags": [
+          "tiktok"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 500,
+                    "default": 20
+                  },
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "TikTok username, with or without the leading @.",
+                    "pattern": "^@?[A-Za-z0-9_.]{2,24}$"
+                  }
+                },
+                "required": [
+                  "username"
+                ],
+                "description": "username is required. Returns the videos the account has reposted, newest first. results_limit defaults to 20 and accepts 1 to 500."
               }
             }
           }
@@ -15482,6 +17087,76 @@
         }
       }
     },
+    "/v1/youtube/channel-email": {
+      "post": {
+        "operationId": "socq_youtube_channel_email",
+        "summary": "YouTube Email Finder API",
+        "description": "Find public contact emails for a YouTube channel.",
+        "tags": [
+          "youtube"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ContactItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "YouTube channel URL in the @handle or /channel/UC... form."
+                  }
+                },
+                "required": [
+                  "url"
+                ],
+                "description": "url is required: a channel link in the @handle or /channel/UC... form. Returns the public contact emails found for the channel; credits are charged only when at least one email is found."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/youtube/channel-live-videos": {
       "post": {
         "operationId": "socq_youtube_channel_live_videos",
@@ -15878,6 +17553,152 @@
         }
       }
     },
+    "/v1/youtube/community-post": {
+      "post": {
+        "operationId": "socq_youtube_community_post",
+        "summary": "YouTube Community Post API",
+        "description": "Collect the details of one YouTube community post.",
+        "tags": [
+          "youtube"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/PostItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "YouTube community post URL, such as https://www.youtube.com/post/Ugkx..."
+                  }
+                },
+                "required": [
+                  "url"
+                ],
+                "description": "url is required: the link of one community post."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/community-post-comments": {
+      "post": {
+        "operationId": "socq_youtube_community_post_comments",
+        "summary": "YouTube Community Post Comments API",
+        "description": "Collect comments on a YouTube community post.",
+        "tags": [
+          "youtube"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/CommentItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 100
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "YouTube community post URL, such as https://www.youtube.com/post/Ugkx..."
+                  }
+                },
+                "required": [
+                  "url"
+                ],
+                "description": "url is required: the link of the community post. results_limit defaults to 100 and accepts 1 to 1000."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/youtube/community-posts": {
       "post": {
         "operationId": "socq_youtube_community_posts",
@@ -16114,6 +17935,76 @@
         }
       }
     },
+    "/v1/youtube/related-videos": {
+      "post": {
+        "operationId": "socq_youtube_related_videos",
+        "summary": "YouTube Related Videos API",
+        "description": "Collect the videos YouTube recommends next to a video.",
+        "tags": [
+          "youtube"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "YouTube video or Shorts URL, such as https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                  }
+                },
+                "required": [
+                  "url"
+                ],
+                "description": "url is required. Returns the videos YouTube recommends next to that video, usually about 20."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/youtube/search": {
       "post": {
         "operationId": "socq_youtube_search",
@@ -16171,6 +18062,245 @@
                 "required": [
                   "query"
                 ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/search-channels": {
+      "post": {
+        "operationId": "socq_youtube_search_channels",
+        "summary": "YouTube Channel Search API",
+        "description": "Search YouTube channels by keyword.",
+        "tags": [
+          "youtube"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/AccountItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Keywords to search YouTube for.",
+                    "maxLength": 100
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 200,
+                    "default": 20
+                  }
+                },
+                "required": [
+                  "query"
+                ],
+                "description": "query is required. Returns channels in YouTube's search order. results_limit defaults to 20 and accepts 1 to 200."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/search-shorts": {
+      "post": {
+        "operationId": "socq_youtube_search_shorts",
+        "summary": "YouTube Shorts Search API",
+        "description": "Search YouTube Shorts by keyword.",
+        "tags": [
+          "youtube"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Keywords to search YouTube for.",
+                    "maxLength": 100
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 200,
+                    "default": 25
+                  }
+                },
+                "required": [
+                  "query"
+                ],
+                "description": "query is required. Returns Shorts in YouTube's search order. results_limit defaults to 25 and accepts 1 to 200."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/search-suggestions": {
+      "post": {
+        "operationId": "socq_youtube_search_suggestions",
+        "summary": "YouTube Search Suggestions API",
+        "description": "Collect YouTube search autocomplete suggestions.",
+        "tags": [
+          "youtube"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/SearchSuggestionItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?$",
+                    "default": "en",
+                    "description": "Language code for the suggestions, such as en, es or pt-BR."
+                  },
+                  "query": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The partial search text to complete.",
+                    "maxLength": 100
+                  },
+                  "region": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^[A-Za-z]{2}$",
+                    "default": "US",
+                    "description": "Two-letter country code of the search market, such as US or GB."
+                  }
+                },
+                "required": [
+                  "query"
+                ],
+                "description": "query is required. language defaults to en and region to US."
               }
             }
           }
@@ -16318,6 +18448,75 @@
                 "required": [
                   "urls"
                 ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Input validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentValidationErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/youtube/trending-shorts": {
+      "post": {
+        "operationId": "socq_youtube_trending_shorts",
+        "summary": "YouTube Trending Shorts API",
+        "description": "Collect Shorts trending on YouTube right now.",
+        "tags": [
+          "youtube"
+        ],
+        "x-standard-result-item-schema": {
+          "$ref": "#/components/schemas/ReelVideoItem"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 200,
+                    "default": 48
+                  }
+                },
+                "required": [],
+                "description": "Every field is optional. Returns Shorts trending on YouTube right now; each run draws a fresh set. results_limit defaults to 48 and accepts 1 to 200."
               }
             }
           }
@@ -22627,6 +24826,2986 @@
         "type": "object",
         "required": [
           "videos_count"
+        ]
+      },
+      "ContactItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "username": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Username",
+            "description": "Channel handle without the leading @, or the channel ID when the input used one.",
+            "x-description-zh": "不带 @ 的频道账号名；输入为频道 ID 时为该 ID。"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name",
+            "description": "Display name of the channel when available.",
+            "x-description-zh": "频道的显示名称（如可获得）。"
+          },
+          "emails": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ContactEmail"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Emails",
+            "description": "Public contact emails found for the account, each with the pages it was found on.",
+            "x-description-zh": "为该账号找到的公开联系邮箱，每个邮箱附带其出处页面。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "username",
+          "name",
+          "emails"
+        ],
+        "title": "ContactItem",
+        "type": "object",
+        "x-schema-id": "contact",
+        "x-schema-version": "1.0"
+      },
+      "ContactEmail": {
+        "additionalProperties": false,
+        "properties": {
+          "email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Email",
+            "description": "Email address.",
+            "x-description-zh": "邮箱地址。"
+          },
+          "source_urls": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Source Urls",
+            "description": "Public pages where the email was found.",
+            "x-description-zh": "找到该邮箱的公开页面。"
+          }
+        },
+        "title": "ContactEmail",
+        "type": "object",
+        "required": [
+          "email",
+          "source_urls"
+        ]
+      },
+      "SearchSuggestionItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "keyword": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Keyword",
+            "description": "Suggested search phrase.",
+            "x-description-zh": "联想出的搜索词。"
+          },
+          "query": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Query",
+            "description": "Search text the result was generated from.",
+            "x-description-zh": "生成该结果所依据的搜索文本。"
+          },
+          "rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rank",
+            "description": "Position of the suggestion in the list, starting at 1.",
+            "x-description-zh": "该联想词在列表中的位置，从 1 开始。"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Language",
+            "description": "Language code the suggestions were requested in.",
+            "x-description-zh": "请求联想词时使用的语言代码。"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Region",
+            "description": "Country code of the search market.",
+            "x-description-zh": "搜索市场的国家或地区代码。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "keyword",
+          "query",
+          "rank",
+          "language",
+          "region"
+        ],
+        "title": "SearchSuggestionItem",
+        "type": "object",
+        "x-schema-id": "search-suggestion",
+        "x-schema-version": "1.0"
+      },
+      "AudienceItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "username": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Username",
+            "description": "Username of the account the audience belongs to.",
+            "x-description-zh": "受众所属账号的用户名。"
+          },
+          "audience_countries": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/CountryShare"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Audience Countries",
+            "description": "Countries the account's followers are located in, largest share first.",
+            "x-description-zh": "账号粉丝所在的国家或地区，按占比从高到低排列。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "username",
+          "audience_countries"
+        ],
+        "title": "AudienceItem",
+        "type": "object",
+        "x-schema-id": "audience",
+        "x-schema-version": "1.0"
+      },
+      "CountryShare": {
+        "additionalProperties": false,
+        "properties": {
+          "country": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Country",
+            "description": "Country or region name.",
+            "x-description-zh": "国家或地区名称。"
+          },
+          "country_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Country Code",
+            "description": "Two-letter country or region code.",
+            "x-description-zh": "两位字母的国家或地区代码。"
+          },
+          "share": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Share",
+            "description": "Share of the account's followers in this country, from 0 to 1.",
+            "x-description-zh": "该国家或地区粉丝占全部粉丝的比例，取值 0 到 1。"
+          },
+          "count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Count",
+            "description": "Number of sampled followers in this group.",
+            "x-description-zh": "该分组中抽样粉丝的数量。"
+          }
+        },
+        "title": "CountryShare",
+        "type": "object",
+        "required": [
+          "country",
+          "country_code",
+          "share",
+          "count"
+        ]
+      },
+      "PlaylistItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Title",
+            "description": "Name of the playlist.",
+            "x-description-zh": "合集名称。"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
+          },
+          "cover_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cover Url",
+            "description": "URL of the cover image.",
+            "x-description-zh": "封面图片的地址。"
+          },
+          "item_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Item Count",
+            "description": "Number of videos in the playlist.",
+            "x-description-zh": "合集中的视频数量。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "title",
+          "author",
+          "cover_url",
+          "item_count"
+        ],
+        "title": "PlaylistItem",
+        "type": "object",
+        "x-schema-id": "playlist",
+        "x-schema-version": "1.0"
+      },
+      "SearchTrendItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "keyword": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Keyword",
+            "description": "Search term people are looking up on TikTok.",
+            "x-description-zh": "用户在 TikTok 上搜索的词。"
+          },
+          "rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rank",
+            "description": "Position of the search in TikTok's list.",
+            "x-description-zh": "该搜索在 TikTok 列表中的位置。"
+          },
+          "popularity": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Popularity",
+            "description": "Popularity score of the search on a 0 to 100 scale.",
+            "x-description-zh": "该搜索的热度分，范围 0 到 100。"
+          },
+          "popularity_trend": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Popularity Trend",
+            "description": "Recent popularity scores, oldest first, on the same 0 to 100 scale.",
+            "x-description-zh": "近期的热度分序列，按时间从早到晚排列，范围 0 到 100。"
+          },
+          "videos_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Videos Count",
+            "description": "Number of videos TikTok associates with the search.",
+            "x-description-zh": "TikTok 关联到该搜索的视频数量。"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Category",
+            "description": "Content category of the search.",
+            "x-description-zh": "该搜索所属的内容分类。"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Language",
+            "description": "Language of the search.",
+            "x-description-zh": "该搜索的语言。"
+          },
+          "labels": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Labels",
+            "description": "Labels TikTok attaches to the search, such as `content_gap`.",
+            "x-description-zh": "TikTok 为该搜索标注的标签，例如 `content_gap`。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "keyword",
+          "rank",
+          "popularity",
+          "popularity_trend",
+          "videos_count",
+          "category",
+          "language",
+          "labels"
+        ],
+        "title": "SearchTrendItem",
+        "type": "object",
+        "x-schema-id": "search-trend",
+        "x-schema-version": "1.0"
+      },
+      "LiveRankingItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rank",
+            "description": "Position of the creator in today's LIVE ranking.",
+            "x-description-zh": "创作者在当日直播榜中的名次。"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Score",
+            "description": "Ranking score, based on the gifts the creator received today.",
+            "x-description-zh": "榜单分值，按创作者当日收到的礼物计算。"
+          },
+          "followers_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Followers Count",
+            "description": "Number of followers of the creator.",
+            "x-description-zh": "创作者的粉丝数量。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "rank",
+          "author",
+          "score",
+          "followers_count"
+        ],
+        "title": "LiveRankingItem",
+        "type": "object",
+        "x-schema-id": "live-ranking",
+        "x-schema-version": "1.0"
+      },
+      "FakeViewCheckItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Metrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Public counters of the video at the time of the check.",
+            "x-description-zh": "检测时视频的公开数据。"
+          },
+          "fake_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Fake Score",
+            "description": "Fake-view risk score from 0 to 100; higher means more likely inauthentic.",
+            "x-description-zh": "虚假播放风险分，范围 0 到 100，越高越可能存在刷量。"
+          },
+          "is_suspicious": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Is Suspicious",
+            "description": "Whether the video's traffic is flagged as suspicious.",
+            "x-description-zh": "该视频流量是否被判定为可疑。"
+          },
+          "confidence_level": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Confidence Level",
+            "description": "Confidence of the fake-view verdict, such as `Minimal` or `High`.",
+            "x-description-zh": "刷量判断的置信程度，例如 `Minimal` 或 `High`。"
+          },
+          "estimated_fake_views": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Estimated Fake Views",
+            "description": "Estimated number of inauthentic views.",
+            "x-description-zh": "估算的虚假播放数量。"
+          },
+          "fake_view_percentage": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Fake View Percentage",
+            "description": "Estimated share of inauthentic views, as a percentage of all views.",
+            "x-description-zh": "估算的虚假播放占全部播放的百分比。"
+          },
+          "estimated_organic_views": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Estimated Organic Views",
+            "description": "Views the video would be expected to reach organically.",
+            "x-description-zh": "按自然流量估算该视频应达到的播放量。"
+          },
+          "traffic_tier": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Traffic Tier",
+            "description": "Traffic pool tier the video reached; higher tiers mean wider distribution.",
+            "x-description-zh": "视频进入的流量池等级，等级越高分发范围越广。"
+          },
+          "main_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Main Reason",
+            "description": "Main reason behind the verdict.",
+            "x-description-zh": "得出该判断的主要原因。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "author",
+          "metrics",
+          "fake_score",
+          "is_suspicious",
+          "confidence_level",
+          "estimated_fake_views",
+          "fake_view_percentage",
+          "estimated_organic_views",
+          "traffic_tier",
+          "main_reason"
+        ],
+        "title": "FakeViewCheckItem",
+        "type": "object",
+        "x-schema-id": "fake-view-check",
+        "x-schema-version": "1.0"
+      },
+      "CommentKeywordItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "keyword": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Keyword",
+            "description": "Keyword that comes up repeatedly in the video's comments.",
+            "x-description-zh": "视频评论中反复出现的关键词。"
+          },
+          "rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rank",
+            "description": "Position of the keyword, most prominent first.",
+            "x-description-zh": "关键词的排序位置，越靠前越突出。"
+          },
+          "post_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Post Id",
+            "description": "ID of the video the comments belong to.",
+            "x-description-zh": "评论所属视频的 ID。"
+          },
+          "comments_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Comments Count",
+            "description": "Number of returned comments that mention the keyword.",
+            "x-description-zh": "返回的评论中提到该关键词的条数。"
+          },
+          "comments": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/KeywordComment"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Comments",
+            "description": "Comments that mention the keyword.",
+            "x-description-zh": "提到该关键词的评论。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "keyword",
+          "rank",
+          "post_id",
+          "comments_count",
+          "comments"
+        ],
+        "title": "CommentKeywordItem",
+        "type": "object",
+        "x-schema-id": "comment-keyword",
+        "x-schema-version": "1.0"
+      },
+      "KeywordComment": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier of the referenced object.",
+            "x-description-zh": "所引用对象的唯一标识。"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text",
+            "description": "Comment text.",
+            "x-description-zh": "评论内容。"
+          },
+          "likes_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Likes Count",
+            "description": "Number of likes.",
+            "x-description-zh": "点赞数量。"
+          }
+        },
+        "title": "KeywordComment",
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "likes_count"
+        ]
+      },
+      "AdCreativeItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text",
+            "description": "Caption of the ad.",
+            "x-description-zh": "广告的文案。"
+          },
+          "advertiser": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CompanyRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Advertiser responsible for the ad.",
+            "x-description-zh": "广告的投放主体。"
+          },
+          "industry": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Industry",
+            "description": "Industry category of the ad.",
+            "x-description-zh": "广告所属行业分类。"
+          },
+          "objective": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Objective",
+            "description": "Campaign objective of the ad, such as product sales or traffic.",
+            "x-description-zh": "广告的投放目标，例如商品销售或引流。"
+          },
+          "ctr": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Ctr",
+            "description": "Click-through rate of the ad as reported by TikTok Creative Center.",
+            "x-description-zh": "TikTok 创意中心报告的广告点击率。"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Metrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Public engagement counters of the ad.",
+            "x-description-zh": "广告的公开互动数据。"
+          },
+          "duration_seconds": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Duration Seconds",
+            "description": "Duration in seconds.",
+            "x-description-zh": "时长，单位为秒。"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "text",
+          "advertiser",
+          "industry",
+          "objective",
+          "ctr",
+          "metrics",
+          "duration_seconds",
+          "media"
+        ],
+        "title": "AdCreativeItem",
+        "type": "object",
+        "x-schema-id": "ad-creative",
+        "x-schema-version": "1.0"
+      },
+      "AdAnalysisItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text",
+            "description": "Caption of the ad.",
+            "x-description-zh": "广告的文案。"
+          },
+          "advertiser": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CompanyRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Advertiser responsible for the ad.",
+            "x-description-zh": "广告的投放主体。"
+          },
+          "industry": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Industry",
+            "description": "Industry category of the ad.",
+            "x-description-zh": "广告所属行业分类。"
+          },
+          "objective": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Objective",
+            "description": "Campaign objective of the ad, such as product sales or traffic.",
+            "x-description-zh": "广告的投放目标，例如商品销售或引流。"
+          },
+          "ctr": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Ctr",
+            "description": "Click-through rate of the ad as reported by TikTok Creative Center.",
+            "x-description-zh": "TikTok 创意中心报告的广告点击率。"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Metrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Public engagement counters of the ad.",
+            "x-description-zh": "广告的公开互动数据。"
+          },
+          "duration_seconds": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Duration Seconds",
+            "description": "Duration in seconds.",
+            "x-description-zh": "时长，单位为秒。"
+          },
+          "media": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/Media"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Media",
+            "description": "Images, videos, or other media attached to the result.",
+            "x-description-zh": "结果附带的图片、视频或其他媒体。"
+          },
+          "countries": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Countries",
+            "description": "Countries or regions where the ad was delivered.",
+            "x-description-zh": "广告投放的国家或地区。"
+          },
+          "landing_page_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Landing Page Url",
+            "description": "Destination URL opened from the ad.",
+            "x-description-zh": "点击广告后打开的落地页地址。"
+          },
+          "impressions_percentile": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Impressions Percentile",
+            "description": "Where the ad's impressions rank among comparable ads, from 0 to 1.",
+            "x-description-zh": "该广告曝光量在同类广告中的百分位，取值 0 到 1。"
+          },
+          "click_through_curve": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/CurvePoint"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Click Through Curve",
+            "description": "Relative click-through strength at each second of the video, from 0 to 1.",
+            "x-description-zh": "视频每一秒的相对点击强度，取值 0 到 1。"
+          },
+          "retention_curve": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/CurvePoint"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Retention Curve",
+            "description": "Share of viewers still watching at each second of the video, from 0 to 1.",
+            "x-description-zh": "视频每一秒仍在观看的观众比例，取值 0 到 1。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "text",
+          "advertiser",
+          "industry",
+          "objective",
+          "ctr",
+          "metrics",
+          "duration_seconds",
+          "media",
+          "countries",
+          "landing_page_url",
+          "impressions_percentile",
+          "click_through_curve",
+          "retention_curve"
+        ],
+        "title": "AdAnalysisItem",
+        "type": "object",
+        "x-schema-id": "ad-analysis",
+        "x-schema-version": "1.0"
+      },
+      "CurvePoint": {
+        "additionalProperties": false,
+        "properties": {
+          "second": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Second",
+            "description": "Second of the video the value belongs to, counted from 0.",
+            "x-description-zh": "该数值对应的视频秒数，从 0 开始计。"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Value",
+            "description": "Value at this point of the curve.",
+            "x-description-zh": "曲线上该点的数值。"
+          }
+        },
+        "title": "CurvePoint",
+        "type": "object",
+        "required": [
+          "second",
+          "value"
+        ]
+      },
+      "HashtagInsightItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Hashtag ID, accepted by Trending Hashtag Detail.",
+            "x-description-zh": "话题 ID，可直接用于 Trending Hashtag Detail 接口。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name",
+            "description": "Hashtag name without the # prefix.",
+            "x-description-zh": "不带 # 前缀的话题名称。"
+          },
+          "rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rank",
+            "description": "Position of the hashtag in the trending ranking.",
+            "x-description-zh": "话题在趋势榜中的名次。"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Region",
+            "description": "Country or region code the ranking covers.",
+            "x-description-zh": "榜单所覆盖的国家或地区代码。"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TrendMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
+          },
+          "popularity_curve": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/DatedValue"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Popularity Curve",
+            "description": "Daily popularity of the hashtag over the period, on a 0 to 100 scale.",
+            "x-description-zh": "统计周期内话题每天的热度，范围 0 到 100。"
+          },
+          "top_countries": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/CountryScore"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Top Countries",
+            "description": "Countries where the hashtag is most popular relative to their size, highest score first.",
+            "x-description-zh": "相对人口规模而言该话题最受欢迎的国家或地区，按分值从高到低排列。"
+          },
+          "video_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Video Ids",
+            "description": "IDs of example videos that use the hashtag.",
+            "x-description-zh": "使用该话题的示例视频 ID。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "name",
+          "rank",
+          "region",
+          "metrics",
+          "popularity_curve",
+          "top_countries",
+          "video_ids"
+        ],
+        "title": "HashtagInsightItem",
+        "type": "object",
+        "x-schema-id": "hashtag-insight",
+        "x-schema-version": "1.0"
+      },
+      "CountryScore": {
+        "additionalProperties": false,
+        "properties": {
+          "country_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Country Code",
+            "description": "Two-letter country or region code.",
+            "x-description-zh": "两位字母的国家或地区代码。"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Score",
+            "description": "Score reported for the entry.",
+            "x-description-zh": "该条目对应的分值。"
+          }
+        },
+        "title": "CountryScore",
+        "type": "object",
+        "required": [
+          "country_code",
+          "score"
+        ]
+      },
+      "DatedValue": {
+        "additionalProperties": false,
+        "properties": {
+          "date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Date",
+            "description": "Date of the data point, in YYYY-MM-DD format.",
+            "x-description-zh": "数据点的日期，格式为 YYYY-MM-DD。"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Value",
+            "description": "Value at this point of the curve.",
+            "x-description-zh": "曲线上该点的数值。"
+          }
+        },
+        "title": "DatedValue",
+        "type": "object",
+        "required": [
+          "date",
+          "value"
+        ]
+      },
+      "TopVideoItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "Unique identifier for this result item.",
+            "x-description-zh": "当前结果项的唯一标识。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "rank": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Rank",
+            "description": "Position of the video in the chart.",
+            "x-description-zh": "视频在榜单中的名次。"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text",
+            "description": "Caption of the video.",
+            "x-description-zh": "视频的说明文字。"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorRef"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Author or publisher of the content.",
+            "x-description-zh": "内容的作者或发布者。"
+          },
+          "creator_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Creator Id",
+            "description": "TikTok Creator Marketplace ID of the creator, accepted by Creator Cards.",
+            "x-description-zh": "创作者在 TikTok 创作者市场中的 ID，可直接用于 Creator Cards 接口。"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Region",
+            "description": "Country or region code of the chart.",
+            "x-description-zh": "榜单所属的国家或地区代码。"
+          },
+          "cover_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cover Url",
+            "description": "URL of the cover image.",
+            "x-description-zh": "封面图片的地址。"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TopVideoMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "rank",
+          "text",
+          "author",
+          "creator_id",
+          "region",
+          "cover_url",
+          "metrics"
+        ],
+        "title": "TopVideoItem",
+        "type": "object",
+        "x-schema-id": "top-video",
+        "x-schema-version": "1.0"
+      },
+      "TopVideoMetrics": {
+        "additionalProperties": false,
+        "properties": {
+          "views_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Views Count",
+            "description": "Views in the chart period.",
+            "x-description-zh": "榜单周期内的播放数。"
+          },
+          "organic_views_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Organic Views Count",
+            "description": "Views from organic, non-paid distribution in the chart period.",
+            "x-description-zh": "榜单周期内来自自然流量（非付费）的播放数。"
+          },
+          "lifetime_views_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Lifetime Views Count",
+            "description": "Total views since the video was published.",
+            "x-description-zh": "视频发布以来的总播放数。"
+          },
+          "engagement_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Engagement Rate",
+            "description": "Engagements divided by views, as a fraction from 0 to 1.",
+            "x-description-zh": "互动数除以播放数，取值 0 到 1 的小数。"
+          },
+          "six_second_view_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Six Second View Rate",
+            "description": "Share of views that lasted at least six seconds, from 0 to 1.",
+            "x-description-zh": "观看时长达到 6 秒的播放占比，取值 0 到 1。"
+          }
+        },
+        "title": "TopVideoMetrics",
+        "type": "object",
+        "required": [
+          "views_count",
+          "organic_views_count",
+          "lifetime_views_count",
+          "engagement_rate",
+          "six_second_view_rate"
+        ]
+      },
+      "CreatorCardItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Id",
+            "description": "TikTok Creator Marketplace ID of the creator.",
+            "x-description-zh": "创作者在 TikTok 创作者市场中的 ID。"
+          },
+          "platform": {
+            "title": "Platform",
+            "type": "string",
+            "description": "Platform the result belongs to, such as `instagram` or `linkedin`.",
+            "x-description-zh": "结果所属的平台，例如 `instagram` 或 `linkedin`。"
+          },
+          "resource": {
+            "title": "Resource",
+            "type": "string",
+            "description": "SocQ resource represented by the result, such as `videos` or `comments`.",
+            "x-description-zh": "该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string",
+            "description": "Category of the result item, such as `video`, `post`, or `comment`.",
+            "x-description-zh": "结果项的类别，例如 `video`、`post` 或 `comment`。"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url",
+            "description": "Public URL of the result item when available.",
+            "x-description-zh": "结果项的公开访问地址（如可获得）。"
+          },
+          "published_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Published At",
+            "description": "Time the source item was published, in ISO 8601 format when available.",
+            "x-description-zh": "源内容的发布时间（如可获得），使用 ISO 8601 格式。"
+          },
+          "collected_at": {
+            "title": "Collected At",
+            "type": "string",
+            "description": "Time SocQ collected or processed this result, in ISO 8601 format.",
+            "x-description-zh": "SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。"
+          },
+          "username": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Username",
+            "description": "Public username or handle of the account.",
+            "x-description-zh": "账号的公开用户名或账号标识。"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Name",
+            "description": "Display name of the result item.",
+            "x-description-zh": "结果项的显示名称。"
+          },
+          "text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Text",
+            "description": "Bio of the creator.",
+            "x-description-zh": "创作者简介。"
+          },
+          "avatar_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Avatar Url",
+            "description": "URL of the account avatar image.",
+            "x-description-zh": "账号头像图片的地址。"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Region",
+            "description": "Country or region code where the creator is based.",
+            "x-description-zh": "创作者所在的国家或地区代码。"
+          },
+          "tiktok_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Tiktok User Id",
+            "description": "Numeric TikTok user ID of the creator.",
+            "x-description-zh": "创作者的 TikTok 数字用户 ID。"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CreatorMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Counters and measurements available for the result item.",
+            "x-description-zh": "结果项可获得的计数和度量数据。"
+          },
+          "starting_price": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Price"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Starting rate the creator lists for a sponsored video.",
+            "x-description-zh": "创作者为一条合作视频标注的起步报价。"
+          },
+          "audience": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CreatorAudience"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Follower demographics of the creator.",
+            "x-description-zh": "创作者粉丝的人群画像。"
+          },
+          "recent_video_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Recent Video Ids",
+            "description": "IDs of the creator's recent videos.",
+            "x-description-zh": "创作者近期视频的 ID。"
+          }
+        },
+        "required": [
+          "id",
+          "platform",
+          "resource",
+          "type",
+          "url",
+          "published_at",
+          "collected_at",
+          "username",
+          "name",
+          "text",
+          "avatar_url",
+          "region",
+          "tiktok_user_id",
+          "metrics",
+          "starting_price",
+          "audience",
+          "recent_video_ids"
+        ],
+        "title": "CreatorCardItem",
+        "type": "object",
+        "x-schema-id": "creator-card",
+        "x-schema-version": "1.0"
+      },
+      "CreatorAudience": {
+        "additionalProperties": false,
+        "properties": {
+          "ages": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ShareEntry"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Ages",
+            "description": "Share of followers by age range.",
+            "x-description-zh": "按年龄段划分的粉丝占比。"
+          },
+          "genders": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ShareEntry"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Genders",
+            "description": "Share of followers by gender.",
+            "x-description-zh": "按性别划分的粉丝占比。"
+          },
+          "countries": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/CountryShare"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Countries",
+            "description": "Countries or regions where the ad was delivered.",
+            "x-description-zh": "广告投放的国家或地区。"
+          },
+          "devices": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ShareEntry"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Devices",
+            "description": "Share of followers by phone brand.",
+            "x-description-zh": "按手机品牌划分的粉丝占比。"
+          }
+        },
+        "title": "CreatorAudience",
+        "type": "object",
+        "required": [
+          "ages",
+          "genders",
+          "countries",
+          "devices"
+        ]
+      },
+      "CreatorMetrics": {
+        "additionalProperties": false,
+        "properties": {
+          "followers_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Followers Count",
+            "description": "Number of followers.",
+            "x-description-zh": "粉丝数量。"
+          },
+          "median_views": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Median Views",
+            "description": "Median views of the creator's recent videos.",
+            "x-description-zh": "创作者近期视频播放量的中位数。"
+          },
+          "engagement_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Engagement Rate",
+            "description": "Engagements divided by views, as a fraction from 0 to 1.",
+            "x-description-zh": "互动数除以播放数，取值 0 到 1 的小数。"
+          },
+          "followers_growth_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Followers Growth Rate",
+            "description": "Recent follower growth rate, as a fraction.",
+            "x-description-zh": "近期粉丝增长率，以小数表示。"
+          },
+          "six_second_view_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Six Second View Rate",
+            "description": "Share of views that lasted at least six seconds, from 0 to 1.",
+            "x-description-zh": "观看时长达到 6 秒的播放占比，取值 0 到 1。"
+          }
+        },
+        "title": "CreatorMetrics",
+        "type": "object",
+        "required": [
+          "followers_count",
+          "median_views",
+          "engagement_rate",
+          "followers_growth_rate",
+          "six_second_view_rate"
+        ]
+      },
+      "ShareEntry": {
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Label",
+            "description": "Name of the group, such as an age range, gender or device brand.",
+            "x-description-zh": "分组名称，例如年龄段、性别或设备品牌。"
+          },
+          "share": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Share",
+            "description": "Share of the total, from 0 to 1.",
+            "x-description-zh": "占总量的比例，取值 0 到 1。"
+          }
+        },
+        "title": "ShareEntry",
+        "type": "object",
+        "required": [
+          "label",
+          "share"
         ]
       }
     }

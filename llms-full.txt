@@ -569,3 +569,307 @@ Search Instagram hashtags by keyword.
 - Billing: Per returned result
 
 Provide one keyword in query; a leading # is optional. results_limit sets how many hashtags to return (default 50, up to 100).
+
+# YouTube trending, community, search and contact APIs
+
+## YouTube Trending Shorts
+
+Collect Shorts that are trending on YouTube right now.
+
+- REST: POST /v1/youtube/trending-shorts
+- MCP: socq_youtube_trending_shorts
+- CLI: socq youtube trending-shorts
+- Billing: Per returned result
+
+Every field is optional. results_limit sets how many Shorts to return (default 48, up to 200); each run samples what is trending at that moment.
+
+## YouTube Community Post
+
+Collect the text, images and likes of one YouTube community post.
+
+- REST: POST /v1/youtube/community-post
+- MCP: socq_youtube_community_post
+- CLI: socq youtube community-post
+
+Pass the post link in url, either a /post/{post_id} link or a channel Posts link with ?lb={post_id}.
+
+## YouTube Community Post Comments
+
+Collect comments on a YouTube community post.
+
+- REST: POST /v1/youtube/community-post-comments
+- MCP: socq_youtube_community_post_comments
+- CLI: socq youtube community-post-comments
+- Billing: Per returned result
+
+url is the community post link. results_limit defaults to 100 and accepts 1 to 1000.
+
+## YouTube Related Videos
+
+Collect the videos YouTube recommends next to a video.
+
+- REST: POST /v1/youtube/related-videos
+- MCP: socq_youtube_related_videos
+- CLI: socq youtube related-videos
+- Billing: Per returned result
+
+url takes a watch, youtu.be, Shorts or live link; one run returns the full recommendation list, usually about 20 videos.
+
+## YouTube Channel Search
+
+Search YouTube channels by keyword.
+
+- REST: POST /v1/youtube/search-channels
+- MCP: socq_youtube_search_channels
+- CLI: socq youtube search-channels
+- Billing: Per returned result
+
+query is required. results_limit defaults to 20 and accepts 1 to 200.
+
+## YouTube Shorts Search
+
+Search YouTube Shorts by keyword.
+
+- REST: POST /v1/youtube/search-shorts
+- MCP: socq_youtube_search_shorts
+- CLI: socq youtube search-shorts
+- Billing: Per returned result
+
+query is required. results_limit defaults to 25 and accepts 1 to 200. Each result carries the Short's link, caption, view count and thumbnail.
+
+## YouTube Search Suggestions
+
+Collect the autocomplete suggestions YouTube offers for a search.
+
+- REST: POST /v1/youtube/search-suggestions
+- MCP: socq_youtube_search_suggestions
+- CLI: socq youtube search-suggestions
+
+query is required; language (default en) and region (default US) pick the market. Billed once per request.
+
+## YouTube Email Finder
+
+Find public contact emails for a YouTube channel.
+
+- REST: POST /v1/youtube/channel-email
+- MCP: socq_youtube_channel_email
+- CLI: socq youtube channel-email
+- Billing: Per returned result
+
+url is a channel link in the @handle or /channel/UC... form. A channel with a public email returns one result listing every address and its source pages; a channel without one returns an empty result at no charge.
+
+# TikTok audience, discovery, LIVE and video analytics APIs
+
+## TikTok Audience Demographics
+
+Collect the countries a TikTok account's followers are located in.
+
+- REST: POST /v1/tiktok/user-audience
+- MCP: socq_tiktok_user_audience
+- CLI: socq tiktok user-audience
+
+username is required. One result per account lists its follower countries with their share of the audience, largest first. Billed once per request.
+
+## TikTok Similar Accounts
+
+Collect accounts TikTok recommends as similar to a TikTok account.
+
+- REST: POST /v1/tiktok/similar-users
+- MCP: socq_tiktok_similar_users
+- CLI: socq tiktok similar-users
+- Billing: Per returned result
+
+username is required. results_limit defaults to 30 and accepts 1 to 300.
+
+## TikTok Reposts
+
+Collect the videos a TikTok account has reposted.
+
+- REST: POST /v1/tiktok/user-reposts
+- MCP: socq_tiktok_user_reposts
+- CLI: socq tiktok user-reposts
+- Billing: Per returned result
+
+username is required. Reposts arrive newest first; results_limit defaults to 20 and accepts 1 to 500.
+
+## TikTok Playlists
+
+Collect the public playlists of a TikTok account.
+
+- REST: POST /v1/tiktok/user-playlists
+- MCP: socq_tiktok_user_playlists
+- CLI: socq tiktok user-playlists
+- Billing: Per returned result
+
+username is required. Each playlist comes with its name, cover and video count; results_limit defaults to 20 and accepts 1 to 100.
+
+## TikTok Hashtag Views
+
+Collect the video and view counts of TikTok hashtags.
+
+- REST: POST /v1/tiktok/hashtag-detail
+- MCP: socq_tiktok_hashtag_detail
+- CLI: socq tiktok hashtag-detail
+- Billing: Per returned result
+
+hashtags takes 1 to 20 names; each existing hashtag returns one result and missing ones are skipped.
+
+## TikTok Sound Search
+
+Search TikTok sounds by keyword.
+
+- REST: POST /v1/tiktok/search-music
+- MCP: socq_tiktok_search_music
+- CLI: socq tiktok search-music
+- Billing: Per returned result
+
+query is required; sort_by picks relevance, most_used or latest, and region picks the market (default US).
+
+## TikTok Live Search
+
+Search TikTok LIVE streams broadcasting now by keyword.
+
+- REST: POST /v1/tiktok/search-live
+- MCP: socq_tiktok_search_live
+- CLI: socq tiktok search-live
+- Billing: Per returned result
+
+query is required. Each result's id and author.id are the room_id and user_id for TikTok Live Shopping.
+
+## TikTok Photo Search
+
+Search TikTok photo carousel posts by keyword.
+
+- REST: POST /v1/tiktok/search-photos
+- MCP: socq_tiktok_search_photos
+- CLI: socq tiktok search-photos
+- Billing: Per returned result
+
+query is required. Every result includes all images of the carousel; results_limit defaults to 20 and accepts 1 to 500.
+
+## TikTok Trending Searches
+
+Collect today's trending search keywords on TikTok.
+
+- REST: POST /v1/tiktok/trending-keywords
+- MCP: socq_tiktok_trending_keywords
+- CLI: socq tiktok trending-keywords
+
+Takes no input and returns about 100 ranked searches. Billed once per request.
+
+## TikTok Creator Search Insights
+
+Collect popular TikTok searches with their popularity trend.
+
+- REST: POST /v1/tiktok/search-insights
+- MCP: socq_tiktok_search_insights
+- CLI: socq tiktok search-insights
+
+language, category and filter_by (all or content_gap) are optional. Returns 20 searches with popularity scores and seven-point trends, billed once per request.
+
+## TikTok Live Ranking
+
+Collect the TikTok LIVE daily creator ranking.
+
+- REST: POST /v1/tiktok/live-ranking
+- MCP: socq_tiktok_live_ranking
+- CLI: socq tiktok live-ranking
+
+Takes no input and returns up to 99 ranked creators with their scores. Billed once per request.
+
+## TikTok Live Shopping
+
+Collect the products in a TikTok LIVE stream's shopping bag.
+
+- REST: POST /v1/tiktok/live-products
+- MCP: socq_tiktok_live_products
+- CLI: socq tiktok live-products
+- Billing: Per returned result
+
+room_id and user_id come from TikTok Live Search. results_limit defaults to 100 and accepts 1 to 500.
+
+## TikTok Fake Views Checker
+
+Estimate how much of a TikTok video's view count is inauthentic.
+
+- REST: POST /v1/tiktok/fake-views
+- MCP: socq_tiktok_fake_views
+- CLI: socq tiktok fake-views
+
+url is required; category tunes the engagement benchmarks. Returns one analysis, billed once per request.
+
+## TikTok Comment Keywords
+
+Collect the keywords that come up most in a TikTok video's comments.
+
+- REST: POST /v1/tiktok/comment-keywords
+- MCP: socq_tiktok_comment_keywords
+- CLI: socq tiktok comment-keywords
+
+url is required. Returns ranked keywords, each with the comments that mention it, billed once per request.
+
+# TikTok Creative Center APIs
+
+## TikTok Creative Center Top Ads
+
+Collect top-performing TikTok ads from TikTok Creative Center.
+
+- REST: POST /v1/tiktok-creative-center/top-ads
+- MCP: socq_tiktok_creative_center_top_ads
+- CLI: socq tiktok-creative-center top-ads
+- Billing: Per returned result
+
+All fields are optional: query, time_range (7d, 30d or 180d) and sort_by (relevance or likes). results_limit defaults to 20 and accepts 1 to 300.
+
+## TikTok Creative Center Ad Analysis
+
+Collect the details and second-by-second performance curves of a TikTok top ad.
+
+- REST: POST /v1/tiktok-creative-center/ad-analysis
+- MCP: socq_tiktok_creative_center_ad_analysis
+- CLI: socq tiktok-creative-center ad-analysis
+
+ad_id comes from TikTok Creative Center Top Ads. Returns click-through and retention curves plus an impressions percentile, billed once per request.
+
+## TikTok Creative Center Trending Hashtags
+
+Collect the hashtags trending on TikTok in a country.
+
+- REST: POST /v1/tiktok-creative-center/trending-hashtags
+- MCP: socq_tiktok_creative_center_trending_hashtags
+- CLI: socq tiktok-creative-center trending-hashtags
+- Billing: Per returned result
+
+country (default US) and time_range (7d, 30d or 90d) choose the ranking; results_limit defaults to 20 and accepts 1 to 100.
+
+## TikTok Creative Center Hashtag Insights
+
+Collect the popularity curve and top countries of a trending TikTok hashtag.
+
+- REST: POST /v1/tiktok-creative-center/trending-hashtag-detail
+- MCP: socq_tiktok_creative_center_trending_hashtag_detail
+- CLI: socq tiktok-creative-center trending-hashtag-detail
+
+hashtag_id comes from TikTok Creative Center Trending Hashtags; use the same country. Billed once per request.
+
+## TikTok Creative Center Top Videos
+
+Collect the chart of top-performing TikTok videos in a country.
+
+- REST: POST /v1/tiktok-creative-center/top-videos
+- MCP: socq_tiktok_creative_center_top_videos
+- CLI: socq tiktok-creative-center top-videos
+- Billing: Per returned result
+
+country, period (daily, weekly or long_term) and sort_by are optional; the latest published chart is used. results_limit defaults to 20 and accepts 1 to 100.
+
+## TikTok Creative Center Creator Marketplace
+
+Collect TikTok Creator Marketplace cards with audience demographics and rates.
+
+- REST: POST /v1/tiktok-creative-center/creator-cards
+- MCP: socq_tiktok_creative_center_creator_cards
+- CLI: socq tiktok-creative-center creator-cards
+- Billing: Per returned result
+
+creator_ids takes 1 to 20 Creator Marketplace IDs, such as creator_id values from TikTok Creative Center Top Videos.

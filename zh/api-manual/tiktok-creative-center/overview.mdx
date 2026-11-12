@@ -1,0 +1,22 @@
+---
+title: "TikTok 创意中心"
+description: "获取 TikTok 创意中心的榜单数据：热门广告、趋势话题、热门视频和创作者市场资料卡。"
+sidebarTitle: "概览"
+---
+
+# TikTok 创意中心 API
+
+这组接口读取 TikTok 在创意中心公开的榜单和调研数据，与其他 Agent API 一样采用异步任务流程。
+
+| API | 方法 | 端点 |
+| --- | --- | --- |
+| 热门广告 | `POST` | `/v1/tiktok-creative-center/top-ads` |
+| 广告分析 | `POST` | `/v1/tiktok-creative-center/ad-analysis` |
+| 热门话题 | `POST` | `/v1/tiktok-creative-center/trending-hashtags` |
+| 话题洞察 | `POST` | `/v1/tiktok-creative-center/trending-hashtag-detail` |
+| 热门视频榜 | `POST` | `/v1/tiktok-creative-center/top-videos` |
+| 创作者市场 | `POST` | `/v1/tiktok-creative-center/creator-cards` |
+
+提交请求后会拿到 `task_id`，再轮询 `GET /v1/tasks/{task_id}`。任务成功后，规范化的结果位于 `results` 下。
+
+几个接口可以串起来用：热门广告结果里的 `id` 传给广告分析，趋势话题结果里的 `id` 传给趋势话题详情，热门视频榜结果里的 `creator_id` 传给创作者卡片。

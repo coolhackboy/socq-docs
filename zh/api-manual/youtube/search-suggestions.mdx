@@ -1,0 +1,94 @@
+---
+title: "YouTube 搜索联想词"
+description: "采集 YouTube 搜索框给出的联想词。"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/youtube/search-suggestions"
+---
+
+# YouTube 搜索联想词
+
+输入搜索词的开头，拿回 YouTube 搜索框会补全出来的联想词，排序和观众看到的一致。换个语言和地区，同一个种子词在另一个市场会联想出不同的方向，适合做关键词调研、拟视频标题和找标签。
+
+```json
+{
+  "query": "iphone 17"
+}
+```
+
+{/* input-contract:start */}
+query 为必填项。language（默认 en）和 region（默认 US）决定联想词来自哪个市场。每次请求按次计费，与返回的联想词数量无关。
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## 标准结果字段
+
+任务结果使用下方稳定的 SocQ 字段。系统会统一来源特有的字段名和格式，但不会推断或补充来源未提供的数据。如需缩小返回字段集合，MCP 查询使用 `fields`，Typed 工具使用 `_result_fields`，CLI 使用 `--result-fields`。声明字段的值为 `null` 时仍会保留。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `keyword` | `string` | 是 | 联想出的搜索词。 |
+| `query` | `string` | 是 | 生成该结果所依据的搜索文本。 |
+| `rank` | `integer` | 是 | 该联想词在列表中的位置，从 1 开始。 |
+| `language` | `string` | 是 | 请求联想词时使用的语言代码。 |
+| `region` | `string` | 是 | 搜索市场的国家或地区代码。 |
+{/* result-schema:end */}
+
+以下示例展示任务完成后的响应格式，具体数据以实际查询结果为准。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-youtube-search-suggestions",
+    "status": "succeeded",
+    "public_id": "youtube/search-suggestions",
+    "result_count": 2,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "search-suggestion",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "iphone 17 pro max",
+          "platform": "youtube",
+          "resource": "search-suggestions",
+          "type": "suggestion",
+          "url": "https://www.youtube.com/results?search_query=iphone+17+pro+max",
+          "published_at": null,
+          "collected_at": "2026-11-09T11:13:40Z",
+          "keyword": "iphone 17 pro max",
+          "query": "iphone 17",
+          "rank": 1,
+          "language": "en",
+          "region": "US"
+        },
+        {
+          "id": "iphone 17 review",
+          "platform": "youtube",
+          "resource": "search-suggestions",
+          "type": "suggestion",
+          "url": "https://www.youtube.com/results?search_query=iphone+17+review",
+          "published_at": null,
+          "collected_at": "2026-11-09T11:13:40Z",
+          "keyword": "iphone 17 review",
+          "query": "iphone 17",
+          "rank": 2,
+          "language": "en",
+          "region": "US"
+        }
+      ]
+    }
+  }
+}
+```

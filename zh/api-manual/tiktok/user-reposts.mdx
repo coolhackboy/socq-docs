@@ -1,0 +1,144 @@
+---
+title: "TikTok 转发视频"
+description: "获取 TikTok 账号转发过的视频。"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok/user-reposts"
+---
+
+# TikTok 转发视频
+
+转发记录能看出一个账号除了自己的作品之外，还在帮谁扩散内容。接口返回用户转发过的视频，每条都带原作者、文案、播放和点赞数、话题标签以及视频文件，方便判断这个账号偏爱哪些创作者和话题。
+
+```json
+{
+  "username": "mrbeast",
+  "results_limit": 20
+}
+```
+
+{/* input-contract:start */}
+username 为必填项。转发按时间从新到旧返回；results_limit 默认 20，允许 1–500。账号没有转发记录时返回空结果，不扣积分。
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## 标准结果字段
+
+任务结果使用下方稳定的 SocQ 字段。系统会统一来源特有的字段名和格式，但不会推断或补充来源未提供的数据。如需缩小返回字段集合，MCP 查询使用 `fields`，Typed 工具使用 `_result_fields`，CLI 使用 `--result-fields`。声明字段的值为 `null` 时仍会保留。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `text` | `string` | 是 | 视频的说明文字或描述。 |
+| `author` | `object` | 是 | 内容的作者或发布者。 |
+| `author.id` | `string` | 是 | 作者的唯一标识。 |
+| `author.username` | `string` | 是 | 账号的公开用户名或账号标识。 |
+| `author.name` | `string` | 是 | 作者的显示名称。 |
+| `author.url` | `string` | 是 | 作者的公开访问地址（如可获得）。 |
+| `author.avatar_url` | `string` | 是 | 账号头像图片的地址。 |
+| `author.is_verified` | `boolean` | 是 | 账号是否已通过平台认证。 |
+| `author.is_private` | `boolean` | 是 | 账号是否为私密账号。 |
+| `metrics` | `object` | 是 | 结果项可获得的计数和度量数据。 |
+| `metrics.likes_count` | `integer` | 是 | 点赞数量。 |
+| `metrics.comments_count` | `integer` | 是 | 评论数量。 |
+| `metrics.shares_count` | `integer` | 是 | 分享或转发数量。 |
+| `metrics.plays_count` | `integer` | 是 | 平台报告的视频播放次数。 |
+| `metrics.views_count` | `integer` | 是 | 平台报告的观看数量。 |
+| `media` | `array<object>` | 是 | 结果附带的图片、视频或其他媒体。 |
+| `media.type` | `string` | 是 | 媒体类型，例如 `image` 或 `video`。 |
+| `media.url` | `string` | 是 | 媒体文件的地址。 |
+| `media.thumbnail_url` | `string` | 是 | 媒体预览图的地址。 |
+| `media.width` | `integer` | 是 | 媒体宽度，单位为像素。 |
+| `media.height` | `integer` | 是 | 媒体高度，单位为像素。 |
+| `media.duration_seconds` | `number` | 是 | 媒体时长，单位为秒。 |
+| `hashtags` | `array<string>` | 是 | 内容关联的话题标签，保留源数据中的拼写。 |
+| `mentions` | `array<string>` | 是 | 内容中提及的账号。 |
+| `shortcode` | `string` | 是 | 平台用于标识媒体内容的短代码。 |
+| `duration_seconds` | `number` | 是 | 时长，单位为秒。 |
+| `audio` | `object` | 是 | 视频关联的音频或音乐信息。 |
+| `audio.id` | `string` | 是 | 音频或音乐曲目的标识。 |
+| `audio.title` | `string` | 是 | 音频或音乐曲目的标题。 |
+| `audio.artist` | `string` | 是 | 音频艺术家或创作者名称。 |
+| `audio.url` | `string` | 是 | 音频或音乐曲目的地址（如可获得）。 |
+{/* result-schema:end */}
+
+以下示例展示任务完成后的响应格式，具体数据以实际查询结果为准。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-user-reposts",
+    "status": "succeeded",
+    "public_id": "tiktok/user-reposts",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "reel-video",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7693911917194169631",
+          "platform": "tiktok",
+          "resource": "user-reposts",
+          "type": "video",
+          "url": "https://www.tiktok.com/@ebisonr/video/7693911917194169631",
+          "published_at": "2026-10-07T13:08:17Z",
+          "collected_at": "2026-11-10T09:00:00Z",
+          "text": "“I just want to give you $50,000 for free because I like you.” The definition of MrBeast 😭✌️🥀 Watch the new season of SHARK TANK Wednesdays at 10/9c on ABC. Stream on Hulu. #ABCPartner #SharkTank #fyp #viral",
+          "author": {
+            "id": "7690853627765801998",
+            "username": "ebisonr",
+            "name": "Ebi",
+            "url": "https://www.tiktok.com/@ebisonr",
+            "avatar_url": "https://example.com/avatar.jpg",
+            "is_verified": false,
+            "is_private": false
+          },
+          "metrics": {
+            "likes_count": 352400,
+            "comments_count": 1699,
+            "shares_count": 14200,
+            "plays_count": 3300000,
+            "views_count": 3300000
+          },
+          "media": [
+            {
+              "type": "video",
+              "url": "https://example.com/video.mp4",
+              "thumbnail_url": "https://example.com/thumbnail.jpg",
+              "width": 720,
+              "height": 1280,
+              "duration_seconds": 32.0
+            }
+          ],
+          "hashtags": [
+            "abcpartner",
+            "sharktank",
+            "fyp",
+            "viral"
+          ],
+          "mentions": [],
+          "shortcode": null,
+          "duration_seconds": 32.0,
+          "audio": {
+            "id": "7532501149981755393",
+            "title": "DENTRO DA MINHA MENTE",
+            "artist": "Allba",
+            "url": "https://example.com/audio.mp3"
+          }
+        }
+      ]
+    }
+  }
+}
+```

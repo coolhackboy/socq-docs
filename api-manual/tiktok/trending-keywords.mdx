@@ -1,0 +1,84 @@
+---
+title: "TikTok Trending Searches"
+description: "Collect today's trending search keywords on TikTok."
+openapi: "/api-manual/agent-api/agent-api.json POST /v1/tiktok/trending-keywords"
+---
+
+# TikTok Trending Searches
+
+Get today's trending searches on TikTok in the order TikTok shows them. The list refreshes daily, so it works well as a morning feed for content ideas, reactive posts and keyword tracking.
+
+```json
+{}
+```
+
+{/* input-contract:start */}
+Takes no input. Returns today's trending searches, usually around 100, ranked in TikTok's order. Each request is billed once.
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## Standard Result Fields
+
+Task results use the stable SocQ fields below. Source-specific field names and formats are normalized without inferring or enriching values that the source did not provide. To request a smaller field set, use `fields` for MCP queries, `_result_fields` for typed tools, or `--result-fields` in the CLI. Declared fields remain present when their value is `null`.
+
+| Field | Type | Nullable | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | Yes | Unique identifier for this result item. |
+| `platform` | `string` | No | Platform the result belongs to, such as `instagram` or `linkedin`. |
+| `resource` | `string` | No | SocQ resource represented by the result, such as `videos` or `comments`. |
+| `type` | `string` | No | Category of the result item, such as `video`, `post`, or `comment`. |
+| `url` | `string` | Yes | Public URL of the result item when available. |
+| `published_at` | `string` | Yes | Time the source item was published, in ISO 8601 format when available. |
+| `collected_at` | `string` | No | Time SocQ collected or processed this result, in ISO 8601 format. |
+| `keyword` | `string` | Yes | Search term people are looking up on TikTok. |
+| `rank` | `integer` | Yes | Position of the search in TikTok's list. |
+| `popularity` | `number` | Yes | Popularity score of the search on a 0 to 100 scale. |
+| `popularity_trend` | `array<number>` | Yes | Recent popularity scores, oldest first, on the same 0 to 100 scale. |
+| `videos_count` | `integer` | Yes | Number of videos TikTok associates with the search. |
+| `category` | `string` | Yes | Content category of the search. |
+| `language` | `string` | Yes | Language of the search. |
+| `labels` | `array<string>` | Yes | Labels TikTok attaches to the search, such as `content_gap`. |
+{/* result-schema:end */}
+
+The following example shows the response format for a completed task. Actual data depends on your query.
+
+## Completed Task Response
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-trending-keywords",
+    "status": "succeeded",
+    "public_id": "tiktok/trending-keywords",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "search-trend",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "link x malon romance goes viral",
+          "platform": "tiktok",
+          "resource": "trending-keywords",
+          "type": "search_trend",
+          "url": "https://www.tiktok.com/search?q=Link%20x%20Malon%20Romance%20Goes%20Viral",
+          "published_at": null,
+          "collected_at": "2026-11-10T09:00:00Z",
+          "keyword": "Link x Malon Romance Goes Viral",
+          "rank": 1,
+          "popularity": null,
+          "popularity_trend": null,
+          "videos_count": null,
+          "category": null,
+          "language": null,
+          "labels": null
+        }
+      ]
+    }
+  }
+}
+```

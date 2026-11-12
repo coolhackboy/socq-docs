@@ -1,0 +1,112 @@
+---
+title: "TikTok 创意中心热门视频榜"
+description: "获取某个国家或地区的 TikTok 创意中心热门视频榜。"
+openapi: "/zh/api-manual/agent-api/agent-api.json POST /v1/tiktok-creative-center/top-videos"
+---
+
+# TikTok 创意中心热门视频榜
+
+获取某个国家或地区 TikTok 表现最好的视频榜单，可以按播放量、互动率或 6 秒完播率排序。每条结果都有文案、创作者、榜单周期内的播放量、累计播放量和互动指标。看中某位创作者时，把 `creator_id` 交给 TikTok 创意中心创作者市场接口，就能拿到他的受众画像和报价。
+
+```json
+{
+  "country": "US",
+  "period": "daily",
+  "results_limit": 20
+}
+```
+
+{/* input-contract:start */}
+所有字段都可省略。country 默认 US；period 可选 daily（默认）、weekly 或 long_term；sort_by 可选 views（默认）、engagement_rate 或 six_second_view_rate。使用最新一期已发布的榜单。results_limit 默认 20，允许 1–100。
+{/* input-contract:end */}
+
+{/* result-schema:start */}
+## 标准结果字段
+
+任务结果使用下方稳定的 SocQ 字段。系统会统一来源特有的字段名和格式，但不会推断或补充来源未提供的数据。如需缩小返回字段集合，MCP 查询使用 `fields`，Typed 工具使用 `_result_fields`，CLI 使用 `--result-fields`。声明字段的值为 `null` 时仍会保留。
+
+| 字段 | 类型 | 可空 | 说明 |
+| --- | --- | --- | --- |
+| `id` | `string` | 是 | 当前结果项的唯一标识。 |
+| `platform` | `string` | 否 | 结果所属的平台，例如 `instagram` 或 `linkedin`。 |
+| `resource` | `string` | 否 | 该结果对应的 SocQ 资源，例如 `videos` 或 `comments`。 |
+| `type` | `string` | 否 | 结果项的类别，例如 `video`、`post` 或 `comment`。 |
+| `url` | `string` | 是 | 结果项的公开访问地址（如可获得）。 |
+| `published_at` | `string` | 是 | 源内容的发布时间（如可获得），使用 ISO 8601 格式。 |
+| `collected_at` | `string` | 否 | SocQ 采集或处理该结果的时间，使用 ISO 8601 格式。 |
+| `rank` | `integer` | 是 | 视频在榜单中的名次。 |
+| `text` | `string` | 是 | 视频的说明文字。 |
+| `author` | `object` | 是 | 内容的作者或发布者。 |
+| `author.id` | `string` | 是 | 作者的唯一标识。 |
+| `author.username` | `string` | 是 | 账号的公开用户名或账号标识。 |
+| `author.name` | `string` | 是 | 作者的显示名称。 |
+| `author.url` | `string` | 是 | 作者的公开访问地址（如可获得）。 |
+| `author.avatar_url` | `string` | 是 | 账号头像图片的地址。 |
+| `author.is_verified` | `boolean` | 是 | 账号是否已通过平台认证。 |
+| `author.is_private` | `boolean` | 是 | 账号是否为私密账号。 |
+| `creator_id` | `string` | 是 | 创作者在 TikTok 创作者市场中的 ID，可直接用于 Creator Cards 接口。 |
+| `region` | `string` | 是 | 榜单所属的国家或地区代码。 |
+| `cover_url` | `string` | 是 | 封面图片的地址。 |
+| `metrics` | `object` | 是 | 结果项可获得的计数和度量数据。 |
+| `metrics.views_count` | `integer` | 是 | 榜单周期内的播放数。 |
+| `metrics.organic_views_count` | `integer` | 是 | 榜单周期内来自自然流量（非付费）的播放数。 |
+| `metrics.lifetime_views_count` | `integer` | 是 | 视频发布以来的总播放数。 |
+| `metrics.engagement_rate` | `number` | 是 | 互动数除以播放数，取值 0 到 1 的小数。 |
+| `metrics.six_second_view_rate` | `number` | 是 | 观看时长达到 6 秒的播放占比，取值 0 到 1。 |
+{/* result-schema:end */}
+
+以下示例展示任务完成后的响应格式，具体数据以实际查询结果为准。
+
+## 任务完成响应
+
+```json
+{
+  "code": 200,
+  "data": {
+    "task_id": "example-tiktok-creative-center-top-videos",
+    "status": "succeeded",
+    "public_id": "tiktok-creative-center/top-videos",
+    "result_count": 1,
+    "credits_amount": 0.5,
+    "results": {
+      "limit": 50,
+      "next_cursor": null,
+      "has_more": false,
+      "schema_id": "top-video",
+      "schema_version": "1.0",
+      "items": [
+        {
+          "id": "7678479724896587038",
+          "platform": "tiktok-creative-center",
+          "resource": "top-videos",
+          "type": "video",
+          "url": "https://www.tiktok.com/@megannco/video/7678479724896587038",
+          "published_at": "2026-08-26T23:03:07Z",
+          "collected_at": "2026-11-10T09:00:00Z",
+          "rank": 1,
+          "text": "Five years ago, I started my small business with no idea what it would grow into. From working out of my parents’ spare room to now having my own commercial space, @Shopify has been there every step of the way! Having the freedom to build a storefront that actually feels like my brand, from the fonts to the colors and everything in between, has made such a difference. So grateful for how far my business has come & so excited to see where it goes next! #ad #shopifypartner",
+          "author": {
+            "id": "6880574638150697990",
+            "username": "megannco",
+            "name": "Meg Ann Co.",
+            "url": "https://www.tiktok.com/@megannco",
+            "avatar_url": "https://example.com/avatar.jpg",
+            "is_verified": null,
+            "is_private": null
+          },
+          "creator_id": "7070293872819044358",
+          "region": "US",
+          "cover_url": "https://example.com/cover.jpg",
+          "metrics": {
+            "views_count": 42477347,
+            "organic_views_count": 2445673,
+            "lifetime_views_count": 110068491,
+            "engagement_rate": 0.0012,
+            "six_second_view_rate": 0.0265
+          }
+        }
+      ]
+    }
+  }
+}
+```
