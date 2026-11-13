@@ -43,7 +43,7 @@
       {
         "type": "discord",
         "label": "Discord",
-        "href": "https://discord.gg/WrKvyNCvbR"
+        "href": "https://socq.ai/dashboard/settings#discord"
       }
     ],
     "primary": {
@@ -106,7 +106,7 @@
             {
               "type": "discord",
               "label": "Discord",
-              "href": "https://discord.gg/WrKvyNCvbR"
+              "href": "https://socq.ai/dashboard/settings#discord"
             }
           ],
           "primary": {
@@ -613,7 +613,7 @@
             {
               "type": "discord",
               "label": "Discord",
-              "href": "https://discord.gg/WrKvyNCvbR"
+              "href": "https://socq.ai/dashboard/settings#discord"
             }
           ],
           "primary": {
